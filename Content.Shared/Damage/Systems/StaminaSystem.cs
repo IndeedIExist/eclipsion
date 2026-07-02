@@ -56,6 +56,7 @@ public sealed partial class StaminaSystem : EntitySystem
         base.Initialize();
 
         InitializeModifier();
+        InitializeSprint();
 
         SubscribeLocalEvent<StaminaComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<StaminaComponent, ComponentShutdown>(OnShutdown);

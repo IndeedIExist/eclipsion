@@ -434,11 +434,25 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var damage = GetDamage(meleeUid, user, component);
         var target = GetEntity(ev.Target);
         var resistanceBypass = GetResistanceBypass(meleeUid, user, component);
+        var curTime = Timing.CurTime;
 
+        // Combo chain expired since the last landed hit - start fresh.
+        if (component.ComboCount > 0 && curTime > component.ComboExpiresAt)
+        {
+            component.ComboCount = 0;
+            Dirty(meleeUid, component);
+        }
 
         // For consistency with wide attacks stuff needs damageable.
         if (!CanDoLightAttack(user, target, component, out var targetXform, session))
         {
+            // A whiffed swing breaks the combo chain.
+            if (component.ComboCount != 0)
+            {
+                component.ComboCount = 0;
+                Dirty(meleeUid, component);
+            }
+
             // Leave IsHit set to true, because the only time it's set to false
             // is when a melee weapon is examined. Misses are inferred from an
             // empty HitEntities.
@@ -473,6 +487,13 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         // Parry check
         if (_parry.TryParry(target.Value, user, meleeUid))
         {
+            // Getting parried breaks the attacker's combo chain.
+            if (component.ComboCount != 0)
+            {
+                component.ComboCount = 0;
+                Dirty(meleeUid, component);
+            }
+
             _meleeSound.PlaySwingSound(user, meleeUid, component);
             return;
         }
@@ -480,6 +501,10 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         // Apply riposte bonus if attacker just parried successfully
         var riposteMultiplier = _parry.GetRiposteMultiplier(user);
         damage *= riposteMultiplier;
+
+        // Apply the combo chain bonus from prior landed light attacks in this swing.
+        var comboStacks = Math.Min(component.ComboCount, component.MaxComboStacks);
+        damage *= 1f + comboStacks * component.ComboDamageBonusPerStack;
 
         var targets = new List<EntityUid>(1)
         {
@@ -541,12 +566,23 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         }
 
         var hitSound = SelectHitSound(target.Value, component, damageResult, targetWasNotDead, targetWasNotIncap);
-        _meleeSound.PlayHitSound(target.Value, user, GetHighestDamageSound(modifiedDamage, _protoManager), hitEvent.HitSoundOverride, hitSound, component.SoundNoDamage);
+        var comboPitch = 1f + comboStacks * 0.05f;
+        _meleeSound.PlayHitSound(target.Value, user, GetHighestDamageSound(modifiedDamage, _protoManager), hitEvent.HitSoundOverride, hitSound, component.SoundNoDamage, comboPitch);
 
         if (damageResult?.GetTotal() > FixedPoint2.Zero)
         {
             DoDamageEffect(targets, user, targetXform);
             _parry.TryPlayFinisher(target.Value, user);
+
+            // Landed hit extends the combo chain.
+            var newCombo = Math.Min(component.ComboCount + 1, component.MaxComboStacks);
+            if (newCombo != component.ComboCount)
+                component.ComboCount = newCombo;
+            component.ComboExpiresAt = curTime + TimeSpan.FromSeconds(component.ComboWindowSeconds);
+            Dirty(meleeUid, component);
+
+            if (component.ComboCount >= 2)
+                PopupSystem.PopupClient(Loc.GetString("melee-combo-hit", ("stacks", component.ComboCount)), meleeUid, user);
         }
     }
 

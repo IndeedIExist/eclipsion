@@ -177,8 +177,14 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         return Interaction.InRangeUnobstructed(user, target, targetCoordinates, targetLocalAngle, range);
     }
 
-    protected override void DoDamageEffect(List<EntityUid> targets, EntityUid? user, TransformComponent targetXform) =>
-        _color.RaiseEffect(Color.Red, targets, Filter.Pvs(targetXform.Coordinates, entityMan: EntityManager).RemoveWhereAttachedEntity(o => o == user));
+    protected override void DoDamageEffect(List<EntityUid> targets, EntityUid? user, TransformComponent targetXform)
+    {
+        // Attacker already gets the red flash + hit-punch + shake instantly via client-side prediction,
+        // so this only needs to reach the victim and any bystanders watching.
+        var filter = Filter.Pvs(targetXform.Coordinates, entityMan: EntityManager).RemoveWhereAttachedEntity(o => o == user);
+        _color.RaiseEffect(Color.Red, targets, filter);
+        RaiseNetworkEvent(new MeleeImpactEffectEvent(GetNetEntityList(targets)), filter);
+    }
 
     private float CalculateDisarmChance(EntityUid disarmer, EntityUid disarmed, EntityUid? inTargetHand, CombatModeComponent disarmerComp)
     {

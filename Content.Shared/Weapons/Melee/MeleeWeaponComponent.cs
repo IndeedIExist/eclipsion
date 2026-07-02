@@ -203,6 +203,63 @@ public sealed partial class MeleeWeaponComponent : Component
     [DataField, AutoNetworkedField]
     public int MaxTargets = 3;
 
+    // --- Combo chain (successive light attacks) ---
+
+    /// <summary>
+    /// Current combo chain count for successive light attacks that land without missing,
+    /// getting parried, or letting the chain expire.
+    /// </summary>
+    [AutoNetworkedField]
+    public int ComboCount;
+
+    /// <summary>
+    /// If the combo chain isn't extended by another landed light attack before this time,
+    /// it resets back to zero.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
+    [AutoPausedField]
+    public TimeSpan ComboExpiresAt;
+
+    /// <summary>
+    /// How long after a landed light attack the combo chain stays alive.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float ComboWindowSeconds = 1.5f;
+
+    /// <summary>
+    /// Damage multiplier bonus applied per combo stack (e.g. 0.1 = +10% damage per stack).
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float ComboDamageBonusPerStack = 0.1f;
+
+    /// <summary>
+    /// Highest number of stacks the combo bonus can reach.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int MaxComboStacks = 3;
+
+    // --- Weapon parry/riposte personality ---
+    // Lets individual weapons feel different to parry with instead of every weapon
+    // sharing the same fixed timing off the wielder's ParryComponent.
+
+    /// <summary>
+    /// Overrides <see cref="ParryComponent.ParryWindowSeconds"/> while this weapon is held. Null uses the default.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float? ParryWindowOverride;
+
+    /// <summary>
+    /// Overrides <see cref="ParryComponent.PerfectParryWindowSeconds"/> while this weapon is held. Null uses the default.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float? PerfectParryWindowOverride;
+
+    /// <summary>
+    /// Overrides <see cref="ParryComponent.RiposteDamageMultiplier"/> for riposte attacks made with this weapon. Null uses the default.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float? RiposteDamageMultiplierOverride;
+
     // Sounds
 
     /// <summary>

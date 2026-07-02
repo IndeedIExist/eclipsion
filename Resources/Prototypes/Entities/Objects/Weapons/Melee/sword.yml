@@ -95,6 +95,10 @@
     maxTargets: 1
     heavyRateModifier: 1
     angle: 20
+    # A precise blade: strict timing window, but a big payoff for nailing it.
+    parryWindowOverride: 0.4
+    perfectParryWindowOverride: 0.12
+    riposteDamageMultiplierOverride: 3.5
   - type: DamageOtherOnHit
     staminaCost: 10
   - type: EmbeddableProjectile
@@ -200,6 +204,10 @@
     angle: 200
     soundHit:
         collection: SwordHit
+    # Too heavy to parry with finesse: generous timing window, but a weak riposte payoff.
+    parryWindowOverride: 0.65
+    perfectParryWindowOverride: 0.3
+    riposteDamageMultiplierOverride: 1.6
   - type: DamageOtherOnHit
     staminaCost: 10
   - type: EmbeddableProjectile

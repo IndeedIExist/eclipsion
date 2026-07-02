@@ -18,9 +18,13 @@ public sealed partial class GunSystem
             var existing = component.Entities[^1];
             component.Entities.RemoveAt(component.Entities.Count - 1);
 
-            Containers.Remove(existing, component.Container);
-            EnsureShootable(existing);
-            EjectCartridge(existing, gunComp: gunComponent);
+            // The entity may not exist locally yet (e.g. an unresolved NetEntity from a networked state).
+            if (Exists(existing))
+            {
+                Containers.Remove(existing, component.Container);
+                EnsureShootable(existing);
+                EjectCartridge(existing, gunComp: gunComponent);
+            }
         }
         else if (component.UnspawnedCount > 0)
         {

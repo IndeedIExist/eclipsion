@@ -189,9 +189,6 @@
         collection: SwordHitCrit
     soundHitKill:
         collection: SwordHitKill
-  - type: Reflect
-    reflectProb: .18
-    spread: 90
   - type: Item
     size: Normal
     shape:
@@ -460,7 +457,7 @@
     attackRate: 1
     damage:
       types:
-        Slash: 55
+        Slash: 42
     soundHit:
         collection: SwordHit
     soundHitFlesh:

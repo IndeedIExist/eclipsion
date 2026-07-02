@@ -64,10 +64,17 @@ public sealed class SharedParrySystem : EntitySystem
         if (parry.IsParrying || parry.NextParryTime > curTime)
             return;
 
+        // Weapons can override the wielder's base parry timing to give themselves a distinct feel,
+        // e.g. a katana rewards tight timing with a narrow perfect-parry window, while a claymore is
+        // more forgiving but less precise.
+        var parryWindow = parry.ParryWindowSeconds;
+        if (TryComp<MeleeWeaponComponent>(weaponUid, out var weaponForParry))
+            parryWindow = weaponForParry.ParryWindowOverride ?? parryWindow;
+
         parry.IsParrying = true;
         parry.ParrySucceeded = false;
         parry.ParryStartTime = curTime;
-        parry.ParryEndTime = curTime + TimeSpan.FromSeconds(parry.ParryWindowSeconds);
+        parry.ParryEndTime = curTime + TimeSpan.FromSeconds(parryWindow);
         parry.NextParryTime = curTime + TimeSpan.FromSeconds(parry.ParryCooldownSeconds);
         Dirty(user, parry);
 
@@ -108,9 +115,17 @@ public sealed class SharedParrySystem : EntitySystem
         if (curTime > parry.ParryEndTime)
             return false;
 
+        // Use the defender's own weapon to determine their perfect-parry window, if it overrides one.
+        var perfectWindow = parry.PerfectParryWindowSeconds;
+        if (_melee.TryGetWeapon(target, out var defenderWeaponUid, out _) &&
+            TryComp<MeleeWeaponComponent>(defenderWeaponUid, out var defenderWeapon))
+        {
+            perfectWindow = defenderWeapon.PerfectParryWindowOverride ?? perfectWindow;
+        }
+
         var timeSinceParry = (curTime - parry.ParryStartTime).TotalSeconds;
         var isFacing = IsFacingAttacker(target, attacker);
-        var isPerfect = isFacing && timeSinceParry <= parry.PerfectParryWindowSeconds;
+        var isPerfect = isFacing && timeSinceParry <= perfectWindow;
 
         parry.IsParrying = false;
         parry.ParrySucceeded = true;
@@ -147,6 +162,8 @@ public sealed class SharedParrySystem : EntitySystem
 
                 if (TryComp<StaminaComponent>(target, out _))
                     _stamina.TakeStaminaDamage(target, -parry.PerfectParryStaminaRestore, visual: false);
+
+                RaiseNetworkEvent(new RiposteWindowOpenEvent(GetNetEntity(target), parry.RiposteWindowSeconds));
             }
             else
             {
@@ -196,6 +213,10 @@ public sealed class SharedParrySystem : EntitySystem
         parry.CanRiposte = false;
         Dirty(user, parry);
 
+        var riposteMultiplier = parry.RiposteDamageMultiplier;
+        if (_melee.TryGetWeapon(user, out var weaponUidForMultiplier, out var weaponForMultiplier))
+            riposteMultiplier = weaponForMultiplier.RiposteDamageMultiplierOverride ?? riposteMultiplier;
+
         if (_net.IsServer)
         {
             _audio.PlayPvs(parry.SoundRiposte, user);
@@ -209,7 +230,7 @@ public sealed class SharedParrySystem : EntitySystem
             RaiseNetworkEvent(new RiposteVisualEvent(GetNetEntity(user), weaponNet));
         }
 
-        return parry.RiposteDamageMultiplier;
+        return riposteMultiplier;
     }
 
     public void TryPlayFinisher(EntityUid target, EntityUid attacker)

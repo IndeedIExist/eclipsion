@@ -26,6 +26,24 @@ public sealed class ParryVisualEvent : EntityEventArgs
     }
 }
 
+/// <summary>
+/// Sent to all nearby clients when a perfect parry opens a riposte window, so the parrier's
+/// client can show the opportunity (glow indicator, screen kick) even though the parry itself
+/// was resolved on the attacker's predicted swing, not the parrier's own input.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class RiposteWindowOpenEvent : EntityEventArgs
+{
+    public NetEntity Parrier;
+    public float Duration;
+
+    public RiposteWindowOpenEvent(NetEntity parrier, float duration)
+    {
+        Parrier = parrier;
+        Duration = duration;
+    }
+}
+
 [Serializable, NetSerializable]
 public sealed class RiposteVisualEvent : EntityEventArgs
 {

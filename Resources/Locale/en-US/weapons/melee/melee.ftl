@@ -14,3 +14,4 @@ melee-parry-blocked = Your attack was blocked!
 melee-parry-failed = Your parry missed the timing!
 melee-riposte-hit = Riposte!
 melee-riposte-missed = You missed your riposte window!
+melee-combo-hit = Combo x{$stacks}!

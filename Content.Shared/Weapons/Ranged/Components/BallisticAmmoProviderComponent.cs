@@ -69,6 +69,13 @@ public sealed partial class BallisticAmmoProviderComponent : Component
     public bool Cycled = true;
 
     /// <summary>
+    /// Extra delay before the gun can fire again after being manually cycled (e.g. racking a pump/bolt-action shotgun).
+    /// Only applies when <see cref="AutoCycle"/> is false, so it doesn't affect guns that auto-eject after firing.
+    /// </summary>
+    [DataField]
+    public TimeSpan CycleDelay = TimeSpan.FromSeconds(0.3);
+
+    /// <summary>
     /// If the gun needs a DoAfter for inserting shells into it. Used exclusively for shipguns in hullrot.
     /// </summary>
     [DataField]

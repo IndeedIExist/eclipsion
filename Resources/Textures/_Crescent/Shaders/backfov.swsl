@@ -7,8 +7,12 @@ uniform highp float halfFovCos;      // cos(130°) ≈ -0.643
 
 void fragment() {
     highp vec2  fragPos = FRAGCOORD.xy;
-    highp vec2  uv      = fragPos * SCREEN_PIXEL_SIZE.xy;
-    highp vec4  base    = texture(SCREEN_TEXTURE, uv);
+    // Must read via zTextureSpec (like every other screen-texture shader here), not raw texture():
+    // it linearizes sRGB screen data when the backend emulates sRGB (no native sRGB framebuffer,
+    // common on Linux/Mesa, rare on Windows+NVIDIA). COLOR always gets re-encoded to sRGB on the way
+    // out by the engine, so reading raw here desynced the two, corrupting the luminance/mix math into
+    // a noisy, wrong-hued patch around the player.
+    highp vec4  base    = zTextureSpec(SCREEN_TEXTURE, UV);
 
     highp vec2  toPixel = fragPos - playerPixelPos;
     highp float dist    = length(toPixel);
