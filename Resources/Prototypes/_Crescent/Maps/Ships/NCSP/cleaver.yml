@@ -4,7 +4,9 @@
 - type: vessel
   id: Cleaver
   name: GSC Cleaver
-  description: A heavy Syndicate Corvette equipped with a EMP Cannon
+  description: |
+    A heavy Syndicate Corvette equipped with heavy firepower.
+    LOADOUT: 2x 50mm 'Striker' heavy autocannons, 1x 60mm 'Crossfire' rapid fire LML system (Gorlex edition)
   price: 40000
   category: Medium
   group: None

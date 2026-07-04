@@ -4,7 +4,9 @@
 - type: vessel
   id: Itch
   name: GSC Itch
-  description: A small stealth fighter.
+  description: |
+    A small stealth fighter.
+    LOADOUT: 1x 35mm 'Scout' autocannon, 1x 60mm 'Crossfire' rapid fire LML system (Gorlex edition)
   price: 19000
   category: Small
   group: None

@@ -2,8 +2,8 @@
   id: Khan
   name: DSM Khan
   description: |
-    An imperial ultralight fighter armed with two plasma gattlings.
-    LOADOUT: 2x 150cc Plasma Gattlings
+    An imperial ultralight fighter armed with two plasma gatlings.
+    LOADOUT: 2x 150cc 'Starburst' Plasma Gatlings
     MINIMUM CREW: 1x Pilot
   price: 10000
   category: Small

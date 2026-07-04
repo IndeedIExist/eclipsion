@@ -5,8 +5,8 @@
   id: Herder
   name: Herder
   description: |
-    Converted from a civilian cargo ship, the Herder is made into a drone carrier/battleship, without excelling in either field. It's cargo bays scrapped in order to make room for it's hangars.
-    LOADOUT: 2x 20mm 'Screamer' light autocannons, 1x 48mm 'Shortbow' Short Range Missle Launcher
+    Converted from a civilian cargo ship, the Herder is made into a drone carrier/battleship, without excelling in either field. Its cargo bays were scrapped in order to make room for its hangars.
+    LOADOUT: 2x 20mm 'Screamer' light autocannons, 1x 48mm 'Shortbow' Short Range Missile Launcher
     MINIMUM CREW: 1x Pilot, 1x Gunner/Drone Operator
   price: 35000
   category: Small

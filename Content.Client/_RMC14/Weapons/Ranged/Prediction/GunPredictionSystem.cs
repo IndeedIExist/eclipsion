@@ -3,6 +3,7 @@ using Content.Client.Projectiles;
 using Content.Shared._Crescent.ShipShields;
 using Content.Shared._RMC14.Weapons.Ranged.Prediction;
 using Content.Shared.Projectiles;
+using Content.Shared.Weapons.Ranged.Events;
 using Robust.Client.GameObjects;
 using Robust.Client.Physics;
 using Robust.Client.Player;
@@ -37,14 +38,7 @@ public sealed class GunPredictionSystem : SharedGunPredictionSystem
 
         SubscribeLocalEvent<PhysicsUpdateBeforeSolveEvent>(OnBeforeSolve);
         SubscribeLocalEvent<PhysicsUpdateAfterSolveEvent>(OnAfterSolve);
-
-        // Note: RequestShootEvent is deliberately NOT subscribed to here. GunSystem.Update() already calls
-        // ShootRequested() directly for the local player's own shot before raising the predictive event, so
-        // RaisePredictiveEvent's local echo (which invokes SubscribeLocalEvent<RequestShootEvent> handlers)
-        // would otherwise run the entire shoot pipeline a second time for the same click. That second pass is
-        // usually swallowed by GunComponent.NextFire, but it's also handed a null predicted-projectile list
-        // (unlike the server's handler, which forwards ev.Shot), so if it ever slips past NextFire it spawns an
-        // untracked duplicate projectile/muzzle-flash/gunshot - i.e. a single trigger pull firing twice.
+        SubscribeLocalEvent<RequestShootEvent>(OnShootRequest);
 
         SubscribeLocalEvent<PredictedProjectileClientComponent, UpdateIsPredictedEvent>(OnClientProjectileUpdateIsPredicted);
         SubscribeLocalEvent<PredictedProjectileClientComponent, StartCollideEvent>(OnClientProjectileStartCollide);
@@ -75,6 +69,11 @@ public sealed class GunPredictionSystem : SharedGunPredictionSystem
 
             predicted.Coordinates = null;
         }
+    }
+
+    private void OnShootRequest(RequestShootEvent ev, EntitySessionEventArgs args)
+    {
+        ShootRequested(ev.Gun, ev.Coordinates, ev.Target, null, args.SenderSession);
     }
 
     private void OnClientProjectileUpdateIsPredicted(Entity<PredictedProjectileClientComponent> ent, ref UpdateIsPredictedEvent args)

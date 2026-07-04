@@ -6,7 +6,7 @@
   name: Exhumer MKII
   description: |
     Made out of wrecked Exhumers, the Exhumer MKII is a combined Industrial/Combat ship, capable of doing both, but not excelling in either field. Comes with an Ore Magnet.
-    LOADOUT: 1x SHI 120mm Cannon, 2x Operator 20mm PD turrets, 2x Fixed Universal Hardpoints.
+    LOADOUT: 1x 120mm 'Anvil' mono-barreled artillery cannon, 2x 20mm 'Screamer' PD turrets, 3x Fixed Universal Hardpoints, 2x Small Ballistic Hardpoints.
     MINIMUM CREW: 1x Pilot, 1x Gunner/Loader
   price: 50000
   category: Small
@@ -34,4 +34,4 @@
         - type: VesselDesignation
           designation: vessel-designation-salvage
         - type: VesselDescription
-          description: Made out of destroyed exhumers, this ones armed to hopefully avoid the same
+          description: Made out of destroyed exhumers, this one's armed to hopefully avoid the same fate.

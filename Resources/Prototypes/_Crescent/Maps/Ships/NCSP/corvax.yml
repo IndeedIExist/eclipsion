@@ -4,7 +4,9 @@
 - type: vessel
   id: Corvax
   name: GSC Corvax
-  description: A light missile corvette. Devastating at long range.
+  description: |
+    A light missile corvette. Devastating at long range.
+    LOADOUT: 2x 48mm 'Buzzsaw' SRM systems (Gorlex edition), 1x 120mm 'Anvil' artillery piece
   price: 35000
   category: Small
   group: None

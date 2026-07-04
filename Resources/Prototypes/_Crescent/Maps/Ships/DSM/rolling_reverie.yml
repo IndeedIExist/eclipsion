@@ -1,7 +1,7 @@
 - type: vessel
   id: RollingReverie
   name: DSM Rolling Reverie
-  description: A luxury iff-cloaked vessel, fielded exclusively by the House of Questions. Amis of House Valkenrath's seal is on the LPC itself.
+  description: A luxury iff-cloaked vessel, fielded exclusively by the House of Questions. The seal of House Valkenrath is emblazoned on the hull itself.
   price: 8000
   category: Small
   group: None

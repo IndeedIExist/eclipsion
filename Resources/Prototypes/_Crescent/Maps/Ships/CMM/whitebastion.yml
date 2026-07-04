@@ -4,7 +4,7 @@
 - type: vessel
   id: WhiteBastion
   name: TSP White Bastion
-  description: A repurposed battlecruiser , used as a mobile command center.
+  description: A repurposed battlecruiser, used as a mobile command center.
   price: 325000
   category: Large
   group: None

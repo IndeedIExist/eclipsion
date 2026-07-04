@@ -4,7 +4,9 @@
 - type: vessel
   id: Reaver
   name: GSC Reaver
-  description: A medium Syndicate fighter.
+  description: |
+    A medium Syndicate fighter.
+    LOADOUT: 1x 50mm 'Striker' Heavy Autocannon, 1x 20mm 'Screamer' Rotary Cannon
   price: 25000
   category: Small
   group: None

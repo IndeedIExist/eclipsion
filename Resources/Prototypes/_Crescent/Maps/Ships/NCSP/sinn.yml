@@ -4,7 +4,9 @@
 - type: vessel
   id: Sinn
   name: GSC Sinn
-  description: An uparmed Syndicate destroyer.
+  description: |
+    An up-armed Syndicate destroyer.
+    LOADOUT: 4x 35mm 'Scout' Autocannon, 2x Gorlex 60mm 'Crossfire' Rocket Pod, 1x 300cc 'Bolter' Plasma Caster
   price: 73000
   category: Medium
   group: None

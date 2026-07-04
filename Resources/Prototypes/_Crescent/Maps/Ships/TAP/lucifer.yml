@@ -1,7 +1,7 @@
 - type: vessel
   id: Lucifer
   name: TAP Lucifer
-  description: A smuggling and boarding pod
+  description: A smuggling and boarding pod.
   price: 40000
   category: Small
   group: None

@@ -5,7 +5,7 @@
   id: Caterpillar
   name: Caterpillar
   description: |
-    The Caterpillar is a sizable cargo ship that is agile and nimble, but it's cargo bay is entirely exposed to space. Escorts are recommended, since this makes the ship vulnerable to pirate attacks.
+    The Caterpillar is a sizable cargo ship that is agile and nimble, but its cargo bay is entirely exposed to space. Escorts are recommended, since this makes the ship vulnerable to pirate attacks.
     MINIMUM CREW: 1x Pilot
   price: 20000
   category: Medium

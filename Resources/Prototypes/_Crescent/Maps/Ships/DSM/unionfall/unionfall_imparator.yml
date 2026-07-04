@@ -1,7 +1,7 @@
 - type: vessel
   id: UnionfallImparator
   name: DSM Imparator
-  description: An artillery ship with a vulcan and a single PDT turret.
+  description: An artillery ship with a 120mm artillery cannon, a vulcan, and dual PDT turrets.
   price: 35000
   category: Small
   group: None

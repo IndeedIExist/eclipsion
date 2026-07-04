@@ -5,8 +5,8 @@
   id: Warden
   name: TS Warden
   description: |
-    The Warden is a combat retrofit of an old traffic controller ship, now existing to detect cloaked ships and provide support fire with it's 120mm cannon from long range, as well as screening with it's PDTs.
-    LOADOUT: 1x 120mm cannon, 3x 20x135mm PDTs
+    The Warden is a combat retrofit of an old traffic controller ship, now existing to detect cloaked ships and provide support fire with its 120mm cannon from long range, as well as screening with its PDTs.
+    LOADOUT: 1x SHI Type 99 120mm artillery cannon, 3x 20x135mm PDTs
     MINIMUM CREW: 1x Pilot, 1x Gunner/Loader
   price: 41000
   category: Small

@@ -2,8 +2,8 @@
   id: Imparator
   name: DSM Imparator
   description: |
-    An imperial artillery ship, made to shoot from the backlines and provide firepower from a distance. It suffers from close-quarters combat, only having 1 PDT as a secondary weapon. 
-    LOADOUT: 1x SHI 120mm Cannon, 1x SHI 20x135mm PDT
+    An imperial support ship, made to shoot from the backlines and provide firepower from a distance. It suffers in close-quarters combat, relying on its plasma gatling for point defense.
+    LOADOUT: 1x 200cc 'Retribution' Pulse Laser, 1x 150cc 'Starburst' Plasma Gatling
     MINIMUM CREW: 1x Pilot, 1x Gun Loader (optional)
   price: 37000
   category: Small

@@ -4,7 +4,7 @@
 - type: vessel
   id: Lodka
   name: NCWL Lodka
-  description: A light communard Frigate.
+  description: A light communard frigate.
   price: 30000
   category: Small
   group: None

@@ -5,8 +5,8 @@
   id: Hive
   name: Hive
   description: |
-    The Hive is made from the remains of a derelict superfreighter, what was once it's cargobays now serving has hangars for it's complement of fighters.
-    LOADOUT: 1x 120mm 'Anvil' mono-barreled artillery cannon, 2x 48mm 'Shortbow' rocket pods, 2x 90mm 'Resolute' artillery cannons, 2x 20mm 'Screamer' light autocannons, 6x Small Ballistic Hardpoints
+    The Hive is made from the remains of a derelict superfreighter, what was once its cargo bays now serving as hangars for its complement of fighters.
+    LOADOUT: 1x 120mm 'Anvil' mono-barreled artillery cannon, 2x 48mm 'Shortbow' rocket pods, 2x 90mm 'Resolute' artillery cannons, 2x 20mm 'Screamer' light autocannons, 8x Small Ballistic Hardpoints, 5x Fixed Universal Hardpoints
     MINIMUM CREW: 1x Captain, 1x Gunner/Loader, 4x Fighter Pilots
   price: 90000
   category: Large

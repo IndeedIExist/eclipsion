@@ -6,7 +6,7 @@
   name: NCWL Hind
   description: |
     A light ore freighter converted into a missile destroyer.
-    LOADOUT: 4x 240mm 'Gargoyle' Torpedo Launchers, 2x 20mm 'Warthog' autocannons, 1x 120mm 'Anvil' Cannon
+    LOADOUT: 1x 95mm 'Arbalest' Medium Missile System, 2x 35mm 'Scout' Autocannons, 2x 20mm 'Screamer' Rotary Cannons
     MINIMUM CREW: 1x Pilot, 1x Gunner/Loader
   price: 60000
   category: Medium

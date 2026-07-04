@@ -6,7 +6,7 @@
   name: Stain
   description: |
     A cheap and disposable drone, made from the cheapest parts found in taypan.
-    LOADOUT: 1x 200cc 'Retribution' Laser gun
+    LOADOUT: 1x 200cc 'Retribution' Pulse Laser
     MINIMUM CREW: N/A
   price: 5000
   category: Small
@@ -34,4 +34,4 @@
         - type: VesselDesignation
           designation: vessel-designation-gunship
         - type: VesselDescription
-          description: Named Stain, because that'll what it'll be in any combat situation.
+          description: Named Stain, because that's what it'll be in any combat situation.

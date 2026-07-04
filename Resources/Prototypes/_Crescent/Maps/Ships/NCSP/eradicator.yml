@@ -4,7 +4,9 @@
 - type: vessel
   id: Eradicator
   name: GSC Eradicator
-  description: A Syndicate stealth destroyer.
+  description: |
+    A Syndicate stealth destroyer.
+    LOADOUT: 4x 20mm 'Screamer' rotary cannons, 3x 120mm 'Anvil' artillery pieces, 2x 95mm 'Ballista' medium missile systems (Gorlex edition)
   price: 115000 #115000 appraisegrid
   category: Medium
   group: None

@@ -6,7 +6,7 @@
   name: GSC Scuttlefish
   description: |
     An ultralight bomber with a powerful four-rocket payload designed to wreak havoc against less maneuverable ships unlucky enough to be caught within its firing range.
-    LOADOUT: 2x NCWL-3 48mm "Kurosawa" Rocket Pod
+    LOADOUT: 2x Gorlex 48mm 'Buzzsaw' SRM
     CREW: 1x Pilot
   price: 15000 
   category: Small

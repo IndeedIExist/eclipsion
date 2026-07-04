@@ -2,8 +2,8 @@
   id: Covetor
   name: DSM Covetor
   description: |
-    A well-stocked Imperial mining, salvaging, and munitions production Destroyer-sized Industrial Platform. Through a minaturized ultralight gantry, it is capable producing vessels that can preform greater mining or resource harvesting operations. Lightly armed and sluggish.
-    LOADOUT: 1x 300w 'Curse' energized ion bolt cannon, 4x 200cc 'Retribution' small laser gatling, 1x SHI 250c "Exhumer" kinetic Pulser
+    A well-stocked Imperial mining, salvaging, and munitions production Destroyer-sized Industrial Platform. Through a miniaturized ultralight gantry, it is capable of producing vessels that can perform greater mining or resource harvesting operations. Lightly armed and sluggish.
+    LOADOUT: 1x 300w 'Curse' EMP projector, 6x 200cc 'Retribution' pulse laser
     MINIMUM CREW: 1x Captain, 1x Gunner, 2x Miner Crew
   price: 70000
   category: Small
