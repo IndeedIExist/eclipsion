@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Shared.Alert;
 using Content.Shared.CCVar;
 using Content.Shared.Movement.Systems;
+using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
@@ -85,6 +86,10 @@ namespace Content.Shared.Movement.Components
 
         [DataField]
         public ProtoId<AlertPrototype> WalkingAlert = "Walking";
+
+        // _Crescent: sound played when the mover toggles into running mode.
+        [DataField]
+        public SoundSpecifier? SprintStartSound = new SoundPathSpecifier("/Audio/_Crescent/Effects/sprint_start.ogg");
     }
 
     [Serializable, NetSerializable]

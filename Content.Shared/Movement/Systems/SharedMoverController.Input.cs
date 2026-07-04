@@ -510,8 +510,15 @@ namespace Content.Shared.Movement.Systems
 
             var entityComp = new Entity<InputMoverComponent>(owner:entity, comp:input);
 
+            // _Crescent: remember whether we were running before applying the new input.
+            var wasSprinting = input.Sprinting;
+
             SetMoveInput(entityComp, subTick, walking, MoveButtons.Walk);
             WalkingAlert(entityComp);
+
+            // _Crescent: play a cue only when we cross from walking into running.
+            if (!wasSprinting && input.Sprinting && input.SprintStartSound != null)
+                _audio.PlayPredicted(input.SprintStartSound, entity, entity);
         }
         // WWDP edit end
         

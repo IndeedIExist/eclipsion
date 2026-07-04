@@ -23,7 +23,7 @@ namespace Content.Shared.Movement.Components
         public const float DefaultFrictionNoInput = 20f;
 
         public const float DefaultBaseWalkSpeed = 4.5f;
-        public const float DefaultBaseSprintSpeed = 6f;
+        public const float DefaultBaseSprintSpeed = 7f;
 
         [AutoNetworkedField, ViewVariables]
         public float WalkSpeedModifier = 1.0f;

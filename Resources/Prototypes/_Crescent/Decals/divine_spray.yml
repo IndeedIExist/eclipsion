@@ -1,0 +1,84 @@
+# Divine Sol Mandate spray graffiti - 8 sequential stages painted one click at a time.
+- type: decal
+  id: DivineSolMandateSpray
+  abstract: true
+
+- type: decal
+  id: DivineSolMandate1
+  parent: DivineSolMandateSpray
+  tags: ["divine-spray"]
+  defaultCleanable: true
+  defaultSnap: false
+  sprite:
+    sprite: _Crescent/Decals/divine_spray.rsi
+    state: stage1
+
+- type: decal
+  id: DivineSolMandate2
+  parent: DivineSolMandateSpray
+  tags: ["divine-spray"]
+  defaultCleanable: true
+  defaultSnap: false
+  sprite:
+    sprite: _Crescent/Decals/divine_spray.rsi
+    state: stage2
+
+- type: decal
+  id: DivineSolMandate3
+  parent: DivineSolMandateSpray
+  tags: ["divine-spray"]
+  defaultCleanable: true
+  defaultSnap: false
+  sprite:
+    sprite: _Crescent/Decals/divine_spray.rsi
+    state: stage3
+
+- type: decal
+  id: DivineSolMandate4
+  parent: DivineSolMandateSpray
+  tags: ["divine-spray"]
+  defaultCleanable: true
+  defaultSnap: false
+  sprite:
+    sprite: _Crescent/Decals/divine_spray.rsi
+    state: stage4
+
+- type: decal
+  id: DivineSolMandate5
+  parent: DivineSolMandateSpray
+  tags: ["divine-spray"]
+  defaultCleanable: true
+  defaultSnap: false
+  sprite:
+    sprite: _Crescent/Decals/divine_spray.rsi
+    state: stage5
+
+- type: decal
+  id: DivineSolMandate6
+  parent: DivineSolMandateSpray
+  tags: ["divine-spray"]
+  defaultCleanable: true
+  defaultSnap: false
+  sprite:
+    sprite: _Crescent/Decals/divine_spray.rsi
+    state: stage6
+
+- type: decal
+  id: DivineSolMandate7
+  parent: DivineSolMandateSpray
+  tags: ["divine-spray"]
+  defaultCleanable: true
+  defaultSnap: false
+  sprite:
+    sprite: _Crescent/Decals/divine_spray.rsi
+    state: stage7
+
+- type: decal
+  id: DivineSolMandate8
+  parent: DivineSolMandateSpray
+  tags: ["divine-spray"]
+  defaultCleanable: true
+  defaultSnap: false
+  sprite:
+    sprite: _Crescent/Decals/divine_spray.rsi
+    state: stage8
