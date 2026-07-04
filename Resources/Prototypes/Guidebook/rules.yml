@@ -6,4 +6,11 @@
 - type: guideEntry
   id: HullrotRuleset
   name: RatGore Rules
-  text: "/ServerRules/HullrotRuleset.xml"
+  text: "/ServerInfo/_Crescent/ServerRules/HullrotRuleset.xml"
+  children:
+  - RoleplayRules
+
+- type: guideEntry
+  id: RoleplayRules
+  name: Roleplay Rules
+  text: "/ServerInfo/_Crescent/ServerRules/RoleplayRules.xml"
