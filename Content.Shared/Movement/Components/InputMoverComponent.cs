@@ -90,6 +90,16 @@ namespace Content.Shared.Movement.Components
         // _Crescent: sound played when the mover toggles into running mode.
         [DataField]
         public SoundSpecifier? SprintStartSound = new SoundPathSpecifier("/Audio/_Crescent/Effects/sprint_start.ogg");
+
+        // _Crescent: how long the mover must wait after stopping a sprint before it can sprint again.
+        // Stops run-toggle / sprint-sound spam.
+        [DataField]
+        public TimeSpan SprintCooldown = TimeSpan.FromSeconds(3);
+
+        // _Crescent: game time at which the next sprint is allowed. Set when a sprint ends.
+        [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+        [ViewVariables(VVAccess.ReadWrite)]
+        public TimeSpan NextSprintTime;
     }
 
     [Serializable, NetSerializable]
@@ -101,5 +111,6 @@ namespace Content.Shared.Movement.Components
         public Angle RelativeRotation;
         public TimeSpan LerpTarget;
         public bool CanMove, DefaultSprinting;
+        public TimeSpan NextSprintTime; // _Crescent: sprint cooldown timestamp.
     }
 }

@@ -119,6 +119,7 @@ namespace Content.Shared.Movement.Systems
             entity.Comp.CanMove = state.CanMove;
             entity.Comp.RelativeEntity = EnsureEntity<InputMoverComponent>(state.RelativeEntity, entity.Owner);
             entity.Comp.DefaultSprinting = state.DefaultSprinting;
+            entity.Comp.NextSprintTime = state.NextSprintTime; // _Crescent: keep sprint cooldown in sync.
 
             // Reset
             entity.Comp.LastInputTick = GameTick.Zero;
@@ -149,7 +150,8 @@ namespace Content.Shared.Movement.Systems
                 HeldMoveButtons = entity.Comp.HeldMoveButtons,
                 RelativeRotation = entity.Comp.RelativeRotation,
                 TargetRelativeRotation = entity.Comp.TargetRelativeRotation,
-                DefaultSprinting = entity.Comp.DefaultSprinting
+                DefaultSprinting = entity.Comp.DefaultSprinting,
+                NextSprintTime = entity.Comp.NextSprintTime // _Crescent: sprint cooldown timestamp.
             };
         }
 
@@ -513,12 +515,30 @@ namespace Content.Shared.Movement.Systems
             // _Crescent: remember whether we were running before applying the new input.
             var wasSprinting = input.Sprinting;
 
+            // _Crescent: figure out whether this input would begin a sprint.
+            // With DefaultSprinting the run key being held (walking) starts the sprint; otherwise it's inverted.
+            var willSprint = input.DefaultSprinting ? walking : !walking;
+
+            // _Crescent: block starting a sprint while the cooldown is still ticking.
+            // This stops people from spamming shift (run-toggle) and the sprint-start sound with it.
+            if (!wasSprinting && willSprint && Timing.CurTime < input.NextSprintTime)
+                return;
+
             SetMoveInput(entityComp, subTick, walking, MoveButtons.Walk);
             WalkingAlert(entityComp);
 
-            // _Crescent: play a cue only when we cross from walking into running.
-            if (!wasSprinting && input.Sprinting && input.SprintStartSound != null)
-                _audio.PlayPredicted(input.SprintStartSound, entity, entity);
+            if (!wasSprinting && input.Sprinting)
+            {
+                // _Crescent: play a cue only when we cross from walking into running.
+                if (input.SprintStartSound != null)
+                    _audio.PlayPredicted(input.SprintStartSound, entity, entity);
+            }
+            else if (wasSprinting && !input.Sprinting)
+            {
+                // _Crescent: sprint just ended, start the cooldown before the next sprint is allowed.
+                input.NextSprintTime = Timing.CurTime + input.SprintCooldown;
+                Dirty(entity, input);
+            }
         }
         // WWDP edit end
         
