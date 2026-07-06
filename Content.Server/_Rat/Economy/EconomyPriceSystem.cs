@@ -1,7 +1,10 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
+using Content.Server.Bank;
 using Content.Server.Cargo.Components;
 using Content.Server.Cargo.Systems;
+using Content.Server.Crescent.Dispenser;
+using Content.Shared.Bank.Components;
 using Content.Shared._NF.Cargo.Components;
 using Content.Shared._Rat.Economy;
 using Content.Shared.Administration;
@@ -24,6 +27,7 @@ public sealed class EconomyPriceSystem : EntitySystem
     [Dependency] private readonly IComponentFactory _factory = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly BankSystem _bank = default!;
 
     private readonly Dictionary<string, double> _itemOverrides = new();
     private readonly Dictionary<string, int> _vesselOverrides = new();
@@ -73,6 +77,8 @@ public sealed class EconomyPriceSystem : EntitySystem
         {
             EconomyListCategory.Items => BuildItemEntries(msg.SearchFilter),
             EconomyListCategory.Vessels => BuildVesselEntries(msg.SearchFilter),
+            EconomyListCategory.Treasury => BuildTreasuryEntries(msg.SearchFilter),
+            EconomyListCategory.Players => BuildPlayerEntries(msg.SearchFilter),
             _ => new List<EconomyPriceEntry>(),
         };
 
@@ -90,6 +96,17 @@ public sealed class EconomyPriceSystem : EntitySystem
 
         if (msg.Price < 0)
             return;
+
+        // Treasury and player-bank balances are live entity state, not prototype price overrides.
+        switch (msg.Category)
+        {
+            case EconomyListCategory.Treasury:
+                SetTreasuryBalance(msg, args.SenderSession);
+                return;
+            case EconomyListCategory.Players:
+                SetPlayerBalance(msg, args.SenderSession);
+                return;
+        }
 
         double oldPrice;
         double basePrice;
@@ -294,6 +311,133 @@ public sealed class EconomyPriceSystem : EntitySystem
         kind = default;
         basePrice = 0;
         return false;
+    }
+
+    private List<EconomyPriceEntry> BuildTreasuryEntries(string searchFilter)
+    {
+        var filter = searchFilter.Trim();
+        var entries = new List<EconomyPriceEntry>();
+
+        var query = EntityQueryEnumerator<StationTradeMarketComponent, MetaDataComponent>();
+        while (query.MoveNext(out var uid, out var market, out var meta))
+        {
+            var name = meta.EntityName;
+            var id = uid.Id.ToString();
+
+            if (filter.Length > 0
+                && !id.Contains(filter, StringComparison.OrdinalIgnoreCase)
+                && !name.Contains(filter, StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            entries.Add(new EconomyPriceEntry(
+                id,
+                name,
+                EconomyListCategory.Treasury,
+                null,
+                market.TreasuryBalance,
+                market.TreasuryBalance));
+        }
+
+        entries.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCultureIgnoreCase));
+        return entries;
+    }
+
+    private List<EconomyPriceEntry> BuildPlayerEntries(string searchFilter)
+    {
+        var filter = searchFilter.Trim();
+        var entries = new List<EconomyPriceEntry>();
+
+        foreach (var session in _playerManager.Sessions)
+        {
+            if (session.Status != SessionStatus.Connected)
+                continue;
+
+            if (session.AttachedEntity is not { } mob || !TryComp<BankAccountComponent>(mob, out var bank))
+                continue;
+
+            var charName = Comp<MetaDataComponent>(mob).EntityName;
+            var name = $"{charName} [{session.Name}]";
+            var id = session.UserId.ToString();
+
+            if (filter.Length > 0
+                && !name.Contains(filter, StringComparison.OrdinalIgnoreCase)
+                && !session.Name.Contains(filter, StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            entries.Add(new EconomyPriceEntry(
+                id,
+                name,
+                EconomyListCategory.Players,
+                null,
+                bank.Balance,
+                bank.Balance));
+        }
+
+        entries.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCultureIgnoreCase));
+        return entries;
+    }
+
+    private void SetTreasuryBalance(EconomyAdminSetPriceEvent msg, ICommonSession session)
+    {
+        var newBalance = (int) Math.Round(msg.Price);
+
+        var query = EntityQueryEnumerator<StationTradeMarketComponent, MetaDataComponent>();
+        while (query.MoveNext(out var uid, out var market, out var meta))
+        {
+            if (uid.Id.ToString() != msg.Id)
+                continue;
+
+            var oldBalance = market.TreasuryBalance;
+            market.TreasuryBalance = newBalance;
+
+            _adminLog.Add(
+                LogType.AdminCommands,
+                LogImpact.High,
+                $"{session:player} set {meta.EntityName} faction treasury from {oldBalance} to {newBalance} cr");
+
+            RaiseNetworkEvent(new EconomyAdminPriceUpdatedEvent
+            {
+                Category = EconomyListCategory.Treasury,
+                Id = msg.Id,
+                Price = newBalance,
+            });
+            return;
+        }
+    }
+
+    private void SetPlayerBalance(EconomyAdminSetPriceEvent msg, ICommonSession session)
+    {
+        var newBalance = (long) Math.Round(msg.Price);
+
+        foreach (var target in _playerManager.Sessions)
+        {
+            if (target.UserId.ToString() != msg.Id)
+                continue;
+
+            if (target.AttachedEntity is not { } mob || !TryComp<BankAccountComponent>(mob, out var bank))
+                return;
+
+            var oldBalance = bank.Balance;
+            if (!_bank.TrySetBankBalance(mob, newBalance))
+                return;
+
+            _adminLog.Add(
+                LogType.AdminCommands,
+                LogImpact.High,
+                $"{session:player} set {target.Name}'s bank balance from {oldBalance} to {newBalance} cr");
+
+            RaiseNetworkEvent(new EconomyAdminPriceUpdatedEvent
+            {
+                Category = EconomyListCategory.Players,
+                Id = msg.Id,
+                Price = newBalance,
+            });
+            return;
+        }
     }
 
     private bool IsEconomyAdmin(ICommonSession session) =>

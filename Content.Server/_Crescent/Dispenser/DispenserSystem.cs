@@ -113,24 +113,38 @@ public sealed class DispenserSystem : SharedDispenserSystem
             // Combine both multipliers
             float finalMultiplier = marketMultiplier * dynamicMultiplier;
   
-            int finalAmount = (int)MathF.Round(baseAmount * finalMultiplier);  
+            int finalAmount = (int)MathF.Round(baseAmount * finalMultiplier);
 
-            if (stationUid.HasValue)  
+            if (stationUid.HasValue)
                 _marketSystem.RecordSale(stationUid.Value, prototype.ID);
-            
+
             // Record transaction in dynamic pricing system
             _dynamicPricing.RecordTransaction(prototype.ID, 1, isBuy: false);
 
-            int pct = (int)MathF.Round(finalMultiplier * 100f);  
-            _popup.PopupEntity(  
-                Loc.GetString("rat-station-trade-market", 
-                    ("finalAmount", finalAmount),
-                    ("pct", pct),
-                    ("baseAmount", baseAmount)),
-                uid, args.User, PopupType.Medium);  
+            // Apply the station/faction tax. The base sale value stays fixed; the faction
+            // simply takes a percentage cut of the payout into its treasury.
+            float taxRate = stationUid.HasValue
+                ? _marketSystem.GetTaxRate(stationUid.Value, prototype.ID)
+                : 0f;
+            int taxAmount = (int)MathF.Round(finalAmount * taxRate);
+            int payout = Math.Max(0, finalAmount - taxAmount);
 
-            component.PendingDynamicAmount = finalAmount;  
-            TryDispenseItem(uid, component, string.Empty);  
+            if (stationUid.HasValue && taxAmount > 0)
+                _marketSystem.AddTreasury(stationUid.Value, taxAmount);
+
+            int pct = (int)MathF.Round(finalMultiplier * 100f);
+            int taxPct = (int)MathF.Round(taxRate * 100f);
+            _popup.PopupEntity(
+                Loc.GetString("rat-station-trade-market",
+                    ("finalAmount", payout),
+                    ("pct", pct),
+                    ("baseAmount", baseAmount),
+                    ("taxAmount", taxAmount),
+                    ("taxPct", taxPct)),
+                uid, args.User, PopupType.Medium);
+
+            component.PendingDynamicAmount = payout;
+            TryDispenseItem(uid, component, string.Empty);
   
             if (virtualItem != null)  
                 _virtualItemSystem.DeleteVirtualItem((args.Used, virtualItem), args.User);  
