@@ -4,6 +4,11 @@
   path: "/Textures/_Crescent/Shaders/screenstatic.swsl"
 
 - type: shader
+  id: BackFov
+  kind: source
+  path: "/Textures/_Crescent/Shaders/backfov.swsl"
+
+- type: shader
   id: Erasure
   kind: source
   path: "/Textures/_Arcadis/Shaders/arayashiki_erase.swsl"

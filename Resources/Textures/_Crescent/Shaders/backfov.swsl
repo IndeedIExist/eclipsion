@@ -1,0 +1,35 @@
+light_mode unshaded;
+
+// Darkens the area behind the player by alpha-blending translucent black over a
+// rear cone. Deliberately does NOT read the screen framebuffer: no SCREEN_TEXTURE,
+// no zTextureSpec, no sRGB dependency -> no platform-specific noise/compile errors
+// (that was the root cause of the previous greyscale version's crashes on
+// Linux/Mesa and some Windows drivers).
+
+uniform highp vec2  playerPixelPos; // player in FRAGCOORD space (Y=0 at bottom)
+uniform highp vec2  facingDir;      // world-space unit vector (Y+ = north = up)
+uniform highp float halfFovCos;     // cos(rear-cone half angle)
+
+void fragment() {
+    highp vec2  toPixel = FRAGCOORD.xy - playerPixelPos;
+    highp float dist    = length(toPixel);
+
+    // Dead zone around the player: leave untouched.
+    if (dist < 36.0) {
+        COLOR = vec4(0.0);
+        return;
+    }
+
+    // d > halfFovCos -> front (untouched); d < halfFovCos -> back (darkened).
+    highp float d        = dot(normalize(toPixel), facingDir);
+    // ±0.25 in dot-space ≈ ±15° soft edge.
+    highp float backness = smoothstep(halfFovCos + 0.25, halfFovCos - 0.25, d);
+
+    // Fade the effect in with distance so it blends gently near the player.
+    highp float distFade = smoothstep(36.0, 160.0, dist);
+    backness *= distFade;
+
+    // Only ever write black + alpha; the framebuffer is never read.
+    highp float maxDark = 0.55; // darkest alpha of the rear zone (tweakable)
+    COLOR = vec4(0.0, 0.0, 0.0, backness * maxDark);
+}

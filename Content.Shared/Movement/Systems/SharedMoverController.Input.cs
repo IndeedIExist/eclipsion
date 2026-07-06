@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Shared.Alert;
 using Content.Shared.CCVar;
 using Content.Shared.Follower.Components;
+using Content.Shared.Ghost;
 using Content.Shared.Input;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
@@ -519,13 +520,19 @@ namespace Content.Shared.Movement.Systems
             // With DefaultSprinting the run key being held (walking) starts the sprint; otherwise it's inverted.
             var willSprint = input.DefaultSprinting ? walking : !walking;
 
+            // Encore: ghosts have no sprint cooldown or sprint sound, they just move freely.
+            var isGhost = HasComp<GhostComponent>(entity);
+
             // _Crescent: block starting a sprint while the cooldown is still ticking.
             // This stops people from spamming shift (run-toggle) and the sprint-start sound with it.
-            if (!wasSprinting && willSprint && Timing.CurTime < input.NextSprintTime)
+            if (!isGhost && !wasSprinting && willSprint && Timing.CurTime < input.NextSprintTime)
                 return;
 
             SetMoveInput(entityComp, subTick, walking, MoveButtons.Walk);
             WalkingAlert(entityComp);
+
+            if (isGhost)
+                return;
 
             if (!wasSprinting && input.Sprinting)
             {

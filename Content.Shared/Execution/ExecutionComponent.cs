@@ -12,7 +12,7 @@ public sealed partial class ExecutionComponent : Component
     /// How long the execution duration lasts.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float DoAfterDuration = 5f;
+    public float DoAfterDuration = 3f;
 
     /// <summary>
     /// Arbitrarily chosen number to multiply damage by, used to deal reasonable amounts of damage to a victim of an execution.
@@ -43,6 +43,43 @@ public sealed partial class ExecutionComponent : Component
     /// </summary>
     [DataField]
     public LocId CompleteExternalMeleeExecutionMessage = "execution-popup-melee-complete-external";
+
+    /// <summary>
+    /// Shown to the attacker when readying a gun execution.
+    /// </summary>
+    [DataField]
+    public LocId InternalGunExecutionMessage = "execution-popup-gun-initial-internal";
+
+    /// <summary>
+    /// Shown to bystanders and the victim of a gun execution when it is started.
+    /// </summary>
+    [DataField]
+    public LocId ExternalGunExecutionMessage = "execution-popup-gun-initial-external";
+
+    /// <summary>
+    /// Shown to the attacker upon completion of a gun execution.
+    /// </summary>
+    [DataField]
+    public LocId CompleteInternalGunExecutionMessage = "execution-popup-gun-complete-internal";
+
+    /// <summary>
+    /// Shown to bystanders and the victim of a gun execution when it is completed.
+    /// </summary>
+    [DataField]
+    public LocId CompleteExternalGunExecutionMessage = "execution-popup-gun-complete-external";
+
+    /// <summary>
+    /// Shown to the attacker when a gun execution fails because the weapon has nothing to fire.
+    /// </summary>
+    [DataField]
+    public LocId EmptyGunExecutionMessage = "execution-popup-gun-empty";
+
+    /// <summary>
+    /// Maximum distance (in tiles) between the attacker and the victim for a finish-off to be
+    /// allowed and to keep going. If the victim is dragged further than this the do-after cancels.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float FinishOffRange = 1.5f;
 
     /// <summary>
     /// Shown to the person performing the self execution when starting one.
