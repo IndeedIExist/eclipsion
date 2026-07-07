@@ -243,23 +243,8 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
         // This should really be improved. GetEntitiesInArc uses pos instead of bounding boxes.
         // Server will validate it with InRangeUnobstructed.
-        var entities = ArcRayCast(userPos, direction.ToWorldAngle(), component.Angle, distance, userXform.MapID, user).ToList();
-
-        // The arc raycast only picks up entities with a physics fixture on the mob/opaque layers, so
-        // it misses wall-mounted lights (no collision fixture) and prone/downed mobs (their collision
-        // is lowered when they go down). Fold in whatever the cursor is directly over so those can
-        // still be hit on a swing. The server re-validates every entity with InRangeUnobstructed, so
-        // this can't be used to hit anything out of range.
-        if (_stateManager.CurrentState is GameplayStateBase screen)
-        {
-            var clicked = screen.GetClickedEntity(targetMap);
-            // Insert first so an explicitly-clicked target is never trimmed by the MaxTargets cap below.
-            if (clicked is { } clickedTarget && clickedTarget != user && !entities.Contains(clickedTarget))
-                entities.Insert(0, clickedTarget);
-        }
-
-        var netEntities = GetNetEntityList(entities);
-        RaisePredictiveEvent(new HeavyAttackEvent(GetNetEntity(meleeUid), netEntities.GetRange(0, Math.Min(component.MaxTargets, netEntities.Count)), GetNetCoordinates(coordinates)));
+        var entities = GetNetEntityList(ArcRayCast(userPos, direction.ToWorldAngle(), component.Angle, distance, userXform.MapID, user).ToList());
+        RaisePredictiveEvent(new HeavyAttackEvent(GetNetEntity(meleeUid), entities.GetRange(0, Math.Min(component.MaxTargets, entities.Count)), GetNetCoordinates(coordinates)));
     }
 
     private void OnMeleeLunge(MeleeLungeEvent ev)

@@ -10,7 +10,7 @@
   - type: Item
     sprite: Objects/Tools/spray_painter.rsi
   - type: GraffitiSpray
-    stageOffset: 1.125,0
+    stageOffset: 1,0
     stageDecals:
     - DivineSolMandate1
     - DivineSolMandate2

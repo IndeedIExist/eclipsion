@@ -1,9 +1,5 @@
 execution-verb-name = Execute
-execution-verb-finish-off = Finish Off
 execution-verb-message = Use your weapon to execute someone.
-
-# Shown above a victim while they are being finished off.
-execution-finish-off-marker = FINISHING OFF
 
 # All the below localisation strings have access to the following variables
 # attacker (the person committing the execution)
@@ -14,12 +10,6 @@ execution-popup-melee-initial-internal = You ready {THE($weapon)} against {$vict
 execution-popup-melee-initial-external = {$attacker} readies {POSS-ADJ($attacker)} {$weapon} against the throat of {$victim}.
 execution-popup-melee-complete-internal = You slit the throat of {$victim}!
 execution-popup-melee-complete-external = {$attacker} slits the throat of {$victim}!
-
-execution-popup-gun-initial-internal = You ready {THE($weapon)} against {$victim}'s head.
-execution-popup-gun-initial-external = {$attacker} readies {POSS-ADJ($attacker)} {$weapon} against the head of {$victim}.
-execution-popup-gun-complete-internal = You blow {$victim}'s brains out with {THE($weapon)}!
-execution-popup-gun-complete-external = {$attacker} blows {$victim}'s brains out with {POSS-ADJ($attacker)} {$weapon}!
-execution-popup-gun-empty = {CAPITALIZE(THE($weapon))} clicks empty.
 
 execution-popup-self-initial-internal = You ready {THE($weapon)} against your own throat.
 execution-popup-self-initial-external = {$attacker} readies {POSS-ADJ($attacker)} {$weapon} against their own throat.

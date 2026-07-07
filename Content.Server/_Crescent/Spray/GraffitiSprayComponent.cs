@@ -1,4 +1,3 @@
-using System.Numerics;
 using Robust.Shared.Audio;
 using Robust.Shared.Maths;
 
@@ -26,13 +25,12 @@ public sealed partial class GraffitiSprayComponent : Component
     public Color Color = Color.White;
 
     /// <summary>
-    /// Step applied per stage, in tiles, relative to the first-clicked tile. Each successive click
-    /// paints the next part this far over. This is a float so it can match the decal's real sprite
-    /// width (e.g. a 36px-wide sprite is 36/32 = 1.125 tiles) and lay the parts edge-to-edge without
-    /// overlapping. Default paints one tile to the left each time, so the full piece reads across a row.
+    /// Tile step applied per stage, relative to the first-clicked tile. Each successive click
+    /// paints the next part this many tiles over. Default paints one tile to the left each time,
+    /// so the full piece reads across a row.
     /// </summary>
     [DataField]
-    public Vector2 StageOffset = new(-1, 0);
+    public Vector2i StageOffset = new(-1, 0);
 
     /// <summary>Remaining uses, set from <see cref="Capacity"/> on init.</summary>
     [ViewVariables(VVAccess.ReadWrite)]

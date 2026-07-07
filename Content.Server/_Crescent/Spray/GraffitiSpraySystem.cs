@@ -96,9 +96,9 @@ public sealed class GraffitiSpraySystem : EntitySystem
         args.Handled = true;
     }
 
-    private static Vector2 StageCentre(Vector2 originCentre, Vector2 step, int index)
+    private static Vector2 StageCentre(Vector2 originCentre, Vector2i step, int index)
     {
-        return originCentre + step * index;
+        return originCentre + new Vector2(step.X * index, step.Y * index);
     }
 
     /// <summary>Whether one of our stage parts is painted exactly on the given tile.</summary>
