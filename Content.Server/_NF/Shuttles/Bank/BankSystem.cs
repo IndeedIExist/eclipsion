@@ -142,25 +142,4 @@ public sealed partial class BankSystem : EntitySystem
         EntityManager.Dirty(mobUid, bank);
         return true;
     }
-
-    /// <summary>
-    /// Sets a character's bank balance to an absolute value. Intended for admin tooling.
-    /// Dirtying the component routes the new value back into the saved character profile.
-    /// </summary>
-    /// <param name="mobUid">The UID the bank account is attached to, typically the player mob.</param>
-    /// <param name="amount">The absolute balance to set. Negative values are rejected.</param>
-    /// <returns>true if the balance was set, false otherwise.</returns>
-    public bool TrySetBankBalance(EntityUid mobUid, long amount)
-    {
-        if (amount < 0)
-            return false;
-
-        if (!TryComp<BankAccountComponent>(mobUid, out var bank))
-            return false;
-
-        bank.Balance = amount;
-        _log.Info($"{mobUid} balance set to {amount}");
-        EntityManager.Dirty(mobUid, bank);
-        return true;
-    }
 }
