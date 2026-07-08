@@ -1,5 +1,5 @@
 - type: entity
-  id: RMCStairs
+  id: StarlightStairs
   name: stairs
   description: The greatest invention since rocket-propelled grenades.
   placement:
@@ -43,8 +43,8 @@
         acts: [ "Destruction" ]
 
 - type: entity
-  id: RMCStairsCorner
-  parent: RMCStairs
+  id: StarlightStairsCorner
+  parent: StarlightStairs
   suffix: Corner
   components:
   - type: Sprite
@@ -52,8 +52,8 @@
     state: p_stair_full_corner
 
 - type: entity
-  id: RMCStairsLeft
-  parent: RMCStairs
+  id: StarlightStairsLeft
+  parent: StarlightStairs
   suffix: Left
   components:
   - type: Sprite
@@ -61,8 +61,8 @@
     state: p_stair_left_cap
 
 - type: entity
-  id: RMCStairsRight
-  parent: RMCStairs
+  id: StarlightStairsRight
+  parent: StarlightStairs
   suffix: Right
   components:
   - type: Sprite
@@ -70,8 +70,8 @@
     state: p_stair_right_cap
 
 - type: entity
-  id: RMCStairsSolo
-  parent: RMCStairs
+  id: StarlightStairsSolo
+  parent: StarlightStairs
   suffix: Solo
   components:
   - type: Sprite
@@ -79,16 +79,16 @@
     state: p_stair_solo_cap
 
 - type: entity
-  id: RMCStairsKutjevo
-  parent: RMCStairs
+  id: StarlightStairsKutjevo
+  parent: StarlightStairs
   components:
   - type: Sprite
     sprite: _Starlight/Structures/p_stairs.rsi
     state: p_stair_kutjevo_full
 
 - type: entity
-  id: RMCStairsKutjevoCorner
-  parent: RMCStairs
+  id: StarlightStairsKutjevoCorner
+  parent: StarlightStairs
   suffix: Corner
   components:
   - type: Sprite
@@ -96,8 +96,8 @@
     state: p_stair_kutjevo_full_corner
 
 - type: entity
-  id: RMCStairsKutjevoLeft
-  parent: RMCStairs
+  id: StarlightStairsKutjevoLeft
+  parent: StarlightStairs
   suffix: Left
   components:
   - type: Sprite
@@ -105,8 +105,8 @@
     state: p_stair_kutjevo_left_cap
 
 - type: entity
-  id: RMCStairsKutjevoRight
-  parent: RMCStairs
+  id: StarlightStairsKutjevoRight
+  parent: StarlightStairs
   suffix: Right
   components:
   - type: Sprite
@@ -114,8 +114,8 @@
     state: p_stair_kutjevo_right_cap
 
 - type: entity
-  id: RMCStairsKutjevoSolo
-  parent: RMCStairs
+  id: StarlightStairsKutjevoSolo
+  parent: StarlightStairs
   suffix: Solo
   components:
   - type: Sprite
@@ -123,16 +123,16 @@
     state: p_stair_kutjevo_solo_cap
 
 - type: entity
-  id: RMCStairsIce
-  parent: RMCStairs
+  id: StarlightStairsIce
+  parent: StarlightStairs
   components:
   - type: Sprite
     sprite: _Starlight/Structures/p_stairs.rsi
     state: p_stair_ice_full
 
 - type: entity
-  id: RMCStairsIceCorner
-  parent: RMCStairs
+  id: StarlightStairsIceCorner
+  parent: StarlightStairs
   suffix: Corner
   components:
   - type: Sprite
@@ -140,8 +140,8 @@
     state: p_stair_ice_full_corner
 
 - type: entity
-  id: RMCStairsIceLeft
-  parent: RMCStairs
+  id: StarlightStairsIceLeft
+  parent: StarlightStairs
   suffix: Left
   components:
   - type: Sprite
@@ -149,8 +149,8 @@
     state: p_stair_ice_left_cap
 
 - type: entity
-  id: RMCStairsIceRight
-  parent: RMCStairs
+  id: StarlightStairsIceRight
+  parent: StarlightStairs
   suffix: Right
   components:
   - type: Sprite
@@ -158,8 +158,8 @@
     state: p_stair_ice_right_cap
 
 - type: entity
-  id: RMCStairsIceSolo
-  parent: RMCStairs
+  id: StarlightStairsIceSolo
+  parent: StarlightStairs
   suffix: Solo
   components:
   - type: Sprite
@@ -169,16 +169,16 @@
 ## New
 
 - type: entity
-  id: RMCStairsDark
-  parent: RMCStairs
+  id: StarlightStairsDark
+  parent: StarlightStairs
   components:
   - type: Sprite
     sprite: _Starlight/Structures/p_stairs.rsi
     state: p_stair_dark_full
 
 - type: entity
-  id: RMCStairsDarkCorner
-  parent: RMCStairs
+  id: StarlightStairsDarkCorner
+  parent: StarlightStairs
   suffix: Corner
   components:
   - type: Sprite
@@ -186,8 +186,8 @@
     state: p_stair_dark_full_corner
 
 - type: entity
-  id: RMCStairsDarkLeft
-  parent: RMCStairs
+  id: StarlightStairsDarkLeft
+  parent: StarlightStairs
   suffix: Left
   components:
   - type: Sprite
@@ -195,8 +195,8 @@
     state: p_stair_dark_left_cap
 
 - type: entity
-  id: RMCStairsDarkRight
-  parent: RMCStairs
+  id: StarlightStairsDarkRight
+  parent: StarlightStairs
   suffix: Right
   components:
   - type: Sprite
@@ -204,8 +204,8 @@
     state: p_stair_dark_right_cap
 
 - type: entity
-  id: RMCStairsDarkSolo
-  parent: RMCStairs
+  id: StarlightStairsDarkSolo
+  parent: StarlightStairs
   suffix: Solo
   components:
   - type: Sprite
@@ -213,16 +213,16 @@
     state: p_stair_dark_solo_cap
 
 - type: entity
-  id: RMCStairsRed
-  parent: RMCStairs
+  id: StarlightStairsRed
+  parent: StarlightStairs
   components:
   - type: Sprite
     sprite: _Starlight/Structures/p_stairs.rsi
     state: p_stair_red_full
 
 - type: entity
-  id: RMCStairsRedCorner
-  parent: RMCStairs
+  id: StarlightStairsRedCorner
+  parent: StarlightStairs
   suffix: Corner
   components:
   - type: Sprite
@@ -230,8 +230,8 @@
     state: p_stair_red_full_corner
 
 - type: entity
-  id: RMCStairsRedLeft
-  parent: RMCStairs
+  id: StarlightStairsRedLeft
+  parent: StarlightStairs
   suffix: Left
   components:
   - type: Sprite
@@ -239,8 +239,8 @@
     state: p_stair_red_left_cap
 
 - type: entity
-  id: RMCStairsRedRight
-  parent: RMCStairs
+  id: StarlightStairsRedRight
+  parent: StarlightStairs
   suffix: Right
   components:
   - type: Sprite
@@ -248,8 +248,8 @@
     state: p_stair_red_right_cap
 
 - type: entity
-  id: RMCStairsRedSolo
-  parent: RMCStairs
+  id: StarlightStairsRedSolo
+  parent: StarlightStairs
   suffix: Solo
   components:
   - type: Sprite
@@ -257,16 +257,16 @@
     state: p_stair_red_solo_cap
 
 - type: entity
-  id: RMCStairsWhite
-  parent: RMCStairs
+  id: StarlightStairsWhite
+  parent: StarlightStairs
   components:
   - type: Sprite
     sprite: _Starlight/Structures/p_stairs.rsi
     state: p_stair_white_full
 
 - type: entity
-  id: RMCStairsWhiteCorner
-  parent: RMCStairs
+  id: StarlightStairsWhiteCorner
+  parent: StarlightStairs
   suffix: Corner
   components:
   - type: Sprite
@@ -274,8 +274,8 @@
     state: p_stair_white_full_corner
 
 - type: entity
-  id: RMCStairsWhiteLeft
-  parent: RMCStairs
+  id: StarlightStairsWhiteLeft
+  parent: StarlightStairs
   suffix: Left
   components:
   - type: Sprite
@@ -283,8 +283,8 @@
     state: p_stair_white_left_cap
 
 - type: entity
-  id: RMCStairsWhiteRight
-  parent: RMCStairs
+  id: StarlightStairsWhiteRight
+  parent: StarlightStairs
   suffix: Right
   components:
   - type: Sprite
@@ -292,8 +292,8 @@
     state: p_stair_white_right_cap
 
 - type: entity
-  id: RMCStairsWhiteSolo
-  parent: RMCStairs
+  id: StarlightStairsWhiteSolo
+  parent: StarlightStairs
   suffix: Solo
   components:
   - type: Sprite
@@ -301,8 +301,8 @@
     state: p_stair_white_solo_cap
 
 - type: entity
-  id: RMCStairsWood
-  parent: RMCStairs
+  id: StarlightStairsWood
+  parent: StarlightStairs
   components:
   - type: Sprite
     sprite: _Starlight/Structures/p_stairs.rsi
@@ -331,8 +331,8 @@
         acts: [ "Destruction" ]
 
 - type: entity
-  id: RMCStairsWoodCorner
-  parent: RMCStairs
+  id: StarlightStairsWoodCorner
+  parent: StarlightStairs
   suffix: Corner
   components:
   - type: Sprite
@@ -362,8 +362,8 @@
         acts: [ "Destruction" ]
 
 - type: entity
-  id: RMCStairsWoodLeft
-  parent: RMCStairs
+  id: StarlightStairsWoodLeft
+  parent: StarlightStairs
   suffix: Left
   components:
   - type: Sprite
@@ -393,8 +393,8 @@
         acts: [ "Destruction" ]
 
 - type: entity
-  id: RMCStairsWoodRight
-  parent: RMCStairs
+  id: StarlightStairsWoodRight
+  parent: StarlightStairs
   suffix: Right
   components:
   - type: Sprite
@@ -424,8 +424,8 @@
         acts: [ "Destruction" ]
 
 - type: entity
-  id: RMCStairsWoodSolo
-  parent: RMCStairs
+  id: StarlightStairsWoodSolo
+  parent: StarlightStairs
   suffix: Solo
   components:
   - type: Sprite

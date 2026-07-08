@@ -200,7 +200,7 @@ namespace Content.Server.GameTicking
 
             if (ev.GameMap.IsGrid)
             {
-                var mapUid = _map.CreateMap(out mapId);
+                var mapUid = _map.CreateMap(out mapId, runMapInit: false);
                 if (!_loader.TryLoadGrid(mapId,
                         ev.GameMap.MapPath,
                         out var grid,
@@ -250,7 +250,7 @@ namespace Content.Server.GameTicking
 
             if (ev.GameMap.IsGrid)
             {
-                var mapUid = _map.CreateMap(mapId);
+                var mapUid = _map.CreateMap(mapId, runMapInit: false);
                 if (!_loader.TryLoadGrid(mapId,
                         ev.GameMap.MapPath,
                         out var grid,

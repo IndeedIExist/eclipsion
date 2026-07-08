@@ -29,7 +29,7 @@ namespace Content.MapRenderer.Painters
 
             await using var pair = await PoolManager.GetServerClient(new PoolSettings
             {
-                DummyTicker = false,
+                DummyTicker = true,
                 Connected = true,
                 Fresh = true,
                 // Seriously whoever made MapPainter use GameMapPrototype I wish you step on a lego one time.
@@ -56,6 +56,14 @@ namespace Content.MapRenderer.Painters
 
             var sEntityManager = server.ResolveDependency<IServerEntityManager>();
             var sPlayerManager = server.ResolveDependency<IPlayerManager>();
+            var mapId = MapId.Nullspace;
+
+            await server.WaitPost(() =>
+            {
+                var mapPrototype = server.ResolveDependency<IPrototypeManager>().Index<GameMapPrototype>(map);
+                sEntityManager.System<GameTicker>().LoadGameMap(mapPrototype, out mapId);
+                sEntityManager.System<SharedMapSystem>().InitializeMap(mapId);
+            });
 
             await pair.RunTicksSync(10);
             await Task.WhenAll(client.WaitIdleAsync(), server.WaitIdleAsync());
@@ -77,7 +85,6 @@ namespace Content.MapRenderer.Painters
                     sEntityManager.DeleteEntity(playerEntity.Value);
                 }
 
-                var mapId = sEntityManager.System<GameTicker>().DefaultMap;
                 grids = sMapManager.GetAllGrids(mapId).ToArray();
 
                 foreach (var (uid, _) in grids)

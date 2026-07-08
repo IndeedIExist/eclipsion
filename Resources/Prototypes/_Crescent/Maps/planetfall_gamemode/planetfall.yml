@@ -2,6 +2,7 @@
   id: PlanetfallMap
   mapName: 'Dominion Planet'
   mapPath: /Maps/_Crescent/Planetfall/planetfallmap.yml
+  isGrid: true
   minPlayers: 0
   stations:
     PlanetfallMap:
