@@ -11,13 +11,17 @@ public sealed class PaperSystem : VisualizerSystem<PaperVisualsComponent>
         if (args.Sprite == null)
             return;
 
-        if (AppearanceSystem.TryGetData<PaperStatus>(uid, PaperVisuals.Status , out var writingStatus, args.Component))
-            args.Sprite.LayerSetVisible(PaperVisualLayers.Writing, writingStatus == PaperStatus.Written);
-
-        if (AppearanceSystem.TryGetData<string>(uid, PaperVisuals.Stamp, out var stampState, args.Component))
+        if (AppearanceSystem.TryGetData<PaperStatus>(uid, PaperVisuals.Status, out var writingStatus, args.Component) &&
+            args.Sprite.LayerMapTryGet(PaperVisualLayers.Writing, out var writingLayer, false))
         {
-            args.Sprite.LayerSetState(PaperVisualLayers.Stamp, stampState);
-            args.Sprite.LayerSetVisible(PaperVisualLayers.Stamp, true);
+            args.Sprite.LayerSetVisible(writingLayer, writingStatus == PaperStatus.Written);
+        }
+
+        if (AppearanceSystem.TryGetData<string>(uid, PaperVisuals.Stamp, out var stampState, args.Component) &&
+            args.Sprite.LayerMapTryGet(PaperVisualLayers.Stamp, out var stampLayer, false))
+        {
+            args.Sprite.LayerSetState(stampLayer, stampState);
+            args.Sprite.LayerSetVisible(stampLayer, true);
         }
     }
 }

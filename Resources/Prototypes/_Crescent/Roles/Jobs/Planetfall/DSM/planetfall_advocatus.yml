@@ -4,7 +4,7 @@
   description: job-description-advocatus
   playTimeTracker: JobAdvocatusDSM
   weight: 98
-  startingGear: AdvocatusGear
+  startingGear: planetfall_advocatus_gear
   alwaysUseSpawner: true
   requireAdminNotify: true
   whitelisted: false
@@ -96,7 +96,7 @@
   - LogisticsWealth
 
 - type: startingGear
-  id: AdvocatusGear
+  id: planetfall_advocatus_gear
   equipment:
     id: AdvocatusPDA
     ears: ClothingHeadsetEmpire_Planetfall

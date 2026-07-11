@@ -1,5 +1,5 @@
 - type: dataset
-  id: IpcFirst
+  id: names_ipc_first
   values:
   - ABEX
   - ANCL
@@ -103,7 +103,7 @@
   - ZYVA
 
 - type: dataset
-  id: IpcLast
+  id: names_ipc_last
   values:
   - 000
   - 001
