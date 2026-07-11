@@ -3,6 +3,7 @@ using Content.Client.Gameplay;
 using Content.Shared.CombatMode;
 using Content.Shared.Effects;
 using Content.Shared.Hands.Components;
+using Content.Shared.Input;
 using Content.Shared.Mobs.Components;
 using Content.Shared.StatusEffect;
 using Content.Shared.Weapons.Melee;
@@ -34,6 +35,11 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
     private EntityQuery<TransformComponent> _xformQuery;
 
     private const string MeleeLungeKey = "melee-lunge";
+
+    // Soft (middle-click) melee attacks are deliberately slow so they can't be spammed like the
+    // left-click wide slash - a single, committed poke roughly once every couple of seconds.
+    private static readonly TimeSpan SoftAttackCooldown = TimeSpan.FromSeconds(2);
+    private TimeSpan _nextSoftAttack;
 
     public override void Initialize()
     {
@@ -161,6 +167,33 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
             return;
         }
 
+        // Middle-click: soft (light) attack for a held weapon - a single-target poke on a long
+        // cooldown so it can't be spammed like the left-click wide slash. For melee weapons this is
+        // the soft attack; for a gun (whose weapon entity carries a melee component) it's a
+        // pistol-whip / bash. Left-click still fires the gun as normal.
+        var middleDown = _inputSystem.CmdStates.GetState(ContentKeyFunctions.MouseMiddle) == BoundKeyState.Down;
+        if (middleDown
+            && weaponUid != entity
+            && !weapon.Attacking
+            && weapon.NextAttack <= Timing.CurTime
+            && Timing.CurTime >= _nextSoftAttack)
+        {
+            var softPos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);
+            var softCoords = TransformSystem.ToCoordinates(softPos);
+
+            EntityUid? softTarget = null;
+            if (_stateManager.CurrentState is GameplayStateBase softScreen)
+                softTarget = softScreen.GetClickedEntity(softPos);
+
+            RaisePredictiveEvent(new LightAttackEvent(
+                softTarget != null ? GetNetEntity(softTarget.Value) : null,
+                GetNetEntity(weaponUid),
+                GetNetCoordinates(softCoords)));
+
+            _nextSoftAttack = Timing.CurTime + SoftAttackCooldown;
+            return;
+        }
+
         if ((weapon.AutoAttack || !useDown) && weapon.Attacking)
             RaisePredictiveEvent(new StopAttackEvent(GetNetEntity(weaponUid)));
 
@@ -170,7 +203,22 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         var mousePos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);
         var coordinates = TransformSystem.ToCoordinates(mousePos);
 
-        // Left-click: Wide slash attack
+        // Fists (unarmed - the "weapon" is the mob itself) do a precise single-target light attack
+        // instead of the wide heavy swing, so a bare-handed left-click is just a straight punch.
+        if (weaponUid == entity)
+        {
+            EntityUid? target = null;
+            if (_stateManager.CurrentState is GameplayStateBase screen)
+                target = screen.GetClickedEntity(mousePos);
+
+            RaisePredictiveEvent(new LightAttackEvent(
+                target != null ? GetNetEntity(target.Value) : null,
+                GetNetEntity(weaponUid),
+                GetNetCoordinates(coordinates)));
+            return;
+        }
+
+        // Left-click: Wide slash attack for held melee weapons.
         if (!weapon.DisableHeavy && useDown)
         {
             ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
