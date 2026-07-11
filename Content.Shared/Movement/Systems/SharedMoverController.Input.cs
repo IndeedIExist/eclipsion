@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Shared.Alert;
 using Content.Shared.CCVar;
 using Content.Shared.Follower.Components;
+using Content.Shared.Ghost; // _Crescent: ghosts skip sprint cooldown/sound.
 using Content.Shared.Input;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
@@ -519,9 +520,12 @@ namespace Content.Shared.Movement.Systems
             // With DefaultSprinting the run key being held (walking) starts the sprint; otherwise it's inverted.
             var willSprint = input.DefaultSprinting ? walking : !walking;
 
+            // _Crescent: ghosts are incorporeal — no sprint cooldown and no sprint-start sound.
+            var isGhost = HasComp<GhostComponent>(entity);
+
             // _Crescent: block starting a sprint while the cooldown is still ticking.
             // This stops people from spamming shift (run-toggle) and the sprint-start sound with it.
-            if (!wasSprinting && willSprint && Timing.CurTime < input.NextSprintTime)
+            if (!isGhost && !wasSprinting && willSprint && Timing.CurTime < input.NextSprintTime)
                 return;
 
             SetMoveInput(entityComp, subTick, walking, MoveButtons.Walk);
@@ -529,11 +533,11 @@ namespace Content.Shared.Movement.Systems
 
             if (!wasSprinting && input.Sprinting)
             {
-                // _Crescent: play a cue only when we cross from walking into running.
-                if (input.SprintStartSound != null)
+                // _Crescent: play a cue only when we cross from walking into running (never for ghosts).
+                if (!isGhost && input.SprintStartSound != null)
                     _audio.PlayPredicted(input.SprintStartSound, entity, entity);
             }
-            else if (wasSprinting && !input.Sprinting)
+            else if (!isGhost && wasSprinting && !input.Sprinting)
             {
                 // _Crescent: sprint just ended, start the cooldown before the next sprint is allowed.
                 input.NextSprintTime = Timing.CurTime + input.SprintCooldown;

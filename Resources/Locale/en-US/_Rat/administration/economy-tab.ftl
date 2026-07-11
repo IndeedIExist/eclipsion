@@ -11,3 +11,5 @@ admin-menu-economy-invalid-price = Invalid price
 admin-menu-economy-saved = Saved price for { $name }
 admin-menu-economy-category-items = Items
 admin-menu-economy-category-vessels = Shuttles
+admin-menu-economy-category-treasury = Faction Treasuries
+admin-menu-economy-category-players = Player Banks

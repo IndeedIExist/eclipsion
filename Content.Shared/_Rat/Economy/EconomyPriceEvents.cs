@@ -16,6 +16,8 @@ public enum EconomyListCategory : byte
 {
     Items,
     Vessels,
+    Treasury,
+    Players,
 }
 
 [Serializable, NetSerializable]

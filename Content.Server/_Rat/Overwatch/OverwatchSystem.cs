@@ -429,6 +429,53 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
+    /// Broadcasts an overwatch-style announcement to every online member of a faction: the purple
+    /// on-screen alert plus a filtered local chat line, exactly like a console-sent announcement.
+    /// Lets other systems (e.g. treasury security) raise faction-only alerts without a console.
+    /// </summary>
+    /// <param name="faction">Faction key, e.g. "DSM", "NCWL", "SHI".</param>
+    /// <param name="message">The announcement body.</param>
+    /// <param name="targetName">Optional "target" label; defaults to the faction-wide label.</param>
+    public void SendFactionAnnouncement(string faction, string message, string? targetName = null)
+    {
+        if (string.IsNullOrEmpty(faction) || string.IsNullOrEmpty(message))
+            return;
+
+        var factionMembers = GetFactionMembers(faction);
+        var overwatchTitle = GetOverwatchTitle(faction);
+        var color = GetOverwatchColor(faction);
+        targetName ??= Loc.GetString("overwatch-announcement-target-all");
+
+        var recipients = new List<ICommonSession>();
+        foreach (var member in factionMembers)
+        {
+            if (TryComp<ActorComponent>(member, out var memberActor) && memberActor.PlayerSession != null)
+            {
+                recipients.Add(memberActor.PlayerSession);
+                RaiseNetworkEvent(new OverwatchAnnouncementEvent(message, targetName, overwatchTitle, color), memberActor.PlayerSession);
+            }
+        }
+
+        if (recipients.Count == 0)
+            return;
+
+        var wrappedMessage = $"{overwatchTitle}: {message}";
+        var filter = Robust.Shared.Player.Filter.Empty();
+        foreach (var recipient in recipients)
+            filter.AddPlayer(recipient);
+
+        _chatManager.ChatMessageToManyFiltered(
+            filter,
+            ChatChannel.Local,
+            message,
+            wrappedMessage,
+            EntityUid.Invalid,
+            false,
+            true,
+            color);
+    }
+
+    /// <summary>
     /// Получает название отряда.
     /// </summary>
     private string GetSquadTargetName(string faction, int squadId)

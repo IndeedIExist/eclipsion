@@ -4,6 +4,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Ame.Components;
 using Content.Server.Chat.Managers;
+using Content.Server.Chat.Systems;
 using Content.Server.NodeContainer;
 using Content.Server.Power.Components;
 using Content.Shared.Ame.Components;
@@ -25,6 +26,7 @@ public sealed class AmeControllerSystem : EntitySystem
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IAdminManager _adminManager = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
@@ -112,6 +114,8 @@ public sealed class AmeControllerSystem : EntitySystem
                 // only play audio if we actually had an injection
                 if (availableInject > 0)
                     _audioSystem.PlayPvs(controller.InjectSound, uid, AudioParams.Default.WithVolume(overloading ? 10f : 0f));
+                if (overloading)
+                    AnnounceOverload(uid, curTime, controller);
                 UpdateUi(uid, controller);
             }
         }
@@ -123,6 +127,26 @@ public sealed class AmeControllerSystem : EntitySystem
 
         if (controller.Stability <= 0)
             group.ExplodeCores();
+    }
+
+    /// <summary>
+    /// Broadcasts a sector-wide warning that the AME on this controller's grid is overloading,
+    /// naming the grid the engine is aboard. Rate-limited per controller to avoid spam.
+    /// </summary>
+    private void AnnounceOverload(EntityUid uid, TimeSpan curTime, AmeControllerComponent controller)
+    {
+        if (curTime < controller.NextOverloadAnnouncement)
+            return;
+
+        controller.NextOverloadAnnouncement = curTime + controller.OverloadAnnouncementCooldown;
+
+        // Name the grid (ship/station) the engine is aboard so responders know where to go.
+        var gridUid = Transform(uid).GridUid;
+        var gridName = gridUid != null ? Name(gridUid.Value) : Loc.GetString("ame-overload-announcement-unknown-grid");
+
+        var message = Loc.GetString("ame-overload-announcement", ("grid", gridName));
+        var sender = Loc.GetString("ame-overload-announcement-sender");
+        _chatSystem.DispatchGlobalAnnouncement(message, sender, playSound: true, colorOverride: Color.Red);
     }
 
     public void UpdateUi(EntityUid uid, AmeControllerComponent? controller = null)

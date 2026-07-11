@@ -1,0 +1,177 @@
+# Faction taxation & treasury consoles.
+#
+# Taxation console: sets the percentage tax levied on trade goods sold through this
+#   station's trade points. It never changes the base (sticker) prices, only the cut.
+# Treasury console: holds the accumulated tax revenue; authorized faction members can
+#   withdraw it as physical cash. Unauthorized tampering raises an alarm and, after one
+#   minute, repeatedly loots the treasury until an authorized member re-secures it.
+#
+# Both consoles are indestructible, cannot be unanchored, and are always powered
+# (needsPower: false) so they can never be cut off. Access is gated per faction via the
+# AccessReader lists on each variant below — tune the tags to taste.
+
+# ---------------------------------------------------------------------------
+# Taxation console
+# ---------------------------------------------------------------------------
+
+- type: entity
+  abstract: true
+  id: ComputerFactionTaxationBase
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
+  name: taxation console
+  description: Levies a percentage tax on trade goods sold at this station's trade points. Cannot alter base prices.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: MetalGlassBreak
+  - type: ApcPowerReceiver
+    needsPower: false
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: ActivatableUIRequiresPower
+  - type: Sprite
+    netsync: false
+    noRot: true
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request
+    - map: ["computerLayerKeys"]
+      state: tech_key
+  - type: TaxationConsole
+  - type: ActivatableUI
+    key: enum.TaxationConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TaxationConsoleUiKey.Key:
+        type: TaxationConsoleBui
+  - type: AccessReader
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#25b877"
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    offset: "0, 0.4"
+    castShadows: false
+
+- type: entity
+  parent: ComputerFactionTaxationBase
+  id: ComputerFactionTaxationShinohara
+  suffix: Tatsumoto / Shinohara
+  components:
+  - type: AccessReader
+    # OR: holding any one of these grants edit access (each inner list = AND).
+    access: [["ShinoharaExecutive"], ["ShinoharaOfficer"]]
+
+- type: entity
+  parent: ComputerFactionTaxationBase
+  id: ComputerFactionTaxationNCWL
+  suffix: Marsova / Nova Balreska
+  components:
+  - type: AccessReader
+    # NCWL command tier (MVD, kommissar, officers, commandant...). Excludes basic workers/partisans.
+    access: [["NCWLCommand"]]
+
+- type: entity
+  parent: ComputerFactionTaxationBase
+  id: ComputerFactionTaxationEmpire
+  suffix: Aurora Imperialis / Empire
+  components:
+  - type: AccessReader
+    # Lord Admiral (governor), Imperial Adjutant, and Knight Logisticar (wealth). Man-at-arms excluded.
+    access: [["EmpireGovernor"], ["EmpireAdjutant"], ["LogisticsWealth"]]
+
+# ---------------------------------------------------------------------------
+# Faction treasury console
+# ---------------------------------------------------------------------------
+
+- type: entity
+  abstract: true
+  id: ComputerFactionTreasuryBase
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
+  name: treasury vault console
+  description: Holds this faction's tax revenue. Unauthorized access triggers a security lockdown.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: MetalGlassBreak
+  - type: ApcPowerReceiver
+    needsPower: false
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: ActivatableUIRequiresPower
+  - type: Sprite
+    netsync: false
+    noRot: true
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: generic
+    - map: ["computerLayerKeys"]
+      state: tech_key
+  - type: FactionTreasuryConsole
+  - type: ActivatableUI
+    key: enum.TreasuryConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TreasuryConsoleUiKey.Key:
+        type: TreasuryConsoleBui
+  - type: AccessReader
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b8a025"
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    offset: "0, 0.4"
+    castShadows: false
+
+- type: entity
+  parent: ComputerFactionTreasuryBase
+  id: ComputerFactionTreasuryShinohara
+  suffix: Tatsumoto / Shinohara
+  components:
+  - type: FactionTreasuryConsole
+    faction: SHI
+  - type: AccessReader
+    access: [["ShinoharaExecutive"]]
+
+- type: entity
+  parent: ComputerFactionTreasuryBase
+  id: ComputerFactionTreasuryNCWL
+  suffix: Marsova / Nova Balreska
+  components:
+  - type: FactionTreasuryConsole
+    faction: NCWL
+  - type: AccessReader
+    access: [["NCWLCommand"]]
+
+- type: entity
+  parent: ComputerFactionTreasuryBase
+  id: ComputerFactionTreasuryEmpire
+  suffix: Aurora Imperialis / Empire
+  components:
+  - type: FactionTreasuryConsole
+    faction: DSM
+  - type: AccessReader
+    # Lord Admiral (governor), Imperial Adjutant, Knight Logisticar (wealth). Anyone else trips the alarm.
+    access: [["EmpireGovernor"], ["EmpireAdjutant"], ["LogisticsWealth"]]

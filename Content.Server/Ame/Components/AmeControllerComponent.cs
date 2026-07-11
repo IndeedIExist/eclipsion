@@ -98,4 +98,16 @@ public sealed partial class AmeControllerComponent : SharedAmeControllerComponen
     /// </summary>
     [DataField]
     public TimeSpan CooldownDuration = TimeSpan.FromSeconds(10f);
+
+    /// <summary>
+    /// Time at which the next "AME overloading" station-wide announcement can be broadcast.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan NextOverloadAnnouncement;
+
+    /// <summary>
+    /// Time between "AME overloading" announcements. Prevents spam while the reactor is overloaded.
+    /// </summary>
+    [DataField]
+    public TimeSpan OverloadAnnouncementCooldown = TimeSpan.FromSeconds(30f);
 }

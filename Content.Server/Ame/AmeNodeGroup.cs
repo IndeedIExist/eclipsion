@@ -200,11 +200,9 @@ public sealed class AmeNodeGroup : BaseNodeGroup
             * so they chain explode, after helpers have been added to make it not cancer
         */
 
-        var radius = Math.Min(2 * CoreCount * controller.InjectionAmount, 8f);
-        //var intensity = CoreCount * 150000;
-        //_entMan.System<ExplosionSystem>().TriggerExplosive(MasterController.Value, radius: radius, totalIntensity: intensity, delete: false);
-
-        // _entMan.System<ExplosionSystem>().TriggerExplosive(MasterController.Value, exp, delete: false, exp.TotalIntensity * CoreCount); // HULLROT - AME Nuke change
-		_entMan.System<ExplosionSystem>().TriggerExplosive(MasterController.Value, exp, delete: false, exp.TotalIntensity); // Rat
+        // A "full" AME (many cores, high injection) should detonate hard again.
+        // Scale the total intensity by the number of cores so bigger reactors blow bigger.
+        var intensity = exp.TotalIntensity * CoreCount;
+        _entMan.System<ExplosionSystem>().TriggerExplosive(MasterController.Value, exp, delete: false, intensity);
     }
 }
