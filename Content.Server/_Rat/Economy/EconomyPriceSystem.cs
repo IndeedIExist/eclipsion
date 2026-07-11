@@ -28,6 +28,7 @@ public sealed class EconomyPriceSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly BankSystem _bank = default!;
+    [Dependency] private readonly StationTradeMarketSystem _market = default!;
 
     private readonly Dictionary<string, double> _itemOverrides = new();
     private readonly Dictionary<string, int> _vesselOverrides = new();
@@ -392,7 +393,8 @@ public sealed class EconomyPriceSystem : EntitySystem
                 continue;
 
             var oldBalance = market.TreasuryBalance;
-            market.TreasuryBalance = newBalance;
+            // Route through the market system so the change is mirrored into the cross-round store.
+            _market.SetTreasury(uid, newBalance);
 
             _adminLog.Add(
                 LogType.AdminCommands,

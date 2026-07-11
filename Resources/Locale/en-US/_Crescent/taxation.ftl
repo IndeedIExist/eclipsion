@@ -23,6 +23,7 @@ treasury-console-authorized = Authorized
 treasury-console-unauthorized = Unauthorized — access the vault with a faction card
 treasury-console-alarm = ⚠ SECURITY BREACH — VAULT COMPROMISED ⚠
 treasury-console-withdrew = Withdrew {$amount} cr.
+treasury-console-limit-reached = Withdrawal denied — you may only draw up to {$percent}% of the vault per round.
 treasury-console-intrusion = Unauthorized access! Security alarm engaged.
 treasury-console-looted = The vault is being looted — {$amount} cr stolen!
 treasury-console-deposited = Deposited {$amount} cr into the treasury.

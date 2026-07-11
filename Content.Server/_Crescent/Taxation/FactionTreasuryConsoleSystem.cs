@@ -9,6 +9,7 @@ using Content.Shared.Stacks;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Crescent.Taxation;
@@ -33,10 +34,28 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<FactionTreasuryConsoleComponent, MapInitEvent>(OnConsoleMapInit);
         SubscribeLocalEvent<FactionTreasuryConsoleComponent, ActivatableUIOpenAttemptEvent>(OnOpenAttempt);
         SubscribeLocalEvent<FactionTreasuryConsoleComponent, BoundUIOpenedEvent>(OnOpened);
         SubscribeLocalEvent<FactionTreasuryConsoleComponent, TreasuryWithdrawMessage>(OnWithdraw);
         SubscribeLocalEvent<FactionTreasuryConsoleComponent, InteractUsingEvent>(OnInteractUsing);
+    }
+
+    /// <summary>
+    /// On round start, tie this station's treasury to the console's faction and load its persisted,
+    /// cross-round balance so the vault no longer resets to zero each round.
+    /// </summary>
+    private void OnConsoleMapInit(EntityUid uid, FactionTreasuryConsoleComponent comp, MapInitEvent args)
+    {
+        if (string.IsNullOrEmpty(comp.Faction))
+            return;
+
+        var station = _market.TryGetOwningStation(uid);
+        if (station is null)
+            return;
+
+        _market.BindFactionTreasury(station.Value, comp.Faction);
+        UpdateUi(uid);
     }
 
     /// <summary>
@@ -64,6 +83,10 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
     private void RaiseIntrusion(EntityUid uid, FactionTreasuryConsoleComponent comp)
     {
         var now = _timing.CurTime;
+
+        // Arm the breach on the first unauthorized attempt. Once set, the Update loop starts spilling
+        // cash after LootDelay and keeps looting until an authorized member re-secures the console.
+        comp.BreachStart ??= now;
 
         if (comp.LastAlarm is not { } lastAlarm || now - lastAlarm >= comp.AlarmCooldown)
         {
@@ -118,13 +141,18 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
         _market.AddTreasury(station.Value, amount);
         QueueDel(args.Used);
 
+        // An authorized member operating the console re-secures a breach in progress.
+        Resecure(comp);
+
         _popup.PopupEntity(Loc.GetString("treasury-console-deposited", ("amount", amount)), uid, args.User, PopupType.Medium);
         UpdateUi(uid);
     }
 
     private void OnOpened(EntityUid uid, FactionTreasuryConsoleComponent comp, BoundUIOpenedEvent args)
     {
-        // OnOpenAttempt already denied anyone without access, so reaching here means authorized.
+        // OnOpenAttempt already denied anyone without access, so reaching here means authorized:
+        // an authorized member at the console re-secures any breach in progress.
+        Resecure(comp);
         UpdateUi(uid);
     }
 
@@ -132,6 +160,9 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
     {
         if (!_access.IsAllowed(args.Actor, uid))
             return;
+
+        // An authorized member operating the console re-secures a breach in progress.
+        Resecure(comp);
 
         var station = _market.TryGetOwningStation(uid);
         if (station is null)
@@ -141,7 +172,13 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
         if (amount == 0)
             return;
 
-        var withdrawn = _market.TryWithdrawTreasury(station.Value, amount);
+        // Identify the withdrawing player so we can enforce the per-person, per-round cap.
+        if (!TryComp<ActorComponent>(args.Actor, out var actor))
+            return;
+
+        var withdrawn = _market.TryWithdrawTreasuryCapped(
+            station.Value, actor.PlayerSession.UserId, amount, comp.MaxWithdrawFraction);
+
         if (withdrawn > 0)
         {
             _stack.SpawnMultiple("SpaceCash", withdrawn, Transform(uid).Coordinates);
@@ -149,16 +186,79 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
                 Loc.GetString("treasury-console-withdrew", ("amount", withdrawn)),
                 uid, args.Actor, PopupType.Medium);
         }
+        else
+        {
+            // Either the vault is empty or this member has already hit their round withdrawal cap.
+            _popup.PopupEntity(
+                Loc.GetString("treasury-console-limit-reached",
+                    ("percent", (int) MathF.Round(comp.MaxWithdrawFraction * 100f))),
+                uid, args.Actor, PopupType.MediumCaution);
+        }
 
         UpdateUi(uid);
+    }
+
+    /// <summary>
+    /// The vault is being robbed: after the grace period, an unsecured console repeatedly spills a
+    /// chunk of its treasury as physical cash next to it until it is emptied or re-secured.
+    /// </summary>
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var now = _timing.CurTime;
+        var query = EntityQueryEnumerator<FactionTreasuryConsoleComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.BreachStart is not { } start)
+                continue;
+
+            // Grace period after the breach before the vault actually starts leaking.
+            if (now - start < comp.LootDelay)
+                continue;
+
+            if (comp.LastLoot is { } last && now - last < comp.LootInterval)
+                continue;
+
+            var station = _market.TryGetOwningStation(uid);
+            if (station is null)
+                continue;
+
+            var balance = _market.GetTreasury(station.Value);
+            if (balance <= 0)
+            {
+                // Nothing left to steal; the console stays unsecured but idle until re-secured.
+                comp.LastLoot = now;
+                continue;
+            }
+
+            var target = Math.Clamp((int) (balance * comp.LootFraction), comp.LootMinimum, comp.LootMaximum);
+            var stolen = _market.TryWithdrawTreasury(station.Value, target);
+            if (stolen <= 0)
+                continue;
+
+            comp.LastLoot = now;
+            _stack.SpawnMultiple("SpaceCash", stolen, Transform(uid).Coordinates);
+            _audio.PlayPvs(comp.AlarmSound, uid);
+            _popup.PopupEntity(Loc.GetString("treasury-console-looted", ("amount", stolen)), uid, PopupType.LargeCaution);
+            UpdateUi(uid);
+        }
+    }
+
+    /// <summary>Clears an active breach: an authorized member has taken control of the console.</summary>
+    private void Resecure(FactionTreasuryConsoleComponent comp)
+    {
+        comp.BreachStart = null;
+        comp.LastLoot = null;
     }
 
     private void UpdateUi(EntityUid uid)
     {
         var station = _market.TryGetOwningStation(uid);
         var balance = station is null ? 0 : _market.GetTreasury(station.Value);
+        var breached = TryComp<FactionTreasuryConsoleComponent>(uid, out var comp) && comp.BreachStart != null;
 
         // Only authorized members can have the UI open, so authorized is always true here.
-        _ui.SetUiState(uid, TreasuryConsoleUiKey.Key, new TreasuryConsoleState(balance, true, false));
+        _ui.SetUiState(uid, TreasuryConsoleUiKey.Key, new TreasuryConsoleState(balance, true, breached));
     }
 }
