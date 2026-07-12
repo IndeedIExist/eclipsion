@@ -22,7 +22,7 @@ using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Threading;
-using Content.Client._Rat.SpaceEvents; // Rat
+using Content.Client._Crescent.SpaceEvents; // Rat
 using Content.Shared.PointCannons; // Rat
 
 namespace Content.Client.Shuttles.UI;

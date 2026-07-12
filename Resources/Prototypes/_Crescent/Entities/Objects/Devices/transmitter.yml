@@ -1,0 +1,65 @@
+# Transmitter parts - 3 junk items needed to craft the transmitter
+- type: entity
+  parent: BaseItem
+  id: TransmitterPartCircuitBoard
+  components:
+  - type: Sprite
+    sprite: Objects/Materials/Scrap/generic.rsi
+    state: junk-intercom-1
+  - type: Tag
+    tags:
+    - TransmitterPartCircuitBoard
+  - type: Item
+    size: Small
+
+- type: entity
+  parent: BaseItem
+  id: TransmitterPartAntenna
+  components:
+  - type: Sprite
+    sprite: Objects/Materials/Scrap/generic.rsi
+    state: junk-camera
+  - type: Tag
+    tags:
+    - TransmitterPartAntenna
+  - type: Item
+    size: Small
+
+- type: entity
+  parent: BaseItem
+  id: TransmitterPartPowerModule
+  components:
+  - type: Sprite
+    sprite: Objects/Materials/Scrap/generic.rsi
+    state: junk-intercom-3
+  - type: Tag
+    tags:
+    - TransmitterPartPowerModule
+  - type: Item
+    size: Small
+
+# The assembled transmitter device
+- type: entity
+  parent: BaseItem
+  id: SignalTransmitterDevice
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/declaration_of_war.rsi
+    state: declarator
+  - type: Item
+    size: Normal
+  - type: UseDelay
+    delay: 3
+  - type: SignalTransmitterDevice
+  - type: Anchorable
+  - type: ActivatableUI
+    key: enum.Content.Shared._Crescent.SignalTransmitter.SignalTransmitterUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.Content.Shared._Crescent.SignalTransmitter.SignalTransmitterUiKey.Key:
+        type: Content.Client._Crescent.SignalTransmitter.TransmitterBui
+  - type: Construction
+    graph: SignalTransmitterDevice
+    node: transmitter
+  - type: Transform
+    anchored: false

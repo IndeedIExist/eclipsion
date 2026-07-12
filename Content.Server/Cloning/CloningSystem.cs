@@ -50,7 +50,7 @@ using Content.Server.Power.Components;
 using Content.Shared.Drunk;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Power;
-using Content.Shared._Rat.Cloning;
+using Content.Shared._Crescent.Cloning;
 
 
 namespace Content.Server.Cloning;

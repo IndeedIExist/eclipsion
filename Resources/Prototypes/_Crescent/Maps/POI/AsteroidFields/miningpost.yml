@@ -1,0 +1,56 @@
+- type: gameMap
+  id: RatFakel
+  mapName: 'NT Torch'
+  mapPath: /Maps/_Crescent/POI/defunctminingpost.yml
+  minPlayers: 0
+  stations:
+    RatFakel:
+      stationProto: StandardCrescentPOI
+      gridComponents:
+        - type: VesselIcon
+          iffIcon:
+            sprite: _Crescent/ShipIcons/ifficons.rsi
+            state: asteroids
+        - type: MapIcon
+          iconType: Station
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'NT Torch'
+
+- type: gameMap
+  id: RatBuran
+  mapName: 'NT Buran'
+  mapPath: /Maps/_Crescent/POI/miniminingpost.yml
+  minPlayers: 0
+  stations:
+    RatBuran:
+      stationProto: StandardCrescentPOI
+      gridComponents:
+        - type: VesselIcon
+          iffIcon:
+            sprite: _Crescent/ShipIcons/ifficons.rsi
+            state: asteroids
+        - type: MapIcon
+          iconType: Station
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'NT Buran'
+
+- type: gameMap
+  id: RatKovf
+  mapName: 'NT Kovsh'
+  mapPath: /Maps/_Crescent/POI/miniminingpost.yml
+  minPlayers: 0
+  stations:
+    RatKovf:
+      stationProto: StandardCrescentPOI
+      gridComponents:
+        - type: VesselIcon
+          iffIcon:
+            sprite: _Crescent/ShipIcons/ifficons.rsi
+            state: asteroids
+        - type: MapIcon
+          iconType: Station
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'NT Kovsh'

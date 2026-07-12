@@ -87,9 +87,9 @@ namespace Content.Shared.Movement.Components
         [DataField]
         public ProtoId<AlertPrototype> WalkingAlert = "Walking";
 
-        // _Crescent: sound played when the mover toggles into running mode.
+        // _Crescent: sound played when the mover toggles into running mode. Disabled — sprint cue was too noisy.
         [DataField]
-        public SoundSpecifier? SprintStartSound = new SoundPathSpecifier("/Audio/_Crescent/Effects/sprint_start.ogg");
+        public SoundSpecifier? SprintStartSound = null;
 
         // _Crescent: how long the mover must wait after stopping a sprint before it can sprint again.
         // Stops run-toggle / sprint-sound spam.

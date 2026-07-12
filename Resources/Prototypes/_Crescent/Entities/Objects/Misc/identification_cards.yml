@@ -1248,3 +1248,34 @@
   - type: PresetIdCard
     job: Spacer
 
+
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: entity
+  parent: IDCardStandard
+  id: DSMIDCardRegentEmpire
+  name: imperial ID card
+  components:
+  - type: Currency
+    price:
+      PlunderGSC: 15
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idseniorresearcher
+  - type: PresetIdCard
+    job: RegentEmpireDSM
+
+- type: entity
+  parent: IDCardStandard
+  id: DSMIDCardPretorianKnight
+  name: imperial ID card
+  components:
+  - type: Currency
+    price:
+      PlunderGSC: 10
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idseniorresearcher
+  - type: PresetIdCard
+    job: PretorianKnightDSM

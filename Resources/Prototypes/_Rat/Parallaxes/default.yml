@@ -1,8 +1,0 @@
-- type: parallax
-  id: RatDefault
-  layers:
-    - texture:
-        !type:ImageParallaxTextureSource
-        path: "/Textures/_Rat/Parallaxes/hadal.png"
-      slowness: 0.998046875
-      scale: "1, 1"

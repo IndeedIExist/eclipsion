@@ -9,3 +9,8 @@ station-event-nano-trasen-probe-complete-announcement = Naval Command informs al
 
 station-event-infested-station-announcement = Naval Command informs all spaceborne pilots that an unaffiliated Hearth-class mobile outpost has experienced a contamination field failure and is now broadcasting for help. Navcomm will reward all sovereign groups who interfere.
 station-event-infested-station-complete-announcement = Naval Command informs all spaceborne pilots that the Hearth-class mobile outpost has been towed into unstable bluespace for deconstruction and decontamination. Participants have been rewarded.
+# ===== merged from _Rat =====
+emp-zone-event-warning = Warning! Signs of an electromagnetic anomaly have been detected. It will be located at coordinates: X: { $x }, Y: { $y }. It is recommended to leave this area.
+emp-zone-event-ended = The electromagnetic anomaly has dissipated.
+
+anomaly-station-event-anouncement = Unknown station detected. Anomalous activity present. Coordinates: X: { $x }, Y: { $y }

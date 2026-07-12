@@ -1,0 +1,16 @@
+<diplomacy:DiplomacyConsoleMenu xmlns="https://spacestation14.io"
+                               xmlns:diplomacy="clr-namespace:Content.Client._Crescent.Diplomacy"
+                               Title="{Loc 'diplomacy-console-title'}"
+                               MinSize="500 400">
+    <BoxContainer Orientation="Vertical" Margin="4">
+        <Label Text="{Loc 'diplomacy-console-pending-proposals'}" Margin="0 4 0 0" FontColorOverride="#A0A0A0"/>
+        <ScrollContainer VerticalExpand="True" MinHeight="100" Margin="0 2 0 8">
+            <BoxContainer Name="PendingContainer" Orientation="Vertical" SeparationOverride="2"/>
+        </ScrollContainer>
+
+        <Label Text="{Loc 'diplomacy-console-faction-relations'}" Margin="0 4 0 0" FontColorOverride="#A0A0A0"/>
+        <ScrollContainer VerticalExpand="True" MinHeight="200" Margin="0 2 0 0">
+            <BoxContainer Name="RelationsContainer" Orientation="Vertical" SeparationOverride="2"/>
+        </ScrollContainer>
+    </BoxContainer>
+</diplomacy:DiplomacyConsoleMenu>

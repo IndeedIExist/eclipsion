@@ -27,7 +27,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using System.Text.RegularExpressions;
-using Content.Server._Rat.Economy;
+using Content.Server._Crescent.Economy;
 using Content.Server._Crescent;
 using Content.Shared._Crescent;
 using Robust.Shared.Containers;

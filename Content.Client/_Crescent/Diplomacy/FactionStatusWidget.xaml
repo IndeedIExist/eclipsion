@@ -1,0 +1,8 @@
+<diplomacy:FactionStatusWidget xmlns="https://spacestation14.io"
+                               xmlns:diplomacy="clr-namespace:Content.Client._Crescent.Diplomacy"
+                               HorizontalAlignment="Right"
+                               MinWidth="160">
+    <BoxContainer Orientation="Vertical" SeparationOverride="1" Margin="0 4 0 0">
+        <BoxContainer Name="RowsContainer" Orientation="Vertical" SeparationOverride="1"/>
+    </BoxContainer>
+</diplomacy:FactionStatusWidget>

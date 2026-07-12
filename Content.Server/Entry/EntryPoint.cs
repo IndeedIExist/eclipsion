@@ -34,7 +34,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Server._Forge.Discord; // Forge-Change
 using Content.Server._Forge.Sponsors; // Forge-Change
-using Content.Server._Rat.JoinQueue;
+using Content.Server._Crescent.JoinQueue;
 
 namespace Content.Server.Entry
 {

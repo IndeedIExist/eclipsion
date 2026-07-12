@@ -28,3 +28,16 @@ job-supervisors-unionfall-dsm-high = your house's quest to restore its honor
 job-supervisors-unionfall-ncwl = The Kommissar, then the Captain of the Dear Clementine
 job-supervisors-unionfall-ncwl-high = the revolution's embers
 
+# CMM - Colonial Marshals
+job-supervisors-cmm-marshal = the disdain of your own heart, whether that means protecting the sector's civilians or aiding criminal organizations
+job-supervisors-cmm-deputy = the Colonial Marshal
+job-supervisors-cmm-officer = the Colonial Marshal and his Deputy
+job-supervisors-cmm-sergeant = the Colonial Officers and Colonial Command
+job-supervisors-cmm-minuteman = the Colonial Wardens, the Colonial Officers, and your militia superiors
+
+# GSC - Gorlex Security Consulting
+job-supervisors-gsc-ringleader = money and personal interest. You are the de facto leader of the Taipan Coalition of Free Stations, be it through charm or fear of your firepower
+job-supervisors-gsc-officer = the Gorlex ringleader
+job-supervisors-gsc-infanteer = the Gorlex ringleader, his officer, and Gorlex Security Consulting
+job-supervisors-gsc-newbie = your rank superiors, and Gorlex Security Consulting as a whole
+

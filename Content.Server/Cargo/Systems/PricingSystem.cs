@@ -17,7 +17,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared.Research.Prototypes;
-using Content.Server._Rat.Economy;
+using Content.Server._Crescent.Economy;
 
 namespace Content.Server.Cargo.Systems;
 

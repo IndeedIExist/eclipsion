@@ -53,3 +53,231 @@
   - type: Sprite
     sprite: _Crescent/Objects/Misc/stamps.rsi
     state: stamp-shi
+
+# ===== merged from _Rat (full-hullrot consolidation) =====
+# region Empire
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampEmpireVestmar
+  name: imperial vetsmar rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-empire-vestmar
+    stampedColor: "#432d51"
+    stampState: "paper_stamp_rat-empire"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: empire
+
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampEmpireCargo
+  name: imperial cargo rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-empire-cargo
+    stampedColor: "#432d51"
+    stampState: "paper_stamp_rat-empialt"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stamp-empire
+    
+# region NCWL
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampNCWLGeneral
+  name: league general rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-ncwl-general
+    stampedColor: "#8f561d"
+    stampState: "paper_stamp_rat-ncwl"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stampncwl
+
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampNCWLComissar
+  name: league comissar rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-ncwl-comissar
+    stampedColor: "#f09816"
+    stampState: "paper_stamp_rat-ncwl"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stampncwl
+
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampNCWLStaffhead
+  name: league staffhead rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-ncwl-staffhead
+    stampedColor: "#c77b00"
+    stampState: "paper_stamp_rat-ncwl"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stampncwl
+
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampNCWLResearch
+  name: league research rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-ncwl-research
+    stampedColor: "#b87333"
+    stampState: "paper_stamp_rat-ncwl"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stampncwl
+
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampNCWLMedical
+  name: league medical rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-ncwl-medical
+    stampedColor: "#cd7f32"
+    stampState: "paper_stamp_rat-ncwl"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stampncwl
+
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampNCWLCargo
+  name: league cargo rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-ncwl-cargo
+    stampedColor: "#d2691e"
+    stampState: "paper_stamp_rat-ncwl"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stampncwl
+
+# region TFSC
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampTFSCGorlex
+  name: coalition gorlex rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-tsfc-gorlex
+    stampedColor: "#321011"
+    stampState: "paper_stamp-syndicate"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stamp-syndicate
+
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampTFSCInterdyne
+  name: coalition interdyne rubber stamp
+  suffix: DoNotMapstamp-syndicate
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-tsfc-interdyne
+    stampedColor: "#270a1f"
+    stampState: "paper_stamp-syndicate"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stamp-syndicate
+    
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampTFSCCyberDawn
+  name: coalition cyberdawn rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-tsfc-cyberdawn
+    stampedColor: "#320a18"
+    stampState: "paper_stamp-syndicate"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stamp-syndicate
+
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampTFSCSAW
+  name: coalition saw rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-tsfc-shipwrekers
+    stampedColor: "#00416a"
+    stampState: "paper_stamp-syndicate"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stamp-syndicate
+
+# region Shinohara
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampShinoharaAlt
+  name: Shinohara rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-shinohara
+    stampedColor: "#8a8a8a"
+    stampState: "paper_stamp_rat-shialt"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stamp-shi
+
+- type: entity
+  parent: RubberStampBase
+  id: RatRubberStampShinoharaCorps
+  name: SHI CorpSec rubber stamp
+  suffix: DoNotMap
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-shinohara-corpsec
+    stampedColor: "#8a8a8a"
+    stampState: "paper_stamp_rat-corpsec"
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/stamps.rsi
+    state: stamp-shi-corp
+
+# region CMM
+- type: entity
+  name: colonial marshal rubber stamp
+  parent: RubberStampBase
+  id: RatRubberStampCMMMarshal
+  suffix: DO NOT MAP
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-tsfc-colonial-marshal
+    stampedColor: "#063971"
+    stampState: "paper_stamp-cmo"
+  - type: Sprite
+    state: stamp-cmo
+
+- type: entity
+  name: minuteman command rubber stamp
+  parent: RubberStampBase
+  id: RatRubberStampCMM
+  suffix: DO NOT MAP
+  components:
+  - type: Stamp
+    stampedName: rat-stamp-name-tsfc-minutemen-command
+    stampedColor: "#003457"
+    stampState: "paper_stamp-cmo"
+  - type: Sprite
+    state: stamp-cmo

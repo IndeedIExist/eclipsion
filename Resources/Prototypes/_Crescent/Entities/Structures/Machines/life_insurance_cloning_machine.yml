@@ -1,0 +1,59 @@
+- type: entity
+  parent: BaseMachinePowered
+  id: LifeInsuranceCloningMachine
+  name: IPM cloning safety machine
+  description: Prints the client's bodies according to the policies. The device is attached to the console when taking out insurance. Cloning materials are uploaded directly to the life insurance console.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: LifeInsuranceSpawnMachine
+  - type: Sprite
+    sprite: _Crescent/Structures/Machines/cloning_ipm.rsi
+    snapCardinals: true
+    layers:
+      - state: pod_0
+        map: ["base"]
+  - type: Construction
+    graph: Machine
+    node: machine
+    containers:
+    - machine_parts
+    - machine_board
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: StrongMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Machine
+    board: LifeInsuranceCloningMachineCircuitboard
+  - type: WiresPanel
+  - type: Appearance
+  - type: Climbable
+  - type: ApcPowerReceiver
+    powerLoad: 150
+  - type: PointLight
+    radius: 1.45
+    energy: 1.4
+    color: "#db5858"
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    offset: "0, 0.35"
+    castShadows: false
+  - type: StaticPrice
+    price: 0

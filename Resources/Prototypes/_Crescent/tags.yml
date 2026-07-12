@@ -102,3 +102,13 @@
 
 - type: Tag
   id: DualWield
+
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: Tag
+  id: TransmitterPartCircuitBoard
+
+- type: Tag
+  id: TransmitterPartAntenna
+
+- type: Tag
+  id: TransmitterPartPowerModule

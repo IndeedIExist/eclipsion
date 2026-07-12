@@ -8,7 +8,7 @@
     xmlns:objectsTab="clr-namespace:Content.Client.Administration.UI.Tabs.ObjectsTab"
     xmlns:panic="clr-namespace:Content.Client.Administration.UI.Tabs.PanicBunkerTab"
     xmlns:baby="clr-namespace:Content.Client.Administration.UI.Tabs.BabyJailTab"
-    xmlns:economyTab="clr-namespace:Content.Client._Rat.Administration.UI.Tabs.EconomyTab">
+    xmlns:economyTab="clr-namespace:Content.Client._Crescent.Administration.UI.Tabs.EconomyTab">
     <TabContainer Name="MasterTabContainer">
         <adminTab:AdminTab />
         <adminbusTab:AdminbusTab />

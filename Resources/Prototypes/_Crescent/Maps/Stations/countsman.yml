@@ -1,7 +1,7 @@
 - type: gameMap
   id: Countsman
   mapName: 'DSM Countsman'
-  mapPath: /Maps/_Rat/Stations/countsman.yml # rat-change
+  mapPath: /Maps/_Crescent/Stations/countsman.yml # rat-change
   minPlayers: 0
   stations:
     Countsman:

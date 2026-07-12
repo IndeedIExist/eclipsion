@@ -1,7 +1,7 @@
 - type: gameMap
   id: Tatsumoto
   mapName: 'SHI Tatsumoto'
-  mapPath: /Maps/_Rat/Stations/tatsumoto.yml # Rat-change
+  mapPath: /Maps/_Crescent/Stations/tatsumoto.yml # Rat-change
   minPlayers: 0
   stations:
     Tatsumoto:

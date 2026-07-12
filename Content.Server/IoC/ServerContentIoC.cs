@@ -32,7 +32,7 @@ using Content.Shared.Players.RateLimiting;
 using Content.Server._Forge.Discord; // Forge-Change
 using Content.Server._Forge.Sponsors; // Forge-Change
 using Content.Shared._Forge.Sponsors; // Forge-Change
-using Content.Server._Rat.JoinQueue;
+using Content.Server._Crescent.JoinQueue;
 
 namespace Content.Server.IoC
 {

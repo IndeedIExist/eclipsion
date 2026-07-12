@@ -12,7 +12,7 @@ The authors retain all copyright to their respective works submitted to this rep
 > If you require MIT-licensed code, please visit the Space Wizards repository [here](https://github.com/space-wizards/space-station-14/).
 > If the Space Wizards repository does not contain the MIT-licensed code you need, but it is available here under AGPLv3, you may contact the authors of that code and request relicensing.
 >
-> If you are unable to determine the license of a specific component or identify the author(s) of a particular feature, please ask in our [Discord](https://discord.gg/3FMFTxYQYJ) or in the [Hullrot Discord](https://discord.gg/X4QEXxUrsJ).
+> If you are unable to determine the license of a specific component or identify the author(s) of a particular feature, please ask in our [Discord](https://discord.gg/tUbZ7CK7DC) or in the [Hullrot Discord](https://discord.gg/X4QEXxUrsJ).
 
 Content contributed to this repository **after** commit  
 [87c70a8](https://github.com/Simple-Station/Einstein-Engines/commit/87c70a89a67d0521a56388e6b1c3f2cb947943e4)  

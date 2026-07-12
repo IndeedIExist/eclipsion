@@ -36,7 +36,7 @@ namespace Content.Client.Lobby.UI
 
         private void OpenFactionWindow()
         {
-            var window = new Content.Client._Rat.Factions.FactionSelectWindow();
+            var window = new Content.Client._Crescent.Factions.FactionSelectWindow();
             window.OpenCentered();
         }
 

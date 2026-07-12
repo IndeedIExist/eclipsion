@@ -1,5 +1,5 @@
 using Content.Server.Crescent.Dispenser;
-using Content.Server._Rat.Overwatch;
+using Content.Server._Crescent.Overwatch;
 using Content.Server.Stack;
 using Content.Shared._Crescent.Taxation;
 using Content.Shared.Access.Systems;
@@ -16,8 +16,9 @@ namespace Content.Server._Crescent.Taxation;
 
 /// <summary>
 /// Backs the faction treasury console: authorized faction members view/withdraw accumulated tax
-/// revenue and deposit physical cash. Anyone without access cannot open the UI at all; the attempt
-/// is blocked and a rate-limited intrusion alarm sounds instead.
+/// revenue and deposit physical cash. Anyone without access cannot open the UI; instead their click
+/// starts (or reports on) a robbery that siphons a fixed share of the vault over several minutes and
+/// then stops, so defenders can respond and the vault is never drained instantly.
 /// </summary>
 public sealed class FactionTreasuryConsoleSystem : EntitySystem
 {
@@ -71,32 +72,83 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
             return;
 
         _popup.PopupEntity(Loc.GetString("treasury-console-intrusion"), uid, args.User, PopupType.MediumCaution);
-        RaiseIntrusion(uid, comp);
+        TriggerRobbery(uid, comp, args.User);
         args.Cancel();
     }
 
     /// <summary>
-    /// Responds to unauthorized tampering: a local alarm (throttled by <see cref="FactionTreasuryConsoleComponent.AlarmCooldown"/>)
-    /// and a faction-only overwatch alert naming the station (throttled by <see cref="FactionTreasuryConsoleComponent.AnnounceCooldown"/>).
-    /// Only members of the vault's faction see the alert.
+    /// A thief's unauthorized click. If the vault is idle, starts a fresh heist that siphons
+    /// <see cref="FactionTreasuryConsoleComponent.RobberyFraction"/> of the current balance over
+    /// <see cref="FactionTreasuryConsoleComponent.RobberyDuration"/>, then stops on its own. If a
+    /// robbery is already running, just reports progress to the robber (their "screen"/log feedback).
+    /// Clicking again after one finishes starts another share.
     /// </summary>
-    private void RaiseIntrusion(EntityUid uid, FactionTreasuryConsoleComponent comp)
+    private void TriggerRobbery(EntityUid uid, FactionTreasuryConsoleComponent comp, EntityUid user)
     {
         var now = _timing.CurTime;
 
-        // Arm the breach on the first unauthorized attempt. Once set, the Update loop starts spilling
-        // cash after LootDelay and keeps looting until an authorized member re-secures the console.
-        comp.BreachStart ??= now;
+        SoundAlarm(uid, comp);
+        AnnounceIntrusion(uid, comp);
 
-        if (comp.LastAlarm is not { } lastAlarm || now - lastAlarm >= comp.AlarmCooldown)
+        // Already robbing? Report status instead of stacking another heist on top.
+        if (comp.RobberyStart is not null && comp.RobberyEnd is { } activeEnd && now < activeEnd)
         {
-            comp.LastAlarm = now;
-            _audio.PlayPvs(comp.AlarmSound, uid);
+            var remainingCr = Math.Max(0, comp.RobberyTotal - comp.RobberyDispensed);
+            var minsLeft = Math.Max(1, (int) Math.Ceiling((activeEnd - now).TotalMinutes));
+            _popup.PopupEntity(
+                Loc.GetString("treasury-console-robbery-progress",
+                    ("stolen", comp.RobberyDispensed), ("remaining", remainingCr), ("minutes", minsLeft)),
+                uid, user, PopupType.MediumCaution);
+            return;
         }
 
+        var station = _market.TryGetOwningStation(uid);
+        var balance = station is null ? 0 : _market.GetTreasury(station.Value);
+
+        var target = (int) (balance * comp.RobberyFraction);
+        if (target <= 0)
+        {
+            _popup.PopupEntity(Loc.GetString("treasury-console-robbery-empty"), uid, user, PopupType.MediumCaution);
+            return;
+        }
+
+        comp.RobberyTotal = target;
+        comp.RobberyDispensed = 0;
+        comp.RobberyStart = now;
+        comp.RobberyEnd = now + comp.RobberyDuration;
+        comp.LastLoot = now;
+
+        var mins = Math.Max(1, (int) Math.Round(comp.RobberyDuration.TotalMinutes));
+        var pct = (int) MathF.Round(comp.RobberyFraction * 100f);
+        _popup.PopupEntity(
+            Loc.GetString("treasury-console-robbery-started",
+                ("amount", target), ("percent", pct), ("minutes", mins)),
+            uid, user, PopupType.LargeCaution);
+
+        UpdateUi(uid);
+    }
+
+    /// <summary>Plays the local intrusion alarm, throttled by <see cref="FactionTreasuryConsoleComponent.AlarmInterval"/> so it never spams.</summary>
+    private void SoundAlarm(EntityUid uid, FactionTreasuryConsoleComponent comp)
+    {
+        var now = _timing.CurTime;
+        if (comp.LastAlarm is { } last && now - last < comp.AlarmInterval)
+            return;
+
+        comp.LastAlarm = now;
+        _audio.PlayPvs(comp.AlarmSound, uid);
+    }
+
+    /// <summary>
+    /// Fires a faction-only overwatch alert naming the station (throttled by
+    /// <see cref="FactionTreasuryConsoleComponent.AnnounceCooldown"/>). Only the vault's faction sees it.
+    /// </summary>
+    private void AnnounceIntrusion(EntityUid uid, FactionTreasuryConsoleComponent comp)
+    {
         if (string.IsNullOrEmpty(comp.Faction))
             return;
 
+        var now = _timing.CurTime;
         if (comp.LastAnnounce is { } lastAnnounce && now - lastAnnounce < comp.AnnounceCooldown)
             return;
 
@@ -129,7 +181,8 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
         if (!_access.IsAllowed(args.User, uid))
         {
             _popup.PopupEntity(Loc.GetString("treasury-console-deposit-denied"), uid, args.User, PopupType.MediumCaution);
-            RaiseIntrusion(uid, comp);
+            SoundAlarm(uid, comp);
+            AnnounceIntrusion(uid, comp);
             return;
         }
 
@@ -199,8 +252,9 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
     }
 
     /// <summary>
-    /// The vault is being robbed: after the grace period, an unsecured console repeatedly spills a
-    /// chunk of its treasury as physical cash next to it until it is emptied or re-secured.
+    /// Pays out active robberies: each running heist spills its captured share as physical cash next
+    /// to the console, spread evenly over <see cref="FactionTreasuryConsoleComponent.RobberyDuration"/>,
+    /// then stops on its own. An authorized member operating the console (or an empty vault) ends it early.
     /// </summary>
     public override void Update(float frameTime)
     {
@@ -210,55 +264,69 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
         var query = EntityQueryEnumerator<FactionTreasuryConsoleComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if (comp.BreachStart is not { } start)
+            if (comp.RobberyStart is not { } start || comp.RobberyEnd is not { } end)
                 continue;
 
-            // Grace period after the breach before the vault actually starts leaking.
-            if (now - start < comp.LootDelay)
-                continue;
+            var finished = now >= end;
 
-            if (comp.LastLoot is { } last && now - last < comp.LootInterval)
-                continue;
-
-            var station = _market.TryGetOwningStation(uid);
-            if (station is null)
-                continue;
-
-            var balance = _market.GetTreasury(station.Value);
-            if (balance <= 0)
-            {
-                // Nothing left to steal; the console stays unsecured but idle until re-secured.
-                comp.LastLoot = now;
-                continue;
-            }
-
-            var target = Math.Clamp((int) (balance * comp.LootFraction), comp.LootMinimum, comp.LootMaximum);
-            var stolen = _market.TryWithdrawTreasury(station.Value, target);
-            if (stolen <= 0)
+            // Pace the payout; skip until the next tick unless we're wrapping up.
+            if (!finished && comp.LastLoot is { } last && now - last < comp.RobberyTickInterval)
                 continue;
 
             comp.LastLoot = now;
-            _stack.SpawnMultiple("SpaceCash", stolen, Transform(uid).Coordinates);
-            _audio.PlayPvs(comp.AlarmSound, uid);
-            _popup.PopupEntity(Loc.GetString("treasury-console-looted", ("amount", stolen)), uid, PopupType.LargeCaution);
-            UpdateUi(uid);
+
+            var station = _market.TryGetOwningStation(uid);
+            if (station is not null)
+            {
+                // How much of the captured total should have been paid out by now (linear over the duration).
+                var progress = finished
+                    ? 1.0
+                    : Math.Clamp((now - start).TotalSeconds / comp.RobberyDuration.TotalSeconds, 0.0, 1.0);
+                var due = (int) (comp.RobberyTotal * progress) - comp.RobberyDispensed;
+
+                if (due > 0)
+                {
+                    var stolen = _market.TryWithdrawTreasury(station.Value, due);
+                    if (stolen > 0)
+                    {
+                        comp.RobberyDispensed += stolen;
+                        _stack.SpawnMultiple("SpaceCash", stolen, Transform(uid).Coordinates);
+                        _popup.PopupEntity(Loc.GetString("treasury-console-looted", ("amount", stolen)), uid, PopupType.LargeCaution);
+                        UpdateUi(uid);
+                    }
+                }
+
+                SoundAlarm(uid, comp);
+            }
+
+            if (finished)
+                StopRobbery(comp);
         }
     }
 
-    /// <summary>Clears an active breach: an authorized member has taken control of the console.</summary>
+    /// <summary>Clears any active robbery: it has finished paying out, or an authorized member re-secured the console.</summary>
+    private void StopRobbery(FactionTreasuryConsoleComponent comp)
+    {
+        comp.RobberyStart = null;
+        comp.RobberyEnd = null;
+        comp.RobberyTotal = 0;
+        comp.RobberyDispensed = 0;
+        comp.LastLoot = null;
+    }
+
+    /// <summary>An authorized member has taken control of the console, halting any robbery in progress.</summary>
     private void Resecure(FactionTreasuryConsoleComponent comp)
     {
-        comp.BreachStart = null;
-        comp.LastLoot = null;
+        StopRobbery(comp);
     }
 
     private void UpdateUi(EntityUid uid)
     {
         var station = _market.TryGetOwningStation(uid);
         var balance = station is null ? 0 : _market.GetTreasury(station.Value);
-        var breached = TryComp<FactionTreasuryConsoleComponent>(uid, out var comp) && comp.BreachStart != null;
+        var robbed = TryComp<FactionTreasuryConsoleComponent>(uid, out var comp) && comp.RobberyStart != null;
 
         // Only authorized members can have the UI open, so authorized is always true here.
-        _ui.SetUiState(uid, TreasuryConsoleUiKey.Key, new TreasuryConsoleState(balance, true, breached));
+        _ui.SetUiState(uid, TreasuryConsoleUiKey.Key, new TreasuryConsoleState(balance, true, robbed));
     }
 }

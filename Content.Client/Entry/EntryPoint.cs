@@ -38,7 +38,7 @@ using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 using Content.Client._Forge.DiscordAuth; // Forge-Change
 using Content.Client._Forge.Sponsors; // Forge-Change
-using Content.Client._Rat.JoinQueue;
+using Content.Client._Crescent.JoinQueue;
 
 namespace Content.Client.Entry
 {

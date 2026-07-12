@@ -26,11 +26,11 @@ public sealed partial class FactionTreasuryConsoleComponent : Component
         new SoundPathSpecifier("/Audio/Machines/warning_buzzer.ogg");
 
     /// <summary>
-    /// Minimum time between two intrusion-alarm plays, so repeated access attempts can't
-    /// spam the local sound. Prevents the "constantly blaring" behaviour.
+    /// Minimum time between two intrusion-alarm plays. Set long (minutes) so the alarm sounds
+    /// occasionally through a robbery to signal it's ongoing, without spamming the local sound.
     /// </summary>
     [DataField]
-    public TimeSpan AlarmCooldown = TimeSpan.FromSeconds(10);
+    public TimeSpan AlarmInterval = TimeSpan.FromMinutes(2);
 
     /// <summary>
     /// Minimum time between two sector-wide intrusion announcements. Much longer than the local
@@ -47,39 +47,27 @@ public sealed partial class FactionTreasuryConsoleComponent : Component
     [DataField]
     public float MaxWithdrawFraction = 0.50f;
 
-    // --- Robbery / breach -------------------------------------------------
+    // --- Robbery ----------------------------------------------------------
 
     /// <summary>
-    /// Fraction (0..1) of the current treasury spilled out as physical cash on each loot tick once a
-    /// breach matures. Kept low so the vault bleeds out slowly over the course of the heist rather
-    /// than emptying in seconds; combined with <see cref="LootMinimum"/> this still lets thieves walk
-    /// away with a real chunk given enough time.
+    /// Fraction (0..1) of the vault's balance that a single robbery attempt siphons, paid out
+    /// gradually over <see cref="RobberyDuration"/>. Each unauthorized click that finds the console
+    /// idle starts a fresh heist for this share of whatever is in the vault at that moment.
     /// </summary>
     [DataField]
-    public float LootFraction = 0.05f;
+    public float RobberyFraction = 0.33f;
 
-    /// <summary>Minimum credits spilled per loot tick, so even small vaults visibly drain.</summary>
+    /// <summary>How long one robbery attempt takes to pay out its full share.</summary>
     [DataField]
-    public int LootMinimum = 100;
+    public TimeSpan RobberyDuration = TimeSpan.FromMinutes(10);
 
-    /// <summary>Upper bound on how much a single loot tick can spill, so huge vaults still drain gradually.</summary>
+    /// <summary>How often, while a robbery is running, the next chunk of cash is spilled out.</summary>
     [DataField]
-    public int LootMaximum = 2000;
-
-    /// <summary>
-    /// Grace period after an unauthorized breach begins before the vault actually starts leaking
-    /// cash, giving the faction a window to respond before the robbery pays out.
-    /// </summary>
-    [DataField]
-    public TimeSpan LootDelay = TimeSpan.FromSeconds(60);
-
-    /// <summary>Time between two loot ticks while a breach is active and past its grace period.</summary>
-    [DataField]
-    public TimeSpan LootInterval = TimeSpan.FromSeconds(15);
+    public TimeSpan RobberyTickInterval = TimeSpan.FromSeconds(20);
 
     // --- Runtime state (not authored in YAML) -----------------------------
 
-    /// <summary>Server time the intrusion alarm last played, for cooldown tracking.</summary>
+    /// <summary>Server time the intrusion alarm last played, for throttling.</summary>
     [ViewVariables]
     public TimeSpan? LastAlarm;
 
@@ -88,14 +76,25 @@ public sealed partial class FactionTreasuryConsoleComponent : Component
     public TimeSpan? LastAnnounce;
 
     /// <summary>
-    /// Server time the current unauthorized breach began, or null when the vault is secure. While set,
-    /// the vault is being robbed and (after <see cref="LootDelay"/>) leaks cash until an authorized
-    /// member re-secures it by operating the console.
+    /// Total credits the current robbery will pay out (captured from the balance when it started).
+    /// Zero when no robbery is active.
     /// </summary>
     [ViewVariables]
-    public TimeSpan? BreachStart;
+    public int RobberyTotal;
 
-    /// <summary>Server time the active breach last spilled cash, for loot-tick pacing.</summary>
+    /// <summary>Credits already spilled by the current robbery.</summary>
+    [ViewVariables]
+    public int RobberyDispensed;
+
+    /// <summary>Server time the current robbery began, or null when the vault is idle/secure.</summary>
+    [ViewVariables]
+    public TimeSpan? RobberyStart;
+
+    /// <summary>Server time the current robbery finishes paying out and stops on its own.</summary>
+    [ViewVariables]
+    public TimeSpan? RobberyEnd;
+
+    /// <summary>Server time cash was last spilled by the active robbery, for tick pacing.</summary>
     [ViewVariables]
     public TimeSpan? LastLoot;
 }

@@ -1,0 +1,32 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckGeneralCloak
+  name: general's cloak
+  description: A sturdy cloak worn by high-ranking officers. The fabric is thick and warm, suitable for the harsh conditions of the frontier.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/League/Neck/GeneralNeck.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/League/Neck/GeneralNeck.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckKommissarCloak
+  name: kommissar's cloak
+  description: A sturdy cloak worn by high-ranking officers. The fabric is thick and warm, suitable for the harsh conditions of the frontier.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/League/Neck/KomisarNeck.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/League/Neck/KomisarNeck.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckKommandantMantle
+  name: kommandant's mantle
+  description: A sturdy cloak worn by high-ranking officers. The fabric is thick and warm, suitable for the harsh conditions of the frontier.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/League/Neck/KommandantNeck.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/League/Neck/KommandantNeck.rsi

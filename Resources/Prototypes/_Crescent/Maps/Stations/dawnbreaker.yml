@@ -1,7 +1,7 @@
 - type: gameMap
   id: Dawnbreaker
   mapName: 'CD Anvil'
-  mapPath: /Maps/_Rat/Stations/byblik.yml # Rat-change
+  mapPath: /Maps/_Crescent/Stations/byblik.yml # Rat-change
   minPlayers: 0
   stations:
     Dawnbreaker:

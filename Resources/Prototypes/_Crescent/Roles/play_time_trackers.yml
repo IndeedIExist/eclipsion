@@ -303,3 +303,7 @@
 
 - type: playTimeTracker
   id: ConscriptNCWL
+
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: playTimeTracker
+  id: JobVagrant

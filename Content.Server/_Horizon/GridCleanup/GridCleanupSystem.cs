@@ -12,7 +12,7 @@ using Content.Server.Gateway.Components;
 using Content.Server.Mind;
 using Content.Shared.Ghost;
 using Content.Shared.Parallax.Biomes;
-using Content.Shared._Rat.CCVar;
+using Content.Shared._Crescent.CCVar;
 
 namespace Content.Server._Horizon.GridCleanup;
 

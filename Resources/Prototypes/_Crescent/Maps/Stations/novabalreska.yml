@@ -1,7 +1,7 @@
 - type: gameMap
   id: PortBalreska
   mapName: 'NCWL Nova Balreska'
-  mapPath: /Maps/_Rat/Stations/marsova.yml
+  mapPath: /Maps/_Crescent/Stations/marsova.yml
   minPlayers: 0
   stations:
     PortBalreska:
