@@ -52,5 +52,15 @@ public record struct StockPriceData(
     double BasePrice,
     double CurrentPrice,
     float Multiplier,
-    float PriceChange = 0f
+    float PriceChange = 0f,
+    List<float>? PriceHistory = null
+);
+
+[Serializable, NetSerializable]
+public record struct StockTradeRecord(
+    string CompanyId,
+    int Amount,
+    double PricePerShare,
+    bool IsBuy,
+    TimeSpan Time
 );
