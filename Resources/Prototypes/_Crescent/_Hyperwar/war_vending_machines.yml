@@ -30,68 +30,12 @@
 
 - type: entity
   parent: [BaseStructureUnanchorable, VendingMachine]
-  id: ImperialWarVendory
-  name: imperial divine sol mandate war vendor
-  description: Here you can tithe credits to the Lord Commander for equipment. Sweet, sweet feudalism.
-  components:
-  - type: VendingMachine
-    pack: ImperialWarInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    globalPriceMod: 0
-  - type: Advertise
-    pack: WarVendAds
-  - type: SpeakOnUIClosed
-    pack: GenericVendGoodbyes
-  - type: Speech
-  - type: Sprite
-    sprite: _Crescent/Structures/armory.rsi
-    layers:
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
-    - state: panel
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
-
-- type: entity
-  parent: [BaseStructureUnanchorable, VendingMachine]
   id: RomaineWarVendory
   name: saint romaine hunter militia war vendor
   description: May you return bathed in the blood of the heathens and xeno cattle. Blessed be your blade, that it may strike true.
   components:
   - type: VendingMachine
     pack: RomaineWarInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    globalPriceMod: 0
-  - type: Advertise
-    pack: WarVendAds
-  - type: SpeakOnUIClosed
-    pack: GenericVendGoodbyes
-  - type: Speech
-  - type: Sprite
-    sprite: _Crescent/Structures/armory.rsi
-    layers:
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
-    - state: panel
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
-
-- type: entity
-  parent: [BaseStructureUnanchorable, VendingMachine]
-  id: NCWLWarVendory
-  name: workers league union war vendor
-  description: Weapons to fuel the liberation of this system.
-  components:
-  - type: VendingMachine
-    pack: NCWLWarInventory
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -251,36 +195,6 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-
-- type: entity
-  parent: [BaseStructureUnanchorable, VendingMachine]
-  id: ShipWarVendory
-  name: ship ammunition war vendor
-  description: Here, get all your ship ammo here
-  components:
-  - type: VendingMachine
-    pack: ShipWarInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    globalPriceMod: 0
-  - type: Advertise
-    pack: ShipVendAds
-  - type: SpeakOnUIClosed
-    pack: GenericVendGoodbyes
-  - type: Speech
-  - type: Sprite
-    sprite: _Crescent/Structures/syndicatearmory.rsi
-    layers:
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
-    - state: panel
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: MarketModifier
-    mod: 0.2
 
 - type: entity
   parent: [BaseStructureUnanchorable, VendingMachine]

@@ -159,6 +159,18 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         }
     }
 
+    protected override void Added(EntityUid uid, AdventureRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
+    {
+        base.Added(uid, component, gameRule, args);
+
+        // Select this gamemode's worldgen layout. Preset rules are added inside StartGamePresetRules(),
+        // which runs before RoundStartingEvent, so WorldgenConfigSystem picks up the new value when it
+        // applies worldgen. Every AdventureRule sets this (defaulting to RatWorld), so it also resets
+        // any override left over from a previous round.
+        _configurationManager.SetCVar(CCVars.WorldgenConfig, component.WorldgenConfig);
+        _sawmill.Info($"AdventureRule: worldgen config set to '{component.WorldgenConfig}' (worldgen.worldgen_config CVar).");
+    }
+
     protected override void Started(EntityUid uid, AdventureRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         var mapId = GameTicker.DefaultMap;

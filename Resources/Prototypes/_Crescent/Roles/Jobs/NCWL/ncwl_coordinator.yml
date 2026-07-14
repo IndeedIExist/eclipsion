@@ -2,6 +2,7 @@
   id: WorkerOverbossNCWL
   name: job-name-ncwl-worker-overboss
   description: job-description-ncwl-worker-overboss
+  setPreference: false # hidden from job selection, kept for spawners/admin use
   playTimeTracker: JobLogisticLeaderNCWL
   ranks:
     RatRankNCWLOfficerSenior:

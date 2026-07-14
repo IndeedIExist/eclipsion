@@ -7,6 +7,7 @@ ame-controller-component-fuel-slot-success-insert = You insert the jar into the 
 ame-overload-announcement-sender = Antimatter Engine
 ame-overload-announcement = The antimatter engine aboard {$grid} is critically overloaded! Shut it down immediately or it will be destroyed!
 ame-overload-announcement-unknown-grid = an unknown vessel
+ame-imminent-announcement = The antimatter engine aboard {$grid} has reached critical instability! Detonation in {$seconds} seconds!
 
 ## UI
 

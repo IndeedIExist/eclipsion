@@ -1,3 +1,22 @@
+- type: guideEntry
+  id: Tutorial
+  name: guide-entry-tutorial
+  text: "/ServerInfo/_Crescent/Guidebook/Tutorial.xml"
+  priority: -100
+  children:
+  - MeleeCombat
+  - FormsOfAddress
+
+- type: guideEntry
+  id: MeleeCombat
+  name: Melee Combat
+  text: "/ServerInfo/_Crescent/Guidebook/MeleeCombat.xml"
+
+- type: guideEntry
+  id: FormsOfAddress
+  name: Forms of Address
+  text: "/ServerInfo/_Crescent/Guidebook/FormsOfAddress.xml"
+
 #- type: guideEntry
 #  id: UnionfallDSM
 #  name: Unionfall - DSM Guide (NOT IN USE)

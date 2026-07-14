@@ -33,7 +33,7 @@
       tracker: JobHomeguardSoldatNCWL
       min: 36000 # 10 hours
     RatRankNCWLEnlistedNovice: []
-  weight: 97
+  weight: 96
   startingGear: SoldatNCWLGear
   alwaysUseSpawner: true
   requireAdminNotify: false

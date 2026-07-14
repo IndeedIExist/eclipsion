@@ -903,30 +903,6 @@
     NarcanAutoinjector: 150
 
 - type: vendingMachineInventory
-  id: ShipWarInventory
-  startingInventory:
-    MetalFoamGrenadeFast: 150
-    CartridgeShellHighExplosive: 5000
-    CartridgeShellArmorPiercing: 5000
-    MagazineLightRifleBoxSlug: 5000
-    MagazineLightRifleBoxSlugHE: 5000
-    MagazineMortar: 5000
-    LanceRocketCartridge : 5000
-    MagazineSwarmer: 5000
-    MagazineRocketLowYield: 5000
-    MagazineRocketHighYield: 5000
-    MagazineRocketEMP: 5000
-    TorpGargEMP: 5000
-    TorpGarg: 5000
-    HeavyMortarCartridge: 5000
-    MagazineNeedler: 5000
-    FuelCan: 5000
-    CoolantCartridge30: 5000
-    IdnaTorpedo: 5000
-    MagazineVulcan: 5000
-    MagazineFlak: 5000
-
-- type: vendingMachineInventory
   id: NCWLConscriptWarInventory
   startingInventory:
     WeaponSniperNCWLNovomosin: 100

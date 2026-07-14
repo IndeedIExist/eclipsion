@@ -1,0 +1,363 @@
+# Hyperwar automated armory vendors.
+# Free (no points) CMAutomatedVendor racks that hand out the full WEAPON + ARMOR
+# arsenal from each faction's tech tree, so no research is needed during hyperwar.
+# NCWL pulls from the Communard tree, DSM pulls from the Imperial tree.
+
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarNCWLArmoryVendor
+  name: automated NCWL war armory
+  description: An automated rack wired straight into the League's wartime stockpile. Everything the arsenal can research, no tithe required.
+  components:
+  - type: AccessReader
+    access:
+    - [ "NCWLGeneral" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - PartisanNCWL
+    sections:
+    - name: Primary Weapons
+      entries:
+      - id: WeaponRifleFAL
+        name: MK-2 Falin 5.56x45mm
+        recommended: true
+      - id: WeaponRifleNCWLBatanya
+        name: Batanya battle rifle
+      - id: WeaponSubMachineGunNCWLWatchdog
+        name: DS1 Watchdog 9x19mm
+      - id: WeaponSubMachineGunBloodhound
+        name: Bloodhound SMG
+      - id: WeaponSubMachineGunMilitant
+        name: Militant SMG
+      - id: WeaponShotgunProletar
+        name: Toz-97 Proletariat 12 gauge
+      - id: WeaponShotgunDoubleBarreledNCWL
+        name: double-barreled shotgun
+      - id: WeaponShotgunToz123
+        name: Toz-123 shotgun
+      - id: WeaponLightMachineGunConscript
+        name: Conscript LMG
+      - id: WeaponSniperNCWLNovomosin
+        name: Novomosin sniper rifle
+      - id: WeaponSniperMolot
+        name: Molot sniper rifle
+      - id: WeaponLauncherGM94
+        name: GM-94 grenade launcher
+    - name: Sidearms
+      entries:
+      - id: WeaponPistolComrade
+        name: Comrade pistol
+      - id: WeaponPistolT91
+        name: T91 pistol
+      - id: WeaponRevolverPython
+        name: Python revolver
+    - name: Melee
+      entries:
+      - id: NCWLLugBaton
+        name: lug baton
+      - id: NCWLKukri
+        name: vibro kukri
+    - name: Armor
+      entries:
+      - id: NCWLRiotShield
+        name: riot shield
+      - id: RiotBulletShield
+        name: bullet shield
+      - id: ClothingOuterHardsuitNCWLInfantry
+        name: infantry hardsuit
+      - id: ClothingOuterHardsuitNCWLPetya
+        name: Petya heavy hardsuit
+      - id: ClothingOuterHardsuitNCWLJuggernaut
+        name: Commienaut juggernaut hardsuit
+      - id: ClothingOuterHardsuitNCWLEngi
+        name: engineer hardsuit
+      - id: ClothingOuterHardsuitNCWLMedi
+        name: medic hardsuit
+    - name: Ammunition
+      entries:
+      - id: MagazineLightRifle
+        name: 30-round magazine (5.56x45mm)
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm)
+      - id: MagazineShotgun
+        name: 10-round magazine (12 gauge)
+      - id: MagazinePistol
+        name: pistol magazine
+      - id: MagazineRifle
+        name: rifle magazine
+    - name: Utilities
+      entries:
+      - id: JetpackCaptainFilled
+      - id: HandHeldMassScannerEE
+      - id: BoxMRE
+    - name: Medical
+      entries:
+      - id: MedkitCombatFilled
+      - id: Medipen
+      - id: EmergencyMedipen
+      - id: CombatMedipen
+      - id: SpaceMedipen
+      - id: AntiPoisonMedipen
+      - id: ChemicalMedipen
+      - id: PainMedipen
+      - id: SurvivalMedipen
+      - id: BruteAutoInjector
+      - id: BurnAutoInjector
+      - id: AirlossAutoInjector
+
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarDSMArmoryVendor
+  name: automated DSM war armory
+  description: An automated rack wired straight into the Mandate's wartime stockpile. Everything the arsenal can research, no tithe required.
+  components:
+  - type: AccessReader
+    access:
+    - [ "EmpireSoldier" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/armory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - LevymanDSM
+    sections:
+    - name: Primary Weapons
+      entries:
+      - id: WeaponRifleMiller
+        name: DA-8 Miller 5.56x45mm
+        recommended: true
+      - id: WeaponRifleHunter
+        name: Hunter rifle
+      - id: WeaponRifleDSMLegionnaire
+        name: Legionnaire rifle
+      - id: WeaponSubMachineGunC20rHullrot
+        name: C-20r SMG
+      - id: WeaponSubMachineGunBeetle
+        name: Mac-11 Beetle 9x19mm
+      - id: WeaponShotgunDSMMatusa
+        name: Matusa shotgun
+      - id: WeaponShotgunReno
+        name: DA-13 Reno 12 gauge
+      - id: WeaponLightMachineGunDSMDominion
+        name: Dominion LMG
+      - id: WeaponSniperDSMLegax
+        name: Legax sniper rifle
+      - id: WeaponSniperImperator
+        name: Imperator sniper rifle
+      - id: WeaponDSMPlasmaRifle
+        name: Seethe plasma rifle
+      - id: WeaponLauncherM320
+        name: M320 grenade launcher
+    - name: Sidearms
+      entries:
+      - id: WeaponPistolComplianceImperial
+        name: Compliance pistol
+      - id: WeaponPistolNeoVolker
+        name: Neo-Volker pistol
+      - id: WeaponRevolverArgenti
+        name: Argenti revolver
+    - name: Melee
+      entries:
+      - id: DSMRapier
+        name: dueling rapier
+      - id: DSMSabre
+        name: sabre
+      - id: ZweihanderDSM
+        name: zweihander
+      - id: DSMDuelingKhopesh
+        name: dueling khopesh
+      - id: SRMKhopesh
+        name: vibro khopesh
+      - id: DSMBaton
+        name: baton
+      - id: ImperialPsionBoundlightStaff
+        name: boundlight staff
+    - name: Armor
+      entries:
+      - id: RiotBulletShield
+        name: bullet shield
+      - id: ClothingOuterHardsuitImperialSoldier
+        name: soldier hardsuit
+      - id: ClothingOuterHardsuitImperialKnight
+        name: knight hardsuit
+      - id: ClothingOuterHardsuitImperialNullweavePsion
+        name: nullweave psion hardsuit
+      - id: ClothingOuterHardsuitImperialJuggernaut
+        name: juggernaut hardsuit
+      - id: ClothingOuterHardsuitImperialWorker
+        name: worker hardsuit
+    - name: Ammunition
+      entries:
+      - id: MagazineLightRifle
+        name: 30-round magazine (5.56x45mm)
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm)
+      - id: MagazineShotgun
+        name: 10-round magazine (12 gauge)
+      - id: MagazinePistol
+        name: pistol magazine
+      - id: MagazineRifle
+        name: rifle magazine
+    - name: Utilities
+      entries:
+      - id: JetpackCaptainFilled
+      - id: HandHeldMassScannerEE
+      - id: BoxMRE
+    - name: Medical
+      entries:
+      - id: MedkitCombatFilled
+      - id: Medipen
+      - id: EmergencyMedipen
+      - id: CombatMedipen
+      - id: SpaceMedipen
+      - id: AntiPoisonMedipen
+      - id: ChemicalMedipen
+      - id: PainMedipen
+      - id: SurvivalMedipen
+      - id: BruteAutoInjector
+      - id: BurnAutoInjector
+      - id: AirlossAutoInjector
+
+# Automated ship ammunition depot (replaces the old credit-based ShipWarVendory).
+# Free, unlimited, open to everyone (no AccessReader) so any ship crew can restock.
+# Entry names are omitted so each shows its own prototype name.
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarShipAmmoVendor
+  name: automated ship ordnance depot
+  description: An automated depot wired into the fleet magazines. All ship-gun ordnance, free to restock.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    sections:
+    - name: Autocannon Drums
+      entries:
+      - id: Magazine20mm
+      - id: Magazine20mmFrag
+      - id: Magazine35mm
+      - id: Magazine35mmHE
+      - id: Magazine50mm
+      - id: Magazine50mmHE
+      - id: Magazine50mmSAPHE
+    - name: 90mm Autocannon Clips
+      entries:
+      - id: MagazineResolute
+      - id: MagazineResoluteAP
+      - id: MagazineResoluteHE
+    - name: Cannon Shells
+      entries:
+      - id: Cartridge90mm
+      - id: Cartridge90mmAP
+      - id: Cartridge90mmHE
+      - id: Cartridge120mm
+      - id: Cartridge120mmFlak
+      - id: Cartridge120mmFlux
+      - id: Cartridge300mm
+    - name: Missiles & Rockets
+      entries:
+      - id: Cartridge48mmRocket
+      - id: Cartridge48mmRocketGorlex
+      - id: Magazine48mmRocket
+      - id: Magazine48mmRocketGorlex
+      - id: Cartridge95mmRocket
+      - id: Cartridge95mmRocketNCWL
+      - id: Cartridge95mmRocketGSC
+      - id: Cartridge330mmRocket
+    - name: Shipgun Ordnance
+      entries:
+      - id: MagazineLightRifleBoxSlugInert
+      - id: MagazineLightRifleBoxSlugEMP
+      - id: LensXray
+      - id: LensInfared
+      - id: LensMicrowave
+      - id: LensPlasma
+      - id: StandardAntimatterCanister
+      - id: PlasmaAntimatterCanister
+      - id: GuidedAntimatterCanister
+      - id: SwarmrocketClip
+      - id: TorpCatapult
+      - id: SwarmerRocketsGuidedCartridge
+      - id: SwarmerRocketCartridge
+      - id: Needler
+      - id: SmartBomb
+      - id: CartridgeRailHighExplosive
+      - id: CartridgeRocketLowYield
+      - id: CartridgeRocketHighYield
+      - id: CartridgeRocketEMP
+      - id: PowerCageHardliner
+
+# Automated ship LPC (fabprint disk) vendors, one per faction.
+# Every regular NCWL / DSM ship LPC, free. Unionfall event ships are NOT included.
+# Redeem the disk at a shipyard console to spawn the ship.
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarNCWLShipVendor
+  name: automated NCWL LPC printer
+  description: An automated fabprint press stocked with every League ship pattern. Redeem a disk at a shipyard console.
+  components:
+  - type: AccessReader
+    access:
+    - [ "NCWLGeneral" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - PartisanNCWL
+    sections:
+    - name: Warships
+      entries:
+      - id: ShipVoucherVanguard
+      - id: ShipVoucherLodka
+      - id: ShipVoucherKrechet
+      - id: ShipVoucherMolot
+      - id: ShipVoucherIvarod
+      - id: ShipVoucherHind
+      - id: ShipVoucherGargut
+      - id: ShipVoucherStern
+      - id: ShipVoucherSunder
+      - id: ShipVoucherBogatyr
+    - name: Drones
+      entries:
+      - id: ShipVoucherHornetDrone
+      - id: ShipVoucherWaspDrone
+
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarDSMShipVendor
+  name: automated DSM LPC printer
+  description: An automated fabprint press stocked with every Mandate ship pattern. Redeem a disk at a shipyard console.
+  components:
+  - type: AccessReader
+    access:
+    - [ "EmpireSoldier" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/armory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - LevymanDSM
+    sections:
+    - name: Warships
+      entries:
+      - id: ShipVoucherIbis
+      - id: ShipVoucherPraetorian
+      - id: ShipVoucherCovetor
+      - id: ShipVoucherRaider
+      - id: ShipVoucherTorturer
+      - id: ShipVoucherLaelaps
+      - id: ShipVoucherRedemptor
+      - id: ShipVoucherPerigale
+      - id: ShipVoucherKhan
+      - id: ShipVoucherJanissary
+      - id: ShipVoucherMagnate
+      - id: ShipVoucherSunesis
+      - id: ShipVoucherPraxis
+      - id: ShipVoucherGnosis
+      - id: ShipVoucherNemesis
+      - id: ShipVoucherTriumphant
+      - id: ShipVoucherSuzerain
+    - name: Drones
+      entries:
+      - id: ShipVoucherRocinanteDrone
+      - id: ShipVoucherValorDrone

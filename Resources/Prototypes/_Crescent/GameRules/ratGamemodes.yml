@@ -78,136 +78,42 @@
         posX: -2000
         posY: 2000
 
+# HYPERWAR: NCWL vs DSM clashing over the central asteroid belt.
+# Uses the special RatWorldHyperwar worldgen (central belt kept, surrounding ring removed).
 - type: gamePreset
-  id: RatAdventureFreeport
+  id: RatHyperwar
   alias:
-  - ratadventurefreeport
-  name: Free Play (Freeport)
+  - rathyperwar
+  - hyperwar
+  name: Hyperwar | NCWL vs DSM
   showInVote: true
-  description: The final hours of Taypan. Last 2-4 hours.
+  description: NCWL and DSM wage a brutal hyperwar over the heart of Taypan. Last 2-4 hours.
   rules:
-  - RatAdventureFreeport
+  - RatHyperwar
   - HullrotEventScheduler
 
 - type: entity
-  id: RatAdventureFreeport
+  id: RatHyperwar
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
   - type: GamemodeRespawnTime
     respawnTimeMinutes: 10
   - type: AdventureRule
-    gameMapsByID:
-      PortBalreska:
-        gameMapID: PortBalreska
-        posX: -3000
-        posY: -7000
-        IFFColor: Orange
-        IFFFaction: NCWL
-      AuroraImperialis:
-        gameMapID: AuroraImperialis
-        posX: 3000
-        posY: 7000
-        IFFColor: "#C677A5"
-        IFFFaction: DSM
-      Tatsumoto:
-        gameMapID: Tatsumoto
-        posX: -6000
-        posY: 1000
-        IFFColor: White
-        IFFFaction: SHI
-      Refuge:
-        gameMapID: Refuge
-        posX: -3000
-        posY: 7000
-        IFFColor: Green
-        IFFFaction: SRM
-        randomOffsetX: 2000
-        randomOffsetY: 2000
-      Freeport:
-        gameMapID: Freeport
-        posX: 7000
-        posY: -2000
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-      TribalHideout:
-        gameMapID: TribalHideout
-        posX: 2000
-        posY: -7000
-        IFFColor: White
-        IFFFaction: TAP
-        randomOffsetX: 2000
-        randomOffsetY: 2000
-      IronRing:
-        gameMapID: IronRing
-        posX: -3000
-        posY: 500
-      RatFakel:
-        gameMapID: RatFakel
-        posX: 0
-        posY: 0
-      RatBuran:
-        gameMapID: RatBuran
-        posX: -2500
-        posY: 3500
-      RatKovf:
-        gameMapID: RatKovf
-        posX: 500
-        posY: -4300
-      RatResearchLabratory:
-        gameMapID: RatResearchLabratory
-        posX: -2000
-        posY: 2000
-
-- type: gamePreset
-  id: RatAdventureWar
-  alias:
-  - ratwar
-  name: Freeplay (DSM,NCWL and Gliess Santo)
-  showInVote: true
-  description: The final hours of Taypan. Last 2-4 hours.
-  rules:
-  - RatAdventureWar
-  - HullrotEventScheduler
-
-- type: entity
-  id: RatAdventureWar
-  parent: BaseGameRule
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: GamemodeRespawnTime
-    respawnTimeMinutes: 10
-  - type: AdventureRule
+    worldgenConfig: RatWorldHyperwar
     gameMapsByID:
       PortBalreska:
         gameMapID: PortBalreska
         posX: 0
-        posY: -5000
+        posY: -4500
         IFFColor: Orange
         IFFFaction: NCWL
       AuroraImperialis:
         gameMapID: AuroraImperialis
         posX: 0
-        posY: 5000
+        posY: 4500
         IFFColor: "#C677A5"
         IFFFaction: DSM
-      GliessSanto:
-        gameMapID: GliessSanto
-        posX: -3000
-        posY: 0
-        IFFColor: "#429cbd"
-      RatFakel:
-        gameMapID: RatFakel
-        posX: 0
-        posY: 0
-      RatBuran:
-        gameMapID: RatBuran
-        posX: -3000
-        posY: 3000
-      RatKovf:
-        gameMapID: RatKovf
-        posX: 3000
-        posY: -3000
 
 - type: gamePreset
   id: Planetfall
@@ -233,7 +139,7 @@
   - planetfall_surgeon
   rules:
   - Planetfall
-  
+
 - type: entity
   id: Planetfall
   parent: BaseGameRule
@@ -247,74 +153,3 @@
         gameMapID: PlanetfallMap
         posX: 0
         posY: 0
-
-- type: gamePreset
-  id: RatAdventureWarSHI
-  alias:
-  - ratwarshi
-  - ratshiw
-  name: Freeplay (SHI vs TFSC)
-  showInVote: true
-  description: Brutal war between corporations. Last 2-4 hours.
-  rules:
-  - RatAdventureWarSHI
-  - HullrotEventScheduler
-
-- type: entity
-  id: RatAdventureWarSHI
-  parent: BaseGameRule
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: GamemodeRespawnTime
-    respawnTimeMinutes: 10
-  - type: AdventureRule
-    gameMapsByID:
-      Tatsumoto:
-        gameMapID: Tatsumoto
-        posX: -5000
-        posY: 0
-        IFFColor: White
-        IFFFaction: SHI
-
-      Dochenskaya:
-        gameMapID: Dochenskaya
-        posX: 5000
-        posY: 0
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-
-      Jackal:
-        gameMapID: Jackal
-        posX: 5000
-        posY: 500
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-
-      Dawnbreaker:
-        gameMapID: Dawnbreaker
-        posX: 5000
-        posY: -500
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-
-      Hayes:
-        gameMapID: Hayes
-        posX: 5500
-        posY: 0
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-
-      RatFakel:
-        gameMapID: RatFakel
-        posX: 0
-        posY: 0
-
-      RatBuran:
-        gameMapID: RatBuran
-        posX: -3000
-        posY: 3000
-
-      RatKovf:
-        gameMapID: RatKovf
-        posX: 3000
-        posY: -3000

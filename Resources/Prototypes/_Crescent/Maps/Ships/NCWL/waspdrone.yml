@@ -1,0 +1,26 @@
+- type: vessel
+  id: WaspDrone
+  name: NCWL Wasp
+  description: A fighter drone.
+  price: 12500
+  category: Small
+  group: None
+  path: /Maps/_Crescent/Shuttles/NCWL/waspdrone.yml
+
+- type: gameMap
+  id: WaspDrone
+  mapName: 'NCWL Wasp'
+  mapPath: /Maps/_Crescent/Shuttles/NCWL/waspdrone.yml
+  minPlayers: 0
+  stations:
+    WaspDrone:
+      stationProto: StandardCrescentVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'NCWL Wasp {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'

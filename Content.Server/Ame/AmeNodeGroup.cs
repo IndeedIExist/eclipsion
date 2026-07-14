@@ -201,8 +201,9 @@ public sealed class AmeNodeGroup : BaseNodeGroup
         */
 
         // A "full" AME (many cores, high injection) should detonate hard again.
-        // Scale the total intensity by the number of cores so bigger reactors blow bigger.
-        var intensity = exp.TotalIntensity * CoreCount;
+        // Scale the total intensity by the number of cores so bigger reactors blow bigger,
+        // and multiply hard so a maxed reactor levels the whole vessel like it used to.
+        var intensity = exp.TotalIntensity * CoreCount * 10;
         _entMan.System<ExplosionSystem>().TriggerExplosive(MasterController.Value, exp, delete: false, intensity);
     }
 }

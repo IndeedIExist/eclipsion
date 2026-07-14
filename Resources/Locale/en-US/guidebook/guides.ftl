@@ -128,6 +128,8 @@ guide-entry-rules-ban-durations = Ban Durations
 guide-entry-writing = Writing
 guide-entry-glossary = Glossary
 
+guide-entry-tutorial = Tutorial
+
 guide-entry-altars-golemancy = Altars and Golemancy
 guide-entry-glimmer-creatures = Glimmer Creatures
 guide-entry-reverse-engineering = Reverse Engineering

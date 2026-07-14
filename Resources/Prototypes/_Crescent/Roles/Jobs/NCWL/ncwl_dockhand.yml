@@ -2,6 +2,7 @@
   id: DockhandNCWL
   name: job-name-ncwl-worker-dockhand
   description: job-description-ncwl-worker-dockhand
+  setPreference: false # hidden from job selection, kept for spawners/admin use
   playTimeTracker: JobLogisticWorkerNCWL
   ranks:
     RatRankNCWLEnlistedTop:

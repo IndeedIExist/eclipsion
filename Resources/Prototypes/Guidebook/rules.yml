@@ -5,10 +5,16 @@
 
 - type: guideEntry
   id: HullrotRuleset
-  name: Hullrot Rules
+  name: Hullrot
   text: "/ServerInfo/_Crescent/ServerRules/HullrotRuleset.xml"
   children:
   - RoleplayRules
+  - Tutorial
+  - Controls
+  - Glossary
+  - Writing
+  - Radio
+  - Chemicals
 
 - type: guideEntry
   id: RoleplayRules
