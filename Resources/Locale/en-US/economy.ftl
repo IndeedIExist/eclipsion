@@ -1,4 +1,4 @@
-﻿ent-EconomicConsole = economic monitor
+ent-EconomicConsole = economic monitor
     .desc = A terminal for monitoring market prices and stock trends.
 ent-StockMarketCartridge = stock market cartridge
     .desc = A cartridge for trading stocks and monitoring market trends.
@@ -102,6 +102,19 @@ stock-market-refresh = Refresh
 stock-market-no-portfolio = You don't own any stocks yet
 stock-market-price-up = [color=lime]UP[/color]
 stock-market-price-down = [color=red]DOWN[/color]
+stock-market-balance = Balance: {$balance}
+stock-market-qty = Qty:
+stock-market-qty-all = All
+stock-market-tab-market = Market
+stock-market-tab-portfolio = Portfolio
+stock-market-tab-history = History
+stock-market-total-value = Total value: {$value}cr
+stock-market-no-holdings = You don't own any stocks yet
+stock-market-no-trades = No trades this shift
+stock-market-history-buy = Bought
+stock-market-history-sell = Sold
+stock-market-toast-bought = Bought {$amount} × {$company} for {$total}cr
+stock-market-toast-sold = Sold {$amount} × {$company} for {$total}cr
 stock-company-shi = SHI
 stock-company-tfsc = TFSC
 stock-company-dsm = DSM

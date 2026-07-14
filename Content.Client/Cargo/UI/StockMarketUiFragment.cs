@@ -1,15 +1,32 @@
 using System.Linq;
+using Content.Shared.Cargo.Cartridges;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Timing;
 
 namespace Content.Client.Cargo.UI;
 
 public sealed partial class StockMarketUiFragment : BoxContainer
 {
-    private readonly Label _statusLabel;
-    private readonly Label _portfolioLabel;
-    private readonly ScrollContainer _stockScroll;
-    private readonly BoxContainer _stockList;
+    private static readonly Color UpColor = StockPriceChart.UpColor;
+    private static readonly Color DownColor = StockPriceChart.DownColor;
+    private static readonly Color NeutralColor = StockPriceChart.NeutralColor;
+
+    private readonly Label _balanceLabel;
+    private readonly OptionButton _amountSelector;
+    private readonly TabContainer _tabs;
+    private readonly BoxContainer _marketList;
+    private readonly BoxContainer _portfolioList;
+    private readonly BoxContainer _historyList;
+    private readonly Label _toastLabel;
+
+    private const int AllAmount = -1;
+
+    private static readonly int[] TradeAmounts = { 1, 5, 10, 25, AllAmount };
+    private int _tradeAmount = 1;
+    private int _lastHistoryCount = -1;
+    private float _toastTimer;
+    private StockMarketUiState? _lastState;
 
     public Action<string, int>? OnBuyPressed;
     public Action<string, int>? OnSellPressed;
@@ -21,84 +38,180 @@ public sealed partial class StockMarketUiFragment : BoxContainer
         VerticalExpand = true;
         Margin = new Thickness(4);
 
-        var titleLabel = new Label
+        var header = new BoxContainer
+        {
+            Orientation = LayoutOrientation.Horizontal,
+            HorizontalExpand = true,
+        };
+
+        header.AddChild(new Label
         {
             Text = Loc.GetString("stock-market-app-title"),
             StyleClasses = { "LabelHeading" },
-            HorizontalAlignment = HAlignment.Center,
-        };
-        AddChild(titleLabel);
+            HorizontalExpand = true,
+        });
 
-        _statusLabel = new Label
+        _balanceLabel = new Label
         {
-            Text = Loc.GetString("economic-console-loading"),
-            HorizontalAlignment = HAlignment.Center,
-            Margin = new Thickness(0, 4),
+            Text = Loc.GetString("stock-market-balance", ("balance", "—")),
+            HorizontalAlignment = HAlignment.Right,
+            VerticalAlignment = VAlignment.Center,
         };
-        AddChild(_statusLabel);
+        header.AddChild(_balanceLabel);
+        AddChild(header);
 
-        _portfolioLabel = new Label
+        var controlsRow = new BoxContainer
         {
-            Text = Loc.GetString("stock-market-portfolio") + ": 0",
-            HorizontalAlignment = HAlignment.Center,
-            StyleClasses = { "LabelHeading" },
-            Margin = new Thickness(0, 4),
+            Orientation = LayoutOrientation.Horizontal,
+            HorizontalExpand = true,
+            Margin = new Thickness(0, 2),
         };
-        AddChild(_portfolioLabel);
 
-        _stockScroll = new ScrollContainer
+        controlsRow.AddChild(new Label
+        {
+            Text = Loc.GetString("stock-market-qty"),
+            VerticalAlignment = VAlignment.Center,
+            Margin = new Thickness(0, 0, 4, 0),
+        });
+
+        _amountSelector = new OptionButton();
+        for (var i = 0; i < TradeAmounts.Length; i++)
+        {
+            var label = TradeAmounts[i] == AllAmount
+                ? Loc.GetString("stock-market-qty-all")
+                : $"x{TradeAmounts[i]}";
+            _amountSelector.AddItem(label, i);
+        }
+        _amountSelector.OnItemSelected += args =>
+        {
+            _amountSelector.SelectId(args.Id);
+            _tradeAmount = TradeAmounts[args.Id];
+
+            if (_lastState != null)
+                UpdateMarketTab(_lastState);
+        };
+        controlsRow.AddChild(_amountSelector);
+        AddChild(controlsRow);
+
+        _tabs = new TabContainer
         {
             HorizontalExpand = true,
             VerticalExpand = true,
         };
 
-        _stockList = new BoxContainer
+        _marketList = MakeTab("stock-market-tab-market", 0, out var marketScroll);
+        _portfolioList = MakeTab("stock-market-tab-portfolio", 1, out var portfolioScroll);
+        _historyList = MakeTab("stock-market-tab-history", 2, out var historyScroll);
+
+        _tabs.AddChild(marketScroll);
+        _tabs.AddChild(portfolioScroll);
+        _tabs.AddChild(historyScroll);
+
+        _tabs.SetTabTitle(0, Loc.GetString("stock-market-tab-market"));
+        _tabs.SetTabTitle(1, Loc.GetString("stock-market-tab-portfolio"));
+        _tabs.SetTabTitle(2, Loc.GetString("stock-market-tab-history"));
+        AddChild(_tabs);
+
+        _toastLabel = new Label
+        {
+            HorizontalAlignment = HAlignment.Center,
+            Margin = new Thickness(0, 2),
+            Visible = false,
+        };
+        AddChild(_toastLabel);
+    }
+
+    private static BoxContainer MakeTab(string locKey, int index, out ScrollContainer scroll)
+    {
+        var list = new BoxContainer
         {
             Orientation = LayoutOrientation.Vertical,
             HorizontalExpand = true,
         };
 
-        _stockScroll.AddChild(_stockList);
-        AddChild(_stockScroll);
+        scroll = new ScrollContainer
+        {
+            HorizontalExpand = true,
+            VerticalExpand = true,
+        };
+        scroll.AddChild(list);
+        return list;
     }
 
-    public void UpdateState(Content.Shared.Cargo.Cartridges.StockMarketUiState state)
+    protected override void FrameUpdate(FrameEventArgs args)
     {
-        _stockList.RemoveAllChildren();
+        base.FrameUpdate(args);
+
+        if (!_toastLabel.Visible)
+            return;
+
+        _toastTimer -= args.DeltaSeconds;
+        if (_toastTimer <= 0f)
+            _toastLabel.Visible = false;
+    }
+
+    private void ShowToast(string text, Color color)
+    {
+        _toastLabel.Text = text;
+        _toastLabel.FontColorOverride = color;
+        _toastLabel.Visible = true;
+        _toastTimer = 4f;
+    }
+
+    public void UpdateState(StockMarketUiState state)
+    {
+        _lastState = state;
+
+        _balanceLabel.Text = state.Balance is { } balance
+            ? Loc.GetString("stock-market-balance", ("balance", $"{balance}cr"))
+            : Loc.GetString("stock-market-balance", ("balance", "—"));
+
+        UpdateMarketTab(state);
+        UpdatePortfolioTab(state);
+        UpdateHistoryTab(state);
+
+        if (_lastHistoryCount >= 0 && state.History.Count > _lastHistoryCount)
+        {
+            var trade = state.History[^1];
+            var name = Loc.GetString(trade.CompanyId);
+            var key = trade.IsBuy ? "stock-market-toast-bought" : "stock-market-toast-sold";
+            var total = trade.Amount * trade.PricePerShare;
+            ShowToast(
+                Loc.GetString(key, ("amount", trade.Amount), ("company", name), ("total", $"{total:F0}")),
+                trade.IsBuy ? UpColor : DownColor);
+        }
+        _lastHistoryCount = state.History.Count;
+    }
+
+    private void UpdateMarketTab(StockMarketUiState state)
+    {
+        _marketList.RemoveAllChildren();
 
         if (state.Prices.Count == 0)
         {
-            _statusLabel.Text = Loc.GetString("economic-console-no-data");
-            _portfolioLabel.Text = Loc.GetString("stock-market-portfolio") + ": 0";
+            _marketList.AddChild(new Label
+            {
+                Text = Loc.GetString("economic-console-no-data"),
+                HorizontalAlignment = HAlignment.Center,
+                Margin = new Thickness(0, 8),
+            });
             return;
         }
 
-        var totalShares = 0;
-        var totalValue = 0.0;
-        foreach (var (id, shares) in state.Portfolio)
-        {
-            totalShares += shares;
-            if (state.Prices.TryGetValue(id, out var price))
-                totalValue += shares * price.CurrentPrice;
-        }
-
-        _statusLabel.Text = Loc.GetString("stock-market-available") + $": {state.Prices.Count}";
-        _portfolioLabel.Text = Loc.GetString("stock-market-portfolio") + $": {totalShares} | {totalValue:F0}cr";
-
-        var stocksToShow = state.Prices
-            .OrderByDescending(p => Math.Abs(p.Value.PriceChange))
-            .Take(20)
+        var stocks = state.Prices
+            .OrderBy(p => Loc.GetString(p.Key))
             .ToList();
 
-        foreach (var (id, price) in stocksToShow)
+        foreach (var (id, price) in stocks)
         {
-            var row = CreateStockRow(id, price, state.Portfolio.GetValueOrDefault(id, 0));
-            _stockList.AddChild(row);
+            _marketList.AddChild(CreateStockRow(id, price, state));
         }
     }
 
-    private Control CreateStockRow(string id, Content.Shared.Cargo.Cartridges.StockPriceData price, int owned)
+    private Control CreateStockRow(string id, StockPriceData price, StockMarketUiState state)
     {
+        var owned = state.Portfolio.GetValueOrDefault(id, 0);
+
         var container = new BoxContainer
         {
             Orientation = LayoutOrientation.Vertical,
@@ -113,68 +226,204 @@ public sealed partial class StockMarketUiFragment : BoxContainer
         };
 
         var displayName = Loc.GetString(id);
-        var nameLabel = new Label
+        infoRow.AddChild(new Label
         {
             Text = TruncateString(displayName, 20),
             HorizontalExpand = true,
-            MinWidth = 130,
             StyleClasses = { "LabelHeading" },
-        };
+        });
+
+        var trendColor = price.PriceChange > 0 ? UpColor
+            : price.PriceChange < 0 ? DownColor
+            : NeutralColor;
 
         var changeText = price.PriceChange >= 0 ? "▲" : "▼";
-        var priceLabel = new Label
+        infoRow.AddChild(new Label
         {
-            Text = $"{price.CurrentPrice:F0}cr {changeText}{Math.Abs(price.PriceChange * 100):F0}%",
-            MinWidth = 100,
+            Text = $"{price.CurrentPrice:F0}cr {changeText}{Math.Abs(price.PriceChange * 100):F1}%",
             HorizontalAlignment = HAlignment.Right,
-        };
-
-        infoRow.AddChild(nameLabel);
-        infoRow.AddChild(priceLabel);
+            FontColorOverride = trendColor,
+        });
         container.AddChild(infoRow);
+
+        if (price.PriceHistory is { Count: > 1 })
+        {
+            var chart = new StockPriceChart
+            {
+                HorizontalExpand = true,
+                MinHeight = 42,
+                Margin = new Thickness(0, 2),
+            };
+            chart.SetData(price.PriceHistory, (float) price.BasePrice);
+            container.AddChild(chart);
+        }
 
         var actionRow = new BoxContainer
         {
             Orientation = LayoutOrientation.Horizontal,
             HorizontalExpand = true,
-            HorizontalAlignment = HAlignment.Right,
         };
 
-        var ownedLabel = new Label
+        actionRow.AddChild(new Label
         {
             Text = Loc.GetString("stock-market-owned") + $": {owned}",
-            MinWidth = 80,
+            HorizontalExpand = true,
             VerticalAlignment = VAlignment.Center,
-        };
+        });
 
+        var sellAmount = _tradeAmount;
+        var buyAmount = _tradeAmount;
+        if (_tradeAmount == AllAmount)
+        {
+            sellAmount = Math.Min(owned, StockMarketTrading.MaxStockAmount);
+
+            var perShare = price.CurrentPrice;
+            buyAmount = state.Balance is { } b && perShare > 0
+                ? (int) Math.Clamp(Math.Floor(b / perShare), 0, StockMarketTrading.MaxStockAmount)
+                : 0;
+        }
+
+        var proceeds = price.CurrentPrice * sellAmount;
         var sellButton = new Button
         {
             Text = Loc.GetString("stock-market-sell-btn"),
             MinWidth = 50,
-            Disabled = owned <= 0,
+            Disabled = sellAmount <= 0 || owned < sellAmount,
+            ToolTip = $"x{sellAmount} = {proceeds:F0}cr",
         };
-        sellButton.OnPressed += _ => OnSellPressed?.Invoke(id, 1);
+        var sellCapture = sellAmount;
+        sellButton.OnPressed += _ => OnSellPressed?.Invoke(id, sellCapture);
 
+        var cost = price.CurrentPrice * buyAmount;
         var buyButton = new Button
         {
             Text = Loc.GetString("stock-market-buy-btn"),
             MinWidth = 50,
+            Disabled = buyAmount <= 0 || (state.Balance is { } bal && bal < cost),
+            ToolTip = $"x{buyAmount} = {cost:F0}cr",
         };
-        buyButton.OnPressed += _ => OnBuyPressed?.Invoke(id, 1);
+        var buyCapture = buyAmount;
+        buyButton.OnPressed += _ => OnBuyPressed?.Invoke(id, buyCapture);
 
-        actionRow.AddChild(ownedLabel);
         actionRow.AddChild(sellButton);
         actionRow.AddChild(buyButton);
         container.AddChild(actionRow);
 
-        var separator = new Control
+        container.AddChild(new PanelContainer
         {
             MinHeight = 1,
             Margin = new Thickness(0, 4),
-        };
-        container.AddChild(separator);
+            StyleClasses = { "LowDivider" },
+        });
 
         return container;
+    }
+
+    private void UpdatePortfolioTab(StockMarketUiState state)
+    {
+        _portfolioList.RemoveAllChildren();
+
+        var holdings = state.Portfolio
+            .Where(p => p.Value > 0)
+            .OrderBy(p => Loc.GetString(p.Key))
+            .ToList();
+
+        if (holdings.Count == 0)
+        {
+            _portfolioList.AddChild(new Label
+            {
+                Text = Loc.GetString("stock-market-no-holdings"),
+                HorizontalAlignment = HAlignment.Center,
+                Margin = new Thickness(0, 8),
+            });
+            return;
+        }
+
+        var totalValue = 0.0;
+        foreach (var (id, shares) in holdings)
+        {
+            if (state.Prices.TryGetValue(id, out var price))
+                totalValue += shares * price.CurrentPrice;
+        }
+
+        _portfolioList.AddChild(new Label
+        {
+            Text = Loc.GetString("stock-market-total-value", ("value", $"{totalValue:F0}")),
+            StyleClasses = { "LabelHeading" },
+            Margin = new Thickness(0, 0, 0, 4),
+        });
+
+        foreach (var (id, shares) in holdings)
+        {
+            var row = new BoxContainer
+            {
+                Orientation = LayoutOrientation.Horizontal,
+                HorizontalExpand = true,
+                Margin = new Thickness(0, 1),
+            };
+
+            row.AddChild(new Label
+            {
+                Text = TruncateString(Loc.GetString(id), 20),
+                HorizontalExpand = true,
+            });
+
+            var valueText = state.Prices.TryGetValue(id, out var price)
+                ? $"{shares} × {price.CurrentPrice:F0}cr = {shares * price.CurrentPrice:F0}cr"
+                : $"{shares}";
+
+            row.AddChild(new Label
+            {
+                Text = valueText,
+                HorizontalAlignment = HAlignment.Right,
+            });
+
+            _portfolioList.AddChild(row);
+        }
+    }
+
+    private void UpdateHistoryTab(StockMarketUiState state)
+    {
+        _historyList.RemoveAllChildren();
+
+        if (state.History.Count == 0)
+        {
+            _historyList.AddChild(new Label
+            {
+                Text = Loc.GetString("stock-market-no-trades"),
+                HorizontalAlignment = HAlignment.Center,
+                Margin = new Thickness(0, 8),
+            });
+            return;
+        }
+
+        for (var i = state.History.Count - 1; i >= 0; i--)
+        {
+            var trade = state.History[i];
+
+            var row = new BoxContainer
+            {
+                Orientation = LayoutOrientation.Horizontal,
+                HorizontalExpand = true,
+                Margin = new Thickness(0, 1),
+            };
+
+            var verb = Loc.GetString(trade.IsBuy ? "stock-market-history-buy" : "stock-market-history-sell");
+            row.AddChild(new Label
+            {
+                Text = $"[{trade.Time:hh\\:mm}] {verb} {trade.Amount} {TruncateString(Loc.GetString(trade.CompanyId), 14)}",
+                HorizontalExpand = true,
+                FontColorOverride = trade.IsBuy ? UpColor : DownColor,
+            });
+
+            row.AddChild(new Label
+            {
+                Text = $"@{trade.PricePerShare:F0}cr",
+                HorizontalAlignment = HAlignment.Right,
+            });
+
+            _historyList.AddChild(row);
+        }
     }
 
     private static string TruncateString(string str, int maxLength)

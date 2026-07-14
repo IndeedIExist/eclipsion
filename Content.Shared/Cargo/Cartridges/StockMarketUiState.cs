@@ -4,16 +4,31 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared.Cargo.Cartridges;
 
+public static class StockMarketTrading
+{
+    public const int MaxStockAmount = 100000;
+}
+
 [Serializable, NetSerializable]
 public sealed class StockMarketUiState : BoundUserInterfaceState
 {
     public Dictionary<string, StockPriceData> Prices { get; init; }
     public Dictionary<string, int> Portfolio { get; init; }
 
-    public StockMarketUiState(Dictionary<string, StockPriceData> prices, Dictionary<string, int> portfolio)
+    public long? Balance { get; init; }
+
+    public List<StockTradeRecord> History { get; init; }
+
+    public StockMarketUiState(
+        Dictionary<string, StockPriceData> prices,
+        Dictionary<string, int> portfolio,
+        long? balance = null,
+        List<StockTradeRecord>? history = null)
     {
         Prices = prices;
         Portfolio = portfolio;
+        Balance = balance;
+        History = history ?? new List<StockTradeRecord>();
     }
 }
 

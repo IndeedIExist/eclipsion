@@ -1,11 +1,13 @@
 using Content.Server.Bank;
 using Content.Server.Cargo.Systems;
 using Content.Server.CartridgeLoader;
+using Content.Shared.Bank.Components;
 using Content.Shared.Cargo.Cartridges;
 using Content.Shared.Cargo.Components;
 using Content.Shared.CartridgeLoader;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Cargo.Cartridges;
 
@@ -15,12 +17,30 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
     [Dependency] private readonly StockCompanySystem _stockCompanies = default!;
     [Dependency] private readonly BankSystem _bank = default!;
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<StockMarketCartridgeComponent, CartridgeUiReadyEvent>(OnUiReady);
         SubscribeLocalEvent<StockMarketCartridgeComponent, CartridgeMessageEvent>(OnMessage);
+        SubscribeLocalEvent<StockCompaniesUpdatedEvent>(OnPricesUpdated);
+    }
+
+    private void OnPricesUpdated(ref StockCompaniesUpdatedEvent ev)
+    {
+        var query = EntityQueryEnumerator<StockMarketCartridgeComponent, CartridgeComponent>();
+        while (query.MoveNext(out var uid, out _, out var cartridge))
+        {
+            if (cartridge.LoaderUid is not { } loader)
+                continue;
+
+            if (TryComp<CartridgeLoaderComponent>(loader, out var loaderComp) &&
+                loaderComp.ActiveProgram != uid)
+                continue;
+
+            SendUiState(uid, loader, GetLoaderMob(loader));
+        }
     }
 
     private void OnUiReady(EntityUid uid, StockMarketCartridgeComponent component, CartridgeUiReadyEvent args)
@@ -63,18 +83,17 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
         }
     }
 
-    private const int MaxStockAmount = 1000;
-
     private bool TryBuyStock(EntityUid playerUid, string companyId, int amount)
     {
-        if (amount <= 0 || amount > MaxStockAmount)
+        if (amount <= 0 || amount > StockMarketTrading.MaxStockAmount)
             return false;
 
         var company = _stockCompanies.GetCompany(companyId);
         if (company == null)
             return false;
 
-        var cost = (int)Math.Round(company.CurrentPrice * amount);
+        var pricePerShare = company.CurrentPrice;
+        var cost = (int)Math.Round(pricePerShare * amount);
 
         if (!_bank.TryBankWithdraw(playerUid, cost))
             return false;
@@ -84,13 +103,15 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
             current = 0;
         portfolio.OwnedShares[companyId] = current + amount;
         portfolio.TotalInvested += cost;
+        RecordTrade(portfolio, companyId, amount, pricePerShare, isBuy: true);
         Dirty(playerUid, portfolio);
+
         return true;
     }
 
     private bool TrySellStock(EntityUid playerUid, string companyId, int amount)
     {
-        if (amount <= 0 || amount > MaxStockAmount)
+        if (amount <= 0 || amount > StockMarketTrading.MaxStockAmount)
             return false;
 
         if (!TryComp<PlayerStockPortfolioComponent>(playerUid, out var portfolio))
@@ -103,7 +124,8 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
         if (company == null)
             return false;
 
-        var profit = (int)Math.Round(company.CurrentPrice * amount);
+        var pricePerShare = company.CurrentPrice;
+        var profit = (int)Math.Round(pricePerShare * amount);
         if (!_bank.TryBankDeposit(playerUid, profit))
             return false;
 
@@ -112,8 +134,17 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
             portfolio.OwnedShares.Remove(companyId);
         else
             portfolio.OwnedShares[companyId] = newOwned;
+        RecordTrade(portfolio, companyId, amount, pricePerShare, isBuy: false);
         Dirty(playerUid, portfolio);
+
         return true;
+    }
+
+    private void RecordTrade(PlayerStockPortfolioComponent portfolio, string companyId, int amount, double price, bool isBuy)
+    {
+        portfolio.TradeHistory.Add(new StockTradeRecord(companyId, amount, price, isBuy, _timing.CurTime));
+        while (portfolio.TradeHistory.Count > PlayerStockPortfolioComponent.MaxTradeHistory)
+            portfolio.TradeHistory.RemoveAt(0);
     }
 
     private EntityUid? GetLoaderMob(EntityUid loaderUid)
@@ -135,6 +166,8 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
     {
         var priceData = new Dictionary<string, StockPriceData>();
         var portfolio = new Dictionary<string, int>();
+        var history = new List<StockTradeRecord>();
+        long? balance = null;
 
         var companies = _stockCompanies.GetCompanies();
         foreach (var company in companies)
@@ -144,14 +177,24 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
                 company.BasePrice,
                 company.CurrentPrice,
                 company.PriceMultiplier,
-                company.PriceChange
+                company.PriceChange,
+                new List<float>(company.PriceHistory)
             );
         }
 
-        if (playerUid != null && TryComp<PlayerStockPortfolioComponent>(playerUid.Value, out var portfolioComp))
-            portfolio = new Dictionary<string, int>(portfolioComp.OwnedShares);
+        if (playerUid != null)
+        {
+            if (TryComp<PlayerStockPortfolioComponent>(playerUid.Value, out var portfolioComp))
+            {
+                portfolio = new Dictionary<string, int>(portfolioComp.OwnedShares);
+                history = new List<StockTradeRecord>(portfolioComp.TradeHistory);
+            }
 
-        var state = new StockMarketUiState(priceData, portfolio);
+            if (TryComp<BankAccountComponent>(playerUid.Value, out var bank))
+                balance = bank.Balance;
+        }
+
+        var state = new StockMarketUiState(priceData, portfolio, balance, history);
         _cartridgeLoader.UpdateCartridgeUiState(loaderUid, state);
     }
 }
