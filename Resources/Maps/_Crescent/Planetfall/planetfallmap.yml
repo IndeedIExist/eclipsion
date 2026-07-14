@@ -146,8 +146,6 @@ entities:
     components:
     - type: MetaData
       name: grid
-    - type: BecomesStation
-      id: PlanetfallMap
     - type: Transform
       pos: -0.484375,-0.5625
       parent: invalid
@@ -8879,21 +8877,65 @@ entities:
     - type: Transform
       pos: 139.13136,5.6265326
       parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - invalid
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 234
     components:
     - type: Transform
       pos: 139.64618,4.596489
       parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - invalid
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 235
     components:
     - type: Transform
       pos: 139.10562,3.4634418
       parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - invalid
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 236
     components:
     - type: Transform
       pos: 139.51747,2.3303947
       parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - invalid
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: BogatyrFlatpack
   entities:
   - uid: 237
@@ -30427,7 +30469,7 @@ entities:
     - type: Transform
       pos: 113.53206,-31.966026
       parent: 1
-- proto: StarlightPlatform
+- proto: CMPlatform
   entities:
   - uid: 4371
     components:
@@ -30534,7 +30576,7 @@ entities:
     - type: Transform
       pos: -19.5,25.5
       parent: 1
-- proto: StarlightPlatformCornerDark
+- proto: CMPlatformCornerDark
   entities:
   - uid: 4389
     components:
@@ -30679,7 +30721,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 192.5,-15.5
       parent: 1
-- proto: StarlightPlatformDark
+- proto: CMPlatformDark
   entities:
   - uid: 4414
     components:
@@ -92763,7 +92805,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 169.5,-0.5
       parent: 1
-- proto: StarlightPlatformCornerSmall
+- proto: RMCPlatformCornerSmall
   entities:
   - uid: 15051
     components:
@@ -92811,7 +92853,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -19.5,18.5
       parent: 1
-- proto: StarlightPlatformCornerSmallDark
+- proto: RMCPlatformCornerSmallDark
   entities:
   - uid: 15059
     components:
@@ -92958,7 +93000,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: 194.5,-33.5
       parent: 1
-- proto: StarlightPlatformStairLeftDark
+- proto: RMCPlatformStairLeftDark
   entities:
   - uid: 15084
     components:
@@ -93000,7 +93042,7 @@ entities:
     - type: Transform
       pos: 198.5,-36.5
       parent: 1
-- proto: StarlightPlatformStairRightDark
+- proto: RMCPlatformStairRightDark
   entities:
   - uid: 15091
     components:
@@ -93474,7 +93516,7 @@ entities:
     - type: Transform
       pos: 76.8167,-1.3232228
       parent: 1
-- proto: StarlightStairs
+- proto: RMCStairs
   entities:
   - uid: 15159
     components:
@@ -93487,7 +93529,7 @@ entities:
     - type: Transform
       pos: -19.5,21.5
       parent: 1
-- proto: StarlightStairsDark
+- proto: RMCStairsDark
   entities:
   - uid: 15161
     components:
@@ -93685,7 +93727,7 @@ entities:
     - type: Transform
       pos: 79.5,-24.5
       parent: 1
-- proto: StarlightStairsDarkLeft
+- proto: RMCStairsDarkLeft
   entities:
   - uid: 15195
     components:
@@ -93728,7 +93770,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 198.5,-36.5
       parent: 1
-- proto: StarlightStairsDarkRight
+- proto: RMCStairsDarkRight
   entities:
   - uid: 15202
     components:
@@ -93753,7 +93795,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 198.5,-34.5
       parent: 1
-- proto: StarlightStairsLeft
+- proto: RMCStairsLeft
   entities:
   - uid: 15206
     components:
@@ -93766,7 +93808,7 @@ entities:
     - type: Transform
       pos: -20.5,21.5
       parent: 1
-- proto: StarlightStairsRight
+- proto: RMCStairsRight
   entities:
   - uid: 15208
     components:

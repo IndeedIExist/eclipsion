@@ -57,7 +57,7 @@
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
-      state: ertsecurity
+      state: hunter
     - type: RandomHumanoidSpawner
       settings: APRTHunterSpawner
 
@@ -141,7 +141,7 @@
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
-      state: ertleader
+      state: hunter
     - type: RandomHumanoidSpawner
       settings: APRTHuntOverseerSpawner
 
