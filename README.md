@@ -1,9 +1,8 @@
 <div align="center">
 
-# 🐀 Eclipsion
+# 🪐 Eclipsion
 
-**The English fork of Ratgore, a Russian fork of HULLROT, which itself is a fork of Space Station 14.**
-(when will it end)
+**A continuation of HULLROT with its own vision and direction, built on Space Station 14..**
 
 [![Discord](https://img.shields.io/discord/1318776836599320657?style=for-the-badge&logo=discord&logoColor=white&label=Discord&color=%237289da)](https://discord.gg/tUbZ7CK7DC)
 [![GitHub License](https://img.shields.io/github/license/odleer/ratgore?style=for-the-badge)](./LEGAL-RU.md)
