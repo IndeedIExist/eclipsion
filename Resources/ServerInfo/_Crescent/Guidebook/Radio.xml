@@ -1,20 +1,4 @@
 <Document>
-[head=2][color=#e8b04b]Radio & Comms[/color][/head]
-
-Your headset is your lifeline. In the Taypan hyperwar, the side that coordinates over the radio beats the side that does not. Each faction talks on its own encrypted channels, and you can only hear and speak on the channels your headset is keyed for.
-
-<Box>
-  <GuideEntityEmbed Entity="ClothingHeadsetGrey"/>
-</Box>
-
-[head=3][color=#e8b04b]Speaking on the radio[/color][/head]
-
-- Prefix your message with a [color=#6ab7d6]semicolon (;)[/color] to talk on your default channel.
-- Prefix with a [color=#6ab7d6]colon (:)[/color] followed by a channel letter to speak on a specific channel. For example, [color=#6ab7d6]:i[/color] talks on the Imperial net.
-- [color=#6ab7d6]:h[/color] automatically uses your own faction or department channel, so you do not have to remember the letter.
-
-[color=#8fc98a]Examine your headset[/color] at any time to see the exact channels and prefixes available to you, since these differ by faction and role.
-
 [head=3][color=#e8b04b]Channel keys[/color][/head]
 
 These are the prefixes for the main channels. You can only use the ones your headset is keyed for.

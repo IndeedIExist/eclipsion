@@ -1,11 +1,13 @@
 # The old "Space Station 14" category is a standalone reference bucket (outside Hullrot).
 # It only keeps the vanilla help pages that in-game items link to via GuideHelp.
-# Controls, Chemicals, Writing, Glossary and Radio have been moved into the Hullrot section.
+# Chemicals, Glossary and Radio have been moved into the Hullrot section.
 - type: guideEntry
   id: SS14
   name: guide-entry-ss14
   text: "/ServerInfo/Guidebook/SpaceStation14.xml"
   children:
+  - Controls
+  - Writing
   - Jobs
   - Survival
   - Species
