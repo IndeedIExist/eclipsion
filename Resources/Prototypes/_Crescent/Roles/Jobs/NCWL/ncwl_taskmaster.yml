@@ -13,7 +13,7 @@
       tracker: JobEngineeringLeaderNCWL
       min: 36000 # 10 hours
     RatRankNCWLOfficerJunior: []
-  weight: 97
+  weight: 96
   startingGear: IndustryTaskmasterNCWLGear
   alwaysUseSpawner: true
   requireAdminNotify: false

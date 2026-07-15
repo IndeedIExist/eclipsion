@@ -13,7 +13,7 @@
       tracker: JobScribeDSM
       min: 36000 # 10 hours
     RatRankFreeholderJunior: []
-  weight: 93
+  weight: 2
   startingGear: ScribeGear
   alwaysUseSpawner: true
   requireAdminNotify: false
