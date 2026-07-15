@@ -107,6 +107,20 @@
       - id: BruteAutoInjector
       - id: BurnAutoInjector
       - id: AirlossAutoInjector
+    - name: Combat Drugs
+      entries:
+      - id: KaiserAutoinjector
+        recommended: true
+      - id: NaiserAutoinjector
+      - id: MechaniteAutoinjector
+      - id: BloodeyeAutoinjector
+      - id: ExileAutoinjector
+      - id: ExileminusAutoinjector
+      - id: CrashAutoinjector
+      - id: FallAutoinjector
+      - id: JVAutoInjector
+      - id: JV102AutoInjector
+      - id: NarcanAutoinjector
 
 - type: entity
   parent: ColMarTechBase
@@ -218,6 +232,20 @@
       - id: BruteAutoInjector
       - id: BurnAutoInjector
       - id: AirlossAutoInjector
+    - name: Combat Drugs
+      entries:
+      - id: KaiserAutoinjector
+        recommended: true
+      - id: NaiserAutoinjector
+      - id: MechaniteAutoinjector
+      - id: BloodeyeAutoinjector
+      - id: ExileAutoinjector
+      - id: ExileminusAutoinjector
+      - id: CrashAutoinjector
+      - id: FallAutoinjector
+      - id: JVAutoInjector
+      - id: JV102AutoInjector
+      - id: NarcanAutoinjector
 
 - type: entity
   parent: ColMarTechBase
@@ -403,6 +431,20 @@
       - id: BruteAutoInjector
       - id: BurnAutoInjector
       - id: AirlossAutoInjector
+    - name: Combat Drugs
+      entries:
+      - id: KaiserAutoinjector
+        recommended: true
+      - id: NaiserAutoinjector
+      - id: MechaniteAutoinjector
+      - id: BloodeyeAutoinjector
+      - id: ExileAutoinjector
+      - id: ExileminusAutoinjector
+      - id: CrashAutoinjector
+      - id: FallAutoinjector
+      - id: JVAutoInjector
+      - id: JV102AutoInjector
+      - id: NarcanAutoinjector
 
 # TSFC is a coalition, so its arsenal is split by member corp: Cyberdawn and IPM
 # (Interdyne) each have a tech tree, SAW and GSC do not and pull from their
@@ -638,6 +680,20 @@
       - id: BruteAutoInjector
       - id: BurnAutoInjector
       - id: AirlossAutoInjector
+    - name: Combat Drugs
+      entries:
+      - id: KaiserAutoinjector
+        recommended: true
+      - id: NaiserAutoinjector
+      - id: MechaniteAutoinjector
+      - id: BloodeyeAutoinjector
+      - id: ExileAutoinjector
+      - id: ExileminusAutoinjector
+      - id: CrashAutoinjector
+      - id: FallAutoinjector
+      - id: JVAutoInjector
+      - id: JV102AutoInjector
+      - id: NarcanAutoinjector
 
 # Automated ship ammunition depot (replaces the old credit-based ShipWarVendory).
 # Free, unlimited, open to everyone (no AccessReader) so any ship crew can restock.

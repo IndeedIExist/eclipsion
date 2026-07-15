@@ -16,11 +16,13 @@
   id: Writing
   name: guide-entry-writing
   text: "/ServerInfo/_Crescent/Guidebook/Writing.xml"
+  priority: 80
 
 - type: guideEntry
   id: Glossary
   name: guide-entry-glossary
   text: "/ServerInfo/_Crescent/Guidebook/Glossary.xml"
+  priority: 70
   children:
   - GlossaryDSM
   - GlossaryNCWL

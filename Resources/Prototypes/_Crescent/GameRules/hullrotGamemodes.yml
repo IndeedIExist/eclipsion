@@ -180,16 +180,16 @@
   - type: AdventureRule
     worldgenConfig: RatWorldHyperwar
     gameMapsByID:
-      PortBalreska:
-        gameMapID: PortBalreska
+      PortBalreskaHyperwar:
+        gameMapID: PortBalreskaHyperwar
         posX: 0
-        posY: -4500
+        posY: -3500
         IFFColor: Orange
         IFFFaction: NCWL
-      AuroraImperialis:
-        gameMapID: AuroraImperialis
+      AuroraImperialisHyperwar:
+        gameMapID: AuroraImperialisHyperwar
         posX: 0
-        posY: 4500
+        posY: 3500
         IFFColor: "#C677A5"
         IFFFaction: DSM
 

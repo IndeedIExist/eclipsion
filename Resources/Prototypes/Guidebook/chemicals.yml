@@ -2,6 +2,7 @@
   id: Chemicals
   name: guide-entry-chemicals
   text: "/ServerInfo/Guidebook/Chemicals.xml"
+  priority: 100
   children:
   - Elements
   - Medicine

@@ -120,5 +120,6 @@
     ears: ClothingHeadsetEmpire
     back: ClothingBackpackSatchelLeatherFilledDSM
     outerClothing: ClothingOuterCoatImperialAdvocatus
+    gloves: ClothingHandsGlovesImperialGovernorGloves
     shoes: ClothingShoesBootsJack
     jumpsuit: ClothingUniformJumpsuitImperialNobleMale

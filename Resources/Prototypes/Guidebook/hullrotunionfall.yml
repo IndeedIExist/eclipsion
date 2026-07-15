@@ -2,7 +2,7 @@
   id: Tutorial
   name: guide-entry-tutorial
   text: "/ServerInfo/_Crescent/Guidebook/Tutorial.xml"
-  priority: -100
+  priority: 20
   children:
   - MeleeCombat
   - FormsOfAddress

@@ -1,0 +1,44 @@
+- type: gameMap
+  id: AuroraImperialisHyperwar
+  mapName: 'DSM Aurora İmperialis'
+  mapPath: /Maps/_Crescent/Hyperwar/aurorahyperwar.yml # hyperwar-version
+  minPlayers: 0
+  stations:
+    AuroraImperialisHyperwar:
+      stationProto: StandardCrescentStation
+      gridComponents:
+        - type: BlockShipWeaponProjectileGrid
+        - type: PreventPilot
+        - type: VesselIcon
+          iffIcon:
+            sprite: _Crescent/ShipIcons/ifficons.rsi
+            state: outpost
+        - type: MapIcon
+          iconType: Station
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'DSM Aurora'
+        - type: VesselDesignation
+          designation: vessel-designation-headquarters
+        - type: VesselDescription
+          description: A powerful imperial fortress, serving as the last bastion of order in the system.
+        - type: VesselMusic
+          ambientMusicPrototype: CountsmanMusic
+        - type: Grammar
+          attributes:
+            proper: true
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            GovernorDSM: [ 1, 1 ]
+            AdjutantDSM: [ 1, 1 ]
+            AdvocatusDSM: [ 1, 1 ]
+            TemplarDSM: [ 2, 2 ]
+            LaborDSM: [ 1, 1 ]
+            CourtierDSM: [ 4, 4 ]
+            KnightDSM: [ 4, 4 ]
+            LevymanDSM: [ -1, -1 ]
+            ForemanDSM: [ 4, 4 ]
+            ScribeDSM: [ 6, 6 ]
+            SurgeonDSM: [ 4, 4 ]
+            FreeholderDSM: [ -1, -1 ]

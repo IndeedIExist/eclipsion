@@ -2,7 +2,7 @@
   name: crash autoinjector
   parent: ChemicalMedipen
   id: CrashAutoinjector
-  description: A cheap, easily-produced combat stimulant, most commonly used by combat pilots. Known to cause the jitters.
+  description: A cheap, easily-produced combat stimulant, most commonly used by combat pilots. Runs you a third faster and shrugs off stuns and knockdowns, at the price of jitters, a stutter and a slow poisoning. It mends nothing. A second pen will cook you from the inside.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/crash.rsi
@@ -31,7 +31,7 @@
   name: exile autoinjector
   parent: ChemicalMedipen
   id: ExileAutoinjector
-  description: A common combat stimulant used to both treat wounds sustained during battle and keep an operative on their feet for the duration of the fight.
+  description: A common combat stimulant used to both treat wounds sustained during battle and keep an operative on their feet for the duration of the fight. Knits light brute and burns shut while you are still in one piece - it does nothing for a badly mauled body - and runs you a third faster. Never chase it with crash; the two react and poison you. A second pen will burn you alive.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/exile.rsi
@@ -65,7 +65,7 @@
   name: kaiser autoinjector
   parent: ChemicalMedipen
   id: KaiserAutoinjector
-  description: A sophisticated, potent combat drug - boasting the refined effects of Exile with none of the drawbacks. A feat of Syndicate chemical engineering.
+  description: A sophisticated, potent combat drug - boasting the refined effects of Exile with none of the drawbacks. A feat of Syndicate chemical engineering. Closes brute and piercing wounds with frightening speed, eases suffocation, and the ephedrine chaser keeps you moving. One pen only - a second will cook you alive.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/kaiser.rsi
@@ -99,7 +99,7 @@
   name: mechanite injector gun
   parent: ChemicalMedipen
   id: MechaniteAutoinjector
-  description: A chemical cocktail of healing mechanites intended to localize around damaged parts of the body and repair it on a sub-molecular level.
+  description: A chemical cocktail of healing mechanites intended to localize around damaged parts of the body and repair it on a sub-molecular level. Chews through brute, poison, shock and radiation alike and clamps bleeding shut. It will not overheat you no matter how much you take, and it keeps working on a body that has already stopped.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/mechanites.rsi
@@ -131,7 +131,7 @@
   name: blood-eye injector
   parent: ChemicalMedipen
   id: BloodeyeAutoinjector
-  description: A chemical cocktail of combat drugs known to invoke violent tendencies within the user. Blood-eye was originally produced by Shinohara Heavy Industries, but later taken off the shelves after narcotic regulations were put into place.
+  description: A chemical cocktail of combat drugs known to invoke violent tendencies within the user. Blood-eye was originally produced by Shinohara Heavy Industries, but later taken off the shelves after narcotic regulations were put into place. Hauls you back from heavy brute and suffocation while the crash in it breaks stuns and quickens your step, but it thins your blood and you will bleed for as long as it works. Bring gauze, and do not take a second pen unless you want to cook.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/bloodeye.rsi
@@ -165,7 +165,7 @@
   name: narcan autoinjector
   parent: ChemicalMedipen
   id: NarcanAutoinjector
-  description: narcan-desc
+  description: A chemical used for the stabilization of patients who have overdosed on narcotics. Purges crash, exile, blood-eye, kaiser and ephedrine from the blood and drags a cooking body back down to temperature - the only real answer to a stim overdose. Clears the colours, mends a little poisoning, and leaves the patient dizzy. Works on the dead.
   components:
   - type: Sprite
     sprite: Objects/Specific/Medical/medipen.rsi
@@ -190,7 +190,7 @@
   name: JV-201 autoinjector
   parent: ChemicalMedipen
   id: JVAutoInjector
-  description: A versatile lubricant gel. It will increase the efficiency of living tissue, even if against organic will. Sourced from Carthage Industries.
+  description: A versatile lubricant gel. It will increase the efficiency of living tissue, even if against organic will. Sourced from Carthage Industries. Holds you conscious through wounds that should have put you down, runs you a third faster and shrugs off stuns - but it mends nothing, and the instant the last of it burns off you drop exactly as hard as you had earned. Scrambles your speech while it rides.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/jv201.rsi
@@ -226,7 +226,7 @@
   name: naiser autoinjector
   parent: ChemicalMedipen
   id: NaiserAutoinjector
-  description: Not as refined as the Kaiser, but still a combat drug — possessing the effects of Exile with fewer drawbacks. A cheap Kaiser alternative.
+  description: Not as refined as the Kaiser, but still a combat drug — possessing the effects of Exile with fewer drawbacks. A cheap Kaiser alternative. Closes brute and piercing wounds and eases suffocation at about half the Kaiser's rate, with the same ephedrine kick. One pen only - a second will cook you alive.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/kaiser.rsi
@@ -260,7 +260,7 @@
   name: JV-102 autoinjector
   parent: ChemicalMedipen
   id: JV102AutoInjector
-  description: A cheap but still versatile gel-lubricant. It enhances the efficiency of living tissue, even against the body's will. Manufactured by Carthage Industries.
+  description: A cheap but still versatile gel-lubricant. It enhances the efficiency of living tissue, even against the body's will. Manufactured by Carthage Industries. Keeps you standing well past where you should have folded and breaks shorter stuns, but it mends nothing and you collapse the moment it runs dry. Holds you up for half of what the JV-201 manages, and scrambles your speech worse and for longer.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/jv201.rsi
@@ -296,7 +296,7 @@
   name: exileminus autoinjector
   parent: ChemicalMedipen
   id: ExileminusAutoinjector
-  description: A cheap and common combat stimulant, used to treat wounds sustained in combat and keep operatives on their feet for a while.
+  description: A cheap and common combat stimulant, used to treat wounds sustained in combat and keep operatives on their feet for a while. Knits light brute and burns shut while you are barely scratched, and quickens your step a little. It reacts far worse with crash than the Exile does - mixing the two will poison you badly. A second pen will burn you alive.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/exile.rsi
@@ -330,7 +330,7 @@
   name: fall autoinjector
   parent: ChemicalMedipen
   id: FallAutoinjector
-  description: An even cheaper, easily manufactured combat stimulant, most commonly used by fighter pilots. Known for causing prolonged tremors.
+  description: An even cheaper, easily manufactured combat stimulant, most commonly used by fighter pilots. Quickens your step and breaks short stuns, but it mends nothing, poisons you harder than the crash it was copied from, and leaves you seeing colours long after. A second pen will cook you from the inside.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/crash.rsi
