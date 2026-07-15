@@ -7,6 +7,7 @@
   startingGear: UnionfallCadetDSMGear
   alwaysUseSpawner: true
   icon: "JobIconUnionfallDSMCadet"
+  chatNameColor: "#ba6d00"
   requirements:
     - !type:FactionRequirement
       factionID: "DSM"

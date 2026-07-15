@@ -1,0 +1,4 @@
+- type: guideEntry
+  id: Gamemodes
+  name: Gamemodes
+  text: "/ServerInfo/_Crescent/Guidebook/Gamemodes.xml"

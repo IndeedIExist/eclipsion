@@ -42,5 +42,5 @@
             CourtierDSM: [ 10, 10 ]
             LaborDSM: [ 1, 1 ]
             WealthDSM: [ 1, 1 ]
-            ForemanDSM: [ 3, 3 ]
+            ForemanDSM: [ 4, 4 ]
             FreeholderDSM: [ -1, -1 ]

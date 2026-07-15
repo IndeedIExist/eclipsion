@@ -17,6 +17,7 @@
   startingGear: UnionfallDoctorNCWLGear
   alwaysUseSpawner: true
   icon: "JobIconUnionfallNCWLMedic"
+  chatNameColor: "#00e6d6"
   requireAdminNotify: false
   supervisors: job-supervisors-unionfall-ncwl
   canBeAntag: false

@@ -19,6 +19,7 @@
   startingGear: UnionfallShipCrewDSMGear
   alwaysUseSpawner: true
   icon: "JobIconUnionfallDSMCrew"
+  chatNameColor: "#b5af00"
   requireAdminNotify: true
   supervisors: job-supervisors-unionfall-dsm
   canBeAntag: false

@@ -23,6 +23,7 @@
   startingGear: UnionfallLeaderDSMGear
   alwaysUseSpawner: true
   icon: "JobIconUnionfallDSMLeader"
+  chatNameColor: "#ff00f2"
   requireAdminNotify: true
   supervisors: job-supervisors-unionfall-dsm-high
   canBeAntag: false

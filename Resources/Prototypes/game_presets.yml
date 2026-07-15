@@ -1,64 +1,10 @@
-- type: gamePreset
-  id: Survival
-  alias:
-    - survival
-  name: survival-title
-  showInVote: false # secret # DeltaV - Me when the survival. Used for periapsis.
-  description: survival-description
-  rules:
-    - RampingStationEventScheduler
-    - BasicRoundstartVariation
-    - SubGamemodesRule
-    - LavalandStormScheduler # Lavaland Change
-
-- type: gamePreset
-  id: SurvivalHellshift
-  alias:
-    - hellshift
-  showInVote: false
-  name: hellshift-title
-  description: hellshift-description
-  rules:
-    - RampingStationEventScheduler
-    - BasicRoundstartVariation
-    - SubGamemodesRule
-    - LavalandStormScheduler # Lavaland Change
-
-- type: gamePreset
-  id: SurvivalIrregular
-  alias: [irregular]
-  showInVote: false
-  name: irregular-title
-  description: irregular-description
-  rules:
-    - BasicStationEventScheduler
-    - BasicRoundstartVariation
-    - LavalandStormScheduler # Lavaland Change
-
-- type: gamePreset
-  id: SurvivalIrregularExtended
-  alias: [irregular-extended]
-  showInVote: false
-  name: irregular-extended-title
-  description: irregular-extended-description
-  rules:
-    - BasicStationEventScheduler
-    - BasicRoundstartVariation
-    - LavalandStormScheduler # Lavaland Change
-
-- type: gamePreset
-  id: AllAtOnce
-  name: all-at-once-title
-  description: all-at-once-description
-  showInVote: false
-  rules:
-    - Traitor
-    - Revolutionary
-    - Zombie
-    - Changeling
-    - BloodCult
-    - RampingStationEventScheduler
-    - LavalandStormScheduler # Lavaland Change
+# Crescent's playable gamemodes live in _Crescent/GameRules/hullrotGamemodes.yml.
+# Everything below is upstream and has showInVote: false — admin/fallback use only.
+#
+# Extended and Sandbox are load-bearing, do not remove them:
+#   Extended -> game.fallbackpreset  (CCVars.Game.cs), used when a preset fails to start.
+#   Sandbox  -> hardcoded "sandbox"  (GameTicker.InitializeGamePreset) when the lobby is disabled.
+# Traitor / Zombie / Changeling are kept because secret_weights.yml picks from them.
 
 - type: gamePreset
   id: Extended
@@ -75,17 +21,6 @@
   - LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
-  id: Greenshift
-  alias:
-  - greenshift
-  - shittersafarideluxeedition
-  name: greenshift-title
-  showInVote: false
-  description: greenshift-description
-  rules:
-  - LavalandStormScheduler # Lavaland Change
-
-- type: gamePreset
   id: Secret
   alias:
     - secret
@@ -96,27 +31,6 @@
   rules:
     - Secret
     - LavalandStormScheduler # Lavaland Change
-
-- type: gamePreset
-  id: SecretExtended #For Admin Use: Runs Extended but shows "Secret" in lobby.
-  alias:
-    - secretextended
-  name: secret-title
-  showInVote: false #Admin Use
-  description: secret-description
-  rules:
-    - BasicStationEventScheduler
-    - LavalandStormScheduler # Lavaland Change
-
-- type: gamePreset
-  id: SecretGreenshift #For Admin Use: Runs Greenshift but shows "Secret" in lobby.
-  alias:
-  - secretgreenshift
-  name: secret-title
-  showInVote: false #Admin Use
-  description: secret-description
-  rules:
-  - LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: Sandbox
@@ -139,22 +53,6 @@
   showInVote: false
   rules:
     - Traitor
-    - SubGamemodesRule
-    - BasicStationEventScheduler
-    - BasicRoundstartVariation
-    - LavalandStormScheduler # Lavaland Change
-
-- type: gamePreset
-  id: Revolutionary
-  alias:
-    - rev
-    - revs
-    - revolutionaries
-  name: rev-title
-  description: rev-description
-  showInVote: false
-  rules:
-    - Revolutionary
     - SubGamemodesRule
     - BasicStationEventScheduler
     - BasicRoundstartVariation
@@ -193,16 +91,3 @@
   - BasicStationEventScheduler
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
-
-- type: gamePreset
-  id: Deathmatch
-  alias:
-  - deathmatch
-  - dm
-  name: death-match-title
-  description: death-match-description
-  #maxPlayers: 15
-  showInVote: false # DeltaV - No.
-  supportedMaps: DeathMatchMapPool
-  rules:
-  - DeathMatch31

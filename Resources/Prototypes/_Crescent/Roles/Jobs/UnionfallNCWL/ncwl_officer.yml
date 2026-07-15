@@ -19,6 +19,7 @@
   startingGear: UnionfallOfficerNCWLGear
   alwaysUseSpawner: true
   icon: "JobIconUnionfallNCWLOfficer"
+  chatNameColor: "#a11515"
   requireAdminNotify: true
   supervisors: job-supervisors-unionfall-ncwl-high
   canBeAntag: false

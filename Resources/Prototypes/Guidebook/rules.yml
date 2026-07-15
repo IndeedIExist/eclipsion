@@ -10,6 +10,9 @@
   children:
   - RoleplayRules
   - Tutorial
+  - Lore
+  - Factions
+  - Gamemodes
   - Controls
   - Glossary
   - Writing
