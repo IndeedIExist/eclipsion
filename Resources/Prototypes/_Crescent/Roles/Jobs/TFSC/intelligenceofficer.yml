@@ -1,16 +1,16 @@
 - type: job
-  id: IntelligenceOfficerNCSP
+  id: IntelligenceOfficerTFSC
   name: job-name-intelligenceofficer
   description: job-description-intelligenceofficer
-  playTimeTracker: JobIntelligenceOfficerNCSP
+  playTimeTracker: JobIntelligenceOfficerTFSC
   ranks:
     RatRankTFSCPatriarchSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobIntelligenceOfficerNCSP
+      tracker: JobIntelligenceOfficerTFSC
       min: 72000 # 20 hours
     RatRankTFSCPatriarchMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobIntelligenceOfficerNCSP
+      tracker: JobIntelligenceOfficerTFSC
       min: 36000 # 10 hours
     RatRankTFSCPatriarchJunior: []
   weight: 5
@@ -79,9 +79,9 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatPatriarch
     id: IntelligenceOfficerPDA
-    back: ClothingBackpackNCSPFilledInfanteer
+    back: ClothingBackpackTFSCFilledInfanteer
     gloves: ClothingHandsGlovesFingerless
     outerClothing: ClothingOuterArmorCyberdawnPatriarch
-    ears: ClothingHeadsetNCSPCyberdawnCommand
+    ears: ClothingHeadsetTFSCCyberdawnCommand
     pocket1: AccessElevatorCD
     pocket2: RatRubberStampTFSCCyberDawn

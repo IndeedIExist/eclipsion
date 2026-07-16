@@ -2434,7 +2434,7 @@ entities:
     - type: Transform
       pos: -5.5,-1.5
       parent: 1
-- proto: ResearchAndDevelopmentServerGliessian
+- proto: ResearchAndDevelopmentServerGliessianShuttle
   entities:
   - uid: 407
     components:

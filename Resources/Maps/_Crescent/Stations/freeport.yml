@@ -11418,7 +11418,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: 19.5,74.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSP
+- proto: AirlockSyndicateHorizontalLockedTFSC
   entities:
   - uid: 89
     components:
@@ -11426,7 +11426,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 25.5,9.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSPCommand
+- proto: AirlockSyndicateHorizontalLockedTFSCCommand
   entities:
   - uid: 90
     components:
@@ -11439,7 +11439,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -9.5,21.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSPGorlex
+- proto: AirlockSyndicateHorizontalLockedTFSCGorlex
   entities:
   - uid: 92
     components:
@@ -11482,7 +11482,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -16.5,13.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSPInterdyne
+- proto: AirlockSyndicateHorizontalLockedTFSCInterdyne
   entities:
   - uid: 99
     components:
@@ -11516,7 +11516,7 @@ entities:
     - type: Transform
       pos: -5.5,59.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSPRamzi
+- proto: AirlockSyndicateHorizontalLockedTFSCRamzi
   entities:
   - uid: 105
     components:
@@ -11551,7 +11551,7 @@ entities:
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
-- proto: AirlockSyndicateHorizontalLockedNCSPSaws
+- proto: AirlockSyndicateHorizontalLockedTFSCSaws
   entities:
   - uid: 110
     components:
@@ -11577,14 +11577,14 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 13.5,14.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSP
+- proto: AirlockSyndicateLockedTFSC
   entities:
   - uid: 113
     components:
     - type: Transform
       pos: -8.5,11.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPCommand
+- proto: AirlockSyndicateLockedTFSCCommand
   entities:
   - uid: 114
     components:
@@ -11592,7 +11592,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 21.5,14.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPGorlex
+- proto: AirlockSyndicateLockedTFSCGorlex
   entities:
   - uid: 115
     components:
@@ -11626,7 +11626,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -4.5,71.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPInterdyne
+- proto: AirlockSyndicateLockedTFSCInterdyne
   entities:
   - uid: 121
     components:
@@ -11675,7 +11675,7 @@ entities:
     - type: Transform
       pos: -7.5,61.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPRamzi
+- proto: AirlockSyndicateLockedTFSCRamzi
   entities:
   - uid: 129
     components:
@@ -11703,7 +11703,7 @@ entities:
     - type: Transform
       pos: 36.5,39.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPRingleader
+- proto: AirlockSyndicateLockedTFSCRingleader
   entities:
   - uid: 141
     components:
@@ -11715,7 +11715,7 @@ entities:
     - type: Transform
       pos: 7.5,61.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPSAWs
+- proto: AirlockSyndicateLockedTFSCSAWs
   entities:
   - uid: 143
     components:
@@ -50674,7 +50674,7 @@ entities:
     - type: Transform
       pos: 19.5,49.5
       parent: 1
-- proto: WallReinforcedNCSP
+- proto: WallReinforcedTFSC
   entities:
   - uid: 6602
     components:
@@ -51003,7 +51003,7 @@ entities:
     - type: Transform
       pos: 43.48739,36.74724
       parent: 1
-- proto: WeaponShotgunNCSPSaiga12
+- proto: WeaponShotgunTFSCSaiga12
   entities:
   - uid: 6702
     components:
@@ -51191,7 +51191,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 36.5,31.5
       parent: 1
-- proto: WindoorSecureNCSPSaws
+- proto: WindoorSecureTFSCSaws
   entities:
   - uid: 6680
     components:

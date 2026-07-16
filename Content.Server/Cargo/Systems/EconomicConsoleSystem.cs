@@ -1,3 +1,4 @@
+using Content.Shared._Crescent.Mainframe;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Interaction;
@@ -18,15 +19,31 @@ public sealed class EconomicConsoleSystem : SharedEconomicConsoleSystem
     {
         base.Initialize();
         SubscribeLocalEvent<EconomicConsoleComponent, ActivateInWorldEvent>(OnActivate);
+        SubscribeLocalEvent<EconomicConsoleComponent, BoundUIOpenedEvent>(OnUiOpened);
     }
 
     private void OnActivate(Entity<EconomicConsoleComponent> ent, ref ActivateInWorldEvent args)
     {
+        // On a mainframe, ActivatableUI owns the interaction and opens every tab's key. Handling it
+        // here too would race with it: whichever system subscribed first wins, and if it's this one
+        // the mainframe never opens at all.
+        if (HasComp<MainframeConsoleComponent>(ent))
+            return;
+
         args.Handled = true;
-        
+
         var user = args.User;
 
         _uiSystem.OpenUi(ent.Owner, EconomicConsoleUiKey.Key, user);
+        SendBuiState(ent);
+    }
+
+    // The mainframe path never reaches OnActivate, so this is where its state comes from.
+    private void OnUiOpened(Entity<EconomicConsoleComponent> ent, ref BoundUIOpenedEvent args)
+    {
+        if (!Equals(args.UiKey, EconomicConsoleUiKey.Key))
+            return;
+
         SendBuiState(ent);
     }
 

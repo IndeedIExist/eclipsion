@@ -12,6 +12,7 @@
       - state: server_o
         map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: ResearchServer
+    passivePointsPerMinute: 650
   - type: TechnologyDatabase
     supportedDisciplines:
     - Minutemen
@@ -83,6 +84,7 @@
       - state: server_o
         map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: ResearchServer
+    passivePointsPerMinute: 650
   - type: TechnologyDatabase
     supportedDisciplines:
     - Interdyne
@@ -154,6 +156,7 @@
       - state: server_o
         map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: ResearchServer
+    passivePointsPerMinute: 650
   - type: TechnologyDatabase
     supportedDisciplines:
     - Cyberdawn
@@ -225,6 +228,7 @@
       - state: server_o
         map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: ResearchServer
+    passivePointsPerMinute: 650
   - type: TechnologyDatabase
     supportedDisciplines:
     - Imperial
@@ -296,6 +300,7 @@
       - state: server_o
         map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: ResearchServer
+    passivePointsPerMinute: 650
   - type: TechnologyDatabase
     supportedDisciplines:
     - Communard
@@ -367,6 +372,7 @@
       - state: server_o
         map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: ResearchServer
+    passivePointsPerMinute: 650
   - type: TechnologyDatabase
     supportedDisciplines:
     - Corporate
@@ -438,6 +444,7 @@
       - state: server_o
         map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: ResearchServer
+    passivePointsPerMinute: 650
   - type: TechnologyDatabase
     supportedDisciplines:
     - Mechatronics
@@ -508,6 +515,7 @@
       - state: server_o
         map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: ResearchServer
+    passivePointsPerMinute: 650
   - type: TechnologyDatabase
     supportedDisciplines:
     - Families
@@ -564,3 +572,70 @@
   - type: GuideHelp
     guides:
     - Science
+
+# Shuttle-borne servers sit on their own grid, so research isolates them into a second point pool.
+# Passive gain is the station server's job -- these earn only what their point sources produce.
+
+- type: entity
+  id: ResearchAndDevelopmentServerMinutemenShuttle
+  parent: ResearchAndDevelopmentServerMinutemen
+  suffix: Shuttle
+  components:
+  - type: ResearchServer
+    passivePointsPerMinute: 0
+
+- type: entity
+  id: ResearchAndDevelopmentServerInterdyneShuttle
+  parent: ResearchAndDevelopmentServerInterdyne
+  suffix: Shuttle
+  components:
+  - type: ResearchServer
+    passivePointsPerMinute: 0
+
+- type: entity
+  id: ResearchAndDevelopmentServerCyberdawnShuttle
+  parent: ResearchAndDevelopmentServerCyberdawn
+  suffix: Shuttle
+  components:
+  - type: ResearchServer
+    passivePointsPerMinute: 0
+
+- type: entity
+  id: ResearchAndDevelopmentServerImperialShuttle
+  parent: ResearchAndDevelopmentServerImperial
+  suffix: Shuttle
+  components:
+  - type: ResearchServer
+    passivePointsPerMinute: 0
+
+- type: entity
+  id: ResearchAndDevelopmentServerCommunardShuttle
+  parent: ResearchAndDevelopmentServerCommunard
+  suffix: Shuttle
+  components:
+  - type: ResearchServer
+    passivePointsPerMinute: 0
+
+- type: entity
+  id: ResearchAndDevelopmentServerCorporateShuttle
+  parent: ResearchAndDevelopmentServerCorporate
+  suffix: Shuttle
+  components:
+  - type: ResearchServer
+    passivePointsPerMinute: 0
+
+- type: entity
+  id: ResearchAndDevelopmentServerGliessianShuttle
+  parent: ResearchAndDevelopmentServerGliessian
+  suffix: Shuttle
+  components:
+  - type: ResearchServer
+    passivePointsPerMinute: 0
+
+- type: entity
+  id: ResearchAndDevelopmentServerFamiliesShuttle
+  parent: ResearchAndDevelopmentServerFamilies
+  suffix: Shuttle
+  components:
+  - type: ResearchServer
+    passivePointsPerMinute: 0

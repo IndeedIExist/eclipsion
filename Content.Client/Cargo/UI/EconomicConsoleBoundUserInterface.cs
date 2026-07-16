@@ -1,3 +1,5 @@
+using Content.Client._Crescent.Mainframe;
+using Content.Shared._Crescent.Mainframe;
 using Content.Shared.Cargo;
 using Robust.Client.UserInterface;
 using Robust.Shared.GameObjects;
@@ -6,7 +8,11 @@ namespace Content.Client.Cargo.UI;
 
 public sealed class EconomicConsoleBoundUserInterface : BoundUserInterface
 {
+    [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+
     private EconomicConsoleWindow? _window;
+    private EconomicConsolePanel? _panel;
+    private MainframeUiController? _mainframe;
 
     public EconomicConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
@@ -16,25 +22,39 @@ public sealed class EconomicConsoleBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
-        _window = new EconomicConsoleWindow(this);
-        _window.OpenCentered();
-        _window.OnClose += Close;
+        _panel = new EconomicConsolePanel();
+
+        // On a mainframe this renders as a tab instead of its own window.
+        if (UiSystem.HasUi(Owner, MainframeUiKey.Key))
+        {
+            _mainframe = _uiManager.GetUIController<MainframeUiController>();
+            _mainframe.AttachPanel(Owner, MainframeTab.Economy, _panel, this);
+        }
+        else
+        {
+            _window = new EconomicConsoleWindow();
+            _window.SetPanel(_panel);
+            _window.OpenCentered();
+            _window.OnClose += Close;
+        }
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
     {
         base.UpdateState(state);
 
-        if (state is EconomicConsoleBuiState buiState && _window != null)
-        {
-            _window.UpdateState(buiState.ItemPrices, buiState.ShuttlePrices);
-        }
+        if (state is EconomicConsoleBuiState buiState)
+            _panel?.UpdateState(buiState.ItemPrices, buiState.ShuttlePrices);
     }
 
     protected override void Dispose(bool disposing)
     {
         base.Dispose(disposing);
-        if (disposing)
-            _window?.Dispose();
+        if (!disposing)
+            return;
+
+        _mainframe?.DetachPanel(Owner, MainframeTab.Economy);
+        _window?.Dispose();
+        _window = null;
     }
 }

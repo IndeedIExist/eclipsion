@@ -199,135 +199,135 @@
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardRingleader
-  name: NCSP ID card
+  id: TFSCIDCardRingleader
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: RingleaderNCSP
+    job: RingleaderTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardCyberdawnTech
-  name: NCSP ID card
+  id: TFSCIDCardCyberdawnTech
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: CyberdawnTechNCSP
+    job: CyberdawnTechTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardLieutenant
-  name: NCSP ID card
+  id: TFSCIDCardLieutenant
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: LieutenantNCSP
+    job: LieutenantTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardInfanteer
-  name: NCSP ID card
+  id: TFSCIDCardInfanteer
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: InfanteerNCSP
+    job: InfanteerTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardCoordinator
-  name: NCSP ID card
+  id: TFSCIDCardCoordinator
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: CoordinatorNCSP
+    job: CoordinatorTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardRipperdoc
-  name: NCSP ID card
+  id: TFSCIDCardRipperdoc
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: RipperdocNCSP
+    job: RipperdocTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardTraumasec
-  name: NCSP ID card
+  id: TFSCIDCardTraumasec
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: TraumasecNCSP
+    job: TraumasecTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardOperative
-  name: NCSP ID card
+  id: TFSCIDCardOperative
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: OperativeNCSP
+    job: OperativeTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardIntelligenceOfficer
-  name: NCSP ID card
+  id: TFSCIDCardIntelligenceOfficer
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: IntelligenceOfficerNCSP
+    job: IntelligenceOfficerTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardForeman
-  name: NCSP ID card
+  id: TFSCIDCardForeman
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: ForemanNCSP
+    job: ForemanTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardShipbreaker
-  name: NCSP ID card
+  id: TFSCIDCardShipbreaker
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: ShipbreakerNCSP
+    job: ShipbreakerTFSC
 
 #empire
 

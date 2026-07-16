@@ -1,10 +1,10 @@
 - type: entity
-  id: NCSPFighterCircuitBoard
+  id: TFSCFighterCircuitBoard
   parent: BaseMachineCircuitboard
   name: syndicate fighter circuit board
   components:
   - type: MachineBoard
-    prototype: ThrusterNCSPFighter
+    prototype: ThrusterTFSCFighter
     requirements:
       Capacitor: 4
     materialRequirements:
@@ -13,12 +13,12 @@
     price: 250
 
 - type: entity
-  id: NCSPSmugglerCircuitBoard
+  id: TFSCSmugglerCircuitBoard
   parent: BaseMachineCircuitboard
   name: syndicate smuggler thruster circuit board
   components:
   - type: MachineBoard
-    prototype: ThrusterNCSPSmuggler
+    prototype: ThrusterTFSCSmuggler
     requirements:
       Capacitor: 4
     materialRequirements:
@@ -98,12 +98,12 @@
     price: 250
 
 - type: entity
-  id: NCSPWarshipCircuitBoard
+  id: TFSCWarshipCircuitBoard
   parent: BaseMachineCircuitboard
   name: syndicate warship circuit board
   components:
   - type: MachineBoard
-    prototype: ThrusterNCSPWarship
+    prototype: ThrusterTFSCWarship
     requirements:
       Capacitor: 4
     materialRequirements:

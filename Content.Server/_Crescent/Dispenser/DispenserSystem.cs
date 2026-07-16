@@ -6,6 +6,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Popups;
 using Content.Shared._Crescent.Dispenser;
+using Content.Shared.Cargo.Prototypes;
 using Content.Server.Cargo.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameObjects;
@@ -22,7 +23,15 @@ public sealed class DispenserSystem : SharedDispenserSystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
     [Dependency] private readonly DynamicPricingSystem _dynamicPricing = default!;
-  
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+
+    /// <summary>
+    /// Cheapest cargo purchase price per product entity-prototype id, built once from every
+    /// <see cref="CargoProductPrototype"/>. Used to cap trade-market payouts so an item bought
+    /// from cargo can never be sold back for more than it cost — closing the arbitrage loop.
+    /// </summary>
+    private Dictionary<string, int>? _cargoBuyPrices;
+
     public override void Initialize()  
     {  
         base.Initialize();  
@@ -115,6 +124,12 @@ public sealed class DispenserSystem : SharedDispenserSystem
   
             int finalAmount = (int)MathF.Round(baseAmount * finalMultiplier);
 
+            // Anti-arbitrage: an item that can be bought from cargo must never sell back for more
+            // than its cargo purchase price, no matter how high the dynamic multiplier climbs.
+            // Only the sale value is capped here; the station tax below still applies on top.
+            if (GetCargoBuyPrice(prototype.ID) is { } buyPrice)
+                finalAmount = Math.Min(finalAmount, buyPrice);
+
             if (stationUid.HasValue)
                 _marketSystem.RecordSale(stationUid.Value, prototype.ID);
 
@@ -166,7 +181,31 @@ public sealed class DispenserSystem : SharedDispenserSystem
         }  
     }  
   
-    public bool TryGetDispenseItem(DispenserComponent component, string itemId, out string dispenseItemId)  
+    /// <summary>
+    /// Returns the cheapest cargo purchase price for the given product entity-prototype id, or
+    /// <c>null</c> if the item is not sold by cargo. The lookup is built lazily on first use and
+    /// cached, since cargo product prototypes are static for the lifetime of the process.
+    /// </summary>
+    private int? GetCargoBuyPrice(string prototypeId)
+    {
+        if (_cargoBuyPrices == null)
+        {
+            _cargoBuyPrices = new Dictionary<string, int>();
+            foreach (var product in _prototypeManager.EnumeratePrototypes<CargoProductPrototype>())
+            {
+                if (product.Abstract || product.Cost <= 0 || string.IsNullOrEmpty(product.Product.Id))
+                    continue;
+
+                var id = product.Product.Id;
+                if (!_cargoBuyPrices.TryGetValue(id, out var existing) || product.Cost < existing)
+                    _cargoBuyPrices[id] = product.Cost;
+            }
+        }
+
+        return _cargoBuyPrices.TryGetValue(prototypeId, out var cost) ? cost : null;
+    }
+
+    public bool TryGetDispenseItem(DispenserComponent component, string itemId, out string dispenseItemId)
     {  
         if (string.IsNullOrEmpty(itemId))  
         {  

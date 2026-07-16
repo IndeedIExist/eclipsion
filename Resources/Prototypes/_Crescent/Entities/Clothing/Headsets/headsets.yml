@@ -16,7 +16,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSP
+  id: ClothingHeadsetTFSC
   name: hired gun's headset
   description: To communicate with your brothers in arms.
   components:
@@ -33,7 +33,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSPInterdyne
+  id: ClothingHeadsetTFSCInterdyne
   name: combat medic's headset
   description: To communicate with your brothers in arms.
   components:
@@ -50,7 +50,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSPCyberdawn
+  id: ClothingHeadsetTFSCCyberdawn
   name: cyberdawn headset
   description: To communicate with your brothers in arms.
   components:
@@ -67,7 +67,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSPSaws
+  id: ClothingHeadsetTFSCSaws
   name: shipbreaker's headset
   description: To communicate with your brothers in arms.
   components:
@@ -261,7 +261,7 @@
 # ===== merged from _Rat (full-hullrot consolidation) =====
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSPCommand
+  id: ClothingHeadsetTFSCCommand
   name: hired gun's headset
   description: To communicate with your brothers in arms.
   components:
@@ -278,7 +278,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSPInterdyneCommand
+  id: ClothingHeadsetTFSCInterdyneCommand
   name: combat medic's headset
   description: To communicate with your brothers in arms.
   components:
@@ -295,7 +295,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSPCyberdawnCommand
+  id: ClothingHeadsetTFSCCyberdawnCommand
   name: cyberdawn headset
   description: To communicate with your brothers in arms.
   components:
@@ -312,7 +312,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSPSawsCommand
+  id: ClothingHeadsetTFSCSawsCommand
   name: shipbreaker's headset
   description: To communicate with your brothers in arms.
   components:

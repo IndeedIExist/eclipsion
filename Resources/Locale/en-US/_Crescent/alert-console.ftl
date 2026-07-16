@@ -10,3 +10,6 @@ alert-console-vars-hint = Variables: {name} — shuttle name, {dist} — distanc
 alert-console-broadcast = Also warn the shuttle on Common
 alert-console-shuttle-msg-label = Message for shuttle (Common)
 alert-console-save = Save
+
+alert-console-section-detection = DETECTION
+alert-console-section-broadcast = BROADCAST

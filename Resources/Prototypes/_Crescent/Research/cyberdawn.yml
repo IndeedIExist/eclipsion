@@ -114,13 +114,13 @@
   tier: 2
   cost: 10000
   recipeUnlocks:
-  - WeaponShotgunSaiga12NCSP
+  - WeaponShotgunSaiga12TFSC
   - WeaponSubMachineGunCorsairCyberdawn
-  - WeaponLightMachineGunNCSPRPD
+  - WeaponLightMachineGunTFSCRPD
   - WeaponLightMachineGunCompaktCyberdawn
   - WeaponRifleMayflower
   - WeaponRifleUnderdogCyberdawn
-  - WeaponRifleSVDMarksmanNCSP
+  - WeaponRifleSVDMarksmanTFSC
   - WeaponSniperAK60Cyberdawn
 
 - type: technology

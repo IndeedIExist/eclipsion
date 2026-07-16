@@ -1,8 +1,8 @@
 - type: job
-  id: RingleaderNCSP
+  id: RingleaderTFSC
   name: job-name-ringleader
   description: job-description-ringleader
-  playTimeTracker: JobRingleaderNCSP
+  playTimeTracker: JobRingleaderTFSC
   weight: 12
   startingGear: RingleaderGear
   alwaysUseSpawner: true
@@ -96,7 +96,7 @@
     head: ClothingHeadHatSyndicateOfficer
     outerClothing: ClothingOuterArmorSyndicateRingmaster
     id: RingleaderPDA
-    ears: ClothingHeadsetNCSPCommand
+    ears: ClothingHeadsetTFSCCommand
     gloves: ClothingHandsGlovesFingerless
     belt: AccessElevatorGSC
     pocket1: WeaponPistolDeagleUranium

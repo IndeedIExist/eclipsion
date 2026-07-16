@@ -20,6 +20,27 @@ public sealed class RatDiplomacySystem : EntitySystem
     private static readonly string[] AllFactions =
         ["DSM", "NCWL", "SHI", "SRM", "TAP", "IPM", "SAW", "GSC", "CD", "TSP"];
 
+    /// <summary>
+    /// Faction pairs locked into permanent war. They start at war and no peace, alliance or
+    /// trade proposal between them can ever be created or accepted, so the war can't be ended.
+    /// Pairs are unordered.
+    /// </summary>
+    private static readonly (string A, string B)[] PermanentEnemyPairs =
+    {
+        ("DSM", "NCWL"),
+    };
+
+    private static bool IsPermanentEnemyPair(string f1, string f2)
+    {
+        foreach (var (a, b) in PermanentEnemyPairs)
+        {
+            if ((f1 == a && f2 == b) || (f1 == b && f2 == a))
+                return true;
+        }
+
+        return false;
+    }
+
     private readonly Dictionary<string, Dictionary<string, FactionRelation>> _relations = new();
     private readonly Dictionary<string, List<PendingProposal>> _pending = new();
 
@@ -75,6 +96,13 @@ public sealed class RatDiplomacySystem : EntitySystem
         // Set Cyberdon (CD) to war with Shinogara (SHI)
         _relations["CD"]["SHI"] = FactionRelation.War;
         _relations["SHI"]["CD"] = FactionRelation.War;
+
+        // Lock permanent-enemy pairs (e.g. DSM vs NCWL) into war.
+        foreach (var (a, b) in PermanentEnemyPairs)
+        {
+            _relations[a][b] = FactionRelation.War;
+            _relations[b][a] = FactionRelation.War;
+        }
     }
 
     private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs args)
@@ -132,6 +160,10 @@ public sealed class RatDiplomacySystem : EntitySystem
         if (myFaction == null || myFaction == msg.TargetFactionId)
             return;
 
+        // Permanent enemies can never make peace.
+        if (IsPermanentEnemyPair(myFaction, msg.TargetFactionId))
+            return;
+
         // Check if peace or alliance is already active
         if (_relations.TryGetValue(myFaction, out var myRels) &&
             myRels.TryGetValue(msg.TargetFactionId, out var rel) &&
@@ -161,6 +193,10 @@ public sealed class RatDiplomacySystem : EntitySystem
     {
         var myFaction = GetPlayerFaction(msg.Actor);
         if (myFaction == null || myFaction == msg.TargetFactionId)
+            return;
+
+        // Permanent enemies can never ally.
+        if (IsPermanentEnemyPair(myFaction, msg.TargetFactionId))
             return;
 
         // Check if alliance is already active
@@ -194,6 +230,10 @@ public sealed class RatDiplomacySystem : EntitySystem
         if (myFaction == null || myFaction == msg.TargetFactionId)
             return;
 
+        // Permanent enemies can never trade.
+        if (IsPermanentEnemyPair(myFaction, msg.TargetFactionId))
+            return;
+
         // Check if trade is already active
         if (_relations.TryGetValue(myFaction, out var myRels) &&
             myRels.TryGetValue(msg.TargetFactionId, out var rel) &&
@@ -211,11 +251,7 @@ public sealed class RatDiplomacySystem : EntitySystem
             Type = PendingProposalType.Trade
         });
 
-        var fromName = Loc.GetString($"diplomacy-faction-{myFaction}");
-        var toName = Loc.GetString($"diplomacy-faction-{msg.TargetFactionId}");
-        Announce(Loc.GetString("diplomacy-announce-trade-proposal", ("from", fromName), ("to", toName)),
-            new Color(0.53f, 0.8f, 1f));
-
+        // Trade proposals are deliberately silent — no announcement.
         RefreshAll();
     }
 
@@ -233,11 +269,7 @@ public sealed class RatDiplomacySystem : EntitySystem
 
         SetRelation(myFaction, msg.TargetFactionId, FactionRelation.Neutral);
 
-        var fromName = Loc.GetString($"diplomacy-faction-{myFaction}");
-        var toName = Loc.GetString($"diplomacy-faction-{msg.TargetFactionId}");
-        Announce(Loc.GetString("diplomacy-announce-trade-broken", ("faction1", fromName), ("faction2", toName)),
-            new Color(1f, 0.53f, 0.27f));
-
+        // Breaking a trade deal is deliberately silent — no announcement.
         RefreshAll();
     }
 
@@ -258,6 +290,13 @@ public sealed class RatDiplomacySystem : EntitySystem
 
         myPending.Remove(proposal);
 
+        // A proposal predating the lock (or a crafted one) must never lift a permanent war.
+        if (IsPermanentEnemyPair(myFaction, proposal.FromFactionId))
+        {
+            RefreshAll();
+            return;
+        }
+
         var newRelation = msg.Type switch
         {
             PendingProposalType.Peace => FactionRelation.Peace,
@@ -273,7 +312,7 @@ public sealed class RatDiplomacySystem : EntitySystem
         {
             PendingProposalType.Peace => ("diplomacy-announce-peace-accepted", _announcer.GetAnnouncementId("diplomacy-peace")),
             PendingProposalType.Alliance => ("diplomacy-announce-alliance-accepted", _announcer.GetAnnouncementId("diplomacy-alliance")),
-            PendingProposalType.Trade => ("diplomacy-announce-trade-accepted", null),
+            // Trade deals are deliberately silent — no announcement.
             _ => (null, null)
         };
         if (key != null)
@@ -306,7 +345,7 @@ public sealed class RatDiplomacySystem : EntitySystem
         {
             PendingProposalType.Peace => "diplomacy-announce-peace-rejected",
             PendingProposalType.Alliance => "diplomacy-announce-alliance-rejected",
-            PendingProposalType.Trade => "diplomacy-announce-trade-rejected",
+            // Trade deals are deliberately silent — no announcement.
             _ => null
         };
         if (key != null)
@@ -318,6 +357,10 @@ public sealed class RatDiplomacySystem : EntitySystem
 
     private void SetRelation(string f1, string f2, FactionRelation rel)
     {
+        // Permanent enemies stay at war no matter what tries to change them.
+        if (IsPermanentEnemyPair(f1, f2))
+            rel = FactionRelation.War;
+
         if (!_relations.ContainsKey(f1)) _relations[f1] = new();
         if (!_relations.ContainsKey(f2)) _relations[f2] = new();
         _relations[f1][f2] = rel;

@@ -16,6 +16,7 @@ namespace Content.Client.Info
             IoCManager.InjectDependencies(this);
 
             Title = Loc.GetString("ui-info-title");
+            Modulate = Color.FromHex("#FFFFFFCC");
 
             var rootContainer = new TabContainer();
 

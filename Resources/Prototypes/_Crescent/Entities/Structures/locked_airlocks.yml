@@ -132,140 +132,140 @@
 
 - type: entity
   parent: AirlockSyndicate
-  id: AirlockSyndicateLockedNCSP
-  suffix: NCSP, Locked
+  id: AirlockSyndicateLockedTFSC
+  suffix: TFSC, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSP ]
+      board: [ DoorElectronicsTFSC ]
 
 - type: entity
   parent: AirlockSyndicate
-  id: AirlockSyndicateLockedNCSPCommand
-  suffix: NCSP Command, Locked
+  id: AirlockSyndicateLockedTFSCCommand
+  suffix: TFSC Command, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPCommand ]
+      board: [ DoorElectronicsTFSCCommand ]
 
 - type: entity
   parent: AirlockSyndicate
-  id: AirlockSyndicateLockedNCSPRingleader
-  suffix: NCSP Ringleader, Locked
+  id: AirlockSyndicateLockedTFSCRingleader
+  suffix: TFSC Ringleader, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPRingleader ]
+      board: [ DoorElectronicsTFSCRingleader ]
 
 - type: entity
   parent: AirlockSyndicate
-  id: AirlockSyndicateLockedNCSPGorlex
-  suffix: NCSP Gorlex, Locked
+  id: AirlockSyndicateLockedTFSCGorlex
+  suffix: TFSC Gorlex, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPGorlex ]
+      board: [ DoorElectronicsTFSCGorlex ]
 
 - type: entity
   parent: AirlockSyndicate
-  id: AirlockSyndicateLockedNCSPInterdyne
-  suffix: NCSP Interdyne, Locked
+  id: AirlockSyndicateLockedTFSCInterdyne
+  suffix: TFSC Interdyne, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPInterdyne ]
+      board: [ DoorElectronicsTFSCInterdyne ]
 
 - type: entity
   parent: AirlockSyndicate
-  id: AirlockSyndicateLockedNCSPSAWs
-  suffix: NCSP SAWs, Locked
+  id: AirlockSyndicateLockedTFSCSAWs
+  suffix: TFSC SAWs, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPSaws ]
+      board: [ DoorElectronicsTFSCSaws ]
 
 - type: entity
   parent: WindoorSecure
-  id: WindoorSecureNCSPSaws
-  suffix: NCSP Saws, Windoor
+  id: WindoorSecureTFSCSaws
+  suffix: TFSC Saws, Windoor
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPSaws ]
+      board: [ DoorElectronicsTFSCSaws ]
 
 - type: entity
   parent: AirlockSyndicate
-  id: AirlockSyndicateLockedNCSPRamzi
-  suffix: NCSP Ramzi, Locked
+  id: AirlockSyndicateLockedTFSCRamzi
+  suffix: TFSC Ramzi, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPRamzi ]
+      board: [ DoorElectronicsTFSCRamzi ]
 
 #syndicate horizontal
 
 - type: entity
   parent: AirlockSyndicateHorizontal
-  id: AirlockSyndicateHorizontalLockedNCSP
-  suffix: NCSP, Horizontal
+  id: AirlockSyndicateHorizontalLockedTFSC
+  suffix: TFSC, Horizontal
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSP ]
+      board: [ DoorElectronicsTFSC ]
 
 - type: entity
   parent: AirlockSyndicateHorizontal
-  id: AirlockSyndicateHorizontalLockedNCSPCommand
-  suffix: NCSP Command, Horizontal
+  id: AirlockSyndicateHorizontalLockedTFSCCommand
+  suffix: TFSC Command, Horizontal
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPCommand ]
+      board: [ DoorElectronicsTFSCCommand ]
 
 - type: entity
   parent: AirlockSyndicateHorizontal
-  id: AirlockSyndicateHorizontalLockedNCSPRingleader
-  suffix: NCSP Ringleader, Horizontal
+  id: AirlockSyndicateHorizontalLockedTFSCRingleader
+  suffix: TFSC Ringleader, Horizontal
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPRingleader ]
+      board: [ DoorElectronicsTFSCRingleader ]
 
 - type: entity
   parent: AirlockSyndicateHorizontal
-  id: AirlockSyndicateHorizontalLockedNCSPGorlex
-  suffix: NCSP Gorlex, Horizontal
+  id: AirlockSyndicateHorizontalLockedTFSCGorlex
+  suffix: TFSC Gorlex, Horizontal
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPGorlex ]
+      board: [ DoorElectronicsTFSCGorlex ]
 
 - type: entity
   parent: AirlockSyndicateHorizontal
-  id: AirlockSyndicateHorizontalLockedNCSPSaws
-  suffix: NCSP SAWS, Horizontal
+  id: AirlockSyndicateHorizontalLockedTFSCSaws
+  suffix: TFSC SAWS, Horizontal
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPSaws ]
+      board: [ DoorElectronicsTFSCSaws ]
 
 - type: entity
   parent: AirlockSyndicateHorizontal
-  id: AirlockSyndicateHorizontalLockedNCSPInterdyne
-  suffix: NCSP Interdyne, Horizontal
+  id: AirlockSyndicateHorizontalLockedTFSCInterdyne
+  suffix: TFSC Interdyne, Horizontal
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPInterdyne ]
+      board: [ DoorElectronicsTFSCInterdyne ]
 
 - type: entity
   parent: AirlockSyndicateHorizontal
-  id: AirlockSyndicateHorizontalLockedNCSPRamzi
-  suffix: NCSP Ramzi, Horizontal
+  id: AirlockSyndicateHorizontalLockedTFSCRamzi
+  suffix: TFSC Ramzi, Horizontal
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNCSPRamzi ]
+      board: [ DoorElectronicsTFSCRamzi ]
 
 #empire
 

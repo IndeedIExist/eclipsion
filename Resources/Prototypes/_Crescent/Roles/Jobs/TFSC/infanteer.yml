@@ -1,8 +1,8 @@
 - type: job
-  id: InfanteerNCSP
+  id: InfanteerTFSC
   name: job-name-infanteer
   description: job-description-infanteer
-  playTimeTracker: JobInfanteerNCSP
+  playTimeTracker: JobInfanteerTFSC
   weight: 10
   startingGear: InfanteerGear
   alwaysUseSpawner: true
@@ -56,13 +56,13 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHelmetSyndicateBasic
     id: InfanteerPDA
-    ears: ClothingHeadsetNCSP
+    ears: ClothingHeadsetTFSC
     belt: ClothingBeltSyndicateWebbing
     outerClothing: ClothingOuterArmorSyndicateArmorvest
     pocket1: WeaponPistolViperWood
     pocket2: ClothingMaskGasSyndicate
     gloves: ClothingHandsGlovesFingerless
-    back: ClothingBackpackNCSP
+    back: ClothingBackpackTFSC
   storage:
     belt:
       - Flash

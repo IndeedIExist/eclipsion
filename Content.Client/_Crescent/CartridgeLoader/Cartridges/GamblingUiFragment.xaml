@@ -1,0 +1,140 @@
+<cartridges:GamblingUiFragment xmlns="https://spacestation14.io"
+                              xmlns:cartridges="clr-namespace:Content.Client._Crescent.CartridgeLoader.Cartridges;assembly=Content.Client">
+    <PanelContainer Name="BackgroundPanel"
+                    StyleClasses="BackgroundDark"></PanelContainer>
+    <BoxContainer Name="MainColumn"
+                  Orientation="Vertical"
+                  HorizontalExpand="True"
+                  VerticalExpand="True"
+                  RectClipContent="True">
+        <Label Name="BalanceLabel"
+               Text="{Loc 'gambling-ui-balance-loading'}"
+               StyleClasses="LabelBig"
+               Margin="6 6 6 0"/>
+        <TabContainer Name="Tabs"
+                      HorizontalExpand="True"
+                      VerticalExpand="True">
+
+            <!-- Slots -->
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          VerticalExpand="True"
+                          Margin="6">
+                <PanelContainer Name="ReelsPanel" HorizontalExpand="True">
+                    <Label Name="ReelsLabel"
+                           Text="{Loc 'gambling-ui-slots-idle'}"
+                           StyleClasses="LabelBig"
+                           Align="Center"
+                           HorizontalExpand="True"/>
+                </PanelContainer>
+                <BoxContainer Orientation="Horizontal"
+                              HorizontalExpand="True"
+                              Margin="0 8 0 0"
+                              SeparationOverride="6">
+                    <LineEdit Name="SlotBetEdit"
+                              PlaceHolder="{Loc 'gambling-ui-bet-placeholder'}"
+                              HorizontalExpand="True"/>
+                    <Button Name="SpinButton"
+                            Access="Public"
+                            Text="{Loc 'gambling-ui-spin'}"/>
+                </BoxContainer>
+                <ScrollContainer HorizontalExpand="True"
+                                 VerticalExpand="True"
+                                 Margin="0 8 0 0"
+                                 HScrollEnabled="False">
+                    <RichTextLabel Name="SlotPaytableLabel" HorizontalExpand="True"/>
+                </ScrollContainer>
+            </BoxContainer>
+
+            <!-- Roulette -->
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          VerticalExpand="True"
+                          Margin="6">
+                <PanelContainer Name="PocketPanel" HorizontalExpand="True">
+                    <RichTextLabel Name="PocketLabel" HorizontalExpand="True"/>
+                </PanelContainer>
+                <BoxContainer Orientation="Horizontal"
+                              HorizontalExpand="True"
+                              Margin="0 8 0 0"
+                              SeparationOverride="6">
+                    <OptionButton Name="BetKindOption" HorizontalExpand="True"/>
+                    <LineEdit Name="StraightNumberEdit"
+                              PlaceHolder="{Loc 'gambling-ui-number-placeholder'}"
+                              Visible="False"
+                              HorizontalExpand="True"/>
+                </BoxContainer>
+                <BoxContainer Orientation="Horizontal"
+                              HorizontalExpand="True"
+                              Margin="0 6 0 0"
+                              SeparationOverride="6">
+                    <LineEdit Name="RouletteBetEdit"
+                              PlaceHolder="{Loc 'gambling-ui-bet-placeholder'}"
+                              HorizontalExpand="True"/>
+                    <Button Name="RouletteButton"
+                            Access="Public"
+                            Text="{Loc 'gambling-ui-spin'}"/>
+                </BoxContainer>
+                <ScrollContainer HorizontalExpand="True"
+                                 VerticalExpand="True"
+                                 Margin="0 8 0 0"
+                                 HScrollEnabled="False">
+                    <RichTextLabel Name="RouletteInfoLabel" HorizontalExpand="True"/>
+                </ScrollContainer>
+            </BoxContainer>
+
+            <!-- Blackjack -->
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          VerticalExpand="True"
+                          Margin="6">
+                <PanelContainer Name="TablePanel" HorizontalExpand="True">
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="6">
+                        <RichTextLabel Name="DealerLabel" HorizontalExpand="True"/>
+                        <RichTextLabel Name="PlayerLabel" HorizontalExpand="True" Margin="0 6 0 0"/>
+                    </BoxContainer>
+                </PanelContainer>
+                <BoxContainer Orientation="Horizontal"
+                              HorizontalExpand="True"
+                              Margin="0 8 0 0"
+                              SeparationOverride="6">
+                    <LineEdit Name="BlackjackBetEdit"
+                              PlaceHolder="{Loc 'gambling-ui-bet-placeholder'}"
+                              HorizontalExpand="True"/>
+                    <Button Name="DealButton"
+                            Access="Public"
+                            Text="{Loc 'gambling-ui-deal'}"/>
+                </BoxContainer>
+                <BoxContainer Orientation="Horizontal"
+                              HorizontalExpand="True"
+                              Margin="0 6 0 0"
+                              SeparationOverride="6">
+                    <Button Name="HitButton"
+                            Access="Public"
+                            Text="{Loc 'gambling-ui-hit'}"
+                            HorizontalExpand="True"
+                            Disabled="True"/>
+                    <Button Name="StandButton"
+                            Access="Public"
+                            Text="{Loc 'gambling-ui-stand'}"
+                            HorizontalExpand="True"
+                            Disabled="True"/>
+                </BoxContainer>
+                <ScrollContainer HorizontalExpand="True"
+                                 VerticalExpand="True"
+                                 Margin="0 8 0 0"
+                                 HScrollEnabled="False">
+                    <RichTextLabel Name="BlackjackRulesLabel" HorizontalExpand="True"/>
+                </ScrollContainer>
+            </BoxContainer>
+        </TabContainer>
+
+        <PanelContainer Name="ToastStrip"
+                        HorizontalExpand="True"
+                        Visible="False">
+            <RichTextLabel Name="ToastLabel"
+                           HorizontalExpand="True"
+                           HorizontalAlignment="Stretch"/>
+        </PanelContainer>
+    </BoxContainer>
+</cartridges:GamblingUiFragment>

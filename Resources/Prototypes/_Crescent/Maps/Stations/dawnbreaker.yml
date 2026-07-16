@@ -26,6 +26,6 @@
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            IntelligenceOfficerNCSP: [ 1, 1 ]
-            OperativeNCSP: [ 4, 4 ]
-            CyberdawnTechNCSP: [ 3, 3 ]
+            IntelligenceOfficerTFSC: [ 1, 1 ]
+            OperativeTFSC: [ 4, 4 ]
+            CyberdawnTechTFSC: [ 3, 3 ]

@@ -9748,7 +9748,7 @@ entities:
       linearDamping: 0
       canCollide: False
     - type: InsideEntityStorage
-- proto: AirlockSyndicateHorizontalLockedNCSPGorlex
+- proto: AirlockSyndicateHorizontalLockedTFSCGorlex
   entities:
   - uid: 69
     components:
@@ -9874,14 +9874,14 @@ entities:
     - type: Transform
       pos: 13.5,3.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPCommand
+- proto: AirlockSyndicateLockedTFSCCommand
   entities:
   - uid: 93
     components:
     - type: Transform
       pos: -5.5,-24.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPGorlex
+- proto: AirlockSyndicateLockedTFSCGorlex
   entities:
   - uid: 94
     components:
@@ -9959,7 +9959,7 @@ entities:
     - type: Transform
       pos: 1.5,31.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPRingleader
+- proto: AirlockSyndicateLockedTFSCRingleader
   entities:
   - uid: 108
     components:
@@ -18061,7 +18061,7 @@ entities:
     - type: Transform
       pos: 15.573593,-0.615314
       parent: 1
-- proto: ClothingBackpackNCSP
+- proto: ClothingBackpackTFSC
   entities:
   - uid: 1656
     components:
@@ -18236,7 +18236,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ClothingHeadsetNCSP
+- proto: ClothingHeadsetTFSC
   entities:
   - uid: 1660
     components:
@@ -27701,7 +27701,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-- proto: ThrusterNCSPWarship
+- proto: ThrusterTFSCWarship
   entities:
   - uid: 3021
     components:

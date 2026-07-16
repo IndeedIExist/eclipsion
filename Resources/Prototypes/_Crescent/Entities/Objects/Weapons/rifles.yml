@@ -660,7 +660,7 @@
       - WeaponRifleNCWLRezerv
 
 - type: entity
-  name: NCSP AKS-74U Krinkov 5.56x45mm
+  name: TFSC AKS-74U Krinkov 5.56x45mm
   parent: BaseWeaponRifle
   id: WeaponRifleKrinkov
   description: A shortened version of the AKS-74, this one has its foldable stock removed and ben rechambered to 5.56x45mm, commonly attributed to terrorist groups. Cheap and easily made.
@@ -900,7 +900,7 @@
       - WeaponRifleHunter
 
 - type: entity
-  name: NCSP AK-379M Mayflower 7.62x51mm
+  name: TFSC AK-379M Mayflower 7.62x51mm
   parent: BaseWeaponRifle
   id: WeaponRifleMayflower
   description: A hefty battle carbine produced by the Coalition for the external independent market. Seen often in the hands of the Gorlex during harassment raids.
@@ -1029,7 +1029,7 @@
       - WeaponSniperHristov
 
 - type: entity
-  name: NCSP SVD 12.7x99mm
+  name: TFSC SVD 12.7x99mm
   parent: BaseWeaponRifleDMR
   id: WeaponRifleSVDMarksman
   description: A large designated marksman rifle. Chambered in 12.7x99mm for long range engagements. Commonly in use by terrorist militia forces.
@@ -1086,7 +1086,7 @@
   - type: ReverseEngineering
     difficulty: 2
     recipes:
-      - WeaponRifleSVDMarksmanNCSP
+      - WeaponRifleSVDMarksmanTFSC
       - WeaponSniperAK60Cyberdawn
 
 - type: entity

@@ -43,6 +43,18 @@ public sealed partial class ResearchServerComponent : Component
     [DataField("researchConsoleUpdateTime"), ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan ResearchConsoleUpdateTime = TimeSpan.FromSeconds(1);
 
+    /// <summary>
+    /// Points the server generates on its own every minute while powered, on top of anything its point sources produce.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float PassivePointsPerMinute;
+
+    /// <summary>
+    /// Leftover fraction of a point from the last passive tick, carried into the next one.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadOnly)]
+    public float PassivePointBuffer;
+
     [DataField, AutoNetworkedField]
     public float CurrentSoftCapMultiplier = 1;
 }

@@ -641,7 +641,7 @@ entities:
     - type: Transform
       pos: 3.5,-22.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSPRamzi
+- proto: AirlockSyndicateHorizontalLockedTFSCRamzi
   entities:
   - uid: 158
     components:
@@ -676,7 +676,7 @@ entities:
     - type: Transform
       pos: 4.5,-8.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPRamzi
+- proto: AirlockSyndicateLockedTFSCRamzi
   entities:
   - uid: 161
     components:
@@ -5602,7 +5602,7 @@ entities:
   - uid: 718
     components:
     - type: MetaData
-      desc: An outdated flag that belongs to the NCSP.
+      desc: An outdated flag that belongs to the TFSC.
       name: privateer's flag
     - type: Transform
       pos: 1.5,-22.5
@@ -6752,7 +6752,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1072
-- proto: WeaponTurretSwarmerNCSP
+- proto: WeaponTurretSwarmerTFSC
   entities:
   - uid: 65
     components:

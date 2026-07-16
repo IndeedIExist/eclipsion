@@ -8273,7 +8273,7 @@ entities:
     - type: Transform
       pos: 2.5,-2.5
       parent: 1
-- proto: WallReinforcedNCSP
+- proto: WallReinforcedTFSC
   entities:
   - uid: 1055
     components:

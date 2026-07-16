@@ -108,6 +108,7 @@
       - NanoChatCartridge # DeltaV
       - BountyContractsCartridge # _NF Ratgore
       - MoneyTransferCartridge # Ratgore
+      - GamblingCartridge # Crescent
       - StockMarketCartridge
     cartridgeSlot:
       priority: -1

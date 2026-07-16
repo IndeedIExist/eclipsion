@@ -14780,14 +14780,14 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 19.5,-16.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSPCommand
+- proto: AirlockSyndicateHorizontalLockedTFSCCommand
   entities:
   - uid: 58
     components:
     - type: Transform
       pos: -7.5,4.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSPRamzi
+- proto: AirlockSyndicateHorizontalLockedTFSCRamzi
   entities:
   - uid: 59
     components:
@@ -14885,7 +14885,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 9.5,-7.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPRamzi
+- proto: AirlockSyndicateLockedTFSCRamzi
   entities:
   - uid: 74
     components:
@@ -26088,7 +26088,7 @@ entities:
     - type: Transform
       pos: 13.5,-16.5
       parent: 1
-- proto: NCSPRGD5Handgrenade
+- proto: TFSCRGD5Handgrenade
   entities:
   - uid: 2023
     components:
@@ -30463,7 +30463,7 @@ entities:
     - type: Transform
       pos: 5.4404135,6.544034
       parent: 1
-- proto: ThrusterNCSPWarship
+- proto: ThrusterTFSCWarship
   entities:
   - uid: 2727
     components:

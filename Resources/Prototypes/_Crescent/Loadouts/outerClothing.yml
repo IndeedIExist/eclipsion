@@ -66,18 +66,18 @@
       group: LoadoutEVASuit
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - ForemanNCSP
-        - InfanteerNCSP
-        - IntelligenceOfficerNCSP
-        - LieutenantNCSP
-        - OperativeNCSP
-        - CyberdawnTechNCSP
-        - RingleaderNCSP
-        - RipperdocNCSP
-        - ShipbreakerNCSP
-        - TechnicianNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - ForemanTFSC
+        - InfanteerTFSC
+        - IntelligenceOfficerTFSC
+        - LieutenantTFSC
+        - OperativeTFSC
+        - CyberdawnTechTFSC
+        - RingleaderTFSC
+        - RipperdocTFSC
+        - ShipbreakerTFSC
+        - TechnicianTFSC
+        - CoordinatorTFSC
 
 - type: loadout
   id: LoadoutHeadTFSCEVA
@@ -90,18 +90,18 @@
       group: LoadoutEVASuit
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - ForemanNCSP
-        - InfanteerNCSP
-        - IntelligenceOfficerNCSP
-        - LieutenantNCSP
-        - OperativeNCSP
-        - CyberdawnTechNCSP
-        - RingleaderNCSP
-        - RipperdocNCSP
-        - ShipbreakerNCSP
-        - TechnicianNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - ForemanTFSC
+        - InfanteerTFSC
+        - IntelligenceOfficerTFSC
+        - LieutenantTFSC
+        - OperativeTFSC
+        - CyberdawnTechTFSC
+        - RingleaderTFSC
+        - RipperdocTFSC
+        - ShipbreakerTFSC
+        - TechnicianTFSC
+        - CoordinatorTFSC
 
 - type: loadout
   id: LoadoutOuterArmorDSMEVA

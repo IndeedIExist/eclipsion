@@ -8316,7 +8316,7 @@ entities:
         1120:
         - - Pressed
           - DoorBolt
-- proto: ResearchAndDevelopmentServerCorporate
+- proto: ResearchAndDevelopmentServerCorporateShuttle
   entities:
   - uid: 462
     components:

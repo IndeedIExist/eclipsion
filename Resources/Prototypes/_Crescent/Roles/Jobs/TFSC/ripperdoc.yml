@@ -1,20 +1,20 @@
 - type: job
-  id: RipperdocNCSP
+  id: RipperdocTFSC
   name: job-name-ripperdoc
   description: job-description-ripperdoc
-  playTimeTracker: JobRipperdocNCSP
+  playTimeTracker: JobRipperdocTFSC
   ranks:
     RatRankTFSCRipperdocLead:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobRipperdocNCSP
+      tracker: JobRipperdocTFSC
       min: 108000 # 30 hours
     RatRankTFSCRipperdocSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobRipperdocNCSP
+      tracker: JobRipperdocTFSC
       min: 72000 # 20 hours
     RatRankTFSCRipperdocMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobRipperdocNCSP
+      tracker: JobRipperdocTFSC
       min: 36000 # 10 hours
     RatRankTFSCRipperdocJunior: []
   weight: 6
@@ -68,11 +68,11 @@
     jumpsuit: ClothingUniformJumpsuitSyndicateInterdyneScrubs
     shoes: ClothingShoesBootsCombat
     id: RipperdocPDA
-    ears: ClothingHeadsetNCSPInterdyne
+    ears: ClothingHeadsetTFSCInterdyne
     mask: ClothingMaskSyndicateFacemask
     pocket1: WeaponPistolHKUSP
     pocket2: MagazinePistol
-    back: ClothingBackpackNCSP
+    back: ClothingBackpackTFSC
     belt: ClothingBeltSyndicateWebbingInterdyne
   storage:
     belt:

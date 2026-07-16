@@ -107,23 +107,23 @@
   editorHidden: false
 
 - type: department
-  id: NCSP
-  description: department-NCSP-description
+  id: TFSC
+  description: department-TFSC-description
   color: "#DC143C"
   weight: 90
   roles:
-  - RingleaderNCSP
-  - LieutenantNCSP
-  - InfanteerNCSP
-  - TechnicianNCSP
-  - CoordinatorNCSP
-  - RipperdocNCSP
-  - TraumasecNCSP
-  - OperativeNCSP
-  - IntelligenceOfficerNCSP
-  - CyberdawnTechNCSP
-  - ForemanNCSP
-  - ShipbreakerNCSP
+  - RingleaderTFSC
+  - LieutenantTFSC
+  - InfanteerTFSC
+  - TechnicianTFSC
+  - CoordinatorTFSC
+  - RipperdocTFSC
+  - TraumasecTFSC
+  - OperativeTFSC
+  - IntelligenceOfficerTFSC
+  - CyberdawnTechTFSC
+  - ForemanTFSC
+  - ShipbreakerTFSC
   editorHidden: false
 
 - type: department

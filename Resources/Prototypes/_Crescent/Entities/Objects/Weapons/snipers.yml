@@ -194,7 +194,7 @@
       - WeaponSniperNCWLNovomosin
 
 - type: entity
-  name: NCSP AK-60 15.2x169mm
+  name: TFSC AK-60 15.2x169mm
   parent: [BaseWeaponRifleDMR, BaseGunWieldableDMR]
   id: WeaponSniperAK60
   description: A unlicensed .60 version of a AK. Its a less simple than a AK-74 but pack a massive 15.2x169mm Pounch.
@@ -256,7 +256,7 @@
     difficulty: 2
     recipes:
       - WeaponSniperAK60Cyberdawn
-      - WeaponRifleSVDMarksmanNCSP
+      - WeaponRifleSVDMarksmanTFSC
 
 - type: entity
   name: PTA AC-8 Spear 15.2x169mm

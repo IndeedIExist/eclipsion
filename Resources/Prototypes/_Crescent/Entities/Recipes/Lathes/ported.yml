@@ -354,24 +354,36 @@
   result: ShipVoucherTermite
   completetime: 1
   materials: #its a termite, it deserves to be this cheap
-    StarshipEngineComponents: 500
-    ShipComponents: 500
-    ShipHull: 500
+    Steel: 1100
+    Plasma: 400
+    Silver: 600
+    Gold: 400
+    Copper: 200
+    Tungsten: 100
+    Uranium: 100
 
 - type: latheRecipe
   id: ParacelsusLPC
   result: ShipVoucherParacelsus
   completetime: 1
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 1000
-    ShipHull: 2500
+    Steel: 4000
+    Plasma: 2000
+    Silver: 1800
+    Gold: 800
+    Copper: 400
+    Tungsten: 200
+    Uranium: 200
 
 - type: latheRecipe
   id: ExhumerLPC
   result: ShipVoucherExhumer
   completetime: 1
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 2000
-    ShipHull: 1500
+    Steel: 3800
+    Plasma: 1200
+    Silver: 2200
+    Gold: 1200
+    Copper: 800
+    Tungsten: 200
+    Uranium: 200

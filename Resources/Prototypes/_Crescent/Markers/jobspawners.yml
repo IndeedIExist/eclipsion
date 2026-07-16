@@ -152,7 +152,7 @@
   name: ringleader
   components:
   - type: SpawnPoint
-    job_id: RingleaderNCSP
+    job_id: RingleaderTFSC
   - type: Sprite
     layers:
       - state: green
@@ -164,7 +164,7 @@
   name: lieutenant
   components:
   - type: SpawnPoint
-    job_id: LieutenantNCSP
+    job_id: LieutenantTFSC
   - type: Sprite
     layers:
       - state: green
@@ -176,7 +176,7 @@
   name: cyberdawn researcher
   components:
   - type: SpawnPoint
-    job_id: CyberdawnTechNCSP
+    job_id: CyberdawnTechTFSC
   - type: Sprite
     layers:
       - state: green
@@ -188,7 +188,7 @@
   name: infanteer
   components:
   - type: SpawnPoint
-    job_id: InfanteerNCSP
+    job_id: InfanteerTFSC
   - type: Sprite
     layers:
       - state: green
@@ -200,7 +200,7 @@
   name: artillery technician
   components:
   - type: SpawnPoint
-    job_id: TechnicianNCSP
+    job_id: TechnicianTFSC
   - type: Sprite
     layers:
       - state: green
@@ -212,7 +212,7 @@
   name: ripperdoc
   components:
   - type: SpawnPoint
-    job_id: RipperdocNCSP
+    job_id: RipperdocTFSC
   - type: Sprite
     layers:
       - state: green
@@ -224,7 +224,7 @@
   name: traumasec
   components:
   - type: SpawnPoint
-    job_id: TraumasecNCSP
+    job_id: TraumasecTFSC
   - type: Sprite
     layers:
       - state: green
@@ -236,7 +236,7 @@
   name: cyberdawn agent
   components:
   - type: SpawnPoint
-    job_id: OperativeNCSP
+    job_id: OperativeTFSC
   - type: Sprite
     layers:
       - state: green
@@ -248,7 +248,7 @@
   name: patriarch
   components:
   - type: SpawnPoint
-    job_id: IntelligenceOfficerNCSP
+    job_id: IntelligenceOfficerTFSC
   - type: Sprite
     layers:
       - state: green
@@ -260,7 +260,7 @@
   name: shipbreaker
   components:
   - type: SpawnPoint
-    job_id: ShipbreakerNCSP
+    job_id: ShipbreakerTFSC
   - type: Sprite
     layers:
       - state: green
@@ -272,7 +272,7 @@
   name: foreman
   components:
   - type: SpawnPoint
-    job_id: ForemanNCSP
+    job_id: ForemanTFSC
   - type: Sprite
     layers:
       - state: green

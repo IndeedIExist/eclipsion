@@ -45,7 +45,7 @@
           availableJobs:
             Captain: [ -1, -1 ]
 #            LevymanDSM: [ -1, -1 ]
-#            InfanteerNCSP: [ -1, -1 ]
+#            InfanteerTFSC: [ -1, -1 ]
 #            PartisanNCWL: [ -1, -1 ]
 #            CorpsecSHI: [ -1, -1 ]
         # Goobstation blob-config-start DEBUG

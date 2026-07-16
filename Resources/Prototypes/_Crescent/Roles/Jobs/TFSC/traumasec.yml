@@ -1,24 +1,24 @@
 - type: job
-  id: TraumasecNCSP
+  id: TraumasecTFSC
   name: job-name-traumasec
   description: job-description-traumasec
-  playTimeTracker: JobTraumasecNCSP
+  playTimeTracker: JobTraumasecTFSC
   ranks:
     RatRankTFSCTraumasecHead:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobTraumasecNCSP
+      tracker: JobTraumasecTFSC
       min: 144000 # 40 hours
     RatRankTFSCTraumasecLead:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobTraumasecNCSP
+      tracker: JobTraumasecTFSC
       min: 108000 # 30 hours
     RatRankTFSCTraumasecSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobTraumasecNCSP
+      tracker: JobTraumasecTFSC
       min: 72000 # 20 hours
     RatRankTFSCTraumasecMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobTraumasecNCSP
+      tracker: JobTraumasecTFSC
       min: 36000 # 10 hours
     RatRankTFSCTraumasecJunior: []
   weight: 7
@@ -74,7 +74,7 @@
     shoes: ClothingShoesBootsCombat
     id: TraumasecPDA
     pocket1: WeaponPistolHKUSP
-    ears: ClothingHeadsetNCSPInterdyne
+    ears: ClothingHeadsetTFSCInterdyne
     belt: ClothingBeltSyndicateWebbingInterdyne
   storage:
     belt:

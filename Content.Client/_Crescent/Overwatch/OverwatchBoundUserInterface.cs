@@ -1,3 +1,5 @@
+using Content.Client._Crescent.Mainframe;
+using Content.Shared._Crescent.Mainframe;
 using Content.Shared._Crescent.Overwatch;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
@@ -10,7 +12,12 @@ namespace Content.Client._Crescent.Overwatch;
 /// </summary>
 public sealed class OverwatchBoundUserInterface : BoundUserInterface
 {
+    [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+
     private OverwatchWindow? _window;
+    private OverwatchPanel? _panel;
+    private MainframeUiController? _mainframe;
+    private OverwatchConsoleSystem? _consoleSystem;
 
     public OverwatchBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
@@ -21,13 +28,45 @@ public sealed class OverwatchBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
-        _window = this.CreateWindow<OverwatchWindow>();
-        _window.Initialize(this);
+        _panel = new OverwatchPanel();
+        _panel.Initialize(this);
 
-        _window.OnClose += () =>
+        // On a mainframe this renders as a tab instead of its own window.
+        if (UiSystem.HasUi(Owner, MainframeUiKey.Key))
         {
-            _window = null;
-        };
+            _mainframe = _uiManager.GetUIController<MainframeUiController>();
+            _mainframe.AttachPanel(Owner, MainframeTab.Overwatch, _panel, this);
+        }
+        else
+        {
+            _window = this.CreateWindow<OverwatchWindow>();
+            _window.SetPanel(_panel);
+
+            _window.OnClose += () =>
+            {
+                _window = null;
+            };
+        }
+
+        // While spectating a camera the console window must get out of the way, or it just covers the
+        // feed with itself — on smaller screens the mainframe shell fills the viewport entirely, which
+        // reads as "clicking view does nothing". Restore it the moment spectating ends.
+        _consoleSystem = EntMan.System<OverwatchConsoleSystem>();
+        _consoleSystem.LocalWatchStateChanged += OnLocalWatchStateChanged;
+    }
+
+    private void OnLocalWatchStateChanged(bool watching)
+    {
+        SetHostVisible(!watching);
+    }
+
+    /// <summary>Shows or hides whichever surface hosts this console — its own window or the mainframe shell.</summary>
+    private void SetHostVisible(bool visible)
+    {
+        if (_window != null)
+            _window.Visible = visible;
+
+        _mainframe?.SetShellVisible(Owner, visible);
     }
 
     /// <inheritdoc/>
@@ -36,16 +75,27 @@ public sealed class OverwatchBoundUserInterface : BoundUserInterface
         base.UpdateState(state);
 
         if (state is OverwatchUpdateState updateState)
-        {
-            _window?.UpdateState(updateState);
-        }
+            _panel?.UpdateState(updateState);
     }
 
     /// <inheritdoc/>
     protected override void Dispose(bool disposing)
     {
-        _window?.Dispose();
-        _window = null;
+        if (disposing)
+        {
+            if (_consoleSystem != null)
+            {
+                _consoleSystem.LocalWatchStateChanged -= OnLocalWatchStateChanged;
+                _consoleSystem = null;
+            }
+
+            // Never leave the shared mainframe shell hidden behind us if we close mid-spectate.
+            _mainframe?.SetShellVisible(Owner, true);
+            _mainframe?.DetachPanel(Owner, MainframeTab.Overwatch);
+            _window?.Dispose();
+            _window = null;
+        }
+
         base.Dispose(disposing);
     }
 

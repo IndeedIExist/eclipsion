@@ -1,8 +1,8 @@
 - type: job
-  id: LieutenantNCSP
+  id: LieutenantTFSC
   name: job-name-lieutenant
   description: job-description-lieutenant
-  playTimeTracker: JobLieutenantNCSP
+  playTimeTracker: JobLieutenantTFSC
   weight: 11
   startingGear: LieutenantGear
   alwaysUseSpawner: true
@@ -93,6 +93,6 @@
     shoes: ClothingShoesBootsCombat
     outerClothing: ClothingOuterArmorSyndicateLieutenant
     id: LieutenantPDA
-    ears: ClothingHeadsetNCSP
+    ears: ClothingHeadsetTFSC
     pocket1: WeaponPistolViperWood
     pocket2: ClothingMaskGasSyndicate

@@ -1005,7 +1005,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 11.5,-8.5
       parent: 2
-- proto: AirlockSyndicateHorizontalLockedNCSPInterdyne
+- proto: AirlockSyndicateHorizontalLockedTFSCInterdyne
   entities:
   - uid: 68
     components:
@@ -1050,7 +1050,7 @@ entities:
     - type: Transform
       pos: 3.5,-8.5
       parent: 2
-- proto: AirlockSyndicateLockedNCSPInterdyne
+- proto: AirlockSyndicateLockedTFSCInterdyne
   entities:
   - uid: 9
     components:

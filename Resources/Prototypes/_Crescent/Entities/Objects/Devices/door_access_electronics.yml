@@ -52,56 +52,56 @@
 
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsNCSP
-  suffix: NCSP General, Locked
+  id: DoorElectronicsTFSC
+  suffix: TFSC General, Locked
   components:
   - type: AccessReader
     access: [["SyndicateBasic"]]
 
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsNCSPCommand
-  suffix: NCSP Command, Locked
+  id: DoorElectronicsTFSCCommand
+  suffix: TFSC Command, Locked
   components:
   - type: AccessReader
     access: [["SyndicateCommand"]]
 
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsNCSPRingleader
-  suffix: NCSP Ringleader, Locked
+  id: DoorElectronicsTFSCRingleader
+  suffix: TFSC Ringleader, Locked
   components:
   - type: AccessReader
     access: [["SyndicateRingleader"]]
 
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsNCSPGorlex
-  suffix: NCSP Gorlex, Locked
+  id: DoorElectronicsTFSCGorlex
+  suffix: TFSC Gorlex, Locked
   components:
   - type: AccessReader
     access: [["SyndicateGorlex"]]
 
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsNCSPInterdyne
-  suffix: NCSP Interdyne, Locked
+  id: DoorElectronicsTFSCInterdyne
+  suffix: TFSC Interdyne, Locked
   components:
   - type: AccessReader
     access: [["SyndicateInterdyne"]]
 
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsNCSPSaws
-  suffix: NCSP SAWs, Locked
+  id: DoorElectronicsTFSCSaws
+  suffix: TFSC SAWs, Locked
   components:
   - type: AccessReader
     access: [["SyndicateSaws"]]
 
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsNCSPRamzi
-  suffix: NCSP Ramzi, Locked
+  id: DoorElectronicsTFSCRamzi
+  suffix: TFSC Ramzi, Locked
   components:
   - type: AccessReader
     access: [["SyndicateRamzi"]]

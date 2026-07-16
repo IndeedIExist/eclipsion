@@ -10710,7 +10710,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -18.5,0.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSPInterdyne
+- proto: AirlockSyndicateHorizontalLockedTFSCInterdyne
   entities:
   - uid: 36
     components:
@@ -10802,7 +10802,7 @@ entities:
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
-- proto: AirlockSyndicateLockedNCSPInterdyne
+- proto: AirlockSyndicateLockedTFSCInterdyne
   entities:
   - uid: 50
     components:
@@ -21475,7 +21475,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: 14.5,-1.5
       parent: 1
-- proto: WeaponShotgunNCSPSaiga12
+- proto: WeaponShotgunTFSCSaiga12
   entities:
   - uid: 1883
     components:

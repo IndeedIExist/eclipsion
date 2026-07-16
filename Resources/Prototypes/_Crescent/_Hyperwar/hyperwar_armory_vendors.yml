@@ -462,7 +462,7 @@
     sprite: _Crescent/Structures/syndicatearmory.rsi
   - type: CMAutomatedVendor
     jobs:
-    - InfanteerNCSP
+    - InfanteerTFSC
     sections:
     - name: Cyberdawn Weapons
       entries:
@@ -481,13 +481,13 @@
         name: AK-60 sniper rifle
       - id: WeaponShotgunTuber
         name: Tuber shotgun
-      - id: WeaponShotgunNCSPSaiga12
+      - id: WeaponShotgunTFSCSaiga12
         name: Saiga-12 shotgun
       - id: WeaponSubMachineGunAtreidesHullrot
         name: Atreides SMG
       - id: WeaponSubMachineGunCorsair
         name: Corsair SMG
-      - id: WeaponLightMachineGunNCSPRPD
+      - id: WeaponLightMachineGunTFSCRPD
         name: RPD light machine gun
       - id: WeaponLightMachineGunCompakt
         name: Compakt light machine gun
@@ -571,7 +571,7 @@
         name: RPG-2 HEAT rocket
       - id: CartridgeRPG2Frag
         name: RPG-2 frag rocket
-      - id: NCSPRGD5Handgrenade
+      - id: TFSCRGD5Handgrenade
         name: RGD-5 hand grenade
       - id: ClothingBackpackDuffelSyndicateBreachingChargetBundle
         name: breaching charge bundle
@@ -879,7 +879,7 @@
     sprite: _Crescent/Structures/syndicatearmory.rsi
   - type: CMAutomatedVendor
     jobs:
-    - InfanteerNCSP
+    - InfanteerTFSC
     sections:
     - name: Cyberdawn
       entries:

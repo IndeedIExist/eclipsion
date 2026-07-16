@@ -21,8 +21,8 @@ job-description-ncwl-newbie = Listen to union leaders. Work where you are needed
 
 # syndicate
 
-job-description-ringleader = Coordinate the NCSP. Approve and uphold contracts.
-job-description-lieutenant = Assist your Ringleader to coordinate the NCSP. Approve and uphold contracts.
+job-description-ringleader = Coordinate the TFSC. Approve and uphold contracts.
+job-description-lieutenant = Assist your Ringleader to coordinate the TFSC. Approve and uphold contracts.
 job-description-infanteer = Follow your contracts. Hunt bounties. Sell to the highest bidder.
 job-description-technician = Follow your contracts. Hunt bounties. Maintain your vessel's artillery.
 job-description-coordinator = Coordinate Interdyne Pharmaceuticals. Keep track of stock. See to it that contracts are fulfilled.

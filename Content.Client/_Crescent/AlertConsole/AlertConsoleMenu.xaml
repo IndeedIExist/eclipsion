@@ -1,43 +1,5 @@
 <DefaultWindow xmlns="https://spacestation14.io"
                SetSize="440 580"
                Title="{Loc 'alert-console-title'}">
-    <BoxContainer Margin="8" Orientation="Vertical">
-
-        <!-- Enable toggle -->
-        <CheckBox Name="EnabledCheck" Text="{Loc 'alert-console-enabled'}" Margin="0 0 0 6"/>
-
-        <!-- Detection radius -->
-        <Label Text="{Loc 'alert-console-radius-label'}" Margin="0 0 0 2"/>
-        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 6">
-            <Slider Name="RadiusSlider" HorizontalExpand="True" MinValue="10" MaxValue="2000" Value="200"/>
-            <Label Name="RadiusValueLabel" Text="200 м" Margin="6 0 0 0" MinSize="70 0" VerticalAlignment="Center"/>
-        </BoxContainer>
-
-        <!-- Faction channel (auto) -->
-        <Label Text="{Loc 'alert-console-channel-label'}" Margin="0 0 0 2"/>
-        <Label Name="ChannelLabel" StyleClasses="LabelKeyText" Margin="0 0 0 6"/>
-
-        <!-- Cooldown -->
-        <Label Text="{Loc 'alert-console-cooldown-label'}" Margin="0 0 0 2"/>
-        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 6">
-            <Slider Name="CooldownSlider" HorizontalExpand="True" MinValue="5" MaxValue="3600" Value="60"/>
-            <Label Name="CooldownValueLabel" Text="60 сек" Margin="6 0 0 0" MinSize="70 0" VerticalAlignment="Center"/>
-        </BoxContainer>
-
-        <!-- Station alert message -->
-        <Label Text="{Loc 'alert-console-station-msg-label'}" Margin="0 0 0 2"/>
-        <LineEdit Name="StationMessageEdit" Margin="0 0 0 2"/>
-        <Label Text="{Loc 'alert-console-vars-hint'}" Margin="0 0 0 6" StyleClasses="LabelSecondaryColor"/>
-
-        <!-- Shuttle broadcast toggle -->
-        <CheckBox Name="BroadcastCheck" Text="{Loc 'alert-console-broadcast'}" Margin="0 0 0 4"/>
-
-        <!-- Shuttle alert message -->
-        <Label Text="{Loc 'alert-console-shuttle-msg-label'}" Margin="0 0 0 2"/>
-        <LineEdit Name="ShuttleMessageEdit" Margin="0 0 0 8"/>
-
-        <!-- Save button -->
-        <Button Name="SaveButton" Text="{Loc 'alert-console-save'}" HorizontalAlignment="Right"/>
-
-    </BoxContainer>
+    <BoxContainer Name="PanelHost" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True"/>
 </DefaultWindow>

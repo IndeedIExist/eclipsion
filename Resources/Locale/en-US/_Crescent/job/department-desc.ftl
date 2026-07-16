@@ -1,5 +1,5 @@
 ﻿department-NCWL-description = Maintain the Head of State's interests within Taypan. Attempt to regain control of the system.
-department-NCSP-description = Sell your services to the highest bidder. Continue the Endwar.
+department-TFSC-description = Sell your services to the highest bidder. Continue the Endwar.
 department-DSM-description = Carry out the will of the Crown. Stamp out the Revolution.
 department-SRM-description = Carry out the divine will of the fallen Saint. Restore natural order.
 department-SHI-description = Wholesale and profit.

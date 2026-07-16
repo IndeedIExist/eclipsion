@@ -1,8 +1,8 @@
 - type: job
-  id: TechnicianNCSP
+  id: TechnicianTFSC
   name: job-name-technician
   description: job-description-technician
-  playTimeTracker: JobTechnicianNCSP
+  playTimeTracker: JobTechnicianTFSC
   weight: 9
   startingGear: TechnicianGear
   alwaysUseSpawner: true
@@ -55,7 +55,7 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatSyndicateArmaments
     id: InfanteerPDA
-    back: ClothingBackpackNCSPSatchelFilledInfanteer
-    ears: ClothingHeadsetNCSP
+    back: ClothingBackpackTFSCSatchelFilledInfanteer
+    ears: ClothingHeadsetTFSC
     pocket1: WeaponPistolViperWood
     pocket2: ClothingMaskGasSyndicate

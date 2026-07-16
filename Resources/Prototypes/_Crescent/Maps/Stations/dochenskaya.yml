@@ -25,8 +25,8 @@
         - type: StationJobs
           overflowJobs: []
           availableJobs: #10 total
-            ForemanNCSP: [ 1, 1 ]
-            ShipbreakerNCSP: [ 7, 7 ]
+            ForemanTFSC: [ 1, 1 ]
+            ShipbreakerTFSC: [ 7, 7 ]
 
 
 

@@ -8,7 +8,7 @@
       group: LoadoutUniformsCivilian
     - !type:CharacterJobRequirement
       jobs:
-        - LieutenantNCSP
+        - LieutenantTFSC
   items:
     - ClothingUniformJumpsuitSyndicateBunnysuit
 
@@ -22,8 +22,8 @@
       group: LoadoutUniformsCivilian
     - !type:CharacterJobRequirement
       jobs:
-        - RipperdocNCSP
-        - CoordinatorNCSP
+        - RipperdocTFSC
+        - CoordinatorTFSC
   items:
     - ClothingUniformJumpsuitSyndicateInterdyne
 
@@ -37,8 +37,8 @@
       group: LoadoutUniformsCivilian
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - RipperdocNCSP
+        - TraumasecTFSC
+        - RipperdocTFSC
   items:
     - ClothingUniformJumpsuitSyndicateInterdyneWhiteUniform
 
@@ -52,9 +52,9 @@
       group: LoadoutUniformsCivilian
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - RipperdocNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - RipperdocTFSC
+        - CoordinatorTFSC
   items:
     - ClothingUniformJumpsuitSyndicateInterdyneRedUniform
 
@@ -68,8 +68,8 @@
       group: LoadoutUniformsCivilian
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - RipperdocNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - RipperdocTFSC
+        - CoordinatorTFSC
   items:
     - ClothingUniformJumpsuitSyndicateInterdyneScrubs

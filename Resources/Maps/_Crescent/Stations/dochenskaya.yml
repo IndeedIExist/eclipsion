@@ -38277,14 +38277,14 @@ entities:
     - type: Transform
       pos: -4.5,3.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSP
+- proto: AirlockSyndicateHorizontalLockedTFSC
   entities:
   - uid: 46
     components:
     - type: Transform
       pos: -8.5,21.5
       parent: 1
-- proto: AirlockSyndicateHorizontalLockedNCSPSaws
+- proto: AirlockSyndicateHorizontalLockedTFSCSaws
   entities:
   - uid: 47
     components:
@@ -38344,7 +38344,7 @@ entities:
     - type: Transform
       pos: 9.5,21.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPCommand
+- proto: AirlockSyndicateLockedTFSCCommand
   entities:
   - uid: 57
     components:
@@ -38361,7 +38361,7 @@ entities:
     - type: Transform
       pos: 1.5,43.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPSAWs
+- proto: AirlockSyndicateLockedTFSCSAWs
   entities:
   - uid: 60
     components:
@@ -50323,7 +50323,7 @@ entities:
     - type: Transform
       pos: 11.5,38.5
       parent: 1
-- proto: NCSPRGD5Handgrenade
+- proto: TFSCRGD5Handgrenade
   entities:
   - uid: 2153
     components:
@@ -55876,7 +55876,7 @@ entities:
     - type: Transform
       pos: -12.514013,19.51231
       parent: 1
-- proto: WeaponShotgunNCSPSaiga12
+- proto: WeaponShotgunTFSCSaiga12
   entities:
   - uid: 3004
     components:
@@ -56093,7 +56093,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.5,15.5
       parent: 1
-- proto: WindoorSecureNCSPSaws
+- proto: WindoorSecureTFSCSaws
   entities:
   - uid: 3021
     components:

@@ -38,6 +38,16 @@ public sealed class OverwatchConsoleSystem : EntitySystem
 
     private OverwatchAnnouncementOverlay _announcementOverlay = default!;
 
+    /// <summary>
+    /// Raised when the local player starts (<c>true</c>) or stops (<c>false</c>) spectating through an
+    /// Overwatch camera. The console BUI uses this to hide its window while spectating so the camera
+    /// feed isn't covered, then restore it — driven from here (an always-running system) rather than
+    /// from the UI, which stops updating once hidden.
+    /// </summary>
+    public event Action<bool>? LocalWatchStateChanged;
+
+    private bool _localWatching;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -51,6 +61,24 @@ public sealed class OverwatchConsoleSystem : EntitySystem
 
         _announcementOverlay = new(_cache, _timing);
         _overlay.AddOverlay(_announcementOverlay);
+    }
+
+    /// <summary>
+    /// Recomputes whether the local player is currently spectating and fires
+    /// <see cref="LocalWatchStateChanged"/> on transitions only. Cheap and idempotent, so it can be
+    /// called from any component hook or every tick as a safety net.
+    /// </summary>
+    private void UpdateLocalWatchState()
+    {
+        var watching = _player.LocalEntity is { } player
+            && TryComp<RatOverwatchWatchingComponent>(player, out var comp)
+            && comp.Watching.HasValue;
+
+        if (watching == _localWatching)
+            return;
+
+        _localWatching = watching;
+        LocalWatchStateChanged?.Invoke(watching);
     }
 
     public override void Shutdown()
@@ -71,11 +99,11 @@ public sealed class OverwatchConsoleSystem : EntitySystem
 
     private void OnLocalWatchingInit(Entity<RatOverwatchWatchingComponent> ent, ref ComponentInit args)
     {
-        if (_player.LocalEntity != ent.Owner || !ent.Comp.Watching.HasValue)
+        if (_player.LocalEntity != ent.Owner)
             return;
 
-        var watchingNet = GetNetEntity(ent.Comp.Watching.Value);
         _announcementOverlay?.Reset();
+        UpdateLocalWatchState();
     }
 
     private void OnLocalWatchingRemoved(Entity<RatOverwatchWatchingComponent> ent, ref ComponentRemove args)
@@ -85,6 +113,7 @@ public sealed class OverwatchConsoleSystem : EntitySystem
 
         _announcementOverlay.Reset();
         CleanupAllRelayedSounds();
+        UpdateLocalWatchState();
     }
 
     private void OnRelayedRemove<T>(Entity<RatOverwatchRelayedSoundComponent> ent, ref T args)
@@ -164,6 +193,9 @@ public sealed class OverwatchConsoleSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        // Safety net: guarantees window restore even if a component hook is ever missed.
+        UpdateLocalWatchState();
 
         if (_player.LocalEntity is not { } player ||
             !TryComp(player, out RatOverwatchWatchingComponent? watching) ||

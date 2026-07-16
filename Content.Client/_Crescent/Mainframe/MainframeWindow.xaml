@@ -1,0 +1,40 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc 'mainframe-window-title'}"
+                      MinSize="900 600"
+                      SetSize="1300 820">
+
+    <!-- The whole thing sits on a screen panel so it reads as a monitor rather than a form. -->
+    <PanelContainer StyleClasses="PdaContentBackground" Margin="4" VerticalExpand="True" HorizontalExpand="True">
+        <BoxContainer Orientation="Vertical" Margin="8 6 8 6" VerticalExpand="True" HorizontalExpand="True">
+
+            <!-- Masthead -->
+            <BoxContainer Orientation="Horizontal" Margin="0 0 0 2">
+                <Label Name="MastheadLabel" StyleClasses="ConsoleHeading" Text="MAINFRAME"/>
+                <Control HorizontalExpand="True"/>
+                <Label Name="ClockLabel" StyleClasses="ConsoleText" Text="--:--:--"/>
+            </BoxContainer>
+
+            <!-- One-line note on what this terminal is, since the mainframe bundles several consoles. -->
+            <Label StyleClasses="ConsoleText"
+                   Text="{Loc 'mainframe-window-description'}"
+                   Margin="0 0 0 4"/>
+
+            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" SetHeight="2"/>
+
+            <TabContainer Name="Tabs" VerticalExpand="True" HorizontalExpand="True" Margin="0 6 0 6"/>
+
+            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" SetHeight="2"/>
+
+            <!-- Footer -->
+            <BoxContainer Orientation="Horizontal" Margin="0 4 0 0">
+                <Label Name="StatusLabel" StyleClasses="ConsoleText" Text=""/>
+                <Control HorizontalExpand="True"/>
+                <Label Name="LinkLabel" StyleClasses="ConsoleText" Text=""/>
+            </BoxContainer>
+
+        </BoxContainer>
+    </PanelContainer>
+
+</controls:FancyWindow>

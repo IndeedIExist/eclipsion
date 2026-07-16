@@ -1,8 +1,8 @@
 - type: job
-  id: ShipbreakerNCSP
+  id: ShipbreakerTFSC
   name: job-name-shipbreaker
   description: job-description-shipbreaker
-  playTimeTracker: JobShipbreakerNCSP
+  playTimeTracker: JobShipbreakerTFSC
   weight: 1
   startingGear: ShipbreakerGear
   alwaysUseSpawner: true
@@ -54,8 +54,8 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatHardhatSyndicate
     id: ShipbreakerPDA
-    ears: ClothingHeadsetNCSPSaws
+    ears: ClothingHeadsetTFSCSaws
     belt: ClothingBeltUtilityEngineering
     pocket1: WeaponPistolViperWood
     gloves: ClothingHandsGlovesFingerless
-    back: ClothingBackpackNCSPSatchelFilledInfanteer
+    back: ClothingBackpackTFSCSatchelFilledInfanteer

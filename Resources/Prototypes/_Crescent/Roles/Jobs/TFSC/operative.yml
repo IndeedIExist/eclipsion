@@ -1,20 +1,20 @@
 - type: job
-  id: OperativeNCSP
+  id: OperativeTFSC
   name: job-name-operative
   description: job-description-operative
-  playTimeTracker: JobOperativeNCSP
+  playTimeTracker: JobOperativeTFSC
   ranks:
     RatRankTFSCOperativeLead:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobOperativeNCSP
+      tracker: JobOperativeTFSC
       min: 108000 # 30 hours
     RatRankTFSCOperativeSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobOperativeNCSP
+      tracker: JobOperativeTFSC
       min: 72000 # 20 hours
     RatRankTFSCOperativeMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobOperativeNCSP
+      tracker: JobOperativeTFSC
       min: 36000 # 10 hours
     RatRankTFSCOperativeJunior: []
   weight: 4
@@ -71,8 +71,8 @@
     id: OperativePDA
     gloves: ClothingHandsGlovesFingerless
     outerClothing: ClothingOuterArmorKendoBogu
-    ears: ClothingHeadsetNCSPCyberdawn
-    back: ClothingBackpackNCSP
+    ears: ClothingHeadsetTFSCCyberdawn
+    back: ClothingBackpackTFSC
     pocket1: WeaponPistolAnsem
     belt: ClothingBeltSyndicateWebbing
   storage:

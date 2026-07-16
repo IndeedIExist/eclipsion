@@ -42,40 +42,40 @@
 #syndicate
 
 - type: playTimeTracker
-  id: JobRingleaderNCSP
+  id: JobRingleaderTFSC
 
 - type: playTimeTracker
-  id: JobLieutenantNCSP
+  id: JobLieutenantTFSC
 
 - type: playTimeTracker
-  id: JobInfanteerNCSP
+  id: JobInfanteerTFSC
 
 - type: playTimeTracker
-  id: JobCyberdawnTechNCSP
+  id: JobCyberdawnTechTFSC
 
 - type: playTimeTracker
-  id: JobTechnicianNCSP
+  id: JobTechnicianTFSC
 
 - type: playTimeTracker
-  id: JobCoordinatorNCSP
+  id: JobCoordinatorTFSC
 
 - type: playTimeTracker
-  id: JobRipperdocNCSP
+  id: JobRipperdocTFSC
 
 - type: playTimeTracker
-  id: JobTraumasecNCSP
+  id: JobTraumasecTFSC
 
 - type: playTimeTracker
-  id: JobOperativeNCSP
+  id: JobOperativeTFSC
 
 - type: playTimeTracker
-  id: JobIntelligenceOfficerNCSP
+  id: JobIntelligenceOfficerTFSC
 
 - type: playTimeTracker
-  id: JobForemanNCSP
+  id: JobForemanTFSC
 
 - type: playTimeTracker
-  id: JobShipbreakerNCSP
+  id: JobShipbreakerTFSC
 
 # empire
 

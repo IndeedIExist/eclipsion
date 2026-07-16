@@ -1,0 +1,34 @@
+# Author Info
+# Discord: originally @fleshangel, later remade by @ninruB
+#
+- type: vessel
+  id: Corvax
+  name: GSC Corvax
+  description: |
+    A light missile corvette. Devastating at long range.
+    LOADOUT: 2x 48mm 'Buzzsaw' SRM systems (Gorlex edition), 1x 120mm 'Anvil' artillery piece
+  price: 35000
+  category: Small
+  group: None
+  path: /Maps/_Crescent/Shuttles/TFSC/corvax.yml
+
+- type: gameMap
+  id: Corvax
+  mapName: 'GSC Corvax'
+  mapPath: /Maps/_Crescent/Shuttles/TFSC/corvax.yml
+  minPlayers: 0
+  stations:
+    Corvax:
+      stationProto: StandardCrescentVessel
+      components:
+        - type: VesselIcon
+          iffIcon:
+            sprite: _Crescent/ShipIcons/ifficons.rsi
+            state: corvette
+        - type: StationNameSetup
+          mapNameTemplate: 'GSC Corvax {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-missile

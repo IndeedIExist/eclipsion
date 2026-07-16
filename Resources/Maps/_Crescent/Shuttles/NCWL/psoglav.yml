@@ -9082,7 +9082,7 @@ entities:
     - type: Transform
       pos: 5.5,8.5
       parent: 1
-- proto: ResearchAndDevelopmentServerCommunard
+- proto: ResearchAndDevelopmentServerCommunardShuttle
   entities:
   - uid: 999
     components:

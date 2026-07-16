@@ -431,252 +431,364 @@
   result: ShipVoucherRockchipper
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 2500
-    ShipHull: 1000
+    Steel: 3700
+    Plasma: 800
+    Silver: 2400
+    Gold: 1400
+    Copper: 1000
+    Tungsten: 200
+    Uranium: 200
 
 - type: latheRecipe
   id: MercuryMK2LPC
   result: ShipVoucherMercuryMK2
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 1500
-    ShipHull: 1500
+    Steel: 3300
+    Plasma: 1200
+    Silver: 1800
+    Gold: 1200
+    Copper: 600
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: ShantyLPC
   result: ShipVoucherShanty
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 1500
-    ShipHull: 2500
+    Steel: 4500
+    Plasma: 2000
+    Silver: 2200
+    Gold: 1200
+    Copper: 600
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: ThanapodLPC
   result: ShipVoucherThanapod
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 3000
-    ShipComponents: 3000
-    ShipHull: 5000
+    Steel: 9000
+    Plasma: 4000
+    Silver: 4400
+    Gold: 2400
+    Copper: 1200
+    Tungsten: 600
+    Uranium: 600
 
 - type: latheRecipe
   id: ScabrakLPC
   result: ShipVoucherScabrak
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 2500
-    ShipComponents: 2500
-    ShipHull: 4500
+    Steel: 7900
+    Plasma: 3600
+    Silver: 3800
+    Gold: 2000
+    Copper: 1000
+    Tungsten: 500
+    Uranium: 500
 
 - type: latheRecipe
   id: HyenaLPC
   result: ShipVoucherHyena
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 2500
-    ShipComponents: 3500
-    ShipHull: 3500
+    Steel: 7700
+    Plasma: 2800
+    Silver: 4200
+    Gold: 2400
+    Copper: 1400
+    Tungsten: 500
+    Uranium: 500
 
 - type: latheRecipe
   id: GeodeLPC
   result: ShipVoucherGeode
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 4500
-    ShipComponents: 3500
-    ShipHull: 5000
+    Steel: 9500
+    Plasma: 4000
+    Silver: 4800
+    Gold: 3200
+    Copper: 1400
+    Tungsten: 900
+    Uranium: 900
 
 - type: latheRecipe
   id: CaracalLPC
   result: ShipVoucherCaracal
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 2000
-    ShipComponents: 5500
-    ShipHull: 3000
+    Steel: 9100
+    Plasma: 2400
+    Silver: 5600
+    Gold: 3000
+    Copper: 2200
+    Tungsten: 400
+    Uranium: 400
 
 - type: latheRecipe
   id: RokhLPC
   result: ShipVoucherRokh
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 5000
-    ShipComponents: 4000
-    ShipHull: 8500
+    Steel: 14200
+    Plasma: 6800
+    Silver: 6600
+    Gold: 3600
+    Copper: 1600
+    Tungsten: 1000
+    Uranium: 1000
 
 - type: latheRecipe
   id: AmadeusLPC
   result: ShipVoucherAmadeus
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 4000
-    ShipComponents: 6000
-    ShipHull: 7000
+    Steel: 14400
+    Plasma: 5600
+    Silver: 7600
+    Gold: 4000
+    Copper: 2400
+    Tungsten: 800
+    Uranium: 800
 
 - type: latheRecipe
   id: FridgeLPC
   result: ShipVoucherFridge
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 2500
-    ShipComponents: 2500
-    ShipHull: 1500
+    Steel: 4300
+    Plasma: 1200
+    Silver: 2600
+    Gold: 2000
+    Copper: 1000
+    Tungsten: 500
+    Uranium: 500
 
 - type: latheRecipe
   id: HarpyLPC
   result: ShipVoucherHarpy
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 1500
-    ShipHull: 2500
+    Steel: 4500
+    Plasma: 2000
+    Silver: 2200
+    Gold: 1200
+    Copper: 600
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: MeatwagonLPC
   result: ShipVoucherMeatwagon
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 2000
-    ShipHull: 2000
+    Steel: 4400
+    Plasma: 1600
+    Silver: 2400
+    Gold: 1400
+    Copper: 800
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: MatabeleLPC
   result: ShipVoucherMatabele
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 5000
-    ShipHull: 1500
+    Steel: 6800
+    Plasma: 1200
+    Silver: 4600
+    Gold: 2600
+    Copper: 2000
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: HulkLPC
   result: ShipVoucherHulk
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 3000
-    ShipComponents: 4000
-    ShipHull: 10000
+    Steel: 16000
+    Plasma: 8000
+    Silver: 7200
+    Gold: 2800
+    Copper: 1600
+    Tungsten: 600
+    Uranium: 600
 
 - type: latheRecipe
   id: GnatLPC
   result: ShipVoucherGnat
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 1000
-    ShipHull: 1500
+    Steel: 2800
+    Plasma: 1200
+    Silver: 1400
+    Gold: 800
+    Copper: 400
+    Tungsten: 200
+    Uranium: 200
 
 - type: latheRecipe
   id: TickLPC
   result: ShipVoucherTick
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 1000
-    ShipHull: 1500
+    Steel: 2800
+    Plasma: 1200
+    Silver: 1400
+    Gold: 800
+    Copper: 400
+    Tungsten: 200
+    Uranium: 200
 
 - type: latheRecipe
   id: PiranhaLPC
   result: ShipVoucherPiranha
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 1000
-    ShipHull: 1500
+    Steel: 2800
+    Plasma: 1200
+    Silver: 1400
+    Gold: 1000
+    Copper: 400
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: ScuttlefishLPC
   result: ShipVoucherScuttlefish
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 1500
-    ShipHull: 1500
+    Steel: 3300
+    Plasma: 1200
+    Silver: 1800
+    Gold: 1000
+    Copper: 600
+    Tungsten: 200
+    Uranium: 200
 
 - type: latheRecipe
   id: ItchLPC
   result: ShipVoucherItch
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 1500
-    ShipHull: 2500
+    Steel: 4500
+    Plasma: 2000
+    Silver: 2200
+    Gold: 1200
+    Copper: 600
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: ReaverLPC
   result: ShipVoucherReaver
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 2000
-    ShipComponents: 1500
-    ShipHull: 2500
+    Steel: 4500
+    Plasma: 2000
+    Silver: 2200
+    Gold: 1400
+    Copper: 600
+    Tungsten: 400
+    Uranium: 400
 
 - type: latheRecipe
   id: CorvaxLPC
   result: ShipVoucherCorvax
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 3500
-    ShipComponents: 3500
-    ShipHull: 4000
+    Steel: 8300
+    Plasma: 3200
+    Silver: 4400
+    Gold: 2800
+    Copper: 1400
+    Tungsten: 700
+    Uranium: 700
 
 - type: latheRecipe
   id: CleaverLPC
   result: ShipVoucherCleaver
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 2500
-    ShipComponents: 4500
-    ShipHull: 5000
+    Steel: 10500
+    Plasma: 4000
+    Silver: 5600
+    Gold: 2800
+    Copper: 1800
+    Tungsten: 500
+    Uranium: 500
 
 - type: latheRecipe
   id: OuroborosLPC
   result: ShipVoucherOuroboros
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 2500
-    ShipComponents: 6000
-    ShipHull: 3500
+    Steel: 10200
+    Plasma: 2800
+    Silver: 6200
+    Gold: 3400
+    Copper: 2400
+    Tungsten: 500
+    Uranium: 500
 
 - type: latheRecipe
   id: BoSinnLPC
   result: ShipVoucherSinn
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 3500
-    ShipComponents: 4500
-    ShipHull: 6500
+    Steel: 12300
+    Plasma: 5200
+    Silver: 6200
+    Gold: 3200
+    Copper: 1800
+    Tungsten: 700
+    Uranium: 700
 
 - type: latheRecipe
   id: EradicatorLPC
   result: ShipVoucherEradicator
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 3000
-    ShipComponents: 6000
-    ShipHull: 7500
+    Steel: 15000
+    Plasma: 6000
+    Silver: 7800
+    Gold: 3600
+    Copper: 2400
+    Tungsten: 600
+    Uranium: 600
 
 - type: latheRecipe
   id: WolfLPC
   result: ShipVoucherWolf
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 4500
-    ShipComponents: 5000
-    ShipHull: 6000
+    Steel: 12200
+    Plasma: 4800
+    Silver: 6400
+    Gold: 3800
+    Copper: 2000
+    Tungsten: 900
+    Uranium: 900
 
 - type: latheRecipe
   id: BodybagLPC
   result: ShipVoucherBodybag
   completetime: 1.5
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 9000
-    ShipHull: 1500
+    Steel: 10800
+    Plasma: 1200
+    Silver: 7800
+    Gold: 4200
+    Copper: 3600
+    Tungsten: 300
+    Uranium: 300
 
 # MARK: Flatpacks
 

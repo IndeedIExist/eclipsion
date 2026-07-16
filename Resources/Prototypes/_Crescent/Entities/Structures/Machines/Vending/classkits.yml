@@ -133,9 +133,9 @@
     sprite: _Crescent/Structures/syndicatearmory.rsi
   - type: CMAutomatedVendor
     jobs:
-    - TraumasecNCSP
-    - RipperdocNCSP
-    - CoordinatorNCSP
+    - TraumasecTFSC
+    - RipperdocTFSC
+    - CoordinatorTFSC
     sections:
     - name: Standard Kit
       choices: { CMClass: 1 }
@@ -159,7 +159,7 @@
         recommended: true
       - id: WeaponSubMachineGunAtreides
         name: Atreides
-      - id: WeaponShotgunNCSPSaiga12
+      - id: WeaponShotgunTFSCSaiga12
         name: KVST Saiga-12k Hammer 12 gauge
     - name: EVA and Utilities
       choices: { CMUtilities: 2 }
@@ -351,10 +351,10 @@
     sprite: _Crescent/Structures/syndicatearmory.rsi
   - type: CMAutomatedVendor
     jobs:
-    - RingleaderNCSP
-    - LieutenantNCSP
-    - InfanteerNCSP
-    - TechnicianNCSP
+    - RingleaderTFSC
+    - LieutenantTFSC
+    - InfanteerTFSC
+    - TechnicianTFSC
     sections:
     - name: Standard Kit
       choices: { CMClass: 1 }

@@ -32,7 +32,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      70: Dead
+      100: Dead
   - type: Stamina
     critThreshold: 50
   - type: Butcherable
@@ -48,7 +48,7 @@
     animation: WeaponArcClaw
     damage:
       types:
-        Slash: 8
+        Slash: 10
         Structural: 20
   - type: ReplacementAccent
     accent: genericAggressive
@@ -104,7 +104,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      50: Dead
+      70: Dead
 
 - type: entity
   parent: MobFleshGolemExpeditions
@@ -166,7 +166,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      40: Dead
+      55: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2.5
@@ -235,7 +235,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      30: Dead
+      45: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2.5
@@ -265,7 +265,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Dead
+      280: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.8
     baseSprintSpeed: 3.8
@@ -276,7 +276,7 @@
     animation: WeaponArcClaw
     damage:
       types:
-        Slash: 12
+        Slash: 15
 
 # FUNNY LITTLE GUY
 # embedable projectile that bites you until you either kill it or detach it or die (or it despawns)
@@ -290,7 +290,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Blunt: 4
+        Blunt: 5
   - type: Ammo
     muzzleFlash: null
   - type: EmbeddableProjectile
@@ -313,7 +313,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      12: Dead
+      16: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 0
     baseSprintSpeed: 0
@@ -324,6 +324,6 @@
     animation: WeaponArcBite
     damage:
       types:
-        Slash: 4
+        Slash: 5
   - type: TimedDespawn
     lifetime: 120

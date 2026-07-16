@@ -294,7 +294,7 @@
       path: /Audio/_Crescent/Weapons/Guns/non_collection/rpg_fire.ogg
 
 - type: entity
-  name: NCSP RPG-2
+  name: TFSC RPG-2
   parent: [BaseWeaponLauncher, BaseGunWieldable]
   id: WeaponLauncherSmallRocket
   description: The lesser known predecessor. A rocket launcher often seen in the hands of terrorists and informal militias.

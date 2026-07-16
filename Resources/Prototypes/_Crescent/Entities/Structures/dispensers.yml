@@ -289,7 +289,7 @@
   parent: BaseDispenser
   id: GrinningJackalCargoChute
   name: syndicate cargo turn-in chute
-  description: A machine with piping systems that lead into the bowels of the station, accepting export goods for trade deeds. The electronic display informs that the NCSP are in need of food.
+  description: A machine with piping systems that lead into the bowels of the station, accepting export goods for trade deeds. The electronic display informs that the TFSC are in need of food.
   components:
   - type: Anchorable
     flags:
@@ -384,17 +384,17 @@
       NCWLIDCardEngineeringLeader: SpaceCash20000
       NCWLIDCardEngineeringWorker: SpaceCash10000
       NCWLIDCardWorker: SpaceCash5000
-      NCSPIDCardRingleader: SpaceCash30000
-      NCSPIDCardLieutenant: SpaceCash30000
-      NCSPIDCardInfanteer: SpaceCash10000
-      NCSPIDCardCoordinator: SpaceCash20000
-      NCSPIDCardRipperdoc: SpaceCash10000
-      NCSPIDCardTraumasec: SpaceCash10000
-      NCSPIDCardCyberdawnTech: SpaceCash10000
-      NCSPIDCardOperative: SpaceCash15000
-      NCSPIDCardIntelligenceOfficer: SpaceCash20000
-      NCSPIDCardForeman: SpaceCash20000
-      NCSPIDCardShipbreaker: SpaceCash10000
+      TFSCIDCardRingleader: SpaceCash30000
+      TFSCIDCardLieutenant: SpaceCash30000
+      TFSCIDCardInfanteer: SpaceCash10000
+      TFSCIDCardCoordinator: SpaceCash20000
+      TFSCIDCardRipperdoc: SpaceCash10000
+      TFSCIDCardTraumasec: SpaceCash10000
+      TFSCIDCardCyberdawnTech: SpaceCash10000
+      TFSCIDCardOperative: SpaceCash15000
+      TFSCIDCardIntelligenceOfficer: SpaceCash20000
+      TFSCIDCardForeman: SpaceCash20000
+      TFSCIDCardShipbreaker: SpaceCash10000
       DSMIDCardFreeholder: SpaceCash5000
       DSMIDCardTemplar: SpaceCash15000
       DSMIDCardAdvocatus: SpaceCash20000
@@ -807,17 +807,17 @@
       NCWLIDCardEngineeringLeader: SpaceCash20000
       NCWLIDCardEngineeringWorker: SpaceCash10000
       NCWLIDCardWorker: SpaceCash5000
-      NCSPIDCardRingleader: SpaceCash30000
-      NCSPIDCardLieutenant: SpaceCash30000
-      NCSPIDCardInfanteer: SpaceCash10000
-      NCSPIDCardCoordinator: SpaceCash20000
-      NCSPIDCardRipperdoc: SpaceCash10000
-      NCSPIDCardTraumasec: SpaceCash10000
-      NCSPIDCardCyberdawnTech: SpaceCash10000
-      NCSPIDCardOperative: SpaceCash15000
-      NCSPIDCardIntelligenceOfficer: SpaceCash20000
-      NCSPIDCardForeman: SpaceCash20000
-      NCSPIDCardShipbreaker: SpaceCash10000
+      TFSCIDCardRingleader: SpaceCash30000
+      TFSCIDCardLieutenant: SpaceCash30000
+      TFSCIDCardInfanteer: SpaceCash10000
+      TFSCIDCardCoordinator: SpaceCash20000
+      TFSCIDCardRipperdoc: SpaceCash10000
+      TFSCIDCardTraumasec: SpaceCash10000
+      TFSCIDCardCyberdawnTech: SpaceCash10000
+      TFSCIDCardOperative: SpaceCash15000
+      TFSCIDCardIntelligenceOfficer: SpaceCash20000
+      TFSCIDCardForeman: SpaceCash20000
+      TFSCIDCardShipbreaker: SpaceCash10000
       DSMIDCardFreeholder: SpaceCash5000
       DSMIDCardTemplar: SpaceCash15000
       DSMIDCardAdvocatus: SpaceCash20000

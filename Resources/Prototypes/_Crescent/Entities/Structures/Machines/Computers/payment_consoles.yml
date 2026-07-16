@@ -1,0 +1,148 @@
+# Payroll consoles: set standing salaries for a faction's members, paid from that faction's treasury.
+# The same PaymentConsole component is also carried by the command mainframe, where it renders as a tab.
+
+- type: entity
+  abstract: true
+  id: ComputerPaymentBase
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
+  name: payroll console
+  description: Sets recurring salaries for faction personnel, drawn from the faction treasury.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: MetalGlassBreak
+  - type: ApcPowerReceiver
+    needsPower: false
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: ActivatableUIRequiresPower
+  - type: PaymentConsole
+  - type: ActivatableUI
+    key: enum.PaymentConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.PaymentConsoleUiKey.Key:
+        type: Content.Client._Crescent.Payment.PaymentConsoleBoundUserInterface
+
+  # Declared empty here; every variant must supply its faction's command levels. An AccessReader with
+  # no access list allows everyone, so a variant that forgets it ships open.
+  - type: AccessReader
+  - type: ActivatableUIRequiresAccess
+    popupMessage: payment-console-access-denied
+
+  - type: Sprite
+    netsync: false
+    noRot: true
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: generic
+    - map: ["computerLayerKeys"]
+      state: tech_key
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b8a025"
+    enabled: false
+
+# One variant per faction, gated on that faction's base access tag — the one every job in the
+# faction carries.
+
+- type: entity
+  parent: ComputerPaymentBase
+  id: ComputerPaymentDSM
+  name: payroll console DSM
+  components:
+  - type: PaymentConsole
+    faction: DSM
+  - type: AccessReader
+    access: [["Empire"]]
+
+- type: entity
+  parent: ComputerPaymentBase
+  id: ComputerPaymentNCWL
+  name: payroll console NCWL
+  components:
+  - type: PaymentConsole
+    faction: NCWL
+  - type: AccessReader
+    access: [["NCWLGeneral"]]
+
+- type: entity
+  parent: ComputerPaymentBase
+  id: ComputerPaymentSHI
+  name: payroll console SHI
+  components:
+  - type: PaymentConsole
+    faction: SHI
+  - type: AccessReader
+    access: [["Shinohara"]]
+
+- type: entity
+  parent: ComputerPaymentBase
+  id: ComputerPaymentTAP
+  name: payroll console TAP
+  components:
+  - type: PaymentConsole
+    faction: TAP
+  - type: AccessReader
+    access: [["Families"]]
+
+- type: entity
+  parent: ComputerPaymentBase
+  id: ComputerPaymentIPM
+  name: payroll console IPM
+  components:
+  - type: PaymentConsole
+    faction: IPM
+  - type: AccessReader
+    access: [["SyndicateInterdyne"]]
+
+- type: entity
+  parent: ComputerPaymentBase
+  id: ComputerPaymentSAW
+  name: payroll console SAW
+  components:
+  - type: PaymentConsole
+    faction: SAW
+  - type: AccessReader
+    access: [["SyndicateSaws"]]
+
+- type: entity
+  parent: ComputerPaymentBase
+  id: ComputerPaymentGSC
+  name: payroll console GSC
+  components:
+  - type: PaymentConsole
+    faction: GSC
+  - type: AccessReader
+    access: [["SyndicateGorlex"]]
+
+- type: entity
+  parent: ComputerPaymentBase
+  id: ComputerPaymentCD
+  name: payroll console CD
+  components:
+  - type: PaymentConsole
+    faction: CD
+  # Cyberdawn's tag is SyndicateRamzi.
+  - type: AccessReader
+    access: [["SyndicateRamzi"]]
+
+- type: entity
+  parent: ComputerPaymentBase
+  id: ComputerPaymentSRM
+  name: payroll console SRM
+  components:
+  - type: PaymentConsole
+    faction: SRM
+  - type: AccessReader
+    access: [["Hunter"]]

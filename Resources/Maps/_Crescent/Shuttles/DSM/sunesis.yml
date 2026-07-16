@@ -6508,7 +6508,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -7.8057375,4.033071
       parent: 1
-- proto: ResearchAndDevelopmentServerImperial
+- proto: ResearchAndDevelopmentServerImperialShuttle
   entities:
   - uid: 852
     components:

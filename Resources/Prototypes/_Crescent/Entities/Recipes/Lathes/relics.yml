@@ -113,54 +113,78 @@
   result: ShipVoucherTAPBeelzebub
   completetime: 1
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 4000
-    ShipHull: 1500
+    Steel: 5800
+    Plasma: 1200
+    Silver: 3800
+    Gold: 2000
+    Copper: 1600
+    Tungsten: 200
+    Uranium: 200
 
 - type: latheRecipe
   id: YanbueLPC
   result: ShipVoucherTAPYanbue
   completetime: 1
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 1000
-    ShipHull: 1000
+    Steel: 2200
+    Plasma: 800
+    Silver: 1200
+    Gold: 800
+    Copper: 400
+    Tungsten: 200
+    Uranium: 200
 
 - type: latheRecipe
   id: QasrLPC
   result: ShipVoucherTAPQasr
   completetime: 1
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 1500
-    ShipHull: 3000
+    Steel: 5100
+    Plasma: 2400
+    Silver: 2400
+    Gold: 1000
+    Copper: 600
+    Tungsten: 200
+    Uranium: 200
 
 - type: latheRecipe
   id: HanaqLPC
   result: ShipVoucherTAPHanaq
   completetime: 1
   materials:
-    StarshipEngineComponents: 7000
-    ShipComponents: 6000
-    ShipHull: 11000
+    Steel: 19200
+    Plasma: 8800
+    Silver: 9200
+    Gold: 5200
+    Copper: 2400
+    Tungsten: 1400
+    Uranium: 1400
 
 - type: latheRecipe
   id: BaghlLPC
   result: ShipVoucherTAPBaghl
   completetime: 1
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 3000
-    ShipHull: 1500
+    Steel: 4800
+    Plasma: 1200
+    Silver: 3000
+    Gold: 1600
+    Copper: 1200
+    Tungsten: 200
+    Uranium: 200
 
 - type: latheRecipe
   id: AlkhuldLPC
   result: ShipVoucherTAPAlkhuld
   completetime: 1
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 2500
-    ShipHull: 3000
+    Steel: 6100
+    Plasma: 2400
+    Silver: 3200
+    Gold: 1400
+    Copper: 1000
+    Tungsten: 200
+    Uranium: 200
 
 # MARK: Melee
 

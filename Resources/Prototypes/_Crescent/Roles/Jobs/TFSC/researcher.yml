@@ -1,16 +1,16 @@
 - type: job
-  id: CyberdawnTechNCSP
+  id: CyberdawnTechTFSC
   name: job-name-cyberdawntech
   description: job-description-cyberdawntech
-  playTimeTracker: JobCyberdawnTechNCSP
+  playTimeTracker: JobCyberdawnTechTFSC
   ranks:
     RatRankTFSCResearcherSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCyberdawnTechNCSP
+      tracker: JobCyberdawnTechTFSC
       min: 72000 # 20 hours
     RatRankTFSCResearcherMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCyberdawnTechNCSP
+      tracker: JobCyberdawnTechTFSC
       min: 36000 # 10 hours
     RatRankTFSCResearcherJunior: []
   weight: 3
@@ -67,6 +67,6 @@
     jumpsuit: ClothingUniformJumpsuitSyndicateLabCyberdawn
     shoes: ClothingShoesBootsCombat
     id: CyberdawnTechPDA
-    ears: ClothingHeadsetNCSPCyberdawn
-    back: ClothingBackpackNCSPFilledInfanteer
+    ears: ClothingHeadsetTFSCCyberdawn
+    back: ClothingBackpackTFSCFilledInfanteer
     gloves: ClothingHandsGlovesFingerless

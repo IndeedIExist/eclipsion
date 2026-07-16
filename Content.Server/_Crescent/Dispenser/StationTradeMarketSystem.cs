@@ -1,6 +1,8 @@
 using Content.Server._Crescent.Taxation;
+using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
+using Content.Shared.Shuttles.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Network;
   
@@ -28,8 +30,13 @@ public sealed class StationTradeMarketSystem : EntitySystem
         base.Update(frameTime);  
   
         var query = EntityQueryEnumerator<StationTradeMarketComponent>();
-        while (query.MoveNext(out _, out var market))
+        while (query.MoveNext(out var uid, out var market))
         {
+            // Resolve each station's faction (and load its cross-round balance) as soon as it exists,
+            // so the treasury accrues and persists without any console ever being placed. Cheap after
+            // the first success — TreasuryLoaded short-circuits it.
+            EnsureFactionLoaded(uid, market);
+
             if (market.SalesAccumulator.Count == 0)
                 continue;
   
@@ -117,7 +124,9 @@ public sealed class StationTradeMarketSystem : EntitySystem
 
     /// <summary>
     /// Binds a station's treasury to a faction and loads that faction's persisted, cross-round balance
-    /// into it (once per round). Called when a faction treasury console initializes on the station.
+    /// into it (once per round). Normally the faction is resolved automatically from the station's IFF
+    /// (see <see cref="EnsureFactionLoaded"/>); this lets a console force a faction on a station whose
+    /// grid carries no IFF faction of its own.
     /// </summary>
     public void BindFactionTreasury(EntityUid stationUid, string faction)
     {
@@ -126,14 +135,56 @@ public sealed class StationTradeMarketSystem : EntitySystem
 
         var market = EnsureComp<StationTradeMarketComponent>(stationUid);
 
-        // Only the first console to bind this round establishes the faction and loads the balance;
-        // re-binding would clobber tax accrued after load.
+        // First writer wins for the round; re-binding would clobber tax accrued after load.
         if (market.TreasuryLoaded)
             return;
 
         market.Faction = faction;
         market.TreasuryBalance = _treasury.Get(faction);
         market.TreasuryLoaded = true;
+    }
+
+    /// <summary>
+    /// Ensures the station's treasury is bound to its faction and its cross-round balance loaded, so
+    /// the vault exists and accrues whether or not any treasury console is ever placed. The faction is
+    /// taken from the station grid's IFF faction; stations with no faction ("Neutral") stay per-round.
+    /// Runs once per round per station — <see cref="StationTradeMarketComponent.TreasuryLoaded"/> guards it.
+    /// </summary>
+    private void EnsureFactionLoaded(EntityUid stationUid, StationTradeMarketComponent market)
+    {
+        if (market.TreasuryLoaded)
+            return;
+
+        var faction = ResolveStationFaction(stationUid);
+        if (string.IsNullOrEmpty(faction))
+            return;
+
+        market.Faction = faction;
+        market.TreasuryBalance = _treasury.Get(faction);
+        market.TreasuryLoaded = true;
+    }
+
+    /// <summary>
+    /// The faction a station belongs to, read from its grids' IFF faction (set from the game map on
+    /// spawn). Returns empty for unaligned stations. Only set after the station's grids exist, which is
+    /// why loading is deferred to <see cref="Update"/> rather than done at station post-init.
+    /// </summary>
+    private string ResolveStationFaction(EntityUid stationUid)
+    {
+        if (!TryComp<StationDataComponent>(stationUid, out var data))
+            return string.Empty;
+
+        foreach (var gridUid in data.Grids)
+        {
+            if (TryComp<IFFComponent>(gridUid, out var iff)
+                && !string.IsNullOrEmpty(iff.Faction)
+                && iff.Faction != "Neutral")
+            {
+                return iff.Faction;
+            }
+        }
+
+        return string.Empty;
     }
 
     /// <summary>Mirrors a station's current balance into the cross-round faction store.</summary>
@@ -151,6 +202,9 @@ public sealed class StationTradeMarketSystem : EntitySystem
         if (amount <= 0 || !TryComp<StationTradeMarketComponent>(stationUid, out var market))
             return 0;
 
+        // Bind + load before adding, so tax landing before the first Update tick tops up the persisted
+        // balance rather than being overwritten by a later load.
+        EnsureFactionLoaded(stationUid, market);
         market.TreasuryBalance += amount;
         PersistTreasury(market);
         return market.TreasuryBalance;
@@ -158,7 +212,11 @@ public sealed class StationTradeMarketSystem : EntitySystem
 
     public int GetTreasury(EntityUid stationUid)
     {
-        return TryComp<StationTradeMarketComponent>(stationUid, out var market) ? market.TreasuryBalance : 0;
+        if (!TryComp<StationTradeMarketComponent>(stationUid, out var market))
+            return 0;
+
+        EnsureFactionLoaded(stationUid, market);
+        return market.TreasuryBalance;
     }
 
     /// <summary>Overwrites a station's treasury balance (admin) and persists it. Returns the new balance.</summary>
@@ -167,6 +225,7 @@ public sealed class StationTradeMarketSystem : EntitySystem
         if (!TryComp<StationTradeMarketComponent>(stationUid, out var market))
             return 0;
 
+        EnsureFactionLoaded(stationUid, market);
         market.TreasuryBalance = Math.Max(0, value);
         PersistTreasury(market);
         return market.TreasuryBalance;
@@ -181,6 +240,7 @@ public sealed class StationTradeMarketSystem : EntitySystem
         if (amount <= 0 || !TryComp<StationTradeMarketComponent>(stationUid, out var market))
             return 0;
 
+        EnsureFactionLoaded(stationUid, market);
         var taken = Math.Min(amount, market.TreasuryBalance);
         market.TreasuryBalance -= taken;
         PersistTreasury(market);
@@ -196,7 +256,11 @@ public sealed class StationTradeMarketSystem : EntitySystem
     /// </summary>
     public int TryWithdrawTreasuryCapped(EntityUid stationUid, NetUserId user, int amount, float maxFraction)
     {
-        if (amount <= 0 || !TryComp<StationTradeMarketComponent>(stationUid, out var market) || market.TreasuryBalance <= 0)
+        if (amount <= 0 || !TryComp<StationTradeMarketComponent>(stationUid, out var market))
+            return 0;
+
+        EnsureFactionLoaded(stationUid, market);
+        if (market.TreasuryBalance <= 0)
             return 0;
 
         market.WithdrawnThisRound.TryGetValue(user, out var already);
@@ -215,5 +279,29 @@ public sealed class StationTradeMarketSystem : EntitySystem
         market.WithdrawnThisRound[user] = already + taken;
         PersistTreasury(market);
         return taken;
+    }
+
+    /// <summary>
+    /// Finds the station holding a faction's treasury this round, regardless of where the caller is.
+    /// Callers that are faction-scoped rather than station-scoped must use this instead of
+    /// <c>GetOwningStation</c>, which would resolve to whichever station they happen to sit on.
+    /// </summary>
+    public EntityUid? TryGetFactionTreasuryStation(string faction)
+    {
+        if (string.IsNullOrEmpty(faction))
+            return null;
+
+        var query = EntityQueryEnumerator<StationTradeMarketComponent>();
+        while (query.MoveNext(out var uid, out var market))
+        {
+            // Bind lazily here too, so a faction's own station is found on the very first frame even
+            // before Update has run — e.g. payroll paying out immediately at round start.
+            EnsureFactionLoaded(uid, market);
+
+            if (market.TreasuryLoaded && market.Faction == faction)
+                return uid;
+        }
+
+        return null;
     }
 }

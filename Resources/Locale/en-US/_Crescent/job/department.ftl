@@ -1,5 +1,5 @@
 department-NCWL = New Crescent Worker's League
-department-NCSP = Taypan Freestation Coalition
+department-TFSC = Taypan Freestation Coalition
 department-DSM = Divine Sol Mandate
 department-SRM = Sixth St. Romaine's Militia
 department-SHI = Shinohara Heavy Industries

@@ -1,11 +1,11 @@
 - type: entity
   parent: BaseFlatpack
-  id: NCSPWarshipThrusterFlatpack
+  id: TFSCWarshipThrusterFlatpack
   name: syndicate warship thruster flatpack
   description: A flatpack used for constructing warship thrusters with Syndicate IFF clearance.
   components:
   - type: Flatpack
-    entity: ThrusterNCSPWarship
+    entity: ThrusterTFSCWarship
   - type: Sprite
     layers:
     - state: ame-part
@@ -14,12 +14,12 @@
 
 - type: entity
   parent: BaseFlatpack
-  id: NCSPFighterThrusterFlatpack
+  id: TFSCFighterThrusterFlatpack
   name: syndicate fighter thruster flatpack
   description: A flatpack used for constructing smallshuttle thrusters with Syndicate IFF clearance.
   components:
   - type: Flatpack
-    entity: ThrusterNCSPFighter
+    entity: ThrusterTFSCFighter
   - type: Sprite
     layers:
     - state: ame-part

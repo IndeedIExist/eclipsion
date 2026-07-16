@@ -75,7 +75,7 @@
   name: PMC Funding Account
 
 - type: accessGroup
-  id: ncspAA
+  id: tfscAA
   tags:
   - SyndicateBasic
   - SyndicateCommand

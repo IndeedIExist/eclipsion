@@ -217,7 +217,7 @@
 - type: listing
   id: StoreListingGSCRPG2HeatAmmo
   name: PG-2 Rocket.
-  description: Ammunition for the NCSP RPG-2 rocket launcher, this one has a HEAT warhead.
+  description: Ammunition for the TFSC RPG-2 rocket launcher, this one has a HEAT warhead.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Ammunition/Casings/rpg2_rocket.rsi, state: heat }
   productEntity: CartridgeRPG2Heat
   cost:
@@ -228,7 +228,7 @@
 - type: listing
   id: StoreListingGSCRPG2FragAmmo
   name: B40 M2 Rocket.
-  description: Ammunition for the NCSP RPG-2 rocket launcher, this one has a HE-Frag warhead.
+  description: Ammunition for the TFSC RPG-2 rocket launcher, this one has a HE-Frag warhead.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Ammunition/Casings/rpg2_rocket.rsi, state: frag }
   productEntity: CartridgeRPG2Frag
   cost:
@@ -238,7 +238,7 @@
 
 - type: listing
   id: StoreListingGSCRPG2
-  name: NCSP RPG-2.
+  name: TFSC RPG-2.
   description: An ancient rocket launcher design continuously produced from old schematics by SAW.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Guns/rpg2.rsi, state: icon }
   productEntity: WeaponLauncherSmallRocket
@@ -250,7 +250,7 @@
 - type: listing
   id: StoreListingGSCRPG7HeatAmmo
   name: PG-7M Rocket.
-  description: Ammunition for the NCSP RPG-7 rocket launcher, this one has a HEAT warhead.
+  description: Ammunition for the TFSC RPG-7 rocket launcher, this one has a HEAT warhead.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Ammunition/Casings/rpg7_rocket.rsi, state: heat }
   productEntity: CartridgeRPG7Heat
   cost:
@@ -261,7 +261,7 @@
 - type: listing
   id: StoreListingGSCRPG7TandemAmmo
   name: PG-7T Rocket.
-  description: Ammunition for the NCSP RPG-7 rocket launcher, this one has a Tandem HEAT warhead.
+  description: Ammunition for the TFSC RPG-7 rocket launcher, this one has a Tandem HEAT warhead.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Ammunition/Casings/rpg7_rocket.rsi, state: tandem }
   productEntity: CartridgeRPG7Tandem
   cost:
@@ -272,7 +272,7 @@
 - type: listing
   id: StoreListingGSCRPG7FragAmmo
   name: OGF-7 Rocket.
-  description: Ammunition for the NCSP RPG-7 rocket launcher, this one has a HE-Frag warhead.
+  description: Ammunition for the TFSC RPG-7 rocket launcher, this one has a HE-Frag warhead.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Ammunition/Casings/rpg7_rocket.rsi, state: frag }
   productEntity: CartridgeRPG7Frag
   cost:
@@ -283,7 +283,7 @@
 - type: listing
   id: StoreListingGSCRPG7ThermoAmmo
   name: GTB-7S Rocket.
-  description: Ammunition for the NCSP RPG-7 rocket launcher, this one has a HE-Frag warhead.
+  description: Ammunition for the TFSC RPG-7 rocket launcher, this one has a HE-Frag warhead.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Ammunition/Casings/rpg7_rocket.rsi, state: thermo }
   productEntity: CartridgeRPG7Thermobaric
   cost:
@@ -293,7 +293,7 @@
 
 - type: listing
   id: StoreListingGSCRPG7
-  name: NCSP RPG-7.
+  name: TFSC RPG-7.
   description: A bit less ancient rocket launcher design continuously produced from old schematics by SAW.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Guns/rpg7.rsi, state: icon }
   productEntity: WeaponLauncherRocket
@@ -315,10 +315,10 @@
 
 - type: listing
   id: StoreListingGSCGrenade
-  name: NCSP RGD-5 Grenade
+  name: TFSC RGD-5 Grenade
   description: A rather competent grenade design pioneered by pre-collapse Gorlex Security Consulting.
-  icon: { sprite: /Textures/_Crescent/Objects/Weapons/Grenades/ncsp_rgd5.rsi, state: icon }
-  productEntity: NCSPRGD5Handgrenade
+  icon: { sprite: /Textures/_Crescent/Objects/Weapons/Grenades/tfsc_rgd5.rsi, state: icon }
+  productEntity: TFSCRGD5Handgrenade
   cost:
     PlunderGSC: 1
   categories:
@@ -458,7 +458,7 @@
 #GUNS
 - type: listing
   id: StoreListingGSCKrinkov
-  name: NCSP Krinkov 5.56x45mm
+  name: TFSC Krinkov 5.56x45mm
   description: A lightly remodeled frontline infantry rifle from one of the many Terran wars before the collapse.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Guns/krinkov.rsi, state: icon }
   productEntity: WeaponRifleKrinkov
@@ -469,7 +469,7 @@
 
 - type: listing
   id: StoreListingGSCAtreides
-  name: NCSP Atreides 9x19mm
+  name: TFSC Atreides 9x19mm
   description: An otherwise finely crafted submachine gun heavily limited by its caliber.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Guns/atreides.rsi, state: icon }
   productEntity: WeaponSubMachineGunAtreidesHullrot
@@ -480,8 +480,8 @@
 
 - type: listing
   id: StoreListingGSCKalash
-  name: NCSP AKMS Kalash 7.62x51mm
-  description: A heavier variant of the NCSP Krinkov originating from the same time period.
+  name: TFSC AKMS Kalash 7.62x51mm
+  description: A heavier variant of the TFSC Krinkov originating from the same time period.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Guns/akms.rsi, state: icon }
   productEntity: WeaponRifleAk
   cost:
@@ -491,7 +491,7 @@
 
 - type: listing
   id: StoreListingGSCMayflower
-  name: NCSP Mayflower 7.62X51mm Assault Rifle
+  name: TFSC Mayflower 7.62X51mm Assault Rifle
   description: An advanced rifle design manufactured with pre-collapse GSC schematics by Cyberdawn and SAW.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Guns/mayflower.rsi, state: icon }
   productEntity: WeaponRifleMayflower
@@ -502,7 +502,7 @@
 
 - type: listing
   id: StoreListingGSCAK60
-  name: NCSP AK-60 15.2x169mm Anti-Materiel Rifle
+  name: TFSC AK-60 15.2x169mm Anti-Materiel Rifle
   description: An AK platform gun in .60, note that this weapon infringes on the AK naming rights of the Kalashnikov Group.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Guns/ak60.rsi, state: icon }
   productEntity: WeaponSniperAK60
@@ -513,10 +513,10 @@
 
 - type: listing
   id: StoreListingGSCSaiga
-  name: NCSP Saiga-12K Gauge Shotgun
+  name: TFSC Saiga-12K Gauge Shotgun
   description: A competitor to the PTA Pozhar tactical shotgun, once mass-produced by GSC in Shinohara facilities, now only a few are commissioned from SAW's scrapyard.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Guns/saiga12.rsi, state: icon }
-  productEntity: WeaponShotgunNCSPSaiga12
+  productEntity: WeaponShotgunTFSCSaiga12
   cost:
     PlunderGSC: 7
   categories:
@@ -524,7 +524,7 @@
 
 - type: listing
   id: StoreListingGSCSVD
-  name: NCSP SVD 12.7x99mm Sniper Rifle
+  name: TFSC SVD 12.7x99mm Sniper Rifle
   description: A natural consequence of Shinohara stirring up the field with the M335 Barghest launching into mass production.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Guns/svds.rsi, state: icon }
   productEntity: WeaponRifleSVDMarksman
@@ -535,10 +535,10 @@
 
 - type: listing
   id: StoreListingGSCRPD
-  name: NCSP RPD 7.62x51mm Machine gun
+  name: TFSC RPD 7.62x51mm Machine gun
   description: A blunt and unsophisticated design scavenged and repurposed from a Nanotrasen autonomous killdrone machinegun schematic.
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Guns/rpd.rsi, state: icon }
-  productEntity: WeaponLightMachineGunNCSPRPD
+  productEntity: WeaponLightMachineGunTFSCRPD
   cost:
     PlunderGSC: 12
   categories:

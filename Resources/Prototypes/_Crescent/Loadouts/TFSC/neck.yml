@@ -10,7 +10,7 @@
       group: LoadoutNeck
     - !type:CharacterJobRequirement
       jobs:
-        - RingleaderNCSP
+        - RingleaderTFSC
  
 - type: loadout
   id: LoadoutNeckTFSCCloakHedgeknightCapelet
@@ -24,10 +24,10 @@
       group: LoadoutNeck
     - !type:CharacterJobRequirement
       jobs:
-        - TechnicianNCSP
-        - InfanteerNCSP
-        - LieutenantNCSP
-        - RingleaderNCSP
+        - TechnicianTFSC
+        - InfanteerTFSC
+        - LieutenantTFSC
+        - RingleaderTFSC
 
 - type: loadout
   id: LoadoutNeckTFSCShemagh
@@ -41,15 +41,15 @@
       group: LoadoutNeck
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - ForemanNCSP
-        - InfanteerNCSP
-        - IntelligenceOfficerNCSP
-        - LieutenantNCSP
-        - OperativeNCSP
-        - CyberdawnTechNCSP
-        - RingleaderNCSP
-        - RipperdocNCSP
-        - ShipbreakerNCSP
-        - TechnicianNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - ForemanTFSC
+        - InfanteerTFSC
+        - IntelligenceOfficerTFSC
+        - LieutenantTFSC
+        - OperativeTFSC
+        - CyberdawnTechTFSC
+        - RingleaderTFSC
+        - RipperdocTFSC
+        - ShipbreakerTFSC
+        - TechnicianTFSC
+        - CoordinatorTFSC

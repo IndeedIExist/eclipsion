@@ -1,0 +1,195 @@
+# Command mainframe: one console hosting overwatch, diplomacy, alert and economy as tabs.
+# Each tab keeps its own component, UI key and server system — this entity just carries all of them.
+
+- type: entity
+  abstract: true
+  id: BaseMainframeConsole
+  parent: BaseComputer
+  name: command mainframe
+  description: A faction command terminal that bundles the overwatch, diplomacy, alert, market and payroll consoles into one screen, each on its own tab. Locked to the faction it was issued to.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: ApcPowerReceiver
+    powerLoad: 500
+  - type: ExtensionCableReceiver
+  - type: ActivatableUIRequiresPower
+
+  # Access is declared here but left empty; every variant must supply its own faction's levels.
+  # An AccessReader with no access list allows everyone, so a variant that forgets it ships open.
+  - type: AccessReader
+  - type: ActivatableUIRequiresAccess
+    popupMessage: mainframe-console-access-denied
+
+  # singleUser is load-bearing, not cosmetic: OverwatchConsoleComponent stores its status/squad/search
+  # filters on the component rather than per-actor, so two simultaneous viewers would clobber each
+  # other's filters. Do not drop this without fixing that first.
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.MainframeUiKey.Key
+
+  - type: MainframeConsole
+  - type: OverwatchConsole      # faction set per variant
+  - type: DiplomacyConsole
+  # Alert scanning runs per console from its own position. Left off so a station that already has a
+  # ComputerAlertConsole doesn't start double-broadcasting the moment a mainframe is placed.
+  - type: AlertConsole
+    enabled: false
+  - type: EconomicConsole
+    refreshInterval: 300
+    autoUpdateEnabled: true
+  - type: PaymentConsole    # faction set per variant
+
+  # Every hosted key must be declared here. A missing one makes both SetUiState and OpenUi silently
+  # no-op, which surfaces as a tab that never appears rather than as an error.
+  # WiresUiKey included because this block replaces BaseComputer's rather than merging with it —
+  # without it the inherited wires panel opens but its UI never does.
+  - type: UserInterface
+    interfaces:
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+      enum.MainframeUiKey.Key:
+        type: Content.Client._Crescent.Mainframe.MainframeBoundUserInterface
+      enum.OverwatchUiKey.Key:
+        type: Content.Client._Crescent.Overwatch.OverwatchBoundUserInterface
+      enum.DiplomacyConsoleUiKey.Key:
+        type: DiplomacyConsoleBoundUserInterface
+      enum.AlertConsoleUiKey.Key:
+        type: AlertConsoleBoundUserInterface
+      enum.EconomicConsoleUiKey.Key:
+        type: EconomicConsoleBoundUserInterface
+      enum.PaymentConsoleUiKey.Key:
+        type: Content.Client._Crescent.Payment.PaymentConsoleBoundUserInterface
+
+  - type: Sprite
+    netsync: false
+    noRot: true
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: generic
+    - map: ["computerLayerKeys"]
+      state: tech_key
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    enabled: false
+  - type: StationAiWhitelist
+
+# One variant per faction. Access is the faction's base tag — the one every job in that faction
+# carries — so any member can use their own faction's mainframe, and only their own.
+
+- type: entity
+  parent: BaseMainframeConsole
+  id: DSMMainframeConsole
+  name: command mainframe DSM
+  components:
+  - type: OverwatchConsole
+    faction: DSM
+  - type: PaymentConsole
+    faction: DSM
+  - type: AccessReader
+    access: [["Empire"]]
+
+- type: entity
+  parent: BaseMainframeConsole
+  id: NCWLMainframeConsole
+  name: command mainframe NCWL
+  components:
+  - type: OverwatchConsole
+    faction: NCWL
+  - type: PaymentConsole
+    faction: NCWL
+  - type: AccessReader
+    access: [["NCWLGeneral"]]
+
+- type: entity
+  parent: BaseMainframeConsole
+  id: SHIMainframeConsole
+  name: command mainframe SHI
+  components:
+  - type: OverwatchConsole
+    faction: SHI
+  - type: PaymentConsole
+    faction: SHI
+  - type: AccessReader
+    access: [["Shinohara"]]
+
+- type: entity
+  parent: BaseMainframeConsole
+  id: TAPMainframeConsole
+  name: command mainframe TAP
+  components:
+  - type: OverwatchConsole
+    faction: TAP
+  - type: PaymentConsole
+    faction: TAP
+  - type: AccessReader
+    access: [["Families"]]
+
+- type: entity
+  parent: BaseMainframeConsole
+  id: IPMMainframeConsole
+  name: command mainframe IPM
+  components:
+  - type: OverwatchConsole
+    faction: IPM
+  - type: PaymentConsole
+    faction: IPM
+  - type: AccessReader
+    access: [["SyndicateInterdyne"]]
+
+- type: entity
+  parent: BaseMainframeConsole
+  id: SAWMainframeConsole
+  name: command mainframe SAW
+  components:
+  - type: OverwatchConsole
+    faction: SAW
+  - type: PaymentConsole
+    faction: SAW
+  - type: AccessReader
+    access: [["SyndicateSaws"]]
+
+- type: entity
+  parent: BaseMainframeConsole
+  id: GSCMainframeConsole
+  name: command mainframe GSC
+  components:
+  - type: OverwatchConsole
+    faction: GSC
+  - type: PaymentConsole
+    faction: GSC
+  - type: AccessReader
+    access: [["SyndicateGorlex"]]
+
+- type: entity
+  parent: BaseMainframeConsole
+  id: CDMainframeConsole
+  name: command mainframe CD
+  components:
+  - type: OverwatchConsole
+    faction: CD
+  - type: PaymentConsole
+    faction: CD
+  # Cyberdawn's tag is SyndicateRamzi — the CD jobs (intelligence officer, operative, researcher)
+  # are the only ones carrying it.
+  - type: AccessReader
+    access: [["SyndicateRamzi"]]
+
+- type: entity
+  parent: BaseMainframeConsole
+  id: SRMMainframeConsole
+  name: command mainframe SRM
+  components:
+  - type: OverwatchConsole
+    faction: SRM
+  - type: PaymentConsole
+    faction: SRM
+  - type: AccessReader
+    access: [["Hunter"]]

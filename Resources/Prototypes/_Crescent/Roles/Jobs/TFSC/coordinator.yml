@@ -1,24 +1,24 @@
 - type: job
-  id: CoordinatorNCSP
+  id: CoordinatorTFSC
   name: job-name-coordinator
   description: job-description-coordinator
-  playTimeTracker: JobCoordinatorNCSP
+  playTimeTracker: JobCoordinatorTFSC
   ranks:
     RatRankTFSCCoordinatorHigh:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCoordinatorNCSP
+      tracker: JobCoordinatorTFSC
       min: 144000 # 40 hours
     RatRankTFSCCoordinatorLead:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCoordinatorNCSP
+      tracker: JobCoordinatorTFSC
       min: 108000 # 30 hours
     RatRankTFSCCoordinatorSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCoordinatorNCSP
+      tracker: JobCoordinatorTFSC
       min: 72000 # 20 hours
     RatRankTFSCCoordinatorMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCoordinatorNCSP
+      tracker: JobCoordinatorTFSC
       min: 36000 # 10 hours
     RatRankTFSCCoordinatorJunior: []
   weight: 8
@@ -84,10 +84,10 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatSyndicateInterdyneBeret
     id: CoordinatorPDA
-    ears: ClothingHeadsetNCSPInterdyneCommand
+    ears: ClothingHeadsetTFSCInterdyneCommand
     pocket1: AccessElevatorIPM
     pocket2: WeaponPistolHKUSP
-    back: ClothingBackpackNCSP
+    back: ClothingBackpackTFSC
   storage:
     back:
       - Flash

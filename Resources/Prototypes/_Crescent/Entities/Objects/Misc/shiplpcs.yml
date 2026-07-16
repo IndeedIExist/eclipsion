@@ -944,7 +944,7 @@
     recipes:
       - SharkLPC
       
-#ncsp
+#tfsc
 
 - type: entity
   parent: BaseItem
@@ -1420,8 +1420,8 @@
 - type: entity
   parent: BaseItem
   id: ShipVoucherVelator
-  name: NCSP 'Velator' pattern LPC fabprint disk
-  description: An LPC fabprint disk loaded with a NCSP Velator-class stealth corvette pattern. Has to be redeemed at a shipyard console.
+  name: TFSC 'Velator' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a TFSC Velator-class stealth corvette pattern. Has to be redeemed at a shipyard console.
   components:
   - type: Item
     size: Small
@@ -1480,8 +1480,8 @@
 - type: entity
   parent: BaseItem
   id: ShipVoucherSpriggan
-  name: NCSP 'Spriggan' pattern LPC fabprint disk
-  description: An LPC fabprint disk loaded with a NCSP Spriggan class mining ship. Has to be redeemed at a shipyard console.
+  name: TFSC 'Spriggan' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a TFSC Spriggan class mining ship. Has to be redeemed at a shipyard console.
   components:
   - type: Item
     size: Small

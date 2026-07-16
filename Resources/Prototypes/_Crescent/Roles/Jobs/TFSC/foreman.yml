@@ -1,8 +1,8 @@
 - type: job
-  id: ForemanNCSP
+  id: ForemanTFSC
   name: job-name-foreman
   description: job-description-foreman
-  playTimeTracker: JobForemanNCSP
+  playTimeTracker: JobForemanTFSC
   weight: 2
   startingGear: ForemanGear
   alwaysUseSpawner: true
@@ -64,13 +64,13 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatHardhatSyndicateForeman
     id: ForemanPDA
-    ears: ClothingHeadsetNCSPSawsCommand
+    ears: ClothingHeadsetTFSCSawsCommand
     outerClothing: ClothingOuterArmorSyndicateForeman
     belt: ClothingBeltUtilityEngineering
     pocket1: WeaponPistolViperWood
     gloves: ClothingHandsGlovesFingerless
     pocket2: AccessElevatorSAW
-    back: ClothingBackpackNCSPFilledInfanteer
+    back: ClothingBackpackTFSCFilledInfanteer
   storage:
     back:
       - RatRubberStampTFSCSAW
