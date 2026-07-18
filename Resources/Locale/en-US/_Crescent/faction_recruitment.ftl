@@ -20,5 +20,6 @@ faction-recruitment-recruited = {$target} enlisted into {$faction} as {$role}.
 faction-recruitment-you-joined = You have been enlisted into {$faction} as {$role}.
 faction-recruitment-dismissed = {$target} has been dismissed from {$faction}.
 faction-recruitment-not-member = They are not a member of this faction.
+faction-recruitment-outranks = {$target} outranks this terminal. Their rank cannot be changed here.
 faction-recruitment-out-of-range = That person is no longer within reach of the terminal.
 faction-recruitment-denied = Access denied. You are not authorized to use this terminal.

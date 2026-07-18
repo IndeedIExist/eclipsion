@@ -5,13 +5,57 @@
 # One variant per faction. The DSM vendor below is a complete, working example; the others follow the same
 # shape — set the AccessReader to the faction's tag and list that faction's radio / uniform / jacket / kit.
 
+# NOTE: This is intentionally NOT parented to BaseComputer. BaseComputer brings ActivatableUIRequiresPower +
+# ApcPowerReceiver, so the UI refuses to open when unpowered — which includes the map editor and any tile not
+# on a powered grid ("places but won't open in mapping"). It also drags in wires/construction/computer sprite,
+# none of which suit a free kit dispenser. Instead we mirror the lightweight, always-openable CM faction
+# vendor base (ColMarTechBase): an anchored, access-gated structure with no power requirement.
 - type: entity
-  parent: BaseComputer
   abstract: true
   id: BaseFactionEquipmentVendor
   name: faction requisitions vendor
   description: A basic-equipment dispenser. Members of the owning faction may draw one of each essential item.
+  placement:
+    mode: SnapgridCenter
   components:
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 200
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Tag
+    tags:
+    - Structure
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+    state: "off"
+  - type: Anchorable
+  - type: Pullable
+  - type: WallMount
+    arc: 360
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: AccessReader
   - type: ActivatableUIRequiresAccess
     popupMessage: faction-vendor-denied

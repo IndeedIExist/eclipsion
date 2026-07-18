@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
+using Content.Server.Crescent.Chat;
 using Content.Server.Jobs;
 using Content.Server.Popups;
 using Content.Shared.Access;
@@ -77,6 +78,37 @@ public sealed class FactionRecruitmentConsoleSystem : EntitySystem
         return _proto.TryIndex<FactionPrototype>(factionId, out var faction) ? faction.Name : factionId;
     }
 
+    /// <summary>The ChatRank a role grants through its AddComponentSpecial, or null if it grants none.</summary>
+    private string? GetRoleRank(JobPrototype job)
+    {
+        foreach (var special in job.Special)
+        {
+            if (special is not AddComponentSpecial addComp)
+                continue;
+
+            foreach (var (_, entry) in addComp.Components)
+            {
+                if (entry.Component is ChatRankComponent rank)
+                    return rank.Rank;
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>Every ChatRank this console can grant — one per assignable role that carries one.</summary>
+    private HashSet<string> GetAssignableRanks(FactionRecruitmentConsoleComponent comp)
+    {
+        var ranks = new HashSet<string>();
+        foreach (var jobId in comp.Roles)
+        {
+            if (_proto.TryIndex<JobPrototype>(jobId, out var job) && GetRoleRank(job) is { } rank)
+                ranks.Add(rank);
+        }
+
+        return ranks;
+    }
+
     private void UpdateUi(EntityUid uid, FactionRecruitmentConsoleComponent comp)
     {
         var options = new List<FactionRecruitmentOption>();
@@ -151,6 +183,21 @@ public sealed class FactionRecruitmentConsoleSystem : EntitySystem
         if (!TryResolveTarget(uid, comp, args.Target, out var target))
         {
             _popup.PopupEntity(Loc.GetString("faction-recruitment-out-of-range"), uid, actor);
+            return;
+        }
+
+        // Never let a console strip a rank it cannot itself grant. Each faction's high command (Governor,
+        // Adjutant, Kommandant, …) is deliberately kept off every console's role list, so a member who already
+        // holds such a rank must not be reassignable here — doing so would silently demote them. This only guards
+        // members of this console's own faction; unaffiliated people and the default private rank still enlist
+        // freely (a fresh recruit or a lateral faction switch is not a demotion).
+        if (TryComp<HullrotFactionComponent>(target, out var targetFaction)
+            && targetFaction.Faction == comp.Faction
+            && TryComp<ChatRankComponent>(target, out var targetRank)
+            && targetRank.Rank != ChatRankComponent.DefaultRank
+            && !GetAssignableRanks(comp).Contains(targetRank.Rank))
+        {
+            _popup.PopupEntity(Loc.GetString("faction-recruitment-outranks", ("target", Name(target))), uid, actor);
             return;
         }
 
