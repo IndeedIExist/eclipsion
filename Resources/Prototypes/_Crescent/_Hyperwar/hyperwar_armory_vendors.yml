@@ -129,8 +129,10 @@
   description: An automated rack wired straight into the Mandate's wartime stockpile. Everything the arsenal can research, no tithe required.
   components:
   - type: AccessReader
+    # Base "Empire" tag so every DSM member -- riflemen, officers AND freeholders --
+    # can draw gear. The DSM hyperwar jobs carry "Empire", not "EmpireSoldier".
     access:
-    - [ "EmpireSoldier" ]
+    - [ "Empire" ]
   - type: Sprite
     sprite: _Crescent/Structures/armory.rsi
   - type: CMAutomatedVendor
@@ -806,8 +808,9 @@
   description: An automated fabprint press stocked with every Mandate ship pattern. Redeem a disk at a shipyard console.
   components:
   - type: AccessReader
+    # Base "Empire" tag so every DSM member -- freeholders included -- can print LPCs.
     access:
-    - [ "EmpireSoldier" ]
+    - [ "Empire" ]
   - type: Sprite
     sprite: _Crescent/Structures/armory.rsi
   - type: CMAutomatedVendor
