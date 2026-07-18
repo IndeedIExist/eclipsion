@@ -41,19 +41,31 @@ public sealed class DispenserSystem : SharedDispenserSystem
   
     private void OnActivateInWorld(EntityUid uid, DispenserComponent component, ActivateInWorldEvent args)  
     {  
-        if (args.Handled || component.Dispensing)  
-            return;  
-  
-        if (!string.IsNullOrEmpty(component.DefaultItem))  
-        {  
-            args.Handled = true;  
-            TryDispenseItem(uid, component, component.DefaultItem);  
-        }  
-        else  
-        {  
-            _audioSystem.PlayPvs(component.DenySound, uid);  
-        }  
-    }  
+        if (args.Handled || component.Dispensing)
+            return;
+
+        // Cargo chutes used to spit out a paper trade-deed stub when bumped with an empty hand.
+        // Instead of handing out free paper, mock the player for trying to sell their bare hand.
+        if (component.DefaultItem == "TradeDeedStub")
+        {
+            args.Handled = true;
+            _popup.PopupEntity(
+                Loc.GetString("dispenser-empty-hand-deny"),
+                uid, args.User, PopupType.MediumCaution);
+            _audioSystem.PlayPvs(component.DenySound, uid);
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(component.DefaultItem))
+        {
+            args.Handled = true;
+            TryDispenseItem(uid, component, component.DefaultItem);
+        }
+        else
+        {
+            _audioSystem.PlayPvs(component.DenySound, uid);
+        }
+    }
   
     private void OnInteractUsing(EntityUid uid, DispenserComponent component, InteractUsingEvent args)  
     {  

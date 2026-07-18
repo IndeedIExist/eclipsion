@@ -277,7 +277,7 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatAdvocatus
   name: advocati peaked cap
-  description: A peaked cap, stamped with the Kircheis Eagle of office.
+  description: A peaked cap, stamped with the Vogsburg Eagle of office.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/Head/advocati.rsi
@@ -502,7 +502,7 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatImperialPeakedCap
   name: imperial peaked cap
-  description: An Imperial peaked cap bearing the House Kircheis coat of arms.
+  description: An Imperial peaked cap bearing the House Vogsburg coat of arms.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/Head/mandatecap.rsi

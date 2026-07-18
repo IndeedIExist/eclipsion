@@ -30,6 +30,13 @@ public sealed partial class ShipyardConsoleComponent : Component
     [DataField]
     public ProtoId<RadioChannelPrototype> Channel = "Command";
 
+    /// <summary>
+    /// Whether ships can be sold at this console. Defaults to true so every existing shipyard keeps
+    /// working; set to false on LPC-only / empty consoles to prevent selling (and money exploits).
+    /// </summary>
+    [DataField]
+    public bool CanSell = true;
+
     /// Hullrot edit
     public static string TargetIdCardSlotId = "ShipyardConsole-targetId";
 

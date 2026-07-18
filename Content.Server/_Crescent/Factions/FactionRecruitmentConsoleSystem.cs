@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
+using Content.Server.Jobs;
 using Content.Server.Popups;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
@@ -153,13 +154,24 @@ public sealed class FactionRecruitmentConsoleSystem : EntitySystem
             return;
         }
 
-        // 1. Faction membership. Read live everywhere via HullrotFactionComponent, so this alone updates
-        //    diplomacy, squads, treasury and the chat name prefix.
+        // 1. Re-run the role's component grants (AddComponentSpecial) so the recruit matches a fresh spawn of the
+        //    job: this is what refreshes ChatRankComponent — the source of the chat/radio name prefix ("rank") —
+        //    along with faction languages. Only AddComponentSpecial is replayed; item/implant/trait specials would
+        //    stack on a body that already exists, so they are skipped.
+        foreach (var special in job.Special)
+        {
+            if (special is AddComponentSpecial)
+                special.AfterEquip(target);
+        }
+
+        // 2. Faction membership. Read live everywhere via HullrotFactionComponent, so this drives diplomacy,
+        //    squads and treasury. Set it after the specials above (a job's own HullrotFaction special would
+        //    otherwise overwrite it) so the console's faction stays authoritative.
         var factionComp = EnsureComp<HullrotFactionComponent>(target);
         factionComp.Faction = comp.Faction;
         Dirty(target, factionComp);
 
-        // 2. ID card: title, icon, department, and (additively) the role's access.
+        // 3. ID card: title, icon, department, and (additively) the role's access.
         if (_idCard.TryFindIdCard(target, out var idCard))
         {
             _idCard.TryChangeJobTitle(idCard, job.LocalizedName, player: actor);

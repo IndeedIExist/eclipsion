@@ -4,7 +4,7 @@
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitImperialWorker
   name: imperial worker hardsuit
-  description: A modular worker's hardsuit, bears the colors of the Kaiserin and House Kircheis.
+  description: A modular worker's hardsuit, bears the colors of the Kaiserin and House Vogsburg.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/OuterClothing/mandateworker.rsi
@@ -188,7 +188,7 @@
   parent: [ClothingOuterHardsuitBase, StreeCredRedeemableHigh]
   id: ClothingOuterHardsuitImperialCommand
   name: imperial command hardsuit
-  description: A modular commander's hardsuit, bearing the colors of House Kircheis.
+  description: A modular commander's hardsuit, bearing the colors of House Vogsburg.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/OuterClothing/mandatecommand.rsi
@@ -224,7 +224,7 @@
   parent: [ClothingOuterHardsuitBase,StreeCredRedeemableLow]
   id: ClothingOuterHardsuitImperialSoldier
   name: imperial 'JANNISSARY' mk I combat hardsuit
-  description: A modular soldier's hardsuit, bears the colors of the Kaiserin and House Kircheis.
+  description: A modular soldier's hardsuit, bears the colors of the Kaiserin and House Vogsburg.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/OuterClothing/mandatesoldier.rsi
@@ -267,7 +267,7 @@
   parent: [ClothingOuterHardsuitBase, StreeCredRedeemable]
   id: ClothingOuterHardsuitImperialKnight
   name: imperial 'KONIGSCHILD' mk II combat hardsuit
-  description: A modular knight's hardsuit, bears the colors of the Kaiserin and House Kircheis.
+  description: A modular knight's hardsuit, bears the colors of the Kaiserin and House Vogsburg.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/OuterClothing/mandateknight.rsi
@@ -513,7 +513,7 @@
   parent: ClothingOuterStorageBase
   id: ClothingOuterCoatImperialAdvocatus
   name: advocati coat
-  description: An ornate, durathread-reinforced officer's coat bearing House Kircheis colors.
+  description: An ornate, durathread-reinforced officer's coat bearing House Vogsburg colors.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/OuterClothing/advocatus.rsi

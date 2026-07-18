@@ -602,6 +602,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (args.Actor is not { Valid: true } player)
             return;
 
+        if (!component.CanSell)
+        {
+            ConsolePopup(args.Actor, Loc.GetString("shipyard-console-selling-disabled"));
+            PlayDenySound(uid, component);
+            return;
+        }
+
         if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
         {
             ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
@@ -949,6 +956,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     private void RefreshState(EntityUid uid, long balance, bool access, string? shipDeed, int shipSellValue, bool isTargetIdPresent, ShipyardConsoleUiKey uiKey)
     {
         var listing = TryComp<ShipyardListingComponent>(uid, out var comp) ? comp : null;
+        var canSell = !TryComp<ShipyardConsoleComponent>(uid, out var console) || console.CanSell;
 
         var newState = new ShipyardConsoleInterfaceState(
             balance,
@@ -958,7 +966,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             isTargetIdPresent,
             ((byte)uiKey),
             GetAvailableShuttles(uid, uiKey, listing),
-            uiKey.ToString());
+            uiKey.ToString(),
+            canSell);
 
         _ui.SetUiState(uid, uiKey, newState);
     }

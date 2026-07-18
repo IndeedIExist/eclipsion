@@ -1,0 +1,27 @@
+# Empty shipyard consoles for the Hyperwar and Unionfall gamemodes.
+# These have NO purchasable ships. Their only purpose is redeeming ("bozdurma") LPC
+# fabprint disks into ships - swipe an LPC on the console and it spawns the ship, since
+# ShipVoucherComponent.RequiresShipInConsole defaults to false, so any LPC works on an
+# empty listing. (See BaseMothershipComputer / RefugeMothershipComputer for the pattern.)
+
+- type: entity
+  id: HyperwarLPCShipyardComputer
+  parent: BaseMothershipComputer
+  name: hyperwar fabprint console
+  description: A stripped-down shipyard terminal. It cannot stock ships of its own - swipe an LPC fabprint disk to redeem it into a vessel.
+  components:
+  - type: ShipyardConsole
+    canSell: false # LPC redemption only, no selling - prevents money exploits.
+  - type: ShipyardListing
+    # Intentionally empty: nothing is for sale here, this console only redeems LPCs.
+
+- type: entity
+  id: UnionfallLPCShipyardComputer
+  parent: BaseMothershipComputer
+  name: unionfall fabprint console
+  description: A stripped-down shipyard terminal. It cannot stock ships of its own - swipe an LPC fabprint disk to redeem it into a vessel.
+  components:
+  - type: ShipyardConsole
+    canSell: false # LPC redemption only, no selling - prevents money exploits.
+  - type: ShipyardListing
+    # Intentionally empty: nothing is for sale here, this console only redeems LPCs.

@@ -55,6 +55,8 @@
   - type: FactionRecruitmentConsole
     faction: DSM
     # Roles sourced from the DSM flagship Aurora Imperialis (Stations/aurora.yml) spawn points.
+    # High command (Governor, Adjutant, Advocatus, Ministers, Archmaester) is intentionally omitted:
+    # leadership roles must never be assignable from a console.
     roles:
     - FreeholderDSM
     - LevymanDSM
@@ -65,12 +67,6 @@
     - RitterDSM
     - TemplarDSM
     - CourtierDSM
-    - AdvocatusDSM
-    - ArchmaesterDSM
-    - LaborDSM
-    - WealthDSM
-    - AdjutantDSM
-    - GovernorDSM
 
 - type: entity
   parent: BaseFactionRecruitmentConsole
@@ -83,14 +79,12 @@
   - type: FactionRecruitmentConsole
     faction: NCWL
     # Roles sourced from the NCWL station Nova Balreska (Stations/nova_balreska.yml) spawn points.
+    # High command (Worker Overboss, Kommissar, Commandant, Fleetkapitan) is intentionally omitted:
+    # leadership roles must never be assignable from a console.
     roles:
     - WorkerNCWL
     - PartisanNCWL
     - DoctorNCWL
-    - WorkerOverbossNCWL
-    - KommissarNCWL
-    - CommandantNCWL
-    - FleetkapitanNCWL
 
 - type: entity
   parent: BaseFactionRecruitmentConsole
@@ -103,12 +97,12 @@
   - type: FactionRecruitmentConsole
     faction: SHI
     # Roles sourced from the Shinohara station Tatsumoto (Stations/tatsumoto.yml) spawn points.
+    # High command (Board, Executive) is intentionally omitted: leadership roles must never be
+    # assignable from a console.
     roles:
     - EmployeeSHI
     - CorpsecSHI
     - HighsecSHI
-    - BoardSHI
-    - ExecutiveSHI
 
 - type: entity
   parent: BaseFactionRecruitmentConsole
@@ -121,6 +115,8 @@
   - type: FactionRecruitmentConsole
     faction: TFSC
     # Roles sourced from the Coalition sub-corp stations (byblik/freeport/hayes/jackal/lpramzi) spawn points.
+    # High command (Intelligence Officer, Lieutenant, Ringleader) is intentionally omitted: leadership
+    # roles must never be assignable from a console.
     roles:
     - TechnicianTFSC
     - InfanteerTFSC
@@ -130,6 +126,3 @@
     - RipperdocTFSC
     - TraumasecTFSC
     - ForemanTFSC
-    - IntelligenceOfficerTFSC
-    - LieutenantTFSC
-    - RingleaderTFSC

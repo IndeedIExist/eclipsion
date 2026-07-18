@@ -1,16 +1,50 @@
 Entries:
-- author: Lost soul
+- author: Eclipsion Team
   changes:
-    - message: Fly you fools!
-      type: Fix
-  id: 5605
-  time: '101-07-07T03:23:53.0000000+00:00'
-  url: https://api.github.com/repos/space-wizards/space-station-14/pulls/23654
+    - message: Rebranded internal content and assets from Rat to Crescent/Eclipsion (parallaxes, sprites, localization).
+      type: Tweak
+  id: 6001
+  time: '2026-07-12T00:00:00.0000000+00:00'
+  url: null
 
-- author: St. Serraine
+- author: Eclipsion Team
   changes:
-    - message: Love Blooms
+    - message: Overhauled the guidebook with updated Hullrot/Eclipsion lore and gameplay entries.
+      type: Tweak
+    - message: Reworked the NCWL role selection menu.
+      type: Tweak
+  id: 6002
+  time: '2026-07-14T00:00:00.0000000+00:00'
+  url: null
+
+- author: Eclipsion Team
+  changes:
+    - message: Adjusted the NCWL and DSM role menus.
+      type: Tweak
+    - message: Reorganized faction rank structures for ATH, CMM, DSM, NCWL, SHI, SRM and TFSC.
+      type: Tweak
+    - message: Cleaned up and archived unused shuttle maps into a dedicated folder.
+      type: Tweak
+  id: 6003
+  time: '2026-07-15T00:00:00.0000000+00:00'
+  url: null
+
+- author: Eclipsion Team
+  changes:
+    - message: Updated TFSC ship maps, jobs and loadouts.
+      type: Tweak
+    - message: Updated empire role and job supervisor text.
+      type: Tweak
+  id: 6004
+  time: '2026-07-16T00:00:00.0000000+00:00'
+  url: null
+
+- author: Eclipsion Team
+  changes:
+    - message: Tweaked the shipyard console.
+      type: Tweak
+    - message: Fixed various errors and content issues.
       type: Fix
-  id: 5606
-  time: '101-01-07T03:23:53.0000000+00:00'
+  id: 6005
+  time: '2026-07-18T00:00:00.0000000+00:00'
   url: null

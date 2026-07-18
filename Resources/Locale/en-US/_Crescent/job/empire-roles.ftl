@@ -1,4 +1,4 @@
-# DSM - Empire of Kircheis
+# DSM - Empire of Vogsburg
 job-name-pretorian-knight = Pretorian Knight
 job-description-pretorian-knight = You are an elite guardsman who protects the Empire's high nobility and the governor in person. Obey the governor and defend him at the cost of your own life. Nothing else matters.
 

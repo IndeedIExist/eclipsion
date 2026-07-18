@@ -10,9 +10,9 @@
       - Imperial
 
 - type: employer
-  id: HouseKircheis
-  nameKey: employer_name_kircheis
-  descriptionKey: employer_description_kircheis
+  id: HouseVogsburg
+  nameKey: employer_name_vogsburg
+  descriptionKey: employer_description_vogsburg
   primaryColour: "#ff595e"
   secondaryColour: "#3b3b3b"
   requirements:
@@ -21,9 +21,9 @@
       - Imperial
 
 - type: employer
-  id: HouseSoga
-  nameKey: employer_name_soga
-  descriptionKey: employer_description_soga
+  id: HouseOsteen
+  nameKey: employer_name_osteen
+  descriptionKey: employer_description_osteen
   primaryColour: "#ff595e"
   secondaryColour: "#cecece"
   requirements:
