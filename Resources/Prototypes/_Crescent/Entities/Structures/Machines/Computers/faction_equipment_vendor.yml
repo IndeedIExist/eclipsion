@@ -1,0 +1,38 @@
+# Faction equipment vendor: a free "basic kit" dispenser. Each listed item can be taken once per player
+# (tracked by user id, so it survives death), letting members who switched factions or lost their gear
+# re-equip the essentials. Gate each faction's vendor with the faction's base access tag.
+#
+# One variant per faction. The DSM vendor below is a complete, working example; the others follow the same
+# shape — set the AccessReader to the faction's tag and list that faction's radio / uniform / jacket / kit.
+
+- type: entity
+  parent: BaseComputer
+  abstract: true
+  id: BaseFactionEquipmentVendor
+  name: faction requisitions vendor
+  description: A basic-equipment dispenser. Members of the owning faction may draw one of each essential item.
+  components:
+  - type: AccessReader
+  - type: ActivatableUIRequiresAccess
+    popupMessage: faction-vendor-denied
+  - type: ActivatableUI
+    key: enum.FactionVendorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.FactionVendorUiKey.Key:
+        type: Content.Client._Crescent.Factions.FactionEquipmentVendorBoundUserInterface
+
+- type: entity
+  parent: BaseFactionEquipmentVendor
+  id: DSMEquipmentVendor
+  name: imperial requisitions vendor
+  description: An imperial basic-equipment dispenser. Freeholders and imperial crew may draw one of each essential item.
+  components:
+  - type: AccessReader
+    access: [["Empire"]]
+  - type: FactionEquipmentVendor
+    items:
+    - ClothingHeadsetEmpireCiv                    # radio
+    - ClothingUniformJumpsuitImperialFreeholder   # basic uniform
+    - ClothingOuterCoatImperialSoftsuit           # jacket
+    - ClothingBackpackDSM                          # basic faction gear

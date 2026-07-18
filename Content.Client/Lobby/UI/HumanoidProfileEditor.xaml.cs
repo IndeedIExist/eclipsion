@@ -1070,15 +1070,13 @@ namespace Content.Client.Lobby.UI
                     var selectedJobPrio = (JobPriority) selectedPrio;
                     Profile = Profile?.WithJobPriority(job.ID, selectedJobPrio);
 
-                    foreach (var (jobId, other) in _jobPriorities)
+                    // Only one job may be High, including jobs that have no selector shown right now.
+                    if (selectedJobPrio == JobPriority.High && Profile != null)
                     {
-                        if (jobId == job.ID)
-                            other.Select(selectedPrio);
-                        else if (selectedJobPrio == JobPriority.High &&
-                                 (JobPriority) other.Selected == JobPriority.High)
+                        foreach (var (jobId, priority) in Profile.JobPriorities.ToArray())
                         {
-                            other.Select((int) JobPriority.Medium);
-                            Profile = Profile?.WithJobPriority(jobId, JobPriority.Medium);
+                            if (jobId != job.ID && priority == JobPriority.High)
+                                Profile = Profile.WithJobPriority(jobId, JobPriority.Medium);
                         }
                     }
 

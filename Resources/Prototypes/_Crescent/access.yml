@@ -26,7 +26,7 @@
 
 - type: accessLevel
   id: NCWLFunds
-  name: NCWL Funding Account
+  name: Worker's League Funding Account
 
 - type: accessGroup
   id: ncwlAA
@@ -209,7 +209,7 @@
 
 - type: accessLevel
   id: CMMFunds
-  name: CMM Funding Account
+  name: Colonial Minutemen Funding Account
 
 - type: accessGroup
   id: cmmAA

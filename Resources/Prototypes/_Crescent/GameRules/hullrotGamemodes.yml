@@ -4,7 +4,7 @@
 # GAMERULES ARE WHAT DECIDES WHAT SPAWNS IN, BY EVERYTHING IN THE ADVENTURERULE COMPONENT
 #
 # gameMapsByID is a DICTIONARY that describes all spawned grids defined by a gameMap.
-# this is stuff like Port Balreska, which has novabalreska.yml (MAP) and novabalreska.yml (PROTOTYPE)
+# this is stuff like Port Balreska, which has nova_balreska.yml (MAP) and novabalreska.yml (PROTOTYPE)
 # you can give the dictionary key whatever name you want
 # gameMapID must equal the ID of the gameMap prototype's YML.
 # posX & posY define the position it will be spawned at
@@ -16,14 +16,12 @@
 
 
 ### FREEPLAY ###
-# The default preset: game.defaultpreset in CCVars.Game.cs resolves "ratadventure" to this.
+# The default preset: game.defaultpreset in CCVars.Game.cs resolves "adventure" to this.
 
 - type: gamePreset
-  id: RatAdventure #FREEPLAY, DO NOT REMOVE
+  id: Adventure #FREEPLAY, DO NOT REMOVE
   alias:
   - adventure
-  - ratadventure
-  - bigratbiteadventure
   name: Freeplay
   showInVote: true
   description: The final hours of Taypan. Last 2-4 hours.
@@ -55,11 +53,11 @@
   - planetfall_levyman
   - planetfall_surgeon
   rules:
-  - RatAdventure
+  - Adventure
   - HullrotEventScheduler
 
 - type: entity
-  id: RatAdventure #FREEPLAY, DO NOT REMOVE
+  id: Adventure #FREEPLAY, DO NOT REMOVE
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
@@ -134,7 +132,6 @@
 - type: gamePreset
   id: Hyperwar
   alias:
-  - Rathyperwar
   - hyperwar
   name: Hyperwar | NCWL vs DSM
   showInVote: true
@@ -167,11 +164,11 @@
   - planetfall_levyman
   - planetfall_surgeon
   rules:
-  - RatHyperwar
+  - Hyperwar
   - HullrotEventScheduler
 
 - type: entity
-  id: RatHyperwar
+  id: Hyperwar
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
@@ -199,7 +196,6 @@
   id: Unionfall
   alias:
   - unionfall
-  - ratbiteunionfall
   name: Unionfall | NCWL VS DSM
   showInVote: true
   description: The NCWL Homeguard flees to a new home, after the destruction of Nova Belraska. A DSM punishment regimen intercepts them to regain their honor.

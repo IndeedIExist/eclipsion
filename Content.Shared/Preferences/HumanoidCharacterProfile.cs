@@ -622,6 +622,11 @@ public string Summary =>
                 _ => false
             }));
 
+        // The database enforces at most one High priority job per profile, so drop any extras.
+        var highPriorityJobs = priorities.Where(p => p.Value == JobPriority.High).Select(p => p.Key).ToArray();
+        for (var i = 1; i < highPriorityJobs.Length; i++)
+            priorities[highPriorityJobs[i]] = JobPriority.Medium;
+
         var antags = AntagPreferences
             .Where(id => prototypeManager.TryIndex<AntagPrototype>(id, out var antag) && antag.SetPreference)
             .Distinct()

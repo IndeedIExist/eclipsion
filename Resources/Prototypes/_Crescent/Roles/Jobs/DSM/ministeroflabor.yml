@@ -81,5 +81,7 @@
     jumpsuit: ClothingUniformJumpsuitImperialNobleMale
     shoes: ClothingShoesBootsImperialLaceup
     outerClothing: ClothingOuterCoatImperialParade
+    gloves: ClothingHandsGlovesImperialGovernorGloves
+    back: ClothingBackpackSatchelLeather
     id: WealthPDA
     ears: ClothingHeadsetEmpire

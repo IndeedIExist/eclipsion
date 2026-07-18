@@ -145,6 +145,12 @@ public sealed class AlertConsoleSystem : EntitySystem
 
     private void OnUiOpened(EntityUid uid, AlertConsoleComponent comp, BoundUIOpenedEvent args)
     {
+        // On a mainframe this entity hosts several UIs that all open together, so this fires once per
+        // key. Without the key check we'd re-push the alert state several times as the console opens,
+        // each push overwriting whatever the operator is mid-way through typing on the alert tab.
+        if (!Equals(args.UiKey, AlertConsoleUiKey.Key))
+            return;
+
         TryResolveFactionChannel((uid, comp));
         UpdateUiState(uid, comp);
     }

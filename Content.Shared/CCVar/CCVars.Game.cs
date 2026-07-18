@@ -33,7 +33,7 @@ public sealed partial class CCVars
     ///     Controls the default game preset.
     /// </summary>
     public static readonly CVarDef<string>
-        GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "ratadventure", CVar.ARCHIVE);
+        GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "adventure", CVar.ARCHIVE);
 
     /// <summary>
     ///     Controls if the game can force a different preset if the current preset's criteria are not met.
@@ -401,4 +401,11 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> UseDynamicHostname =
         CVarDef.Create("game.use_dynamic_hostname", false, CVar.SERVERONLY);
+
+    /// <summary>
+    /// How many ships a single player may purchase from a faction shipyard (one paid from the faction
+    /// treasury) per round. Prevents a single player from draining the treasury. Set to 0 to disable the limit.
+    /// </summary>
+    public static readonly CVarDef<int> ShipyardFactionShipLimit =
+        CVarDef.Create("shipyard.faction_ship_limit", 2, CVar.SERVERONLY);
 }

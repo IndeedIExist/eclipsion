@@ -3,6 +3,16 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Crescent.Payment;
 
+/// <summary>Shared payroll limits, enforced on both the console UI and the server-side payout.</summary>
+public static class PaymentConsole
+{
+    /// <summary>
+    /// Cap on a single member's hourly salary. Clamped server-side in the payroll system and mirrored
+    /// on the console so the operator sees the limit rather than having a larger figure silently trimmed.
+    /// </summary>
+    public const int MaxSalaryPerHour = 10_000;
+}
+
 [Serializable, NetSerializable]
 public enum PaymentConsoleUiKey : byte
 {

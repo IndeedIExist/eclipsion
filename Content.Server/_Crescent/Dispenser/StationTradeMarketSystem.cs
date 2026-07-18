@@ -219,6 +219,20 @@ public sealed class StationTradeMarketSystem : EntitySystem
         return market.TreasuryBalance;
     }
 
+    /// <summary>
+    /// Returns the faction a station's treasury is bound to, or null if the station has no faction
+    /// treasury (unaligned/Neutral). Used to decide whether a purchase should draw from the faction
+    /// vault rather than a personal bank account.
+    /// </summary>
+    public string? GetStationFaction(EntityUid stationUid)
+    {
+        if (!TryComp<StationTradeMarketComponent>(stationUid, out var market))
+            return null;
+
+        EnsureFactionLoaded(stationUid, market);
+        return string.IsNullOrEmpty(market.Faction) ? null : market.Faction;
+    }
+
     /// <summary>Overwrites a station's treasury balance (admin) and persists it. Returns the new balance.</summary>
     public int SetTreasury(EntityUid stationUid, int value)
     {

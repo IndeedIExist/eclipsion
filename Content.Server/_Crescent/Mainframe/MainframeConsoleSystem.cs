@@ -4,6 +4,7 @@ using Content.Shared._Crescent.Mainframe;
 using Content.Shared._Crescent.Overwatch;
 using Content.Shared._Crescent.Payment;
 using Content.Shared.Cargo;
+using Content.Shared.Communications;
 using Robust.Server.GameObjects;
 
 namespace Content.Server._Crescent.Mainframe;
@@ -30,6 +31,7 @@ public sealed class MainframeConsoleSystem : EntitySystem
         AlertConsoleUiKey.Key,
         EconomicConsoleUiKey.Key,
         PaymentConsoleUiKey.Key,
+        CommunicationsConsoleUiKey.Key,
     };
 
     public override void Initialize()

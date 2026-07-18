@@ -107,6 +107,33 @@ public sealed partial class RoundEndCreditsWindow : DefaultWindow
             AddSpacing(10, ref childOffset);
         }
 
+        // === PROJECT TEAM ===
+        AddSpacing(50, ref childOffset);
+        AddSeparatorLine(ref childOffset);
+        AddCenteredLabel(Loc.GetString("round-end-credits-team-header"), Color.FromHex("#CC0000"), 1.5f, ref childOffset);
+        AddSeparatorLine(ref childOffset);
+        AddSpacing(20, ref childOffset);
+
+        AddTeamMember(Loc.GetString("round-end-credits-team-taleryn"), Loc.GetString("round-end-credits-role-lead"), ref childOffset);
+        AddTeamMember(Loc.GetString("round-end-credits-team-saint"), Loc.GetString("round-end-credits-role-host"), ref childOffset);
+        AddTeamMember(Loc.GetString("round-end-credits-team-eris"), Loc.GetString("round-end-credits-role-maint"), ref childOffset);
+        AddTeamMember(Loc.GetString("round-end-credits-team-user"), Loc.GetString("round-end-credits-role-mapper"), ref childOffset);
+        AddTeamMember(Loc.GetString("round-end-credits-team-gelli"), Loc.GetString("round-end-credits-role-mapper"), ref childOffset);
+        AddTeamMember(Loc.GetString("round-end-credits-team-nekit"), Loc.GetString("round-end-credits-role-loyal"), ref childOffset);
+
+        // === THANKS ===
+        AddSpacing(30, ref childOffset);
+        AddSeparatorLine(ref childOffset);
+        AddCenteredLabel(Loc.GetString("round-end-credits-thanks"), Color.FromHex("#AAAAAA"), 1f, ref childOffset);
+
+        // === FINALE ===
+        AddSpacing(80, ref childOffset);
+        AddSeparatorLine(ref childOffset);
+        AddCenteredLabel(Loc.GetString("round-end-credits-title"), Color.FromHex("#CC0000"), 2f, ref childOffset);
+        AddSpacing(24, ref childOffset);
+        AddCenteredLabel(Loc.GetString("round-end-credits-finale-epic"), Color.FromHex("#DDDDDD"), 1.3f, ref childOffset);
+        AddSeparatorLine(ref childOffset);
+
         // === BOTTOM SEPARATOR ===
         AddSpacing(50, ref childOffset);
         AddSeparatorLine(ref childOffset);

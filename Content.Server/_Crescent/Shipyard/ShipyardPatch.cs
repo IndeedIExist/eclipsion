@@ -29,7 +29,10 @@ using System.Numerics;
 using System.Text.RegularExpressions;
 using Content.Server._Crescent.Economy;
 using Content.Server._Crescent;
+using Content.Server.Crescent.Dispenser;
 using Content.Shared._Crescent;
+using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
 using Content.Server._Crescent.DynamicAcces;
@@ -97,6 +100,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly DynamicCodeSystem _codes = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelists = default!;
     [Dependency] private readonly EconomyPriceSystem _economyPrice = default!;
+    [Dependency] private readonly StationTradeMarketSystem _market = default!;
+
+    /// <summary>
+    /// Per-round count of ships each player has purchased from a faction shipyard (paid from the faction
+    /// treasury). Enforces <see cref="CCVars.ShipyardFactionShipLimit"/> so no single player drains the vault.
+    /// Cleared on round restart.
+    /// </summary>
+    private readonly Dictionary<NetUserId, int> _factionShipPurchases = new();
 
     public MapId? ShipyardMap { get; private set; }
     private float _shuttleIndex;
@@ -131,6 +142,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     private void OnRoundRestart(RoundRestartCleanupEvent ev)
     {
         CleanupShipyard();
+        _factionShipPurchases.Clear();
     }
 
     private void SetShipyardEnabled(bool value)
@@ -408,31 +420,68 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        if (!TryComp<BankAccountComponent>(player, out var bank))
-        {
-            ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-bank"));
-            PlayDenySound(uid, component);
-            return;
-        }
+        // Faction shipyards draw from the faction treasury instead of the buyer's personal bank.
+        var faction = _market.GetStationFaction(station);
+        var isFactionYard = faction != null;
 
-        if (bank.Balance <= vesselPrice)
-        {
-            ConsolePopup(args.Actor, Loc.GetString("cargo-console-insufficient-funds", ("cost", vesselPrice)));
-            PlayDenySound(uid, component);
-            return;
-        }
+        // Still needed for the UI balance readout and the personal-bank payment path.
+        TryComp<BankAccountComponent>(player, out var bank);
 
-        if (!_bank.TryBankWithdraw(player, vesselPrice))
+        // Identify the player for the per-round, per-player faction purchase cap.
+        NetUserId? buyer = TryComp<ActorComponent>(player, out var buyerActor) ? buyerActor.PlayerSession.UserId : null;
+        var factionLimit = _config.GetCVar(CCVars.ShipyardFactionShipLimit);
+
+        // Validate funds up front, but only deduct after the ship actually spawns so a failed spawn
+        // never charges the treasury or the player.
+        if (isFactionYard)
         {
-            ConsolePopup(args.Actor, Loc.GetString("cargo-console-insufficient-funds", ("cost", vesselPrice)));
-            PlayDenySound(uid, component);
-            return;
+            if (factionLimit > 0 && buyer is { } capId && _factionShipPurchases.GetValueOrDefault(capId) >= factionLimit)
+            {
+                ConsolePopup(args.Actor, Loc.GetString("shipyard-console-faction-limit-reached", ("limit", factionLimit)));
+                PlayDenySound(uid, component);
+                return;
+            }
+
+            if (_market.GetTreasury(station) < vesselPrice)
+            {
+                ConsolePopup(args.Actor, Loc.GetString("shipyard-console-treasury-insufficient", ("cost", vesselPrice)));
+                PlayDenySound(uid, component);
+                return;
+            }
+        }
+        else
+        {
+            if (bank == null)
+            {
+                ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-bank"));
+                PlayDenySound(uid, component);
+                return;
+            }
+
+            if (bank.Balance <= vesselPrice)
+            {
+                ConsolePopup(args.Actor, Loc.GetString("cargo-console-insufficient-funds", ("cost", vesselPrice)));
+                PlayDenySound(uid, component);
+                return;
+            }
         }
 
         if (!TryPurchaseShuttle((EntityUid) station, vessel.Path.ToString(), out var shuttle, out var config))
         {
             PlayDenySound(uid, component);
             return;
+        }
+
+        // Ship exists now — take payment. Treasury for faction yards, personal bank otherwise.
+        if (isFactionYard)
+        {
+            _market.TryWithdrawTreasury(station, vesselPrice);
+            if (buyer is { } buyerId)
+                _factionShipPurchases[buyerId] = _factionShipPurchases.GetValueOrDefault(buyerId) + 1;
+        }
+        else
+        {
+            _bank.TryBankWithdraw(player, vesselPrice);
         }
 
         if (!string.IsNullOrWhiteSpace(args.CustomName))
@@ -449,7 +498,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         RefreshState(
             uid,
-            bank.Balance,
+            GetDisplayBalance(uid, player),
             true,
             name,
             sellValue,
@@ -532,7 +581,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         PlayConfirmSound(uid, component);
         _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} purchased shuttle {ToPrettyString(shuttle.Owner)} for {vesselPrice} credits via {ToPrettyString(component.Owner)}");
-        RefreshState(uid, bank.Balance, true, name, sellValue, true, (ShipyardConsoleUiKey) args.UiKey);
+        RefreshState(uid, GetDisplayBalance(uid, player), true, name, sellValue, true, (ShipyardConsoleUiKey) args.UiKey);
 
     }
 
@@ -597,13 +646,18 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         Del(targetId);
 
 
-        _bank.TryBankDeposit(player, bill);
+        // Faction shipyards return sale proceeds to the faction treasury (so a treasury-bought ship
+        // can't be flipped for personal profit); other yards pay the seller's personal bank.
+        if (_market.GetStationFaction(stationUid) is not null)
+            _market.AddTreasury(stationUid, bill);
+        else
+            _bank.TryBankDeposit(player, bill);
         PlayConfirmSound(uid, component);
 
         SendSellMessage(uid, deed.ShuttleOwner!, GetFullName(deed), channel, player, false);
 
         _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} sold {shuttleName} for {bill} credits via {ToPrettyString(component.Owner)}");
-        RefreshState(uid, bank.Balance, true, null, 0, true, (ShipyardConsoleUiKey) args.UiKey);
+        RefreshState(uid, GetDisplayBalance(uid, player), true, null, 0, true, (ShipyardConsoleUiKey) args.UiKey);
     }
 
     private void OnConsoleUIOpened(EntityUid uid, ShipyardConsoleComponent component, BoundUIOpenedEvent args)
@@ -644,7 +698,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         var fullName = deed != null ? GetFullName(deed) : null;
-        RefreshState(uid, bank.Balance, true, fullName, sellValue, targetId.HasValue, (ShipyardConsoleUiKey) args.UiKey);
+        RefreshState(uid, GetDisplayBalance(uid, player), true, fullName, sellValue, targetId.HasValue, (ShipyardConsoleUiKey) args.UiKey);
     }
 
     private void ConsolePopup(EntityUid uid, string text)
@@ -805,10 +859,11 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
 
             var fullName = deed != null ? GetFullName(deed) : null;
-            RefreshState(uid, bank.Balance, true, fullName, sellValue, targetId.HasValue, (ShipyardConsoleUiKey)uiComp.Key);
+            var displayBalance = GetDisplayBalance(uid, player);
+            RefreshState(uid, displayBalance, true, fullName, sellValue, targetId.HasValue, (ShipyardConsoleUiKey)uiComp.Key);
             RefreshState(
                 uid: uid,
-                balance: bank.Balance,
+                balance: displayBalance,
                 access: true,
                 shipDeed: fullName,
                 shipSellValue: sellValue,
@@ -876,6 +931,19 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         return availableShuttles;
+    }
+
+    /// <summary>
+    /// The balance to show in a shipyard console UI: the faction treasury for faction shipyards,
+    /// otherwise the viewing player's personal bank balance.
+    /// </summary>
+    private long GetDisplayBalance(EntityUid console, EntityUid player)
+    {
+        if (_station.GetOwningStation(console) is { Valid: true } station
+            && _market.GetStationFaction(station) is not null)
+            return _market.GetTreasury(station);
+
+        return TryComp<BankAccountComponent>(player, out var bank) ? bank.Balance : 0;
     }
 
     private void RefreshState(EntityUid uid, long balance, bool access, string? shipDeed, int shipSellValue, bool isTargetIdPresent, ShipyardConsoleUiKey uiKey)

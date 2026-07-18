@@ -6,7 +6,7 @@
   id: BaseMainframeConsole
   parent: BaseComputer
   name: command mainframe
-  description: A faction command terminal that bundles the overwatch, diplomacy, alert, market and payroll consoles into one screen, each on its own tab. Locked to the faction it was issued to.
+  description: A faction command terminal that bundles the overwatch, diplomacy, alert, market and announcement consoles into one screen, each on its own tab. Locked to the faction it was issued to.
   placement:
     mode: SnapgridCenter
   components:
@@ -38,7 +38,17 @@
   - type: EconomicConsole
     refreshInterval: 300
     autoUpdateEnabled: true
-  - type: PaymentConsole    # faction set per variant
+
+  # Drives the Announcements tab. This is the stock communications-console component, so announcements
+  # made from the mainframe go through the exact same server path (access check, cooldown, formatting)
+  # as a standalone comms console. Shuttle calling is disabled — the mainframe only broadcasts text.
+  - type: CommunicationsConsole
+    title: comms-console-announcement-title-station
+    canShuttle: false
+    global: false
+    # No spawn/round-start lockout — a mainframe placed mid-round should be usable at once. The normal
+    # between-announcements cooldown (delay) still applies after each broadcast.
+    initialDelay: 0
 
   # Every hosted key must be declared here. A missing one makes both SetUiState and OpenUi silently
   # no-op, which surfaces as a tab that never appears rather than as an error.
@@ -58,8 +68,10 @@
         type: AlertConsoleBoundUserInterface
       enum.EconomicConsoleUiKey.Key:
         type: EconomicConsoleBoundUserInterface
-      enum.PaymentConsoleUiKey.Key:
-        type: Content.Client._Crescent.Payment.PaymentConsoleBoundUserInterface
+      # Mapped to the mainframe's own announcement BUI (a compact tab) rather than the standalone
+      # comms window, so the same UI key drives a tab here but a full window on a normal comms console.
+      enum.CommunicationsConsoleUiKey.Key:
+        type: Content.Client._Crescent.Mainframe.MainframeAnnouncementBoundUserInterface
 
   - type: Sprite
     netsync: false
@@ -87,11 +99,9 @@
 - type: entity
   parent: BaseMainframeConsole
   id: DSMMainframeConsole
-  name: command mainframe DSM
+  name: Imperial Command Console
   components:
   - type: OverwatchConsole
-    faction: DSM
-  - type: PaymentConsole
     faction: DSM
   - type: AccessReader
     access: [["Empire"]]
@@ -99,11 +109,9 @@
 - type: entity
   parent: BaseMainframeConsole
   id: NCWLMainframeConsole
-  name: command mainframe NCWL
+  name: Worker's League Command Console
   components:
   - type: OverwatchConsole
-    faction: NCWL
-  - type: PaymentConsole
     faction: NCWL
   - type: AccessReader
     access: [["NCWLGeneral"]]
@@ -111,11 +119,9 @@
 - type: entity
   parent: BaseMainframeConsole
   id: SHIMainframeConsole
-  name: command mainframe SHI
+  name: Shinohara Command Console
   components:
   - type: OverwatchConsole
-    faction: SHI
-  - type: PaymentConsole
     faction: SHI
   - type: AccessReader
     access: [["Shinohara"]]
@@ -123,11 +129,9 @@
 - type: entity
   parent: BaseMainframeConsole
   id: TAPMainframeConsole
-  name: command mainframe TAP
+  name: Families Command Console
   components:
   - type: OverwatchConsole
-    faction: TAP
-  - type: PaymentConsole
     faction: TAP
   - type: AccessReader
     access: [["Families"]]
@@ -135,11 +139,9 @@
 - type: entity
   parent: BaseMainframeConsole
   id: IPMMainframeConsole
-  name: command mainframe IPM
+  name: Interdyne Command Console
   components:
   - type: OverwatchConsole
-    faction: IPM
-  - type: PaymentConsole
     faction: IPM
   - type: AccessReader
     access: [["SyndicateInterdyne"]]
@@ -147,11 +149,9 @@
 - type: entity
   parent: BaseMainframeConsole
   id: SAWMainframeConsole
-  name: command mainframe SAW
+  name: Shipfitters Command Console
   components:
   - type: OverwatchConsole
-    faction: SAW
-  - type: PaymentConsole
     faction: SAW
   - type: AccessReader
     access: [["SyndicateSaws"]]
@@ -159,11 +159,9 @@
 - type: entity
   parent: BaseMainframeConsole
   id: GSCMainframeConsole
-  name: command mainframe GSC
+  name: Gorlex Command Console
   components:
   - type: OverwatchConsole
-    faction: GSC
-  - type: PaymentConsole
     faction: GSC
   - type: AccessReader
     access: [["SyndicateGorlex"]]
@@ -171,11 +169,9 @@
 - type: entity
   parent: BaseMainframeConsole
   id: CDMainframeConsole
-  name: command mainframe CD
+  name: Cyberdawn Command Console
   components:
   - type: OverwatchConsole
-    faction: CD
-  - type: PaymentConsole
     faction: CD
   # Cyberdawn's tag is SyndicateRamzi — the CD jobs (intelligence officer, operative, researcher)
   # are the only ones carrying it.
@@ -185,11 +181,9 @@
 - type: entity
   parent: BaseMainframeConsole
   id: SRMMainframeConsole
-  name: command mainframe SRM
+  name: Hunt Command Console
   components:
   - type: OverwatchConsole
-    faction: SRM
-  - type: PaymentConsole
     faction: SRM
   - type: AccessReader
     access: [["Hunter"]]

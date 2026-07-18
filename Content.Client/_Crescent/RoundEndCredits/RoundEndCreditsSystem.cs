@@ -3,7 +3,9 @@ using Robust.Client.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.ContentPack;
 using Robust.Shared.Player;
+using Robust.Shared.Utility;
 
 namespace Content.Client._Crescent.RoundEndCredits;
 
@@ -11,6 +13,7 @@ public sealed class RoundEndCreditsSystem : EntitySystem
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly IResourceManager _resource = default!;
 
     private static readonly SoundPathSpecifier CreditsMusic = new("/Audio/_Crescent/Task-Force-Friendly-Fire.ogg");
 
@@ -21,13 +24,12 @@ public sealed class RoundEndCreditsSystem : EntitySystem
     {
         base.Initialize();
 
-        // Disabled until properly implemented.
-        // SubscribeNetworkEvent<RoundEndCreditsEvent>(OnCreditsReceived);
+        SubscribeNetworkEvent<RoundEndCreditsEvent>(OnCreditsReceived);
     }
 
     private void OnCreditsReceived(RoundEndCreditsEvent ev)
     {
-        _window?.Close();
+        _window?.ForceClose();
         StopMusic();
 
         var query = AllEntityQuery<AudioComponent>();
@@ -36,13 +38,18 @@ public sealed class RoundEndCreditsSystem : EntitySystem
             _audio.Stop(uid);
         }
 
-        var stream = _audio.PlayGlobal(
-            CreditsMusic,
-            Filter.Local(),
-            false,
-            AudioParams.Default.WithVolume(2f).WithLoop(true));
+        // Music is optional: only play if the file is actually shipped, so a
+        // missing track never breaks the credits screen itself.
+        if (_resource.ContentFileExists(CreditsMusic.Path))
+        {
+            var stream = _audio.PlayGlobal(
+                CreditsMusic,
+                Filter.Local(),
+                false,
+                AudioParams.Default.WithVolume(2f).WithLoop(true));
 
-        _musicStream = stream?.Entity;
+            _musicStream = stream?.Entity;
+        }
 
         _window = new RoundEndCreditsWindow(ev.Players, _entManager);
         _window.OnClose += StopMusic;

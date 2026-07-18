@@ -81,7 +81,12 @@ public sealed partial class MainframeWindow : FancyWindow
         // Shift duration, matching what the PDA shows — CurTime alone is server uptime, which would
         // read as a wrong clock.
         var time = _timing.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
-        ClockLabel.Text = $"{time.Hours:D2}:{time.Minutes:D2}:{time.Seconds:D2}";
+        var clock = $"{time.Hours:D2}:{time.Minutes:D2}:{time.Seconds:D2}";
+
+        // Only touch the label when the text actually changes (once a second) — setting it every
+        // frame invalidates the shared window's layout for nothing.
+        if (ClockLabel.Text != clock)
+            ClockLabel.Text = clock;
     }
 
     private void UpdateFooter()

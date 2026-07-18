@@ -11,9 +11,9 @@ id-card-access-level-ncwljail = Homeguard Cells
 
 id-card-access-level-syndicatebasic = Syndicate
 id-card-access-level-syndicatecommand = Syndicate Command
-id-card-access-level-syndicategorlex = GSC
+id-card-access-level-syndicategorlex = Gorlex
 id-card-access-level-syndicateinterdyne = Interdyne
-id-card-access-level-syndicatesaws = SAW
+id-card-access-level-syndicatesaws = Shipfitters Union
 id-card-access-level-syndicateramzi = Cybersun
 id-card-access-level-syndicateringleader = Ringleader
 id-card-access-level-syndicatearmory = Syndicate Armory

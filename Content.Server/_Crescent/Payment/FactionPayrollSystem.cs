@@ -3,6 +3,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Bank;
 using Content.Server.Crescent.Dispenser;
 using Content.Shared._Crescent.HullrotFaction;
+using Content.Shared._Crescent.Payment;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Robust.Server.GameObjects;
@@ -42,15 +43,17 @@ public sealed class FactionPayrollSystem : EntitySystem
     [Dependency] private readonly BankSystem _bank = default!;
     [Dependency] private readonly StationTradeMarketSystem _market = default!;
 
-    private static readonly ResPath SavePath = new("faction_payroll.json");
+    private static readonly ResPath SavePath = new("/faction_payroll.json");
 
     /// <summary>How often, at most, the roster is flushed to disk while dirty.</summary>
     private static readonly TimeSpan SaveInterval = TimeSpan.FromSeconds(10);
 
-    /// <summary>Seconds between payout runs.</summary>
-    private const float PayoutInterval = 60f;
-
-    private const int MaxSalaryPerHour = 1_000_000;
+    /// <summary>
+    /// Seconds between payout runs. Set to one real hour so wages arrive as a single lump of the full
+    /// hourly salary, rather than trickling in every minute. (The accrual below is SalaryPerHour * this/3600,
+    /// which at a 3600s interval is exactly the full hourly amount per run.)
+    /// </summary>
+    private const float PayoutInterval = 3600f;
 
     /// <summary>
     /// Back-pay ceiling, in hours of salary. Unpaid wages accrue while the treasury is short, but
@@ -105,7 +108,7 @@ public sealed class FactionPayrollSystem : EntitySystem
 
         var roster = _rosters.GetOrNew(faction);
         var entry = roster.GetOrNew(user);
-        entry.SalaryPerHour = Math.Min(salaryPerHour, MaxSalaryPerHour);
+        entry.SalaryPerHour = Math.Min(salaryPerHour, PaymentConsole.MaxSalaryPerHour);
         _dirty = true;
     }
 

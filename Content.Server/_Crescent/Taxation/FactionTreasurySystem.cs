@@ -16,7 +16,7 @@ public sealed class FactionTreasurySystem : EntitySystem
 {
     [Dependency] private readonly IResourceManager _res = default!;
 
-    private static readonly ResPath SavePath = new("faction_treasury.json");
+    private static readonly ResPath SavePath = new("/faction_treasury.json");
 
     /// <summary>How often, at most, the in-memory balances are flushed to disk while dirty.</summary>
     private static readonly TimeSpan SaveInterval = TimeSpan.FromSeconds(10);

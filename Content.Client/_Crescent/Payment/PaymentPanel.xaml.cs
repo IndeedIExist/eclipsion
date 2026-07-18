@@ -139,8 +139,15 @@ public sealed partial class PaymentPanel : BoxContainer
         };
         setButton.OnPressed += _ =>
         {
-            if (int.TryParse(salaryEdit.Text, out var salary) && salary >= 0)
-                OnSetSalary?.Invoke(user, salary);
+            if (!int.TryParse(salaryEdit.Text, out var salary) || salary < 0)
+                return;
+
+            // Mirror the server-side cap here so an over-limit entry snaps back visibly instead of
+            // being silently trimmed after the round-trip.
+            salary = Math.Min(salary, PaymentConsole.MaxSalaryPerHour);
+            salaryEdit.Text = salary.ToString();
+
+            OnSetSalary?.Invoke(user, salary);
         };
         inner.AddChild(setButton);
 

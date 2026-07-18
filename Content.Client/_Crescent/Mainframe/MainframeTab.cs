@@ -14,4 +14,5 @@ public enum MainframeTab : byte
     Alert = 2,
     Economy = 3,
     Payment = 4,
+    Announcement = 5,
 }

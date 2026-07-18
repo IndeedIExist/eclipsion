@@ -11,6 +11,10 @@ public sealed partial class AlertPanel : BoxContainer
 {
     public event Action<AlertConsoleBuiState>? OnSavePressed;
 
+    // Whether the editable fields have been seeded from the server yet. Once they have, the form
+    // belongs to the operator until they Save — see UpdateState.
+    private bool _populated;
+
     public AlertPanel()
     {
         RobustXamlLoader.Load(this);
@@ -40,14 +44,23 @@ public sealed partial class AlertPanel : BoxContainer
 
     public void UpdateState(AlertConsoleBuiState state)
     {
+        // The channel readout is server-owned and read-only, so always keep it current.
+        ChannelLabel.Text = state.FactionChannelResolved
+            ? Loc.GetString("alert-console-channel-value", ("channel", state.FactionChannel))
+            : Loc.GetString("alert-console-channel-unknown");
+
+        // Seed the editable fields from the server exactly once. After that the operator owns the
+        // form until they press Save; re-applying a later state push would wipe half-typed messages
+        // and just-toggled switches — that's the "I type/click and the screen undoes it" the alert
+        // tab was doing, because a mainframe re-pushes this console's state as its tabs open/refresh.
+        if (_populated)
+            return;
+        _populated = true;
+
         EnabledCheck.Pressed = state.Enabled;
 
         RadiusSlider.SetValueWithoutEvent(Math.Clamp(state.DetectionRadius, 10f, 2000f));
         RadiusValueLabel.Text = $"{(int) state.DetectionRadius} м";
-
-        ChannelLabel.Text = state.FactionChannelResolved
-            ? Loc.GetString("alert-console-channel-value", ("channel", state.FactionChannel))
-            : Loc.GetString("alert-console-channel-unknown");
 
         CooldownSlider.SetValueWithoutEvent(Math.Clamp(state.AlertCooldownSeconds, 5f, 3600f));
         CooldownValueLabel.Text = $"{(int) state.AlertCooldownSeconds} сек";

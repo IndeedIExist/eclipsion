@@ -146,6 +146,20 @@ public sealed partial class OverwatchPanel : BoxContainer
         if (_ui == null)
             return;
 
+        // On a mainframe every tab's BUI stays open at once, so this panel keeps receiving a fresh
+        // state every second even while it sits behind another tab. Rebuilding the member grid here
+        // would invalidate the shared window's layout, which surfaces as flicker and dropped clicks
+        // on whichever tab is actually on screen. Defer the rebuild until we're visible again (and,
+        // as before, while a dropdown is open so a refresh can't yank the menu out from under the
+        // player). The latest state is stashed and applied from FrameUpdate once we come back.
+        if (!VisibleInTree || _anyDropdownOpen)
+        {
+            _pendingState = state;
+            return;
+        }
+
+        _pendingState = null;
+
         _allMembers = state.Members;
         _factionColor = state.FactionColor;
 
@@ -161,13 +175,6 @@ public sealed partial class OverwatchPanel : BoxContainer
                                 _availableSquads[kvp.Key] != kvp.Value);
         _availableSquads = state.AvailableSquads;
 
-        if (_anyDropdownOpen)
-        {
-            _pendingState = state;
-            return;
-        }
-
-        _pendingState = null;
         ApplyStateToUi(squadsChanged);
     }
 
@@ -474,6 +481,19 @@ public sealed partial class OverwatchPanel : BoxContainer
     protected override void FrameUpdate(FrameEventArgs args)
     {
         base.FrameUpdate(args);
+
+        // Idle while hidden behind another mainframe tab: no per-frame layout work, so the visible
+        // tab stops flickering. See UpdateState for the full rationale.
+        if (!VisibleInTree)
+            return;
+
+        // Apply the most recent state that arrived while we were hidden or had a dropdown open.
+        if (_pendingState != null && !_anyDropdownOpen)
+        {
+            var pending = _pendingState;
+            _pendingState = null;
+            UpdateState(pending);
+        }
 
         var currentWatched = GetCurrentWatchedEntity();
         var changed = false;

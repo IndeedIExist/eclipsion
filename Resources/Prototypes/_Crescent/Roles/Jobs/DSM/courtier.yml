@@ -71,5 +71,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitImperialNobleMale
     shoes: ClothingShoesBootsImperialLaceup
+    gloves: ClothingHandsGlovesImperialGovernorGloves
+    back: ClothingBackpackSatchelLeather
     id: CourtierPDA
     ears: ClothingHeadsetEmpire
