@@ -16,7 +16,8 @@
 
 
 ### FREEPLAY ###
-# The default preset: game.defaultpreset in CCVars.Game.cs resolves "adventure" to this.
+# The Adventure preset below is NOT the default: game.defaultpreset in CCVars.Game.cs resolves
+# "freeplaydsmncwl" to the FreeplayDSMNCWL preset further down.
 
 - type: gamePreset
   id: Adventure #FREEPLAY, DO NOT REMOVE
@@ -55,6 +56,8 @@
   rules:
   - Adventure
   - HullrotEventScheduler
+  - HullrotRoundTimeLimit
+  - HullrotConquest
 
 - type: entity
   id: Adventure #FREEPLAY, DO NOT REMOVE
@@ -125,6 +128,191 @@
         posY: 2500
 
 
+- type: gamePreset
+  id: FreeplayDSMNCWL
+  alias:
+  - freeplaydsmncwl
+  name: Freeplay | DSM & NCWL
+  showInVote: true
+  description: The final hours of Taypan, fought over by the Dominion and the Union. Last 2-4 hours.
+  excludedJobs:
+  - UnionfallCadetDSM
+  - UnionfallRiflemanDSM
+  - UnionfallDoctorDSM
+  - UnionfallOfficerDSM
+  - UnionfallLeaderDSM
+  - UnionfallShipCaptainDSM
+  - UnionfallShipCrewDSM
+  - UnionfallCadetNCWL
+  - UnionfallRiflemanNCWL
+  - UnionfallDoctorNCWL
+  - UnionfallOfficerNCWL
+  - UnionfallLeaderNCWL
+  - UnionfallShipCaptainNCWL
+  - UnionfallShipCrewNCWL
+  - planetfall_worker
+  - planetfall_partisan
+  - planetfall_mvdofficer
+  - planetfall_mvdgrunt
+  - planetfall_kapitan
+  - planetfall_doctor
+  - planetfall_courtier
+  - planetfall_advocatus
+  - planetfall_governor
+  - planetfall_freeholder
+  - planetfall_levyman
+  - planetfall_surgeon
+  rules:
+  - FreeplayDSMNCWL
+  - HullrotEventScheduler
+  - HullrotRoundTimeLimit
+  - HullrotConquest
+
+- type: entity
+  id: FreeplayDSMNCWL
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GamemodeRespawnTime
+    respawnTimeMinutes: 10
+  - type: AdventureRule
+    gameMapsByID:
+      PortBalreska:
+        gameMapID: PortBalreska
+        posX: -2000
+        posY: -5000
+        IFFColor: Orange
+        IFFFaction: NCWL
+      AuroraImperialis:
+        gameMapID: AuroraImperialis
+        posX: 2000
+        posY: 5000
+        IFFColor: "#C677A5"
+        IFFFaction: DSM
+      GliessSanto:
+        gameMapID: GliessSanto
+        posX: 0
+        posY: 0
+        IFFColor: Gold
+      RatFakel:
+        gameMapID: RatFakel
+        posX: 3000
+        posY: -2000
+      RatBuran:
+        gameMapID: RatBuran
+        posX: -2500
+        posY: 3500
+      RatKovf:
+        gameMapID: RatKovf
+        posX: 500
+        posY: -4300
+      RatResearchLabratory:
+        gameMapID: RatResearchLabratory
+        posX: 2500
+        posY: 2500
+
+- type: gamePreset
+  id: FreeplayTFSCSHI
+  alias:
+  - freeplaytfscshi
+  name: Freeplay | TFSC & SHI
+  showInVote: true
+  description: The final hours of Taypan, fought over by the Coalition and the Shogunate. Last 2-4 hours.
+  excludedJobs:
+  - UnionfallCadetDSM
+  - UnionfallRiflemanDSM
+  - UnionfallDoctorDSM
+  - UnionfallOfficerDSM
+  - UnionfallLeaderDSM
+  - UnionfallShipCaptainDSM
+  - UnionfallShipCrewDSM
+  - UnionfallCadetNCWL
+  - UnionfallRiflemanNCWL
+  - UnionfallDoctorNCWL
+  - UnionfallOfficerNCWL
+  - UnionfallLeaderNCWL
+  - UnionfallShipCaptainNCWL
+  - UnionfallShipCrewNCWL
+  - planetfall_worker
+  - planetfall_partisan
+  - planetfall_mvdofficer
+  - planetfall_mvdgrunt
+  - planetfall_kapitan
+  - planetfall_doctor
+  - planetfall_courtier
+  - planetfall_advocatus
+  - planetfall_governor
+  - planetfall_freeholder
+  - planetfall_levyman
+  - planetfall_surgeon
+  rules:
+  - FreeplayTFSCSHI
+  - HullrotEventScheduler
+  - HullrotRoundTimeLimit
+  - HullrotConquest
+
+- type: entity
+  id: FreeplayTFSCSHI
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GamemodeRespawnTime
+    respawnTimeMinutes: 10
+  - type: AdventureRule
+    gameMapsByID:
+      Tatsumoto:
+        gameMapID: Tatsumoto
+        posX: -5000
+        posY: 1000
+        IFFColor: White
+        IFFFaction: SHI
+      Dochenskaya:
+        gameMapID: Dochenskaya
+        posX: 6000
+        posY: 0
+        IFFColor: IndianRed
+        IFFFaction: TFSC
+      Jackal:
+        gameMapID: Jackal
+        posX: 6500
+        posY: -2000
+        IFFColor: IndianRed
+        IFFFaction: TFSC
+      Dawnbreaker:
+        gameMapID: Dawnbreaker
+        posX: 6000
+        posY: -1000
+        IFFColor: IndianRed
+        IFFFaction: TFSC
+      Hayes:
+        gameMapID: Hayes
+        posX: 5000
+        posY: -2500
+        IFFColor: IndianRed
+        IFFFaction: TFSC
+      GliessSanto:
+        gameMapID: GliessSanto
+        posX: 0
+        posY: 0
+        IFFColor: Gold
+      RatFakel:
+        gameMapID: RatFakel
+        posX: 3000
+        posY: 3000
+      RatBuran:
+        gameMapID: RatBuran
+        posX: -2500
+        posY: 3500
+      RatKovf:
+        gameMapID: RatKovf
+        posX: 500
+        posY: -4300
+      RatResearchLabratory:
+        gameMapID: RatResearchLabratory
+        posX: 2500
+        posY: 2500
+
+
 ### HYPERWAR ###
 # NCWL vs DSM clashing over the central asteroid belt.
 # Uses the special RatWorldHyperwar worldgen (central belt kept, surrounding ring removed).
@@ -166,6 +354,7 @@
   rules:
   - Hyperwar
   - HullrotEventScheduler
+  - HullrotRoundTimeLimit
 
 - type: entity
   id: Hyperwar
@@ -218,6 +407,7 @@
   - UnionfallShipCrewNCWL
   rules:
   - Unionfall
+  - HullrotRoundTimeLimit
 
 - type: entity
   id: Unionfall
@@ -286,6 +476,7 @@
   - planetfall_surgeon
   rules:
   - Planetfall
+  - HullrotRoundTimeLimit
 
 - type: entity
   id: Planetfall
@@ -300,69 +491,3 @@
         gameMapID: PlanetfallMap
         posX: 0
         posY: 0
-
-
-### THE OVERWORLD REMAP PART ###
-
-- type: gamePreset
-  id: OverworldRemap
-  name: Taypan; remapped
-  showInVote: true
-  description: The last days of Taypan. Testing out the overworld Remap.
-  rules:
-  - OverworldRemap
-  - HullrotEventScheduler
-
-- type: entity
-  id: OverworldRemap
-  parent: BaseGameRule
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: GamemodeRespawnTime
-    respawnTimeMinutes: 10
-  - type: AdventureRule
-    gameMapsByID:
-      PortBalreska:
-        gameMapID: PortBalreska
-        posX: 0
-        posY: -8000
-        IFFColor: Orange
-        IFFFaction: NCWL
-      Tatsumoto:
-        gameMapID: Tatsumoto
-        posX: 7000
-        posY: 1000
-        IFFColor: White
-        IFFFaction: SHI
-      Countsman:
-        gameMapID: Countsman
-        posX: 0
-        posY: 8000
-        IFFColor: Purple
-        IFFFaction: DSM
-      Dawnbreaker:
-        gameMapID: Dawnbreaker
-        posX: -8000
-        posY: -1000
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-      Graveyard:
-        gameMapID: Graveyard
-        posX: -5500
-        posY: 5500
-      Craster:
-        gameMapID: Craster
-        posX: 0
-        posY: 0
-      Taypan1AsteroidBelt:
-        gameMapID: Taypan1AsteroidBelt
-        posX: 5500
-        posY: 5500
-      Taypan2AsteroidBelt:
-        gameMapID: Taypan2AsteroidBelt
-        posX: -5500
-        posY: -5500
-      TribalScrapyard:
-        gameMapID: TribalScrapyard
-        posX: 5500
-        posY: -5500

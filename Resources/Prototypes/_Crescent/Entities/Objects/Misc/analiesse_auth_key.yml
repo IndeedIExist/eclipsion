@@ -1,0 +1,29 @@
+# The Analiesse auth key — objective item for the CMM round-end directive.
+#
+# Spawns aboard the derelict Analiesse, which only enters play through the admin-run event
+# (see _Crescent/Events/analiesse.yml). It never appears on its own, so the CMM directive is only live when an
+# admin has actually put the wreck in the sector.
+
+- type: entity
+  parent: BaseItem
+  id: AnaliesseAuthKey
+  name: Analiesse auth key
+  description: A command authentication key, its casing scored and its lanyard long since rotted away. The etching still reads ANALIESSE. Whatever this key was cut for, somebody died holding onto it — and the Minutemen want it badly enough to ask.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/nukedisk.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - AnaliesseAuthKey
+  - type: StaticPrice
+    price: 2000
+  - type: CargoSellBlacklist
+  - type: EmitSoundOnPickup
+    sound: /Audio/SimpleStation14/Items/Handling/disk_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound: /Audio/SimpleStation14/Items/Handling/disk_drop.ogg
+  - type: EmitSoundOnLand
+    sound: /Audio/SimpleStation14/Items/Handling/disk_drop.ogg

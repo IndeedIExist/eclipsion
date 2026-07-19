@@ -1,0 +1,17 @@
+# Hard round-length cap. Rounds end and the server restarts after this, no matter what state play is in.
+#
+# MaxTimeRestartRule fires on a real-time timer that (re)starts whenever the round goes InRound and is cancelled
+# in lobby/post-round, so it measures actual round time. On fire it calls EndRound, then RestartRound after the
+# delay. This is attached to every Crescent preset as a backstop — modes that finish on their own objectives just
+# never reach it.
+#
+# roundMaxTime / roundEndDelay are TimeSpans serialised in SECONDS (the vanilla MaxTimeRestart uses 300 = 5 min).
+
+- type: entity
+  id: HullrotRoundTimeLimit
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: MaxTimeRestartRule
+    roundMaxTime: 14400 # 4 hours
+    roundEndDelay: 60

@@ -7,6 +7,9 @@
     AuroraImperialis:
       stationProto: StandardCrescentStation
       gridComponents:
+        - type: FactionStation # conquest win condition
+          faction: DSM
+          fallAnnouncement: faction-station-fall-aurora
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
         - type: VesselIcon

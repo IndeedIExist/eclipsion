@@ -7,6 +7,9 @@
     PortBalreska:
       stationProto: StandardCrescentStation
       gridComponents:
+        - type: FactionStation # conquest win condition
+          faction: NCWL
+          fallAnnouncement: faction-station-fall-balreska
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
         - type: VesselIcon

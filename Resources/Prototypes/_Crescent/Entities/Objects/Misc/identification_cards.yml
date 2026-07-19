@@ -29,6 +29,12 @@
     - state: idcentcom
   - type: PresetIdCard
     job: CommandantNCWL
+  # Steal target for the DSM round-end directive. Parent tags are repeated because declaring the list replaces it.
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - NCWLLeaderIdCard
 
 - type: entity
   parent: IDCardStandard
@@ -555,6 +561,12 @@
     - state: idseniorresearcher
   - type: PresetIdCard
     job: GovernorDSM
+  # Steal target for the NCWL round-end directive. Parent tags are repeated because declaring the list replaces it.
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - DSMLeaderIdCard
 
 #srm
 

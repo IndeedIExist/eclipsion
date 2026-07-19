@@ -1,0 +1,136 @@
+# Faction round-end (directive) computers: one per faction. A faction gathers a mission's required items, feeds
+# them into the computer (click it with the item in hand), and an authorized member turns the mission in. Turn-in
+# consumes the items and fires the reward hook (placeholder for now). Finishing every directive on a console
+# broadcasts that faction's finaleAnnouncement to everyone in bold orange.
+#
+# `FactionRoundEndComputer.missions` lists the FactionMissionPrototype ids the computer offers; the AccessReader
+# gates who may turn them in (faction command, matching the muster consoles).
+
+# Deliberately self-contained rather than parented to BaseComputer: this terminal must be indestructible and
+# immovable, and must open even unpowered (so it works in the map editor and on any tile). It therefore has no
+# Damageable/Destructible (indestructible), no Anchorable/Pullable/Construction (immovable — permanently anchored),
+# and no power requirement. It stays fully mappable: it has a placement mode and a sprite.
+- type: entity
+  abstract: true
+  id: BaseFactionRoundEndComputer
+  name: faction directive terminal
+  description: A directive terminal, welded down and armoured past the point of vandalism. It devours requisitioned materiel whole; once a directive's quota is met, command submits it to claim the faction's due.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 200
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Tag
+    tags:
+    - Structure
+  - type: Sprite
+    netsync: false
+    noRot: true
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: id
+    - map: ["computerLayerKeys"]
+      state: id_key
+  - type: AccessReader
+  - type: ActivatableUIRequiresAccess
+    popupMessage: faction-roundend-denied
+  - type: ActivatableUI
+    key: enum.FactionRoundEndUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.FactionRoundEndUiKey.Key:
+        type: Content.Client._Crescent.RoundEnd.FactionRoundEndComputerBoundUserInterface
+
+- type: entity
+  parent: BaseFactionRoundEndComputer
+  id: FactionRoundEndComputerDSM
+  name: imperial directive terminal
+  suffix: DSM
+  components:
+  - type: AccessReader
+    access: [["EmpireNoble"], ["EmpireAdjutant"], ["EmpireGovernor"]]
+  - type: FactionRoundEndComputer
+    faction: DSM
+    missions:
+    - MissionStealLeaguePlans
+    finaleAnnouncement: faction-finale-dsm
+
+- type: entity
+  parent: BaseFactionRoundEndComputer
+  id: FactionRoundEndComputerNCWL
+  name: league directive terminal
+  suffix: NCWL
+  components:
+  - type: AccessReader
+    access: [["NCWLCommand"], ["NCWLKommissar"]]
+  - type: FactionRoundEndComputer
+    faction: NCWL
+    missions:
+    - MissionStealImperialSecrets
+    finaleAnnouncement: faction-finale-ncwl
+
+- type: entity
+  parent: BaseFactionRoundEndComputer
+  id: FactionRoundEndComputerSHI
+  name: shinohara directive terminal
+  suffix: SHI
+  components:
+  - type: AccessReader
+    access: [["ShinoharaOfficer"], ["ShinoharaExecutive"]]
+  - type: FactionRoundEndComputer
+    faction: SHI
+    missions:
+    - MissionConvinceEmpire
+    - MissionConvinceLeague
+    finaleAnnouncement: faction-finale-shi
+
+# Shared across every Coalition (TFSC) sub-corp — gated to Coalition command, not one specific corp.
+- type: entity
+  parent: BaseFactionRoundEndComputer
+  id: FactionRoundEndComputerTFSC
+  name: coalition directive terminal
+  suffix: TFSC
+  components:
+  - type: AccessReader
+    access: [["SyndicateCommand"], ["SyndicateRingleader"]]
+  - type: FactionRoundEndComputer
+    faction: TFSC
+    missions:
+    - MissionConvinceEmpire
+    - MissionConvinceLeague
+    finaleAnnouncement: faction-finale-tfsc
+
+- type: entity
+  parent: BaseFactionRoundEndComputer
+  id: FactionRoundEndComputerCMM
+  name: minutemen directive terminal
+  suffix: CMM
+  components:
+  - type: AccessReader
+    access: [["MinutemanMarshal"], ["MinutemanRankingOfficer"]]
+  - type: FactionRoundEndComputer
+    faction: CMM
+    missions:
+    - MissionAnaliesseKey
+    finaleAnnouncement: faction-finale-cmm

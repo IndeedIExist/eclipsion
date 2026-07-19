@@ -77,20 +77,70 @@
         name: engineer hardsuit
       - id: ClothingOuterHardsuitNCWLMedi
         name: medic hardsuit
+      - id: ClothingMaskNCWLGasmask
+        name: League gas mask
     - name: Ammunition
       entries:
       - id: MagazineLightRifle
         name: 30-round magazine (5.56x45mm)
+      - id: MagazineRifle
+        name: 20-round magazine (7.62x51mm)
+      - id: BoxSpeedLoaderRifle
+        name: box of stripper clips (7.62x51mm)
+      - id: MagazineHeavyRifleBoxmag
+        name: Conscript box magazine (12.7x99mm)
+      - id: MagazineHeavyRifle
+        name: heavy rifle magazine (12.7x99mm)
+      - id: MagazineAntiMateriel
+        name: anti-materiel magazine (15.2x169mm)
+      - id: BoxRoundsAntiMateriel
+        name: box of rounds (15.2x169mm)
+      - id: MagazineCaselessRifle
+        name: Militant magazine (10x24mm caseless)
       - id: MagazinePistolSubMachineGun
         name: 35-round SMG magazine (9x19mm)
+      - id: MagazineMagnumSub
+        name: Bloodhound magazine (.45 magnum)
       - id: MagazineShotgun
         name: 10-round magazine (12 gauge)
+      - id: BoxLethalshot
+        name: box of buckshot shells (12 gauge)
+      - id: BoxShotgunSlug
+        name: box of slug shells (12 gauge)
+      - id: BoxLethalshot4g
+        name: box of buckshot shells (4 gauge)
       - id: MagazinePistol
-        name: pistol magazine
-      - id: MagazineRifle
-        name: rifle magazine
+        name: pistol magazine (9x19mm)
+      - id: MagazineMagnum
+        name: magnum magazine (.45)
+      - id: SpeedLoaderMagnum
+        name: magnum speed loader (.45)
+    - name: Grenade Shells
+      entries:
+      - id: Cartridge40mmFrag
+        name: 40mm frag grenade
+      - id: Cartridge40mmHEDP
+        name: 40mm HEDP grenade
+      - id: Cartridge40mmThermobaric
+        name: 40mm thermobaric grenade
+      - id: Cartridge40mmCan
+        name: 40mm canister shell
+      - id: Cartridge40mmSmoke
+        name: 40mm smoke grenade
+      - id: Cartridge40mmEMP
+        name: 40mm EMP grenade
     - name: Utilities
       entries:
+      - id: ClothingBeltNCWLWebbing
+        name: League webbing
+      - id: ClothingBeltNCWLPouches
+        name: League pouch belt
+      - id: ClothingBeltNCWLDoubleHolster
+        name: League double holster
+      - id: ClothingShoesBootsMagNCWL
+        name: League magboots
+      - id: DoubleEmergencyOxygenTankFilled
+        name: double emergency oxygen tank
       - id: JetpackCaptainFilled
       - id: HandHeldMassScannerEE
       - id: BoxMRE
@@ -204,20 +254,62 @@
         name: juggernaut hardsuit
       - id: ClothingOuterHardsuitImperialWorker
         name: worker hardsuit
+      - id: ClothingMaskImperialCombatGasmask
+        name: imperial combat gas mask
     - name: Ammunition
       entries:
       - id: MagazineLightRifle
         name: 30-round magazine (5.56x45mm)
+      - id: MagazineLightRifleBox
+        name: Dominion box magazine (5.56x45mm)
+      - id: MagazineBoxLightRifleSurplus
+        name: surplus ammo box (5.56x45mm)
+      - id: BoxSpeedLoaderLightRifle
+        name: box of stripper clips (5.56x45mm)
+      - id: MagazineRifle
+        name: 20-round magazine (7.62x51mm)
+      - id: MagazineAntiMateriel
+        name: anti-materiel magazine (15.2x169mm)
+      - id: BoxRoundsAntiMateriel
+        name: box of rounds (15.2x169mm)
       - id: MagazinePistolSubMachineGun
         name: 35-round SMG magazine (9x19mm)
+      - id: MagazinePistolSubMachineGunHeavy
+        name: C-20r magazine (11mm)
       - id: MagazineShotgun
         name: 10-round magazine (12 gauge)
+      - id: BoxLethalshot
+        name: box of buckshot shells (12 gauge)
+      - id: BoxShotgunSlug
+        name: box of slug shells (12 gauge)
       - id: MagazinePistol
-        name: pistol magazine
-      - id: MagazineRifle
-        name: rifle magazine
+        name: pistol magazine (9x19mm)
+      - id: MagazineMagnum
+        name: magnum magazine (.45)
+      - id: SpeedLoaderMagnum
+        name: magnum speed loader (.45)
+    - name: Grenade Shells
+      entries:
+      - id: Cartridge40mmFrag
+        name: 40mm frag grenade
+      - id: Cartridge40mmHEDP
+        name: 40mm HEDP grenade
+      - id: Cartridge40mmThermobaric
+        name: 40mm thermobaric grenade
+      - id: Cartridge40mmCan
+        name: 40mm canister shell
+      - id: Cartridge40mmSmoke
+        name: 40mm smoke grenade
+      - id: Cartridge40mmEMP
+        name: 40mm EMP grenade
     - name: Utilities
       entries:
+      - id: ClothingBeltAuthorityWebbing
+        name: ballistic combat webbing
+      - id: ClothingShoesBootsMagDSM
+        name: imperial magboots
+      - id: DoubleEmergencyOxygenTankFilled
+        name: double emergency oxygen tank
       - id: JetpackCaptainFilled
       - id: HandHeldMassScannerEE
       - id: BoxMRE
@@ -402,21 +494,53 @@
       - id: MagazinePistolSubMachineGun
         name: 35-round SMG magazine (9x19mm)
       - id: MagazinePistolSubMachineGunHeavy
-        name: heavy SMG magazine
+        name: heavy SMG magazine (11mm)
+      - id: MagazinePistol6mmSmg
+        name: Sabre SMG magazine (6mm)
+      - id: MagazineAntiMateriel
+        name: anti-materiel magazine (15.2x169mm)
+      - id: BoxRoundsAntiMateriel
+        name: box of rounds (15.2x169mm)
       - id: MagazineShotgun
         name: 10-round magazine (12 gauge)
       - id: BoxLethalshot
-        name: box of shotgun shells
+        name: box of buckshot shells (12 gauge)
+      - id: BoxShotgunSlug
+        name: box of slug shells (12 gauge)
+      - id: BoxLethalshot4g
+        name: box of buckshot shells (4 gauge)
       - id: MagazinePistol
-        name: pistol magazine
+        name: pistol magazine (9x19mm)
+      - id: MagazinePistolSmartgun
+        name: smartpistol magazine (12mm)
       - id: MagazineMagnum
-        name: magnum magazine
+        name: magnum magazine (.45)
       - id: SpeedLoaderMagnum
-        name: magnum speed loader
+        name: magnum speed loader (.45)
       - id: CartridgeHammerheadRocket
         name: Hammerhead rocket
+    - name: Grenade Shells
+      entries:
+      - id: Cartridge40mmFrag
+        name: 40mm frag grenade
+      - id: Cartridge40mmHEDP
+        name: 40mm HEDP grenade
+      - id: Cartridge40mmThermobaric
+        name: 40mm thermobaric grenade
+      - id: Cartridge40mmCan
+        name: 40mm canister shell
+      - id: Cartridge40mmSmoke
+        name: 40mm smoke grenade
+      - id: Cartridge40mmEMP
+        name: 40mm EMP grenade
     - name: Utilities
       entries:
+      - id: ClothingBeltMilitaryWebbing
+        name: military webbing
+      - id: ClothingShoesBootsMagAdv
+        name: advanced magboots
+      - id: DoubleEmergencyOxygenTankFilled
+        name: double emergency oxygen tank
       - id: JetpackCaptainFilled
       - id: HandHeldMassScannerEE
       - id: BoxMRE
@@ -651,22 +775,38 @@
         name: rifle drum magazine
       - id: MagazineHeavyRifle
         name: heavy rifle magazine
+      - id: MagazineLightRifleBox
+        name: Compakt box magazine (5.56x45mm)
       - id: MagazineAntiMateriel
-        name: anti-materiel magazine
+        name: anti-materiel magazine (15.2x169mm)
+      - id: BoxRoundsAntiMateriel
+        name: box of rounds (15.2x169mm)
       - id: MagazinePistolSubMachineGun
         name: 35-round SMG magazine (9x19mm)
+      - id: MagazinePistolSubMachineGunHeavy
+        name: Corsair magazine (11mm)
       - id: MagazineShotgun
         name: 10-round magazine (12 gauge)
       - id: DrumMagazineShotgunBuck
-        name: shotgun drum magazine
+        name: shotgun drum magazine (12 gauge)
       - id: BoxLethalshot
-        name: box of shotgun shells
+        name: box of buckshot shells (12 gauge)
+      - id: BoxShotgunSlug
+        name: box of slug shells (12 gauge)
       - id: MagazinePistol
-        name: pistol magazine
+        name: pistol magazine (9x19mm)
+      - id: MagazinePistolHeavy
+        name: Ansem magazine (11mm)
       - id: MagazinePistolSpecialMindbreaker
         name: mindbreaker magazine
     - name: Utilities
       entries:
+      - id: ClothingBeltSyndicateWebbing
+        name: syndicate webbing
+      - id: ClothingShoesBootsMagSyndie
+        name: blood-red magboots
+      - id: DoubleEmergencyOxygenTankFilled
+        name: double emergency oxygen tank
       - id: JetpackCaptainFilled
       - id: HandHeldMassScannerEE
       - id: BoxMRE

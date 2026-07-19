@@ -7,6 +7,9 @@
     Jackal:
       stationProto: StandardCrescentStation
       gridComponents:
+        - type: FactionStation # conquest win condition
+          faction: TFSC
+          fallAnnouncement: faction-station-fall-jackal
         - type: BlockShipWeaponProjectileGrid
         - type: MapIcon
           iconType: Station

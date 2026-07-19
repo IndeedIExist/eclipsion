@@ -1,0 +1,22 @@
+# The Analiesse — admin-run only.
+#
+# NOTE: this rule has NO "StationEvent" component on purpose. The random event scheduler only ever picks rules
+# that carry one, so this can never fire midround by itself. Admins start it by hand from the game-rule panel
+# ("Analiesse Derelict"). Until an admin runs it, the CMM round-end directive has no obtainable key and simply
+# cannot be completed — which is intended.
+
+- type: entity
+  id: AnaliesseDerelict
+  parent: BaseGameRule
+  name: Analiesse Derelict
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AnaliesseEventRule
+    gridPath: /Maps/_Crescent/Shuttles/CMM/provost.yml
+    key: AnaliesseAuthKey
+    keyCount: 1
+    iffName: Analiesse
+    minX: -2000
+    minY: -2000
+    maxX: 2000
+    maxY: 2000

@@ -1,0 +1,91 @@
+# Taypan tonnage charters — the objective items for the SHI and TFSC round-end directives.
+#
+# Taypan is contested ground: the Mandate claims it by divine right, the League claims it by right of labour.
+# Neither recognises a commercial power's fleet unless it is ratified in writing. So the same instrument exists
+# twice — one sealed by the Empire, one stamped by the League — and a company that wants its guns to be legal in
+# Taypan must hold BOTH at once. Getting them is a roleplay problem: DSM and NCWL command have to be talked into
+# signing. Feed the signed charter into the company's directive terminal to file it.
+#
+# These are meant to live in DSM / NCWL command areas (or be issued by their leadership), not to spawn for free
+# in Taypan itself.
+
+- type: entity
+  parent: Paper
+  id: BaseTaypanCharter
+  abstract: true
+  name: Taypan tonnage charter
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    color: "#e8d5a3"
+    layers:
+    - state: paper
+    - state: paper_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      visible: false
+    - state: paper_stamp-generic
+      map: ["enum.PaperVisualLayers.Stamp"]
+      visible: false
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+    backgroundModulate: "#e0c893"
+
+- type: entity
+  parent: BaseTaypanCharter
+  id: TaypanCharterMandate
+  suffix: DSM
+  description: A leaf of pressed vellum, heavy with wax and heavier with consequence. The Divine Sol Mandate does not grant, it condescends — and here, in a notary's cramped hand, it condescends to suffer armed tonnage under a merchant flag in Taypan. The seal at its foot is worth more than the ship it describes.
+  components:
+  - type: Tag
+    tags:
+    - Document
+    - Paper
+    - TaypanCharterMandate
+  - type: Paper
+    content: |
+      [head=2]INSTRUMENT OF SUFFERANCE[/head]
+      [italic]Issued under the Seal of the Divine Sol Mandate, Outer Rim Prefecture — Taypan System[/italic]
+
+      BE IT KNOWN that the Throne, in its mercy and not in its obligation, SUFFERS the bearer named below to bear, berth and maintain armed tonnage within the Taypan System.
+
+      This sufferance is a favour and not a right. It is extended for so long as the bearer's conduct offends neither the Mandate's dignity nor its interests, and may be withdrawn without cause, without notice, and without appeal.
+
+      The bearer shall not raise arms against the Mandate, its vassals, or its clergy. The bearer shall render passage and assistance to Mandate vessels upon demand.
+
+      Bearer: ______________________________
+      Tonnage declared: ______________________________
+
+      Sealed at ______________________________
+      For the Throne: ______________________________
+
+      [italic]Let no petty admiral mistake this parchment for friendship.[/italic]
+
+- type: entity
+  parent: BaseTaypanCharter
+  id: TaypanCharterLeague
+  suffix: NCWL
+  description: A stiff sheet of recycled pulp, over-stamped by three separate committees and initialled by a fourth. The New Crescent Workers' League recognises no divine right to anything — but it does recognise a filed permit, in triplicate, and it has grudgingly filed this one. Somebody argued for hours to get these stamps.
+  components:
+  - type: Tag
+    tags:
+    - Document
+    - Paper
+    - TaypanCharterLeague
+  - type: Paper
+    content: |
+      [head=2]PERMIT OF ARMED TONNAGE[/head]
+      [italic]New Crescent Workers' League — Commissariat of Shipping, Taypan Oversight Committee[/italic]
+
+      RESOLVED, by vote of the Oversight Committee, that the enterprise named below is PERMITTED to berth and maintain armed tonnage within the Taypan System.
+
+      The League grants this not as a favour from above but as a decision taken in common. What the committee has voted, the committee may revoke — and the comrades of Taypan are watching the ledger.
+
+      CONDITIONS: The permit-holder shall not turn its guns upon the working crews of this sector. The permit-holder shall not obstruct League shipping. The permit-holder shall submit its tonnage figures honestly; falsified figures are theft from the collective.
+
+      Enterprise: ______________________________
+      Tonnage declared: ______________________________
+
+      Filed at ______________________________
+      For the Committee: ______________________________
+
+      [italic]Stamped, filed, and remembered. Do not make us regret the vote.[/italic]

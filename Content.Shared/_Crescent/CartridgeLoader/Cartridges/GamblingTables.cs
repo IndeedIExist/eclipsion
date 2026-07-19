@@ -4,28 +4,11 @@ namespace Content.Shared._Crescent.CartridgeLoader.Cartridges;
 
 /// <summary>
 /// Odds, paytables and hand maths shared by the client (paytable display) and the
-/// server (authoritative resolution). The odds are rigged in the player's favour but kept
-/// economy-safe: every bet wins with probability 1 - <see cref="LossChance"/> (~95%) and loses
-/// otherwise. A win returns only the stake plus a small <see cref="WinProfit"/>, so the rare
-/// full-stake losses roughly cancel the many small wins and gambling stays close to break-even.
-/// The multiplier tables below no longer size payouts; they only sort a spin into win/push/loss.
+/// server (authoritative resolution). Every game here is tuned to roughly a 90% return
+/// to player, so the house slowly drains wages rather than minting them.
 /// </summary>
 public static class GamblingTables
 {
-    /// <summary>
-    /// Probability that any single bet is forced to lose. Every other bet is forced to win, so
-    /// the player wins ~95% of the time. Bump this up for a harsher table, down for a kinder one.
-    /// </summary>
-    public const float LossChance = 0.05f;
-
-    /// <summary>
-    /// Profit paid on a win, as a fraction of the stake (a win returns stake × (1 + this)). Small
-    /// on purpose: at a ~95% win rate this keeps the game near break-even so it cannot be farmed.
-    /// With <see cref="LossChance"/> = 0.05, break-even is ~0.053, so this leaves a tiny edge.
-    /// Raise it for a more generous table — but past ~0.1 the many wins start to outrun the losses.
-    /// </summary>
-    public const float WinProfit = 0.06f;
-
     #region Slots
 
     /// <summary>
@@ -44,19 +27,15 @@ public static class GamblingTables
 
     public const int SlotReelWeightTotal = 100;
 
-    /// <summary>
-    /// Legacy paytable multiplier for a triple. Payouts no longer use it (a win pays a flat
-    /// <see cref="WinProfit"/>); it now only sorts a spin into win (&gt;1) / push (1) / loss (0)
-    /// so the reels shown match the rigged result.
-    /// </summary>
+    /// <summary>Total payout multiplier of the bet when all three reels match.</summary>
     public static int SlotTripleMultiplier(SlotSymbol symbol) => symbol switch
     {
-        SlotSymbol.Cherry => 7,
+        SlotSymbol.Cherry => 4,
         SlotSymbol.Lemon => 8,
-        SlotSymbol.Bell => 13,
-        SlotSymbol.Star => 27,
-        SlotSymbol.Diamond => 52,
-        SlotSymbol.Seven => 280,
+        SlotSymbol.Bell => 12,
+        SlotSymbol.Star => 25,
+        SlotSymbol.Diamond => 50,
+        SlotSymbol.Seven => 250,
         _ => 0,
     };
 
@@ -98,20 +77,27 @@ public static class GamblingTables
     #region Roulette
 
     /// <summary>
-    /// House edge removed: there are no green house pockets. Pockets 0-35 map straight onto
-    /// numbers 1-36, so paying true odds gives every bet type an identical 100% return — the
-    /// wheel is fair and no bet is better than another.
+    /// Pockets 0-3 are the green house pockets ("0", "00", "000", "0000"); pockets 4-39 are
+    /// numbers 1-36. Paying true odds against 40 pockets gives every bet type an identical
+    /// 36/40 = 90% return, so no bet is better than another and there is nothing to arbitrage.
     /// </summary>
-    public const int RoulettePocketCount = 36;
+    public const int RoulettePocketCount = 40;
 
-    public const int RouletteGreenCount = 0;
+    public const int RouletteGreenCount = 4;
 
-    public static bool IsGreen(int pocket) => pocket >= 0 && pocket < RouletteGreenCount;
+    public static bool IsGreen(int pocket) => pocket is >= 0 and < RouletteGreenCount;
 
-    /// <summary>Returns the 1-36 number of a pocket.</summary>
-    public static int PocketNumber(int pocket) => pocket - RouletteGreenCount + 1;
+    /// <summary>Returns the 1-36 number of a pocket, or 0 for the green house pockets.</summary>
+    public static int PocketNumber(int pocket) => IsGreen(pocket) ? 0 : pocket - RouletteGreenCount + 1;
 
-    public static string PocketLabel(int pocket) => PocketNumber(pocket).ToString();
+    public static string PocketLabel(int pocket) => pocket switch
+    {
+        0 => "0",
+        1 => "00",
+        2 => "000",
+        3 => "0000",
+        _ => PocketNumber(pocket).ToString(),
+    };
 
     private static readonly HashSet<int> RedNumbers = new()
     {
@@ -131,7 +117,7 @@ public static class GamblingTables
 
     public static bool RouletteWins(RouletteBetKind kind, int number, int pocket)
     {
-        // No green pockets remain, but keep the guard so the maths stays correct if any return.
+        // Green pockets are the house edge: every bet loses on them.
         if (IsGreen(pocket))
             return false;
 
@@ -157,8 +143,9 @@ public static class GamblingTables
     #region Blackjack
 
     /// <summary>
-    /// Fair rules, house edge removed: the dealer stands on all 17s (soft included), blackjack
-    /// pays 3:2, and a tie is a push that returns the stake. There is no doubling or splitting.
+    /// House rules, chosen to land near 90%: the dealer hits soft 17, blackjack pays 3:2,
+    /// there is no doubling or splitting, and the dealer takes pushes (a tie loses).
+    /// The push rule is what carries most of the edge.
     /// </summary>
     public const int BlackjackDealerStand = 17;
 

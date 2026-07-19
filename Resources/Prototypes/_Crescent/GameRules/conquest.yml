@@ -1,0 +1,34 @@
+# Conquest win condition. A faction stays in the war while it holds at least one standing station (stations are
+# marked with FactionStation via the gameMap prototype's gridComponents). A station falls when its grid is gone or
+# when it has had no powered APC for blackoutToFall.
+#
+# Who wins: exactly one great power left (with any number of allies) takes it; if BOTH great powers fall the
+# minors are not made to finish each other off and every survivor shares the sector; two great powers still alive
+# settles nothing. A settled war then waits out victoryDelay before the round actually ends, so whoever is left
+# gets one last window to move — restoring a station's power calls the pending victory off entirely.
+#
+# If the round instead hits the 4h cap, the surviving great power is credited; if none survives, nobody won.
+#
+# CMM is deliberately absent: it fields no station on the current map, so it cannot take part yet.
+
+- type: entity
+  id: HullrotConquest
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: FactionConquestRule
+    majorFactions:
+    - DSM
+    - NCWL
+    blackoutToFall: 600 # 10 minutes without power and the station is lost
+    victoryDelay: 1200 # 20 more minutes for whoever is left to respond before the round actually ends
+    checkInterval: 10
+    restartDelay: 60
+    minorVictoryAnnouncement: faction-victory-minors
+    timeoutAnnouncement: faction-victory-timeout
+    victoryAnnouncements:
+      DSM: faction-victory-dsm
+      NCWL: faction-victory-ncwl
+      SHI: faction-victory-shi
+      TFSC: faction-victory-tfsc
+      CMM: faction-victory-cmm
