@@ -1,16 +1,17 @@
 namespace Content.Server._Crescent.RoundEnd;
 
 /// <summary>
-/// Configures the conquest win condition: a faction is eliminated once every station it owns has fallen, and the
-/// round ends when only one alliance bloc is left standing.
+/// Configures the conquest win condition: a faction stops counting as a holder of Taypan once its station has
+/// fallen, and the round ends when only one great power still holds one. Nothing here removes anyone from the
+/// war or edits diplomacy — DSM and NCWL are at war by definition and remain so however the round goes.
 /// </summary>
 [RegisterComponent, Access(typeof(FactionConquestRuleSystem))]
 public sealed partial class FactionConquestRuleComponent : Component
 {
     /// <summary>
-    /// The great powers. A surviving bloc containing exactly one of these is credited to that faction, however
-    /// many minor allies stand with it. If both majors fall the minors do NOT have to finish each other off —
-    /// every surviving faction takes the sector together.
+    /// The great powers — the two sides whose war the round is actually about. If exactly one of them still holds
+    /// its station the sector is credited to it, whoever else is still standing. If both lose theirs the minors do
+    /// NOT have to finish each other off — every faction still holding a station takes the sector together.
     /// </summary>
     [DataField]
     public List<string> MajorFactions = new() { "DSM", "NCWL" };
@@ -46,6 +47,21 @@ public sealed partial class FactionConquestRuleComponent : Component
     [DataField]
     public string TimeoutAnnouncement = "faction-victory-timeout";
 
+    /// <summary>
+    /// Broadcast when the war first looks settled, opening the response window. Without it the sector gets no
+    /// warning at all before the round ends — and the window exists precisely so the losers can still act.
+    /// </summary>
+    [DataField]
+    public string PendingAnnouncement = "faction-victory-pending";
+
+    /// <summary>Broadcast when a pending victory is called off (a station's power came back).</summary>
+    [DataField]
+    public string PendingCancelledAnnouncement = "faction-victory-cancelled";
+
+    /// <summary>Broadcast the moment a station goes dark, opening its <see cref="BlackoutToFall"/> clock.</summary>
+    [DataField]
+    public string BlackoutAnnouncement = "faction-station-blackout";
+
     /// <summary>When the next evaluation is due.</summary>
     [ViewVariables]
     public TimeSpan NextCheck;
@@ -54,9 +70,27 @@ public sealed partial class FactionConquestRuleComponent : Component
     [ViewVariables]
     public Dictionary<EntityUid, TimeSpan> DarkSince = new();
 
+    /// <summary>
+    /// Stations that have been powered at least once. Mapped APCs are saved with no charge, so every station is
+    /// technically dark for the first moments of the round — nothing counts against a station until it has booted.
+    /// </summary>
+    [ViewVariables]
+    public HashSet<EntityUid> EverPowered = new();
+
+    /// <summary>Stations whose blackout warning has gone out. Cleared when power returns, so a second knockout warns again.</summary>
+    [ViewVariables]
+    public HashSet<EntityUid> AnnouncedBlackout = new();
+
     /// <summary>Stations whose fall has already been broadcast, so it is announced once.</summary>
     [ViewVariables]
     public HashSet<EntityUid> AnnouncedFallen = new();
+
+    /// <summary>
+    /// Every station seen so far and its obituary, kept so a grid that is outright destroyed — and therefore gone
+    /// from the entity query before it can ever be seen "dark" — still gets announced.
+    /// </summary>
+    [ViewVariables]
+    public Dictionary<EntityUid, string> KnownStations = new();
 
     /// <summary>Factions currently set to win, and when the countdown started. Cleared if the war reopens.</summary>
     [ViewVariables]
@@ -68,4 +102,8 @@ public sealed partial class FactionConquestRuleComponent : Component
     /// <summary>Set once a winner has been declared so the round only ends once.</summary>
     [ViewVariables]
     public bool Decided;
+
+    /// <summary>Who was credited with the war, for the round end summary.</summary>
+    [ViewVariables]
+    public List<string> Winners = new();
 }

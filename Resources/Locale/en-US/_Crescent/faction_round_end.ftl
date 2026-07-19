@@ -136,6 +136,21 @@ faction-finale-cmm = It seems the CMM has finally redeemed itself. They found th
 # that is left standing, or when the round runs out with no victor.
 # ============================================================================
 
+# Fired the moment the war looks settled — the losers still have this long to
+# put a station's power back on and call the whole thing off.
+faction-victory-pending =
+    THE WAR IS ALL BUT OVER. Every seat of power still answering the sector net belongs to { $factions }.
+    {""}
+    Nothing is signed yet. Anyone who can get a fallen station's power back online in the next { $minutes } minutes puts their flag back in the war — and this declaration is torn up. After that, Taypan is settled.
+
+faction-victory-cancelled = Belay that. A station has come back on the grid — its reactor is answering, its lights are on, and its flag is back in the war. The declaration is withdrawn. Taypan is still contested.
+
+# --- Round end summary screen ---
+faction-conquest-summary-winner = [color=orange]The war for Taypan was won by: { $factions }.[/color]
+faction-conquest-summary-nobody = [color=orange]The war for Taypan was never settled. Nobody took the sector.[/color]
+faction-conquest-summary-station-standing = [color=green]{ $station }[/color] ({ $faction }) was still standing.
+faction-conquest-summary-station-fallen = [color=red]{ $station }[/color] ({ $faction }) fell.
+
 faction-victory-cmm = CMM VICTORY — THE GOOD ENDING. Taypan is finally freed from outside powers.
 
 faction-victory-dsm = DSM VICTORY — THE IMPERIAL ENDING. The gates are opened, and the Kaiser personally kisses Count Olywier on the lips.
@@ -150,9 +165,11 @@ faction-victory-timeout = No one won. The wars ground on, the banners kept falli
 
 
 # ============================================================================
-# Station obituaries. Fired once, in bold orange, when a station has been dark
-# long enough to count as lost.
+# Station obituaries. The blackout warning fires the moment a station's power
+# drops; the obituary fires once it has been dark long enough to count as lost.
 # ============================================================================
+
+faction-station-blackout = DISTRESS BEACON — { $station } ({ $faction }) has lost main power. Every APC aboard her is flat and she is running on nothing. If her reactor is not answering within { $minutes } minutes, the sector will write her off. Anyone who can reach her, reach her now.
 
 faction-station-fall-aurora = DSM Aurora Imperialis is silent. No power, no signal, no answer on any band. Its IFF slowly fades from your shuttle console screen. The Imperials are defeated.
 

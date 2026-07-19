@@ -191,7 +191,7 @@
         IFFFaction: DSM
       GliessSanto:
         gameMapID: GliessSanto
-        posX: 0
+        posX: -3500
         posY: 0
         IFFColor: Gold
       RatFakel:
@@ -292,8 +292,8 @@
         IFFFaction: TFSC
       GliessSanto:
         gameMapID: GliessSanto
-        posX: 0
-        posY: 0
+        posX: 500
+        posY: 3500
         IFFColor: Gold
       RatFakel:
         gameMapID: RatFakel

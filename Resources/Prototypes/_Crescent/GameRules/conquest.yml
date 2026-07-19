@@ -1,11 +1,15 @@
-# Conquest win condition. A faction stays in the war while it holds at least one standing station (stations are
-# marked with FactionStation via the gameMap prototype's gridComponents). A station falls when its grid is gone or
-# when it has had no powered APC for blackoutToFall.
+# Conquest win condition. A faction counts as holding Taypan while its station stands (stations are marked with
+# FactionStation via the gameMap prototype's gridComponents). A station falls when its grid is gone or when it has
+# had no powered APC for blackoutToFall.
 #
-# Who wins: exactly one great power left (with any number of allies) takes it; if BOTH great powers fall the
-# minors are not made to finish each other off and every survivor shares the sector; two great powers still alive
-# settles nothing. A settled war then waits out victoryDelay before the round actually ends, so whoever is left
-# gets one last window to move — restoring a station's power calls the pending victory off entirely.
+# Losing a station is scorekeeping only: nobody is removed from the war and no diplomacy is edited. DSM and NCWL
+# are at war by definition, in this round and every round after it, whatever happens to Aurora or Balreska.
+#
+# Who wins: exactly one great power left takes it — surviving minors do NOT block this, since the war being
+# fought is the one between the great powers; if BOTH great powers fall the minors are not made to finish each
+# other off and every survivor shares the sector; two great powers still alive settles nothing. A settled war
+# then waits out victoryDelay before the round actually ends (announced sector-wide), so whoever is left gets one
+# last window to move — restoring a station's power calls the pending victory off entirely.
 #
 # If the round instead hits the 4h cap, the surviving great power is credited; if none survives, nobody won.
 #

@@ -10,6 +10,7 @@
         - type: FactionStation # conquest win condition
           faction: TFSC
           fallAnnouncement: faction-station-fall-jackal
+          stationName: GSC Jackal
         - type: BlockShipWeaponProjectileGrid
         - type: MapIcon
           iconType: Station

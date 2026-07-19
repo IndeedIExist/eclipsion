@@ -10,6 +10,7 @@
         - type: FactionStation # conquest win condition
           faction: NCWL
           fallAnnouncement: faction-station-fall-balreska
+          stationName: NCWL Nova Balreska
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
         - type: VesselIcon

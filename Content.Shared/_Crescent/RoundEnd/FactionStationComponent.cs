@@ -23,4 +23,11 @@ public sealed partial class FactionStationComponent : Component
     /// </summary>
     [DataField]
     public string? FallAnnouncement;
+
+    /// <summary>
+    /// What to call this station in the blackout warning and the round end summary. Set explicitly because the
+    /// component sits on the grid, whose entity name is whatever the mapper happened to save.
+    /// </summary>
+    [DataField]
+    public string StationName = "the station";
 }

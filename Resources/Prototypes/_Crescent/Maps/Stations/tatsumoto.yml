@@ -10,6 +10,7 @@
         - type: FactionStation # conquest win condition
           faction: SHI
           fallAnnouncement: faction-station-fall-tatsumoto
+          stationName: SHI Tatsumoto
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
         - type: VesselIcon
