@@ -15,16 +15,17 @@ gambling-ui-stand = Stand
 
 # Slots
 gambling-ui-slots-idle = Place your bet and spin!
-gambling-ui-slots-info = [bold]Rigged in your favour[/bold]
-    Most spins win, paying your bet back +{$percent}%.
-    Rare spins lose the bet — spin away.
+gambling-ui-slots-paytable-header = Paytable (× your bet)
+gambling-ui-slots-paytable-row = three: ×{$triple}   two: ×{$pair}
 
 # Roulette
 gambling-ui-roulette-idle = Place your bet and spin the wheel!
 gambling-ui-roulette-pocket = Landed on {$pocket}
-gambling-ui-roulette-info = [bold]Rigged in your favour[/bold]
-    Most spins win, paying your bet back +{$percent}%.
-    Every bet type has the same odds — pick any.
+gambling-ui-roulette-info = [bold]Payouts (× your bet)[/bold]
+    Red / Black / Odd / Even / Low / High: ×2
+    Dozen (1-12 / 13-24 / 25-36): ×3
+    Straight (single number): ×36
+    The green house pockets (0, 00, 000, 0000) lose every bet.
 gambling-roulette-result = {$pocket} ({$color}).
 gambling-roulette-red = red
 gambling-roulette-black = black
@@ -45,15 +46,15 @@ gambling-roulette-bet-straight = Straight (number)
 gambling-ui-blackjack-idle = Place your bet and deal.
 gambling-ui-blackjack-dealer = [bold]Dealer[/bold] ({$total}): {$cards}
 gambling-ui-blackjack-player = [bold]You[/bold] ({$total}): {$cards}
-gambling-ui-blackjack-rules = [bold]Rigged in your favour[/bold]
-    Most hands win, paying your bet back +{$percent}%.
-    Rare hands lose to a dealer blackjack.
+gambling-ui-blackjack-rules = [bold]House rules[/bold]
+    Blackjack pays 3:2. Dealer stands on 17 and hits soft 17.
+    No doubling or splitting. The dealer takes pushes — a tie loses.
 
 gambling-blackjack-natural = Blackjack!
 gambling-blackjack-dealer-natural = Dealer has blackjack.
 gambling-blackjack-win = You win.
 gambling-blackjack-loss = Dealer wins.
-gambling-blackjack-push = Push — bet returned.
+gambling-blackjack-push-loss = Push — dealer takes ties.
 gambling-blackjack-bust = Bust!
 gambling-blackjack-dealer-bust = Dealer busts!
 

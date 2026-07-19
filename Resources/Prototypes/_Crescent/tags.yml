@@ -112,3 +112,26 @@
 
 - type: Tag
   id: TransmitterPartPowerModule
+
+# ===== Taypan tonnage charters (faction round-end objective items) =====
+- type: Tag
+  id: TaypanCharterMandate
+
+- type: Tag
+  id: TaypanCharterLeague
+
+- type: Tag
+  id: AnaliesseAuthKey
+
+# ===== DSM/NCWL round-end steal objectives =====
+- type: Tag
+  id: DSMLeaderIdCard
+
+- type: Tag
+  id: NCWLLeaderIdCard
+
+- type: Tag
+  id: ImperialSecretsFolder
+
+- type: Tag
+  id: LeaguePlansFolder

@@ -18,9 +18,7 @@
       visible: false
   - type: CartridgeLoader # DeltaV - Crime Assist + SecWatch
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - SecWatchCartridge
       - NanoChatCartridge
@@ -72,9 +70,7 @@
     state: pda-chiefjustice
   - type: CartridgeLoader
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - NanoChatCartridge
 
@@ -112,9 +108,7 @@
     state: pda-clerk
   - type: CartridgeLoader
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - NanoChatCartridge # DeltaV
 
@@ -152,9 +146,7 @@
     state: pda-prosecutor
   - type: CartridgeLoader # DeltaV - Crime Assist
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - NanoChatCartridge
 
@@ -203,7 +195,5 @@
     state: pda-lawyer
   - type: CartridgeLoader
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - NanoChatCartridge

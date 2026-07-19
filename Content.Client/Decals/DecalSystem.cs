@@ -106,7 +106,10 @@ namespace Content.Client.Decals
 
                 if (!TryComp(gridId, out DecalGridComponent? gridComp))
                 {
-                    Log.Error($"Received decal information for an entity without a decal component: {ToPrettyString(gridId)}");
+                    // HULLROT EDIT: a grid we already deleted (round restart, PVS range) can still have
+                    // updates in flight. Only complain if the entity actually exists and is just missing the comp.
+                    if (Exists(gridId))
+                        Log.Error($"Received decal information for an entity without a decal component: {ToPrettyString(gridId)}");
                     continue;
                 }
 
@@ -123,7 +126,9 @@ namespace Content.Client.Decals
 
                 if (!TryComp(gridId, out DecalGridComponent? gridComp))
                 {
-                    Log.Error($"Received decal information for an entity without a decal component: {ToPrettyString(gridId)}");
+                    // HULLROT EDIT: see above, deleted grids have nothing left to remove chunks from.
+                    if (Exists(gridId))
+                        Log.Error($"Received decal information for an entity without a decal component: {ToPrettyString(gridId)}");
                     continue;
                 }
 

@@ -16,9 +16,7 @@ namespace Content.Server._Crescent.CartridgeLoader.Cartridges;
 /// <summary>
 /// A PDA casino. Bets are debited from, and winnings credited to, the player's own
 /// <see cref="BankAccountComponent"/> — the same account wages are paid into.
-/// Odds live in <see cref="GamblingTables"/>. The house edge is inverted in the player's favour:
-/// every bet is forced to win with probability 1 - <see cref="GamblingTables.LossChance"/> (~95%)
-/// and to lose otherwise, while the visible reels, pocket and cards are kept genuine.
+/// Odds live in <see cref="GamblingTables"/>; every game returns roughly 90%.
 /// </summary>
 public sealed class GamblingCartridgeSystem : EntitySystem
 {
@@ -90,37 +88,17 @@ public sealed class GamblingCartridgeSystem : EntitySystem
 
         StartCooldown(component);
 
-        // The odds are rigged in the player's favour: ~95% of spins are forced to a winning
-        // combination, ~5% to a losing one, while the reels shown stay genuine. A win pays a
-        // small flat profit rather than the reel's face multiplier, keeping the game economy-safe.
-        var lose = _random.Prob(GamblingTables.LossChance);
-        var reels = RollReels(lose);
+        var reels = new[] { RollReel(), RollReel(), RollReel() };
         component.LastReels = reels;
 
-        var payout = lose ? 0 : Pay(player, WinPayout(bet));
+        var multiplier = GamblingTables.SlotMultiplier(reels[0], reels[1], reels[2]);
+        var payout = Pay(player, (long) bet * multiplier);
 
         _adminLog.Add(LogType.ATMUsage, LogImpact.Low,
             $"{ToPrettyString(player):player} bet {bet} on PDA slots [{reels[0]}/{reels[1]}/{reels[2]}] and won {payout} (net {payout - bet})");
 
         toast = BuildResultToast(bet, payout, out toastGood);
         return null;
-    }
-
-    /// <summary>
-    /// Rolls three genuine reels, re-rolling until they fall into the desired outcome: a losing
-    /// spin (pays nothing) when <paramref name="lose"/> is true, otherwise a spin that actually
-    /// profits (multiplier above the stake, so pushes are skipped too).
-    /// </summary>
-    private SlotSymbol[] RollReels(bool lose)
-    {
-        while (true)
-        {
-            var reels = new[] { RollReel(), RollReel(), RollReel() };
-            var multiplier = GamblingTables.SlotMultiplier(reels[0], reels[1], reels[2]);
-
-            if (lose ? multiplier == 0 : multiplier > 1)
-                return reels;
-        }
     }
 
     private SlotSymbol RollReel()
@@ -166,14 +144,11 @@ public sealed class GamblingCartridgeSystem : EntitySystem
 
         StartCooldown(component);
 
-        // The odds are rigged in the player's favour: ~95% of spins land on a pocket that wins
-        // the bet, ~5% on one that loses it. Every bet type pays the same small flat profit on a
-        // win, so no bet (not even a straight number) is more lucrative than another.
-        var lose = _random.Prob(GamblingTables.LossChance);
-        var pocket = PickPocket(msg.Kind, msg.Number, lose);
+        var pocket = _random.Next(GamblingTables.RoulettePocketCount);
         component.LastPocket = pocket;
 
-        var payout = lose ? 0 : Pay(player, WinPayout(msg.Bet));
+        var won = GamblingTables.RouletteWins(msg.Kind, msg.Number, pocket);
+        var payout = Pay(player, won ? (long) msg.Bet * GamblingTables.RouletteMultiplier(msg.Kind) : 0);
 
         var betLabel = msg.Kind == RouletteBetKind.Straight ? $"{msg.Kind} {msg.Number}" : msg.Kind.ToString();
         _adminLog.Add(LogType.ATMUsage, LogImpact.Low,
@@ -185,21 +160,6 @@ public sealed class GamblingCartridgeSystem : EntitySystem
 
         toast = $"{spun} {BuildResultToast(msg.Bet, payout, out toastGood)}";
         return null;
-    }
-
-    /// <summary>
-    /// Picks a genuine pocket that either wins or loses the given bet, so the wheel result always
-    /// matches the rigged win/loss roll. Every bet type has both winning and losing pockets on the
-    /// 36-pocket wheel, so this always terminates.
-    /// </summary>
-    private int PickPocket(RouletteBetKind kind, int number, bool lose)
-    {
-        while (true)
-        {
-            var pocket = _random.Next(GamblingTables.RoulettePocketCount);
-            if (GamblingTables.RouletteWins(kind, number, pocket) != lose)
-                return pocket;
-        }
     }
 
     private static string PocketColorLoc(int pocket)
@@ -279,32 +239,26 @@ public sealed class GamblingCartridgeSystem : EntitySystem
         component.HandBet = bet;
         component.HandActive = true;
         component.DealerHoleHidden = true;
+        component.PlayerCards = new List<GamblingCard> { Draw(), Draw() };
+        component.DealerCards = new List<GamblingCard> { Draw(), Draw() };
 
-        // The odds are rigged in the player's favour. On a rigged loss (~5%) the dealer turns up
-        // a natural against a non-natural player and the hand ends here. Otherwise the hand is a
-        // win: the player can never bust on a hit and the dealer always busts on a stand.
-        if (_random.Prob(GamblingTables.LossChance))
+        var playerNatural = GamblingTables.IsBlackjack(component.PlayerCards);
+        var dealerNatural = GamblingTables.IsBlackjack(component.DealerCards);
+
+        if (!playerNatural && !dealerNatural)
+            return null;
+
+        // A natural on either side ends the hand before the player ever acts.
+        if (playerNatural && !dealerNatural)
         {
-            component.PlayerCards = new List<GamblingCard> { Draw(), Draw() };
-            while (GamblingTables.IsBlackjack(component.PlayerCards))
-                component.PlayerCards = new List<GamblingCard> { Draw(), Draw() };
-
-            component.DealerCards = MakeNaturalHand();
-            ResolveHand(component, player, 0, "blackjack-dealer-natural", out toast, out toastGood);
+            // Blackjack pays 3:2; integer division floors the half credit toward the house.
+            ResolveHand(component, player, (long) bet * 5 / 2, "blackjack-natural", out toast, out toastGood);
             return null;
         }
 
-        component.PlayerCards = new List<GamblingCard> { Draw(), Draw() };
-
-        // The dealer never opens a win hand with a natural, so the only natural is the player's.
-        component.DealerCards = new List<GamblingCard> { Draw(), Draw() };
-        while (GamblingTables.IsBlackjack(component.DealerCards))
-            component.DealerCards = new List<GamblingCard> { Draw(), Draw() };
-
-        // A player natural ends the hand immediately. It pays the same flat win as any other hand.
-        if (GamblingTables.IsBlackjack(component.PlayerCards))
-            ResolveHand(component, player, WinPayout(bet), "blackjack-natural", out toast, out toastGood);
-
+        // Dealer natural, or both natural. The dealer takes pushes, so two naturals lose too.
+        var reason = playerNatural ? "blackjack-push-loss" : "blackjack-dealer-natural";
+        ResolveHand(component, player, 0, reason, out toast, out toastGood);
         return null;
     }
 
@@ -313,8 +267,7 @@ public sealed class GamblingCartridgeSystem : EntitySystem
         toast = null;
         toastGood = false;
 
-        // Only rigged win hands ever stay active, so the player never draws a busting card.
-        component.PlayerCards.Add(DrawSafe(component.PlayerCards));
+        component.PlayerCards.Add(Draw());
         var (total, _) = GamblingTables.HandTotal(component.PlayerCards);
 
         if (total > 21)
@@ -337,11 +290,38 @@ public sealed class GamblingCartridgeSystem : EntitySystem
 
         component.DealerHoleHidden = false;
 
-        // Only rigged win hands ever reach a stand, so the dealer draws until it busts.
-        while (GamblingTables.HandTotal(component.DealerCards).Total <= 21)
-            component.DealerCards.Add(Draw());
+        // Dealer draws to 17 and hits soft 17.
+        while (true)
+        {
+            var (total, soft) = GamblingTables.HandTotal(component.DealerCards);
+            var mustHit = total < GamblingTables.BlackjackDealerStand
+                          || (total == GamblingTables.BlackjackDealerStand && soft);
 
-        ResolveHand(component, player, WinPayout(component.HandBet), "blackjack-dealer-bust", out toast, out toastGood);
+            if (!mustHit)
+                break;
+
+            component.DealerCards.Add(Draw());
+        }
+
+        var playerTotal = GamblingTables.HandTotal(component.PlayerCards).Total;
+        var dealerTotal = GamblingTables.HandTotal(component.DealerCards).Total;
+        var bet = component.HandBet;
+
+        if (dealerTotal > 21)
+        {
+            ResolveHand(component, player, (long) bet * 2, "blackjack-dealer-bust", out toast, out toastGood);
+            return null;
+        }
+
+        if (playerTotal > dealerTotal)
+        {
+            ResolveHand(component, player, (long) bet * 2, "blackjack-win", out toast, out toastGood);
+            return null;
+        }
+
+        // The dealer takes pushes, so an equal total is a loss.
+        var reason = playerTotal == dealerTotal ? "blackjack-push-loss" : "blackjack-loss";
+        ResolveHand(component, player, 0, reason, out toast, out toastGood);
         return null;
     }
 
@@ -376,36 +356,6 @@ public sealed class GamblingCartridgeSystem : EntitySystem
         return new GamblingCard((byte) _random.Next(1, 14), (byte) _random.Next(0, 4));
     }
 
-    /// <summary>
-    /// Draws a card that cannot bust the given hand, so a rigged win hand never loses on a hit. An
-    /// ace always fits because it can count as 1; other ranks are limited to the room left to 21.
-    /// </summary>
-    private GamblingCard DrawSafe(IReadOnlyList<GamblingCard> hand)
-    {
-        var room = 21 - GamblingTables.HandTotal(hand).Total;
-
-        var safeRanks = new List<byte> { 1 };
-        for (byte rank = 2; rank <= 13; rank++)
-        {
-            var value = rank >= 10 ? 10 : rank;
-            if (value <= room)
-                safeRanks.Add(rank);
-        }
-
-        var chosen = safeRanks[_random.Next(safeRanks.Count)];
-        return new GamblingCard(chosen, (byte) _random.Next(0, 4));
-    }
-
-    /// <summary>Builds a genuine two-card natural (an ace plus a ten-value card) for the dealer.</summary>
-    private List<GamblingCard> MakeNaturalHand()
-    {
-        return new List<GamblingCard>
-        {
-            new GamblingCard(1, (byte) _random.Next(0, 4)),
-            new GamblingCard((byte) _random.Next(10, 14), (byte) _random.Next(0, 4)),
-        };
-    }
-
     #endregion
 
     #region Shared helpers
@@ -430,17 +380,6 @@ public sealed class GamblingCartridgeSystem : EntitySystem
     private void StartCooldown(GamblingCartridgeComponent component)
     {
         component.NextAction = _timing.CurTime + ActionCooldown;
-    }
-
-    /// <summary>
-    /// Total credits returned on a win: the stake plus a small capped profit
-    /// (<see cref="GamblingTables.WinProfit"/>), with a floor of +1 so even a 1-credit bet still
-    /// pays something. Kept deliberately small so the ~95% win rate stays economy-safe.
-    /// </summary>
-    private long WinPayout(int bet)
-    {
-        var profit = Math.Max(1L, (long) MathF.Round(bet * GamblingTables.WinProfit));
-        return bet + profit;
     }
 
     /// <summary>

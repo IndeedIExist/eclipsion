@@ -6,6 +6,7 @@ using Content.Shared.Parallax;
 using Content.Shared._Crescent.SpaceBiomes;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
+using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -142,10 +143,17 @@ public sealed class SpaceBiomeSystem : EntitySystem
 
         var name = setup.StationNameTemplate.Replace("{1}", "").Trim();
 
+        // capture the session now: if the player detaches (ghosting, disconnect) before the
+        // timer fires, ActorComponent.PlayerSession is nulled out and reading it would throw.
+        var session = actor.PlayerSession;
+
         Timer.Spawn(TimeSpan.FromSeconds(10), () =>
         {
+            if (session.Status == SessionStatus.Disconnected)
+                return;
+
             NewVesselEnteredMessage message = new NewVesselEnteredMessage(name, Loc.GetString(desig.Designation), description, musicPrototype);
-            RaiseNetworkEvent(message, actor.PlayerSession);
+            RaiseNetworkEvent(message, session);
         });
     }
 

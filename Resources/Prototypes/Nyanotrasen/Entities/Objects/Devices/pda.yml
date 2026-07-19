@@ -34,9 +34,7 @@
     state: pda-security
   - type: CartridgeLoader # Adds Crime Assist and SecWatch
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - SecWatchCartridge
       - NanoChatCartridge
@@ -70,9 +68,7 @@
     state: pda-mailcarrier
   - type: CartridgeLoader # Adds a courier performance tracker
     preinstalled:
-    - CrewManifestCartridge
     - NotekeeperCartridge
-    - NewsReaderCartridge
     - MailMetricsCartridge
     - NanoChatCartridge
 

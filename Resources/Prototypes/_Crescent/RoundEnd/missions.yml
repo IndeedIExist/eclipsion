@@ -1,0 +1,80 @@
+# Faction round-end missions. Item requirements use entity whitelists (tags/components), mirroring cargo bounties.
+# These are placeholder objectives built on generic materiel (Ingot/Ore/Sheet) so they load and work today; tune
+# the items, amounts and flavour freely. Rewards are handled separately (see FactionMissionCompletedEvent).
+
+# --- DSM vs NCWL steal directives ---------------------------------------------
+# A single entry whose whitelist carries BOTH tags: EntityWhitelist defaults to RequireAll=false, so any one of
+# the listed tags satisfies it. That gives "the leader's ID card OR the folder" in one requirement — either route
+# completes the directive.
+
+- type: factionMission
+  id: MissionStealLeaguePlans
+  name: faction-mission-dsm-name
+  description: faction-mission-dsm-desc
+  announcement: faction-mission-dsm-announce
+  announcementSender: faction-mission-dsm-sender
+  announcementColor: "#b33939"
+  entries:
+  - whitelist:
+      tags: [ NCWLLeaderIdCard, LeaguePlansFolder ]
+    amount: 1
+    name: faction-mission-item-league-prize
+
+- type: factionMission
+  id: MissionStealImperialSecrets
+  name: faction-mission-ncwl-name
+  description: faction-mission-ncwl-desc
+  announcement: faction-mission-ncwl-announce
+  announcementSender: faction-mission-ncwl-sender
+  announcementColor: "#cd6133"
+  entries:
+  - whitelist:
+      tags: [ DSMLeaderIdCard, ImperialSecretsFolder ]
+    amount: 1
+    name: faction-mission-item-imperial-prize
+
+# --- Taypan tonnage charters -------------------------------------------------
+# Shared by both commercial powers (SHI and TFSC): to keep a legal fleet in contested Taypan a company must be
+# ratified by BOTH great powers, so these are two separate directives — one per signatory. Each is satisfied by
+# filing that power's signed charter (see Entities/Objects/Misc/taypan_charter.yml). Obtaining the signature is a
+# roleplay problem; the terminal only files what you bring it.
+
+- type: factionMission
+  id: MissionConvinceEmpire
+  name: faction-mission-empire-name
+  description: faction-mission-empire-desc
+  announcement: faction-mission-empire-announce
+  announcementSender: faction-mission-empire-sender
+  announcementColor: "#b33939"
+  entries:
+  - whitelist:
+      tags: [ TaypanCharterMandate ]
+    amount: 1
+    name: faction-mission-item-charter-mandate
+
+- type: factionMission
+  id: MissionConvinceLeague
+  name: faction-mission-league-name
+  description: faction-mission-league-desc
+  announcement: faction-mission-league-announce
+  announcementSender: faction-mission-league-sender
+  announcementColor: "#cd6133"
+  entries:
+  - whitelist:
+      tags: [ TaypanCharterLeague ]
+    amount: 1
+    name: faction-mission-item-charter-league
+
+# Only completable while the Analiesse wreck is in play, which happens solely through the admin-run event.
+- type: factionMission
+  id: MissionAnaliesseKey
+  name: faction-mission-cmm-name
+  description: faction-mission-cmm-desc
+  announcement: faction-mission-cmm-announce
+  announcementSender: faction-mission-cmm-sender
+  announcementColor: "#218c74"
+  entries:
+  - whitelist:
+      tags: [ AnaliesseAuthKey ]
+    amount: 1
+    name: faction-mission-item-authkey
