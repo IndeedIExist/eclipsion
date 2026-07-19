@@ -169,9 +169,11 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
         if (args.Handled)
             return;
 
-        // Only cash stacks may be deposited.
+        // Only cash stacks may be deposited. Match on the Credit stack type, not the prototype ID:
+        // real cash is spawned as denominations (SpaceCash1000, SpaceCash10000, ...), all of which
+        // share stackType "Credit". Checking ID == "SpaceCash" rejected every actual bill stack.
         if (!TryComp<StackComponent>(args.Used, out var stack)
-            || MetaData(args.Used).EntityPrototype?.ID != "SpaceCash")
+            || stack.StackTypeId != "Credit")
         {
             return;
         }

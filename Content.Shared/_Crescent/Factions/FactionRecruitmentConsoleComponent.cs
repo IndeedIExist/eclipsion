@@ -1,3 +1,5 @@
+using System;
+using Content.Shared.DoAfter;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -30,6 +32,13 @@ public sealed partial class FactionRecruitmentConsoleComponent : Component
     /// <summary>How close (in tiles) a person must be to the console to appear in the recruitable list.</summary>
     [DataField]
     public float Range = 3f;
+
+    /// <summary>
+    /// How long the operator must remain at the console before a recruitment is applied. A short delay keeps a
+    /// role change (and its ID rewrite) from being spammed instantly, easing server load.
+    /// </summary>
+    [DataField]
+    public TimeSpan AssignDelay = TimeSpan.FromSeconds(2.5);
 }
 
 [Serializable, NetSerializable]
@@ -106,4 +115,26 @@ public sealed class FactionRecruitmentDismissMessage : BoundUserInterfaceMessage
 [Serializable, NetSerializable]
 public sealed class FactionRecruitmentRefreshMessage : BoundUserInterfaceMessage
 {
+}
+
+/// <summary>
+/// Runs while the operator stands at the console before a recruitment is committed. Carries the chosen role so
+/// the same assignment can be re-validated and applied once the delay elapses.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed partial class FactionRecruitmentAssignDoAfterEvent : DoAfterEvent
+{
+    [DataField]
+    public string JobId = string.Empty;
+
+    public FactionRecruitmentAssignDoAfterEvent()
+    {
+    }
+
+    public FactionRecruitmentAssignDoAfterEvent(string jobId)
+    {
+        JobId = jobId;
+    }
+
+    public override DoAfterEvent Clone() => this;
 }

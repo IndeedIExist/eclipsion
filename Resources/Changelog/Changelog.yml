@@ -1,50 +1,84 @@
 Entries:
-- author: Eclipsion Team
+- author: Saint
+  changes:
+    - message: Added the Stock Market and its Economic Console, letting players buy and sell company shares.
+      type: Add
+    - message: Added the Faction Treasury and Taxation console for managing and taxing faction funds.
+      type: Add
+  id: 6001
+  time: '2026-07-11T00:00:00.0000000+00:00'
+  url: null
+
+- author: Taleryn
   changes:
     - message: Rebranded internal content and assets from Rat to Crescent/Eclipsion (parallaxes, sprites, localization).
       type: Tweak
-  id: 6001
+  id: 6002
   time: '2026-07-12T00:00:00.0000000+00:00'
   url: null
 
-- author: Eclipsion Team
+- author: Taleryn
+  changes:
+    - message: Reworked the Overwatch console with a new panel-based interface.
+      type: Tweak
+    - message: Rebuilt the Diplomacy console UI.
+      type: Tweak
+    - message: Added the Mainframe console with faction announcement broadcasting.
+      type: Add
+    - message: Added a Payment console for issuing faction payroll and bonuses.
+      type: Add
+    - message: Added a gambling cartridge for PDAs.
+      type: Add
+    - message: Reworked the Alert console panel.
+      type: Tweak
+  id: 6003
+  time: '2026-07-14T00:00:00.0000000+00:00'
+  url: null
+
+- author: Taleryn
   changes:
     - message: Overhauled the guidebook with updated Hullrot/Eclipsion lore and gameplay entries.
       type: Tweak
     - message: Reworked the NCWL role selection menu.
       type: Tweak
-  id: 6002
+  id: 6004
   time: '2026-07-14T00:00:00.0000000+00:00'
   url: null
 
-- author: Eclipsion Team
+- author: Taleryn
   changes:
-    - message: Adjusted the NCWL and DSM role menus.
-      type: Tweak
     - message: Reorganized faction rank structures for ATH, CMM, DSM, NCWL, SHI, SRM and TFSC.
       type: Tweak
-    - message: Cleaned up and archived unused shuttle maps into a dedicated folder.
+    - message: Adjusted the NCWL and DSM role menus.
       type: Tweak
-  id: 6003
+    - message: Cleaned up and archived unused shuttle and station maps into a dedicated folder.
+      type: Tweak
+  id: 6005
   time: '2026-07-15T00:00:00.0000000+00:00'
   url: null
 
-- author: Eclipsion Team
+- author: Taleryn
   changes:
     - message: Updated TFSC ship maps, jobs and loadouts.
       type: Tweak
     - message: Updated empire role and job supervisor text.
       type: Tweak
-  id: 6004
+  id: 6006
   time: '2026-07-16T00:00:00.0000000+00:00'
   url: null
 
-- author: Eclipsion Team
+- author: Taleryn
   changes:
+    - message: Added the Faction Recruitment console.
+      type: Add
+    - message: Updated the Hyperwar and Unionfall maps and their game modes.
+      type: Tweak
     - message: Tweaked the shipyard console.
       type: Tweak
+    - message: Removed the round-end credits screen.
+      type: Remove
     - message: Fixed various errors and content issues.
       type: Fix
-  id: 6005
+  id: 6007
   time: '2026-07-18T00:00:00.0000000+00:00'
   url: null

@@ -421,8 +421,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         // Faction shipyards draw from the faction treasury instead of the buyer's personal bank.
+        // Civilian consoles (UsesFactionTreasury == false) always bill the buyer's own account.
         var faction = _market.GetStationFaction(station);
-        var isFactionYard = faction != null;
+        var isFactionYard = component.UsesFactionTreasury && faction != null;
 
         // Still needed for the UI balance readout and the personal-bank payment path.
         TryComp<BankAccountComponent>(player, out var bank);
@@ -654,8 +655,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
 
         // Faction shipyards return sale proceeds to the faction treasury (so a treasury-bought ship
-        // can't be flipped for personal profit); other yards pay the seller's personal bank.
-        if (_market.GetStationFaction(stationUid) is not null)
+        // can't be flipped for personal profit); civilian yards pay the seller's personal bank.
+        if (component.UsesFactionTreasury && _market.GetStationFaction(stationUid) is not null)
             _market.AddTreasury(stationUid, bill);
         else
             _bank.TryBankDeposit(player, bill);
@@ -946,7 +947,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     /// </summary>
     private long GetDisplayBalance(EntityUid console, EntityUid player)
     {
-        if (_station.GetOwningStation(console) is { Valid: true } station
+        // Only faction/treasury consoles show the treasury balance; civilian consoles show the
+        // viewing player's own bank balance (matching where their purchase would be billed).
+        if (TryComp<ShipyardConsoleComponent>(console, out var comp) && comp.UsesFactionTreasury
+            && _station.GetOwningStation(console) is { Valid: true } station
             && _market.GetStationFaction(station) is not null)
             return _market.GetTreasury(station);
 

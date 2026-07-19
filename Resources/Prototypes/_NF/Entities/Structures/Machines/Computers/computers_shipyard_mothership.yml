@@ -12,4 +12,10 @@
     interfaces:
       enum.ShipyardConsoleUiKey.Custom:
         type: ShipyardConsoleBoundUserInterface
+  # Mothership/faction shipyards pay from the faction treasury, not the buyer's personal bank.
+  - type: ShipyardConsole
+    usesFactionTreasury: true
+  # Explicitly empty: ComputerShipyardCrescent (our parent) ships a civilian listing, and omitting
+  # this field would INHERIT it. Faction consoles override with their own list; empty ones stay empty.
   - type: ShipyardListing
+    shuttles: []

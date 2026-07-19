@@ -190,8 +190,20 @@ namespace Content.Shared.Localizations
         /// <returns></returns>
         private static ILocValue FormatSignLanguage(LocArgs args)
         {
-            string originalMessage = ((LocValueString) args.Args[0]).Value;
-            string newMessage = originalMessage.Split([' ', ',', '.', '-', '_'])[0]; //SHOULD grab the first word
+            if (args.Args.Count < 1 || args.Args[0] is not LocValueString locStr)
+                return new LocValueString(string.Empty);
+
+            // Strip any markup first. Otherwise a message that already contains markup
+            // (e.g. a font-amplified command role's "[font size=x]...[/font]") would get
+            // split mid-tag, leaking a partial "[font" into the chat wrap and throwing in
+            // the markup parser - which makes the whole sign message fail to render.
+            var stripped = FormattedMessage.RemoveMarkupPermissive(locStr.Value);
+
+            // Grab the first word only. RemoveEmptyEntries so a leading separator doesn't yield "".
+            var separators = new[] { ' ', ',', '.', '-', '_' };
+            var newMessage = stripped
+                .Split(separators, System.StringSplitOptions.RemoveEmptyEntries)
+                .FirstOrDefault() ?? string.Empty;
 
             if (newMessage.Length > 10)
                 newMessage = newMessage.Substring(0, 10);

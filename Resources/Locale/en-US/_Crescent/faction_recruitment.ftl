@@ -22,4 +22,5 @@ faction-recruitment-dismissed = {$target} has been dismissed from {$faction}.
 faction-recruitment-not-member = They are not a member of this faction.
 faction-recruitment-outranks = {$target} outranks this terminal. Their rank cannot be changed here.
 faction-recruitment-out-of-range = That person is no longer within reach of the terminal.
-faction-recruitment-denied = Access denied. You are not authorized to use this terminal.
+faction-recruitment-denied = Access denied — only faction command may operate this muster terminal. Consult your superiors.
+faction-recruitment-examine = Operating it requires [color=yellow]faction command credentials[/color]. If you cannot open it, take it up with your superiors.

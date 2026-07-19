@@ -8,6 +8,8 @@ using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Database;
+using Content.Shared.DoAfter;
+using Content.Shared.Examine;
 using Content.Shared.Humanoid;
 using Content.Shared.Roles;
 using Content.Shared._Crescent.Factions;
@@ -36,6 +38,7 @@ public sealed class FactionRecruitmentConsoleSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
 
     public override void Initialize()
     {
@@ -43,8 +46,15 @@ public sealed class FactionRecruitmentConsoleSystem : EntitySystem
 
         SubscribeLocalEvent<FactionRecruitmentConsoleComponent, BoundUIOpenedEvent>(OnOpened);
         SubscribeLocalEvent<FactionRecruitmentConsoleComponent, FactionRecruitmentAssignMessage>(OnAssign);
+        SubscribeLocalEvent<FactionRecruitmentConsoleComponent, FactionRecruitmentAssignDoAfterEvent>(OnAssignDoAfter);
         SubscribeLocalEvent<FactionRecruitmentConsoleComponent, FactionRecruitmentDismissMessage>(OnDismiss);
         SubscribeLocalEvent<FactionRecruitmentConsoleComponent, FactionRecruitmentRefreshMessage>(OnRefresh);
+        SubscribeLocalEvent<FactionRecruitmentConsoleComponent, ExaminedEvent>(OnExamine);
+    }
+
+    private void OnExamine(EntityUid uid, FactionRecruitmentConsoleComponent comp, ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString("faction-recruitment-examine"));
     }
 
     private void OnRefresh(EntityUid uid, FactionRecruitmentConsoleComponent comp, FactionRecruitmentRefreshMessage args)
@@ -177,7 +187,7 @@ public sealed class FactionRecruitmentConsoleSystem : EntitySystem
         if (args.Actor is not { Valid: true } actor || !IsAuthorized(uid, actor))
             return;
 
-        if (!comp.Roles.Contains(args.JobId) || !_proto.TryIndex<JobPrototype>(args.JobId, out var job))
+        if (!comp.Roles.Contains(args.JobId) || !_proto.TryIndex<JobPrototype>(args.JobId, out _))
             return;
 
         if (!TryResolveTarget(uid, comp, args.Target, out var target))
@@ -186,11 +196,59 @@ public sealed class FactionRecruitmentConsoleSystem : EntitySystem
             return;
         }
 
-        // Never let a console strip a rank it cannot itself grant. Each faction's high command (Governor,
-        // Adjutant, Kommandant, …) is deliberately kept off every console's role list, so a member who already
-        // holds such a rank must not be reassignable here — doing so would silently demote them. This only guards
-        // members of this console's own faction; unaffiliated people and the default private rank still enlist
-        // freely (a fresh recruit or a lateral faction switch is not a demotion).
+        if (!CanAssign(uid, comp, actor, target))
+            return;
+
+        // Don't commit the recruitment (and its ID rewrite) instantly. A short do-after both gives feedback and
+        // stops the role change from being spam-triggered; everything is re-validated when it completes.
+        var doAfter = new DoAfterArgs(EntityManager, actor, comp.AssignDelay,
+            new FactionRecruitmentAssignDoAfterEvent(args.JobId), uid, target: target, used: uid)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            NeedHand = false,
+        };
+
+        _doAfter.TryStartDoAfter(doAfter);
+    }
+
+    private void OnAssignDoAfter(EntityUid uid, FactionRecruitmentConsoleComponent comp, FactionRecruitmentAssignDoAfterEvent args)
+    {
+        if (args.Cancelled || args.Handled)
+            return;
+
+        if (args.User is not { Valid: true } actor || args.Target is not { Valid: true } target)
+            return;
+
+        // Re-validate from scratch: the delay means access, range and rank can all have changed since the click.
+        if (!IsAuthorized(uid, actor))
+            return;
+
+        if (!comp.Roles.Contains(args.JobId) || !_proto.TryIndex<JobPrototype>(args.JobId, out var job))
+            return;
+
+        if (!GetNearbyPeople(uid, comp).Contains(target))
+        {
+            _popup.PopupEntity(Loc.GetString("faction-recruitment-out-of-range"), uid, actor);
+            return;
+        }
+
+        if (!CanAssign(uid, comp, actor, target))
+            return;
+
+        args.Handled = true;
+        ApplyRecruitment(uid, comp, actor, target, job);
+    }
+
+    /// <summary>
+    /// Never let a console strip a rank it cannot itself grant. Each faction's high command (Governor, Adjutant,
+    /// Kommandant, …) is deliberately kept off every console's role list, so a member who already holds such a
+    /// rank must not be reassignable here — doing so would silently demote them. This only guards members of this
+    /// console's own faction; unaffiliated people and the default private rank still enlist freely (a fresh
+    /// recruit or a lateral faction switch is not a demotion).
+    /// </summary>
+    private bool CanAssign(EntityUid uid, FactionRecruitmentConsoleComponent comp, EntityUid actor, EntityUid target)
+    {
         if (TryComp<HullrotFactionComponent>(target, out var targetFaction)
             && targetFaction.Faction == comp.Faction
             && TryComp<ChatRankComponent>(target, out var targetRank)
@@ -198,9 +256,14 @@ public sealed class FactionRecruitmentConsoleSystem : EntitySystem
             && !GetAssignableRanks(comp).Contains(targetRank.Rank))
         {
             _popup.PopupEntity(Loc.GetString("faction-recruitment-outranks", ("target", Name(target))), uid, actor);
-            return;
+            return false;
         }
 
+        return true;
+    }
+
+    private void ApplyRecruitment(EntityUid uid, FactionRecruitmentConsoleComponent comp, EntityUid actor, EntityUid target, JobPrototype job)
+    {
         // 1. Re-run the role's component grants (AddComponentSpecial) so the recruit matches a fresh spawn of the
         //    job: this is what refreshes ChatRankComponent — the source of the chat/radio name prefix ("rank") —
         //    along with faction languages. Only AddComponentSpecial is replayed; item/implant/trait specials would
