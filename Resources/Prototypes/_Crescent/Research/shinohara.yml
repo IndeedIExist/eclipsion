@@ -510,3 +510,24 @@
   - WeaponCaseGl
   - WeaponCaseAmmo
 
+
+# _Crescent: hardpoint flatpacks that printed straight off the microforge with no research behind them.
+
+- type: technology
+  id: ShinoharaShipArmaments
+  name: research-technology-shinohara-shiparmaments
+  icon:
+    sprite: _Crescent/Objects/Materials/materials.rsi
+    state: tubeloaderrobotics
+  discipline: Corporate
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - ExhumerFlatpack
+  - HardlinerFlatpack
+  - IdnaFlatpack
+  - IdnaTorpedo
+  - MagwellFlatpack
+  - PlasmaRepeaterFlatpack
+  - PowerCageHardliner
+  - SlugthrowerFlatpack

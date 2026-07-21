@@ -2,6 +2,7 @@
 # Jumpsuits/skirts
 - type: latheRecipe
   id: ClothingUniformJumpsuitColorGrey # Tide
+  category: Clothing
   result: ClothingUniformJumpsuitColorGrey
   completetime: 4
   materials:
@@ -9,6 +10,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtColorGrey
+  category: Clothing
   result: ClothingUniformJumpskirtColorGrey
   completetime: 4
   materials:
@@ -16,6 +18,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitBartender
+  category: Clothing
   result: ClothingUniformJumpsuitBartender
   completetime: 4
   materials:
@@ -23,6 +26,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtBartender
+  category: Clothing
   result: ClothingUniformJumpskirtBartender
   completetime: 4
   materials:
@@ -30,6 +34,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitCaptain
+  category: Clothing
   result: ClothingUniformJumpsuitCaptain
   completetime: 4
   materials:
@@ -38,6 +43,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitCapFormal
+  category: Clothing
   result: ClothingUniformJumpsuitCapFormal
   completetime: 4
   materials:
@@ -47,6 +53,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtCapFormalDress
+  category: Clothing
   result: ClothingUniformJumpskirtCapFormalDress
   completetime: 4
   materials:
@@ -55,6 +62,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtCaptain
+  category: Clothing
   result: ClothingUniformJumpskirtCaptain
   completetime: 4
   materials:
@@ -63,6 +71,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitCargo
+  category: Clothing
   result: ClothingUniformJumpsuitCargo
   completetime: 4
   materials:
@@ -70,6 +79,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtCargo
+  category: Clothing
   result: ClothingUniformJumpskirtCargo
   completetime: 4
   materials:
@@ -77,6 +87,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSalvageSpecialist
+  category: Clothing
   result: ClothingUniformJumpsuitSalvageSpecialist
   completetime: 4
   materials:
@@ -84,6 +95,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitCentcomAgent
+  category: Clothing
   result: ClothingUniformJumpsuitCentcomAgent
   completetime: 4
   materials:
@@ -92,6 +104,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitCentcomFormal
+  category: Clothing
   result: ClothingUniformJumpsuitCentcomFormal
   completetime: 4
   materials:
@@ -100,6 +113,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtCentcomFormalDress
+  category: Clothing
   result: ClothingUniformJumpskirtCentcomFormalDress
   completetime: 4
   materials:
@@ -108,6 +122,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitCentcomOfficer
+  category: Clothing
   result: ClothingUniformJumpsuitCentcomOfficer
   completetime: 4
   materials:
@@ -116,6 +131,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitCentcomOfficial
+  category: Clothing
   result: ClothingUniformJumpsuitCentcomOfficial
   completetime: 4
   materials:
@@ -124,6 +140,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitChiefEngineer
+  category: Clothing
   result: ClothingUniformJumpsuitChiefEngineer
   completetime: 4
   materials:
@@ -132,6 +149,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtChiefEngineer
+  category: Clothing
   result: ClothingUniformJumpskirtChiefEngineer
   completetime: 4
   materials:
@@ -140,6 +158,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitChiefEngineerTurtle
+  category: Clothing
   result: ClothingUniformJumpsuitChiefEngineerTurtle
   completetime: 4
   materials:
@@ -147,6 +166,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtChiefEngineerTurtle
+  category: Clothing
   result: ClothingUniformJumpskirtChiefEngineerTurtle
   completetime: 4
   materials:
@@ -154,6 +174,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitChaplain
+  category: Clothing
   result: ClothingUniformJumpsuitChaplain
   completetime: 4
   materials:
@@ -161,6 +182,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtChaplain
+  category: Clothing
   result: ClothingUniformJumpskirtChaplain
   completetime: 4
   materials:
@@ -168,6 +190,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitChef
+  category: Clothing
   result: ClothingUniformJumpsuitChef
   completetime: 4
   materials:
@@ -175,6 +198,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtChef
+  category: Clothing
   result: ClothingUniformJumpskirtChef
   completetime: 4
   materials:
@@ -182,6 +206,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitChemistry
+  category: Clothing
   result: ClothingUniformJumpsuitChemistry
   completetime: 4
   materials:
@@ -189,6 +214,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtChemistry
+  category: Clothing
   result: ClothingUniformJumpskirtChemistry
   completetime: 4
   materials:
@@ -196,6 +222,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitClown
+  category: Clothing
   result: ClothingUniformJumpsuitClown
   completetime: 4
   materials:
@@ -203,6 +230,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitCMO
+  category: Clothing
   result: ClothingUniformJumpsuitCMO
   completetime: 4
   materials:
@@ -211,6 +239,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtCMO
+  category: Clothing
   result: ClothingUniformJumpskirtCMO
   completetime: 4
   materials:
@@ -219,6 +248,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitCMOTurtle
+  category: Clothing
   result: ClothingUniformJumpsuitCMOTurtle
   completetime: 4
   materials:
@@ -227,6 +257,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtCMOTurtle
+  category: Clothing
   result: ClothingUniformJumpskirtCMOTurtle
   completetime: 4
   materials:
@@ -235,6 +266,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitDetective
+  category: Clothing
   result: ClothingUniformJumpsuitDetective
   completetime: 4
   materials:
@@ -242,6 +274,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtDetective
+  category: Clothing
   result: ClothingUniformJumpskirtDetective
   completetime: 4
   materials:
@@ -249,6 +282,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitEngineering
+  category: Clothing
   result: ClothingUniformJumpsuitEngineering
   completetime: 4
   materials:
@@ -256,6 +290,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtEngineering
+  category: Clothing
   result: ClothingUniformJumpskirtEngineering
   completetime: 4
   materials:
@@ -263,6 +298,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSeniorEngineer
+  category: Clothing
   result: ClothingUniformJumpsuitSeniorEngineer
   completetime: 4
   materials:
@@ -270,6 +306,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtSeniorEngineer
+  category: Clothing
   result: ClothingUniformJumpskirtSeniorEngineer
   completetime: 4
   materials:
@@ -277,6 +314,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitHoP
+  category: Clothing
   result: ClothingUniformJumpsuitHoP
   completetime: 4
   materials:
@@ -285,6 +323,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtHoP
+  category: Clothing
   result: ClothingUniformJumpskirtHoP
   completetime: 4
   materials:
@@ -293,6 +332,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitHoS
+  category: Clothing
   result: ClothingUniformJumpsuitHoS
   completetime: 4
   materials:
@@ -301,6 +341,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtHoS
+  category: Clothing
   result: ClothingUniformJumpskirtHoS
   completetime: 4
   materials:
@@ -309,6 +350,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitHosFormal
+  category: Clothing
   result: ClothingUniformJumpsuitHosFormal
   completetime: 4
   materials:
@@ -317,6 +359,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtHosFormal
+  category: Clothing
   result: ClothingUniformJumpskirtHosFormal
   completetime: 4
   materials:
@@ -325,6 +368,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitHoSParadeMale
+  category: Clothing
   result: ClothingUniformJumpsuitHoSParadeMale
   completetime: 5
   materials:
@@ -333,6 +377,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtHoSParadeMale
+  category: Clothing
   result: ClothingUniformJumpskirtHoSParadeMale
   completetime: 5
   materials:
@@ -341,6 +386,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitHoSAlt
+  category: Clothing
   result: ClothingUniformJumpsuitHoSAlt
   completetime: 4
   materials:
@@ -349,6 +395,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitHoSBlue
+  category: Clothing
   result: ClothingUniformJumpsuitHoSBlue
   completetime: 4
   materials:
@@ -357,6 +404,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitHoSGrey
+  category: Clothing
   result: ClothingUniformJumpsuitHoSGrey
   completetime: 4
   materials:
@@ -365,6 +413,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtHoSAlt
+  category: Clothing
   result: ClothingUniformJumpskirtHoSAlt
   completetime: 4
   materials:
@@ -373,6 +422,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitHydroponics
+  category: Clothing
   result: ClothingUniformJumpsuitHydroponics
   completetime: 4
   materials:
@@ -380,6 +430,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtHydroponics
+  category: Clothing
   result: ClothingUniformJumpskirtHydroponics
   completetime: 4
   materials:
@@ -387,6 +438,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitJanitor
+  category: Clothing
   result: ClothingUniformJumpsuitJanitor
   completetime: 4
   materials:
@@ -394,6 +446,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtJanitor
+  category: Clothing
   result: ClothingUniformJumpskirtJanitor
   completetime: 4
   materials:
@@ -401,6 +454,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitLawyerBlack
+  category: Clothing
   result: ClothingUniformJumpsuitLawyerBlack
   completetime: 4
   materials:
@@ -408,6 +462,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitLibrarian
+  category: Clothing
   result: ClothingUniformJumpsuitLibrarian
   completetime: 4
   materials:
@@ -415,6 +470,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtColorLightBrown #Librarian
+  category: Clothing
   result: ClothingUniformJumpskirtColorLightBrown
   completetime: 4
   materials:
@@ -422,6 +478,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitMedicalDoctor
+  category: Clothing
   result: ClothingUniformJumpsuitMedicalDoctor
   completetime: 4
   materials:
@@ -429,6 +486,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtMedicalDoctor
+  category: Clothing
   result: ClothingUniformJumpskirtMedicalDoctor
   completetime: 4
   materials:
@@ -436,6 +494,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSeniorPhysician
+  category: Clothing
   result: ClothingUniformJumpsuitSeniorPhysician
   completetime: 4
   materials:
@@ -443,6 +502,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtSeniorPhysician
+  category: Clothing
   result: ClothingUniformJumpskirtSeniorPhysician
   completetime: 4
   materials:
@@ -450,6 +510,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitMime
+  category: Clothing
   result: ClothingUniformJumpsuitMime
   completetime: 4
   materials:
@@ -457,6 +518,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtMime
+  category: Clothing
   result: ClothingUniformJumpskirtMime
   completetime: 4
   materials:
@@ -464,6 +526,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitMusician
+  category: Clothing
   result: ClothingUniformJumpsuitMusician
   completetime: 4
   materials:
@@ -471,6 +534,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitOperative
+  category: Clothing
   result: ClothingUniformJumpsuitOperative
   completetime: 4
   materials:
@@ -478,6 +542,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtOperative
+  category: Clothing
   result: ClothingUniformJumpskirtOperative
   completetime: 4
   materials:
@@ -485,6 +550,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitParamedic
+  category: Clothing
   result: ClothingUniformJumpsuitParamedic
   completetime: 4
   materials:
@@ -492,6 +558,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtParamedic
+  category: Clothing
   result: ClothingUniformJumpskirtParamedic
   completetime: 4
   materials:
@@ -499,6 +566,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSeniorOfficer
+  category: Clothing
   result: ClothingUniformJumpsuitSeniorOfficer
   completetime: 4
   materials:
@@ -506,6 +574,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtSeniorOfficer
+  category: Clothing
   result: ClothingUniformJumpskirtSeniorOfficer
   completetime: 4
   materials:
@@ -513,6 +582,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitPrisoner
+  category: Clothing
   result: ClothingUniformJumpsuitPrisoner
   completetime: 4
   materials:
@@ -520,6 +590,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtPrisoner
+  category: Clothing
   result: ClothingUniformJumpskirtPrisoner
   completetime: 4
   materials:
@@ -527,6 +598,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitQM
+  category: Clothing
   result: ClothingUniformJumpsuitQM
   completetime: 4
   materials:
@@ -534,6 +606,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitQMFormal
+  category: Clothing
   result: ClothingUniformJumpsuitQMFormal
   completetime: 4
   materials:
@@ -541,6 +614,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtQM
+  category: Clothing
   result: ClothingUniformJumpskirtQM
   completetime: 4
   materials:
@@ -548,6 +622,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitQMTurtleneck
+  category: Clothing
   result: ClothingUniformJumpsuitQMTurtleneck
   completetime: 4
   materials:
@@ -555,6 +630,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtQMTurtleneck
+  category: Clothing
   result: ClothingUniformJumpskirtQMTurtleneck
   completetime: 4
   materials:
@@ -562,6 +638,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitResearchDirector
+  category: Clothing
   result: ClothingUniformJumpsuitResearchDirector
   completetime: 4
   materials:
@@ -570,6 +647,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtResearchDirector
+  category: Clothing
   result: ClothingUniformJumpskirtResearchDirector
   completetime: 4
   materials:
@@ -578,6 +656,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitScientist
+  category: Clothing
   result: ClothingUniformJumpsuitScientist
   completetime: 4
   materials:
@@ -585,6 +664,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtScientist
+  category: Clothing
   result: ClothingUniformJumpskirtScientist
   completetime: 4
   materials:
@@ -592,6 +672,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSeniorResearcher
+  category: Clothing
   result: ClothingUniformJumpsuitSeniorResearcher
   completetime: 4
   materials:
@@ -599,6 +680,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtSeniorResearcher
+  category: Clothing
   result: ClothingUniformJumpskirtSeniorResearcher
   completetime: 4
   materials:
@@ -606,6 +688,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSec
+  category: Clothing
   result: ClothingUniformJumpsuitSec
   completetime: 4
   materials:
@@ -613,6 +696,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtSec
+  category: Clothing
   result: ClothingUniformJumpskirtSec
   completetime: 4
   materials:
@@ -620,6 +704,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitBrigmedic
+  category: Clothing
   result: ClothingUniformJumpsuitBrigmedic
   completetime: 4
   materials:
@@ -627,6 +712,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtBrigmedic
+  category: Clothing
   result: ClothingUniformJumpskirtBrigmedic
   completetime: 4
   materials:
@@ -634,6 +720,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSyndieFormal
+  category: Clothing
   result: ClothingUniformJumpsuitSyndieFormal
   completetime: 4
   materials:
@@ -641,6 +728,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtSyndieFormalDress
+  category: Clothing
   result: ClothingUniformJumpskirtSyndieFormalDress
   completetime: 4
   materials:
@@ -648,6 +736,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitPyjamaSyndicateBlack
+  category: Clothing
   result: ClothingUniformJumpsuitPyjamaSyndicateBlack
   completetime: 4
   materials:
@@ -655,6 +744,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitPyjamaSyndicatePink
+  category: Clothing
   result: ClothingUniformJumpsuitPyjamaSyndicatePink
   completetime: 4
   materials:
@@ -662,6 +752,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitPyjamaSyndicateRed
+  category: Clothing
   result: ClothingUniformJumpsuitPyjamaSyndicateRed
   completetime: 4
   materials:
@@ -669,6 +760,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitWarden
+  category: Clothing
   result: ClothingUniformJumpsuitWarden
   completetime: 4
   materials:
@@ -676,6 +768,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtWarden
+  category: Clothing
   result: ClothingUniformJumpskirtWarden
   completetime: 4
   materials:
@@ -683,6 +776,7 @@
 # Command winter coats
 - type: latheRecipe
   id: ClothingOuterWinterCap
+  category: Clothing
   result: ClothingOuterWinterCap
   completetime: 3.2
   materials:
@@ -691,6 +785,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterCE
+  category: Clothing
   result: ClothingOuterWinterCE
   completetime: 3.2
   materials:
@@ -699,6 +794,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterCentcom
+  category: Clothing
   result: ClothingOuterWinterCentcom
   completetime: 3.2
   materials:
@@ -707,6 +803,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterCMO
+  category: Clothing
   result: ClothingOuterWinterCMO
   completetime: 3.2
   materials:
@@ -715,6 +812,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterHoP
+  category: Clothing
   result: ClothingOuterWinterHoP
   completetime: 3.2
   materials:
@@ -723,6 +821,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterHoSUnarmored
+  category: Clothing
   result: ClothingOuterWinterHoSUnarmored
   completetime: 3.2
   materials:
@@ -731,6 +830,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterWardenUnarmored
+  category: Clothing
   result: ClothingOuterWinterWardenUnarmored
   completetime: 3.2
   materials:
@@ -739,6 +839,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterQM
+  category: Clothing
   result: ClothingOuterWinterQM
   completetime: 3.2
   materials:
@@ -747,6 +848,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterRD
+  category: Clothing
   result: ClothingOuterWinterRD
   completetime: 3.2
   materials:
@@ -755,6 +857,7 @@
 # Mantles
 - type: latheRecipe
   id: ClothingNeckMantleCap
+  category: Clothing
   result: ClothingNeckMantleCap
   completetime: 2.8
   materials:
@@ -763,6 +866,7 @@
 
 - type: latheRecipe
   id: ClothingNeckMantleCE
+  category: Clothing
   result: ClothingNeckMantleCE
   completetime: 2.8
   materials:
@@ -771,6 +875,7 @@
 
 - type: latheRecipe
   id: ClothingNeckMantleCMO
+  category: Clothing
   result: ClothingNeckMantleCMO
   completetime: 2.8
   materials:
@@ -779,6 +884,7 @@
 
 - type: latheRecipe
   id: ClothingNeckMantleHOP
+  category: Clothing
   result: ClothingNeckMantleHOP
   completetime: 2.8
   materials:
@@ -787,6 +893,7 @@
 
 - type: latheRecipe
   id: ClothingNeckMantleHOS
+  category: Clothing
   result: ClothingNeckMantleHOS
   completetime: 2.8
   materials:
@@ -795,6 +902,7 @@
 
 - type: latheRecipe
   id: ClothingNeckMantleRD
+  category: Clothing
   result: ClothingNeckMantleRD
   completetime: 2.8
   materials:
@@ -803,6 +911,7 @@
 
 - type: latheRecipe
   id: ClothingNeckMantleQM
+  category: Clothing
   result: ClothingNeckMantleQM
   completetime: 2.8
   materials:
@@ -811,6 +920,7 @@
 # Winter coats
 - type: latheRecipe
   id: ClothingOuterWinterMusician
+  category: Clothing
   result: ClothingOuterWinterMusician
   completetime: 3.2
   materials:
@@ -819,6 +929,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterClown
+  category: Clothing
   result: ClothingOuterWinterClown
   completetime: 3.2
   materials:
@@ -827,6 +938,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterMime
+  category: Clothing
   result: ClothingOuterWinterMime
   completetime: 3.2
   materials:
@@ -835,6 +947,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterCoat
+  category: Clothing
   result: ClothingOuterWinterCoat
   completetime: 3.2
   materials:
@@ -843,6 +956,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterJani
+  category: Clothing
   result: ClothingOuterWinterJani
   completetime: 3.2
   materials:
@@ -851,6 +965,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterBar
+  category: Clothing
   result: ClothingOuterWinterBar
   completetime: 3.2
   materials:
@@ -859,6 +974,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterChef
+  category: Clothing
   result: ClothingOuterWinterChef
   completetime: 3.2
   materials:
@@ -867,6 +983,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterHydro
+  category: Clothing
   result: ClothingOuterWinterHydro
   completetime: 3.2
   materials:
@@ -875,6 +992,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterAtmos
+  category: Clothing
   result: ClothingOuterWinterAtmos
   completetime: 3.2
   materials:
@@ -883,6 +1001,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterEngi
+  category: Clothing
   result: ClothingOuterWinterEngi
   completetime: 3.2
   materials:
@@ -891,6 +1010,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterCargo
+  category: Clothing
   result: ClothingOuterWinterCargo
   completetime: 3.2
   materials:
@@ -899,6 +1019,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterMiner
+  category: Clothing
   result: ClothingOuterWinterMiner
   completetime: 3.2
   materials:
@@ -907,6 +1028,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterMed
+  category: Clothing
   result: ClothingOuterWinterMed
   completetime: 3.2
   materials:
@@ -915,6 +1037,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterPara
+  category: Clothing
   result: ClothingOuterWinterPara
   completetime: 3.2
   materials:
@@ -923,6 +1046,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterChem
+  category: Clothing
   result: ClothingOuterWinterChem
   completetime: 3.2
   materials:
@@ -931,6 +1055,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterGen
+  category: Clothing
   result: ClothingOuterWinterGen
   completetime: 3.2
   materials:
@@ -939,6 +1064,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterViro
+  category: Clothing
   result: ClothingOuterWinterViro
   completetime: 3.2
   materials:
@@ -947,6 +1073,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterSci
+  category: Clothing
   result: ClothingOuterWinterSci
   completetime: 3.2
   materials:
@@ -955,6 +1082,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterRobo
+  category: Clothing
   result: ClothingOuterWinterRobo
   completetime: 3.2
   materials:
@@ -963,6 +1091,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterSec
+  category: Clothing
   result: ClothingOuterWinterSec
   completetime: 3.2
   materials:
@@ -971,6 +1100,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterSyndie
+  category: Clothing
   result: ClothingOuterWinterSyndie
   completetime: 3.2
   materials:
@@ -979,6 +1109,7 @@
 
 - type: latheRecipe
   id: ClothingOuterWinterSyndieCap
+  category: Clothing
   result: ClothingOuterWinterSyndieCap
   completetime: 3.2
   materials:
@@ -987,6 +1118,7 @@
 # Hats
 - type: latheRecipe
   id: ClothingHeadHatCaptain
+  category: Clothing
   result: ClothingHeadHatCaptain
   completetime: 2
   materials:
@@ -995,6 +1127,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatCapcap
+  category: Clothing
   result: ClothingHeadHatCapcap
   completetime: 2
   materials:
@@ -1003,6 +1136,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatBeretHoS
+  category: Clothing
   result: ClothingHeadHatBeretHoS
   completetime: 2
   materials:
@@ -1011,6 +1145,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatHoshat
+  category: Clothing
   result: ClothingHeadHatHoshat
   completetime: 2
   materials:
@@ -1019,6 +1154,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatWarden
+  category: Clothing
   result: ClothingHeadHatWarden
   completetime: 2
   materials:
@@ -1027,6 +1163,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatBeretWarden
+  category: Clothing
   result: ClothingHeadHatBeretWarden
   completetime: 2
   materials:
@@ -1035,6 +1172,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatHopcap
+  category: Clothing
   result: ClothingHeadHatHopcap
   completetime: 2
   materials:
@@ -1043,6 +1181,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatQMsoft
+  category: Clothing
   result: ClothingHeadHatQMsoft
   completetime: 2
   materials:
@@ -1051,6 +1190,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatBeretRND
+  category: Clothing
   result: ClothingHeadHatBeretRND
   completetime: 2
   materials:
@@ -1059,6 +1199,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatBeretEngineering
+  category: Clothing
   result: ClothingHeadHatBeretEngineering
   completetime: 2
   materials:
@@ -1067,6 +1208,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatBeretQM
+  category: Clothing
   result: ClothingHeadHatBeretQM
   completetime: 2
   materials:
@@ -1075,6 +1217,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatBeretCmo
+  category: Clothing
   result: ClothingHeadHatBeretCmo
   completetime: 2
   materials:
@@ -1083,6 +1226,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatBeretMedic
+  category: Clothing
   result: ClothingHeadHatBeretMedic
   completetime: 2
   materials:
@@ -1090,6 +1234,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatBeretBrigmedic
+  category: Clothing
   result: ClothingHeadHatBeretBrigmedic
   completetime: 2
   materials:
@@ -1097,6 +1242,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatBeretSecurity
+  category: Clothing
   result: ClothingHeadHatBeretSecurity
   completetime: 2
   materials:
@@ -1104,6 +1250,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatBeretSeniorPhysician
+  category: Clothing
   result: ClothingHeadHatBeretSeniorPhysician
   completetime: 2
   materials:
@@ -1111,6 +1258,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatCentcom
+  category: Clothing
   result: ClothingHeadHatCentcom
   completetime: 2
   materials:
@@ -1119,6 +1267,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatCentcomcap
+  category: Clothing
   result: ClothingHeadHatCentcomcap
   completetime: 2
   materials:
@@ -1127,6 +1276,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatSyndie
+  category: Clothing
   result: ClothingHeadHatSyndie
   completetime: 2
   materials:
@@ -1134,6 +1284,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatSyndieMAA
+  category: Clothing
   result: ClothingHeadHatSyndieMAA
   completetime: 2
   materials:
@@ -1141,6 +1292,7 @@
 
 - type: latheRecipe
   id: ClothingHeadPyjamaSyndicateBlack
+  category: Clothing
   result: ClothingHeadPyjamaSyndicateBlack
   completetime: 2
   materials:
@@ -1148,6 +1300,7 @@
 
 - type: latheRecipe
   id: ClothingHeadPyjamaSyndicatePink
+  category: Clothing
   result: ClothingHeadPyjamaSyndicatePink
   completetime: 2
   materials:
@@ -1155,6 +1308,7 @@
 
 - type: latheRecipe
   id: ClothingHeadPyjamaSyndicateRed
+  category: Clothing
   result: ClothingHeadPyjamaSyndicateRed
   completetime: 2
   materials:
@@ -1162,6 +1316,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatParamedicsoft
+  category: Clothing
   result: ClothingHeadHatParamedicsoft
   completetime: 1
   materials:
@@ -1169,6 +1324,7 @@
 # Ties
 - type: latheRecipe
   id: ClothingNeckTieRed
+  category: Clothing
   result: ClothingNeckTieRed
   completetime: 2
   materials:
@@ -1176,6 +1332,7 @@
 
 - type: latheRecipe
   id: ClothingNeckTieDet
+  category: Clothing
   result: ClothingNeckTieDet
   completetime: 2
   materials:
@@ -1183,6 +1340,7 @@
 
 - type: latheRecipe
   id: ClothingNeckTieSci
+  category: Clothing
   result: ClothingNeckTieSci
   completetime: 2
   materials:
@@ -1190,6 +1348,7 @@
 # Scarfs
 - type: latheRecipe
   id: ClothingNeckScarfStripedGreen
+  category: Clothing
   result: ClothingNeckScarfStripedGreen
   completetime: 2
   materials:
@@ -1197,6 +1356,7 @@
 
 - type: latheRecipe
   id: ClothingNeckScarfStripedBlue
+  category: Clothing
   result: ClothingNeckScarfStripedBlue
   completetime: 2
   materials:
@@ -1204,6 +1364,7 @@
 
 - type: latheRecipe
   id: ClothingNeckScarfStripedRed
+  category: Clothing
   result: ClothingNeckScarfStripedRed
   completetime: 2
   materials:
@@ -1211,6 +1372,7 @@
 
 - type: latheRecipe
   id: ClothingNeckScarfStripedBrown
+  category: Clothing
   result: ClothingNeckScarfStripedBrown
   completetime: 2
   materials:
@@ -1218,6 +1380,7 @@
 
 - type: latheRecipe
   id: ClothingNeckScarfStripedLightBlue
+  category: Clothing
   result: ClothingNeckScarfStripedLightBlue
   completetime: 2
   materials:
@@ -1225,6 +1388,7 @@
 
 - type: latheRecipe
   id: ClothingNeckScarfStripedOrange
+  category: Clothing
   result: ClothingNeckScarfStripedOrange
   completetime: 2
   materials:
@@ -1232,6 +1396,7 @@
 
 - type: latheRecipe
   id: ClothingNeckScarfStripedBlack
+  category: Clothing
   result: ClothingNeckScarfStripedBlack
   completetime: 2
   materials:
@@ -1239,6 +1404,7 @@
 
 - type: latheRecipe
   id: ClothingNeckScarfStripedPurple
+  category: Clothing
   result: ClothingNeckScarfStripedPurple
   completetime: 2
   materials:

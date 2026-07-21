@@ -3,13 +3,13 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._Crescent.Overwatch;
 
 /// <summary>
-/// Компонент для сущности, на которую смотрят через консоль Overwatch.
+/// Sits on an entity that is being watched through the Overwatch console.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class RatOverwatchCameraComponent : Component
 {
     /// <summary>
-    /// Игроки, которые сейчас смотрят через камеру этой сущности.
+    /// The players currently looking through this entity's camera.
     /// </summary>
     [DataField, AutoNetworkedField]
     public HashSet<EntityUid> Watching = new();

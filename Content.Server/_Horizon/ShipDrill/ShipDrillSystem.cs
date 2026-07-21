@@ -25,7 +25,7 @@ public sealed class ShipDrillSystem : EntitySystem
 
     private EntityQuery<GatherableComponent> _gatherQuery;
 
-    // ID тайла, который разрешено ломать
+    // ID of the tile that is allowed to be broken
     private const string TargetTileId = "FloorAsteroidSand";
 
     public override void Initialize()
@@ -60,12 +60,12 @@ public sealed class ShipDrillSystem : EntitySystem
             if (nGridUid is not {} gridUid)
                 continue;
 
-            // Добываем область 5x5 вокруг бура
+            // Mine the 5x5 area around the drill
             for (var x = -2; x <= 2; x++)
             {
                 for (var y = -2; y <= 2; y++)
                 {
-                    // Пропускаем самую центральную клетку (где находится бур)
+                    // Skip the very centre tile (where the drill sits)
                     if (x == 0 && y == 0)
                         continue;
                         
@@ -95,7 +95,7 @@ public sealed class ShipDrillSystem : EntitySystem
             }
         }
 
-        if (_cache.Count <= 0) // ctrl+c ctrl+v с TileSystem::DeconstructTile, только не дропает плитку
+        if (_cache.Count <= 0) // ctrl+c ctrl+v from TileSystem::DeconstructTile, except it does not drop the tile
         {
             var tileRef = _map.GetTileRef(gridUid, mapGrid, coordinates);
             var tileDef = (ContentTileDefinition) _tileDefinitionManager[tileRef.Tile.TypeId];

@@ -5,7 +5,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Crescent.Overwatch;
 
 /// <summary>
-/// Данные о члене фракции для отображения в консоли Overwatch.
+/// Data about a faction member, for display in the Overwatch console.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed record OverwatchMemberData(
@@ -20,7 +20,7 @@ public sealed record OverwatchMemberData(
 );
 
 /// <summary>
-/// Статус члена фракции для отображения в консоли Overwatch.
+/// A faction member's status, for display in the Overwatch console.
 /// </summary>
 [Serializable, NetSerializable]
 public enum OverwatchMemberStatus : byte

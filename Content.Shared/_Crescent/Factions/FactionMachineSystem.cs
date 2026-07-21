@@ -1,0 +1,94 @@
+using Content.Shared._Crescent.HullrotFaction;
+using Content.Shared.Popups;
+using Content.Shared.Shuttles.Components;
+using Content.Shared.UserInterface;
+
+namespace Content.Shared._Crescent.Factions;
+
+/// <summary>
+/// Resolves which faction a machine belongs to. See <see cref="FactionMachineComponent"/> for why machines
+/// can't simply be identified by the grid they sit on.
+/// </summary>
+public sealed class FactionMachineSystem : EntitySystem
+{
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<FactionMachineComponent, ActivatableUIOpenAttemptEvent>(OnUiOpenAttempt);
+    }
+
+    private void OnUiOpenAttempt(Entity<FactionMachineComponent> ent, ref ActivatableUIOpenAttemptEvent args)
+    {
+        if (args.Cancelled || !ent.Comp.RestrictAccess)
+            return;
+
+        // Faction membership lives on the body, not the ID card, so read it off the user directly.
+        var userFaction = CompOrNull<HullrotFactionComponent>(args.User)?.Faction ?? string.Empty;
+        if (userFaction == GetFaction(ent))
+            return;
+
+        args.Cancel();
+        if (ent.Comp.DeniedPopup != null)
+            _popup.PopupClient(Loc.GetString(ent.Comp.DeniedPopup), ent, args.User);
+    }
+
+    /// <summary>
+    /// The faction owning <paramref name="uid"/>, or empty if unaligned.
+    /// </summary>
+    public string GetFaction(EntityUid uid)
+    {
+        if (TryComp<FactionMachineComponent>(uid, out var machine) && (machine.Explicit || machine.Faction != ""))
+            return Normalize(machine.Faction);
+
+        // Not stamped, so fall back to the grid it's mounted on. This is the mapped-in station equipment case.
+        if (Transform(uid).GridUid is { } grid && TryComp<IFFComponent>(grid, out var iff))
+            return Normalize(iff.Faction);
+
+        return string.Empty;
+    }
+
+    /// <summary>
+    /// Whether two machines belong to the same faction. Unaligned machines match only other unaligned ones.
+    /// </summary>
+    public bool SameFaction(EntityUid a, EntityUid b)
+    {
+        return GetFaction(a) == GetFaction(b);
+    }
+
+    /// <summary>
+    /// Stamps an explicit faction onto a machine, overriding the grid fallback.
+    /// </summary>
+    public void SetFaction(EntityUid uid, string faction)
+    {
+        var comp = EnsureComp<FactionMachineComponent>(uid);
+        comp.Faction = faction;
+        comp.Explicit = true;
+        Dirty(uid, comp);
+    }
+
+    /// <summary>
+    /// Subfactions that resolve to a parent faction for ownership purposes. The TFSC subfactions crew their
+    /// own grids and run their own research servers, but syndicate hardware is shared across the umbrella, so
+    /// a Gorlex server and a Cyberdawn microforge have to read as the same owner.
+    /// </summary>
+    private static readonly Dictionary<string, string> ParentFactions = new()
+    {
+        ["TAP"] = "TFSC", // Families
+        ["IPM"] = "TFSC", // Interdyne
+        ["SAW"] = "TFSC", // Saws
+        ["GSC"] = "TFSC", // Gorlex
+        ["CD"] = "TFSC", // Cyberdawn
+    };
+
+    private static string Normalize(string faction)
+    {
+        // "Neutral" is the IFF default for unaligned grids, so it means the same thing as no faction at all.
+        if (faction == "Neutral")
+            return string.Empty;
+
+        return ParentFactions.TryGetValue(faction, out var parent) ? parent : faction;
+    }
+}

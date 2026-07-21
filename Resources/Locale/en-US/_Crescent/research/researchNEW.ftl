@@ -120,6 +120,8 @@ research-technology-imperial-craftcomps = Imperial Weapon Components
 research-technology-imperial-raider = Imperial Troop Transport
 research-technology-imperial-baserosterships = Standard Imperial Ships
 research-technology-imperial-baserosterinfantry = Standard Imperial Infantry Gear
+research-technology-imperial-clarizianpatterns = Clarizian Patterns
+research-technology-imperial-auxiliaryhulls = Imperial Auxiliary Hulls
 
 # NCWL
 research-technology-communard-clothes = Communard Clothes
@@ -156,6 +158,7 @@ research-technology-shinohara-exhumer = 250c "Exhumer" Mining Turret
 research-technology-shinohara-disposableguns = Corporate Budget Arms
 research-technology-shinohara-basicarms = Corporate Basic Ballistics
 research-technology-shinohara-weaponcomponents = Weapon Components
+research-technology-shinohara-shiparmaments = Corporate Ship Armaments
 research-technology-shinohara-repeater = 400c Plasma Repeater
 research-technology-shinohara-torpedo = 180mm "Idna" Smart Torpedo
 research-technology-shinohara-basicfactory = Variable Commodity Fabricator

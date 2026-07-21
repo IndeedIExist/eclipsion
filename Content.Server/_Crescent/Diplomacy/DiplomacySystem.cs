@@ -28,6 +28,8 @@ public sealed partial class DiplomacySystem : EntitySystem
         SubscribeLocalEvent<IFFComponent, RequestFactionRelationsEvent>(UpdateIFFRelations);
 
         InitializeCommands();
+
+        LoadOverrides();
     }
 
     private void HandleDiplomacyChanged()
@@ -47,6 +49,17 @@ public sealed partial class DiplomacySystem : EntitySystem
 
     private void InitializeComponent(EntityUid uid, DiplomacyComponent component, ComponentInit args)
     {
+        BuildDefaults(component);
+
+        // Anything an admin changed in an earlier round goes on top of the prototype defaults.
+        ApplyOverrides(component);
+
+        HandleDiplomacyChanged();
+    }
+
+    /// <summary>Rebuilds the matrix from the <see cref="DiplomacyPrototype"/>s, ignoring anything set at runtime.</summary>
+    private void BuildDefaults(DiplomacyComponent component)
+    {
         // see how many different diplomacies we have
         var diplomacies = _prototypeManager.EnumeratePrototypes<DiplomacyPrototype>().ToArray();
 
@@ -54,6 +67,7 @@ public sealed partial class DiplomacySystem : EntitySystem
         component.DiplomaticSituation = new Relations[diplomacies.Length, diplomacies.Length];
 
         // track which factions are indexed where
+        component.DiplomacyIndicies.Clear();
         int i = 0;
         foreach (var diplomacy in diplomacies)
         {
@@ -91,8 +105,6 @@ public sealed partial class DiplomacySystem : EntitySystem
                 ChangeRelation(diplomacy.ID, relation.Key, relation.Value, component, true);
             }
         }
-
-        HandleDiplomacyChanged();
     }
 
     private void UpdateIFFRelations(EntityUid uid, IFFComponent component, RequestFactionRelationsEvent args)
@@ -114,11 +126,26 @@ public sealed partial class DiplomacySystem : EntitySystem
             return;
 
 
+        var previous = diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction1], diplo.DiplomacyIndicies[faction2]];
+
         diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction1], diplo.DiplomacyIndicies[faction2]] = newRelation;
         diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction2], diplo.DiplomacyIndicies[faction1]] = newRelation;
 
-        if (!setup)
-            HandleDiplomacyChanged();
+        if (setup)
+            return;
+
+        // Only the crossing into war, so replaying saved overrides at round start does not re-declare it.
+        if (newRelation == Relations.War && previous != Relations.War)
+        {
+            var war = new FactionsWentToWarEvent(faction1, faction2);
+            RaiseLocalEvent(ref war);
+        }
+
+        // Set at runtime rather than read out of a prototype, so it has to survive the round.
+        _overrides[PairKey(faction1, faction2)] = newRelation;
+        Save();
+
+        HandleDiplomacyChanged();
     }
 
     public Relations GetRelations(string faction1, string faction2)

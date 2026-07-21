@@ -3,6 +3,7 @@
 # MARK: Uniforms
 - type: latheRecipe
   id: ClothingUniformJumpsuitExecutiveShinoharaSuit
+  category: Clothing
   result: ClothingUniformJumpsuitExecutiveShinoharaSuit
   completetime: 2
   materials:
@@ -10,6 +11,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitShinoharaLogistics
+  category: Clothing
   result: ClothingUniformJumpsuitShinoharaLogistics
   completetime: 2
   materials:
@@ -17,6 +19,7 @@
 
 - type: latheRecipe
   id: ClothingOuterShinoharaVest
+  category: Clothing
   result: ClothingOuterShinoharaVest
   completetime: 2
   materials:
@@ -24,6 +27,7 @@
 
 - type: latheRecipe
   id: ClothingOuterShinoharaSuitJacket
+  category: Clothing
   result: ClothingOuterShinoharaSuitJacket
   completetime: 2
   materials:
@@ -31,6 +35,7 @@
 
 - type: latheRecipe
   id: ClothingOuterShinoharaExecSuitJacket
+  category: Clothing
   result: ClothingOuterShinoharaExecSuitJacket
   completetime: 2
   materials:
@@ -38,6 +43,7 @@
 
 - type: latheRecipe
   id: ClothingOuterShinoharaLabcoat
+  category: Clothing
   result: ClothingOuterShinoharaLabcoat
   completetime: 2
   materials:
@@ -45,6 +51,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitShinoharaDoctor
+  category: Clothing
   result: ClothingUniformJumpsuitShinoharaDoctor
   completetime: 2
   materials:
@@ -54,6 +61,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitShinoharaHighsec
+  category: Clothing
   result: ClothingUniformJumpsuitShinoharaHighsec
   completetime: 2
   materials:
@@ -61,6 +69,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitShinoharaSecurity
+  category: Clothing
   result: ClothingUniformJumpsuitShinoharaSecurity
   completetime: 2
   materials:
@@ -68,6 +77,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorShinoharaArmor
+  category: Armor
   result: ClothingOuterArmorShinoharaArmor
   completetime: 2
   materials:
@@ -76,6 +86,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorShinoharaHOSVest
+  category: Armor
   result: ClothingOuterArmorShinoharaHOSVest
   completetime: 2
   materials:
@@ -85,6 +96,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorShinoharaArmorHighsec
+  category: Armor
   result: ClothingOuterArmorShinoharaArmorHighsec
   completetime: 2
   materials:
@@ -94,6 +106,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorShinoharaArmorHighsecUA
+  category: Armor
   result: ClothingOuterArmorShinoharaArmorHighsecUA
   completetime: 2
   materials:
@@ -104,6 +117,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatShinoharaHelmet
+  category: Clothing
   result: ClothingHeadHatShinoharaHelmet
   completetime: 2
   materials:
@@ -113,6 +127,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatShinoharaHelmetUA
+  category: Clothing
   result: ClothingHeadHatShinoharaHelmetUA
   completetime: 2
   materials:
@@ -123,6 +138,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorShinoharaArmorBulwark
+  category: Armor
   result: ClothingOuterArmorShinoharaArmorBulwark
   completetime: 2
   materials:
@@ -132,6 +148,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatShinoharaNonevaHelm
+  category: Clothing
   result: ClothingHeadHatShinoharaNonevaHelm
   completetime: 2
   materials:
@@ -143,6 +160,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitMetrocop
+  category: Armor
   result: ClothingOuterHardsuitMetrocop
   completetime: 2
   materials:
@@ -152,6 +170,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitCombine
+  category: Armor
   result: ClothingOuterHardsuitCombine
   completetime: 2
   materials:
@@ -161,6 +180,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitHighsec
+  category: Armor
   result: ClothingOuterHardsuitHighsec
   completetime: 2
   materials:
@@ -171,6 +191,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitHighsecIndependent
+  category: Armor
   result: ClothingOuterHardsuitHighsecIndependent
   completetime: 2
   materials:
@@ -181,6 +202,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitHighsecUA
+  category: Armor
   result: ClothingOuterHardsuitHighsecUA
   completetime: 2
   materials:
@@ -192,6 +214,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitHEV
+  category: Armor
   result: ClothingOuterHardsuitHEV
   completetime: 2
   materials:
@@ -201,6 +224,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitSHISpeedsuit
+  category: Armor
   result: ClothingOuterHardsuitSHISpeedsuit
   completetime: 3
   materials:
@@ -212,6 +236,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitSHIJuggernaut
+  category: Armor
   result: ClothingOuterHardsuitSHIJuggernaut
   completetime: 3
   materials:
@@ -225,6 +250,7 @@
 
 - type: latheRecipe
   id: WeaponPistolBlastpopRed
+  category: Weapons
   result: WeaponPistolBlastpopRed
   completetime: 2
   materials:
@@ -233,6 +259,7 @@
 
 - type: latheRecipe
   id: WeaponPistolBlastpopPurple
+  category: Weapons
   result: WeaponPistolBlastpopPurple
   completetime: 2
   materials:
@@ -241,6 +268,7 @@
 
 - type: latheRecipe
   id: WeaponPistolBlastpopGray
+  category: Weapons
   result: WeaponPistolBlastpopGray
   completetime: 2
   materials:
@@ -249,6 +277,7 @@
 
 - type: latheRecipe
   id: WeaponPistolBlastpopGreen
+  category: Weapons
   result: WeaponPistolBlastpopGreen
   completetime: 2
   materials:
@@ -257,6 +286,7 @@
 
 - type: latheRecipe
   id: WeaponPistolBlastpopGold
+  category: Weapons
   result: WeaponPistolBlastpopGold
   completetime: 2
   materials:
@@ -265,6 +295,7 @@
 
 - type: latheRecipe
   id: WeaponPistolBlastpopBlue
+  category: Weapons
   result: WeaponPistolBlastpopBlue
   completetime: 2
   materials:
@@ -273,6 +304,7 @@
 
 - type: latheRecipe
   id: WeaponLaserCarbineSHI
+  category: Weapons
   result: WeaponLaserCarbine
   completetime: 2
   materials:
@@ -283,6 +315,7 @@
 
 - type: latheRecipe
   id: WeaponPistolZodum
+  category: Weapons
   result: WeaponPistolZodum
   completetime: 2
   materials:
@@ -292,6 +325,7 @@
 
 - type: latheRecipe
   id: WeaponPistolSmartpistolSHI
+  category: Weapons
   result: WeaponPistolSmartpistol
   completetime: 2
   materials:
@@ -301,6 +335,7 @@
 
 - type: latheRecipe
   id: WeaponShotgunBlaster
+  category: Weapons
   result: WeaponShotgunBlaster
   completetime: 2
   materials:
@@ -310,6 +345,7 @@
 
 - type: latheRecipe
   id: WeaponShotgunSHIDoubleBarreled4g
+  category: Weapons
   result: WeaponShotgunSHIDoubleBarreled4g
   completetime: 2
   materials:
@@ -319,6 +355,7 @@
 
 - type: latheRecipe
   id: WeaponPistolMk58SHI
+  category: Weapons
   result: WeaponPistolMk58
   completetime: 2
   materials:
@@ -327,6 +364,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunSabre
+  category: Weapons
   result: WeaponSubMachineGunSabre
   completetime: 2
   materials:
@@ -337,6 +375,7 @@
 
 - type: latheRecipe
   id: WeaponRevolverMateba
+  category: Weapons
   result: WeaponRevolverMateba
   completetime: 2
   materials:
@@ -347,6 +386,7 @@
 
 - type: latheRecipe
   id: WeaponRevolverInspector
+  category: Weapons
   result: WeaponRevolverInspector
   completetime: 2
   materials:
@@ -356,6 +396,7 @@
 
 - type: latheRecipe
   id: WeaponRifleSHINimrod
+  category: Weapons
   result: WeaponRifleSHINimrod
   completetime: 2
   materials:
@@ -365,6 +406,7 @@
 
 - type: latheRecipe
   id: WeaponRifleHoundMarksman
+  category: Weapons
   result: WeaponRifleHoundMarksman
   completetime: 2
   materials:
@@ -375,6 +417,7 @@
 
 - type: latheRecipe
   id: WeaponRifleLecterSHI
+  category: Weapons
   result: WeaponRifleLecter
   completetime: 2
   materials:
@@ -385,6 +428,7 @@
 
 - type: latheRecipe
   id: WeaponShotgunEnforcer
+  category: Weapons
   result: WeaponShotgunEnforcer
   completetime: 2
   materials:
@@ -394,6 +438,7 @@
 
 - type: latheRecipe
   id: WeaponLightMachineGunL6
+  category: Weapons
   result: WeaponLightMachineGunL6
   completetime: 2
   materials:
@@ -404,6 +449,7 @@
 
 - type: latheRecipe
   id: WeaponSniperHristov
+  category: Weapons
   result: WeaponSniperHristov
   completetime: 2
   materials:
@@ -414,6 +460,7 @@
 
 - type: latheRecipe
   id: WeaponRifleBarghest
+  category: Weapons
   result: WeaponRifleBarghest
   completetime: 2
   materials:
@@ -424,6 +471,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunMP49
+  category: Weapons
   result: WeaponSubMachineGunMP49
   completetime: 2
   materials:
@@ -434,6 +482,7 @@
 
 - type: latheRecipe
   id: WeaponRifleGoro
+  category: Weapons
   result: WeaponRifleGoro
   completetime: 2
   materials:
@@ -443,6 +492,7 @@
 
 - type: latheRecipe
   id: WeaponLauncherHammerhead
+  category: Weapons
   result: WeaponLauncherHammerhead
   completetime: 2
   materials:
@@ -453,6 +503,7 @@
 
 - type: latheRecipe
   id: CartridgeHammerheadRocket
+  category: Ammo
   result: CartridgeHammerheadRocket
   completetime: 2
   materials:
@@ -462,6 +513,7 @@
 
 - type: latheRecipe
   id: WeaponLauncherMilkor
+  category: Weapons
   result: WeaponLauncherMilkor
   completetime: 2
   materials:
@@ -471,6 +523,7 @@
 
 - type: latheRecipe
   id: WeaponLauncherDisposableRocket
+  category: Weapons
   result: WeaponLauncherDisposableRocket
   completetime: 2
   materials:
@@ -480,6 +533,7 @@
 
 - type: latheRecipe
   id: WeaponShotgunSpas
+  category: Weapons
   result: WeaponShotgunSpas
   completetime: 2
   materials:
@@ -490,6 +544,7 @@
 
 - type: latheRecipe
   id: WeaponRifleM90GrenadeLauncher
+  category: Weapons
   result: WeaponRifleM90GrenadeLauncher
   completetime: 2
   materials:
@@ -499,6 +554,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunWt550Hullrot
+  category: Weapons
   result: WeaponSubMachineGunWt550Hullrot
   completetime: 2
   materials:
@@ -530,6 +586,7 @@
 
 - type: latheRecipe
   id: WeaponMechCombatTaikotyo
+  category: MechWeapons
   result: WeaponMechCombatTaikotyo
   completetime: 2
   materials:
@@ -539,6 +596,7 @@
 
 - type: latheRecipe
   id: WeaponMechCombatLightRifle
+  category: MechWeapons
   result: WeaponMechCombatLightRifle
   completetime: 2
   materials:
@@ -548,6 +606,7 @@
 
 - type: latheRecipe
   id: WeaponMechCombatAutoshotgun
+  category: MechWeapons
   result: WeaponMechCombatAutoshotgun
   completetime: 2
   materials:
@@ -557,6 +616,7 @@
 
 - type: latheRecipe
   id: WeaponMechCombatAutopuntgun
+  category: MechWeapons
   result: WeaponMechCombatAutopuntgun
   completetime: 2
   materials:
@@ -567,6 +627,7 @@
 
 - type: latheRecipe
   id: WeaponMechSword
+  category: MechWeapons
   result: WeaponMechSword
   completetime: 2
   materials:
@@ -575,6 +636,7 @@
 
 - type: latheRecipe
   id: WeaponMechPlasmaSword
+  category: MechWeapons
   result: WeaponMechPlasmaSword
   completetime: 2
   materials:
@@ -584,6 +646,7 @@
 
 - type: latheRecipe
   id: WeaponMechMaul
+  category: MechWeapons
   result: WeaponMechMaul
   completetime: 2
   materials:
@@ -592,6 +655,7 @@
 
 - type: latheRecipe
   id: WeaponMechCombatHeavyRifle
+  category: MechWeapons
   result: WeaponMechCombatHeavyRifle
   completetime: 2
   materials:
@@ -602,6 +666,7 @@
 
 - type: latheRecipe
   id: WeaponMechCombatAutocannon
+  category: MechWeapons
   result: WeaponMechCombatAutocannon
   completetime: 2
   materials:
@@ -612,6 +677,7 @@
 
 - type: latheRecipe
   id: WeaponMechGustaf
+  category: MechWeapons
   result: WeaponMechCombatCarlGustaf
   completetime: 2
   materials:
@@ -623,6 +689,7 @@
 
 - type: latheRecipe
   id: BuffaloLPC
+  category: Shipyard
   result: ShipVoucherBuffalo
   completetime: 1
   materials:
@@ -636,6 +703,7 @@
 
 - type: latheRecipe
   id: GazpachovLPC
+  category: Shipyard
   result: ShipVoucherGazpachov
   completetime: 1
   materials:
@@ -649,6 +717,7 @@
 
 - type: latheRecipe
   id: ChanchuLPC
+  category: Shipyard
   result: ShipVoucherChanchu
   completetime: 1
   materials:
@@ -662,6 +731,7 @@
 
 - type: latheRecipe
   id: NazaarLPC
+  category: Shipyard
   result: ShipVoucherNazaar
   completetime: 1
   materials:
@@ -675,6 +745,7 @@
 
 - type: latheRecipe
   id: MusinyaneLPC
+  category: Shipyard
   result: ShipVoucherMusinyane
   completetime: 1
   materials:
@@ -688,6 +759,7 @@
 
 - type: latheRecipe
   id: SharkLPC
+  category: Shipyard
   result: ShipVoucherShark
   completetime: 1
   materials:
@@ -700,6 +772,7 @@
     Uranium: 1200
 - type: latheRecipe
   id: FleaLPC
+  category: Shipyard
   result: ShipVoucherFlea
   completetime: 1
   materials:
@@ -713,6 +786,7 @@
 
 - type: latheRecipe
   id: FujinLPC
+  category: Shipyard
   result: ShipVoucherFujin
   completetime: 1
   materials:
@@ -728,6 +802,7 @@
 
 - type: latheRecipe
   id: HardlinerFlatpack
+  category: Circuitry
   result: HardlinerFlatpack
   completetime: 2
   materials:
@@ -738,6 +813,7 @@
 
 - type: latheRecipe
   id: ShipyardManufactorumFlatpack
+  category: Circuitry
   result: ShipyardManufactorumFlatpack
   completetime: 2
   materials:
@@ -747,6 +823,7 @@
 
 - type: latheRecipe
   id: ScrapRefinerFlatpack
+  category: Circuitry
   result: ScrapRefinerFlatpack
   completetime: 2
   materials:
@@ -755,6 +832,7 @@
 
 - type: latheRecipe
   id: VariableCommodityFabricatorFlatpack
+  category: Circuitry
   result: VariableCommodityFabricatorFlatpack
   completetime: 2
   materials:
@@ -764,6 +842,7 @@
 
 - type: latheRecipe
   id: AutoloomFablatheFlatpack
+  category: Circuitry
   result: AutoloomFablatheFlatpack
   completetime: 2
   materials:
@@ -773,6 +852,7 @@
 
 - type: latheRecipe
   id: AdvancedVariableCommodityFablatheFlatpack
+  category: Circuitry
   result: AdvancedVariableCommodityFablatheFlatpack
   completetime: 2
   materials:
@@ -784,6 +864,7 @@
 
 - type: latheRecipe
   id: BallisticFablatheFlatpack
+  category: Circuitry
   result: BallisticFablatheFlatpack
   completetime: 2
   materials:
@@ -795,6 +876,7 @@
 
 - type: latheRecipe
   id: GilgameshFlatpack
+  category: Circuitry
   result: GilgameshFlatpack
   completetime: 2
   materials:
@@ -807,6 +889,7 @@
 
 - type: latheRecipe
   id: BoriaticComposterFlatpack
+  category: Circuitry
   result: BoriaticComposterFlatpack
   completetime: 2
   materials:
@@ -817,6 +900,7 @@
 
 - type: latheRecipe
   id: CyberneticsMantisBladeLeft
+  category: Medical
   result: CyberneticsMantisBladeLeft
   completetime: 2
   materials:
@@ -828,6 +912,7 @@
 
 - type: latheRecipe
   id: PlasmaRepeaterFlatpack
+  category: Circuitry
   result: PlasmaRepeaterFlatpack
   completetime: 2
   materials:
@@ -839,6 +924,7 @@
 
 - type: latheRecipe
   id: ExhumerFlatpack
+  category: Circuitry
   result: ExhumerFlatpack
   completetime: 2
   materials:
@@ -849,6 +935,7 @@
 
 - type: latheRecipe
   id: IdnaTorpedo
+  category: Weapons
   result:  IdnaTorpedo
   completetime: 2
   materials:
@@ -858,6 +945,7 @@
 
 - type: latheRecipe
   id: IdnaFlatpack
+  category: Circuitry
   result: IdnaFlatpack
   completetime: 2
   materials:
@@ -868,6 +956,7 @@
 
 - type: latheRecipe
   id: MagwellFlatpack
+  category: Circuitry
   result: MagwellFlatpack
   completetime: 2
   materials:
@@ -878,6 +967,7 @@
 
 - type: latheRecipe
   id: ShieldEmitterSmallFlatpack
+  category: Circuitry
   result: ShieldEmitterSmallFlatpack
   completetime: 2
   materials:
@@ -888,6 +978,7 @@
 
 - type: latheRecipe
   id: ShieldEmitterMediumFlatpack
+  category: Circuitry
   result: ShieldEmitterMediumFlatpack
   completetime: 2
   materials:
@@ -899,6 +990,7 @@
 
 - type: latheRecipe
   id: SlugthrowerFlatpack
+  category: Circuitry
   result: SlugthrowerFlatpack
   completetime: 2
   materials:
@@ -910,6 +1002,7 @@
 
 - type: latheRecipe
   id: HardlightGenerator1
+  category: Parts
   result: HardlightGenerator1
   completetime: 2
   materials:
@@ -920,6 +1013,7 @@
 
 - type: latheRecipe
   id: AdvancedMechatronics1
+  category: Parts
   result: AdvancedMechatronics1
   completetime: 2
   materials:
@@ -929,6 +1023,7 @@
 
 - type: latheRecipe
   id: AdvancedElectronics1
+  category: Parts
   result: AdvancedElectronics1
   completetime: 2
   materials:
@@ -938,6 +1033,7 @@
 
 - type: latheRecipe
   id: PlastitaniumFibreAlloySHI
+  category: Parts
   result: PlastitaniumFibreAlloy1
   completetime: 2
   materials:
@@ -947,6 +1043,7 @@
 
 - type: latheRecipe
   id: HardsuitElectronicsSHI
+  category: Armor
   result: HardsuitElectronics1
   completetime: 2
   materials:
@@ -955,6 +1052,7 @@
 
 - type: latheRecipe
   id: LaserLocus1
+  category: Parts
   result: LaserLocus1
   completetime: 2
   materials:
@@ -963,6 +1061,7 @@
 
 - type: latheRecipe
   id: TubeLoader1
+  category: Ammo
   result: TubeLoader1
   completetime: 2
   materials:
@@ -972,6 +1071,7 @@
 
 - type: latheRecipe
   id: BallisticCycler1
+  category: Ammo
   result: BallisticCycler1
   completetime: 2
   materials:
@@ -980,6 +1080,7 @@
 
 - type: latheRecipe
   id: PowerCageHardliner
+  category: Power
   result: PowerCageHardliner
   completetime: 2
   materials:
@@ -992,6 +1093,7 @@
 
 - type: latheRecipe
   id: TelescopicBatonSHI
+  category: Weapons
   result: TelescopicBaton
   completetime: 2
   materials:
@@ -1000,6 +1102,7 @@
 
 - type: latheRecipe
   id: ClothingBeltSheathSHIKatana
+  category: Clothing
   result: ClothingBeltSheathSHIKatana
   completetime: 2
   materials:
@@ -1007,6 +1110,7 @@
 
 - type: latheRecipe
   id: SHIKatana
+  category: Weapons
   result: SHIKatana
   completetime: 2
   materials:
@@ -1015,6 +1119,7 @@
 
 - type: latheRecipe
   id: SHIShiverBlade
+  category: Weapons
   result: SHIKatanaShiverBlade
   completetime: 2
   materials:
@@ -1028,6 +1133,7 @@
 
 - type: latheRecipe
   id: CyberneticsDermalArmor
+  category: Medical
   result: CyberneticsDermalArmor
   completetime: 2
   materials:
@@ -1048,6 +1154,7 @@
 
 - type: latheRecipe
   id: CyberneticsMantisBladeRight
+  category: Medical
   result: CyberneticsMantisBladeRight
   completetime: 2
   materials:
@@ -1061,6 +1168,7 @@
 
 - type: latheRecipe
   id: GrenadeSHIHG17Smart
+  category: Weapons
   result: SHIHG17SmartHandgrenade
   completetime: 2
   materials:
@@ -1105,6 +1213,7 @@
 
 - type: latheRecipe
   id: WeaponCaseRifle
+  category: Weapons
   result: WeaponCaseRifle
   completetime: 2
   materials:
@@ -1112,6 +1221,7 @@
 
 - type: latheRecipe
   id: GrenadeCase
+  category: Weapons
   result: GrenadeCase
   completetime: 2
   materials:
@@ -1119,6 +1229,7 @@
 
 - type: latheRecipe
   id: WeaponCasePistol
+  category: Weapons
   result: WeaponCasePistol
   completetime: 2
   materials:
@@ -1126,6 +1237,7 @@
 
 - type: latheRecipe
   id: WeaponCaseSmg
+  category: Weapons
   result: WeaponCaseSmg
   completetime: 2
   materials:
@@ -1133,6 +1245,7 @@
 
 - type: latheRecipe
   id: WeaponCaseSniper
+  category: Weapons
   result: WeaponCaseSniper
   completetime: 2
   materials:
@@ -1140,6 +1253,7 @@
 
 - type: latheRecipe
   id: WeaponCaseRpg
+  category: Weapons
   result: WeaponCaseRpg
   completetime: 2
   materials:
@@ -1147,6 +1261,7 @@
 
 - type: latheRecipe
   id: WeaponCaseLmg
+  category: Weapons
   result: WeaponCaseLmg
   completetime: 2
   materials:
@@ -1154,6 +1269,7 @@
 
 - type: latheRecipe
   id: WeaponCaseShotgun
+  category: Weapons
   result: WeaponCaseShotgun
   completetime: 2
   materials:
@@ -1161,6 +1277,7 @@
 
 - type: latheRecipe
   id: WeaponCaseGl
+  category: Weapons
   result: WeaponCaseGl
   completetime: 2
   materials:
@@ -1168,6 +1285,7 @@
 
 - type: latheRecipe
   id: WeaponCaseAmmo
+  category: Weapons
   result: WeaponCaseAmmo
   completetime: 2
   materials:

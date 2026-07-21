@@ -3,7 +3,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Crescent.Overwatch;
 
 /// <summary>
-/// Ключ UI для консоли Overwatch.
+/// UI key for the Overwatch console.
 /// </summary>
 [Serializable, NetSerializable]
 public enum OverwatchUiKey : byte

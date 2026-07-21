@@ -70,6 +70,11 @@ public abstract class SharedMaterialSiloSystem : EntitySystem
 
     private void OnPowerChanged(Entity<MaterialSiloComponent> ent, ref PowerChangedEvent args)
     {
+        // Only booting up pulls the utilizers' hoppers in. Doing it on the way down too would sweep every lathe's
+        // materials into a silo nobody can reach, stranding them for the whole blackout.
+        if (!args.Powered)
+            return;
+
         if (!TryComp(ent, out MaterialStorageComponent? siloStorage))
             return;
 
@@ -96,18 +101,11 @@ public abstract class SharedMaterialSiloSystem : EntitySystem
         }
     }
 
-    public int GetSiloMaterialAmount(EntityUid machine, string material, MaterialSiloUtilizerComponent? utilizer = null)
-    {
-        var silo = GetSiloStorage(machine, utilizer);
-        return silo == null ? 0 : silo.Value.Comp.Storage.GetValueOrDefault(material, 0);
-    }
-
-    public int GetSiloTotalMaterialAmount(EntityUid machine, MaterialSiloUtilizerComponent? utilizer = null)
-    {
-        var silo = GetSiloStorage(machine, utilizer);
-        return silo == null ? 0 : silo.Value.Comp.Storage.Values.Sum();
-    }
-
+    /// <summary>
+    /// The storage of the silo this machine draws from, or null if it has none, the silo has lost power, or silos
+    /// are switched off entirely. Null means "ask the machine's own storage instead" — never "the machine has
+    /// nothing". Most callers want SharedMaterialStorageSystem's material accessors, which already do that.
+    /// </summary>
     public Entity<MaterialStorageComponent>? GetSiloStorage(EntityUid machine, MaterialSiloUtilizerComponent? utilizer = null)
     {
         if (!_siloEnabled || !Resolve(machine, ref utilizer)

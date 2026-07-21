@@ -188,7 +188,7 @@ public sealed partial class DiplomacyPanel : BoxContainer
 
         inner.AddChild(new Label
         {
-            Text = Loc.GetString($"diplomacy-relation-{relation.ToString().ToLower()}"),
+            Text = Loc.GetString($"diplomacy-relation-{relation.ToString().ToLowerInvariant()}"),
             StyleClasses = { "ConsoleText" },
             FontColorOverride = Color.White,
             HorizontalExpand = true

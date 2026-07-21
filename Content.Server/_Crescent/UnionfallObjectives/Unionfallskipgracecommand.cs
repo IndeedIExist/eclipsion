@@ -9,8 +9,8 @@ namespace Content.Server._Crescent.UnionfallCapturePoint;
 public sealed class UnionfallSkipGraceCommand : IConsoleCommand
 {
     public string Command => "unionfall_skipgrace";
-    public string Description => "Unionfall bekleme süresini anında bitirir ve savaşı başlatır.";
-    public string Help => "Kullanım: unionfall_skipgrace";
+    public string Description => "Ends the Unionfall grace period immediately and starts the war.";
+    public string Help => "Usage: unionfall_skipgrace";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -35,6 +35,6 @@ public sealed class UnionfallSkipGraceCommand : IConsoleCommand
             shipNodes++;
         }
 
-        shell.WriteLine($"Unionfall grace period atlandı. {capturePoints} capture point ve {shipNodes} ship node aktifleştirildi.");
+        shell.WriteLine($"Unionfall grace period skipped. Activated {capturePoints} capture points and {shipNodes} ship nodes.");
     }
 }

@@ -17,7 +17,7 @@ using Content.Shared._Crescent.CCVar;
 namespace Content.Server._Horizon.GridCleanup;
 
 /// <summary>
-/// Автоматически удаляет мелкие гриды (менее 10 тайлов) после задержки в 600 секунд.
+/// Automatically deletes small grids (fewer than 10 tiles) after a 600 second delay.
 /// </summary>
 public sealed class GridCleanupSystem : EntitySystem
 {

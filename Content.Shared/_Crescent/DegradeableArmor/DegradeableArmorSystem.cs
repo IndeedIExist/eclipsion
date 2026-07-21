@@ -135,7 +135,7 @@ public sealed class DegradeableArmorSystem : EntitySystem
         {
             msg.PushNewline();
 
-            var armorType = Loc.GetString("armor-damage-type-" + flatArmor.Key.ToLower());
+            var armorType = Loc.GetString("armor-damage-type-" + flatArmor.Key.ToLowerInvariant());
             msg.AddMarkup(Loc.GetString("armor-reduction-value",
                 ("type", armorType),
                 ("value", (int)(flatArmor.Value * (component.armorHealth+000.1f)/component.armorMaxHealth))
@@ -143,7 +143,7 @@ public sealed class DegradeableArmorSystem : EntitySystem
         }
 
         msg.PushNewline();
-        var armorMaterial = Loc.GetString($"armor-degradation-{component.armorType.ToString().ToLower()}");
+        var armorMaterial = Loc.GetString($"armor-degradation-{component.armorType.ToString().ToLowerInvariant()}");
         msg.AddMarkup(Loc.GetString("armor-material-examine", ("material", armorMaterial)));
 
         return msg;

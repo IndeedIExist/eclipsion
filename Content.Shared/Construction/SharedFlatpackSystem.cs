@@ -74,7 +74,14 @@ public abstract class SharedFlatpackSystem : EntitySystem
         // This should eventually allow for shit like building microwaves on tables and such.
         foreach (var intersect in intersecting)
         {
-            if (!TryComp<FixturesComponent>(intersect, out var intersectBody))
+            // The flatpack itself sits on the tile it is being unpacked on, so it always intersects.
+            if (intersect == uid)
+                continue;
+
+            if (!TryComp<PhysicsComponent>(intersect, out var intersectBody))
+                continue;
+
+            if (!intersectBody.Hard || !intersectBody.CanCollide)
                 continue;
 
             // this popup is on the server because the mispredicts on the intersection is crazy

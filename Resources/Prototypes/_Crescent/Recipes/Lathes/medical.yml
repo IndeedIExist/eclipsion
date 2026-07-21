@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: JV102AutoInjector
+  category: Medical
   result: JV102AutoInjector
   completetime: 2
   materials:
@@ -11,6 +12,7 @@
 
 - type: latheRecipe
   id: NaiserAutoinjector
+  category: Medical
   result: NaiserAutoinjector
   completetime: 2
   materials:
@@ -22,6 +24,7 @@
 
 - type: latheRecipe
   id: ExileminusAutoinjector
+  category: Medical
   result: ExileminusAutoinjector
   completetime: 2
   materials:
@@ -32,6 +35,7 @@
 
 - type: latheRecipe
   id: FallAutoinjector
+  category: Medical
   result: FallAutoinjector
   completetime: 2
   materials:

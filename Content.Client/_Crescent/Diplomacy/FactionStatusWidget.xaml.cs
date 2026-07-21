@@ -76,7 +76,7 @@ public sealed partial class FactionStatusWidget : UIWidget
 
             inner.AddChild(new Label
             {
-                Text = Loc.GetString($"diplomacy-relation-short-{relation.ToString().ToLower()}"),
+                Text = Loc.GetString($"diplomacy-relation-short-{relation.ToString().ToLowerInvariant()}"),
                 FontColorOverride = Color.White,
                 HorizontalAlignment = HAlignment.Right,
                 MinWidth = 28

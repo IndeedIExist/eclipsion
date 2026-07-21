@@ -8,11 +8,11 @@ using Robust.Shared.GameObjects;
 namespace Content.Server._Crescent.Squad;
 
 /// <summary>
-/// Система для управления отрядами.
+/// System for managing squads.
 /// </summary>
 public sealed class SquadSystem : EntitySystem
 {
-    // Храним список всех отрядов по фракциям: Faction -> (SquadId -> SquadInfo)
+    // Every squad, keyed by faction: Faction -> (SquadId -> SquadInfo)
     private readonly Dictionary<string, Dictionary<int, SquadInfo>> _squadsByFaction = new();
     private int _nextSquadId = 1;
 
@@ -29,7 +29,7 @@ public sealed class SquadSystem : EntitySystem
     }
 
     /// <summary>
-    /// Создать новый отряд.
+    /// Creates a new squad.
     /// </summary>
     public bool CreateSquad(string faction, string squadName)
     {
@@ -48,7 +48,7 @@ public sealed class SquadSystem : EntitySystem
     }
 
     /// <summary>
-    /// Удалить отряд.
+    /// Deletes a squad.
     /// </summary>
     public bool RemoveSquad(string faction, int squadId)
     {
@@ -75,7 +75,7 @@ public sealed class SquadSystem : EntitySystem
     }
 
     /// <summary>
-    /// Назначить сущность в отряд.
+    /// Assigns an entity to a squad.
     /// </summary>
     public bool AssignToSquad(EntityUid entity, int squadId, string faction)
     {
@@ -97,7 +97,7 @@ public sealed class SquadSystem : EntitySystem
     }
 
     /// <summary>
-    /// Удалить сущность из отряда.
+    /// Removes an entity from its squad.
     /// </summary>
     public void RemoveFromSquad(EntityUid entity)
     {
@@ -105,7 +105,7 @@ public sealed class SquadSystem : EntitySystem
     }
 
     /// <summary>
-    /// Получить список всех отрядов фракции.
+    /// Gets every squad belonging to a faction.
     /// </summary>
     public IReadOnlyDictionary<int, SquadInfo> GetFactionSquads(string faction)
     {
@@ -116,7 +116,7 @@ public sealed class SquadSystem : EntitySystem
     }
 
     /// <summary>
-    /// Получить количество членов в отряде.
+    /// Gets the number of members in a squad.
     /// </summary>
     public int GetSquadMemberCount(int squadId)
     {
@@ -133,6 +133,6 @@ public sealed class SquadSystem : EntitySystem
 }
 
 /// <summary>
-/// Информация об отряде.
+/// Information about a squad.
 /// </summary>
 public sealed record SquadInfo(int Id, string Name);

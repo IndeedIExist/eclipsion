@@ -2,6 +2,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSyndicateSuitCyberdawn
+  category: Clothing
   result: ClothingUniformJumpsuitSyndicateSuitCyberdawn
   completetime: 1.5
   materials:
@@ -9,6 +10,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSyndicateLabCyberdawn
+  category: Clothing
   result: ClothingUniformJumpsuitSyndicateLabCyberdawn
   completetime: 1.5
   materials:
@@ -16,6 +18,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSyndicateSoldierCyberdawn
+  category: Clothing
   result: ClothingUniformJumpsuitSyndicateSoldierCyberdawn
   completetime: 1.5
   materials:
@@ -23,6 +26,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatPatriarch
+  category: Clothing
   result: ClothingHeadHatPatriarch
   completetime: 1.5
   materials:
@@ -32,6 +36,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorCyberdawnPatriarch
+  category: Armor
   result: ClothingOuterArmorCyberdawnPatriarch
   completetime: 1.5
   materials:
@@ -40,6 +45,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorKendoBoguCyberdawn
+  category: Armor
   result: ClothingOuterArmorKendoBogu
   completetime: 1.5
   materials:
@@ -51,6 +57,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitCybersun
+  category: Armor
   result: ClothingOuterHardsuitCybersun
   completetime: 1.5
   materials:
@@ -62,6 +69,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitSyndieMedicCyberdawn
+  category: Armor
   result: ClothingOuterHardsuitSyndieMedic
   completetime: 1.5
   materials:
@@ -73,6 +81,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitCybersunStealthCyberdawn
+  category: Armor
   result: ClothingOuterHardsuitCybersunStealth
   completetime: 1.5
   materials:
@@ -84,6 +93,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitCybersunDreadnoughtCyberdawn
+  category: Armor
   result: ClothingOuterHardsuitCybersunDreadnought
   completetime: 1.5
   materials:
@@ -97,6 +107,7 @@
 
 - type: latheRecipe
   id: PowerSinkCyberdawn
+  category: Power
   result: PowerSink
   completetime: 1.5
   materials:
@@ -115,6 +126,7 @@
 
 - type: latheRecipe
   id: MufflerFlatpack
+  category: Circuitry
   result: MufflerFlatpack
   completetime: 1.5
   materials:
@@ -152,6 +164,7 @@
 
 - type: latheRecipe
   id: ClothingBackpackChameleonFillCyberdawn
+  category: Clothing
   result: ClothingBackpackChameleonFill
   completetime: 1.5
   materials:
@@ -162,6 +175,7 @@
 
 - type: latheRecipe
   id: ClothingMaskGasVoiceChameleonCyberdawn
+  category: Clothing
   result: ClothingMaskGasVoiceChameleon
   completetime: 1.5
   materials:
@@ -172,6 +186,7 @@
 
 - type: latheRecipe
   id: SyndicateJawsOfLifeCyberdawn
+  category: Tools
   result: SyndicateJawsOfLife
   completetime: 1.5
   materials:
@@ -183,6 +198,7 @@
 
 - type: latheRecipe
   id: SyndicateBombCyberdawn
+  category: Weapons
   result: SyndicateBomb
   completetime: 1.5
   materials:
@@ -202,6 +218,7 @@
 
 - type: latheRecipe
   id: ClothingEyesThermalVisionGogglesCyberdawn
+  category: Clothing
   result: ClothingEyesThermalVisionGoggles
   completetime: 1.5
   materials:
@@ -213,6 +230,7 @@
 
 - type: latheRecipe
   id: WeaponPistolPsiBreakerCyberdawn
+  category: Weapons
   result: WeaponPistolPsiBreaker
   completetime: 1.5
   materials:
@@ -223,6 +241,7 @@
 
 - type: latheRecipe
   id: MagazinePistolSpecialMindbreakerCyberdawn
+  category: Ammo
   result: MagazinePistolSpecialMindbreaker
   completetime: 1.5
   materials:
@@ -231,6 +250,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunAtreidesCyberdawn
+  category: Weapons
   result: WeaponSubMachineGunAtreidesHullrot
   completetime: 1.5
   materials:
@@ -240,6 +260,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunCorsairCyberdawn
+  category: Weapons
   result: WeaponSubMachineGunCorsair
   completetime: 1.5
   materials:
@@ -250,6 +271,7 @@
 
 - type: latheRecipe
   id: WeaponRifleKrinkovCyberdawn
+  category: Weapons
   result: WeaponRifleKrinkov
   completetime: 1.5
   materials:
@@ -259,6 +281,7 @@
 
 - type: latheRecipe
   id: WeaponPistolViperWoodCyberdawn
+  category: Weapons
   result: WeaponPistolViperWood
   completetime: 1.5
   materials:
@@ -268,6 +291,7 @@
 
 - type: latheRecipe
   id: WeaponPistolAnsemCyberdawn
+  category: Weapons
   result: WeaponPistolAnsem
   completetime: 1.5
   materials:
@@ -277,6 +301,7 @@
 
 - type: latheRecipe
   id: WeaponLightMachineGunTFSCRPD
+  category: Weapons
   result: WeaponLightMachineGunTFSCRPD
   completetime: 1.5
   materials:
@@ -287,6 +312,7 @@
 
 - type: latheRecipe
   id: WeaponLightMachineGunCompaktCyberdawn
+  category: Weapons
   result: WeaponLightMachineGunCompakt
   completetime: 1.5
   materials:
@@ -297,6 +323,7 @@
 
 - type: latheRecipe
   id: WeaponRifleMayflower
+  category: Weapons
   result: WeaponRifleMayflower
   completetime: 1.5
   materials:
@@ -307,6 +334,7 @@
 
 - type: latheRecipe
   id: WeaponRifleUnderdogCyberdawn
+  category: Weapons
   result: WeaponRifleUnderdog
   completetime: 1.5
   materials:
@@ -317,6 +345,7 @@
 
 - type: latheRecipe
   id:  WeaponRifleSVDMarksmanTFSC
+  category: Weapons
   result: WeaponRifleSVDMarksman
   completetime: 1.5
   materials:
@@ -327,6 +356,7 @@
 
 - type: latheRecipe
   id:  WeaponSniperAK60Cyberdawn
+  category: Weapons
   result: WeaponSniperAK60
   completetime: 1.5
   materials:
@@ -337,6 +367,7 @@
 
 - type: latheRecipe
   id: WeaponRifleAkCyberdawn
+  category: Weapons
   result: WeaponRifleAk
   completetime: 1.5
   materials:
@@ -346,6 +377,7 @@
 
 - type: latheRecipe
   id:  WeaponShotgunTuberCyberdawn
+  category: Weapons
   result: WeaponShotgunTuber
   completetime: 1.5
   materials:
@@ -355,6 +387,7 @@
 
 - type: latheRecipe
   id:  WeaponShotgunSaiga12TFSC
+  category: Weapons
   result: WeaponShotgunTFSCSaiga12
   completetime: 1.5
   materials:
@@ -364,6 +397,7 @@
 
 - type: latheRecipe
   id:  WeaponLauncherRocketCyberdawn
+  category: Weapons
   result: WeaponLauncherRocket
   completetime: 1.5
   materials:
@@ -374,6 +408,7 @@
 
 - type: latheRecipe
   id:  WeaponCartridgeRPGLarge
+  category: Ammo
   result: CartridgeRPG7Heat
   completetime: 1.5
   materials:
@@ -383,6 +418,7 @@
 
 - type: latheRecipe
   id:  WeaponLauncherRPGNSCP
+  category: Weapons
   result: WeaponLauncherSmallRocket
   completetime: 1.5
   materials:
@@ -393,6 +429,7 @@
 
 - type: latheRecipe
   id:  WeaponLCartridgeRPGSmall
+  category: Ammo
   result: CartridgeRPG2Heat
   completetime: 1.5
   materials:
@@ -402,6 +439,7 @@
 
 - type: latheRecipe
   id: GrenadeTFSCRGD5
+  category: Weapons
   result: TFSCRGD5Handgrenade
   completetime: 2
   materials:
@@ -410,6 +448,7 @@
 
 - type: latheRecipe
   id: WeaponSpecialKingpinCyberdawn
+  category: Weapons
   result: WeaponSpecialKingpin
   completetime: 2
   materials:
@@ -423,6 +462,7 @@
 
 - type: latheRecipe
   id: SprigganLPC
+  category: Shipyard
   result: ShipVoucherSpriggan
   completetime: 1
   materials:
@@ -436,6 +476,7 @@
 
 - type: latheRecipe
   id: VelatorLPC
+  category: Shipyard
   result: ShipVoucherVelator
   completetime: 1
   materials:
@@ -449,6 +490,7 @@
 
 - type: latheRecipe
   id: TaipanLPC
+  category: Shipyard
   result: ShipVoucherTaipan
   completetime: 1
   materials:
@@ -462,6 +504,7 @@
 
 - type: latheRecipe
   id: WispLPC
+  category: Shipyard
   result: ShipVoucherWisp
   completetime: 1
   materials:
@@ -490,6 +533,7 @@
 
 - type: latheRecipe
   id: MarauderFlatpack
+  category: Circuitry
   result: MarauderFlatpack
   completetime: 2
   materials:
@@ -504,6 +548,7 @@
 
 - type: latheRecipe
   id:  BallisticCycler1Craft
+  category: Ammo
   result: BallisticCycler1
   completetime: 1.5
   materials:
@@ -512,6 +557,7 @@
 
 - type: latheRecipe
   id:  TubeLoader1Craft
+  category: Ammo
   result: TubeLoader1
   completetime: 1.5
   materials:
@@ -520,6 +566,7 @@
 
 - type: latheRecipe
   id: LaserLocus1Craft
+  category: Parts
   result: LaserLocus1
   completetime: 2
   materials:
@@ -528,6 +575,7 @@
 
 - type: latheRecipe
   id: HardlightGenerator1Craft
+  category: Parts
   result: HardlightGenerator1
   completetime: 2
   materials:
@@ -538,6 +586,7 @@
 
 - type: latheRecipe
   id: AdvancedMechatronics1Craft
+  category: Parts
   result: AdvancedMechatronics1
   completetime: 2
   materials:
@@ -547,6 +596,7 @@
 
 - type: latheRecipe
   id: AdvancedElectronics1Craft
+  category: Parts
   result: AdvancedElectronics1
   completetime: 2
   materials:
@@ -558,6 +608,7 @@
 
 - type: latheRecipe
   id: EnergyDagger
+  category: Weapons
   result: EnergyDaggerBox
   completetime: 1.5
   materials:
@@ -568,6 +619,7 @@
 
 - type: latheRecipe
   id: EnergySword
+  category: Weapons
   result: EnergySword
   completetime: 1.5
   materials:
@@ -579,6 +631,7 @@
 
 - type: latheRecipe
   id: EnergySwordDouble
+  category: Weapons
   result: EnergySwordDouble
   completetime: 1.5
   materials:
@@ -590,6 +643,7 @@
 
 - type: latheRecipe
   id: EnergyShield
+  category: Armor
   result: EnergyShield
   completetime: 1.5
   materials:
@@ -603,6 +657,7 @@
 
 - type: latheRecipe
   id: DnaScramblerImplanter
+  category: Implants
   result: DnaScramblerImplanter
   completetime: 1.5
   materials:
@@ -613,6 +668,7 @@
 
 - type: latheRecipe
   id: FreedomImplanter
+  category: Implants
   result: FreedomImplanter
   completetime: 1.5
   materials:
@@ -623,6 +679,7 @@
 
 - type: latheRecipe
   id: DeathAcidifierImplanter
+  category: Implants
   result: DeathAcidifierImplanter
   completetime: 1.5
   materials:
@@ -633,6 +690,7 @@
 
 - type: latheRecipe
   id: EmpImplanter
+  category: Implants
   result: EmpImplanter
   completetime: 1.5
   materials:
@@ -644,6 +702,7 @@
 
 - type: latheRecipe
   id: StorageImplanter
+  category: Implants
   result: StorageImplanter
   completetime: 1.5
   materials:
@@ -655,6 +714,7 @@
 
 - type: latheRecipe
   id: MicroBombImplanter
+  category: Implants
   result: MicroBombImplanter
   completetime: 1.5
   materials:
@@ -666,6 +726,7 @@
 
 - type: latheRecipe
   id: MacroBombImplanter
+  category: Implants
   result: MacroBombImplanter
   completetime: 1.5
   materials:
@@ -677,6 +738,7 @@
 
 - type: latheRecipe
   id: ScramImplanter
+  category: Implants
   result: ScramImplanter
   completetime: 1.5
   materials:
@@ -688,6 +750,7 @@
 
 - type: latheRecipe
   id: ReinforcementFlatpackSyndicateCyborgMedical
+  category: Circuitry
   result: ReinforcementFlatpackSyndicateCyborgMedical
   completetime: 1.5
   materials:
@@ -703,6 +766,7 @@
 
 - type: latheRecipe
   id: ReinforcementFlatpackSyndicateCyborgSaboteur
+  category: Circuitry
   result: ReinforcementFlatpackSyndicateCyborgSaboteur
   completetime: 1.5
   materials:

@@ -2,6 +2,7 @@
 
 - type: latheRecipe
   id: MonkeyCube
+  category: Food
   result: MonkeyCube
   completetime: 30
   materials:
@@ -9,6 +10,7 @@
 
 - type: latheRecipe
   id: KoboldCube
+  category: Food
   result: KoboldCube
   completetime: 30
   materials:
@@ -16,6 +18,7 @@
 
 - type: latheRecipe
   id: CowCube
+  category: Food
   result: CowCube
   completetime: 30
   materials:
@@ -23,6 +26,7 @@
 
 - type: latheRecipe
   id: GoatCube
+  category: Food
   result: GoatCube
   completetime: 30
   materials:
@@ -30,6 +34,7 @@
 
 - type: latheRecipe
   id: MothroachCube
+  category: Food
   result: MothroachCube
   completetime: 45 # prevent biblical floods
   materials:
@@ -37,6 +42,7 @@
 
 - type: latheRecipe
   id: MouseCube
+  category: Food
   result: MouseCube
   completetime: 15
   materials:
@@ -44,6 +50,7 @@
 
 - type: latheRecipe
   id: CockroachCube
+  category: Food
   result: CockroachCube
   completetime: 15
   materials:
@@ -51,6 +58,7 @@
 
 - type: latheRecipe
   id: SpaceCarpCube
+  category: Food
   result: SpaceCarpCube
   completetime: 30
   materials:
@@ -59,6 +67,7 @@
 
 - type: latheRecipe
   id: SpaceTickCube
+  category: Food
   result: SpaceTickCube
   completetime: 15
   materials:
@@ -67,6 +76,7 @@
 
 - type: latheRecipe
   id: AbominationCube
+  category: Food
   result: AbominationCube
   completetime: 30
   materials: # abominations are slow and essentially worse than even carp

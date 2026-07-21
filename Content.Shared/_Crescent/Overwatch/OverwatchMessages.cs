@@ -4,7 +4,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Crescent.Overwatch;
 
 /// <summary>
-/// Запрос на обновление списка членов фракции.
+/// Request to refresh the faction member list.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchRefreshMessage : BoundUserInterfaceMessage
@@ -12,38 +12,38 @@ public sealed class OverwatchRefreshMessage : BoundUserInterfaceMessage
 }
 
 /// <summary>
-/// Состояние UI с данными о членах фракции.
+/// UI state carrying the faction member data.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchUpdateState : BoundUserInterfaceState
 {
     /// <summary>
-    /// Список данных о членах фракции.
+    /// The faction members' data.
     /// </summary>
     public readonly List<OverwatchMemberData> Members;
 
     /// <summary>
-    /// Доступные отряды (ID -> Название).
+    /// Available squads (ID -> name).
     /// </summary>
     public readonly Dictionary<int, string> AvailableSquads;
 
     /// <summary>
-    /// Текущий фильтр по статусу.
+    /// Current status filter.
     /// </summary>
     public readonly OverwatchMemberStatus? StatusFilter;
 
     /// <summary>
-    /// Текущий фильтр по отряду.
+    /// Current squad filter.
     /// </summary>
     public readonly int? SquadFilter;
 
     /// <summary>
-    /// Текущий поисковый запрос.
+    /// Current search query.
     /// </summary>
     public readonly string SearchQuery;
 
     /// <summary>
-    /// Цвет фракции для UI.
+    /// Faction colour for the UI.
     /// </summary>
     public readonly Color FactionColor;
 
@@ -65,13 +65,13 @@ public sealed class OverwatchUpdateState : BoundUserInterfaceState
 }
 
 /// <summary>
-/// Запрос на просмотр камеры цели.
+/// Request to view the target's camera.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchViewCameraMessage : BoundUserInterfaceMessage
 {
     /// <summary>
-    /// Сущность цели для наблюдения.
+    /// The target entity to watch.
     /// </summary>
     public readonly NetEntity Target;
 
@@ -82,7 +82,7 @@ public sealed class OverwatchViewCameraMessage : BoundUserInterfaceMessage
 }
 
 /// <summary>
-/// Запрос на остановку наблюдения.
+/// Request to stop watching.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchStopWatchingMessage : BoundUserInterfaceMessage
@@ -90,13 +90,13 @@ public sealed class OverwatchStopWatchingMessage : BoundUserInterfaceMessage
 }
 
 /// <summary>
-/// Запрос на установку фильтра по статусу.
+/// Request to set the status filter.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchSetStatusFilterMessage : BoundUserInterfaceMessage
 {
     /// <summary>
-    /// Статус для фильтрации.
+    /// The status to filter by.
     /// </summary>
     public readonly OverwatchMemberStatus? Status;
 
@@ -107,13 +107,13 @@ public sealed class OverwatchSetStatusFilterMessage : BoundUserInterfaceMessage
 }
 
 /// <summary>
-/// Запрос на установку фильтра по отряду.
+/// Request to set the squad filter.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchSetSquadFilterMessage : BoundUserInterfaceMessage
 {
     /// <summary>
-    /// ID отряда для фильтрации.
+    /// The squad ID to filter by.
     /// </summary>
     public readonly int? SquadId;
 
@@ -124,13 +124,13 @@ public sealed class OverwatchSetSquadFilterMessage : BoundUserInterfaceMessage
 }
 
 /// <summary>
-/// Запрос на установку поискового запроса.
+/// Request to set the search query.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchSetSearchMessage : BoundUserInterfaceMessage
 {
     /// <summary>
-    /// Строка поискового запроса.
+    /// The search query string.
     /// </summary>
     public readonly string SearchQuery;
 
@@ -141,13 +141,13 @@ public sealed class OverwatchSetSearchMessage : BoundUserInterfaceMessage
 }
 
 /// <summary>
-/// Запрос на создание нового отряда.
+/// Request to create a new squad.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchCreateSquadMessage : BoundUserInterfaceMessage
 {
     /// <summary>
-    /// Название нового отряда.
+    /// The new squad's name.
     /// </summary>
     public readonly string SquadName;
 
@@ -158,13 +158,13 @@ public sealed class OverwatchCreateSquadMessage : BoundUserInterfaceMessage
 }
 
 /// <summary>
-/// Запрос на удаление отряда.
+/// Request to delete a squad.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchDeleteSquadMessage : BoundUserInterfaceMessage
 {
     /// <summary>
-    /// ID отряда для удаления.
+    /// The ID of the squad to delete.
     /// </summary>
     public readonly int SquadId;
 
@@ -175,18 +175,18 @@ public sealed class OverwatchDeleteSquadMessage : BoundUserInterfaceMessage
 }
 
 /// <summary>
-/// Запрос на назначение игрока в отряд.
+/// Request to assign a player to a squad.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchAssignSquadMessage : BoundUserInterfaceMessage
 {
     /// <summary>
-    /// Сущность игрока.
+    /// The player entity.
     /// </summary>
     public readonly NetEntity Player;
 
     /// <summary>
-    /// ID отряда для назначения.
+    /// The ID of the squad to assign them to.
     /// </summary>
     public readonly int SquadId;
 
@@ -198,13 +198,13 @@ public sealed class OverwatchAssignSquadMessage : BoundUserInterfaceMessage
 }
 
 /// <summary>
-/// Запрос на удаление игрока из отряда.
+/// Request to remove a player from their squad.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchRemoveSquadMemberMessage : BoundUserInterfaceMessage
 {
     /// <summary>
-    /// Сущность игрока.
+    /// The player entity.
     /// </summary>
     public readonly NetEntity Player;
 
@@ -215,18 +215,18 @@ public sealed class OverwatchRemoveSquadMemberMessage : BoundUserInterfaceMessag
 }
 
 /// <summary>
-/// Запрос на отправку объявления.
+/// Request to send an announcement.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchSendMessageAnnouncement : BoundUserInterfaceMessage
 {
     /// <summary>
-    /// Текст объявления.
+    /// The announcement text.
     /// </summary>
     public readonly string Message;
 
     /// <summary>
-    /// ID целевого отряда или null для всей фракции.
+    /// The target squad's ID, or null for the whole faction.
     /// </summary>
     public readonly int? TargetSquadId;
 
@@ -238,28 +238,28 @@ public sealed class OverwatchSendMessageAnnouncement : BoundUserInterfaceMessage
 }
 
 /// <summary>
-/// Событие для отображения объявления Overwatch.
+/// Event for displaying an Overwatch announcement.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class OverwatchAnnouncementEvent : EntityEventArgs
 {
     /// <summary>
-    /// Текст объявления.
+    /// The announcement text.
     /// </summary>
     public readonly string Message;
 
     /// <summary>
-    /// Название получателя (фракция или отряд).
+    /// The recipient's name (faction or squad).
     /// </summary>
     public readonly string TargetName;
 
     /// <summary>
-    /// Название Overwatch для фракции.
+    /// The faction's Overwatch name.
     /// </summary>
     public readonly string OverwatchTitle;
 
     /// <summary>
-    /// Цвет текста объявления.
+    /// The announcement text colour.
     /// </summary>
     public readonly Color Color;
 

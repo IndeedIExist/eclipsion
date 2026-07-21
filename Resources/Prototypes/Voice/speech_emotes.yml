@@ -329,6 +329,7 @@
   id: Boop
   name: chat-emote-name-boop
   category: Vocal
+  icon: Interface/Emotes/beep.png
   whitelist:
     tags:
     - SiliconEmotes
@@ -395,6 +396,7 @@
   id: Whirr
   name: chat-emote-name-whirr
   category: Vocal
+  icon: Interface/Emotes/buzz.png
   whitelist:
     tags:
     - SiliconEmotes
@@ -407,6 +409,7 @@
   id: Mars
   name: chat-emote-name-mars
   category: Vocal
+  icon: Interface/Emotes/vocal.png # temporary, no dedicated art
   whitelist:
     tags:
     - VoidbornEmotes
@@ -422,6 +425,7 @@
   id: Wurble
   name: chat-emote-name-wurble
   category: Vocal
+  icon: Interface/Emotes/vocal.png # temporary, no dedicated art
   whitelist:
     tags:
     - VoidbornEmotes

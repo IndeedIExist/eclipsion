@@ -18,6 +18,7 @@ public sealed partial class StockMarketUiFragment : BoxContainer
     private readonly BoxContainer _marketList;
     private readonly BoxContainer _portfolioList;
     private readonly BoxContainer _historyList;
+    private readonly BoxContainer _newsList;
     private readonly Label _toastLabel;
 
     private const int AllAmount = -1;
@@ -102,14 +103,17 @@ public sealed partial class StockMarketUiFragment : BoxContainer
         _marketList = MakeTab("stock-market-tab-market", 0, out var marketScroll);
         _portfolioList = MakeTab("stock-market-tab-portfolio", 1, out var portfolioScroll);
         _historyList = MakeTab("stock-market-tab-history", 2, out var historyScroll);
+        _newsList = MakeTab("stock-market-tab-news", 3, out var newsScroll);
 
         _tabs.AddChild(marketScroll);
         _tabs.AddChild(portfolioScroll);
         _tabs.AddChild(historyScroll);
+        _tabs.AddChild(newsScroll);
 
         _tabs.SetTabTitle(0, Loc.GetString("stock-market-tab-market"));
         _tabs.SetTabTitle(1, Loc.GetString("stock-market-tab-portfolio"));
         _tabs.SetTabTitle(2, Loc.GetString("stock-market-tab-history"));
+        _tabs.SetTabTitle(3, Loc.GetString("stock-market-tab-news"));
         AddChild(_tabs);
 
         _toastLabel = new Label
@@ -169,6 +173,7 @@ public sealed partial class StockMarketUiFragment : BoxContainer
         UpdateMarketTab(state);
         UpdatePortfolioTab(state);
         UpdateHistoryTab(state);
+        UpdateNewsTab(state);
 
         if (_lastHistoryCount >= 0 && state.History.Count > _lastHistoryCount)
         {
@@ -368,9 +373,11 @@ public sealed partial class StockMarketUiFragment : BoxContainer
                 HorizontalExpand = true,
             });
 
+            // A holding with no quote belongs to a faction that is not fielded this round. It is still
+            // owned and still carries over, it just cannot be traded until that faction is back.
             var valueText = state.Prices.TryGetValue(id, out var price)
                 ? $"{shares} × {price.CurrentPrice:F0}cr = {shares * price.CurrentPrice:F0}cr"
-                : $"{shares}";
+                : Loc.GetString("stock-market-delisted", ("shares", shares));
 
             row.AddChild(new Label
             {
@@ -423,6 +430,53 @@ public sealed partial class StockMarketUiFragment : BoxContainer
             });
 
             _historyList.AddChild(row);
+        }
+    }
+
+    /// <summary>
+    /// The feed that tells a trader *why* a price moved. Without it the faction stocks look like
+    /// random noise, when in fact they only ever move because of something that happened in the round.
+    /// </summary>
+    private void UpdateNewsTab(StockMarketUiState state)
+    {
+        _newsList.RemoveAllChildren();
+
+        if (state.News.Count == 0)
+        {
+            _newsList.AddChild(new Label
+            {
+                Text = Loc.GetString("stock-market-no-news"),
+                HorizontalAlignment = HAlignment.Center,
+                Margin = new Thickness(0, 8),
+            });
+            return;
+        }
+
+        for (var i = state.News.Count - 1; i >= 0; i--)
+        {
+            var entry = state.News[i];
+
+            var row = new BoxContainer
+            {
+                Orientation = LayoutOrientation.Horizontal,
+                HorizontalExpand = true,
+                Margin = new Thickness(0, 1),
+            };
+
+            row.AddChild(new Label
+            {
+                Text = $"{(entry.Positive ? "▲" : "▼")} {TruncateString(Loc.GetString(entry.CompanyId), 16)}",
+                FontColorOverride = entry.Positive ? UpColor : DownColor,
+                MinWidth = 110,
+            });
+
+            row.AddChild(new Label
+            {
+                Text = entry.Reason,
+                HorizontalExpand = true,
+            });
+
+            _newsList.AddChild(row);
         }
     }
 

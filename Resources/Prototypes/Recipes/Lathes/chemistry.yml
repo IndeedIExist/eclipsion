@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: Beaker
+  category: Medical
   result: Beaker
   completetime: 2
   materials:
@@ -7,6 +8,7 @@
 
 - type: latheRecipe
   id: LargeBeaker
+  category: Medical
   result: LargeBeaker
   completetime: 2
   materials:
@@ -14,6 +16,7 @@
 
 - type: latheRecipe
   id: CryostasisBeaker
+  category: Medical
   result: CryostasisBeaker
   completetime: 2
   materials:
@@ -22,6 +25,7 @@
 
 - type: latheRecipe
   id: SyringeCryostasis
+  category: Medical
   result: SyringeCryostasis
   completetime: 2
   materials:
@@ -30,6 +34,7 @@
 
 - type: latheRecipe
   id: Dropper
+  category: Medical
   result: Dropper
   completetime: 2
   materials:
@@ -38,6 +43,7 @@
 
 - type: latheRecipe
   id: Syringe
+  category: Medical
   result: Syringe
   completetime: 2
   materials:
@@ -46,6 +52,7 @@
 
 - type: latheRecipe
   id: DisposableSyringe
+  category: Medical
   result: DisposableSyringe
   completetime: 0.1
   materials:
@@ -54,6 +61,7 @@
 
 - type: latheRecipe
   id: BluespaceBeaker
+  category: Medical
   result: BluespaceBeaker
   completetime: 2
   materials:
@@ -65,6 +73,7 @@
 
 - type: latheRecipe
   id: SyringeBluespace
+  category: Medical
   result: SyringeBluespace
   completetime: 2
   materials:
@@ -77,6 +86,7 @@
 
 - type: latheRecipe
   id: PillCanister
+  category: Medical
   result: PillCanister
   completetime: 2
   materials:
@@ -84,6 +94,7 @@
 
 - type: latheRecipe
   id: ChemistryEmptyBottle01
+  category: Medical
   result: ChemistryEmptyBottle01
   completetime: 2
   materials:
@@ -102,6 +113,7 @@
 
 - type: latheRecipe
   id: ClothingEyesGlassesChemical
+  category: Clothing
   result: ClothingEyesGlassesChemical
   completetime: 2
   materials:

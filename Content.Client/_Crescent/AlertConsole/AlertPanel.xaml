@@ -19,14 +19,14 @@
             <Label Text="{Loc 'alert-console-radius-label'}" StyleClasses="ConsoleText" Margin="0 0 0 2"/>
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 6">
                 <Slider Name="RadiusSlider" HorizontalExpand="True" MinValue="10" MaxValue="2000" Value="200"/>
-                <Label Name="RadiusValueLabel" StyleClasses="ConsoleText" Text="200 м" Margin="6 0 0 0"
+                <Label Name="RadiusValueLabel" StyleClasses="ConsoleText" Text="200 m" Margin="6 0 0 0"
                        MinSize="70 0" VerticalAlignment="Center"/>
             </BoxContainer>
 
             <Label Text="{Loc 'alert-console-cooldown-label'}" StyleClasses="ConsoleText" Margin="0 0 0 2"/>
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
                 <Slider Name="CooldownSlider" HorizontalExpand="True" MinValue="5" MaxValue="3600" Value="60"/>
-                <Label Name="CooldownValueLabel" StyleClasses="ConsoleText" Text="60 сек" Margin="6 0 0 0"
+                <Label Name="CooldownValueLabel" StyleClasses="ConsoleText" Text="60 sec" Margin="6 0 0 0"
                        MinSize="70 0" VerticalAlignment="Center"/>
             </BoxContainer>
         </BoxContainer>

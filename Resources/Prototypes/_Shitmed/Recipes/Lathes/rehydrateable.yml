@@ -113,6 +113,7 @@
 
 - type: latheRecipe
   id: SpaceLungsAnimal
+  category: Medical
   result: OrganSpaceAnimalLungs
   completetime: 60
   materials:
@@ -120,6 +121,7 @@
 
 - type: latheRecipe
   id: SpaceHeartAnimal
+  category: Medical
   result: OrganSpaceAnimalHeart
   completetime: 60
   materials:
@@ -127,6 +129,7 @@
 
 - type: latheRecipe
   id: SpaceLungsDragon
+  category: Medical
   result: OrganDragonLungs
   completetime: 60
   materials:
@@ -134,6 +137,7 @@
 
 - type: latheRecipe
   id: SpaceEyesLaser
+  category: Medical
   result: OrganLaserEyes
   completetime: 60
   materials:
@@ -141,6 +145,7 @@
 
 - type: latheRecipe
   id: SpaceHeartCobra
+  category: Medical
   result: OrganCobraHeart
   completetime: 60
   materials:

@@ -1,6 +1,6 @@
 - type: gameMap
   id: AuroraImperialis
-  mapName: 'DSM Aurora İmperialis'
+  mapName: 'DSM Aurora Imperialis'
   mapPath: /Maps/_Crescent/Stations/aurora.yml # taleryn-version
   minPlayers: 0
   stations:

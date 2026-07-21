@@ -4,6 +4,7 @@
 
 - type: latheRecipe
   id: WeaponTurretSmallMachinegunFlatpack
+  category: Circuitry
   result: WeaponTurretSmallMachinegunFlatpack
   completetime: 20
   materials:
@@ -14,6 +15,7 @@
 
 - type: latheRecipe
   id: WeaponTurretMediumMachinegunFlatpack
+  category: Circuitry
   result: WeaponTurretMediumMachinegunFlatpack
   completetime: 25
   materials:
@@ -24,6 +26,7 @@
 
 - type: latheRecipe
   id: BaseWeaponTurretShortbowFlatpack
+  category: Circuitry
   result: BaseWeaponTurretShortbowFlatpack
   completetime: 30
   materials:
@@ -36,6 +39,7 @@
 
 - type: latheRecipe
   id: WeaponTurretSmallArtilleryFlatpack
+  category: Circuitry
   result: WeaponTurretSmallArtilleryFlatpack
   completetime: 28
   materials:
@@ -46,6 +50,7 @@
 
 - type: latheRecipe
   id: WeaponTurretLargeMachinegunFlatpack
+  category: Circuitry
   result: WeaponTurretLargeMachinegunFlatpack
   completetime: 35
   materials:
@@ -56,6 +61,7 @@
 
 - type: latheRecipe
   id: BaseWeaponTurretAzimuthFlatpack
+  category: Circuitry
   result: BaseWeaponTurretAzimuthFlatpack
   completetime: 40
   materials:
@@ -66,6 +72,7 @@
 
 - type: latheRecipe
   id: BaseWeaponTurretArbalestFlatpack
+  category: Circuitry
   result: BaseWeaponTurretArbalestFlatpack
   completetime: 38
   materials:
@@ -79,6 +86,7 @@
 
 - type: latheRecipe
   id: BaseWeaponTurretRetributionFlatpack
+  category: Circuitry
   result: BaseWeaponTurretRetributionFlatpack
   completetime: 32
   materials:
@@ -89,6 +97,7 @@
 
 - type: latheRecipe
   id: BaseWeaponTurretGlareFlatpack
+  category: Circuitry
   result: BaseWeaponTurretGlareFlatpack
   completetime: 42
   materials:
@@ -99,6 +108,7 @@
 
 - type: latheRecipe
   id: BaseWeaponTurretStarburstFlatpack
+  category: Circuitry
   result: BaseWeaponTurretStarburstFlatpack
   completetime: 45
   materials:
@@ -108,6 +118,7 @@
 
 - type: latheRecipe
   id: BaseWeaponTurretBolterFlatpack
+  category: Circuitry
   result: BaseWeaponTurretBolterFlatpack
   completetime: 42
   materials:
@@ -132,6 +143,7 @@
 
 - type: latheRecipe
   id: FlatpackComputerDroneControl
+  category: Circuitry
   result: FlatpackComputerDroneControl
   completetime: 45
   materials:
@@ -142,6 +154,7 @@
 
 - type: latheRecipe
   id: FlatpackDroneController
+  category: Circuitry
   result: FlatpackDroneController
   completetime: 40
   materials:
@@ -154,6 +167,7 @@
 
 - type: latheRecipe
   id: CompositionC4
+  category: Weapons
   result: C4
   completetime: 10
   materials:
@@ -164,6 +178,7 @@
 
 - type: latheRecipe
   id: ThrusterHighImpulseTAP
+  category: Shipyard
   result: ThrusterHighImpulseTAP
   completetime: 20
   materials:

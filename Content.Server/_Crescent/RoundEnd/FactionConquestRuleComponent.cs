@@ -12,9 +12,21 @@ public sealed partial class FactionConquestRuleComponent : Component
     /// The great powers — the two sides whose war the round is actually about. If exactly one of them still holds
     /// its station the sector is credited to it, whoever else is still standing. If both lose theirs the minors do
     /// NOT have to finish each other off — every faction still holding a station takes the sector together.
+    ///
+    /// This is the wish list, not the roster: the ones that actually turn up on the map are <see cref="ActiveMajors"/>.
     /// </summary>
     [DataField]
     public List<string> MajorFactions = new() { "DSM", "NCWL" };
+
+    /// <summary>
+    /// The great powers that actually fielded a station this round, resolved once from the map instead of trusted
+    /// from <see cref="MajorFactions"/>. Freeplay | TFSC &amp; SHI maps no DSM or NCWL station at all, and a great
+    /// power that was never in the round is not a great power that lost — without this the very first check would
+    /// see zero majors standing, hand the sector to whoever spawned, and end the round the moment it began.
+    /// Null until the map has spawned; nothing is evaluated before then.
+    /// </summary>
+    [ViewVariables]
+    public List<string>? ActiveMajors;
 
     /// <summary>How long a station must sit without power before it counts as fallen.</summary>
     [DataField]

@@ -20,10 +20,10 @@ public sealed partial class AlertPanel : BoxContainer
         RobustXamlLoader.Load(this);
 
         RadiusSlider.OnValueChanged += _ =>
-            RadiusValueLabel.Text = $"{(int) RadiusSlider.Value} м";
+            RadiusValueLabel.Text = $"{(int) RadiusSlider.Value} m";
 
         CooldownSlider.OnValueChanged += _ =>
-            CooldownValueLabel.Text = $"{(int) CooldownSlider.Value} сек";
+            CooldownValueLabel.Text = $"{(int) CooldownSlider.Value} sec";
 
         BroadcastCheck.OnToggled += args =>
             ShuttleMessageEdit.Editable = args.Pressed;
@@ -60,10 +60,10 @@ public sealed partial class AlertPanel : BoxContainer
         EnabledCheck.Pressed = state.Enabled;
 
         RadiusSlider.SetValueWithoutEvent(Math.Clamp(state.DetectionRadius, 10f, 2000f));
-        RadiusValueLabel.Text = $"{(int) state.DetectionRadius} м";
+        RadiusValueLabel.Text = $"{(int) state.DetectionRadius} m";
 
         CooldownSlider.SetValueWithoutEvent(Math.Clamp(state.AlertCooldownSeconds, 5f, 3600f));
-        CooldownValueLabel.Text = $"{(int) state.AlertCooldownSeconds} сек";
+        CooldownValueLabel.Text = $"{(int) state.AlertCooldownSeconds} sec";
 
         StationMessageEdit.Text = state.StationAlertMessage;
 

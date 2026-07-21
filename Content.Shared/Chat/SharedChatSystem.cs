@@ -28,7 +28,7 @@ public abstract class SharedChatSystem : EntitySystem
     public const char TelepathicPrefix = '='; //Nyano - Summary: Adds the telepathic channel's prefix.
     public const char DefaultChannelKey = 'h';
     // Art-TTS Start
-    public const int VoiceRange = 15; // Потому что это РАТГООООООООООООР
+    public const int VoiceRange = 15; // Because this is RATGOOOOOOOOOOOOR
     public const int WhisperClearRange = 3;
     public const int WhisperMuffledRange = 7;
     // Art-TTS End

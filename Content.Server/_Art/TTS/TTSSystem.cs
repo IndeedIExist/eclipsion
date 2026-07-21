@@ -78,28 +78,24 @@ public sealed partial class TTSSystem : EntitySystem
 
     private async void HandleReceiveRadio(EntityUid uid, string message, LanguagePrototype language, string speaker)
     {
-        var recipients = Filter.Empty();
-        var hasRecipients = false;
+        // This fires once per listening headset, so it must only reach that listener. Broadcasting to
+        // everyone in PVS made a single radio line play once per nearby listener, all overlapping.
+        if (!TryComp<ActorComponent>(uid, out var actor))
+            return;
 
-        foreach (var session in Filter.Pvs(uid).Recipients)
-        {
-            if (!session.AttachedEntity.HasValue)
-                continue;
-
-            EntityManager.TryGetComponent(session.AttachedEntity.Value, out LanguageSpeakerComponent? lang);
-            if (!_language.CanUnderstand(new(session.AttachedEntity.Value, lang), language.ID))
-                continue;
-
-            recipients.AddPlayer(session);
-            hasRecipients = true;
-        }
-
-        if (!hasRecipients)
+        TryComp<LanguageSpeakerComponent>(uid, out var lang);
+        if (!_language.CanUnderstand((uid, lang), language.ID))
             return;
 
         var soundData = await GenerateTTS(message, speaker, "radio");
-        if (soundData is null) return;
-        RaiseNetworkEvent(new PlayTTSEvent(soundData, GetNetEntity(uid)), recipients);
+        if (soundData is null)
+            return;
+
+        // The request was awaited, so the listener may be gone by now.
+        if (Deleted(uid) || !TryComp(uid, out actor))
+            return;
+
+        RaiseNetworkEvent(new PlayTTSEvent(soundData, GetNetEntity(uid)), Filter.SinglePlayer(actor.PlayerSession));
     }
 
     private async void HandleSay(EntityUid uid, string message, LanguagePrototype language, string speaker)
@@ -111,6 +107,10 @@ public sealed partial class TTSSystem : EntitySystem
         // var obfuscated = await GenerateTTS(_language.ObfuscateSpeech(message, language), speaker);
         // if (obfuscated is null)
         //     return;
+
+        // The speaker can disconnect or be deleted while the API request is in flight.
+        if (Deleted(uid))
+            return;
 
         var nilter = Filter.Empty();
         var lilter = Filter.Empty();
@@ -140,9 +140,14 @@ public sealed partial class TTSSystem : EntitySystem
         // if (obfuscated is null)
         //     return;
 
+        // The speaker can disconnect or be deleted while the API request is in flight. GetComponent below
+        // throws rather than returning null, and this is an async void, so the throw would go unhandled.
+        if (!TryComp<TransformComponent>(uid, out var sourceXform))
+            return;
+
         // TODO: Check obstacles
         var xformQuery = GetEntityQuery<TransformComponent>();
-        var sourcePos = _xforms.GetWorldPosition(xformQuery.GetComponent(uid), xformQuery);
+        var sourcePos = _xforms.GetWorldPosition(sourceXform, xformQuery);
         var nilter = Filter.Empty();
         var lilter = Filter.Empty();
         foreach (var session in Filter.Pvs(uid).Recipients)
@@ -150,7 +155,9 @@ public sealed partial class TTSSystem : EntitySystem
             if (!session.AttachedEntity.HasValue)
                 continue;
 
-            var xform = xformQuery.GetComponent(session.AttachedEntity.Value);
+            if (!xformQuery.TryGetComponent(session.AttachedEntity.Value, out var xform))
+                continue;
+
             var distance = (sourcePos - _xforms.GetWorldPosition(xform, xformQuery)).Length();
             if (distance > ChatSystem.WhisperMuffledRange)
                 continue;

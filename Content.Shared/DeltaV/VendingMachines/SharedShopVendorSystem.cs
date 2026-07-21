@@ -1,5 +1,4 @@
 using Content.Shared.Access.Systems;
-using Content.Shared.DeltaV.Salvage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.Popups;
 using Content.Shared.Power;
@@ -15,7 +14,6 @@ namespace Content.Shared.DeltaV.VendingMachines;
 public abstract class SharedShopVendorSystem : EntitySystem
 {
     [Dependency] private readonly AccessReaderSystem _access = default!;
-    [Dependency] private readonly MiningPointsSystem _points = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
@@ -27,9 +25,6 @@ public abstract class SharedShopVendorSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<PointsVendorComponent, ShopVendorBalanceEvent>(OnPointsBalance);
-        SubscribeLocalEvent<PointsVendorComponent, ShopVendorPurchaseEvent>(OnPointsPurchase);
 
         SubscribeLocalEvent<ShopVendorComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<ShopVendorComponent, BreakageEventArgs>(OnBreak);
@@ -47,21 +42,6 @@ public abstract class SharedShopVendorSystem : EntitySystem
         var ev = new ShopVendorBalanceEvent(user);
         RaiseLocalEvent(uid, ref ev);
         return ev.Balance;
-    }
-
-    #endregion
-
-    #region Balance adapters
-
-    private void OnPointsBalance(Entity<PointsVendorComponent> ent, ref ShopVendorBalanceEvent args)
-    {
-        args.Balance = _points.TryFindIdCard(args.User)?.Comp?.Points ?? 0;
-    }
-
-    private void OnPointsPurchase(Entity<PointsVendorComponent> ent, ref ShopVendorPurchaseEvent args)
-    {
-        if (_points.TryFindIdCard(args.User) is {} idCard && _points.RemovePoints(idCard, args.Cost))
-            args.Paid = true;
     }
 
     #endregion

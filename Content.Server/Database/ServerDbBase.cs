@@ -1723,7 +1723,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             if (faction == null)
                 return false;
             
-            // Явно удаляем связанные записи
+            // Explicitly delete the related records
             db.DbContext.RatFactionWhitelists.RemoveRange(faction.Whitelists);
             db.DbContext.RatFactionManagers.RemoveRange(faction.Managers);
             db.DbContext.RatFactions.Remove(faction);
@@ -1743,7 +1743,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             if (faction == null)
                 return false;
             
-            // Явно удаляем связанные записи
+            // Explicitly delete the related records
             db.DbContext.RatFactionWhitelists.RemoveRange(faction.Whitelists);
             db.DbContext.RatFactionManagers.RemoveRange(faction.Managers);
             db.DbContext.RatFactions.Remove(faction);

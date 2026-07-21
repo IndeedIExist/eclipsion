@@ -1,0 +1,73 @@
+# Faction-owned microforges.
+#
+# There are two shapes of these, and the difference is research:
+#
+#   * Planetfall forges (MicroforgeDSM / MicroforgeNCWL, in lathe.yml) carry their faction's whole catalogue in
+#     staticRecipes. Nobody runs an R&D server on the surface, so gating them behind research would just make
+#     them dead weight.
+#
+#   * Station forges (below) carry nothing of their own. They inherit PristineMicroforge's generic list — ammo,
+#     tools, electronics — and every piece of faction equipment has to come off that faction's research server.
+#     This is the whole point: on a station you are expected to actually run R&D.
+#
+# The FactionMachine component does two things for both shapes:
+#   - stamps ownership, so the forge only ever binds to its own faction's research server
+#   - restrictAccess, so only members of that faction can open the UI
+#
+# BaseFactionMicroforge carries the restrictAccess half and nothing else. It deliberately has no parent of its
+# own: add it to a forge's parent list rather than parenting to it, so the forge keeps whatever base it had.
+#
+# Note the station forges below do NOT re-declare Lathe. Re-declaring a component's list field replaces the
+# parent's list outright rather than appending to it, so writing staticRecipes here would throw away all ~415
+# of PristineMicroforge's generic recipes. Faction gear belongs in the research trees, not here.
+#
+# There is no forge for TSP or SRM: neither fields a station in freeplay, and SRM has no research discipline at
+# all, so a forge for them would be a box that never unlocks anything.
+
+- type: entity
+  id: BaseFactionMicroforge
+  abstract: true
+  components:
+  - type: FactionMachine
+    restrictAccess: true
+
+# Station forges. Placed on faction stations; a microforge a player builds gets stamped with the builder's
+# faction by SetFactionFromUser instead, so these exist for the ones that ship with the map.
+
+- type: entity
+  parent: [PristineMicroforge, BaseFactionMicroforge]
+  id: StationMicroforgeDSM
+  name: imperial microforge
+  description: An Imperial pattern microforge. Its restricted patterns are held on the Imperial research server.
+  components:
+  - type: FactionMachine
+    faction: DSM
+
+- type: entity
+  parent: [PristineMicroforge, BaseFactionMicroforge]
+  id: StationMicroforgeNCWL
+  name: union microforge
+  description: A Union pattern microforge. Its restricted patterns are held on the Communard research server.
+  components:
+  - type: FactionMachine
+    faction: NCWL
+
+- type: entity
+  parent: [PristineMicroforge, BaseFactionMicroforge]
+  id: StationMicroforgeSHI
+  name: shinohara microforge
+  description: A Shinohara pattern microforge. Its restricted patterns are held on the corporate research server.
+  components:
+  - type: FactionMachine
+    faction: SHI
+
+# Every TFSC subfaction resolves to TFSC in FactionMachineSystem, so this one forge serves the whole umbrella:
+# Families, Interdyne, Saws, Gorlex and Cyberdawn crews can all print from it.
+- type: entity
+  parent: [PristineMicroforge, BaseFactionMicroforge]
+  id: StationMicroforgeTFSC
+  name: syndicate microforge
+  description: A syndicate microforge, keyed to the coalition at large. Its restricted patterns are held on the syndicate research servers.
+  components:
+  - type: FactionMachine
+    faction: TFSC

@@ -3,25 +3,25 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._Crescent.Overwatch;
 
 /// <summary>
-/// Компонент для игрока, который смотрит через камеру другого игрока через консоль Overwatch.
+/// Sits on a player who is looking through another player's camera via the Overwatch console.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class RatOverwatchWatchingComponent : Component
 {
     /// <summary>
-    /// Сущность, за которой сейчас наблюдает игрок.
+    /// The entity the player is currently watching.
     /// </summary>
     [DataField, AutoNetworkedField]
     public EntityUid? Watching;
 
     /// <summary>
-    /// Сущность консоли Overwatch, которая управляет этим наблюдением.
+    /// The Overwatch console entity driving this watch.
     /// </summary>
     [DataField, AutoNetworkedField]
     public EntityUid? Console;
 
     /// <summary>
-    /// Сущность камеры, через которую осуществляется наблюдение.
+    /// The camera entity the watching happens through.
     /// </summary>
     [DataField, AutoNetworkedField]
     public EntityUid? Camera;

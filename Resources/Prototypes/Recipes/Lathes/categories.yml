@@ -48,3 +48,30 @@
 - type: latheCategory
   id: Materials
   name: lathe-category-materials
+
+# _Crescent - broad categories so the larger lathes (the microforge lists over a thousand recipes)
+# are actually browsable instead of one flat alphabetical wall.
+
+- type: latheCategory
+  id: Armor
+  name: lathe-category-armor
+
+- type: latheCategory
+  id: Clothing
+  name: lathe-category-clothing
+
+- type: latheCategory
+  id: Medical
+  name: lathe-category-medical
+
+- type: latheCategory
+  id: Shipyard
+  name: lathe-category-shipyard
+
+- type: latheCategory
+  id: Power
+  name: lathe-category-power
+
+- type: latheCategory
+  id: Implants
+  name: lathe-category-implants

@@ -32,7 +32,9 @@ namespace Content.Shared.Administration
 
             foreach (var value in flags)
             {
-                var name = value.ToString().ToUpper();
+                // Invariant, not the current culture: on a Turkish-locale host ToUpper() turns "Admin" into
+                // "ADMİN", so the names stored in the database no longer match and loading an admin throws.
+                var name = value.ToString().ToUpperInvariant();
 
                 // If, in the future, somebody adds a combined admin flag or something for convenience,
                 // ignore it.

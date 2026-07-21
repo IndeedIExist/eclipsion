@@ -77,10 +77,10 @@ public abstract class BaseTextureTag : IMarkupTagHandler
     }
 
     /// <summary>
-    /// Очищает строку от мусора, который приходит вместе с ней
+    /// Strips the junk that arrives alongside the string
     /// </summary>
     /// <remarks>
-    /// Почему мне приходят строки в говне
+    /// No idea why the strings turn up in this state
     /// </remarks>
     protected static string ClearString(string str)
     {

@@ -3,31 +3,31 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._Crescent.Overwatch;
 
 /// <summary>
-/// Компонент консоли Overwatch для отслеживания членов фракции.
+/// Overwatch console component, for tracking faction members.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class OverwatchConsoleComponent : Component
 {
     /// <summary>
-    /// Фракция, которую отслеживает эта консоль.
+    /// The faction this console tracks.
     /// </summary>
     [DataField, AutoNetworkedField]
     public string Faction = string.Empty;
 
     /// <summary>
-    /// Текущий фильтр по статусу.
+    /// Current status filter.
     /// </summary>
     [DataField, AutoNetworkedField]
     public OverwatchMemberStatus? StatusFilter;
 
     /// <summary>
-    /// Текущий фильтр по отряду.
+    /// Current squad filter.
     /// </summary>
     [DataField, AutoNetworkedField]
     public int? SquadFilter;
 
     /// <summary>
-    /// Текущий поисковый запрос.
+    /// Current search query.
     /// </summary>
     [DataField, AutoNetworkedField]
     public string SearchQuery = string.Empty;

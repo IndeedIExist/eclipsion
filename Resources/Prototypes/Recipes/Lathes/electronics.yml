@@ -215,6 +215,7 @@
 
 - type: latheRecipe
   id: MetempsychoticMachineCircuitboard
+  category: Circuitry
   result: MetempsychoticMachineCircuitboard
   completetime: 4
   materials:
@@ -788,6 +789,7 @@
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
   id: SMESAdvancedMachineCircuitboard
+  category: Circuitry
   result: SMESAdvancedMachineCircuitboard
 
 - type: latheRecipe
@@ -1093,6 +1095,7 @@
 
 - type: latheRecipe
   id: PowerCageRechargerCircuitboard
+  category: Circuitry
   result: PowerCageRechargerCircuitboard
   completetime: 6
   materials:
@@ -1101,6 +1104,7 @@
 
 - type: latheRecipe
   id: ShuttleGunSvalinnMachineGunCircuitboard
+  category: Circuitry
   result: ShuttleGunSvalinnMachineGunCircuitboard
   completetime: 6
   materials:
@@ -1109,6 +1113,7 @@
 
 - type: latheRecipe
   id: ShuttleGunPerforatorCircuitboard
+  category: Circuitry
   result: ShuttleGunPerforatorCircuitboard
   completetime: 10
   materials:
@@ -1118,6 +1123,7 @@
 
 - type: latheRecipe
   id: ShuttleGunKineticCircuitboard
+  category: Circuitry
   result: ShuttleGunKineticCircuitboard
   completetime: 6
   materials:
@@ -1126,6 +1132,7 @@
 
 - type: latheRecipe
   id: ShuttleGunFriendshipCircuitboard
+  category: Circuitry
   result: ShuttleGunFriendshipCircuitboard
   completetime: 8
   materials:
@@ -1135,6 +1142,7 @@
 
 - type: latheRecipe
   id: ShuttleGunDusterCircuitboard
+  category: Circuitry
   result: ShuttleGunDusterCircuitboard
   completetime: 12
   materials:
@@ -1144,6 +1152,7 @@
 
 - type: latheRecipe
   id: ShuttleGunGrappleCircuitboard
+  category: Circuitry
   result: ShuttleGunGrappleCircuitboard
   completetime: 6
   materials:
@@ -1162,6 +1171,7 @@
 
 - type: latheRecipe
   id: ReagentGrinderIndustrialMachineCircuitboard
+  category: Circuitry
   result: ReagentGrinderIndustrialMachineCircuitboard
   completetime: 5
   materials:
@@ -1171,6 +1181,7 @@
 
 - type: latheRecipe
   id: JukeboxCircuitBoard
+  category: Circuitry
   result: JukeboxCircuitBoard
   completetime: 4
   materials:

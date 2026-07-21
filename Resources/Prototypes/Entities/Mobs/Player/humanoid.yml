@@ -56,8 +56,8 @@
   suffix: Hunter, APRT Hunter
   components:
     - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: hunter
+      sprite: _Crescent/Clothing/SRM/OuterClothing/huntercoat.rsi
+      state: icon
     - type: RandomHumanoidSpawner
       settings: APRTHunterSpawner
 
@@ -140,8 +140,8 @@
   suffix: Hunt Overseer, APRT Hunt Overseer
   components:
     - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: hunter
+      sprite: _Crescent/Clothing/SRM/OuterClothing/huntercoat.rsi
+      state: icon
     - type: RandomHumanoidSpawner
       settings: APRTHuntOverseerSpawner
 

@@ -29,6 +29,7 @@ public sealed class EconomyPriceSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly BankSystem _bank = default!;
     [Dependency] private readonly StationTradeMarketSystem _market = default!;
+    [Dependency] private readonly StockCompanySystem _stocks = default!;
 
     private readonly Dictionary<string, double> _itemOverrides = new();
     private readonly Dictionary<string, int> _vesselOverrides = new();
@@ -80,6 +81,7 @@ public sealed class EconomyPriceSystem : EntitySystem
             EconomyListCategory.Vessels => BuildVesselEntries(msg.SearchFilter),
             EconomyListCategory.Treasury => BuildTreasuryEntries(msg.SearchFilter),
             EconomyListCategory.Players => BuildPlayerEntries(msg.SearchFilter),
+            EconomyListCategory.Stocks => BuildStockEntries(msg.SearchFilter),
             _ => new List<EconomyPriceEntry>(),
         };
 
@@ -106,6 +108,9 @@ public sealed class EconomyPriceSystem : EntitySystem
                 return;
             case EconomyListCategory.Players:
                 SetPlayerBalance(msg, args.SenderSession);
+                return;
+            case EconomyListCategory.Stocks:
+                SetStockPrice(msg, args.SenderSession);
                 return;
         }
 
@@ -380,6 +385,61 @@ public sealed class EconomyPriceSystem : EntitySystem
 
         entries.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCultureIgnoreCase));
         return entries;
+    }
+
+    private List<EconomyPriceEntry> BuildStockEntries(string searchFilter)
+    {
+        var filter = searchFilter.Trim();
+        var entries = new List<EconomyPriceEntry>();
+
+        foreach (var company in _stocks.GetCompanies())
+        {
+            var name = Loc.GetString(company.Id);
+
+            if (filter.Length > 0
+                && !company.Id.Contains(filter, StringComparison.OrdinalIgnoreCase)
+                && !name.Contains(filter, StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            // Market share is what the admin actually wants to see; it is the underlying quantity and
+            // it is the thing that has to add up across the whole list.
+            var status = company.Active ? string.Empty : " [delisted]";
+            entries.Add(new EconomyPriceEntry(
+                company.Id,
+                $"{name} — {company.Share * 100f:0.0}% share{status}",
+                EconomyListCategory.Stocks,
+                null,
+                company.BasePrice,
+                Math.Round(company.CurrentPrice, 2)));
+        }
+
+        entries.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCultureIgnoreCase));
+        return entries;
+    }
+
+    private void SetStockPrice(EconomyAdminSetPriceEvent msg, ICommonSession session)
+    {
+        var company = _stocks.GetCompany(msg.Id);
+        if (company == null)
+            return;
+
+        var oldPrice = company.CurrentPrice;
+        if (!_stocks.SetPrice(msg.Id, msg.Price))
+            return;
+
+        _adminLog.Add(
+            LogType.AdminCommands,
+            LogImpact.High,
+            $"{session:player} set stock {msg.Id} price from {oldPrice:0.00} to {company.CurrentPrice:0.00} cr");
+
+        RaiseNetworkEvent(new EconomyAdminPriceUpdatedEvent
+        {
+            Category = EconomyListCategory.Stocks,
+            Id = msg.Id,
+            Price = Math.Round(company.CurrentPrice, 2),
+        });
     }
 
     private void SetTreasuryBalance(EconomyAdminSetPriceEvent msg, ICommonSession session)

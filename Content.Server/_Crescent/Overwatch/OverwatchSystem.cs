@@ -27,23 +27,23 @@ using Robust.Shared.Maths;
 namespace Content.Server._Crescent.Overwatch;
 
 /// <summary>
-/// Система для управления Overwatch.
+/// System for managing Overwatch.
 /// </summary>
 public sealed class OverwatchSystem : EntitySystem
 {
     /// <summary>
-    /// Интервал инвалидации кэша в секундах.
-    /// Кэш сбрасывается при изменении состава фракции.
+    /// Cache invalidation interval, in seconds.
+    /// The cache is dropped whenever faction membership changes.
     /// </summary>
     private const float CacheInvalidationInterval = 2.0f;
 
     /// <summary>
-    /// Интервал обновления UI в секундах.
+    /// UI refresh interval, in seconds.
     /// </summary>
     private const float UpdateInterval = 1.0f;
 
     /// <summary>
-    /// ID слота экипировки для камеры наблюдения.
+    /// Equipment slot ID for the surveillance camera.
     /// </summary>
     private const string CameraSlotId = "neck";
 
@@ -60,17 +60,17 @@ public sealed class OverwatchSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
     /// <summary>
-    /// Пары наблюдения: watcher -> target.
+    /// Watch pairs: watcher -> target.
     /// </summary>
     private readonly Dictionary<EntityUid, EntityUid> _watchingPairs = new();
 
     /// <summary>
-    /// Кэш членов фракции для снижения аллокаций при частых обновлениях.
+    /// Cached faction members, to cut allocations during frequent refreshes.
     /// </summary>
     private readonly Dictionary<string, List<EntityUid>> _factionMembersCache = new();
 
     /// <summary>
-    /// Кэш данных участников для UI.
+    /// Cached member data for the UI.
     /// </summary>
     private readonly Dictionary<EntityUid, OverwatchMemberData> _memberDataCache = new();
 
@@ -91,8 +91,8 @@ public sealed class OverwatchSystem : EntitySystem
         SubscribeLocalEvent<RatOverwatchWatchingComponent, ComponentShutdown>(OnWatchingShutdown);
         SubscribeLocalEvent<RatOverwatchCameraComponent, ComponentShutdown>(OnCameraShutdown);
         SubscribeLocalEvent<RatOverwatchCameraComponent, EntityTerminatingEvent>(OnWatchedEntityTerminating);
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn); // Обновление UI при спавне игрока для отображения новых членов фракции
-        // Инвалидация кэша при изменении состава фракции или отрядов
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn); // Refresh the UI when a player spawns, so new faction members show up
+        // Invalidate the cache when faction or squad membership changes
         SubscribeLocalEvent<HullrotFactionComponent, ComponentInit>(OnFactionComponentInit);
         SubscribeLocalEvent<HullrotFactionComponent, ComponentShutdown>(OnFactionComponentShutdown);
         SubscribeLocalEvent<SquadComponent, ComponentInit>(OnSquadComponentInit);
@@ -114,7 +114,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Инвалидация кэша при инициализации компонента фракции.
+    /// Invalidates the cache when a faction component is initialised.
     /// </summary>
     private void OnFactionComponentInit(EntityUid uid, HullrotFactionComponent component, ComponentInit args)
     {
@@ -122,7 +122,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Инвалидация кэша при удалении компонента фракции.
+    /// Invalidates the cache when a faction component is removed.
     /// </summary>
     private void OnFactionComponentShutdown(EntityUid uid, HullrotFactionComponent component, ComponentShutdown args)
     {
@@ -131,7 +131,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Инвалидация кэша при инициализации компонента отряда.
+    /// Invalidates the cache when a squad component is initialised.
     /// </summary>
     private void OnSquadComponentInit(EntityUid uid, SquadComponent component, ComponentInit args)
     {
@@ -139,7 +139,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Инвалидация кэша при удалении компонента отряда.
+    /// Invalidates the cache when a squad component is removed.
     /// </summary>
     private void OnSquadComponentShutdown(EntityUid uid, SquadComponent component, ComponentShutdown args)
     {
@@ -148,7 +148,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик открытия UI консоли — останавливает наблюдение если игрок уже смотрит через камеру.
+    /// Console UI opened — stops watching if the player is already looking through a camera.
     /// </summary>
     private void OnBeforeUIOpen(Entity<OverwatchConsoleComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
@@ -161,7 +161,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик попытки открытия UI — проверяет принадлежность к фракции.
+    /// UI open attempt — checks the player belongs to the faction.
     /// </summary>
     private void OnUIOpenAttempt(Entity<OverwatchConsoleComponent> ent, ref ActivatableUIOpenAttemptEvent args)
     {
@@ -170,7 +170,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик движения игрока — останавливает наблюдение при попытке движения.
+    /// Player movement — stops watching as soon as the player tries to move.
     /// </summary>
     private void OnWatchingMoveInput(Entity<RatOverwatchWatchingComponent> ent, ref MoveInputEvent args)
     {
@@ -182,7 +182,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обновляет данные UI консоли Overwatch.
+    /// Refreshes the Overwatch console UI data.
     /// </summary>
     private void RefreshData(Entity<OverwatchConsoleComponent> ent)
     {
@@ -218,7 +218,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Проверяет необходимость обновления данных участника.
+    /// Checks whether a member's data needs refreshing.
     /// </summary>
     private bool ShouldRefreshData(EntityUid member, OverwatchMemberData cachedData)
     {
@@ -235,7 +235,7 @@ public sealed class OverwatchSystem : EntitySystem
         }
         else
         {
-            // Если компонента нет, а в кэше был отряд — нужно обновить
+            // No component now, but the cache held a squad — needs refreshing
             if (cachedData.SquadId.HasValue)
                 return true;
         }
@@ -245,7 +245,7 @@ public sealed class OverwatchSystem : EntitySystem
             return true;
         if (cachedData.Coordinates.HasValue && currentCoords.HasValue)
         {
-            // Проверяем, изменились ли координаты значительно (порог 0.5f)
+            // Check whether the coordinates moved significantly (0.5f threshold)
             var dx = cachedData.Coordinates.Value.X - currentCoords.Value.X;
             var dy = cachedData.Coordinates.Value.Y - currentCoords.Value.Y;
             if (dx * dx + dy * dy > 0.25f) // 0.5f^2
@@ -256,7 +256,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Создаёт данные участника для отображения в UI.
+    /// Builds a member's data for display in the UI.
     /// </summary>
     private OverwatchMemberData CreateMemberData(EntityUid member)
     {
@@ -296,7 +296,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик создания нового отряда.
+    /// Handles a new squad being created.
     /// </summary>
     private void OnCreateSquad(Entity<OverwatchConsoleComponent> ent, ref OverwatchCreateSquadMessage args)
     {
@@ -311,7 +311,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик удаления отряда.
+    /// Handles a squad being deleted.
     /// </summary>
     private void OnDeleteSquad(Entity<OverwatchConsoleComponent> ent, ref OverwatchDeleteSquadMessage args)
     {
@@ -325,7 +325,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик назначения игрока в отряд.
+    /// Handles a player being assigned to a squad.
     /// </summary>
     private void OnAssignSquad(Entity<OverwatchConsoleComponent> ent, ref OverwatchAssignSquadMessage args)
     {
@@ -347,7 +347,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик удаления игрока из отряда.
+    /// Handles a player being removed from a squad.
     /// </summary>
     private void OnRemoveSquadMember(Entity<OverwatchConsoleComponent> ent, ref OverwatchRemoveSquadMemberMessage args)
     {
@@ -367,7 +367,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик отправки объявления Overwatch.
+    /// Handles an Overwatch announcement being sent.
     /// </summary>
     private void OnSendAnnouncement(Entity<OverwatchConsoleComponent> ent, ref OverwatchSendMessageAnnouncement args)
     {
@@ -476,7 +476,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Получает название отряда.
+    /// Gets a squad's name.
     /// </summary>
     private string GetSquadTargetName(string faction, int squadId)
     {
@@ -487,7 +487,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик переключения вида на камеру цели.
+    /// Handles switching the view to the target's camera.
     /// </summary>
     private void OnViewCamera(Entity<OverwatchConsoleComponent> ent, ref OverwatchViewCameraMessage args)
     {
@@ -541,7 +541,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Останавливает наблюдение игрока за целью.
+    /// Stops a player watching their target.
     /// </summary>
     private void StopWatching(EntityUid watcher, RatOverwatchWatchingComponent watchingComp)
     {
@@ -581,7 +581,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик удаления компонента наблюдения.
+    /// Handles the watching component being removed.
     /// </summary>
     private void OnWatchingShutdown(Entity<RatOverwatchWatchingComponent> ent, ref ComponentShutdown args)
     {
@@ -614,7 +614,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик удаления компонента камеры — очищает всех наблюдателей.
+    /// Camera component removed — clears every watcher.
     /// </summary>
     private void OnCameraShutdown(Entity<RatOverwatchCameraComponent> ent, ref ComponentShutdown args)
     {
@@ -628,7 +628,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик удаления наблюдаемой сущности — очищает всех наблюдателей.
+    /// Watched entity removed — clears every watcher.
     /// </summary>
     private void OnWatchedEntityTerminating(Entity<RatOverwatchCameraComponent> ent, ref EntityTerminatingEvent args)
     {
@@ -642,7 +642,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик отключения питания консоли — закрывает все наблюдения.
+    /// Console lost power — closes every active watch.
     /// </summary>
     private void OnPowerChanged(Entity<OverwatchConsoleComponent> ent, ref PowerChangedEvent args)
     {
@@ -667,7 +667,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обработчик завершения спавна игрока — обновляет UI всех открытых консолей.
+    /// Player spawn finished — refreshes the UI of every open console.
     /// </summary>
     private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
     {
@@ -717,7 +717,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Получает кэшированный список членов фракции.
+    /// Gets the cached list of faction members.
     /// </summary>
     private List<EntityUid> GetFactionMembers(string faction)
     {
@@ -737,7 +737,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Определяет статус участника (жив/мёртв/SSD).
+    /// Works out a member's status (alive/dead/SSD).
     /// </summary>
     private OverwatchMemberStatus GetMemberStatus(EntityUid member)
     {
@@ -756,7 +756,7 @@ public sealed class OverwatchSystem : EntitySystem
 
 
     /// <summary>
-    /// Получает должность сущности.
+    /// Gets an entity's job title.
     /// </summary>
     private string GetJobTitle(EntityUid entity)
     {
@@ -770,7 +770,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Получает ID отряда сущности.
+    /// Gets an entity's squad ID.
     /// </summary>
     private int? GetSquadId(EntityUid entity)
     {
@@ -781,7 +781,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Получает название отряда сущности.
+    /// Gets an entity's squad name.
     /// </summary>
     private string GetSquadName(EntityUid entity)
     {
@@ -794,7 +794,7 @@ public sealed class OverwatchSystem : EntitySystem
 
 
     /// <summary>
-    /// Получает название Overwatch для фракции.
+    /// Gets the Overwatch name for a faction.
     /// </summary>
     private string GetOverwatchTitle(string faction)
     {
@@ -816,7 +816,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Получает цвет Overwatch для фракции.
+    /// Gets the Overwatch colour for a faction.
     /// </summary>
     private Color GetOverwatchColor(string faction)
     {
@@ -836,7 +836,7 @@ public sealed class OverwatchSystem : EntitySystem
     }
 
     /// <summary>
-    /// Получает мировые координаты сущности.
+    /// Gets an entity's world coordinates.
     /// </summary>
     private Vector2? GetMemberCoordinates(EntityUid entity)
     {

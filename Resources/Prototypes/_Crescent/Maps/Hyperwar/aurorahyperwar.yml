@@ -1,6 +1,6 @@
 - type: gameMap
   id: AuroraImperialisHyperwar
-  mapName: 'DSM Aurora İmperialis'
+  mapName: 'DSM Aurora Imperialis'
   mapPath: /Maps/_Crescent/Hyperwar/aurorahyperwar.yml # hyperwar-version
   minPlayers: 0
   stations:

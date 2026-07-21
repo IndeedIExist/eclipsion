@@ -103,6 +103,7 @@
   - SyndicateJawsOfLifeCyberdawn
   - StorageImplanter
   - MicroBombImplanter
+  - DeathAcidifierImplanter
 
 - type: technology
   id: CyberdawnAdvancedBallistics
@@ -200,6 +201,7 @@
   cost: 7500
   recipeUnlocks:
   - EnergySword
+  - EnergyShield
 
 - type: technology
   id: CyberdawnZhongyao

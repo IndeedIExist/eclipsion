@@ -43,7 +43,12 @@ public sealed class TTSManager
     private ISawmill _sawmill = default!;
 
     private readonly Dictionary<string, byte[]> _cache = new();
-    private readonly HashSet<string> _cacheKeysSeq = new();
+
+    /// <summary>
+    /// Insertion order of <see cref="_cache"/> keys, so eviction drops the oldest entry. This was a HashSet,
+    /// whose First() is arbitrary rather than oldest, so the cache evicted at random and thrashed.
+    /// </summary>
+    private readonly Queue<string> _cacheKeysSeq = new();
     private int _maxCachedCount = 200;
 
     public IReadOnlyDictionary<string, byte[]> Cache => _cache;
@@ -151,16 +156,16 @@ public sealed class TTSManager
                 return null;
             }
 
-            // Add to cache
-            _cache.TryAdd(cacheKey, soundData);
-            _cacheKeysSeq.Add(cacheKey);
+            // Add to cache. Only track the key if it's genuinely new, otherwise a concurrent request for the
+            // same line would queue the key twice and evict a live entry early.
+            if (_cache.TryAdd(cacheKey, soundData))
+                _cacheKeysSeq.Enqueue(cacheKey);
 
-            // Evict old cache entries
+            // Evict oldest-first
             while (_cache.Count > _maxCachedCount && _cacheKeysSeq.Count > 0)
             {
-                var oldestKey = _cacheKeysSeq.First();
+                var oldestKey = _cacheKeysSeq.Dequeue();
                 _cache.Remove(oldestKey);
-                _cacheKeysSeq.Remove(oldestKey);
             }
 
             _sawmill.Debug($"Generated new audio for '{text}' speech by '{speaker}' speaker ({soundData.Length} bytes)");

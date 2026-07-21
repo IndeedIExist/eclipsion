@@ -2,7 +2,7 @@
 namespace Content.Shared._Crescent.HardlinerFireControl;
 
 /// <summary>
-/// Device-link port ids used to bind a Hardliner assembly to a telemetry console (multitool «соединение»).
+/// Device-link port ids used to bind a Hardliner assembly to a telemetry console (multitool "link").
 /// </summary>
 public static class HardlinerTelemetryPorts
 {

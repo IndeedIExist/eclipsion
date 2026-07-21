@@ -19,16 +19,21 @@ public sealed class StockMarketUiState : BoundUserInterfaceState
 
     public List<StockTradeRecord> History { get; init; }
 
+    /// <summary>Most recent market movers, newest last. Explains why prices moved.</summary>
+    public List<StockNewsRecord> News { get; init; }
+
     public StockMarketUiState(
         Dictionary<string, StockPriceData> prices,
         Dictionary<string, int> portfolio,
         long? balance = null,
-        List<StockTradeRecord>? history = null)
+        List<StockTradeRecord>? history = null,
+        List<StockNewsRecord>? news = null)
     {
         Prices = prices;
         Portfolio = portfolio;
         Balance = balance;
         History = history ?? new List<StockTradeRecord>();
+        News = news ?? new List<StockNewsRecord>();
     }
 }
 

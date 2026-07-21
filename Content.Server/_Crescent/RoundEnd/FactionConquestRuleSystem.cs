@@ -65,8 +65,16 @@ public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRu
 
         conquest.Decided = true;
 
+        // A round that hit the cap before the map ever came up has no war to credit anyone for.
+        if (!TryResolveMajors(conquest))
+        {
+            _chat.DispatchServerAnnouncement(Loc.GetString(conquest.TimeoutAnnouncement));
+            AppendSummary(conquest, ref args);
+            return;
+        }
+
         var alive = GetSurvivingFactions(conquest);
-        var majors = alive.Where(f => conquest.MajorFactions.Contains(f)).ToList();
+        var majors = alive.Where(conquest.ActiveMajors!.Contains).ToList();
 
         if (majors.Count == 1 && conquest.VictoryAnnouncements.TryGetValue(majors[0], out var victory))
         {
@@ -114,6 +122,11 @@ public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRu
                 continue;
 
             conquest.NextCheck = _timing.CurTime + conquest.CheckInterval;
+
+            // The map may not be up yet, and nothing can be judged against an empty sector.
+            if (!TryResolveMajors(conquest))
+                continue;
+
             Evaluate(conquest);
         }
     }
@@ -169,6 +182,9 @@ public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRu
     {
         conquest.Decided = true;
         conquest.Winners = winners;
+
+        var decided = new FactionWarDecidedEvent(winners);
+        RaiseLocalEvent(ref decided);
 
         // A lone great power gets its own ending; surviving minors share a generic one that names nobody.
         if (winners.Count == 1 && conquest.VictoryAnnouncements.TryGetValue(winners[0], out var victory))
@@ -273,6 +289,9 @@ public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRu
             return;
 
         _chat.DispatchServerAnnouncement(Loc.GetString(message));
+
+        var ev = new FactionStationFellEvent(stationUid, station.Faction, station.StationName);
+        RaiseLocalEvent(ref ev);
     }
 
     /// <summary>
@@ -293,12 +312,42 @@ public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRu
         return powered;
     }
 
+    /// <summary>
+    /// Works out, once, which factions this round's war is actually between. Normally that is the configured great
+    /// powers — but a mode that maps neither of them is not a round where both already fell, it is a round they
+    /// were never in (Freeplay | TFSC &amp; SHI fields no DSM or NCWL station). Treating that as "both great powers
+    /// dead" crowns every survivor on the first check and ends the round at the start of it, so the factions that
+    /// DID turn up take the great powers' place and the round is decided by the last of them standing.
+    ///
+    /// Returns false while the sector is still empty, which keeps the whole win condition asleep until the map is up.
+    /// </summary>
+    private bool TryResolveMajors(FactionConquestRuleComponent conquest)
+    {
+        if (conquest.ActiveMajors != null)
+            return true;
+
+        var present = new HashSet<string>();
+        var query = EntityQueryEnumerator<FactionStationComponent>();
+        while (query.MoveNext(out _, out var station))
+            present.Add(station.Faction);
+
+        if (present.Count == 0)
+            return false;
+
+        var majors = conquest.MajorFactions.Where(present.Contains).ToList();
+
+        // One great power alone has no war to win either, so it takes the same fallback.
+        conquest.ActiveMajors = majors.Count >= 2 ? majors : present.OrderBy(f => f).ToList();
+        return true;
+    }
+
     /// <summary>Decides whether the war is settled, and who is credited for it.</summary>
     private bool TryResolveWinners(FactionConquestRuleComponent conquest, HashSet<string> alive, out List<string> winners)
     {
         winners = new List<string>();
 
-        var majors = alive.Where(f => conquest.MajorFactions.Contains(f)).ToList();
+        var greatPowers = conquest.ActiveMajors ?? conquest.MajorFactions;
+        var majors = alive.Where(greatPowers.Contains).ToList();
 
         switch (majors.Count)
         {

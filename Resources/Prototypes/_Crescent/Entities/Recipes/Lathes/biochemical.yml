@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: GoatCubeBiochemical
+  category: Food
   result: GoatCube
   completetime: 0.5
   materials:
@@ -7,6 +8,7 @@
 
 - type: latheRecipe
   id: CowCubeBiochemical
+  category: Food
   result: CowCube
   completetime: 0.5
   materials:
@@ -14,6 +16,7 @@
 
 - type: latheRecipe
   id: MothroachCubeBiochemical
+  category: Food
   result: MothroachCube
   completetime: 0.5
   materials:
@@ -23,5 +26,6 @@
 - type: latheRecipe
   parent: BaseElectronicsRecipe
   id: StasisBedMachineCircuitboardBiochemical
+  category: Circuitry
   result: StasisBedMachineCircuitboard
   completetime: 0.5

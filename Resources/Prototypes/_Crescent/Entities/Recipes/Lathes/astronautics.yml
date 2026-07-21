@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: ThrusterFlatpackAstronautics
+  category: Shipyard
   result: ThrusterFlatpack
   completetime: 1.5
   materials:
@@ -8,6 +9,7 @@
 
 - type: latheRecipe
   id: GyroscopeFlatpackAstronautics
+  category: Shipyard
   result: GyroscopeFlatpack
   completetime: 1.5
   materials:
@@ -16,6 +18,7 @@
 
 - type: latheRecipe
   id: MiniGravityFlatpack
+  category: Circuitry
   result: MiniGravFlatpack
   completetime: 1.5
   materials:
@@ -25,6 +28,7 @@
 
 - type: latheRecipe
   id: ShuttleFlatpackAstronautics
+  category: Circuitry
   result: ShuttleFlatpack
   completetime: 1.5
   materials:
@@ -34,6 +38,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitBasicAstronautics
+  category: Armor
   result: ClothingOuterHardsuitBasic
   completetime: 1.5
   materials:
@@ -42,6 +47,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitSpatioAstronautics
+  category: Armor
   result: ClothingOuterHardsuitSpatio
   completetime: 1.5
   materials:
@@ -51,6 +57,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitIndependentsEVAAstronautics
+  category: Armor
   result: ClothingOuterHardsuitIndependentsEVA
   completetime: 1.5
   materials:
@@ -60,6 +67,7 @@
 
 - type: latheRecipe
   id: ClothingShoesBootsMagAstronautics
+  category: Clothing
   result: ClothingShoesBootsMag
   completetime: 1.5
   materials:
@@ -69,6 +77,7 @@
 
 - type: latheRecipe
   id: HandheldMassScannerAstronautics
+  category: Medical
   result: HandHeldMassScannerEE
   completetime: 1.5
   materials:
@@ -87,6 +96,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitPrivateSecurityAstronautics
+  category: Armor
   result: ClothingOuterHardsuitPrivateSecurity
   completetime: 1.5
   materials:
@@ -97,6 +107,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitPilotAstronautics
+  category: Armor
   result: ClothingOuterHardsuitPilot
   completetime: 1.5
   materials:
@@ -107,6 +118,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitVoidParamedAstronautics
+  category: Armor
   result: ClothingOuterHardsuitVoidParamed
   completetime: 1.5
   materials:
@@ -117,6 +129,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitFishbedAstronautics
+  category: Armor
   result: ClothingOuterHardsuitFishbed
   completetime: 1.5
   materials:
@@ -127,6 +140,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitFishbedSilverAstronautics
+  category: Armor
   result: ClothingOuterHardsuitFishbedSilver
   completetime: 1.5
   materials:
@@ -137,6 +151,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitFishbedGoldAstronautics
+  category: Armor
   result: ClothingOuterHardsuitFishbedGold
   completetime: 1.5
   materials:
@@ -147,6 +162,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitFishbedColonialAstronautics
+  category: Armor
   result: ClothingOuterHardsuitFishbedColonial
   completetime: 1.5
   materials:
@@ -157,6 +173,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitFishbedNLFAstronautics
+  category: Armor
   result: ClothingOuterHardsuitFishbedNLF
   completetime: 1.5
   materials:
@@ -167,6 +184,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitCenobiteAstronautics
+  category: Armor
   result: ClothingOuterHardsuitCenobite
   completetime: 1.5
   materials:
@@ -177,6 +195,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitCenobiteVerdantAstronautics
+  category: Armor
   result: ClothingOuterHardsuitCenobiteVerdant
   completetime: 1.5
   materials:
@@ -187,6 +206,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitCenobiteRedAstronautics
+  category: Armor
   result: ClothingOuterHardsuitCenobiteRed
   completetime: 1.5
   materials:
@@ -197,6 +217,7 @@
 
 - type: latheRecipe
   id: ClothingShoesBootsMagbootsAstronautics
+  category: Clothing
   result: ClothingShoesBootsMagAdv
   completetime: 1.5
   materials:
@@ -215,6 +236,7 @@
 
 - type: latheRecipe
   id: RCDAstronautics
+  category: Tools
   result: RCDEmpty
   completetime: 1.5
   materials:
@@ -227,6 +249,7 @@
 
 - type: latheRecipe
   id: RCDAmmoAstronautics
+  category: Ammo
   result: RCDAmmo
   completetime: 1.5
   materials:
@@ -238,6 +261,7 @@
 
 - type: latheRecipe
   id: ClothingModsuitStandardAstronautics
+  category: Clothing
   result: ClothingModsuitStandard
   completetime: 1.5
   materials:

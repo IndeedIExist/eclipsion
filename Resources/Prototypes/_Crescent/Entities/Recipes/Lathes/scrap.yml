@@ -163,6 +163,7 @@
 
 - type: latheRecipe
   id: FibreAlloyFromCombinedScrap
+  category: Parts
   result: PlastitaniumFibreAlloy1
   completetime: 0.5
   materials:
@@ -172,6 +173,7 @@
 
 - type: latheRecipe
   id: BasicElectronicsFromCombinedScrap
+  category: Parts
   result: BasicElectronics1
   completetime: 0.5
   materials:
@@ -180,6 +182,7 @@
 
 - type: latheRecipe
   id: BasicMechatronicsFromCombinedScrap
+  category: Parts
   result: BasicMechatronics1
   completetime: 0.5
   materials:
@@ -188,6 +191,7 @@
 
 - type: latheRecipe
   id: BallisticCyclerFromCombinedScrap
+  category: Ammo
   result: BallisticCycler1
   completetime: 0.5
   materials:
@@ -196,6 +200,7 @@
 
 - type: latheRecipe
   id: HardsuitElectronicsFromCombinedScrap
+  category: Armor
   result: HardsuitElectronics1
   completetime: 0.5
   materials:

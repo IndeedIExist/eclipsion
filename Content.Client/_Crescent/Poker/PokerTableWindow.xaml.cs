@@ -116,7 +116,7 @@ public sealed partial class PokerTableWindow : DefaultWindow
         PotLabel.Text = $"  |  {loc.GetString("poker-pot", ("amount", state.Pot))}";
         MyStackLabel.Text = $"  |  {loc.GetString("poker-stack", ("amount", state.MyStack))}";
         MyBetLabel.Text = $"  |  {loc.GetString("poker-bet", ("amount", state.MyBet))}";
-        PhaseLabel.Text = loc.GetString($"poker-phase-{state.Phase.ToString().ToLower()}");
+        PhaseLabel.Text = loc.GetString($"poker-phase-{state.Phase.ToString().ToLowerInvariant()}");
 
         var callAmount = state.CurrentBet - state.MyBet;
         CallButton.Text = callAmount > 0
@@ -210,7 +210,7 @@ public sealed partial class PokerTableWindow : DefaultWindow
             WinnerPanel.Visible = true;
             WinnerLabel.Text = loc.GetString("poker-winner", ("name", state.WinnerName));
             WinningHandLabel.Text = state.WinningHand != null
-                ? loc.GetString($"poker-hand-{state.WinningHand.ToLower().Replace(" ", "")}")
+                ? loc.GetString($"poker-hand-{state.WinningHand.ToLowerInvariant().Replace(" ", "")}")
                 : string.Empty;
         }
         else

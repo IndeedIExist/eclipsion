@@ -117,5 +117,32 @@ stock-market-toast-bought = Bought {$amount} × {$company} for {$total}cr
 stock-market-toast-sold = Sold {$amount} × {$company} for {$total}cr
 stock-company-shi = SHI
 stock-company-tfsc = TFSC
-stock-company-dsm = DSM
-stock-company-ncwl = NCWL
+stock-company-dsm = Von Osteen Stock Company
+stock-company-ncwl = Potato Trade Corp
+stock-company-fmn = Free Merchant Nobles
+stock-company-tccc = Taypan Civil Construction Company
+
+stock-market-tab-news = News
+stock-market-delisted = {$shares} — delisted this shift
+stock-market-no-news = The market is quiet
+stock-news-casualties = {$faction} taking casualties
+stock-news-merchant-war = Wartime demand up
+stock-news-station-lost = {$station} lost
+stock-news-rebuild = Rebuild contracts for {$station}
+stock-news-victory = {$faction} won the war
+stock-news-contract = {$faction} contract fulfilled
+stock-news-treasury-up = {$faction} treasury growing
+stock-news-treasury-down = {$faction} treasury draining
+stock-news-admin = Unexplained market movement
+
+stock-war-liquidation = {$company} has gone to war with your faction and closed your position. Your {$shares} shares were sold at the floor price of {$price}cr and {$total}cr has been transferred to your account.
+
+cmd-stockmarket-desc = Inspect and control the sector stock market.
+cmd-stockmarket-help = Usage: {$command} <list | reset | freeze | clearportfolios | shock <company> <percent> [ticks]>
+cmd-stockmarket-reset = Market reset to opening shares.
+cmd-stockmarket-frozen = Market frozen. Prices will not move until unfrozen.
+cmd-stockmarket-unfrozen = Market running again.
+cmd-stockmarket-portfolios-cleared = All stored player holdings cleared.
+cmd-stockmarket-unknown-company = No such company: {$id}
+cmd-stockmarket-hint-subcommand = <subcommand>
+cmd-stockmarket-hint-company = <company id>

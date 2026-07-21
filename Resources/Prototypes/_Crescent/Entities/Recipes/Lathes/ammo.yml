@@ -3,6 +3,7 @@
 
 - type: latheRecipe
   id: BaseCartridgeRailgun15mm
+  category: Ammo
   result: BaseCartridgeRailgun15mm
   completetime: 1
   materials:
@@ -10,6 +11,7 @@
 
 - type: latheRecipe
   id: MagazineClip18gBuck
+  category: Ammo
   result: MagazineClip18gBuck
   completetime: 1
   materials:
@@ -17,6 +19,7 @@
 
 - type: latheRecipe
   id: MagazinePulse350
+  category: Ammo
   result: MagazinePulse350
   completetime: 1
   materials:
@@ -24,6 +27,7 @@
 
 - type: latheRecipe
   id: MagazinePulse350Fmj
+  category: Ammo
   result: MagazinePulse350Fmj
   completetime: 1
   materials:
@@ -33,6 +37,7 @@
 
 - type: latheRecipe
   id: MagazinePulse470
+  category: Ammo
   result: MagazinePulse470
   completetime: 1
   materials:
@@ -40,6 +45,7 @@
 
 - type: latheRecipe
   id: MagazinePulse470Fmj
+  category: Ammo
   result: MagazinePulse470Fmj
   completetime: 1
   materials:
@@ -49,6 +55,7 @@
 
 - type: latheRecipe
   id: DrumMagazineShotgunBuck
+  category: Ammo
   result: DrumMagazineShotgunBuck
   completetime: 1
   materials:
@@ -56,6 +63,7 @@
 
 - type: latheRecipe
   id: DrumMagazineShotgunSlug
+  category: Ammo
   result: DrumMagazineShotgunSlug
   completetime: 1
   materials:
@@ -64,6 +72,7 @@
 
 - type: latheRecipe
   id: MagazineSmgSmartgun
+  category: Ammo
   result: MagazineSmgSmartgun
   completetime: 1
   materials:
@@ -72,6 +81,7 @@
 
 - type: latheRecipe
   id: MagazineHeavyRifleBoxmag
+  category: Ammo
   result: MagazineHeavyRifleBoxmag
   completetime: 1
   materials:
@@ -80,6 +90,7 @@
 
 - type: latheRecipe
   id: MagazineBoxAntiMateriel
+  category: Ammo
   result: MagazineBoxAntiMateriel
   completetime: 1
   materials:
@@ -88,6 +99,7 @@
 
 - type: latheRecipe
   id: MagazineBoxLightRifleBig
+  category: Ammo
   result: MagazineBoxLightRifleBig
   completetime: 1
   materials:
@@ -95,6 +107,7 @@
 
 - type: latheRecipe
   id: MagazineLightRifleBox
+  category: Ammo
   result: MagazineLightRifleBox
   completetime: 1
   materials:
@@ -102,6 +115,7 @@
 
 - type: latheRecipe
   id: MagazineAntiMateriel
+  category: Ammo
   result: MagazineAntiMateriel
   completetime: 1
   materials:
@@ -110,6 +124,7 @@
 
 - type: latheRecipe
   id: MagazineHeavyRifle
+  category: Ammo
   result: MagazineHeavyRifle
   completetime: 1
   materials:
@@ -118,6 +133,7 @@
 
 - type: latheRecipe
   id: MagazineRifleDrum
+  category: Ammo
   result: MagazineRifleDrum
   completetime: 1
   materials:
@@ -125,6 +141,7 @@
 
 - type: latheRecipe
   id: MagazineRiflePan
+  category: Ammo
   result: MagazineRiflePan
   completetime: 1
   materials:
@@ -132,6 +149,7 @@
 
 - type: latheRecipe
   id: MagazineBoxCaselessRifleBig
+  category: Ammo
   result: MagazineBoxCaselessRifleBig
   completetime: 1
   materials:
@@ -139,6 +157,7 @@
 
 - type: latheRecipe
   id: MagazineBoxImperialRifleBig
+  category: Ammo
   result: MagazineLightRifleBox
   completetime: 1
   materials:
@@ -146,6 +165,7 @@
 
 - type: latheRecipe
   id: MagazineHeavyRifleSmall
+  category: Ammo
   result: MagazineSmallHeavyRifle
   completetime: 1
   materials:
@@ -156,6 +176,7 @@
 
 - type: latheRecipe
   id: BoxShotgunFlash4g
+  category: Ammo
   result: BoxShotgunFlash4g
   completetime: 2
   materials:
@@ -165,6 +186,7 @@
 
 - type: latheRecipe
   id: BoxBeanbag4g
+  category: Ammo
   result: BoxBeanbag4g
   completetime: 2
   materials:
@@ -173,6 +195,7 @@
 # SMALL ARMS AMMUNITIONS
 - type: latheRecipe
   id: MagazinePistolHeavy
+  category: Ammo
   result: MagazinePistolHeavy
   completetime: 1
   materials:
@@ -180,6 +203,7 @@
 
 - type: latheRecipe
   id: SpeedLoader27mmAutocannonHE
+  category: Ammo
   result: SpeedLoader27mmAutocannonHE
   completetime: 1
   materials:
@@ -189,6 +213,7 @@
 
 - type: latheRecipe
   id: SpeedLoader127x99
+  category: Ammo
   result: SpeedLoader127x99
   completetime: 1
   materials:
@@ -197,6 +222,7 @@
 
 - type: latheRecipe
   id: MagazinePistolSubMachineGunHeavy
+  category: Ammo
   result: MagazinePistolSubMachineGunHeavy
   completetime: 2
   materials:
@@ -204,6 +230,7 @@
 
 - type: latheRecipe
   id: MagazinePistolSmartgun
+  category: Ammo
   result: MagazinePistolSmartgun
   completetime: 2
   materials:
@@ -212,6 +239,7 @@
 
 - type: latheRecipe
   id: MagazinePistol6mmSmg
+  category: Ammo
   result: MagazinePistol6mmSmg
   completetime: 2
   materials:
@@ -219,6 +247,7 @@
 
 - type: latheRecipe
   id: MagazinePistol6mm
+  category: Ammo
   result: MagazinePistol6mm
   completetime: 2
   materials:
@@ -227,6 +256,7 @@
 # SHIP GUN AMMUNITIONS
 - type: latheRecipe
   id: SluggieHE
+  category: Ammo
   result: MagazineLightRifleBoxSlugHE
   completetime: 2
   materials:
@@ -235,6 +265,7 @@
 
 - type: latheRecipe
   id: IdnaTorpedoRecipe
+  category: Weapons
   result: IdnaTorpedo
   completetime: 2
   materials:
@@ -243,6 +274,7 @@
 
 - type: latheRecipe
   id: SluggieAP
+  category: Ammo
   result: MagazineLightRifleBoxSlug
   completetime: 2
   materials:
@@ -250,6 +282,7 @@
 
 - type: latheRecipe
   id: SluggieEMP
+  category: Ammo
   result: MagazineLightRifleBoxSlugEMP
   completetime: 2
   materials:
@@ -258,6 +291,7 @@
 
 - type: latheRecipe
   id: Automortar90
+  category: Ammo
   result: MagazineMortar
   completetime: 2
   materials:
@@ -266,6 +300,7 @@
 
 - type: latheRecipe
   id: Needler60
+  category: Ammo
   result: MagazineNeedler
   completetime: 2
   materials:
@@ -276,6 +311,7 @@
 
 - type: latheRecipe
   id: MagazineVulcan
+  category: Ammo
   result: MagazineVulcan
   completetime: 2
   materials:
@@ -283,6 +319,7 @@
 
 - type: latheRecipe
   id: MagazineFlak
+  category: Ammo
   result: MagazineFlak
   completetime: 2
   materials:
@@ -291,6 +328,7 @@
 
 - type: latheRecipe
   id: GrenadeBatonCraft
+  category: Weapons
   result: GrenadeBaton
   completetime: 4
   materials:
@@ -298,6 +336,7 @@
 
 - type: latheRecipe
   id: 48mmHighYieldRocket
+  category: Ammo
   result: CartridgeRocketHighYield
   completetime: 2
   materials:
@@ -306,6 +345,7 @@
 
 - type: latheRecipe
   id: 48mmLowYieldRocket
+  category: Ammo
   result: CartridgeRocketLowYield
   completetime: 2
   materials:
@@ -314,6 +354,7 @@
 
 - type: latheRecipe
   id: RocketMagazineEmpty
+  category: Ammo
   result: MagazineRocketEmpty
   completetime: 3
   materials:
@@ -321,6 +362,7 @@
 
 - type: latheRecipe
   id: 48mmEMPRocket
+  category: Ammo
   result: CartridgeRocketEMP
   completetime: 2
   materials:
@@ -329,6 +371,7 @@
 
 - type: latheRecipe
   id: 65mmHammerheadRocket
+  category: Ammo
   result: CartridgeHammerheadRocket
   completetime: 3
   materials:
@@ -371,6 +414,7 @@
 #20mm Screamer Ammo
 - type: latheRecipe
   id: Screamer20mmRegularRecipe
+  category: Ammo
   result: Magazine20mm
   completetime: 2
   materials:
@@ -379,6 +423,7 @@
 #35mm Scout Ammo
 - type: latheRecipe
   id: Scout35mmRegularRecipe
+  category: Ammo
   result: Magazine35mm
   completetime: 2
   materials:
@@ -397,6 +442,7 @@
 #50mm Striker Ammo
 - type: latheRecipe
   id: Striker50mmRegularRecipe
+  category: Ammo
   result: Magazine50mm
   completetime: 2
   materials:
@@ -406,6 +452,7 @@
 #88mm Corpus Flak Ammo
 - type: latheRecipe
   id: 88mmFlakRegularRecipe
+  category: Ammo
   result: MagazineCorpus
   completetime: 2
   materials:
@@ -415,6 +462,7 @@
 #90mm Resolute Ammo
 - type: latheRecipe
   id: Resolute90mmRegularRecipe
+  category: Ammo
   result: MagazineResolute
   completetime: 2
   materials:
@@ -443,6 +491,7 @@
 #120mm Anvil Ammo
 - type: latheRecipe
   id: Anvil120mmRegularRecipe
+  category: Ammo
   result: Cartridge120mm
   completetime: 2
   materials:
@@ -453,6 +502,7 @@
 #300mm Leviathan Ammo #More like Piss-Is hehehehehehehehe i'm such a fucking chud dude
 - type: latheRecipe
   id: Leviathan300mmRecipe
+  category: Ammo
   result: Cartridge300mm
   completetime: 2
   materials:
@@ -465,6 +515,7 @@
 #48mm Shortbow Ammo
 - type: latheRecipe
   id: Shortbow48mmRegularRecipe
+  category: Ammo
   result: Cartridge48mmRocket
   completetime: 2
   materials:
@@ -474,6 +525,7 @@
 #60mm Azimuth Ammo
 - type: latheRecipe
   id: Azimuth60mmRegularRecipe
+  category: Ammo
   result: Cartridge60mmRocket
   completetime: 2
   materials:
@@ -483,6 +535,7 @@
 #95mm Arbalest Ammo
 - type: latheRecipe
   id: Arbalest95mmRegularRecipe
+  category: Ammo
   result: Cartridge95mmRocket
   completetime: 2
   materials:
@@ -492,6 +545,7 @@
 #240mm Gargoyle Ammo
 - type: latheRecipe
   id: Gargoyle240mmRegularRecipe
+  category: Ammo
   result: Cartridge240mmRocket
   completetime: 2
   materials:
@@ -501,6 +555,7 @@
 #330mm Catapult Ammo
 - type: latheRecipe
   id: Catapult330mmRegularRecipe
+  category: Ammo
   result: Cartridge330mmRocket
   completetime: 2
   materials:

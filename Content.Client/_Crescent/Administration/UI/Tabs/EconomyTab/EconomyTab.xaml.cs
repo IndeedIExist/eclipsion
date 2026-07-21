@@ -39,6 +39,7 @@ public sealed partial class EconomyTab : Control
         CategoryOptions.AddItem(_loc.GetString("admin-menu-economy-category-vessels"), (int) EconomyListCategory.Vessels);
         CategoryOptions.AddItem(_loc.GetString("admin-menu-economy-category-treasury"), (int) EconomyListCategory.Treasury);
         CategoryOptions.AddItem(_loc.GetString("admin-menu-economy-category-players"), (int) EconomyListCategory.Players);
+        CategoryOptions.AddItem(_loc.GetString("admin-menu-economy-category-stocks"), (int) EconomyListCategory.Stocks);
         CategoryOptions.OnItemSelected += ev =>
         {
             CategoryOptions.SelectId(ev.Id);

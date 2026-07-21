@@ -504,6 +504,7 @@
 
 - type: latheRecipe
   id: FoamCutlass
+  category: Weapons
   result: FoamCutlass
   applyMaterialDiscount: false
   completetime: 0.1
@@ -512,6 +513,7 @@
 
 - type: latheRecipe
   id: ToyHammer
+  category: Weapons
   result: ToyHammer
   applyMaterialDiscount: false
   completetime: 0.1
@@ -536,6 +538,7 @@
 
 - type: latheRecipe
   id: WeaponWaterPistol
+  category: Weapons
   result: WeaponWaterPistol
   applyMaterialDiscount: false
   completetime: 0.1
@@ -544,6 +547,7 @@
 
 - type: latheRecipe
   id: WeaponWaterBlaster
+  category: Weapons
   result: WeaponWaterBlaster
   applyMaterialDiscount: false
   completetime: 0.1
@@ -722,6 +726,7 @@
 
 - type: latheRecipe
   id: ToySword
+  category: Weapons
   result: ToySword
   applyMaterialDiscount: false
   completetime: 0.1
@@ -730,6 +735,7 @@
 
 - type: latheRecipe
   id: BwoinkHammer
+  category: Weapons
   result: BwoinkHammer
   applyMaterialDiscount: false
   completetime: 0.1

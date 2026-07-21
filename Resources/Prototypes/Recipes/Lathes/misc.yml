@@ -120,6 +120,7 @@
 
 - type: latheRecipe
   id: ClothingShoesBootsMag
+  category: Clothing
   result: ClothingShoesBootsMag
   completetime: 10
   materials:
@@ -128,6 +129,7 @@
 
 - type: latheRecipe
   id: ClothingShoesBootsMoon
+  category: Clothing
   result: ClothingShoesBootsMoon
   completetime: 2
   materials:
@@ -135,6 +137,7 @@
 
 - type: latheRecipe
   id: ModularReceiver
+  category: Parts
   result: ModularReceiver
   completetime: 12
   materials:
@@ -200,6 +203,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatWelding
+  category: Clothing
   result: ClothingHeadHatWelding
   completetime: 2
   materials:
@@ -208,6 +212,7 @@
 
 - type: latheRecipe
   id: ClothingShoesBootsMagAdv
+  category: Clothing
   result: ClothingShoesBootsMagAdv
   completetime: 12
   materials:

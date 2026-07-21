@@ -3,19 +3,19 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._Crescent.Squad;
 
 /// <summary>
-/// Компонент для принадлежности сущности к отряду.
+/// Marks which squad an entity belongs to.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class SquadComponent : Component
 {
     /// <summary>
-    /// ID отряда
+    /// Squad ID
     /// </summary>
     [DataField, AutoNetworkedField]
     public int SquadId;
 
     /// <summary>
-    /// Название отряда для отображения
+    /// Squad name, for display
     /// </summary>
     [DataField, AutoNetworkedField]
     public string SquadName = string.Empty;

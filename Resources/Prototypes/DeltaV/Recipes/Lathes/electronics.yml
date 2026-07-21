@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: SalvageExpeditionsComputerCircuitboard
+  category: Circuitry
   result: SalvageExpeditionsComputerCircuitboard
   completetime: 4
   materials:

@@ -11,7 +11,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Crescent.Diplomacy;
 
-public sealed class RatDiplomacySystem : EntitySystem
+public sealed partial class RatDiplomacySystem : EntitySystem
 {
     [Dependency] private readonly AnnouncerSystem _announcer = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
@@ -59,7 +59,11 @@ public sealed class RatDiplomacySystem : EntitySystem
 
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
 
+        InitializePersistence();
+
+        // Defaults first, then last round's wars replayed over the top of them.
         InitRelations();
+        Load();
     }
 
     public override void Shutdown()
@@ -121,6 +125,10 @@ public sealed class RatDiplomacySystem : EntitySystem
             return;
 
         RaiseNetworkEvent(new PlayerFactionUpdatedEvent(faction), session);
+
+        // The HUD widget has no relations of its own to fall back on, and relations now carry between rounds —
+        // without this a joining player sees a blank board until someone happens to work a console.
+        RaiseNetworkEvent(BuildRelationsEvent(), session);
     }
 
     private void OnUiOpened(EntityUid uid, DiplomacyConsoleComponent comp, BoundUIOpenedEvent args)
@@ -363,8 +371,33 @@ public sealed class RatDiplomacySystem : EntitySystem
 
         if (!_relations.ContainsKey(f1)) _relations[f1] = new();
         if (!_relations.ContainsKey(f2)) _relations[f2] = new();
+
+        var previous = _relations[f1].GetValueOrDefault(f2, FactionRelation.Neutral);
+
         _relations[f1][f2] = rel;
         _relations[f2][f1] = rel;
+
+        // Written out immediately: a server that dies mid-round must not forget who was at war.
+        Save();
+
+        // Only the crossing into war is announced, and never while replaying the save file — otherwise
+        // every server start would re-declare last round's wars.
+        if (rel == FactionRelation.War && previous != FactionRelation.War && !_loading)
+        {
+            var ev = new FactionsWentToWarEvent(f1, f2);
+            RaiseLocalEvent(ref ev);
+        }
+    }
+
+    /// <summary>The relation currently in force between two factions.</summary>
+    public FactionRelation GetRelation(string f1, string f2)
+    {
+        if (f1 == f2)
+            return FactionRelation.Alliance;
+
+        return _relations.TryGetValue(f1, out var relations)
+            ? relations.GetValueOrDefault(f2, FactionRelation.Neutral)
+            : FactionRelation.Neutral;
     }
 
     private string? GetPlayerFaction(EntityUid? entity)
@@ -424,10 +457,13 @@ public sealed class RatDiplomacySystem : EntitySystem
 
     private void BroadcastRelations()
     {
-        var ev = new AllFactionRelationsUpdatedEvent(
+        RaiseNetworkEvent(BuildRelationsEvent(), Filter.Broadcast(), false);
+    }
+
+    private AllFactionRelationsUpdatedEvent BuildRelationsEvent()
+    {
+        return new AllFactionRelationsUpdatedEvent(
             _relations.ToDictionary(kvp => kvp.Key, kvp => new Dictionary<string, FactionRelation>(kvp.Value)),
             _pending.ToDictionary(kvp => kvp.Key, kvp => new List<PendingProposal>(kvp.Value)));
-
-        RaiseNetworkEvent(ev, Filter.Broadcast(), false);
     }
 }

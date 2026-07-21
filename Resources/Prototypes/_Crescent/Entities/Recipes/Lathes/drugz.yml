@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: Crash
+  category: Medical
   result: CrashAutoinjector
   applyMaterialDiscount: false
   completetime: 1
@@ -11,6 +12,7 @@
 
 - type: latheRecipe
   id: Exile
+  category: Medical
   result: ExileAutoinjector
   applyMaterialDiscount: false
   completetime: 1
@@ -24,6 +26,7 @@
 
 - type: latheRecipe
   id: Kaiser
+  category: Medical
   result: KaiserAutoinjector
   applyMaterialDiscount: false
   completetime: 1
@@ -37,6 +40,7 @@
 
 - type: latheRecipe
   id: Mechanite
+  category: Medical
   result: MechaniteAutoinjector
   applyMaterialDiscount: false
   completetime: 1
@@ -50,6 +54,7 @@
 
 - type: latheRecipe
   id: Bloodeye
+  category: Medical
   result: BloodeyeAutoinjector
   applyMaterialDiscount: false
   completetime: 1

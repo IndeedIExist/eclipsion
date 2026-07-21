@@ -103,7 +103,7 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         Audio.SetState(entity.Comp.AudioStream, AudioState.Stopped);
         Dirty(entity);
 
-        RemComp<ActiveInstrumentComponent>(entity); // Ratgore change: умные вещи говорит нейронка
+        RemComp<ActiveInstrumentComponent>(entity); // Ratgore change: the neural net is the one saying clever things
     }
 
     private void OnJukeboxSelected(EntityUid uid, JukeboxComponent component, JukeboxSelectedMessage args)

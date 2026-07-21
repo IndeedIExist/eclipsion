@@ -8,25 +8,25 @@ namespace Content.Shared._Crescent.CCVar
     public sealed class RatCCVars : CVars
     {
         /// <summary>
-        /// Включена ли автоматическая очистка мусора.
+        /// Whether automatic debris cleanup is enabled.
         /// </summary>
         public static readonly CVarDef<bool> TrashCleanupEnabled =
             CVarDef.Create("trash.cleanup_enabled", false, CVar.SERVERONLY);
 
         /// <summary>
-        /// Интервал в секундах между очистками мусора.
+        /// Interval between debris cleanups, in seconds.
         /// </summary>
         public static readonly CVarDef<float> TrashCleanupInterval =
             CVarDef.Create("trash.cleanup_interval", 60f, CVar.SERVERONLY);
 
         /// <summary>
-        /// Задержка в секундах после начала раунда перед активацией очистки мусора.
+        /// Delay after round start before debris cleanup switches on, in seconds.
         /// </summary>
         public static readonly CVarDef<float> TrashCleanupStartDelay =
             CVarDef.Create("trash.cleanup_start_delay", 60f, CVar.SERVERONLY);
 
         /// <summary>
-        /// Включение/отключение автоматического удаления мелких гридов.
+        /// Enables/disables automatic deletion of small grids.
         /// </summary>
         public static readonly CVarDef<bool> AutoGridCleanupEnabled =
             CVarDef.Create("shuttle.grid_cleanup_enabled", false, CVar.SERVERONLY | CVar.ARCHIVE);

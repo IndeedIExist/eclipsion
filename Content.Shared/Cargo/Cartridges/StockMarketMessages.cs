@@ -56,6 +56,15 @@ public record struct StockPriceData(
     List<float>? PriceHistory = null
 );
 
+/// <summary>One line of the market news feed, explaining why a price moved.</summary>
+[Serializable, NetSerializable]
+public record struct StockNewsRecord(
+    string CompanyId,
+    string Reason,
+    bool Positive,
+    TimeSpan Time
+);
+
 [Serializable, NetSerializable]
 public record struct StockTradeRecord(
     string CompanyId,

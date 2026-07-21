@@ -1,4 +1,5 @@
 using Content.Server.Bank;
+using Content.Server._Crescent.Economy;
 using Content.Server.Cargo.Systems;
 using Content.Server.CartridgeLoader;
 using Content.Shared.Bank.Components;
@@ -16,6 +17,7 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
     [Dependency] private readonly CartridgeLoaderSystem _cartridgeLoader = default!;
     [Dependency] private readonly StockCompanySystem _stockCompanies = default!;
     [Dependency] private readonly BankSystem _bank = default!;
+    [Dependency] private readonly StockPortfolioPersistenceSystem _portfolios = default!;
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
@@ -89,7 +91,7 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
             return false;
 
         var company = _stockCompanies.GetCompany(companyId);
-        if (company == null)
+        if (company is not { Active: true })
             return false;
 
         var pricePerShare = company.CurrentPrice;
@@ -105,6 +107,7 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
         portfolio.TotalInvested += cost;
         RecordTrade(portfolio, companyId, amount, pricePerShare, isBuy: true);
         Dirty(playerUid, portfolio);
+        _portfolios.Store(playerUid, portfolio);
 
         return true;
     }
@@ -121,7 +124,7 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
             return false;
 
         var company = _stockCompanies.GetCompany(companyId);
-        if (company == null)
+        if (company is not { Active: true })
             return false;
 
         var pricePerShare = company.CurrentPrice;
@@ -136,6 +139,7 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
             portfolio.OwnedShares[companyId] = newOwned;
         RecordTrade(portfolio, companyId, amount, pricePerShare, isBuy: false);
         Dirty(playerUid, portfolio);
+        _portfolios.Store(playerUid, portfolio);
 
         return true;
     }
@@ -172,6 +176,12 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
         var companies = _stockCompanies.GetCompanies();
         foreach (var company in companies)
         {
+            // A faction that is not fielded this round is delisted: its price is frozen and meaningless,
+            // so quoting it would only invite trades that cannot be settled against anything real.
+            // Existing holdings are untouched and still show up under the portfolio tab.
+            if (!company.Active)
+                continue;
+
             priceData[company.Id] = new StockPriceData(
                 company.Id,
                 company.BasePrice,
@@ -194,7 +204,8 @@ public sealed class StockMarketCartridgeSystem : EntitySystem
                 balance = bank.Balance;
         }
 
-        var state = new StockMarketUiState(priceData, portfolio, balance, history);
+        var news = new List<StockNewsRecord>(_stockCompanies.GetNews());
+        var state = new StockMarketUiState(priceData, portfolio, balance, history, news);
         _cartridgeLoader.UpdateCartridgeUiState(loaderUid, state);
     }
 }

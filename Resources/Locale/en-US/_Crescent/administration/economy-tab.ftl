@@ -13,3 +13,4 @@ admin-menu-economy-category-items = Items
 admin-menu-economy-category-vessels = Shuttles
 admin-menu-economy-category-treasury = Faction Treasuries
 admin-menu-economy-category-players = Player Banks
+admin-menu-economy-category-stocks = Stock Market

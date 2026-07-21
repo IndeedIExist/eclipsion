@@ -1,13 +1,13 @@
 namespace Content.Shared._Crescent.Overwatch;
 
 /// <summary>
-/// Компонент для ретрансляции звуков при наблюдении через камеру Overwatch.
+/// Relays sounds while watching through an Overwatch camera.
 /// </summary>
 [RegisterComponent]
 public sealed partial class RatOverwatchRelayedSoundComponent : Component
 {
     /// <summary>
-    /// Сущность ретранслируемого звука.
+    /// The relayed sound entity.
     /// </summary>
     public EntityUid? Relay;
 }

@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: ShreddedMoney
+  category: Circuitry
   icon: { sprite: Objects/Misc/module.rsi, state: id_mod }
   result: ShredderMachineCircuitboard
   completetime: 3
@@ -17,6 +18,7 @@
 # Thrusters
 - type: latheRecipe
   id: ThrusterSecurityMachineCircuitboard
+  category: Shipyard
   result: ThrusterSecurityMachineCircuitboard
   completetime: 4
   materials:
@@ -25,6 +27,7 @@
 
 - type: latheRecipe
   id: ThrusterNfsdMachineCircuitboard
+  category: Shipyard
   result: ThrusterNfsdMachineCircuitboard
   completetime: 4
   materials:
@@ -33,6 +36,7 @@
 
 - type: latheRecipe
   id: SmallThrusterMachineCircuitboard
+  category: Shipyard
   result: SmallThrusterMachineCircuitboard
   completetime: 4
   materials:
@@ -42,6 +46,7 @@
 # Gyroscope
 - type: latheRecipe
   id: GyroscopeSecurityMachineCircuitboard
+  category: Shipyard
   result: GyroscopeSecurityMachineCircuitboard
   completetime: 4
   materials:
@@ -50,6 +55,7 @@
 
 - type: latheRecipe
   id: SmallGyroscopeSecurityMachineCircuitboard
+  category: Shipyard
   result: SmallGyroscopeSecurityMachineCircuitboard
   completetime: 4
   materials:
@@ -58,6 +64,7 @@
 
 - type: latheRecipe
   id: GyroscopeNfsdMachineCircuitboard
+  category: Shipyard
   result: GyroscopeNfsdMachineCircuitboard
   completetime: 4
   materials:
@@ -66,6 +73,7 @@
 
 - type: latheRecipe
   id: SmallGyroscopeNfsdMachineCircuitboard
+  category: Shipyard
   result: SmallGyroscopeNfsdMachineCircuitboard
   completetime: 4
   materials:
@@ -74,6 +82,7 @@
 
 - type: latheRecipe
   id: SmallGyroscopeMachineCircuitboard
+  category: Shipyard
   result: SmallGyroscopeMachineCircuitboard
   completetime: 4
   materials:

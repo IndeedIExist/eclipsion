@@ -35,8 +35,13 @@ public sealed class ArtCVars
     /// <summary>
     /// Default volume setting of TTS sound
     /// </summary>
+    /// <remarks>
+    /// Deliberately quieter than the 0.5 the other audio sliders use: TTS fires on every line of speech, so
+    /// at parity with ambience it drowns everything else out. Must not be 0 though, since the client converts
+    /// gain to decibels with a log10 and 0 is -infinity dB, i.e. silent rather than quiet.
+    /// </remarks>
     public static readonly CVarDef<float> TTSVolume =
-        CVarDef.Create("tts.volume", 0f, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("tts.volume", 0.25f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
     /// Count of in-memory cached tts voice lines.

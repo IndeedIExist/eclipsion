@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: ClothingHeadCage
+  category: Clothing
   icon:
     sprite: Nyanotrasen/Clothing/Head/Hats/cage.rsi
     state: icon
@@ -11,6 +12,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetInsulated
+  category: Armor
   result: ClothingHeadHelmetInsulated
   completetime: 4
   materials:
@@ -31,6 +33,7 @@
 
 - type: latheRecipe
   id: ShellSoulbreaker
+  category: Ammo
   icon:
     sprite: Objects/Weapons/Guns/Ammunition/Casings/shotgun_shell.rsi
     state: practice

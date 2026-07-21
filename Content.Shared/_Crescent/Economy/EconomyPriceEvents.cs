@@ -18,6 +18,7 @@ public enum EconomyListCategory : byte
     Vessels,
     Treasury,
     Players,
+    Stocks,
 }
 
 [Serializable, NetSerializable]

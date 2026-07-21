@@ -66,7 +66,22 @@ public abstract class SharedLatheSystem : EntitySystem
 
     private void OnEmagged(EntityUid uid, EmagLatheRecipesComponent component, ref GotEmaggedEvent args)
     {
+        // Emagging unlocks extra recipes, so the cached list is no longer valid.
+        InvalidateRecipeCache(uid);
         args.Handled = true;
+    }
+
+    /// <summary>
+    /// Drops the cached recipe list so it gets rebuilt on the next query.
+    /// Call whenever something changes which recipes a lathe can make.
+    /// </summary>
+    public void InvalidateRecipeCache(EntityUid uid, LatheComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return;
+
+        component.CachedRecipes = null;
+        component.CachedRecipeLookup = null;
     }
 
     public static int AdjustMaterial(int original, bool reduce, float multiplier)
@@ -79,6 +94,12 @@ public abstract class SharedLatheSystem : EntitySystem
         if (!obj.WasModified<LatheRecipePrototype>())
             return;
         BuildInverseRecipeDictionary();
+
+        var query = AllEntityQuery<LatheComponent>();
+        while (query.MoveNext(out var uid, out var lathe))
+        {
+            InvalidateRecipeCache(uid, lathe);
+        }
     }
 
     private void BuildInverseRecipeDictionary()

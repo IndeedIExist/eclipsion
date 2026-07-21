@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: VehicleWheelchairFolded
+  category: Medical
   result: VehicleWheelchairFolded
   completetime: 1
   materials:
@@ -9,6 +10,7 @@
 
 - type: latheRecipe
   id: ParamedHypo
+  category: Medical
   result: ParamedHypo
   completetime: 3
   materials:

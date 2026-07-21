@@ -2,6 +2,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSyndicateInterdyneScrubs
+  category: Clothing
   result: ClothingUniformJumpsuitSyndicateInterdyneScrubs
   completetime: 1.5
   materials:
@@ -9,6 +10,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSyndicateInterdyne
+  category: Clothing
   result: ClothingUniformJumpsuitSyndicateInterdyne
   completetime: 1.5
   materials:
@@ -16,6 +18,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSyndicateInterdyneWhiteUniform
+  category: Clothing
   result: ClothingUniformJumpsuitSyndicateInterdyneWhiteUniform
   completetime: 1.5
   materials:
@@ -23,6 +26,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorSyndicateApron
+  category: Armor
   result: ClothingOuterArmorSyndicateApron
   completetime: 1.5
   materials:
@@ -30,6 +34,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorSyndicateCoordinator
+  category: Armor
   result: ClothingOuterArmorSyndicateCoordinator
   completetime: 1.5
   materials:
@@ -37,6 +42,7 @@
 
 - type: latheRecipe
   id: ClothingBeltSyndicateWebbingInterdyne
+  category: Clothing
   result: ClothingBeltSyndicateWebbingInterdyne
   completetime: 1.5
   materials:
@@ -45,6 +51,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatSyndicateInterdyne
+  category: Clothing
   result: ClothingHeadHatSyndicateInterdyne
   completetime: 1.5
   materials:
@@ -52,6 +59,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatSyndicateInterdyneBeret
+  category: Clothing
   result: ClothingHeadHatSyndicateInterdyneBeret
   completetime: 1.5
   materials:
@@ -59,6 +67,7 @@
 
 - type: latheRecipe
   id: ClothingMaskSyndicateFacemask
+  category: Clothing
   result: ClothingMaskSyndicateFacemask
   completetime: 1.5
   materials:
@@ -66,6 +75,7 @@
 
 - type: latheRecipe
   id: ClothingMaskBreathMedicalSecurity
+  category: Clothing
   result: ClothingMaskBreathMedicalSecurity
   completetime: 1.5
   materials:
@@ -73,6 +83,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSyndicate
+  category: Clothing
   result: ClothingUniformJumpsuitSyndicate
   completetime: 1.5
   materials:
@@ -80,6 +91,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSyndicateOfficer
+  category: Clothing
   result: ClothingUniformJumpsuitSyndicateOfficer
   completetime: 1.5
   materials:
@@ -87,6 +99,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorSyndicateLieutenant
+  category: Armor
   result: ClothingOuterArmorSyndicateLieutenant
   completetime: 1.5
   materials:
@@ -95,6 +108,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorSyndicateRingmaster
+  category: Armor
   result: ClothingOuterArmorSyndicateRingmaster
   completetime: 1.5
   materials:
@@ -104,6 +118,7 @@
 
 - type: latheRecipe
   id: ClothingBeltSyndicateWebbing
+  category: Clothing
   result: ClothingBeltSyndicateWebbing
   completetime: 1.5
   materials:
@@ -112,6 +127,7 @@
 
 - type: latheRecipe
   id: ClothingNeckScarfSyndicateShemagh
+  category: Clothing
   result: ClothingNeckScarfSyndicateShemagh
   completetime: 1.5
   materials:
@@ -119,6 +135,7 @@
 
 - type: latheRecipe
   id: ClothingNeckCloakHedgeknightCapelet
+  category: Clothing
   result: ClothingNeckCloakHedgeknightCapelet
   completetime: 1.5
   materials:
@@ -127,6 +144,7 @@
 
 - type: latheRecipe
   id: ClothingNeckCloakRingleader
+  category: Clothing
   result: ClothingNeckCloakRingleader
   completetime: 1.5
   materials:
@@ -135,6 +153,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatSyndicateArmaments
+  category: Clothing
   result: ClothingHeadHatSyndicateArmaments
   completetime: 1.5
   materials:
@@ -142,6 +161,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatSyndicateOfficer
+  category: Clothing
   result: ClothingHeadHatSyndicateOfficer
   completetime: 1.5
   materials:
@@ -149,6 +169,7 @@
 
 - type: latheRecipe
   id: ClothingHandsGlovesCombat
+  category: Clothing
   result: ClothingHandsGlovesCombat
   completetime: 1.5
   materials:
@@ -157,6 +178,7 @@
 
 - type: latheRecipe
   id: ClothingMaskGasSyndicate
+  category: Clothing
   result: ClothingMaskGasSyndicate
   completetime: 1.5
   materials:
@@ -166,6 +188,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitSyndicateSaws
+  category: Clothing
   result: ClothingUniformJumpsuitSyndicateSaws
   completetime: 1.5
   materials:
@@ -173,6 +196,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorSyndicateForeman
+  category: Armor
   result: ClothingOuterArmorSyndicateForeman
   completetime: 1.5
   materials:
@@ -180,6 +204,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatHardhatSyndicate
+  category: Clothing
   result: ClothingHeadHatHardhatSyndicate
   completetime: 1.5
   materials:
@@ -189,6 +214,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatHardhatSyndicateForeman
+  category: Clothing
   result: ClothingHeadHatHardhatSyndicateForeman
   completetime: 1.5
   materials:
@@ -200,6 +226,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorSyndicateArmorvestInterdyne
+  category: Armor
   result: ClothingOuterArmorSyndicateArmorvestInterdyne
   completetime: 1.5
   materials:
@@ -209,6 +236,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetSyndicateBasicInterdyne
+  category: Armor
   result: ClothingHeadHelmetSyndicateBasicInterdyne
   completetime: 1.5
   materials:
@@ -218,6 +246,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorSyndicateArmorvest
+  category: Armor
   result: ClothingOuterArmorSyndicateArmorvest
   completetime: 1.5
   materials:
@@ -226,6 +255,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetSyndicateBasic
+  category: Armor
   result: ClothingHeadHelmetSyndicateBasic
   completetime: 1.5
   materials:
@@ -236,6 +266,7 @@
 
 - type: latheRecipe
   id: DefibrillatorSyndicate
+  category: Medical
   result: DefibrillatorSyndicate
   completetime: 1.5
   materials:
@@ -245,6 +276,7 @@
 
 - type: latheRecipe
   id: HypoInterdyne
+  category: Medical
   result: SecHypo
   completetime: 1.5
   materials:
@@ -253,6 +285,7 @@
 
 - type: latheRecipe
   id: CartridgeEphedrineInterdyne
+  category: Ammo
   result: CartridgeEphedrine
   completetime: 1.5
   materials:
@@ -262,6 +295,7 @@
 
 - type: latheRecipe
   id: CartridgeTirizeneInterdyne
+  category: Ammo
   result: CartridgeTirizene
   completetime: 1.5
   materials:
@@ -271,6 +305,7 @@
 
 - type: latheRecipe
   id: CartridgeSalineInterdyne
+  category: Ammo
   result: CartridgeSaline
   completetime: 1.5
   materials:
@@ -280,6 +315,7 @@
 
 - type: latheRecipe
   id: CartridgeBicaridineInterdyne
+  category: Ammo
   result: CartridgeBicaridine
   completetime: 1.5
   materials:
@@ -289,6 +325,7 @@
 
 - type: latheRecipe
   id: CartridgeDermalineInterdyne
+  category: Ammo
   result: CartridgeDermaline
   completetime: 1.5
   materials:
@@ -298,6 +335,7 @@
 
 - type: latheRecipe
   id: CartridgePuncturaseInterdyne
+  category: Ammo
   result: CartridgePuncturase
   completetime: 1.5
   materials:
@@ -307,6 +345,7 @@
 
 - type: latheRecipe
   id: CartridgeAtropineInterdyne
+  category: Ammo
   result: CartridgeAtropine
   completetime: 1.5
   materials:
@@ -317,6 +356,7 @@
 
 - type: latheRecipe
   id: OmnimedToolSyndieInterdyne
+  category: Medical
   result: OmnimedToolSyndie
   completetime: 1.5
   materials:
@@ -326,6 +366,7 @@
 
 - type: latheRecipe
   id: WeaponDonorPlasmaCutter
+  category: Weapons
   result: WeaponDonorPlasmaCutter
   completetime: 1.5
   materials:
@@ -339,6 +380,7 @@
 
 - type: latheRecipe
   id: RCDRecharging
+  category: Tools
   result: RCDRecharging
   completetime: 1.5
   materials:
@@ -355,6 +397,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitTraumasec
+  category: Armor
   result: ClothingOuterHardsuitTraumasec
   completetime: 1.5
   materials:
@@ -366,6 +409,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitCoordinator
+  category: Armor
   result: ClothingOuterHardsuitCoordinator
   completetime: 1.5
   materials:
@@ -377,6 +421,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitSyndicateBG
+  category: Armor
   result: ClothingOuterHardsuitSyndicateBG
   completetime: 1.5
   materials:
@@ -387,6 +432,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitSyndicateSellsword
+  category: Armor
   result: ClothingOuterHardsuitSyndicateSellsword
   completetime: 1.5
   materials:
@@ -398,6 +444,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitRamzi
+  category: Armor
   result: ClothingOuterHardsuitRamzi
   completetime: 1.5
   materials:
@@ -407,6 +454,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitSyndieDonator
+  category: Armor
   result: ClothingOuterHardsuitSyndieDonator
   completetime: 1.5
   materials:
@@ -428,6 +476,7 @@
 
 - type: latheRecipe
   id: RockchipperLPC
+  category: Shipyard
   result: ShipVoucherRockchipper
   completetime: 1.5
   materials:
@@ -441,6 +490,7 @@
 
 - type: latheRecipe
   id: MercuryMK2LPC
+  category: Shipyard
   result: ShipVoucherMercuryMK2
   completetime: 1.5
   materials:
@@ -454,6 +504,7 @@
 
 - type: latheRecipe
   id: ShantyLPC
+  category: Shipyard
   result: ShipVoucherShanty
   completetime: 1.5
   materials:
@@ -467,6 +518,7 @@
 
 - type: latheRecipe
   id: ThanapodLPC
+  category: Shipyard
   result: ShipVoucherThanapod
   completetime: 1.5
   materials:
@@ -480,6 +532,7 @@
 
 - type: latheRecipe
   id: ScabrakLPC
+  category: Shipyard
   result: ShipVoucherScabrak
   completetime: 1.5
   materials:
@@ -493,6 +546,7 @@
 
 - type: latheRecipe
   id: HyenaLPC
+  category: Shipyard
   result: ShipVoucherHyena
   completetime: 1.5
   materials:
@@ -506,6 +560,7 @@
 
 - type: latheRecipe
   id: GeodeLPC
+  category: Shipyard
   result: ShipVoucherGeode
   completetime: 1.5
   materials:
@@ -519,6 +574,7 @@
 
 - type: latheRecipe
   id: CaracalLPC
+  category: Shipyard
   result: ShipVoucherCaracal
   completetime: 1.5
   materials:
@@ -532,6 +588,7 @@
 
 - type: latheRecipe
   id: RokhLPC
+  category: Shipyard
   result: ShipVoucherRokh
   completetime: 1.5
   materials:
@@ -545,6 +602,7 @@
 
 - type: latheRecipe
   id: AmadeusLPC
+  category: Shipyard
   result: ShipVoucherAmadeus
   completetime: 1.5
   materials:
@@ -558,6 +616,7 @@
 
 - type: latheRecipe
   id: FridgeLPC
+  category: Shipyard
   result: ShipVoucherFridge
   completetime: 1.5
   materials:
@@ -571,6 +630,7 @@
 
 - type: latheRecipe
   id: HarpyLPC
+  category: Shipyard
   result: ShipVoucherHarpy
   completetime: 1.5
   materials:
@@ -584,6 +644,7 @@
 
 - type: latheRecipe
   id: MeatwagonLPC
+  category: Shipyard
   result: ShipVoucherMeatwagon
   completetime: 1.5
   materials:
@@ -597,6 +658,7 @@
 
 - type: latheRecipe
   id: MatabeleLPC
+  category: Shipyard
   result: ShipVoucherMatabele
   completetime: 1.5
   materials:
@@ -610,6 +672,7 @@
 
 - type: latheRecipe
   id: HulkLPC
+  category: Shipyard
   result: ShipVoucherHulk
   completetime: 1.5
   materials:
@@ -623,6 +686,7 @@
 
 - type: latheRecipe
   id: GnatLPC
+  category: Shipyard
   result: ShipVoucherGnat
   completetime: 1.5
   materials:
@@ -636,6 +700,7 @@
 
 - type: latheRecipe
   id: TickLPC
+  category: Shipyard
   result: ShipVoucherTick
   completetime: 1.5
   materials:
@@ -649,6 +714,7 @@
 
 - type: latheRecipe
   id: PiranhaLPC
+  category: Shipyard
   result: ShipVoucherPiranha
   completetime: 1.5
   materials:
@@ -662,6 +728,7 @@
 
 - type: latheRecipe
   id: ScuttlefishLPC
+  category: Shipyard
   result: ShipVoucherScuttlefish
   completetime: 1.5
   materials:
@@ -675,6 +742,7 @@
 
 - type: latheRecipe
   id: ItchLPC
+  category: Shipyard
   result: ShipVoucherItch
   completetime: 1.5
   materials:
@@ -688,6 +756,7 @@
 
 - type: latheRecipe
   id: ReaverLPC
+  category: Shipyard
   result: ShipVoucherReaver
   completetime: 1.5
   materials:
@@ -701,6 +770,7 @@
 
 - type: latheRecipe
   id: CorvaxLPC
+  category: Shipyard
   result: ShipVoucherCorvax
   completetime: 1.5
   materials:
@@ -714,6 +784,7 @@
 
 - type: latheRecipe
   id: CleaverLPC
+  category: Shipyard
   result: ShipVoucherCleaver
   completetime: 1.5
   materials:
@@ -727,6 +798,7 @@
 
 - type: latheRecipe
   id: OuroborosLPC
+  category: Shipyard
   result: ShipVoucherOuroboros
   completetime: 1.5
   materials:
@@ -740,6 +812,7 @@
 
 - type: latheRecipe
   id: BoSinnLPC
+  category: Shipyard
   result: ShipVoucherSinn
   completetime: 1.5
   materials:
@@ -753,6 +826,7 @@
 
 - type: latheRecipe
   id: EradicatorLPC
+  category: Shipyard
   result: ShipVoucherEradicator
   completetime: 1.5
   materials:
@@ -766,6 +840,7 @@
 
 - type: latheRecipe
   id: WolfLPC
+  category: Shipyard
   result: ShipVoucherWolf
   completetime: 1.5
   materials:
@@ -779,6 +854,7 @@
 
 - type: latheRecipe
   id: BodybagLPC
+  category: Shipyard
   result: ShipVoucherBodybag
   completetime: 1.5
   materials:
@@ -794,6 +870,7 @@
 
 - type: latheRecipe
   id: FixedHardpointFlatpack
+  category: Circuitry
   result: FixedHardpointFlatpack
   completetime: 2
   materials:
@@ -805,6 +882,7 @@
 
 - type: latheRecipe
   id: LargeMissileHardpointFlatpack
+  category: Circuitry
   result: LargeMissileHardpointFlatpack
   completetime: 1.5
   materials:
@@ -816,6 +894,7 @@
 
 - type: latheRecipe
   id: MediumMissileHardpointFlatpack
+  category: Circuitry
   result: MediumMissileHardpointFlatpack
   completetime: 1.5
   materials:
@@ -828,6 +907,7 @@
 
 - type: latheRecipe
   id: SmallMissileHardpointFlatpack
+  category: Circuitry
   result: SmallMissileHardpointFlatpack
   completetime: 1.5
   materials:
@@ -838,6 +918,7 @@
 
 - type: latheRecipe
   id: LargeBallisticHardpointFlatpack
+  category: Circuitry
   result: LargeBallisticHardpointFlatpack
   completetime: 1.5
   materials:
@@ -849,6 +930,7 @@
 
 - type: latheRecipe
   id: MediumBallisticHardpointFlatpack
+  category: Circuitry
   result: MediumBallisticHardpointFlatpack
   completetime: 1.5
   materials:
@@ -862,6 +944,7 @@
 
 - type: latheRecipe
   id: SmallBallisticHardpointFlatpack
+  category: Circuitry
   result: SmallBallisticHardpointFlatpack
   completetime: 1.5
   materials:
@@ -872,6 +955,7 @@
 
 - type: latheRecipe
   id: MediumEnergyHardpointFlatpack
+  category: Circuitry
   result: MediumEnergyHardpointFlatpack
   completetime: 1.5
   materials:
@@ -884,6 +968,7 @@
 
 - type: latheRecipe
   id: SmallEnergyHardpointFlatpack
+  category: Circuitry
   result: SmallEnergyHardpointFlatpack
   completetime: 1.5
   materials:
@@ -894,6 +979,7 @@
 
 - type: latheRecipe
   id: EinsteinFlatpack
+  category: Circuitry
   result: EinsteinFlatpack
   completetime: 1.5
   materials:
@@ -905,6 +991,7 @@
 
 - type: latheRecipe
   id: HerculesFlatpack
+  category: Circuitry
   result: HerculesFlatpack
   completetime: 1.5
   materials:
@@ -918,6 +1005,7 @@
 
 - type: latheRecipe
   id: KineticMachete
+  category: Weapons
   result: LavalandWeaponKineticMachete
   completetime: 1.5
   materials:
@@ -929,6 +1017,7 @@
 
 - type: latheRecipe
   id: BreachingHammer
+  category: Weapons
   result: SecBreachingHammer
   completetime: 1.5
   materials:
@@ -950,6 +1039,7 @@
 
 - type: latheRecipe
   id: CrowbarLeftArmInterdyne
+  category: Robotics
   result: CrowbarLeftArm
   completetime: 1.5
   materials:
@@ -960,6 +1050,7 @@
 
 - type: latheRecipe
   id: CrowbarRightArmInterdyne
+  category: Robotics
   result: CrowbarRightArm
   completetime: 1.5
   materials:
@@ -970,6 +1061,7 @@
 
 - type: latheRecipe
   id: CyberneticsPainEditorInterdyne
+  category: Medical
   result: CyberneticsPainEditor
   completetime: 1.5
   materials:
@@ -980,6 +1072,7 @@
 
 - type: latheRecipe
   id: CyberneticsAdrenalInterdyne
+  category: Medical
   result: CyberneticsAdrenal
   completetime: 1.5
   materials:
@@ -991,6 +1084,7 @@
 
 - type: latheRecipe
   id: CyberneticsBloodPumpInterdyne
+  category: Medical
   result: CyberneticsBloodPump
   completetime: 1.5
   materials:
@@ -1002,6 +1096,7 @@
 
 - type: latheRecipe
   id: InterdyneSandevistanInterdyne
+  category: Medical
   result: OrganHeartSandevistan
   completetime: 1.5
   materials:
@@ -1013,6 +1108,7 @@
 
 - type: latheRecipe
   id: InterdyneBerserkerInterdyne
+  category: Medical
   result: OrganHeartBerserker
   completetime: 1.5
   materials:

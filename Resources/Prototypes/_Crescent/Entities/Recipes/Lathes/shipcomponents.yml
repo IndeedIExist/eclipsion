@@ -10,6 +10,7 @@
 
 - type: latheRecipe
   id: ShipElectronics
+  category: Parts
   result: StarshipElectronics1
   completetime: 0.25
   materials:

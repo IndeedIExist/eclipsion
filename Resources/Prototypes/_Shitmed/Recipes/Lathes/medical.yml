@@ -2,6 +2,7 @@
 
 - type: latheRecipe
   id: BoneGel
+  category: Medical
   result: BoneGel
   completetime: 2
   materials:
@@ -22,6 +23,7 @@
 
 - type: latheRecipe
   id: EnergyScalpel
+  category: Medical
   result: EnergyScalpel
   completetime: 2
   materials:
@@ -31,6 +33,7 @@
 
 - type: latheRecipe
   id: AdvancedRetractor
+  category: Medical
   result: AdvancedRetractor
   completetime: 2
   materials:
@@ -40,6 +43,7 @@
 
 - type: latheRecipe
   id: EnergyCautery
+  category: Medical
   result: EnergyCautery
   completetime: 2
   materials:
@@ -49,6 +53,7 @@
 
 - type: latheRecipe
   id: OmnimedTool
+  category: Medical
   result: OmnimedTool
   completetime: 2
   materials:

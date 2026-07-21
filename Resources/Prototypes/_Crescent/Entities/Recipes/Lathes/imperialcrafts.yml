@@ -2,6 +2,7 @@
 
 - type: latheRecipe
   id: ClothingOuterCoatImperialSoftsuit
+  category: Clothing
   result: ClothingOuterCoatImperialSoftsuit
   completetime: 2
   materials:
@@ -10,6 +11,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetImperialEVA
+  category: Armor
   result: ClothingHeadHelmetImperialEVA
   completetime: 2
   materials:
@@ -18,6 +20,7 @@
 
 - type: latheRecipe
   id: ClothingOuterCoatImperialParade
+  category: Clothing
   result: ClothingOuterCoatImperialParade
   completetime: 2
   materials:
@@ -26,6 +29,7 @@
 
 - type: latheRecipe
   id: ClothingOuterCoatClarizianOfficer
+  category: Clothing
   result: ClothingOuterCoatClarizianOfficer
   completetime: 2
   materials:
@@ -34,6 +38,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitImperialSoldierFormal
+  category: Clothing
   result: ClothingUniformJumpsuitImperialSoldierFormal
   completetime: 2
   materials:
@@ -41,6 +46,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitClarizeOfficer
+  category: Clothing
   result: ClothingUniformJumpsuitClarizeOfficer
   completetime: 2
   materials:
@@ -48,6 +54,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitImperialCombat
+  category: Clothing
   result: ClothingUniformJumpsuitImperialCombat
   completetime: 2
   materials:
@@ -55,6 +62,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitClarizeCombat
+  category: Clothing
   result: ClothingUniformJumpsuitClarizeCombat
   completetime: 2
   materials:
@@ -62,6 +70,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitImperialDoctor
+  category: Clothing
   result: ClothingUniformJumpsuitImperialDoctor
   completetime: 2
   materials:
@@ -69,6 +78,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitClarizeDoctor
+  category: Clothing
   result: ClothingUniformJumpsuitClarizeDoctor
   completetime: 2
   materials:
@@ -76,6 +86,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitImperialFreeholder
+  category: Clothing
   result: ClothingUniformJumpsuitImperialFreeholder
   completetime: 2
   materials:
@@ -83,6 +94,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitImperialNobleMale
+  category: Clothing
   result: ClothingUniformJumpsuitImperialNobleMale
   completetime: 2
   materials:
@@ -90,6 +102,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitImperialNobleFemale
+  category: Clothing
   result: ClothingUniformJumpsuitImperialNobleFemale
   completetime: 2
   materials:
@@ -97,6 +110,7 @@
 
 - type: latheRecipe
   id: ClothingHandsGlovesImperialWorkerGloves
+  category: Clothing
   result: ClothingHandsGlovesImperialWorkerGloves
   completetime: 2
   materials:
@@ -105,6 +119,7 @@
 
 - type: latheRecipe
   id: ClothingMaskImperialGovernorMask
+  category: Clothing
   result: ClothingMaskImperialGovernorMask
   completetime: 2
   materials:
@@ -113,6 +128,7 @@
 
 - type: latheRecipe
   id: ClothingOuterCoatImperialGovernor
+  category: Clothing
   result: ClothingOuterCoatImperialGovernor
   completetime: 4
   materials:
@@ -122,6 +138,7 @@
 
 - type: latheRecipe
   id: ClothingNeckImperialGreatcoat
+  category: Clothing
   result: ClothingNeckImperialGreatcoat
   completetime: 2
   materials:
@@ -129,6 +146,7 @@
 
 - type: latheRecipe
   id: ClothingNeckCloakImperialGovernor
+  category: Clothing
   result: ClothingNeckCloakImperialGovernor
   completetime: 2
   materials:
@@ -136,6 +154,7 @@
 
 - type: latheRecipe
   id: ClothingNeckCloakImperialCapelet
+  category: Clothing
   result: ClothingNeckCloakImperialCapelet
   completetime: 2
   materials:
@@ -144,6 +163,7 @@
 
 - type: latheRecipe
   id: ClothingShoesBootsImperialLongboots
+  category: Clothing
   result: ClothingShoesBootsImperialLongboots
   completetime: 2
   materials:
@@ -151,6 +171,7 @@
 
 - type: latheRecipe
   id: ClothingShoesBootsMagDSM
+  category: Clothing
   result: ClothingShoesBootsMagDSM
   completetime: 2
   materials:
@@ -161,6 +182,7 @@
 
 - type: latheRecipe
   id: ClothingHandsGlovesImperialLonggloves
+  category: Clothing
   result: ClothingHandsGlovesImperialLonggloves
   completetime: 2
   materials:
@@ -168,6 +190,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetImperialWorkerHelmet
+  category: Armor
   result: ClothingHeadHelmetImperialWorkerHelmet
   completetime: 2
   materials:
@@ -176,6 +199,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatImperialPeakedCap
+  category: Clothing
   result: ClothingHeadHatImperialPeakedCap
   completetime: 2
   materials:
@@ -183,6 +207,7 @@
 
 - type: latheRecipe
   id: ClothingMaskImperialCombatGasmask
+  category: Clothing
   result: ClothingMaskImperialCombatGasmask
   completetime: 2
   materials:
@@ -191,6 +216,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatImperialHat
+  category: Clothing
   result: ClothingHeadHatImperialHat
   completetime: 2
   materials:
@@ -198,6 +224,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatImperialBeret
+  category: Clothing
   result: ClothingHeadHatImperialBeret
   completetime: 2
   materials:
@@ -206,6 +233,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatClarizeBeret
+  category: Clothing
   result: ClothingHeadHatClarizeBeret
   completetime: 2
   materials:
@@ -216,6 +244,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetImperialTrooperHelmet
+  category: Armor
   result: ClothingHeadHelmetImperialTrooperHelmet
   completetime: 2
   materials:
@@ -224,6 +253,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorImperialTrooperArmor
+  category: Armor
   result: ClothingOuterArmorImperialTrooperArmor
   completetime: 2
   materials:
@@ -232,6 +262,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetClarizianTrooperHelmet
+  category: Armor
   result: ClothingHeadHelmetClarizianTrooperHelmet
   completetime: 2
   materials:
@@ -241,6 +272,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorClarizianTrooperArmor
+  category: Armor
   result: ClothingOuterArmorClarizianTrooperArmor
   completetime: 2
   materials:
@@ -250,6 +282,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorImperialArmorPrestige
+  category: Armor
   result: ClothingOuterArmorImperialArmorPrestige
   completetime: 2
   materials:
@@ -259,6 +292,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetImperialKnightCommanderHelmet
+  category: Armor
   result: ClothingHeadHelmetImperialKnightCommanderHelmet
   completetime: 2
   materials:
@@ -270,6 +304,7 @@
 
 - type: latheRecipe
   id: WeaponMechIndustrialKineticAcceleratorImperial
+  category: MechWeapons
   result: WeaponMechIndustrialKineticAccelerator
   completetime: 2
   materials:
@@ -280,6 +315,7 @@
 
 - type: latheRecipe
   id: MechEquipmentGrabberImperial
+  category: MechEquipment
   result: MechEquipmentGrabber
   completetime: 2
   materials:
@@ -288,6 +324,7 @@
 
 - type: latheRecipe
   id: WeaponMechMeleeDrillImperial
+  category: MechWeapons
   result: WeaponMechMeleeDrill
   completetime: 2
   materials:
@@ -299,6 +336,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitImperialWorker
+  category: Armor
   result: ClothingOuterHardsuitImperialWorker
   completetime: 2
   materials:
@@ -309,6 +347,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitClarizianWorker
+  category: Armor
   result: ClothingOuterHardsuitClarizianWorker
   completetime: 2
   materials:
@@ -320,6 +359,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitClarize
+  category: Armor
   result: ClothingOuterHardsuitClarize
   completetime: 2
   materials:
@@ -331,6 +371,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitImperialSoldier
+  category: Armor
   result: ClothingOuterHardsuitImperialSoldier
   completetime: 2
   materials:
@@ -341,6 +382,7 @@
 
 - type: latheRecipe
   id: ClothingOuterCoatImperialRitter
+  category: Clothing
   result: ClothingOuterCoatImperialRitter
   completetime: 2
   materials:
@@ -352,6 +394,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitImperialKnight
+  category: Armor
   result: ClothingOuterHardsuitImperialKnight
   completetime: 2
   materials:
@@ -363,6 +406,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitImperialJuggernaut
+  category: Armor
   result: ClothingOuterHardsuitImperialJuggernaut
   completetime: 2
   materials:
@@ -376,6 +420,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitImperialNullweavePsion
+  category: Armor
   result: ClothingOuterHardsuitImperialNullweavePsion
   completetime: 2
   materials:
@@ -386,6 +431,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitHunterElite
+  category: Armor
   result: ClothingOuterHardsuitHunterElite
   completetime: 2
   materials:
@@ -400,6 +446,7 @@
 
 - type: latheRecipe
   id: WeaponRevolverArgenti
+  category: Weapons
   result: WeaponRevolverArgenti
   completetime: 2
   materials:
@@ -408,6 +455,7 @@
 
 - type: latheRecipe
   id: WeaponPistolNeoVolker
+  category: Weapons
   result: WeaponPistolNeoVolker
   completetime: 2
   materials:
@@ -417,6 +465,7 @@
 
 - type: latheRecipe
   id: WeaponPistolComplianceImperial
+  category: Weapons
   result: WeaponPistolComplianceImperial
   completetime: 2
   materials:
@@ -426,6 +475,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunBeetle
+  category: Weapons
   result: WeaponSubMachineGunBeetle
   completetime: 2
   materials:
@@ -435,6 +485,7 @@
 
 - type: latheRecipe
   id: WeaponRifleMiller
+  category: Weapons
   result: WeaponRifleMiller
   completetime: 2
   materials:
@@ -444,6 +495,7 @@
 
 - type: latheRecipe
   id: WeaponRifleHunter
+  category: Weapons
   result: WeaponRifleHunter
   completetime: 2
   materials:
@@ -454,6 +506,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunC20rImperial
+  category: Weapons
   result: WeaponSubMachineGunC20rHullrot
   completetime: 2
   materials:
@@ -463,6 +516,7 @@
 
 - type: latheRecipe
   id: WeaponShotgunDSMMatusa
+  category: Weapons
   result: WeaponShotgunDSMMatusa
   completetime: 2
   materials:
@@ -472,6 +526,7 @@
 
 - type: latheRecipe
   id: WeaponRifleDSMLegionnaire
+  category: Weapons
   result: WeaponRifleDSMLegionnaire
   completetime: 2
   materials:
@@ -481,6 +536,7 @@
 
 - type: latheRecipe
   id: WeaponPlasmaRifleSeethe
+  category: Weapons
   result: WeaponDSMPlasmaRifle
   completetime: 2
   materials:
@@ -493,6 +549,7 @@
 
 - type: latheRecipe
   id: WeaponSniperDSMLegax
+  category: Weapons
   result: WeaponSniperDSMLegax
   completetime: 2
   materials:
@@ -502,6 +559,7 @@
 
 - type: latheRecipe
   id: WeaponSniperImperator
+  category: Weapons
   result: WeaponSniperImperator
   completetime: 2
   materials:
@@ -512,6 +570,7 @@
 
 - type: latheRecipe
   id: WeaponShotgunReno
+  category: Weapons
   result: WeaponShotgunReno
   completetime: 1.5
   materials:
@@ -521,6 +580,7 @@
 
 - type: latheRecipe
   id: WeaponLauncherM320
+  category: Weapons
   result: WeaponLauncherM320
   completetime: 2
   materials:
@@ -530,6 +590,7 @@
 
 - type: latheRecipe
   id: WeaponLaserCannonImperial
+  category: Weapons
   result: WeaponLaserCannon
   completetime: 2
   materials:
@@ -540,6 +601,7 @@
 
 - type: latheRecipe
   id: WeaponEnergyRevolverImperial
+  category: Weapons
   result: WeaponEnergyRevolver
   completetime: 2
   materials:
@@ -550,6 +612,7 @@
 
 - type: latheRecipe
   id: WeaponLightMachineGunDSMDominion
+  category: Weapons
   result: WeaponLightMachineGunDSMDominion
   completetime: 1.5
   materials:
@@ -562,6 +625,7 @@
 
 - type: latheRecipe
   id: WeaponMechCombatImperialSMG
+  category: MechWeapons
   result: WeaponMechCombatImperialSMG
   completetime: 2
   materials:
@@ -572,6 +636,7 @@
 
 - type: latheRecipe
   id: WeaponMechCombatImperialAutolaser
+  category: MechWeapons
   result: WeaponMechCombatImperialAutolaser
   completetime: 2
   materials:
@@ -584,6 +649,7 @@
 
 - type: latheRecipe
   id: WeaponMechCombatPlasmaRifle
+  category: MechWeapons
   result: WeaponMechCombatPlasmaRifle
   completetime: 2
   materials:
@@ -596,6 +662,7 @@
 
 - type: latheRecipe
   id: WeaponMechCombatPlasmaCannon
+  category: MechWeapons
   result: WeaponMechCombatPlasmaCannon
   completetime: 2
   materials:
@@ -611,6 +678,7 @@
 
 - type: latheRecipe
   id: LaelapsLPC
+  category: Shipyard
   result: ShipVoucherLaelaps
   completetime: 1
   materials:
@@ -624,6 +692,7 @@
 
 - type: latheRecipe
   id: SunesisLPC
+  category: Shipyard
   result: ShipVoucherSunesis
   completetime: 1
   materials:
@@ -637,6 +706,7 @@
 
 - type: latheRecipe
   id: PraxisLPC
+  category: Shipyard
   result: ShipVoucherPraxis
   completetime: 1
   materials:
@@ -650,6 +720,7 @@
 
 - type: latheRecipe
   id: GnosisLPC
+  category: Shipyard
   result: ShipVoucherGnosis
   completetime: 1
   materials:
@@ -663,6 +734,7 @@
 
 - type: latheRecipe
   id: SuzerainLPC
+  category: Shipyard
   result: ShipVoucherSuzerain
   completetime: 1
   materials:
@@ -676,6 +748,7 @@
 
 - type: latheRecipe
   id: NemesisLPC
+  category: Shipyard
   result: ShipVoucherNemesis
   completetime: 1
   materials:
@@ -689,6 +762,7 @@
 
 - type: latheRecipe
   id: JanissaryLPC
+  category: Shipyard
   result: ShipVoucherJanissary
   completetime: 1
   materials:
@@ -702,6 +776,7 @@
 
 - type: latheRecipe
   id: RedemptorLPC
+  category: Shipyard
   result: ShipVoucherRedemptor
   completetime: 1
   materials:
@@ -715,6 +790,7 @@
 
 - type: latheRecipe
   id: KhanLPC
+  category: Shipyard
   result: ShipVoucherKhan
   completetime: 1
   materials:
@@ -728,6 +804,7 @@
 
 - type: latheRecipe
   id: PerigaleLPC
+  category: Shipyard
   result: ShipVoucherPerigale
   completetime: 1
   materials:
@@ -741,6 +818,7 @@
 
 - type: latheRecipe
   id: RaiderLPC
+  category: Shipyard
   result: ShipVoucherRaider
   completetime: 1
   materials:
@@ -754,6 +832,7 @@
 
 - type: latheRecipe
   id: TriumphantLPC
+  category: Shipyard
   result: ShipVoucherTriumphant
   completetime: 1
   materials:
@@ -767,6 +846,7 @@
 
 - type: latheRecipe
   id: IbisLPC
+  category: Shipyard
   result: ShipVoucherIbis
   completetime: 1
   materials:
@@ -780,6 +860,7 @@
 
 - type: latheRecipe
   id: PraetorianLPC
+  category: Shipyard
   result: ShipVoucherPraetorian
   completetime: 1
   materials:
@@ -793,6 +874,7 @@
 
 - type: latheRecipe
   id: CovetorLPC
+  category: Shipyard
   result: ShipVoucherCovetor
   completetime: 1
   materials:
@@ -806,6 +888,7 @@
 
 - type: latheRecipe
   id: TorturerLPC
+  category: Shipyard
   result: ShipVoucherTorturer
   completetime: 1
   materials:
@@ -819,6 +902,7 @@
 
 - type: latheRecipe
   id: MagnateLPC
+  category: Shipyard
   result: ShipVoucherMagnate
   completetime: 1
   materials:
@@ -832,6 +916,7 @@
 
 - type: latheRecipe
   id: RocinanteDroneLPC
+  category: Shipyard
   result: ShipVoucherRocinanteDrone
   completetime: 1
   materials:
@@ -845,6 +930,7 @@
 
 - type: latheRecipe
   id: ValorDroneLPC
+  category: Shipyard
   result: ShipVoucherValorDrone
   completetime: 1
   materials:
@@ -860,6 +946,7 @@
 
 - type: latheRecipe
   id: CarrionFlatpack
+  category: Circuitry
   result: CarrionFlatpack
   completetime: 2
   materials:
@@ -872,6 +959,7 @@
 
 - type: latheRecipe
   id: WandererFlatpack
+  category: Circuitry
   result: WandererFlatpack
   completetime: 2
   materials:
@@ -884,6 +972,7 @@
 
 - type: latheRecipe
   id: PaladinFlatpack
+  category: Circuitry
   result: PaladinFlatpack
   completetime: 2
   materials:
@@ -898,6 +987,7 @@
 
 - type: latheRecipe
   id:  BallisticCyclerDSM
+  category: Ammo
   result: BallisticCycler1
   completetime: 1.5
   materials:
@@ -906,6 +996,7 @@
 
 - type: latheRecipe
   id:  TubeLoaderDSM
+  category: Ammo
   result: TubeLoader1
   completetime: 1.5
   materials:
@@ -916,6 +1007,7 @@
 
 - type: latheRecipe
   id: DSMBaton
+  category: Weapons
   result: DSMBaton
   completetime: 2
   materials:
@@ -924,6 +1016,7 @@
 
 - type: latheRecipe
   id: DSMDuelingKhopesh
+  category: Weapons
   result: DSMDuelingKhopesh
   completetime: 2
   materials:
@@ -932,6 +1025,7 @@
 
 - type: latheRecipe
   id: ClothingBeltSheathKhopesh
+  category: Clothing
   result: ClothingBeltSheathKhopesh
   completetime: 2
   materials:
@@ -939,6 +1033,7 @@
 
 - type: latheRecipe
   id: DSMSabre
+  category: Weapons
   result: DSMSabre
   completetime: 2
   materials:
@@ -947,6 +1042,7 @@
 
 - type: latheRecipe
   id: ClothingBeltSheathDSMSabre
+  category: Clothing
   result: ClothingBeltSheathDSMSabre
   completetime: 2
   materials:
@@ -954,6 +1050,7 @@
 
 - type: latheRecipe
   id: DSMRapier
+  category: Weapons
   result: DSMRapier
   completetime: 2
   materials:
@@ -962,6 +1059,7 @@
 
 - type: latheRecipe
   id: ClothingBeltSheathDSMRapier
+  category: Clothing
   result: ClothingBeltSheathDSMRapier
   completetime: 2
   materials:
@@ -979,6 +1077,7 @@
 
 - type: latheRecipe
   id: ImperialPsionBoundlightStaff
+  category: Weapons
   result: ImperialPsionBoundlightStaff
   completetime: 2
   materials:
@@ -988,6 +1087,7 @@
 
 - type: latheRecipe
   id: SRMKhopesh
+  category: Weapons
   result: SRMKhopesh
   completetime: 2
   materials:
@@ -1000,6 +1100,7 @@
 
 - type: latheRecipe
   id: GrenadeDSMG4Twistcap
+  category: Weapons
   result: DSMG4TwistcapHandgrenade
   completetime: 2
   materials:
