@@ -173,7 +173,6 @@ research-technology-shinohara-boriaticcomposting = Boriatic Fuel Composting
 research-technology-shinohara-basicfighterguns = Basic Fighter Weaponry
 research-technology-shinohara-basicmechguns = Basic Mechasuit Weaponry
 research-technology-shinohara-advancedmechweaponry = Advanced Mechasuit Weaponry
-research-technology-shinohara-shipyardmanufactorum = Shipyard Manufactorum
 research-technology-shinohara-scraprefiner = Scrap Upcycler
 research-technology-shinohara-hammerhead = Homing Anti-Ship Launcher
 research-technology-shinohara-emitter = Basic Deflector Technology

@@ -20696,13 +20696,6 @@ entities:
     - type: Transform
       pos: 22.307335,-28.32055
       parent: 1
-- proto: DeedConsole
-  entities:
-  - uid: 1207
-    components:
-    - type: Transform
-      pos: 17.5,-20.5
-      parent: 1
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 1042
@@ -32616,13 +32609,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ShipyardManufactorum
-  entities:
-  - uid: 270
-    components:
-    - type: Transform
-      pos: -1.5,-1.5
-      parent: 1
 - proto: ShotGunCabinetOpen
   entities:
   - uid: 4292

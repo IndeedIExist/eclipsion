@@ -29438,13 +29438,6 @@ entities:
     - type: Transform
       pos: -4.4327407,5.638483
       parent: 1
-- proto: ShipyardManufactorum
-  entities:
-  - uid: 2614
-    components:
-    - type: Transform
-      pos: -9.5,-24.5
-      parent: 1
 - proto: ShuttersNormalOpen
   entities:
   - uid: 2615

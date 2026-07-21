@@ -16104,13 +16104,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: DeedConsole
-  entities:
-  - uid: 2033
-    components:
-    - type: Transform
-      pos: -7.5,-13.5
-      parent: 1
 - proto: DefaultStationBeaconBar
   entities:
   - uid: 5066

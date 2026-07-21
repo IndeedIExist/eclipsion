@@ -36163,13 +36163,6 @@ entities:
     - type: Transform
       pos: 5.5,-68.5
       parent: 1
-- proto: DeedConsole
-  entities:
-  - uid: 3060
-    components:
-    - type: Transform
-      pos: 17.5,-20.5
-      parent: 1
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 3061

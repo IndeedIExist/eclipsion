@@ -2,8 +2,11 @@ using Content.Server.Crescent.Dispenser;
 using Content.Server._Crescent.Overwatch;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
+using Content.Shared._Crescent.Factions;
+using Content.Shared._Crescent.HullrotFaction;
 using Content.Shared._Crescent.Taxation;
 using Content.Shared.Access.Systems;
+using Content.Shared.Ghost;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
@@ -32,6 +35,7 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly OverwatchSystem _overwatch = default!;
     [Dependency] private readonly PowerReceiverSystem _power = default!;
+    [Dependency] private readonly FactionMachineSystem _factionMachine = default!;
 
     public override void Initialize()
     {
@@ -62,8 +66,9 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
     }
 
     /// <summary>
-    /// Gate the UI: without faction funds access the console won't open at all. Trying anyway
-    /// pops a warning and sounds the intrusion alarm (rate-limited so it can't be spammed).
+    /// Gate the UI: without faction funds access the console won't open at all. An outsider trying
+    /// anyway pops a warning and sounds the intrusion alarm (rate-limited so it can't be spammed);
+    /// the faction's own rank and file are merely turned away.
     /// </summary>
     private void OnOpenAttempt(EntityUid uid, FactionTreasuryConsoleComponent comp, ActivatableUIOpenAttemptEvent args)
     {
@@ -73,9 +78,53 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
         if (_access.IsAllowed(args.User, uid))
             return;
 
+        args.Cancel();
+
+        // An admin ghost looking inside is not a break-in. Ordinary ghosts cannot interact at all, so
+        // anything reaching this point is an admin — same stance as FactionMachineSystem.
+        if (HasComp<GhostComponent>(args.User))
+            return;
+
+        // Checked before the intrusion popup so a dead vault gives one honest message rather than
+        // "alarm engaged" immediately followed by "there is no power".
+        if (!_power.IsPowered(uid))
+        {
+            _popup.PopupEntity(Loc.GetString("treasury-console-unpowered"), uid, args.User, PopupType.Medium);
+            return;
+        }
+
+        // A shipbreaker rattling the vault door of the station they work on is not a heist. Only
+        // someone from outside the faction can rob it; members just get told no.
+        if (IsOwnFactionMember(uid, comp, args.User))
+        {
+            _popup.PopupEntity(Loc.GetString("treasury-console-not-command"), uid, args.User, PopupType.Medium);
+            return;
+        }
+
         _popup.PopupEntity(Loc.GetString("treasury-console-intrusion"), uid, args.User, PopupType.MediumCaution);
         TriggerRobbery(uid, comp, args.User);
-        args.Cancel();
+    }
+
+    /// <summary>
+    /// Whether <paramref name="user"/> belongs to the faction that owns this vault. Membership lives on
+    /// the body rather than the ID card, so a stolen card cannot make a thief count as staff. Falls back
+    /// to the console's grid when the console itself names no faction.
+    /// </summary>
+    private bool IsOwnFactionMember(EntityUid uid, FactionTreasuryConsoleComponent comp, EntityUid user)
+    {
+        var userFaction = CompOrNull<HullrotFactionComponent>(user)?.Faction ?? string.Empty;
+        if (string.IsNullOrEmpty(userFaction))
+            return false;
+
+        // Compared raw, not folded through FactionMachineSystem's parent-faction table: that table maps
+        // TAP onto TFSC for machine ownership, which here would quietly make every Pact nomad count as
+        // Coalition staff and lock them out of robbing the Freeport. Every job writes the same faction id
+        // its vault is configured with, so an exact match is what we want.
+        var owner = string.IsNullOrEmpty(comp.Faction)
+            ? _factionMachine.GetFaction(uid)
+            : comp.Faction;
+
+        return userFaction == owner;
     }
 
     /// <summary>
@@ -199,8 +248,14 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
         if (!_access.IsAllowed(args.User, uid))
         {
             _popup.PopupEntity(Loc.GetString("treasury-console-deposit-denied"), uid, args.User, PopupType.MediumCaution);
-            SoundAlarm(uid, comp);
-            AnnounceIntrusion(uid, comp);
+
+            // Same rule as the UI gate: only an outsider forcing the vault raises the alarm.
+            if (!IsOwnFactionMember(uid, comp, args.User))
+            {
+                SoundAlarm(uid, comp);
+                AnnounceIntrusion(uid, comp);
+            }
+
             return;
         }
 

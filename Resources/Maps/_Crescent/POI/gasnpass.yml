@@ -10491,18 +10491,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 14.5,14.5
       parent: 1
-- proto: DeedConsole
-  entities:
-  - uid: 1141
-    components:
-    - type: Transform
-      pos: 7.5,-0.5
-      parent: 1
-  - uid: 1142
-    components:
-    - type: Transform
-      pos: -6.5,-0.5
-      parent: 1
 - proto: DrinkCafeLatte
   entities:
   - uid: 1143

@@ -97707,13 +97707,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -14.5,-12.5
       parent: 1
-- proto: DeedConsole
-  entities:
-  - uid: 4778
-    components:
-    - type: Transform
-      pos: 22.5,-13.5
-      parent: 1
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 4779
@@ -114774,13 +114767,6 @@ entities:
     components:
     - type: Transform
       pos: 5.027792,-15.40254
-      parent: 1
-- proto: ShipyardManufactorum
-  entities:
-  - uid: 7098
-    components:
-    - type: Transform
-      pos: 13.5,-31.5
       parent: 1
 - proto: ShuttersNormalOpen
   entities:

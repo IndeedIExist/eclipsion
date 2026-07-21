@@ -156,6 +156,16 @@ Entries:
       type: Tweak
     - message: Treasury vaults now run on station power. An unpowered vault cannot be robbed, and cutting the power mid-heist kills the siphon - the thieves keep only what has already come out. It locks the owners out too, so it is a real decision.
       type: Tweak
+    - message: A faction's own crew can no longer rob its treasury vault. Members without command access are simply turned away instead of tripping the alarm and starting a heist - only outsiders can crack a vault. Membership is read off the person, so a stolen ID card will not pass you off as staff.
+      type: Fix
+    - message: The Coalition's treasury, taxation and payroll consoles now open for the whole command tier - ringleader, lieutenant, coordinator, foreman and intelligence officer - rather than the ringleader alone.
+      type: Fix
+    - message: Added recruitment terminals to the Freeport and to Tatsumoto, so both factions can hire on shift like the League and the Mandate already could.
+      type: Add
+    - message: The recruitment console can no longer demote a faction's own command. It used to recognise them by chat rank alone, which meant Shinohara - who hands out no ranks at all - could reassign its own executives down to shop floor. It now also refuses anyone whose job belongs to the faction but is off the console's hiring list.
+      type: Fix
+    - message: Deed consoles and shipyard manufactorums have been stripped out of every station. Neither machine has a place in the sector's economy any more, and the Shinohara research node and flatpack that built the manufactorum are gone with them.
+      type: Remove
   id: 6010
   time: '2026-07-21T00:00:00.0000000+00:00'
   url: null

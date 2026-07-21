@@ -813,20 +813,6 @@
 
 - type: entity
   parent: BaseFlatpack
-  id: ShipyardManufactorumFlatpack
-  name: SHI shipyard manufactorum flatpack
-  description: Parts used to build a shipyard manufactorum. Activate with a multitool to deploy.
-  components:
-  - type: Flatpack
-    entity: ShipyardManufactorum
-  - type: Sprite
-    layers:
-    - state: ame-part
-  - type: StaticPrice
-    price: 500
-
-- type: entity
-  parent: BaseFlatpack
   id: BoriaticComposterFlatpack
   name: SHI boriatic composter flatpack
   description: Parts used to build a boriatic composter. Activate with a multitool to deploy.

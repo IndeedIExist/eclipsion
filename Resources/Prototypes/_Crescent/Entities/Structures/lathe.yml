@@ -892,7 +892,6 @@
       - ClothingUniformJumpsuitShinoharaDoctor
       - ClothingOuterHardsuitHEV
       - WeaponLauncherDisposableRocket
-      - ShipyardManufactorumFlatpack
       - ScrapRefinerFlatpack
       - ClothingUniformJumpsuitShinoharaSecurity
       - ClothingOuterArmorShinoharaHOSVest
@@ -1693,45 +1692,6 @@
     runningState: base_machine_processing
     staticRecipes:
     - JugBoriaticFuelCraft
-
-#ship parts
-
-- type: entity
-  parent: [BaseLathe, BaseMaterialSiloUtilizer]
-  id: ShipyardManufactorum
-  name: SHI shipyard manufactorum
-  description: An automated assembler, constructing vessel components out of minerals.
-  components:
-  - type: Sprite
-    sprite: _Crescent/Structures/shipfab.rsi
-    layers:
-    - state: base_machine
-      map: ["enum.LatheVisualLayers.IsRunning"]
-    - state: buttons_on
-      shader: unshaded
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
-  - type: MaterialStorage
-    dropOnDeconstruct: false #should drop ores instead of ingots/sheets
-    ignoreColor: true
-    canEjectStoredMaterials: true
-    whitelist:
-      tags:
-      - Ingot
-      - Sheet
-      - Metal
-  - type: Lathe
-    idleState: base_machine
-    runningState: base_machine_processing
-    staticRecipes:
-    - ShipHull
-    - ShipElectronics
-    - ShipEngine
-  - type: Anchorable
-    flags:
-    - Anchorable
-  - type: MaterialStorageMagnetPickup
-    magnetEnabled: False
-    range: 0.3
 
 #organs
 

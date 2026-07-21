@@ -65794,13 +65794,6 @@ entities:
     - type: Transform
       pos: -2.556143,6.505248
       parent: 1
-- proto: DeedConsole
-  entities:
-  - uid: 2126
-    components:
-    - type: Transform
-      pos: -3.5,4.5
-      parent: 1
 - proto: DeepWildBiomeSource
   entities:
   - uid: 2127

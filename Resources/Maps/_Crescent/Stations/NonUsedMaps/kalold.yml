@@ -27751,13 +27751,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 20.681705,-51.70403
       parent: 1
-- proto: DeedConsole
-  entities:
-  - uid: 8873
-    components:
-    - type: Transform
-      pos: -29.5,-57.5
-      parent: 1
 - proto: DeepWildBiomeSource
   entities:
   - uid: 2029
@@ -43480,13 +43473,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ShipyardManufactorum
-  entities:
-  - uid: 1194
-    components:
-    - type: Transform
-      pos: -24.5,-19.5
-      parent: 1
 - proto: ShuttersNormal
   entities:
   - uid: 174

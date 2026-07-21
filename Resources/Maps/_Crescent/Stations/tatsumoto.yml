@@ -48664,28 +48664,6 @@ entities:
     - type: Transform
       pos: -7.5,4.5
       parent: 1
-- proto: DeedConsole
-  entities:
-  - uid: 4265
-    components:
-    - type: Transform
-      pos: -19.5,0.5
-      parent: 1
-  - uid: 4266
-    components:
-    - type: Transform
-      pos: -19.5,4.5
-      parent: 1
-  - uid: 4267
-    components:
-    - type: Transform
-      pos: 15.5,0.5
-      parent: 1
-  - uid: 4268
-    components:
-    - type: Transform
-      pos: 15.5,4.5
-      parent: 1
 - proto: DefaultStationBeaconBar
   entities:
   - uid: 4269
@@ -50179,6 +50157,13 @@ entities:
     components:
     - type: Transform
       pos: 11.5,54.5
+      parent: 1
+- proto: FactionRecruitmentConsoleSHI
+  entities:
+  - uid: 8535
+    components:
+    - type: Transform
+      pos: 14.5,47.5
       parent: 1
 - proto: Firelock
   entities:
@@ -68033,13 +68018,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ShipyardManufactorum
-  entities:
-  - uid: 6940
-    components:
-    - type: Transform
-      pos: -11.5,20.5
-      parent: 1
 - proto: ShuttersNormal
   entities:
   - uid: 6941

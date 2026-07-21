@@ -20110,13 +20110,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 27.282236,-33.198357
       parent: 1
-- proto: DeedConsole
-  entities:
-  - uid: 3732
-    components:
-    - type: Transform
-      pos: 21.5,-36.5
-      parent: 1
 - proto: DeepWildBiomeSource
   entities:
   - uid: 6837
@@ -33813,15 +33806,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ShipyardManufactorum
-  entities:
-  - uid: 1088
-    components:
-    - type: Transform
-      pos: -3.5,-32.5
-      parent: 1
-    - type: ApcPowerReceiver
-      needsPower: False
 - proto: ShotGunCabinetFilled
   entities:
   - uid: 3177

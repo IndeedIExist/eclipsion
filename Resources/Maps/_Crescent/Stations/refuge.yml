@@ -18941,15 +18941,6 @@ entities:
     - type: Transform
       pos: -3.5,-7.5
       parent: 1
-- proto: DeedConsole
-  entities:
-  - uid: 1328
-    components:
-    - type: Transform
-      pos: -7.5,-11.5
-      parent: 1
-    missingComponents:
-    - Anchorable
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 1329

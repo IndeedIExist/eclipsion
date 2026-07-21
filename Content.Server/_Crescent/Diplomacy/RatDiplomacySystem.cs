@@ -174,11 +174,15 @@ public sealed partial class RatDiplomacySystem : EntitySystem
             (rel == FactionRelation.Peace || rel == FactionRelation.Alliance))
             return;
 
-        if (_pending.TryGetValue(msg.TargetFactionId, out var targetPending) &&
-            targetPending.Any(p => p.FromFactionId == myFaction && p.Type == PendingProposalType.Peace))
+        // The target id arrives from the client, so an unknown one must bounce rather than index the
+        // dictionary blind — a faction that has been retired from the roster would throw here.
+        if (!_pending.TryGetValue(msg.TargetFactionId, out var targetPending))
             return;
 
-        _pending[msg.TargetFactionId].Add(new PendingProposal
+        if (targetPending.Any(p => p.FromFactionId == myFaction && p.Type == PendingProposalType.Peace))
+            return;
+
+        targetPending.Add(new PendingProposal
         {
             FromFactionId = myFaction,
             ToFactionId = msg.TargetFactionId,
@@ -209,11 +213,13 @@ public sealed partial class RatDiplomacySystem : EntitySystem
             rel == FactionRelation.Alliance)
             return;
 
-        if (_pending.TryGetValue(msg.TargetFactionId, out var targetPending) &&
-            targetPending.Any(p => p.FromFactionId == myFaction && p.Type == PendingProposalType.Alliance))
+        if (!_pending.TryGetValue(msg.TargetFactionId, out var targetPending))
             return;
 
-        _pending[msg.TargetFactionId].Add(new PendingProposal
+        if (targetPending.Any(p => p.FromFactionId == myFaction && p.Type == PendingProposalType.Alliance))
+            return;
+
+        targetPending.Add(new PendingProposal
         {
             FromFactionId = myFaction,
             ToFactionId = msg.TargetFactionId,
@@ -244,11 +250,13 @@ public sealed partial class RatDiplomacySystem : EntitySystem
             rel == FactionRelation.Trade)
             return;
 
-        if (_pending.TryGetValue(msg.TargetFactionId, out var targetPending) &&
-            targetPending.Any(p => p.FromFactionId == myFaction && p.Type == PendingProposalType.Trade))
+        if (!_pending.TryGetValue(msg.TargetFactionId, out var targetPending))
             return;
 
-        _pending[msg.TargetFactionId].Add(new PendingProposal
+        if (targetPending.Any(p => p.FromFactionId == myFaction && p.Type == PendingProposalType.Trade))
+            return;
+
+        targetPending.Add(new PendingProposal
         {
             FromFactionId = myFaction,
             ToFactionId = msg.TargetFactionId,

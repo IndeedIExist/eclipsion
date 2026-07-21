@@ -812,16 +812,6 @@
     AdvancedElectronics: 1000
 
 - type: latheRecipe
-  id: ShipyardManufactorumFlatpack
-  category: Circuitry
-  result: ShipyardManufactorumFlatpack
-  completetime: 2
-  materials:
-    Steel: 3000
-    AdvancedMechatronics: 1000
-    BasicMechatronics: 1000
-
-- type: latheRecipe
   id: ScrapRefinerFlatpack
   category: Circuitry
   result: ScrapRefinerFlatpack

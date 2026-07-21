@@ -37,7 +37,6 @@ station-beacon-crescent-assembly = Assembly
 station-beacon-crescent-salvage = Salvage
 station-beacon-crescent-commissary = Commissary
 station-beacon-crescent-dispensary = Dispensary
-station-beacon-crescent-deedconsole = Deed Console
 
 station-beacon-crescent-engineering = Engineering
 station-beacon-crescent-ame = AME

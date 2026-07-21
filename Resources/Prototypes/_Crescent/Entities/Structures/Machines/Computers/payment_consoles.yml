@@ -107,7 +107,7 @@
   # Coalition pays out of a treasury any of its privateers would happily write themselves a
   # salary from. Ringleader plus the department heads only.
   - type: AccessReader
-    access: [["SyndicateCommand"], ["SyndicateRingleader"]]
+    access: [["SyndicateCommand"], ["SyndicateRingleader"], ["SyndicateFunds"]]
 
 - type: entity
   parent: ComputerPaymentBase

@@ -99,8 +99,8 @@
   suffix: Freeport / TFSC
   components:
   - type: AccessReader
-    # Ringleader only. Department heads run their wings; the cut belongs to the one who runs the port.
-    access: [["SyndicateFunds"], ["SyndicateRingleader"]]
+    # The Coalition's command tier: ringleader, lieutenant, coordinator, foreman, intelligence officer.
+    access: [["SyndicateCommand"], ["SyndicateRingleader"], ["SyndicateFunds"]]
 
 # ---------------------------------------------------------------------------
 # Faction treasury console
@@ -197,5 +197,5 @@
   - type: FactionTreasuryConsole
     faction: TFSC
   - type: AccessReader
-    # Ringleader only - every other privateer on the Freeport trips the alarm, by design.
-    access: [["SyndicateFunds"], ["SyndicateRingleader"]]
+    # The Coalition's command tier. Rank and file are turned away quietly; outsiders trip the alarm.
+    access: [["SyndicateCommand"], ["SyndicateRingleader"], ["SyndicateFunds"]]

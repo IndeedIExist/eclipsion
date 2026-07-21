@@ -31759,13 +31759,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -6.500034,9.941837
       parent: 1
-- proto: DeedConsole
-  entities:
-  - uid: 3234
-    components:
-    - type: Transform
-      pos: 8.5,16.5
-      parent: 1
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 3235
@@ -33474,6 +33467,13 @@ entities:
     components:
     - type: Transform
       pos: 0.5,10.5
+      parent: 1
+- proto: FactionRecruitmentConsoleTFSC
+  entities:
+  - uid: 6710
+    components:
+    - type: Transform
+      pos: -8.5,39.5
       parent: 1
 - proto: FireAxeCabinetFilled
   entities:

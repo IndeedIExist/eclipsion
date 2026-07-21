@@ -17525,18 +17525,6 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-- proto: DeedConsole
-  entities:
-  - uid: 2588
-    components:
-    - type: Transform
-      pos: -3.5,-48.5
-      parent: 1
-  - uid: 2589
-    components:
-    - type: Transform
-      pos: 5.5,-48.5
-      parent: 1
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 2590

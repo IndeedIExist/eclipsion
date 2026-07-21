@@ -11,7 +11,9 @@ using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid;
+using Content.Shared.Mind;
 using Content.Shared.Roles;
+using Content.Shared.Roles.Jobs;
 using Content.Shared._Crescent.Factions;
 using Content.Shared._Crescent.HullrotFaction;
 using Robust.Server.GameObjects;
@@ -39,6 +41,8 @@ public sealed class FactionRecruitmentConsoleSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly SharedMindSystem _mind = default!;
+    [Dependency] private readonly SharedJobSystem _jobs = default!;
 
     public override void Initialize()
     {
@@ -243,23 +247,64 @@ public sealed class FactionRecruitmentConsoleSystem : EntitySystem
     /// <summary>
     /// Never let a console strip a rank it cannot itself grant. Each faction's high command (Governor, Adjutant,
     /// Kommandant, …) is deliberately kept off every console's role list, so a member who already holds such a
-    /// rank must not be reassignable here — doing so would silently demote them. This only guards members of this
+    /// post must not be reassignable here — doing so would silently demote them. This only guards members of this
     /// console's own faction; unaffiliated people and the default private rank still enlist freely (a fresh
     /// recruit or a lateral faction switch is not a demotion).
     /// </summary>
     private bool CanAssign(EntityUid uid, FactionRecruitmentConsoleComponent comp, EntityUid actor, EntityUid target)
     {
-        if (TryComp<HullrotFactionComponent>(target, out var targetFaction)
-            && targetFaction.Faction == comp.Faction
-            && TryComp<ChatRankComponent>(target, out var targetRank)
+        if (!TryComp<HullrotFactionComponent>(target, out var targetFaction)
+            || targetFaction.Faction != comp.Faction)
+        {
+            return true;
+        }
+
+        // Chat rank is the primary signal, but it only works for factions that hand ranks out: Shinohara
+        // gives none at all, and two of the Coalition's department heads carry none either. So also refuse
+        // anyone whose round-start job belongs to this faction yet is off this console's list — that job is
+        // command by definition. The faction check matters: a drifter recruited off the street holds a job
+        // that is on nobody's list, and moving them between the faction's own roles is not a demotion.
+        var protectedByJob = _mind.TryGetMind(target, out var mindId, out _)
+            && _jobs.MindTryGetJobId(mindId, out var currentJob)
+            && currentJob is { } jobId
+            && !comp.Roles.Contains(jobId.Id)
+            && IsFactionJob(jobId.Id, comp.Faction);
+
+        var protectedByRank = TryComp<ChatRankComponent>(target, out var targetRank)
             && targetRank.Rank != ChatRankComponent.DefaultRank
-            && !GetAssignableRanks(comp).Contains(targetRank.Rank))
+            && !GetAssignableRanks(comp).Contains(targetRank.Rank);
+
+        if (protectedByJob || protectedByRank)
         {
             _popup.PopupEntity(Loc.GetString("faction-recruitment-outranks", ("target", Name(target))), uid, actor);
             return false;
         }
 
         return true;
+    }
+
+    /// <summary>
+    /// Whether a job prototype enlists its holder into <paramref name="faction"/>, read off the same
+    /// HullrotFaction grant a fresh spawn of that job would apply.
+    /// </summary>
+    private bool IsFactionJob(string jobId, string faction)
+    {
+        if (string.IsNullOrEmpty(faction) || !_proto.TryIndex<JobPrototype>(jobId, out var job))
+            return false;
+
+        foreach (var special in job.Special)
+        {
+            if (special is not AddComponentSpecial add)
+                continue;
+
+            foreach (var entry in add.Components.Values)
+            {
+                if (entry.Component is HullrotFactionComponent hullrot && hullrot.Faction == faction)
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     private void ApplyRecruitment(EntityUid uid, FactionRecruitmentConsoleComponent comp, EntityUid actor, EntityUid target, JobPrototype job)
