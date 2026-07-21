@@ -166,6 +166,8 @@ Entries:
       type: Fix
     - message: Deed consoles and shipyard manufactorums have been stripped out of every station. Neither machine has a place in the sector's economy any more, and the Shinohara research node and flatpack that built the manufactorum are gone with them.
       type: Remove
+    - message: Shuttle hull plating, electronics and engine components are no longer manufactured. LPCs have been printed straight from ore for a while now, so the intermediate parts were dead weight.
+      type: Remove
   id: 6010
   time: '2026-07-21T00:00:00.0000000+00:00'
   url: null
