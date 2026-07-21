@@ -86,28 +86,11 @@
         posY: 1000
         IFFColor: White
         IFFFaction: SHI
-      Dochenskaya:
-        gameMapID: Dochenskaya
+      # The Coalition merged its four company stations into the rebuilt Freeport: one station, one faction.
+      Freeport:
+        gameMapID: Freeport
         posX: 6000
         posY: 0
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-      Jackal:
-        gameMapID: Jackal
-        posX: 6500
-        posY: -2000
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-      Dawnbreaker:
-        gameMapID: Dawnbreaker
-        posX: 6000
-        posY: -1000
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-      Hayes:
-        gameMapID: Hayes
-        posX: 5000
-        posY: -2500
         IFFColor: IndianRed
         IFFFaction: TFSC
       RatFakel:
@@ -266,28 +249,11 @@
         posY: 1000
         IFFColor: White
         IFFFaction: SHI
-      Dochenskaya:
-        gameMapID: Dochenskaya
+      # The Coalition merged its four company stations into the rebuilt Freeport: one station, one faction.
+      Freeport:
+        gameMapID: Freeport
         posX: 6000
         posY: 0
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-      Jackal:
-        gameMapID: Jackal
-        posX: 6500
-        posY: -2000
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-      Dawnbreaker:
-        gameMapID: Dawnbreaker
-        posX: 6000
-        posY: -1000
-        IFFColor: IndianRed
-        IFFFaction: TFSC
-      Hayes:
-        gameMapID: Hayes
-        posX: 5000
-        posY: -2500
         IFFColor: IndianRed
         IFFFaction: TFSC
       GliessSanto:

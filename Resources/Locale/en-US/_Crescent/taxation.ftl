@@ -31,6 +31,8 @@ treasury-console-robbery-empty = The vault is empty — nothing left to steal.
 treasury-console-looted = The vault is being looted — {$amount} cr stolen!
 treasury-console-deposited = Deposited {$amount} cr into the treasury.
 treasury-console-deposit-denied = Access denied — a faction card is required to deposit.
+treasury-console-unpowered = The vault console is dead — no power, no locks to pick.
+treasury-console-robbery-cut = The vault console loses power and the siphon dies with it — the robbery stops.
 
 # Sector-wide intrusion broadcast (fired when someone without access tampers with the vault)
 treasury-console-alarm-sender = Treasury Vault Security

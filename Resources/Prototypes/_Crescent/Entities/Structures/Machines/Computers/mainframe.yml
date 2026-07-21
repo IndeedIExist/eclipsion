@@ -138,6 +138,21 @@
 
 - type: entity
   parent: BaseMainframeConsole
+  id: TFSCMainframeConsole
+  name: Coalition Command Console
+  components:
+  - type: OverwatchConsole
+    faction: TFSC
+  # SyndicateBasic is the tag every Coalition job carries, matching the other factions' base tags.
+  - type: AccessReader
+    access: [["SyndicateBasic"]]
+
+# The four company mainframes below predate the Coalition merger. Nothing in rotation places them
+# any more - the Freeport runs the single TFSCMainframeConsole above - but they are kept so older
+# maps and admin spawns still resolve.
+
+- type: entity
+  parent: BaseMainframeConsole
   id: IPMMainframeConsole
   name: Interdyne Command Console
   components:

@@ -33,7 +33,7 @@
     shoutBubbleScale: 1.32
     radioScale: 1.23
     radioBold: true
-  supervisors: You answer to the interests of the Interdyne Pharmaceuticals company. Organize your employees. Secure stakeholders and profit.
+  supervisors: You answer to the Ringleader. Head the Coalition's medical wing - organize your employees, secure stakeholders and profit.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -54,7 +54,7 @@
   - !type:AddComponentSpecial
     components:
       - type: HullrotFaction
-        faction: IPM
+        faction: TFSC
       - type: CPRTraining
       - type: SurgerySpeedModifier
         speedModifier: 2.5
@@ -68,8 +68,13 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
   - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
+  - SyndicateCommand # department head
   - Service
   - External
   - Mercenary # Frontier
@@ -85,7 +90,7 @@
     head: ClothingHeadHatSyndicateInterdyneBeret
     id: CoordinatorPDA
     ears: ClothingHeadsetTFSCInterdyneCommand
-    pocket1: AccessElevatorIPM
+    pocket1: AccessElevatorTFSC
     pocket2: WeaponPistolHKUSP
     back: ClothingBackpackTFSC
   storage:

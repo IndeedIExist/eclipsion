@@ -98,6 +98,19 @@
 
 - type: entity
   parent: ComputerPaymentBase
+  id: ComputerPaymentTFSC
+  name: payroll console TFSC
+  components:
+  - type: PaymentConsole
+    faction: TFSC
+  # Unlike the other factions this is gated on the command tier rather than the base tag: the
+  # Coalition pays out of a treasury any of its privateers would happily write themselves a
+  # salary from. Ringleader plus the department heads only.
+  - type: AccessReader
+    access: [["SyndicateCommand"], ["SyndicateRingleader"]]
+
+- type: entity
+  parent: ComputerPaymentBase
   id: ComputerPaymentIPM
   name: payroll console IPM
   components:

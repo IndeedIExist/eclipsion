@@ -1,4 +1,5 @@
 using Content.Shared._Crescent.HullrotFaction;
+using Content.Shared.Ghost;
 using Content.Shared.Popups;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.UserInterface;
@@ -23,6 +24,11 @@ public sealed class FactionMachineSystem : EntitySystem
     private void OnUiOpenAttempt(Entity<FactionMachineComponent> ent, ref ActivatableUIOpenAttemptEvent args)
     {
         if (args.Cancelled || !ent.Comp.RestrictAccess)
+            return;
+
+        // Anything that gets this far as a ghost is an admin ghost — ordinary ghosts can't interact at all.
+        // Admins have to be able to open a faction's machinery to see what it holds.
+        if (HasComp<GhostComponent>(args.User))
             return;
 
         // Faction membership lives on the body, not the ID card, so read it off the user directly.

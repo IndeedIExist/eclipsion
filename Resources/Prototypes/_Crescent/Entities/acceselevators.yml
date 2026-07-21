@@ -68,6 +68,22 @@
     - SyndicateBasic
     - SyndicateInterdyne
 
+# The Coalition merged its four charters into one, so its command staff hand out a single keyring
+# covering every department. The per-company elevators above are kept for older maps and loadouts.
+- type: entity
+  parent: AccessElevatorBase
+  id: AccessElevatorTFSC
+  name: Coalition Access Elevator
+  description: Gives a target ID the acces codes for every Taypani Freestations Coalition facility.
+  components:
+  - type: AccesElevator
+    acces:
+    - SyndicateBasic
+    - SyndicateGorlex
+    - SyndicateInterdyne
+    - SyndicateSaws
+    - SyndicateRamzi
+
 - type: entity
   parent: AccessElevatorBase
   id: AccessElevatorGliess

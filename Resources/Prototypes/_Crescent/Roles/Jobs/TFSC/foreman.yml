@@ -15,7 +15,7 @@
     shoutBubbleScale: 1.32
     radioScale: 1.23
     radioBold: true
-  supervisors: You're the leader of the SAW. You answer to your own interests
+  supervisors: You answer to the Ringleader. Head the Coalition's shipbreaking and engineering wing.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -38,7 +38,7 @@
       - type: ChatRank
         rank: crescent-rank-foreman
       - type: HullrotFaction
-        faction: SAW
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -49,9 +49,13 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
+  - SyndicateInterdyne
   - SyndicateSaws
-  - SyndicateCommand
+  - SyndicateRamzi
+  - SyndicateCommand # department head
   - Service
   - External
   - Mercenary # Frontier
@@ -69,7 +73,7 @@
     belt: ClothingBeltUtilityEngineering
     pocket1: WeaponPistolViperWood
     gloves: ClothingHandsGlovesFingerless
-    pocket2: AccessElevatorSAW
+    pocket2: AccessElevatorTFSC
     back: ClothingBackpackTFSCFilledInfanteer
   storage:
     back:

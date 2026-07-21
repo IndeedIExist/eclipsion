@@ -12,8 +12,10 @@ namespace Content.Client._Crescent.Diplomacy;
 [GenerateTypedNameReferences]
 public sealed partial class DiplomacyPanel : BoxContainer
 {
+    // Must mirror RatDiplomacySystem.AllFactions on the server. TFSC replaced the four company ids
+    // (IPM, SAW, GSC, CD) it used to be split into when the Coalition merged into one faction.
     private static readonly string[] AllFactions =
-        ["DSM", "NCWL", "SHI", "SRM", "TAP", "IPM", "SAW", "GSC", "CD", "TSP"];
+        ["DSM", "NCWL", "SHI", "SRM", "TAP", "TFSC", "TSP"];
 
     // Must mirror RatDiplomacySystem.PermanentEnemyPairs on the server. These pairs are locked at
     // war, so their peace/alliance/trade buttons are disabled — the server would reject them anyway.

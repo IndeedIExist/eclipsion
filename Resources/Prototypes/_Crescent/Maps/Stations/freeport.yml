@@ -7,6 +7,10 @@
     Freeport:
       stationProto: StandardCrescentStation
       gridComponents:
+        - type: FactionStation # conquest win condition
+          faction: TFSC
+          fallAnnouncement: faction-station-fall-freeport
+          stationName: The Freeport
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
         - type: MapIcon

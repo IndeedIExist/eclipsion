@@ -1,5 +1,6 @@
 using Content.Server.Crescent.Dispenser;
 using Content.Server._Crescent.Overwatch;
+using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
 using Content.Shared._Crescent.Taxation;
 using Content.Shared.Access.Systems;
@@ -30,6 +31,7 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly OverwatchSystem _overwatch = default!;
+    [Dependency] private readonly PowerReceiverSystem _power = default!;
 
     public override void Initialize()
     {
@@ -85,6 +87,14 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
     /// </summary>
     private void TriggerRobbery(EntityUid uid, FactionTreasuryConsoleComponent comp, EntityUid user)
     {
+        // A dead vault cannot be cracked. Cutting the station's power is a valid defence against a
+        // heist - it also locks the owners out, so it costs the faction something to do it.
+        if (!_power.IsPowered(uid))
+        {
+            _popup.PopupEntity(Loc.GetString("treasury-console-unpowered"), uid, user, PopupType.Medium);
+            return;
+        }
+
         var now = _timing.CurTime;
 
         SoundAlarm(uid, comp);
@@ -180,6 +190,12 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
 
         args.Handled = true;
 
+        if (!_power.IsPowered(uid))
+        {
+            _popup.PopupEntity(Loc.GetString("treasury-console-unpowered"), uid, args.User, PopupType.Medium);
+            return;
+        }
+
         if (!_access.IsAllowed(args.User, uid))
         {
             _popup.PopupEntity(Loc.GetString("treasury-console-deposit-denied"), uid, args.User, PopupType.MediumCaution);
@@ -268,6 +284,16 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
         {
             if (comp.RobberyStart is not { } start || comp.RobberyEnd is not { } end)
                 continue;
+
+            // Power cut mid-heist: the siphon dies with the console and the thieves keep only what
+            // has already been dispensed. They have to start over once the lights come back.
+            if (!_power.IsPowered(uid))
+            {
+                _popup.PopupEntity(Loc.GetString("treasury-console-robbery-cut"), uid, PopupType.MediumCaution);
+                StopRobbery(comp);
+                UpdateUi(uid);
+                continue;
+            }
 
             var finished = now >= end;
 

@@ -29608,13 +29608,25 @@ entities:
       rot: 3.141592653589793 rad
       pos: 25.5,-19.5
       parent: 1
-- proto: CDMainframeConsole
+- proto: TFSCMainframeConsole
   entities:
   - uid: 661
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 46.5,31.5
+      parent: 1
+  - uid: 5404
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -12.5,20.5
+      parent: 1
+  - uid: 3152
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 22.5,15.5
       parent: 1
 - proto: Chair
   entities:
@@ -31029,6 +31041,22 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -14.5,20.5
+      parent: 1
+- proto: ComputerFactionTaxationTFSC
+  entities:
+  - uid: 6708
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -10.5,22.5
+      parent: 1
+- proto: ComputerFactionTreasuryTFSC
+  entities:
+  - uid: 6709
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -10.5,20.5
       parent: 1
 - proto: ComputerInterdyneLifeInsurance
   entities:
@@ -38200,14 +38228,6 @@ entities:
     - type: Transform
       pos: -10.5,14.5
       parent: 1
-- proto: GSCMainframeConsole
-  entities:
-  - uid: 5404
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -12.5,20.5
-      parent: 1
 - proto: Handcuffs
   entities:
   - uid: 4233
@@ -38577,7 +38597,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -14.5,59.5
       parent: 1
-- proto: IPMMainframeConsole
+- proto: ComputerPaymentTFSC
   entities:
   - uid: 3124
     components:
@@ -43787,14 +43807,6 @@ entities:
     components:
     - type: Transform
       pos: 18.5,8.5
-      parent: 1
-- proto: SAWMainframeConsole
-  entities:
-  - uid: 3152
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 22.5,15.5
       parent: 1
 - proto: SawsTradeGoodPrinter
   entities:

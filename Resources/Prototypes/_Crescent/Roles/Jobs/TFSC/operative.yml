@@ -23,7 +23,7 @@
   requireAdminNotify: false
   icon: "JobIconSyndieOperative"
   chatNameColor: "#264180"
-  supervisors: You answer to the patriarch and the interests of the CyberDawn Technologies company.
+  supervisors: You answer to the patriarch of the research wing, and above them the Ringleader.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -44,7 +44,7 @@
     components:
       - type: NukeOperative
       - type: HullrotFaction
-        faction: CD
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -55,7 +55,11 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
   - SyndicateRamzi
   - Engineering
   - Service

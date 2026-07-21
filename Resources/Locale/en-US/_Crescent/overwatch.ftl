@@ -48,6 +48,7 @@ overwatch-title-dsm = KAISER'S EYE
 overwatch-title-ncwl = WATCHMAN
 overwatch-title-shi = SATORI
 overwatch-title-tap = ECHO
+overwatch-title-tfsc = DARK WEB
 overwatch-title-ipm = DARK WEB
 overwatch-title-saw = DARK WEB
 overwatch-title-gsc = DARK WEB

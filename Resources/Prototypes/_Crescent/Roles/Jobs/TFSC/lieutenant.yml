@@ -37,7 +37,7 @@
       - type: ChatRank
         rank: crescent-rank-boss
       - type: HullrotFaction
-        faction: GSC
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -81,9 +81,13 @@
   - Maintenance
   - Service
   - External
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
-  - SyndicateCommand
+  - SyndicateCommand # department head
   - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
 
 - type: startingGear
   id: LieutenantGear

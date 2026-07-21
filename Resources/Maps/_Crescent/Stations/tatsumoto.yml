@@ -47490,6 +47490,20 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 6.5,32.5
       parent: 1
+- proto: ComputerFactionTaxationShinohara
+  entities:
+  - uid: 8531
+    components:
+    - type: Transform
+      pos: 14.5,50.5
+      parent: 1
+- proto: ComputerFactionTreasuryShinohara
+  entities:
+  - uid: 8532
+    components:
+    - type: Transform
+      pos: 12.5,50.5
+      parent: 1
 - proto: ComputerPalletConsoleNFHighMarket
   entities:
   - uid: 4134
@@ -47502,6 +47516,13 @@ entities:
       containers:
         board: !type:Container
           ents: []
+- proto: ComputerPaymentSHI
+  entities:
+  - uid: 8533
+    components:
+    - type: Transform
+      pos: 14.5,49.5
+      parent: 1
 - proto: ComputerPowerMonitoring
   entities:
   - uid: 4135
@@ -67924,6 +67945,13 @@ entities:
     components:
     - type: Transform
       pos: -11.5,49.5
+      parent: 1
+- proto: SHIMainframeConsole
+  entities:
+  - uid: 8534
+    components:
+    - type: Transform
+      pos: -1.5,64.5
       parent: 1
 - proto: SHIKatana
   entities:

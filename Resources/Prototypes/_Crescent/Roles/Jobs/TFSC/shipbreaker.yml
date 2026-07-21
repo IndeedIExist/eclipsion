@@ -9,7 +9,7 @@
   requireAdminNotify: false
   icon: "JobIconSyndieShipbreaker"
   chatNameColor: "#b67520"
-  supervisors: You answer to the Shipfitters Aerodynamic & Worker's union interests and its foreman's.
+  supervisors: You answer to the foreman of the shipbreaking wing, and above them the Ringleader.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -31,7 +31,7 @@
       - type: ChatRank
         rank: crescent-rank-saw
       - type: HullrotFaction
-        faction: SAW
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -40,8 +40,12 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
+  - SyndicateInterdyne
   - SyndicateSaws
+  - SyndicateRamzi
   - Service
   - External
   - Mercenary # Frontier

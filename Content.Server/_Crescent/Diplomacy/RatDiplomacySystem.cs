@@ -17,8 +17,11 @@ public sealed partial class RatDiplomacySystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
+    // TFSC replaces the four company ids (IPM, SAW, GSC, CD) it used to be split into: every Coalition
+    // job now writes HullrotFaction "TFSC", so the old ids would only ever show up as empty boards.
+    // Load() drops relations naming a faction that is no longer on this roster, so old saves are fine.
     private static readonly string[] AllFactions =
-        ["DSM", "NCWL", "SHI", "SRM", "TAP", "IPM", "SAW", "GSC", "CD", "TSP"];
+        ["DSM", "NCWL", "SHI", "SRM", "TAP", "TFSC", "TSP"];
 
     /// <summary>
     /// Faction pairs locked into permanent war. They start at war and no peace, alliance or
@@ -86,20 +89,13 @@ public sealed partial class RatDiplomacySystem : EntitySystem
             _pending[factionId] = new List<PendingProposal>();
         }
 
-        // Set Gorlex (GSC) to war with everyone except IPM, SAW, and CD
-        var gorlexAllies = new[] { "IPM", "SAW", "CD" };
-        foreach (var factionId in AllFactions)
-        {
-            if (factionId != "GSC" && !gorlexAllies.Contains(factionId))
-            {
-                _relations["GSC"][factionId] = FactionRelation.War;
-                _relations[factionId]["GSC"] = FactionRelation.War;
-            }
-        }
-
-        // Set Cyberdon (CD) to war with Shinogara (SHI)
-        _relations["CD"]["SHI"] = FactionRelation.War;
-        _relations["SHI"]["CD"] = FactionRelation.War;
+        // The Coalition inherits Cyberdawn's standing feud with Shinohara and nothing else. Gorlex used
+        // to start at war with every faction on the board, but that was one arm of four: now that the
+        // whole Coalition answers to the ringleader, opening every round with the entire sector hostile
+        // would leave the Freeport's traders and ripperdocs nothing to sell to. Everyone else starts
+        // neutral and it is settled at the diplomacy console.
+        _relations["TFSC"]["SHI"] = FactionRelation.War;
+        _relations["SHI"]["TFSC"] = FactionRelation.War;
 
         // Lock permanent-enemy pairs (e.g. DSM vs NCWL) into war.
         foreach (var (a, b) in PermanentEnemyPairs)

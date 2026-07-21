@@ -48,6 +48,9 @@ diplomacy-faction-NCWL = New Crescent Worker's League
 diplomacy-faction-SHI = Shinohara Heavy Industries
 diplomacy-faction-SRM = Sixth St. Romaine's Militia
 diplomacy-faction-TAP = Taypani-Atyrian Pact
+diplomacy-faction-TFSC = Taypani Freestations Coalition
+# The four ids below are the Coalition's pre-merger companies. Nothing writes them any more, but the
+# strings are kept so an old save or an admin-spawned legacy console still renders a name.
 diplomacy-faction-IPM = Interdyne Pharmaceuticals
 diplomacy-faction-SAW = Shipfitters and Astronautics Workers Union
 diplomacy-faction-GSC = Gorlex Security Consulting

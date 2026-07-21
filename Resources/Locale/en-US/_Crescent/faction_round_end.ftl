@@ -179,5 +179,7 @@ faction-station-fall-tatsumoto = SHI Tatsumoto is silent. The shipyard is dark a
 
 faction-station-fall-jackal = GSC Jackal is silent. Whatever the Coalition was arguing about, it has stopped. Its IFF slowly fades from your shuttle console screen. The Coalition is defeated.
 
+faction-station-fall-freeport = The Freeport is silent. The docks are dark, the vault is open and the ledgers answer to nobody. Its IFF slowly fades from your shuttle console screen. The Coalition is defeated.
+
 # Both great powers have fallen. Deliberately names nobody — the remaining forces are still scrapping over it.
 faction-victory-minors = The great powers are gone. Their thrones are cold, their fleets are scrap, and there is nobody left to give orders to Taypan. Only the remaining forces are still out there, still fighting over what is left of the sector — and now there is nothing above them to answer to. The age of empires in Taypan is over. Whatever comes next belongs to whoever is still standing when the shooting stops.

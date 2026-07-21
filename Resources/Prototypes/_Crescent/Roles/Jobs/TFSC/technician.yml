@@ -32,7 +32,7 @@
       - type: ChatRank
         rank: crescent-rank-pfc
       - type: HullrotFaction
-        faction: GSC
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -41,8 +41,12 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
   - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
   - Service
   - External
   - Mercenary # Frontier

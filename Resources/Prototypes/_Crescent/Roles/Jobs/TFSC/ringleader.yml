@@ -38,7 +38,7 @@
       - type: ChatRank
         rank: crescent-rank-synadmin
       - type: HullrotFaction
-        faction: GSC
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -82,11 +82,15 @@
   - Maintenance
   - Service
   - External
+  # Sole head of the Coalition: every department keyring plus the treasury/payroll tier.
   - SyndicateBasic
   - SyndicateCommand
   - SyndicateRingleader
   - SyndicateFunds
   - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
 
 - type: startingGear
   id: RingleaderGear
@@ -98,7 +102,7 @@
     id: RingleaderPDA
     ears: ClothingHeadsetTFSCCommand
     gloves: ClothingHandsGlovesFingerless
-    belt: AccessElevatorGSC
+    belt: AccessElevatorTFSC
     pocket1: WeaponPistolDeagleUranium
     pocket2: WeaponPistolDeagleUranium
     mask: ClothingMaskGasSyndicate

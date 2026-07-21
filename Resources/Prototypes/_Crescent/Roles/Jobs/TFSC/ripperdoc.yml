@@ -23,7 +23,7 @@
   requireAdminNotify: false
   icon: "JobIconSyndieRipperdoc"
   chatNameColor: "#d4c6c6"
-  supervisors: You answer to the interests of the Interdyne Pharmaceuticals company's coordinator and your peers.
+  supervisors: You answer to the coordinator of the medical wing and your peers, and above them the Ringleader.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -43,7 +43,7 @@
   - !type:AddComponentSpecial
     components:
       - type: HullrotFaction
-        faction: IPM
+        faction: TFSC
       - type: CPRTraining
       - type: SurgerySpeedModifier
         speedModifier: 1.75
@@ -55,8 +55,12 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
   - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
   - Service
   - External
   - Mercenary # Frontier

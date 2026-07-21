@@ -35,9 +35,9 @@ job-supervisors-cmm-officer = the Colonial Marshal and his Deputy
 job-supervisors-cmm-sergeant = the Colonial Officers and Colonial Command
 job-supervisors-cmm-minuteman = the Colonial Wardens, the Colonial Officers, and your militia superiors
 
-# GSC - Gorlex Security Consulting
-job-supervisors-gsc-ringleader = money and personal interest. You are the de facto leader of the Taipan Coalition of Free Stations, be it through charm or fear of your firepower
-job-supervisors-gsc-officer = the Gorlex ringleader
-job-supervisors-gsc-infanteer = the Gorlex ringleader, his officer, and Gorlex Security Consulting
-job-supervisors-gsc-newbie = your rank superiors, and Gorlex Security Consulting as a whole
+# GSC - the Coalition's security wing. The Ringleader now heads the whole Coalition, not just Gorlex.
+job-supervisors-gsc-ringleader = money and personal interest. You are the leader of the Taypani Freestations Coalition, every wing of it, be it through charm or fear of your firepower
+job-supervisors-gsc-officer = the ringleader
+job-supervisors-gsc-infanteer = the ringleader, his lieutenant, and the Coalition's security wing
+job-supervisors-gsc-newbie = your rank superiors, and the Coalition as a whole
 

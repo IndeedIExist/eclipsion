@@ -6,9 +6,11 @@
 #   withdraw it as physical cash. Unauthorized tampering raises an alarm and, after one
 #   minute, repeatedly loots the treasury until an authorized member re-secures it.
 #
-# Both consoles are indestructible, cannot be unanchored, and are always powered
-# (needsPower: false) so they can never be cut off. Access is gated per faction via the
-# AccessReader lists on each variant below — tune the tags to taste.
+# Both consoles are indestructible and cannot be unanchored. The taxation console is always
+# powered (needsPower: false) so the tax rate can never be cut off; the treasury console
+# deliberately is NOT — an unpowered vault cannot be robbed (nor used by its owners), so pulling
+# the station's power is a real, costly defence against a heist. Access is gated per faction via
+# the AccessReader lists on each variant below — tune the tags to taste.
 
 # ---------------------------------------------------------------------------
 # Taxation console
@@ -91,6 +93,15 @@
     # Lord Admiral (governor), Imperial Adjutant, and Knight Logisticar (wealth). Man-at-arms excluded.
     access: [["EmpireGovernor"], ["EmpireAdjutant"], ["LogisticsWealth"]]
 
+- type: entity
+  parent: ComputerFactionTaxationBase
+  id: ComputerFactionTaxationTFSC
+  suffix: Freeport / TFSC
+  components:
+  - type: AccessReader
+    # Ringleader only. Department heads run their wings; the cut belongs to the one who runs the port.
+    access: [["SyndicateFunds"], ["SyndicateRingleader"]]
+
 # ---------------------------------------------------------------------------
 # Faction treasury console
 # ---------------------------------------------------------------------------
@@ -100,7 +111,7 @@
   id: ComputerFactionTreasuryBase
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
   name: treasury vault console
-  description: Holds this faction's tax revenue. Unauthorized access triggers a security lockdown.
+  description: Holds this faction's tax revenue. Unauthorized access triggers a security lockdown. Dead without power - and a dead vault cannot be cracked.
   placement:
     mode: SnapgridCenter
   components:
@@ -108,9 +119,11 @@
     soundGroups:
       Brute:
         collection: MetalGlassBreak
+  # Unlike the taxation console this one runs on station power, so cutting the APC shuts the heist
+  # down. FactionTreasuryConsoleSystem checks power itself rather than relying on the UI gate below.
   - type: ApcPowerReceiver
-    needsPower: false
-    powerLoad: 0
+    needsPower: true
+    powerLoad: 500
   - type: ExtensionCableReceiver
   - type: ActivatableUIRequiresPower
   - type: Sprite
@@ -175,3 +188,14 @@
   - type: AccessReader
     # Lord Admiral (governor), Imperial Adjutant, Knight Logisticar (wealth). Anyone else trips the alarm.
     access: [["EmpireGovernor"], ["EmpireAdjutant"], ["LogisticsWealth"]]
+
+- type: entity
+  parent: ComputerFactionTreasuryBase
+  id: ComputerFactionTreasuryTFSC
+  suffix: Freeport / TFSC
+  components:
+  - type: FactionTreasuryConsole
+    faction: TFSC
+  - type: AccessReader
+    # Ringleader only - every other privateer on the Freeport trips the alarm, by design.
+    access: [["SyndicateFunds"], ["SyndicateRingleader"]]

@@ -90,23 +90,23 @@
   id: TFSC
   descriptionPrefix: |
     MINIMUM PLAYTIME: 3 HOURS / 1 ROUND
-    Four individual corporations united under one flag, for profit and freedom.
+    A single coalition operating out of the rebuilt Freeport, for profit and freedom.
     Other factions may offer contracts or ask for your services.
     Other factions may be suspicious or immediately hostile.
     Your allies may betray you for a higher paycheck.
   buttonColor: DarkRed
   description: |
-    A loose conglomerate of independent groups made up of pirates, privateers, shipbreakers,
-    and predatory medical professionals with little to no qualms about taking your organs for themselves.
-    The most prominent groups are Gorlex Security Consulting, Interdyne Pharmaceuticals, Cyberdawn Technologies,
-    and Shipfitters Astronautics Workers Union. Each of them offers certain expertise and profits from it;
-    sometimes, they are compared to a scavenger ecosystem for how they operate.
+    A coalition of pirates, privateers, shipbreakers, and predatory medical professionals with little to no qualms
+    about taking your organs for themselves. Where the Coalition once ran as four squabbling companies - Gorlex Security
+    Consulting, Interdyne Pharmaceuticals, Cyberdawn Technologies and the Shipfitters Astronautics Workers Union - the
+    charters were folded into one after the rebuilding of the Freeport. The old company names survive only as the names
+    of the departments that now answer to a single Ringleader, sharing one treasury, one payroll, and one flag.
 
     They were born from the old New Crescent Syndicate of Privateers, a faction formed by Mandate and League defectors
     who wished to live away from the grip of the major factions. They were mostly pirates and privateers whom the major
     players in the sector did not look kindly upon and hunted them down with prejudice. Those privateers who saw the coming end
     formed the Taypani Freestations Coalition, focusing more on providing their varied array of services rather than simply
-    pillaging. But with the destruction of Freeport, these groups have drifted apart even more, often fighting each other.
+    pillaging. Reunited on the Freeport, they now stand as one power in Taypan - and as one very fat target.
   color: "#9FED58"
   weight: 5
   enabled: true

@@ -11,8 +11,10 @@ namespace Content.Client._Crescent.Diplomacy;
 [GenerateTypedNameReferences]
 public sealed partial class FactionStatusWidget : UIWidget
 {
+    // Must mirror RatDiplomacySystem.AllFactions on the server. TFSC replaced the four company ids
+    // (IPM, SAW, GSC, CD) it used to be split into when the Coalition merged into one faction.
     private static readonly string[] AllFactions =
-        ["DSM", "NCWL", "SHI", "SRM", "TAP", "IPM", "SAW", "GSC", "CD", "TSP"];
+        ["DSM", "NCWL", "SHI", "SRM", "TAP", "TFSC", "TSP"];
 
     private static readonly Color WarBg = Color.FromHex("#6B1A1A");
     private static readonly Color AllyBg = Color.FromHex("#1A4D2E");
