@@ -1,4 +1,3 @@
-using Content.Server._Art.TTS; // Art-TTS
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -80,7 +79,6 @@ namespace Content.Server.IoC
             IoCManager.Register<SponsorManager>(); // Forge-Change
             IoCManager.Register<ISharedSponsorManager, SponsorManager>(); // Forge-Change
             IoCManager.Register<JoinQueueManager>();
-            IoCManager.Register<TTSManager>(); // Art-TTS
         }
     }
 }

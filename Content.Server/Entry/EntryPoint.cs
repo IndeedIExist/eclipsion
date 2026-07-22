@@ -1,4 +1,3 @@
-using Content.Server._Art.TTS; // Art-TTS
 using Content.Server.Acz;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -110,7 +109,6 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<DiscordAuthManager>().Initialize();
                 IoCManager.Resolve<ServerApi>().Initialize();
                 IoCManager.Resolve<JoinQueueManager>().Initialize();
-                IoCManager.Resolve<TTSManager>().Initialize(); // Art-TTS
 
                 _voteManager.Initialize();
                 _updateManager.Initialize();

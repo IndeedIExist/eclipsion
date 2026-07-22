@@ -87,16 +87,6 @@
                     <Label Name="CommunicationsVolumeLabel" MinSize="48 0" Align="Right" />
                     <Control MinSize="4 0"/>
                 </BoxContainer>
-                <!-- Art-TTS Start -->
-                <BoxContainer Orientation="Horizontal" Margin="5 0 0 0">
-                    <Label Text="{Loc 'ui-options-tts-volume'}" HorizontalExpand="True"/>
-                    <Control MinSize="8 0"/>
-                    <Slider Name="TTSVolumeSlider" MinValue="0" MaxValue="100" HorizontalExpand="True" MinSize="80 0" Rounded="True"/>
-                    <Control MinSize="8 0"/>
-                    <Label Name="TTSVolumeLabel" MinSize="48 0" Align="Right"/>
-                    <Control MinSize="4 0"/>
-                </BoxContainer>
-                <!-- Art-TTS End -->
                 <Control MinSize="0 8" />
                 <CheckBox Name="CombatMusicCheckBox" Text="{Loc 'ui-options-combat-music'}" />
                 <CheckBox Name="LobbyMusicCheckBox" Text="{Loc 'ui-options-lobby-music'}" />
@@ -104,7 +94,6 @@
                 <CheckBox Name="EventMusicCheckBox" Text="{Loc 'ui-options-event-music'}" />
                 <CheckBox Name="AnnouncerDisableMultipleSoundsCheckBox" Text="{Loc 'ui-options-announcer-disable-multiple-sounds'}" ToolTip="{Loc 'ui-options-announcer-disable-multiple-sounds-tooltip'}" />
                 <CheckBox Name="AdminSoundsCheckBox" Text="{Loc 'ui-options-admin-sounds'}" />
-                <CheckBox Name="TTSSoundsCheckBox" Text="{Loc 'ui-options-tts-sounds'}" /> <!-- Art-TTS -->
             </BoxContainer>
         </BoxContainer>
         <controls:StripeBack HasBottomEdge="False" HasMargins="False">

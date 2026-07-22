@@ -1,10 +1,8 @@
-using Content.Server._Art.TTS; // Orion-Edit
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Language;
 using Content.Server.Radio.Components;
 using Content.Server.Speech;
-using Content.Shared._Art.TTS; // Art-TTS
 using Content.Shared.Chat;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
@@ -31,8 +29,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         SubscribeLocalEvent<HeadsetComponent, RadioReceiveEvent>(OnHeadsetReceive);
         SubscribeLocalEvent<HeadsetComponent, EncryptionChannelsChangedEvent>(OnKeysChanged);
 
-        // SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeEvent>(OnSpeak); // Art-TTS
-        SubscribeLocalEvent<ActorComponent, EntitySpokeEvent>(OnSpeak, before: [typeof(TTSSystem)]); // Art-TTS
+        SubscribeLocalEvent<ActorComponent, EntitySpokeEvent>(OnSpeak);
 
         SubscribeLocalEvent<HeadsetComponent, EmpPulseEvent>(OnEmpPulse);
     }
@@ -131,14 +128,6 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             {
                 Message = chatMessage
             };
-
-            // Art-TTS Start
-            if (canUnderstand && args.Voice is { } voice)
-            {
-                var ev = new TTSRadioPlayEvent(args.OriginalChatMsg, args.OriginalChatMsg.Message, args.Language, voice);
-                RaiseLocalEvent(parent, ev);
-            }
-            // Art-TTS End
 
             _netMan.ServerSendMessage(msg, actor.PlayerSession.Channel);
 

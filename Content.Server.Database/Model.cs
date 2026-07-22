@@ -417,7 +417,8 @@ namespace Content.Server.Database
         public string Lifepath { get; set; } = null!;
         public int Age { get; set; }
         public string Sex { get; set; } = null!;
-        public string Voice { get; set; } = null!; // Art-TTS
+        // Deprecated: TTS was removed. Column is retained (default "") to avoid a schema migration; nothing reads it.
+        public string Voice { get; set; } = "";
         public string Gender { get; set; } = null!;
         public string? DisplayPronouns { get; set; }
         public string? StationAiName { get; set; }

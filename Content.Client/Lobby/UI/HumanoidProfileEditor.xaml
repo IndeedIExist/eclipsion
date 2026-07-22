@@ -54,16 +54,6 @@
                                 <Control HorizontalExpand="True"/>
                                 <OptionButton Name="SexButton" HorizontalAlignment="Right" />
                             </BoxContainer>
-                            <!-- Art-TTS End -->
-                            <BoxContainer HorizontalExpand="True">
-                                <Label Text="{Loc 'humanoid-profile-editor-voice-label'}"/>
-                                <Control HorizontalExpand="True"/>
-                                <OptionButton Name="VoiceButton" HorizontalAlignment="Right"/>
-                                <Button Name="VoicePlayButton"
-                                        Text="▶"
-                                        MaxWidth="80"/>
-                            </BoxContainer>
-                            <!-- Art-TTS End -->
                             <!-- Pronouns -->
                             <BoxContainer HorizontalExpand="True">
                                 <Label Text="{Loc 'humanoid-profile-editor-pronouns-label'}" />

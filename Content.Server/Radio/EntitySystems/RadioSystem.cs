@@ -1,10 +1,8 @@
-using Content.Server._Art.TTS; // Art-TTS
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Language;
 using Content.Server.Power.Components;
 using Content.Server.Radio.Components;
-using Content.Shared._Art.TTS; // Art-TTS
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Language;
@@ -46,7 +44,7 @@ public sealed class RadioSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<IntrinsicRadioReceiverComponent, RadioReceiveEvent>(OnIntrinsicReceive);
-        SubscribeLocalEvent<IntrinsicRadioTransmitterComponent, EntitySpokeEvent>(OnIntrinsicSpeak, before: [typeof(TTSSystem)]); // Art-TTS
+        SubscribeLocalEvent<IntrinsicRadioTransmitterComponent, EntitySpokeEvent>(OnIntrinsicSpeak);
 
         _exemptQuery = GetEntityQuery<TelecomExemptComponent>();
     }
@@ -88,13 +86,6 @@ public sealed class RadioSystem : EntitySystem
             if (listener != null && !_language.CanUnderstand(listener, args.Language.ID))
                 msg = args.LanguageObfuscatedChatMsg;
 
-            // Art-TTS Start
-            if (args.Voice is { } voice)
-            {
-                var ev = new TTSRadioPlayEvent(args.OriginalChatMsg, args.OriginalChatMsg.Message, args.Language, voice);
-                RaiseLocalEvent(uid, ev);
-            }
-            // Art-TTS End
             _netMan.ServerSendMessage(new MsgChatMessage { Message = msg }, actor.PlayerSession.Channel);
         }
     }
@@ -155,16 +146,7 @@ public sealed class RadioSystem : EntitySystem
         var obfuscatedWrapped = WrapRadioMessage(messageSource, channel, name, obfuscated, language, frequency);
         var notUdsMsg = new ChatMessage(ChatChannel.Radio, obfuscated, obfuscatedWrapped, NetEntity.Invalid, null);
 
-        // Art-TTS Start
-        string? voice = null;
-        if (TryComp<TTSComponent>(messageSource, out var ttsComponent)
-            && ttsComponent.VoicePrototype is { } voiceId
-            && _prototype.TryIndex(voiceId, out var voicePrototype))
-        {
-            voice = voicePrototype.Speaker;
-        }
-        // Art-TTS End
-        var ev = new RadioReceiveEvent(messageSource, channel, msg, notUdsMsg, language, radioSource, voice); // Art-TTS
+        var ev = new RadioReceiveEvent(messageSource, channel, msg, notUdsMsg, language, radioSource);
 
         var sendAttemptEv = new RadioSendAttemptEvent(channel, radioSource);
         RaiseLocalEvent(ref sendAttemptEv);

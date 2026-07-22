@@ -252,7 +252,6 @@
   - type: SurgeryTarget
   - type: MovedByPressure
     cutoffTime: 1.0
-  - type: TTS # Art-TTS
 
 - type: entity
   save: false
