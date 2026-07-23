@@ -461,7 +461,8 @@
   - ClothingOuterHardsuitSHIJuggernaut
   - ClothingOuterHardsuitHighsecUA #ratgore, moved UAs here
   - ClothingOuterHardsuitHighsecIndependent
-  - ClothingOuterHardsuitSHISpeedsuit
+  # ClothingOuterHardsuitSHISpeedsuit intentionally not unlocked: it was pulled from the microforge
+  # (SHI shouldn't get every suit category for free); leaving the unlock made it researchable-but-unprintable.
 
 - type: technology
   id: ShinoharaNTBallistics

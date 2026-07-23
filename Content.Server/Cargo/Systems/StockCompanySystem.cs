@@ -54,6 +54,21 @@ public sealed class StockCompanySystem : EntitySystem
     private const float NeutralReversionStrength = 0.02f;
 
     /// <summary>
+    /// Price movement is deliberately asymmetric: every upward push lands at <see cref="RiseFactor"/> of
+    /// its intended strength while every downward one lands at <see cref="FallFactor"/>. Building a
+    /// stock's value up is a slow grind and losing it is quick, so holding a winning position is work
+    /// rather than a coast. These are the tuning knobs for that feel — closer together is gentler, wider
+    /// apart is harsher.
+    ///
+    /// This scales only the *intended* shifts, never the redistribution that funds them, so the pool
+    /// stays exactly conserved. Note it also touches the neutral companies' own drift, giving the two
+    /// hedges a mild downward lean; move the scaling into <see cref="AddPressure"/>/<see cref="AddInstantShift"/>
+    /// instead if the hedges should stay symmetric.
+    /// </summary>
+    private const float RiseFactor = 0.7f;
+    private const float FallFactor = 1.2f;
+
+    /// <summary>
     /// Fraction of the gap back to the opening price that a listed company closes when a new round
     /// begins. Without it a faction that loses repeatedly pins itself to the floor and never trades
     /// again; with it, a bad run is a discount rather than a death sentence.
@@ -241,6 +256,12 @@ public sealed class StockCompanySystem : EntitySystem
     /// </summary>
     private void ApplyShifts(float[] shifts)
     {
+        // Make gains grind and losses bite: dampen every upward push, amplify every downward one. Done
+        // here rather than at each call site so it catches war pressures, instant shifts and the neutral
+        // companies' own drift in one place, and before any weight is computed so the pool stays conserved.
+        for (var i = 0; i < shifts.Length; i++)
+            shifts[i] *= shifts[i] >= 0f ? RiseFactor : FallFactor;
+
         var weights = new float[_companies.Count];
         var totalWeight = 0f;
 

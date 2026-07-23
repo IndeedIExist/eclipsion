@@ -8669,8 +8669,6 @@ entities:
       pos: -1.5,-3.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -793.71985
-      state: Closing
   - uid: 750
     components:
     - type: Transform

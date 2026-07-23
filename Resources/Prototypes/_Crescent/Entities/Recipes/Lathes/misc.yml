@@ -1,11 +1,11 @@
-# - type: latheRecipe  Do not touch until fix BoomBox
-#   id: BoomboxCraft
-#   result: Boombox
-#   completetime: 1
-#   materials:
-#     Steel: 750
-#     Gold: 250
-#     BasicElectronics: 250
+- type: latheRecipe
+  id: BoomboxCraft
+  result: Boombox
+  completetime: 1
+  materials:
+    Steel: 750
+    Gold: 250
+    BasicElectronics: 250
 
 - type: latheRecipe
   id: JugBoriaticFuelCraft

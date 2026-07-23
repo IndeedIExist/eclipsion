@@ -685,8 +685,6 @@ entities:
       pos: 1.5,-2.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -6391.8354
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True

@@ -3065,8 +3065,6 @@ entities:
       pos: -4.5,25.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1931.7338
-      state: Closing
   - uid: 477
     components:
     - type: Transform
@@ -3074,8 +3072,6 @@ entities:
       pos: -4.5,26.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1931.4337
-      state: Closing
   - uid: 478
     components:
     - type: Transform
@@ -3083,8 +3079,6 @@ entities:
       pos: -4.5,27.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1930.967
-      state: Closing
   - uid: 479
     components:
     - type: Transform
@@ -3092,8 +3086,6 @@ entities:
       pos: -2.5,31.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1934.8004
-      state: Closing
   - uid: 480
     components:
     - type: Transform
@@ -3119,8 +3111,6 @@ entities:
       pos: 3.5,31.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1933.967
-      state: Closing
 - proto: GasPipeBend
   entities:
   - uid: 484

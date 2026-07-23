@@ -45,7 +45,6 @@ namespace Content.IntegrationTests.Tests.Preferences
                 Species = "Human",
                 Customspeciename = "",
                 Age = 21,
-                Voice = "Gman",
                 Appearance = new(
                     "Afro",
                     Color.Aqua,

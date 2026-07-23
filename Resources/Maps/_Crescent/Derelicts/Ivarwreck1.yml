@@ -1055,8 +1055,6 @@ entities:
       pos: -3.5,7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2835.785
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1066,8 +1064,6 @@ entities:
       pos: -3.5,3.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2841.4514
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1077,8 +1073,6 @@ entities:
       pos: 4.5,3.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2842.4514
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1088,8 +1082,6 @@ entities:
       pos: 5.5,-1.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2843.1516
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1099,8 +1091,6 @@ entities:
       pos: -4.5,-1.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2840.9849
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1112,8 +1102,6 @@ entities:
       pos: -6.5,8.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2821.8516
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1123,8 +1111,6 @@ entities:
       pos: -3.5,-5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2849.0847
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1134,8 +1120,6 @@ entities:
       pos: 4.5,-5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2849.6182
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1145,8 +1129,6 @@ entities:
       pos: -2.5,4.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2822.9182
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1156,8 +1138,6 @@ entities:
       pos: -2.5,8.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2822.518
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1169,8 +1149,6 @@ entities:
       pos: -3.5,12.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2835.318
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -1180,8 +1158,6 @@ entities:
       pos: -0.5,11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2834.8516
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True

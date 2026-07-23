@@ -268,7 +268,8 @@
       - SignalTrigger
       - TimerTrigger
       - EMPGrenadeElectronics
-      - GrenadeDSMG4Twistcap
+      # GrenadeDSMG4Twistcap moved to the DSM dynamicRecipes block below: it's DSM gear (Imperial
+      # discipline, SurplusImperialRifling) and must not print for free on a non-faction forge.
       - DrumMagazineShotgunSlug
       - DrumMagazineShotgunEmpty
       - DrumMagazineShotgunBuck
@@ -313,7 +314,7 @@
       - MagazinePistol
       - MagazinePistol6mm
       - MagazinePistolSubMachineGunTopMounted
-      # - BoomboxCraft  Do not tuch until fix
+      - BoomboxCraft
       - Wirecutter
       - Igniter
       - Signaller
@@ -641,6 +642,7 @@
       - MediumMissileHardpointFlatpack
       - SmallMissileHardpointFlatpack
       - SmallEnergyHardpointFlatpack #tap additions, dont know where else to put em
+      - MediumEnergyHardpointFlatpack # Families research unlocked it but the forge was missing it
       - WeaponTurretSmallMachinegunFlatpack
       - WeaponTurretMediumMachinegunFlatpack
       - WeaponTurretSmallArtilleryFlatpack
@@ -723,6 +725,9 @@
       - AlkhuldLPC
       # TAP end
       # DSM start
+      - GrenadeDSMG4Twistcap # Imperial: SurplusImperialRifling (was wrongly in staticRecipes)
+      - RedemptorLPC # Imperial: ImperialFighter (unlocked alongside IbisLPC but was missing here)
+      - ClothingNeckCloakImperialCapelet # Imperial: AdvancedImperialClothes (was missing here)
       - ClothingMaskImperialCombatGasmask
       - ClothingOuterCoatImperialParade
       - ClothingUniformJumpsuitImperialDoctor
@@ -956,6 +961,7 @@
       - WeaponRifleGoro
       - WeaponRifleLecterSHI
       - WeaponRevolverMateba
+      - WeaponRevolverInspector # Corporate research unlocked it but the forge was missing it
       - WeaponSubMachineGunSabre
       - WeaponLightMachineGunL6
       - WeaponLauncherMilkor
@@ -1454,6 +1460,7 @@
       - ShuttleGunFriendshipCircuitboard
       - ShuttleGunPerforatorCircuitboard
       - ShuttleGunSvalinnMachineGunCircuitboard
+      - ShuttleGunGrappleCircuitboard # Cyberdawn research unlocked it but the forge was missing it
       - Signaller
       - SignalTrigger
       - SpeedLoaderMagnumIncendiary

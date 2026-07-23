@@ -150,7 +150,7 @@ Entries:
       type: Tweak
     - message: The Freeport has a command mainframe, a payroll console, a taxation console and a treasury vault - the vault sits in the Ringleader's office and only the Ringleader can open it. Everyone else trips the alarm.
       type: Add
-    - message: Tatsumoto finally has the economy it was written for: a Shinohara command mainframe on the bridge, and payroll, taxation and treasury consoles in the executive's office.
+    - message: "Tatsumoto finally has the economy it was written for: a Shinohara command mainframe on the bridge, and payroll, taxation and treasury consoles in the executive's office."
       type: Add
     - message: Coalition command staff now carry a single Coalition access elevator covering every department instead of one per company.
       type: Tweak
