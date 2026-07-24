@@ -13,7 +13,7 @@
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
-    sprite: _Crescent/Objects/Weapons/zodum.rsi
+    sprite: _Crescent/Objects/Weapons/Guns/zodum.rsi
   - type: Gun
     minAngle: 1
     maxAngle: 20

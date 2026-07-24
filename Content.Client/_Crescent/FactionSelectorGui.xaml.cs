@@ -122,10 +122,22 @@ namespace Content.Client._Crescent
                     FactionInfo.RemoveAllChildren();
                     factionDescPrefix.Text = faction.DescriptionPrefix;
                     factionDesc.Text = faction.Description;
-                    factionPhoto.Texture = faction.Icon.Frame0();
-                    factionPhoto.SetHeight = 189f;
-                    factionPhoto.SetWidth = 1012f;
-                    FactionInfo.AddChild(factionPhoto);
+                    // Guard the icon lookup: a missing/typo'd faction icon path throws in Frame0() and would
+                    // otherwise break the whole character-setup UI from inside this click handler.
+                    if (faction.Icon != SpriteSpecifier.Invalid)
+                    {
+                        try
+                        {
+                            factionPhoto.Texture = faction.Icon.Frame0();
+                            factionPhoto.SetHeight = 189f;
+                            factionPhoto.SetWidth = 1012f;
+                            FactionInfo.AddChild(factionPhoto);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.ErrorS("lobby", $"Failed to load icon for faction '{faction.ID}': {e}");
+                        }
+                    }
                     FactionInfo.AddChild(factionDescPrefix);
                     FactionInfo.AddChild(factionDesc);
                 };

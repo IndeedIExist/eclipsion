@@ -2044,7 +2044,7 @@ namespace Content.Client.Lobby.UI
             {
                 foreach (var tab in TraitsTabs.Tabs)
                     TraitsTabs.RemoveTab(tab);
-                _loadoutPreferences.Clear();
+                _traitPreferences.Clear();
             }
 
 

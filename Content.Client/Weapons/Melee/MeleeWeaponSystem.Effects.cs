@@ -359,10 +359,12 @@ public sealed partial class MeleeWeaponSystem
         var query = EntityQueryEnumerator<TrackUserComponent, TransformComponent>();
         while (query.MoveNext(out var arcComponent, out var xform))
         {
-            if (arcComponent.User == null)
+            // The tracked user may have been deleted or left PVS while the effect entity lingers;
+            // GetWorldPosition would otherwise throw KeyNotFoundException on the missing transform every frame.
+            if (arcComponent.User is not { } user || !TryComp(user, out TransformComponent? userXform))
                 continue;
 
-            Vector2 targetPos = TransformSystem.GetWorldPosition(arcComponent.User.Value);
+            Vector2 targetPos = TransformSystem.GetWorldPosition(userXform);
 
             if (arcComponent.Offset != Vector2.Zero)
             {

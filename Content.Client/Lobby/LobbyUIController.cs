@@ -75,8 +75,6 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         _configurationManager.OnValueChanged(CCVars.FlavorText, _ => _profileEditor?.RefreshFlavorText());
         _configurationManager.OnValueChanged(CCVars.GameRoleTimers, _ => RefreshProfileEditor());
         _configurationManager.OnValueChanged(CCVars.GameRoleWhitelist, _ => RefreshProfileEditor());
-
-        _preferencesManager.OnServerDataLoaded += PreferencesDataLoaded;
     }
 
     public void OnStateEntered(LobbyState state)
@@ -289,7 +287,13 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     public JobPrototype GetPreferredJob(HumanoidCharacterProfile profile)
     {
         var highPriorityJob = profile.JobPriorities.FirstOrDefault(p => p.Value == JobPriority.High).Key;
-        return _prototypeManager.Index<JobPrototype>(highPriorityJob ?? SharedGameTicker.FallbackOverflowJob);
+        // Fall back to the overflow job if the stored high-priority job no longer exists as a prototype
+        // (job removed between builds, filtered out by a gamemode, or a profile that never got revalidated).
+        // Indexing a missing prototype throws and would take down the whole lobby / character-setup UI.
+        if (highPriorityJob != null && _prototypeManager.TryIndex<JobPrototype>(highPriorityJob, out var job))
+            return job;
+
+        return _prototypeManager.Index<JobPrototype>(SharedGameTicker.FallbackOverflowJob);
     }
 
     public void RemoveDummyClothes(EntityUid dummy)

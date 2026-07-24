@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._EE.Contractors.Prototypes;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Clothing.Loadouts.Systems;
@@ -499,6 +500,18 @@ public string Summary =>
 
         if (!validFaction)
             Faction = "";
+
+        // EE Contractor fields (Nationality/Employer/Lifepath) are prototype-backed but were never added
+        // to validation. A removed/renamed prototype left them permanently invalid in the DB, surviving
+        // straight through to the client (EnsureValid is what auto-heals stale prefs). Reset stale values.
+        if (!prototypeManager.HasIndex<NationalityPrototype>(Nationality))
+            Nationality = SharedHumanoidAppearanceSystem.DefaultNationality;
+
+        if (!prototypeManager.HasIndex<EmployerPrototype>(Employer))
+            Employer = SharedHumanoidAppearanceSystem.DefaultEmployer;
+
+        if (!prototypeManager.HasIndex<LifepathPrototype>(Lifepath))
+            Lifepath = SharedHumanoidAppearanceSystem.DefaultLifepath;
 
         var sex = Sex switch
         {

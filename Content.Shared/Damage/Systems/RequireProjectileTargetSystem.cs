@@ -41,8 +41,13 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
             if (!shooter.HasValue)
                 return;
 
+            // The shooter may be invalid (EntityUid 0) or already deleted (a projectile that outlived its
+            // firer). Guard the container lookup so it doesn't spam "can't resolve MetaDataComponent on
+            // entity 0"; a missing shooter simply counts as not being in a container.
+            var shooterInContainer = Exists(shooter.Value) &&
+                                     _container.IsEntityOrParentInContainer(shooter.Value);
 
-            if (!_container.IsEntityOrParentInContainer(shooter.Value))
+            if (!shooterInContainer)
             {
                 var hitChance = _cfgManager.GetCVar(CCVars.ProneMobHitChance);
 

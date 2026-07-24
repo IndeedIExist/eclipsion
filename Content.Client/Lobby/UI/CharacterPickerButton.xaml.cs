@@ -50,10 +50,15 @@ public sealed partial class CharacterPickerButton : ContainerButton
             var hum = (HumanoidCharacterProfile) profile;
 
             var highPriorityJob = humanoid.JobPriorities.FirstOrDefault(p => p.Value == JobPriority.High).Key;
-            if (highPriorityJob != null)
+            // TryIndex: a stale high-priority job (removed prototype) must not crash the character picker.
+            if (highPriorityJob != null && prototypeManager.TryIndex<JobPrototype>(highPriorityJob, out var jobProto))
             {
-                var jobName = prototypeManager.Index<JobPrototype>(highPriorityJob).LocalizedName;
+                var jobName = jobProto.LocalizedName;
                 description = $"{description}\n{jobName}\nFaction: {hum!.Faction}\n${hum.BankBalance}";
+            }
+            else
+            {
+                description = $"{description}\nFaction: {hum!.Faction}\n${hum.BankBalance}";
             }
         }
 
