@@ -10292,19 +10292,6 @@ entities:
       parent: 1003
     - type: Physics
       canCollide: False
-- proto: DSMLightCarrierComputer
-  entities:
-  - uid: 1049
-    components:
-    - type: Transform
-      pos: 4.5,-17.5
-      parent: 1
-  - uid: 1050
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 3.5,-3.5
-      parent: 1
 - proto: EwarDevice
   entities:
   - uid: 1051
@@ -14073,35 +14060,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -5.5,-7.5
-      parent: 1
-- proto: SpawnPointLatejoin
-  entities:
-  - uid: 1519
-    components:
-    - type: Transform
-      pos: 5.5,-30.5
-      parent: 1
-- proto: SpawnPointLevyman
-  entities:
-  - uid: 1520
-    components:
-    - type: Transform
-      pos: 3.5,-30.5
-      parent: 1
-  - uid: 1521
-    components:
-    - type: Transform
-      pos: 5.5,-30.5
-      parent: 1
-  - uid: 1522
-    components:
-    - type: Transform
-      pos: 4.5,-30.5
-      parent: 1
-  - uid: 1523
-    components:
-    - type: Transform
-      pos: 4.5,-29.5
       parent: 1
 - proto: StairDark
   entities:

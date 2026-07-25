@@ -113,6 +113,13 @@ public sealed partial class DroneCarrierComponent : Component
     public List<string> SpawnableDrones = new();
 
     /// <summary>
+    ///     Radar/IFF colour applied to produced drones so they show in the faction's colour instead of the
+    ///     default gold a bare grid gets.
+    /// </summary>
+    [DataField]
+    public Color IffColor = Color.Gold;
+
+    /// <summary>
     ///     Spawn times of drones produced but not yet claimed into a slot, used to gate production against the
     ///     limit while a fresh drone is still FTL-docking. Entries expire on their own. Runtime state.
     /// </summary>

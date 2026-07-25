@@ -321,6 +321,7 @@
   - Hyperwar
   - HullrotEventScheduler
   - HullrotRoundTimeLimit
+  - HullrotConquest # without this the conquest banners on both stations do nothing and the round never ends
 
 - type: entity
   id: Hyperwar

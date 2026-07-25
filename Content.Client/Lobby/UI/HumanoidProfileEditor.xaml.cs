@@ -1041,8 +1041,9 @@ namespace Content.Client.Lobby.UI
                     TextureScale = new(2, 2),
                     VerticalAlignment = VAlignment.Center
                 };
-                var jobIcon = _prototypeManager.Index<JobIconPrototype>(job.Icon);
-                icon.Texture = jobIcon.Icon.Frame0();
+                // TryIndex: a job pointing at a missing icon prototype must not crash the whole character editor.
+                if (_prototypeManager.TryIndex<JobIconPrototype>(job.Icon, out var jobIcon))
+                    icon.Texture = jobIcon.Icon.Frame0();
                 selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides);
 
                 if (!_requirements.CheckJobWhitelist(job, out var reason))
@@ -1092,7 +1093,11 @@ namespace Content.Client.Lobby.UI
             {
                 var departmentName = Loc.GetString($"department-{department.ID}");
 
-                var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
+                // HasIndex guard: a department referencing a job this client no longer has (content/version
+                // skew) must not throw and take down the character editor.
+                var jobs = department.Roles
+                    .Where(jobId => _prototypeManager.HasIndex<JobPrototype>(jobId))
+                    .Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
                     .Where(job => job.SetPreference)
                     .Where(job => !hasGamemodeFilter || gamemodeJobs.Contains(job.ID))
                     .Where(job => !excludedJobs.Contains(job.ID))

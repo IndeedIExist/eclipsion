@@ -122,13 +122,29 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         if (_profileEditor == null)
             return;
 
-        _profileEditor.RefreshAntags();
-        _profileEditor.RefreshJobs();
+        // These run outside ReloadCharacterSetup (fired by manager events), so they need their own guard —
+        // a throw here (e.g. on gamemode change refreshing jobs) would otherwise black-screen the client.
+        try
+        {
+            _profileEditor.RefreshAntags();
+            _profileEditor.RefreshJobs();
+        }
+        catch (Exception e)
+        {
+            Logger.ErrorS("lobby", $"Failed to refresh character setup after requirements update: {e}");
+        }
     }
 
     private void OnGamemodeJobsUpdated()
     {
-        _profileEditor?.RefreshJobs();
+        try
+        {
+            _profileEditor?.RefreshJobs();
+        }
+        catch (Exception e)
+        {
+            Logger.ErrorS("lobby", $"Failed to refresh jobs after gamemode change: {e}");
+        }
     }
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs obj)
@@ -136,35 +152,52 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         if (_profileEditor == null)
             return;
 
-        if (obj.WasModified<SpeciesPrototype>())
-            _profileEditor.RefreshSpecies();
+        try
+        {
+            if (obj.WasModified<SpeciesPrototype>())
+                _profileEditor.RefreshSpecies();
 
-        if (obj.WasModified<AntagPrototype>())
-            _profileEditor.RefreshAntags();
+            if (obj.WasModified<AntagPrototype>())
+                _profileEditor.RefreshAntags();
 
-        if (obj.WasModified<JobPrototype>()
-            || obj.WasModified<DepartmentPrototype>())
-            _profileEditor.RefreshJobs();
+            if (obj.WasModified<JobPrototype>()
+                || obj.WasModified<DepartmentPrototype>())
+                _profileEditor.RefreshJobs();
 
-        if (obj.WasModified<TraitPrototype>())
-            _profileEditor.UpdateTraits(null, true);
+            if (obj.WasModified<TraitPrototype>())
+                _profileEditor.UpdateTraits(null, true);
 
-        if (obj.WasModified<LoadoutPrototype>())
-            _profileEditor.UpdateLoadouts(null, true);
+            if (obj.WasModified<LoadoutPrototype>())
+                _profileEditor.UpdateLoadouts(null, true);
+        }
+        catch (Exception e)
+        {
+            Logger.ErrorS("lobby", $"Failed to refresh character setup after prototype reload: {e}");
+        }
     }
 
 
     /// Reloads every single character setup control
     public void ReloadCharacterSetup()
     {
-        RefreshLobbyPreview();
-        var (characterGui, profileEditor) = EnsureGui();
-        characterGui.ReloadCharacterPickers();
-        characterGui.FactionSelector.SetProfile ((HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter,
-        _preferencesManager.Preferences?.SelectedCharacterIndex);
-        profileEditor.SetProfile(
-            (HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter,
-            _preferencesManager.Preferences?.SelectedCharacterIndex);
+        // Safety net: building the character setup off a bad/edge-case profile must never black-screen the
+        // whole client (it did — see the "customize crashes" reports). Log the real exception and degrade
+        // instead of letting it tear down the lobby UI.
+        try
+        {
+            RefreshLobbyPreview();
+            var (characterGui, profileEditor) = EnsureGui();
+            characterGui.ReloadCharacterPickers();
+            characterGui.FactionSelector.SetProfile((HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter,
+                _preferencesManager.Preferences?.SelectedCharacterIndex);
+            profileEditor.SetProfile(
+                (HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter,
+                _preferencesManager.Preferences?.SelectedCharacterIndex);
+        }
+        catch (Exception e)
+        {
+            Logger.ErrorS("lobby", $"Failed to reload character setup (likely a bad stored character): {e}");
+        }
     }
 
     /// Refreshes the character preview in the lobby chat

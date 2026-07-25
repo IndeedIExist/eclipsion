@@ -13,6 +13,7 @@ using Content.Shared._Crescent.Diplomacy;
 using Content.Shared._Crescent.DroneControl;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Popups;
+using Content.Shared.Shipyard.Components;
 using Content.Shared.Shipyard.Prototypes;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
@@ -187,44 +188,34 @@ public sealed class AutoDroneSystem : EntitySystem
             }
         }
 
-        // 4) Undocked drones of our own faction floating near the carrier. A shipyard-bought drone is FTL'd to
-        //    the station and only ends up docked if a matching port was free, so it frequently just arrives
-        //    alongside the hull - the dock scans above would never see it.
-        ScanNearbyDrones(carrier, carrierGrid, carrierGridComp);
+        // NOTE: there is deliberately NO proximity/faction "claim any nearby drone" scan. In multiplayer two
+        // same-faction carriers sitting near each other would each poach the other's freshly produced drones.
+        // Produced drones are instead bound to their exact producing console the instant they are made
+        // (see OnUiSpawn -> TryBindDroneGrid), so no scan can ever steal them.
     }
 
     /// <summary>
-    ///     Claims unclaimed drones within <see cref="DroneCarrierComponent.ClaimRange"/> that already fly the
-    ///     carrier's own faction, regardless of whether they are docked to anything.
+    ///     Binds an unclaimed drone sitting on <paramref name="droneGrid"/> to this specific carrier. Used the
+    ///     moment a drone is produced so no other console's scan can claim it. Returns true if it bound one.
     /// </summary>
-    private void ScanNearbyDrones(Entity<DroneCarrierComponent> carrier, EntityUid carrierGrid, MapGridComponent carrierGridComp)
+    private bool TryBindDroneGrid(Entity<DroneCarrierComponent> carrier, EntityUid carrierGrid, MapGridComponent carrierGridComp, EntityUid droneGrid)
     {
-        var carrierPos = _transform.GetMapCoordinates(carrierGrid);
-        if (carrierPos.MapId == MapId.Nullspace)
-            return;
+        if (!_gridQuery.TryComp(droneGrid, out var dgrid))
+            return false;
 
-        var carrierFaction = _iffQuery.TryComp(carrierGrid, out var carrierIff) ? carrierIff.Faction : "Neutral";
-
-        foreach (var (drone, comp) in _lookup.GetEntitiesInRange<AutoDroneComponent>(carrierPos, carrier.Comp.ClaimRange))
+        _dockedDrones.Clear();
+        _lookup.GetLocalEntitiesIntersecting(droneGrid, dgrid.LocalAABB, _dockedDrones);
+        foreach (var drone in _dockedDrones)
         {
-            if (comp.CarrierConsole != null)
-                continue; // already fielded by some carrier
-
-            var droneGrid = Transform(drone).GridUid;
-            if (droneGrid == null || droneGrid == carrierGrid)
+            if (drone.Comp.CarrierConsole != null)
                 continue;
 
-            // Same faction only: a shipyard-bought drone inherits the buying console's faction, so this picks
-            // up our own purchases without poaching a neutral third party's drone.
-            var droneFaction = _iffQuery.TryComp(droneGrid.Value, out var droneIff) ? droneIff.Faction : "Neutral";
-            if (droneFaction != carrierFaction)
-                continue;
-
-            DeployDrone(carrier, carrierGrid, carrierGridComp, (drone, comp));
-
-            if (carrier.Comp.ProducedCount >= EffectiveMaxDrones(carrier.Comp))
-                return;
+            var before = carrier.Comp.ProducedCount;
+            DeployDrone(carrier, carrierGrid, carrierGridComp, drone);
+            return carrier.Comp.ProducedCount > before;
         }
+
+        return false;
     }
 
     /// <summary>
@@ -293,9 +284,17 @@ public sealed class AutoDroneSystem : EntitySystem
         drone.Comp.SlotCoordinates = ComputeSlot(carrierGrid, grid, carrier.Comp, slot);
         drone.Comp.Mode = AutoDroneMode.Follow;
 
-        // Adopt the carrier's faction so diplomacy and radar treat the drone consistently.
+        // Adopt the carrier's faction + colour so diplomacy/radar treat the drone consistently (instead of the
+        // default gold a bare grid shows).
         if (droneGrid != null)
+        {
             _shuttle.SetIFFFaction(droneGrid.Value, carrierFaction);
+            _shuttle.SetIFFColor(droneGrid.Value, carrier.Comp.IffColor);
+
+            // No ownership deed -> the producing player can't rename/recolour it; its identity stays locked
+            // to what the carrier set.
+            RemComp<ShuttleDeedComponent>(droneGrid.Value);
+        }
 
         // Link the drone to the carrier console so it shows on the console UI and can receive manual override
         // orders after it has undocked. Mirrors the console's manual autolink.
@@ -486,13 +485,19 @@ public sealed class AutoDroneSystem : EntitySystem
             return;
         }
 
-        // TryPurchaseShuttle leaves the grid as an anonymous "grid"; give it the carrier's faction and a proper
-        // name so it shows up on radar/the map instead of being a nameless grid.
-        var carrierFaction = _iffQuery.TryComp(Transform(ent.Owner).GridUid ?? ent.Owner, out var carrierIff) ? carrierIff.Faction : "Neutral";
-        _shuttle.SetIFFFaction(shuttle.Owner, carrierFaction);
+        // TryPurchaseShuttle leaves the grid as an anonymous "grid"; give it a proper name so it shows on radar.
         _metaData.SetEntityName(shuttle.Owner, $"{vessel.Name} {_random.Next(100, 1000)}");
 
-        ent.Comp.PendingSpawns.Add(now);
+        // Bind it to THIS console immediately (same server tick, before any other console's scan runs) so a
+        // nearby same-faction carrier can never claim it. Faction/color/undock are handled by DeployDrone.
+        var carrierGrid = Transform(ent.Owner).GridUid;
+        var bound = carrierGrid != null
+            && _gridQuery.TryComp(carrierGrid.Value, out var carrierGridComp)
+            && TryBindDroneGrid(ent, carrierGrid.Value, carrierGridComp, shuttle.Owner);
+
+        if (!bound)
+            ent.Comp.PendingSpawns.Add(now); // fallback: a dock scan will claim it (and increment ProducedCount)
+
         _popup.PopupEntity(Loc.GetString("drone-carrier-spawned"), ent.Owner, PopupType.Medium);
     }
 
@@ -566,6 +571,10 @@ public sealed class AutoDroneSystem : EntitySystem
                 continue;
             }
 
+            // A produced drone finishes FTL still docked to the station; keep it free to fly (no-op otherwise).
+            if (Transform(droneUid).GridUid is { } droneGrid)
+                _docking.UndockDocks(droneGrid);
+
             // A recent manual console order takes priority.
             if (now < drone.ManualOverrideUntil && drone.ManualCommand != null)
             {
@@ -633,9 +642,11 @@ public sealed class AutoDroneSystem : EntitySystem
         steer.RangeTolerance = null;
         steer.InRangeMaxSpeed = 0.1f; // relative to the carrier, so drones lock velocity with it
         steer.MaxRotateRate = 0.02f; // must settle rotation before counting as arrived, so it stops spinning
+        steer.NoFinish = false;       // allowed to settle into the slot (reset from attack)
         steer.LeadingEnabled = true; // match the carrier's velocity so we hold station in sync
         steer.AlwaysFaceTarget = false;
         steer.AvoidCollisions = true;
+        steer.AvoidProjectiles = false;
         steer.AvoidTargetGrid = true; // route around the carrier instead of ramming through it
 
         StopFiring(drone);
@@ -649,16 +660,19 @@ public sealed class AutoDroneSystem : EntitySystem
         var steer = _steering.Steer(drone, enemyCoords);
         if (steer != null)
         {
-            // Hold at a standoff distance and keep the nose on the target instead of orbiting/spinning; each
-            // drone sits at a slightly different range so they spread into a firing line rather than stacking.
+            // Keep the nose on the target at a standoff range, but stay actively maneuvering (NoFinish) and
+            // jink away from incoming shipgun fire (AvoidProjectiles) instead of sitting still. Each drone holds
+            // a slightly different range so they spread into a firing line rather than stacking.
             steer.Mode = ShipSteeringMode.GoToRange;
             steer.Range = carrier.OrbitRange + comp.Slot * 25f;
             steer.RangeTolerance = 40f;
-            steer.InRangeMaxSpeed = 0.1f; // settle and hold, don't circle
-            steer.MaxRotateRate = 0.02f; // must settle rotation before counting as arrived, so it stops spinning
+            steer.InRangeMaxSpeed = null;
+            steer.MaxRotateRate = null;
+            steer.NoFinish = true;          // never park - keep steering so projectile evasion runs
             steer.LeadingEnabled = true;
             steer.AlwaysFaceTarget = true;
             steer.AvoidCollisions = true;
+            steer.AvoidProjectiles = true;  // dodge incoming shipgun rounds
             steer.AvoidTargetGrid = false;
         }
 
