@@ -3,12 +3,6 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.PDA;
 
 [Serializable, NetSerializable]
-public sealed class PdaToggleFlashlightMessage : BoundUserInterfaceMessage
-{
-    public PdaToggleFlashlightMessage() { }
-}
-
-[Serializable, NetSerializable]
 public sealed class PdaShowRingtoneMessage : BoundUserInterfaceMessage
 {
     public PdaShowRingtoneMessage() { }

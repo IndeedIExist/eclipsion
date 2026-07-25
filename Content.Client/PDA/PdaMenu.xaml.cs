@@ -49,7 +49,6 @@ namespace Content.Client.PDA
             ViewContainer.OnChildAdded += control => control.Visible = false;
 
             HomeButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/home.png"));
-            FlashLightToggleButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/light.png"));
             EjectPenButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pencil.png"));
             EjectIdButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/eject.png"));
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
@@ -138,8 +137,6 @@ namespace Content.Client.PDA
 
         public void UpdateState(PdaUpdateState state)
         {
-            FlashLightToggleButton.IsActive = state.FlashlightEnabled;
-
             if (state.PdaOwnerInfo.ActualOwnerName != null)
             {
                 _pdaOwner = state.PdaOwnerInfo.ActualOwnerName;
