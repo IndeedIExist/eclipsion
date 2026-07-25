@@ -10,6 +10,8 @@ using Content.Shared.Research.TechnologyDisk.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Research.TechnologyDisk.Systems;
 
@@ -52,20 +54,37 @@ public sealed class TechnologyDiskSystem : EntitySystem
         };
         */
 
-        //get a list of every distinct recipe in all the technologies.
+        //get a list of every distinct recipe in all the technologies, but restrict to _Crescent disciplines.
         var techs = new HashSet<ProtoId<LatheRecipePrototype>>();
         foreach (var tech in _protoMan.EnumeratePrototypes<TechnologyPrototype>())
         {
             if (tech.Tier != tier)
                 continue;
 
-            // Skip faction-specific disciplines only for tier 3
-            // Disabled - allowing faction T3 tech in disks
-            // if (tier == 3 && excludedDisciplinesT3.Contains(tech.Discipline))
-            //     continue;
+                    // Only include technologies that belong to _Crescent disciplines.
+                    // Detection heuristic: discipline icon RSI path contains "_Crescent".
+                    var isCrescentDiscipline = false;
+                    try
+                    {
+                        var disciplineProto = _protoMan.Index<TechDisciplinePrototype>(tech.Discipline);
+                        if (disciplineProto.Icon is SpriteSpecifier.Rsi rsi)
+                        {
+                            var path = rsi.RsiPath.ToString();
+                            if (path.StartsWith("_Crescent", StringComparison.OrdinalIgnoreCase) || path.Contains("/_Crescent/") || path.Contains("\\_Crescent\\"))
+                                isCrescentDiscipline = true;
+                        }
+                    }
+                    catch
+                    {
+                        // Missing discipline prototype or unexpected icon type -> skip this tech
+                        continue;
+                    }
 
-            techs.UnionWith(tech.RecipeUnlocks);
-        }
+                    if (!isCrescentDiscipline)
+                        continue;
+
+                    techs.UnionWith(tech.RecipeUnlocks);
+                }
 
         // Remove explicitly excluded recipes
         if (ent.Comp.ExcludedRecipes != null)

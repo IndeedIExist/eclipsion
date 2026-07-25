@@ -104,7 +104,8 @@ public sealed class AlertConsoleSystem : EntitySystem
                 if (xform.GridUid != null && gridUid == xform.GridUid)
                     continue;
 
-                if ((iff.Flags & IFFFlags.Hide) != 0)
+                // Ignore cloaked or hidden vessels (Hide or HideLabel)
+                if ((iff.Flags & (IFFFlags.Hide | IFFFlags.HideLabel)) != 0)
                     continue;
 
                 if (physics.LinearVelocity.Length() < comp.MinDetectionVelocity)

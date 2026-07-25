@@ -513,6 +513,15 @@ namespace Content.Shared.Movement.Systems
 
             var entityComp = new Entity<InputMoverComponent>(owner:entity, comp:input);
 
+            // Prevent sprinting for mechs: if this entity is a mech, always treat as not-sprinting.
+            // This ensures shift/hold-run cannot make a mech move faster than walking.
+            if (HasComp<Content.Shared.Mech.Components.MechComponent>(entity))
+            {
+                SetMoveInput(entityComp, subTick, false, MoveButtons.Walk);
+                WalkingAlert(entityComp);
+                return;
+            }
+
             // _Crescent: remember whether we were running before applying the new input.
             var wasSprinting = input.Sprinting;
 

@@ -151,7 +151,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         foreach (var (_, key) in uis)
         {
-            if (key is TargetingConsoleUiKey.Key)
+            if (key is TargetingConsoleUiKey)
             {
                 args.Cancel();
             }

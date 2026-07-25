@@ -56,6 +56,14 @@
                     <Control MinSize="4 0"/>
                 </BoxContainer>
                 <BoxContainer Orientation="Horizontal" Margin="5 0 0 0">
+                    <Label Text="Boombox Volume" HorizontalExpand="True" />
+                    <Control MinSize="8 0" />
+                    <Slider Name="BoomboxVolumeSlider" MinValue="0" MaxValue="100" HorizontalExpand="True" MinSize="80 0" Rounded="True" />
+                    <Control MinSize="8 0" />
+                    <Label Name="BoomboxVolumeLabel" MinSize="48 0" Align="Right" />
+                    <Control MinSize="4 0"/>
+                </BoxContainer>
+                <BoxContainer Orientation="Horizontal" Margin="5 0 0 0">
                     <Label Text="{Loc 'ui-options-interface-volume'}" HorizontalExpand="True" />
                     <Control MinSize="8 0" />
                     <Slider Name="InterfaceVolumeSlider" MinValue="0" MaxValue="100" HorizontalExpand="True" MinSize="80 0" Rounded="True" />

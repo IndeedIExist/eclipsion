@@ -40,6 +40,7 @@ namespace Content.Client.Options.UI.Tabs
                 AmbienceVolumeSlider,
                 AmbienceSoundsSlider,
                 LobbyVolumeSlider,
+                BoomboxVolumeSlider,
                 InterfaceVolumeSlider,
                 AnnouncerVolumeSlider,
                 CommunicationsVolumeSlider,
@@ -88,6 +89,7 @@ namespace Content.Client.Options.UI.Tabs
                 AmbienceVolumeSlider,
                 AmbienceSoundsSlider,
                 LobbyVolumeSlider,
+                BoomboxVolumeSlider,
                 InterfaceVolumeSlider,
                 AnnouncerVolumeSlider,
                 CommunicationsVolumeSlider,
@@ -131,6 +133,7 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.CombatMusicVolume, CombatMusicVolumeSlider.Value / 100f * ContentAudioSystem.CombatMusicMultiplier);
             _cfg.SetCVar(CCVars.AmbientMusicVolume, AmbientMusicVolumeSlider.Value / 100f * ContentAudioSystem.AmbientMusicMultiplier);
             _cfg.SetCVar(CCVars.LobbyMusicVolume, LobbyVolumeSlider.Value / 100f * ContentAudioSystem.LobbyMultiplier);
+            _cfg.SetCVar(CCVars.BoomboxVolume, BoomboxVolumeSlider.Value / 100f * ContentAudioSystem.BoomboxMultiplier);
             _cfg.SetCVar(CCVars.InterfaceVolume, InterfaceVolumeSlider.Value / 100f * ContentAudioSystem.InterfaceMultiplier);
             _cfg.SetCVar(CCVars.AnnouncerVolume, AnnouncerVolumeSlider.Value / 100f * ContentAudioSystem.AnnouncerMultiplier);
             _cfg.SetCVar(CCVars.CommunicationsVolume, CommunicationsVolumeSlider.Value / 100f * ContentAudioSystem.CommunicationsMultiplier);
@@ -160,6 +163,7 @@ namespace Content.Client.Options.UI.Tabs
             CombatMusicVolumeSlider.Value = _cfg.GetCVar(CCVars.CombatMusicVolume) * 100f / ContentAudioSystem.CombatMusicMultiplier;
             AmbientMusicVolumeSlider.Value = _cfg.GetCVar(CCVars.AmbientMusicVolume) * 100f / ContentAudioSystem.AmbientMusicMultiplier;
             LobbyVolumeSlider.Value = _cfg.GetCVar(CCVars.LobbyMusicVolume) * 100f / ContentAudioSystem.LobbyMultiplier;
+            BoomboxVolumeSlider.Value = _cfg.GetCVar(CCVars.BoomboxVolume) * 100f / ContentAudioSystem.BoomboxMultiplier;
             InterfaceVolumeSlider.Value = _cfg.GetCVar(CCVars.InterfaceVolume) * 100f / ContentAudioSystem.InterfaceMultiplier;
             AnnouncerVolumeSlider.Value = _cfg.GetCVar(CCVars.AnnouncerVolume) * 100f / ContentAudioSystem.AnnouncerMultiplier;
             CommunicationsVolumeSlider.Value = _cfg.GetCVar(CCVars.CommunicationsVolume) * 100f / ContentAudioSystem.CommunicationsMultiplier;
@@ -192,6 +196,8 @@ namespace Content.Client.Options.UI.Tabs
                 Math.Abs(LobbyVolumeSlider.Value - _cfg.GetCVar(CCVars.LobbyMusicVolume) * 100f / ContentAudioSystem.LobbyMultiplier) < 0.01f;
             var isInterfaceVolumeSame =
                 Math.Abs(InterfaceVolumeSlider.Value - _cfg.GetCVar(CCVars.InterfaceVolume) * 100f / ContentAudioSystem.InterfaceMultiplier) < 0.01f;
+            var isBoomboxVolumeSame =
+                Math.Abs(BoomboxVolumeSlider.Value - _cfg.GetCVar(CCVars.BoomboxVolume) * 100f / ContentAudioSystem.BoomboxMultiplier) < 0.01f;
             var isAnnouncerVolumeSame =
                 Math.Abs(AnnouncerVolumeSlider.Value - _cfg.GetCVar(CCVars.AnnouncerVolume) * 100f / ContentAudioSystem.AnnouncerMultiplier) < 0.01f;
             var isCommunicationsVolumeSame =
@@ -206,7 +212,7 @@ namespace Content.Client.Options.UI.Tabs
             var isEverythingSame = isMasterVolumeSame && isMidiVolumeSame && isAmbientVolumeSame && isCombatMusicVolumeSame
                 && isAmbientMusicVolumeSame && isAmbientSoundsSame && isCombatSame && isLobbySame && isRestartSoundsSame && isEventSame
                 && isAnnouncerDisableMultipleSoundsSame && isAdminSoundsSame && isLobbyVolumeSame
-                && isInterfaceVolumeSame && isAnnouncerVolumeSame && isCommunicationsVolumeSame;
+                && isInterfaceVolumeSame && isBoomboxVolumeSame && isAnnouncerVolumeSame && isCommunicationsVolumeSame;
             ApplyButton.Disabled = isEverythingSame;
             ResetButton.Disabled = isEverythingSame;
             MasterVolumeLabel.Text =
@@ -223,6 +229,8 @@ namespace Content.Client.Options.UI.Tabs
                 Loc.GetString("ui-options-volume-percent", ("volume", LobbyVolumeSlider.Value / 100));
             InterfaceVolumeLabel.Text =
                 Loc.GetString("ui-options-volume-percent", ("volume", InterfaceVolumeSlider.Value / 100));
+            BoomboxVolumeLabel.Text =
+                Loc.GetString("ui-options-volume-percent", ("volume", BoomboxVolumeSlider.Value / 100));
             AnnouncerVolumeLabel.Text =
                 Loc.GetString("ui-options-volume-percent", ("volume", AnnouncerVolumeSlider.Value / 100));
             CommunicationsVolumeLabel.Text =

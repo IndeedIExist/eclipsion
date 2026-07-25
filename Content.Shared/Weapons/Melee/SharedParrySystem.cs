@@ -111,6 +111,10 @@ public sealed class SharedParrySystem : EntitySystem
         if (!parry.IsParrying)
             return false;
 
+        // Prevent entities from parrying themselves (attacker and target being the same)
+        if (attacker == target)
+            return false;
+
         var curTime = _timing.CurTime;
         if (curTime > parry.ParryEndTime)
             return false;
