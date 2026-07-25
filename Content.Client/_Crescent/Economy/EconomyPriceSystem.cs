@@ -19,9 +19,13 @@ public sealed class EconomyPriceSystem : EntitySystem
 
         SubscribeNetworkEvent<EconomyPriceSyncEvent>(OnSync);
         SubscribeNetworkEvent<EconomyAdminListEvent>(OnListReceived);
+        SubscribeNetworkEvent<EconomyAdminPriceUpdatedEvent>(OnPriceUpdated);
     }
 
     public event Action<EconomyAdminListEvent>? ListReceived;
+
+    /// <summary>Raised when the server confirms a price/balance change, carrying the authoritative value.</summary>
+    public event Action<EconomyAdminPriceUpdatedEvent>? PriceUpdated;
 
     public void RequestList(EconomyListCategory category, string searchFilter)
     {
@@ -64,5 +68,10 @@ public sealed class EconomyPriceSystem : EntitySystem
     private void OnListReceived(EconomyAdminListEvent msg, EntitySessionEventArgs args)
     {
         ListReceived?.Invoke(msg);
+    }
+
+    private void OnPriceUpdated(EconomyAdminPriceUpdatedEvent msg, EntitySessionEventArgs args)
+    {
+        PriceUpdated?.Invoke(msg);
     }
 }

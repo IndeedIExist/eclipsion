@@ -4,11 +4,14 @@ using Content.Server.Bank;
 using Content.Server.Cargo.Components;
 using Content.Server.Cargo.Systems;
 using Content.Server.Crescent.Dispenser;
+using Content.Server.Preferences.Managers;
+using Content.Server._Crescent.Taxation;
 using Content.Shared.Bank.Components;
 using Content.Shared._NF.Cargo.Components;
 using Content.Shared._Crescent.Economy;
 using Content.Shared.Administration;
 using Content.Shared.Database;
+using Content.Shared.Preferences;
 using Content.Shared.Shipyard.Prototypes;
 using Robust.Server.Player;
 using Robust.Shared.Enums;
@@ -30,6 +33,8 @@ public sealed class EconomyPriceSystem : EntitySystem
     [Dependency] private readonly BankSystem _bank = default!;
     [Dependency] private readonly StationTradeMarketSystem _market = default!;
     [Dependency] private readonly StockCompanySystem _stocks = default!;
+    [Dependency] private readonly IServerPreferencesManager _prefs = default!;
+    [Dependency] private readonly FactionTreasuryConsoleSystem _treasuryConsole = default!;
 
     private readonly Dictionary<string, double> _itemOverrides = new();
     private readonly Dictionary<string, int> _vesselOverrides = new();
@@ -162,12 +167,14 @@ public sealed class EconomyPriceSystem : EntitySystem
             $"{args.SenderSession:player} changed economy {category} price for {msg.Id} from {oldPrice:0.##} to {newPrice:0.##} (base {basePrice:0.##})");
 
         BroadcastPriceSync();
+        // Confirmation is only consumed by the acting admin's economy panel; send it to them rather than
+        // broadcasting (which needlessly shipped balances/treasury to every client).
         RaiseNetworkEvent(new EconomyAdminPriceUpdatedEvent
         {
             Category = msg.Category,
             Id = msg.Id,
             Price = newPrice,
-        });
+        }, args.SenderSession);
     }
 
     private void BroadcastPriceSync()
@@ -360,10 +367,27 @@ public sealed class EconomyPriceSystem : EntitySystem
             if (session.Status != SessionStatus.Connected)
                 continue;
 
-            if (session.AttachedEntity is not { } mob || !TryComp<BankAccountComponent>(mob, out var bank))
+            // Prefer the live bank component on the piloted mob; fall back to the selected character's
+            // persisted profile so lobby/ghost/observer players are listed and editable too. Reading the
+            // live component alone hid everyone who was not currently controlling a banked mob.
+            long balance;
+            string charName;
+            if (session.AttachedEntity is { } mob && TryComp<BankAccountComponent>(mob, out var bank))
+            {
+                balance = bank.Balance;
+                charName = Comp<MetaDataComponent>(mob).EntityName;
+            }
+            else if (_prefs.TryGetCachedPreferences(session.UserId, out var prefs)
+                     && prefs.SelectedCharacter is HumanoidCharacterProfile profile)
+            {
+                balance = profile.BankBalance;
+                charName = profile.Name;
+            }
+            else
+            {
                 continue;
+            }
 
-            var charName = Comp<MetaDataComponent>(mob).EntityName;
             var name = $"{charName} [{session.Name}]";
             var id = session.UserId.ToString();
 
@@ -379,8 +403,8 @@ public sealed class EconomyPriceSystem : EntitySystem
                 name,
                 EconomyListCategory.Players,
                 null,
-                bank.Balance,
-                bank.Balance));
+                balance,
+                balance));
         }
 
         entries.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCultureIgnoreCase));
@@ -439,7 +463,7 @@ public sealed class EconomyPriceSystem : EntitySystem
             Category = EconomyListCategory.Stocks,
             Id = msg.Id,
             Price = Math.Round(company.CurrentPrice, 2),
-        });
+        }, session);
     }
 
     private void SetTreasuryBalance(EconomyAdminSetPriceEvent msg, ICommonSession session)
@@ -455,6 +479,9 @@ public sealed class EconomyPriceSystem : EntitySystem
             var oldBalance = market.TreasuryBalance;
             // Route through the market system so the change is mirrored into the cross-round store.
             _market.SetTreasury(uid, newBalance);
+            // Push the new balance into any open treasury console for this station; the console only
+            // refreshes on its own actions, so without this an open UI keeps showing the old value.
+            _treasuryConsole.RefreshStationConsoles(uid);
 
             _adminLog.Add(
                 LogType.AdminCommands,
@@ -466,7 +493,7 @@ public sealed class EconomyPriceSystem : EntitySystem
                 Category = EconomyListCategory.Treasury,
                 Id = msg.Id,
                 Price = newBalance,
-            });
+            }, session);
             return;
         }
     }
@@ -474,18 +501,39 @@ public sealed class EconomyPriceSystem : EntitySystem
     private void SetPlayerBalance(EconomyAdminSetPriceEvent msg, ICommonSession session)
     {
         var newBalance = (long) Math.Round(msg.Price);
+        if (newBalance < 0)
+            return;
 
         foreach (var target in _playerManager.Sessions)
         {
             if (target.UserId.ToString() != msg.Id)
                 continue;
 
-            if (target.AttachedEntity is not { } mob || !TryComp<BankAccountComponent>(mob, out var bank))
-                return;
+            long oldBalance;
 
-            var oldBalance = bank.Balance;
-            if (!_bank.TrySetBankBalance(mob, newBalance))
+            if (target.AttachedEntity is { } mob && TryComp<BankAccountComponent>(mob, out var bank))
+            {
+                // Live mob: BankSystem mirrors the component change back into the saved profile.
+                oldBalance = bank.Balance;
+                if (!_bank.TrySetBankBalance(mob, newBalance))
+                    return;
+            }
+            else if (_prefs.TryGetCachedPreferences(target.UserId, out var prefs)
+                     && prefs.SelectedCharacter is HumanoidCharacterProfile profile)
+            {
+                // No live account (lobby/ghost): write the selected character's persisted profile so the
+                // change sticks and is applied when they next spawn.
+                var index = prefs.IndexOfCharacter(profile);
+                if (index < 0)
+                    return;
+
+                oldBalance = profile.BankBalance;
+                _prefs.SetProfileNoChecks(target.UserId, index, profile.WithBank(newBalance));
+            }
+            else
+            {
                 return;
+            }
 
             _adminLog.Add(
                 LogType.AdminCommands,
@@ -497,7 +545,7 @@ public sealed class EconomyPriceSystem : EntitySystem
                 Category = EconomyListCategory.Players,
                 Id = msg.Id,
                 Price = newBalance,
-            });
+            }, session);
             return;
         }
     }

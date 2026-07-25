@@ -357,3 +357,27 @@
   name: Dark Fantasy
   path:
     path: /Audio/_Crescent/Jukebox/darkfantasy.ogg
+
+- type: jukebox
+  id: altingunanlatamamderdimi
+  name: Altin Gun - Anlatamam Derdimi
+  path:
+    path: /Audio/_Crescent/Jukebox/AltinGunAnlatamamDerdimi.ogg
+
+- type: jukebox
+  id: altingungocadunya
+  name: Altin Gun - Goca Dunya
+  path:
+    path: /Audio/_Crescent/Jukebox/AltinGunGocaDunya.ogg
+
+- type: jukebox
+  id: altingunsupurgesiyoncadan
+  name: Altin Gun - Supurgesi Yoncadan
+  path:
+    path: /Audio/_Crescent/Jukebox/AltinGunSupurgesiYoncadan.ogg
+
+- type: jukebox
+  id: altingunyucedagbasinda
+  name: Altin Gun - Yuce Dag Basinda
+  path:
+    path: /Audio/_Crescent/Jukebox/AltinGunYuceDagBasinda.ogg

@@ -104,6 +104,7 @@ public sealed partial class ShipSteeringSystem : EntitySystem
 
             BaseEvasionTime = ent.Comp.BaseEvasionTime,
             AvoidCollisions = ent.Comp.AvoidCollisions,
+            AvoidTargetGrid = ent.Comp.AvoidTargetGrid,
             AvoidProjectiles = ent.Comp.AvoidProjectiles,
             EvasionSectorCount = ent.Comp.EvasionSectorCount,
             EvasionSectorDepth = ent.Comp.EvasionSectorDepth,
@@ -303,8 +304,9 @@ public sealed partial class ShipSteeringSystem : EntitySystem
         _avoidEnts.Clear();
         foreach (var (ent, isGrid) in _avoidPotentialEnts)
         {
-            // don't avoid ourselves or the target
-            if (ent == ctx.ShipUid || ent == ctx.TargetUid || ent == ctx.TargetGridUid || !_physQuery.TryComp(ent, out var obstacleBody))
+            // don't avoid ourselves or the target (but optionally do avoid the target's grid, e.g. a carrier
+            // we're forming up behind rather than orbiting)
+            if (ent == ctx.ShipUid || ent == ctx.TargetUid || (!config.AvoidTargetGrid && ent == ctx.TargetGridUid) || !_physQuery.TryComp(ent, out var obstacleBody))
                 continue;
 
             var otherXform = Transform(ent);
@@ -698,6 +700,7 @@ public sealed partial class ShipSteeringSystem : EntitySystem
         public float TurnEaseIn;
         // avoidance
         public bool AvoidCollisions;
+        public bool AvoidTargetGrid;
         public bool AvoidProjectiles;
         public int EvasionSectorCount;
         public int EvasionSectorDepth;

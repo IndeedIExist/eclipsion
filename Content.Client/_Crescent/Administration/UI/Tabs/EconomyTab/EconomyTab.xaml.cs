@@ -34,6 +34,7 @@ public sealed partial class EconomyTab : Control
         _economy = IoCManager.Resolve<IEntityManager>().System<EconomyPriceSystem>();
         _economy.ListReceived += OnListReceived;
         _economy.PricesUpdated += OnPricesUpdated;
+        _economy.PriceUpdated += OnPriceUpdated;
 
         CategoryOptions.AddItem(_loc.GetString("admin-menu-economy-category-items"), (int) EconomyListCategory.Items);
         CategoryOptions.AddItem(_loc.GetString("admin-menu-economy-category-vessels"), (int) EconomyListCategory.Vessels);
@@ -74,7 +75,27 @@ public sealed partial class EconomyTab : Control
         {
             _economy.ListReceived -= OnListReceived;
             _economy.PricesUpdated -= OnPricesUpdated;
+            _economy.PriceUpdated -= OnPriceUpdated;
         }
+    }
+
+    private void OnPriceUpdated(EconomyAdminPriceUpdatedEvent msg)
+    {
+        if (msg.Category != _category)
+            return;
+
+        var entry = _entries.FirstOrDefault(e => e.Id == msg.Id);
+        if (entry == null)
+            return;
+
+        // Replace the optimistic value shown on save with the value the server actually committed
+        // (after clamping/persistence), so treasury and player-bank edits are confirmed rather than
+        // merely echoed back locally.
+        entry.CurrentPrice = msg.Price;
+        if (_selected?.Id == entry.Id)
+            _selected.CurrentPrice = msg.Price;
+
+        PopulateList();
     }
 
     private void OnPricesUpdated()

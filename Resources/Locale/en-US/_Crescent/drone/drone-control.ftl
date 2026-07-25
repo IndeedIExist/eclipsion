@@ -3,3 +3,28 @@ drone-control-out-of-range = Out of range
 
 drone-control-autolink = Autolink
 drone-control-autolinked = Linked {$count} drones.
+
+drone-carrier-deploy = Deploy docked drones
+drone-carrier-deployed = Deployed {$count} drone(s).
+drone-carrier-deploy-nogrid = No carrier grid found.
+drone-carrier-spawned = Producing drone...
+drone-carrier-spawn-failed = Drone production failed.
+drone-carrier-limit-reached = Production limit reached.
+drone-carrier-cycle-formation = Drone formation: {$formation}
+drone-carrier-formation-set = Drone formation set to {$formation}.
+
+drone-formation-arrow = Arrow
+drone-formation-lineabreast = Line Abreast
+drone-formation-column = Column
+drone-formation-echelon = Echelon
+drone-formation-diamond = Diamond
+
+drone-stance-category = Drone stance
+drone-stance-set = Drone stance set to {$stance}.
+drone-stance-attack = Attack
+drone-stance-defend = Defend
+drone-stance-follow = Follow (hold fire)
+
+drone-targeting-set = Drone targeting set to {$targeting}.
+drone-targeting-enemies = Enemies
+drone-targeting-all = All

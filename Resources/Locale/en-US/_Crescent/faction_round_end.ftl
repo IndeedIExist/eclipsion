@@ -137,13 +137,13 @@ faction-finale-cmm = It seems the CMM has finally redeemed itself. They found th
 # ============================================================================
 
 # Fired the moment the war looks settled — the losers still have this long to
-# put a station's power back on and call the whole thing off.
+# retake a station's banners and call the whole thing off.
 faction-victory-pending =
-    THE WAR IS ALL BUT OVER. Every seat of power still answering the sector net belongs to { $factions }.
+    THE WAR IS ALL BUT OVER. Every seat of power still flying its own colours belongs to { $factions }.
     {""}
-    Nothing is signed yet. Anyone who can get a fallen station's power back online in the next { $minutes } minutes puts their flag back in the war — and this declaration is torn up. After that, Taypan is settled.
+    Nothing is signed yet. Anyone who can retake a fallen station's banners in the next { $minutes } minutes puts their flag back in the war — and this declaration is torn up. After that, Taypan is settled.
 
-faction-victory-cancelled = Belay that. A station has come back on the grid — its reactor is answering, its lights are on, and its flag is back in the war. The declaration is withdrawn. Taypan is still contested.
+faction-victory-cancelled = Belay that. A station's banners have been torn down and its own colours raised again — its flag is back in the war. The declaration is withdrawn. Taypan is still contested.
 
 # --- Round end summary screen ---
 faction-conquest-summary-winner = [color=orange]The war for Taypan was won by: { $factions }.[/color]
@@ -165,11 +165,33 @@ faction-victory-timeout = No one won. The wars ground on, the banners kept falli
 
 
 # ============================================================================
-# Station obituaries. The blackout warning fires the moment a station's power
-# drops; the obituary fires once it has been dark long enough to count as lost.
+# Conquest banners. The capture warning fires the moment a station's last banner
+# falls to the enemy; the obituary fires once the banners have been held long
+# enough to count the station as lost.
 # ============================================================================
 
-faction-station-blackout = DISTRESS BEACON — { $station } ({ $faction }) has lost main power. Every APC aboard her is flat and she is running on nothing. If her reactor is not answering within { $minutes } minutes, the sector will write her off. Anyone who can reach her, reach her now.
+# Popups shown at the banner itself when it changes hands.
+conquest-flag-captured = { $faction } has seized the banner!
+conquest-flag-reclaimed = { $faction } has torn the banner down and raised their own!
+
+# Popups while someone works a banner. Clicking it starts a do-after; moving or taking a hit cancels it.
+conquest-flag-capture-begin-self = You take hold of the banner and start hauling it down. Stand your ground.
+conquest-flag-capture-begin-others = { $faction } is hauling the banner down!
+conquest-flag-already-working = You are already working at this banner.
+conquest-flag-already-yours = Your colours already fly here.
+conquest-flag-no-faction = This claim means nothing to you.
+conquest-flag-grace = The claim has not settled yet — { $seconds } seconds before it can be contested.
+
+# Examine lines on a banner.
+conquest-flag-examine-home = It flies the colours of [color=yellow]{ $faction }[/color].
+conquest-flag-examine-held-home = [color=green]Held by its own faction ({ $faction }).[/color]
+conquest-flag-examine-held-enemy = [color=red]Seized by { $faction }.[/color]
+conquest-flag-examine-capturing = [color=orange]{ $faction } is hauling it down right now.[/color]
+conquest-flag-examine-grace = [color=gray]The claim has not settled — { $seconds } seconds until it can be contested.[/color]
+conquest-flag-examine-hint = Use it and hold still for { $seconds } seconds to raise your own colours here.
+
+# Sector-wide warning the moment a station's LAST banner is taken and its clock starts.
+faction-station-captured = INCURSION ALERT — { $captor } forces have raised their banners over { $station } ({ $faction }). Every claim aboard her now flies enemy colours. If she is not retaken within { $minutes } minutes, the sector will write her off. Anyone who can reach her, reach her now.
 
 faction-station-fall-aurora = DSM Aurora Imperialis is silent. No power, no signal, no answer on any band. Its IFF slowly fades from your shuttle console screen. The Imperials are defeated.
 

@@ -3,6 +3,7 @@ using Content.Server.Sound.Components;
 using Content.Shared.UserInterface;
 using Content.Shared.Sound;
 using Content.Shared.Sound.Components;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 using Robust.Shared.Network;
 
@@ -12,6 +13,7 @@ public sealed class EmitSoundSystem : SharedEmitSoundSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Update(float frameTime)
     {
@@ -25,9 +27,20 @@ public sealed class EmitSoundSystem : SharedEmitSoundSystem
 
             if (_timing.CurTime >= soundSpammer.NextSound)
             {
-                if (soundSpammer.PopUp != null)
-                    Popup.PopupEntity(Loc.GetString(soundSpammer.PopUp), uid);
-                TryEmitSound(uid, soundSpammer, predict: false);
+                if (soundSpammer.PlayToOwnerOnly)
+                {
+                    // Only the entity's own player gets the popup and hears the sound.
+                    if (soundSpammer.PopUp != null)
+                        Popup.PopupEntity(Loc.GetString(soundSpammer.PopUp), uid, uid);
+
+                    _audio.PlayEntity(soundSpammer.Sound, uid, uid);
+                }
+                else
+                {
+                    if (soundSpammer.PopUp != null)
+                        Popup.PopupEntity(Loc.GetString(soundSpammer.PopUp), uid);
+                    TryEmitSound(uid, soundSpammer, predict: false);
+                }
 
                 SpamEmitSoundReset((uid, soundSpammer));
             }

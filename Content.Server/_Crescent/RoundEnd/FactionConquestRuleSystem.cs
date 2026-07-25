@@ -3,7 +3,6 @@ using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server._Crescent.Diplomacy;
-using Content.Server.Power.Components;
 using Content.Shared._Crescent.Diplomacy;
 using Content.Shared._Crescent.RoundEnd;
 using Content.Shared.GameTicking;
@@ -15,9 +14,10 @@ namespace Content.Server._Crescent.RoundEnd;
 
 /// <summary>
 /// The conquest win condition. A faction is counted as holding the sector for as long as a station of its own is
-/// standing — a station falls when its grid is gone, or when it has sat without any powered APC for
-/// <see cref="FactionConquestRuleComponent.BlackoutToFall"/>. Losing power is announced when the clock starts, and
-/// each station broadcasts its own obituary once the clock runs out.
+/// standing — a station falls when its grid is gone, or when every <see cref="ConquestFlagComponent"/> planted on
+/// it has been in enemy hands for <see cref="FactionConquestRuleComponent.HoldToFall"/>. Losing the last banner is
+/// announced when the clock starts, and each station broadcasts its own obituary once the clock runs out. A station
+/// with no banners can only fall by being destroyed — the banners are placed by hand per map.
 ///
 /// This is pure scorekeeping: nobody is ever taken out of the war, and diplomacy is never touched. DSM and NCWL
 /// are at war by definition and stay that way whatever happens to their hulls — losing Aurora or Balreska only
@@ -29,7 +29,7 @@ namespace Content.Server._Crescent.RoundEnd;
 ///  * both great powers still alive — nothing is settled, the war continues.
 ///
 /// A settled war does not end the round straight away: <see cref="FactionConquestRuleComponent.VictoryDelay"/>
-/// gives whoever is left one last window to move, and restoring a station's power calls the whole thing off.
+/// gives whoever is left one last window to move, and reclaiming a station's banners calls the whole thing off.
 /// If the round instead runs out of time, the surviving great power is credited; failing that, Taypan is swallowed.
 /// </summary>
 public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRuleComponent>
@@ -197,14 +197,16 @@ public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRu
     }
 
     /// <summary>
-    /// Factions that still hold a standing station, announcing stations as they go dark. A faction dropping out of
-    /// this set has only lost its seat of power — it is not out of the war, and its diplomacy is untouched.
+    /// Factions that still hold a standing station, announcing stations as their last banner falls. A faction
+    /// dropping out of this set has only lost its seat of power — it is not out of the war, and its diplomacy is
+    /// untouched. A station is under enemy control only when it carries at least one banner and every one of them
+    /// is held by someone other than the station's own faction; reclaiming any banner puts it back in the war.
     /// </summary>
     private HashSet<string> GetSurvivingFactions(FactionConquestRuleComponent conquest)
     {
         var alive = new HashSet<string>();
         var seen = new HashSet<EntityUid>();
-        var powered = GetPoweredGrids();
+        var flagsByGrid = GatherFlagsByGrid();
 
         var query = EntityQueryEnumerator<FactionStationComponent>();
         while (query.MoveNext(out var stationUid, out var station))
@@ -212,37 +214,31 @@ public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRu
             seen.Add(stationUid);
             conquest.KnownStations[stationUid] = station.FallAnnouncement ?? string.Empty;
 
-            if (powered.Contains(stationUid))
+            var underControl = IsUnderEnemyControl(flagsByGrid, stationUid, station.Faction, out var captor);
+
+            if (!underControl)
             {
-                // Lights are back on; the station is in the war again.
-                conquest.EverPowered.Add(stationUid);
-                conquest.DarkSince.Remove(stationUid);
+                // Friendly hands again — or the station carries no banners at all. Either way it is in the war,
+                // and any running capture clock is wiped so a fresh push has to hold the full window over again.
+                conquest.ControlledSince.Remove(stationUid);
+                conquest.AnnouncedControl.Remove(stationUid);
                 conquest.AnnouncedFallen.Remove(stationUid);
-                conquest.AnnouncedBlackout.Remove(stationUid);
                 alive.Add(station.Faction);
                 continue;
             }
 
-            // Still booting: mapped APCs are saved flat, so a station is "dark" for the first seconds of every
-            // round. Nothing counts against it until it has been powered once.
-            if (!conquest.EverPowered.Contains(stationUid))
+            if (!conquest.ControlledSince.TryGetValue(stationUid, out var since))
             {
-                alive.Add(station.Faction);
-                continue;
-            }
-
-            if (!conquest.DarkSince.TryGetValue(stationUid, out var since))
-            {
-                // The blackout clock starts now. Say so — the defenders get a chance to answer it, and the
+                // The capture clock starts now. Say so — the defenders get a chance to answer it, and the
                 // attackers learn their push actually landed.
-                conquest.DarkSince[stationUid] = _timing.CurTime;
-                AnnounceBlackout(conquest, stationUid, station);
+                conquest.ControlledSince[stationUid] = _timing.CurTime;
+                AnnounceControl(conquest, stationUid, station, captor);
                 alive.Add(station.Faction);
                 continue;
             }
 
-            // Dark, but not long enough to count as lost yet.
-            if (_timing.CurTime - since < conquest.BlackoutToFall)
+            // Enemy-held, but not long enough to count as lost yet.
+            if (_timing.CurTime - since < conquest.HoldToFall)
             {
                 alive.Add(station.Faction);
                 continue;
@@ -251,7 +247,7 @@ public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRu
             AnnounceFall(conquest, stationUid, station);
         }
 
-        // A station that is outright destroyed never gets to be seen "dark" — it simply vanishes from the query.
+        // A station that is outright destroyed never gets to be seen captured — it simply vanishes from the query.
         // Catch it here so a blown-apart hull still gets its obituary instead of dying silently.
         foreach (var (tracked, obituary) in conquest.KnownStations.ToList())
         {
@@ -262,25 +258,73 @@ public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRu
                 _chat.DispatchServerAnnouncement(Loc.GetString(obituary));
 
             conquest.KnownStations.Remove(tracked);
-            conquest.DarkSince.Remove(tracked);
+            conquest.ControlledSince.Remove(tracked);
         }
 
         return alive;
     }
 
     /// <summary>
-    /// Warns the sector that a station has gone dark and is now on the clock. Announced once per blackout —
-    /// power coming back clears the flag, so a station that is knocked out twice is reported twice.
+    /// Whether a station is currently in enemy hands: it must carry at least one banner and every banner on its grid
+    /// must be held by a faction other than <paramref name="owner"/>. <paramref name="captor"/> is the faction holding
+    /// the first such banner, for the warning message.
     /// </summary>
-    private void AnnounceBlackout(FactionConquestRuleComponent conquest, EntityUid stationUid, FactionStationComponent station)
+    private bool IsUnderEnemyControl(IReadOnlyDictionary<EntityUid, List<ConquestFlagComponent>> flagsByGrid,
+        EntityUid stationUid, string owner, out string? captor)
     {
-        if (!conquest.AnnouncedBlackout.Add(stationUid))
+        captor = null;
+
+        if (!flagsByGrid.TryGetValue(stationUid, out var flags) || flags.Count == 0)
+            return false;
+
+        foreach (var flag in flags)
+        {
+            // A banner nobody has taken, or one back in the owner's hands, keeps the whole station out of enemy control.
+            if (string.IsNullOrWhiteSpace(flag.OwnerFaction) ||
+                string.Equals(flag.OwnerFaction, owner, StringComparison.Ordinal))
+                return false;
+
+            captor ??= flag.OwnerFaction;
+        }
+
+        return true;
+    }
+
+    /// <summary>Every banner grouped by the grid it sits on, gathered in one sweep.</summary>
+    private Dictionary<EntityUid, List<ConquestFlagComponent>> GatherFlagsByGrid()
+    {
+        var byGrid = new Dictionary<EntityUid, List<ConquestFlagComponent>>();
+
+        var query = EntityQueryEnumerator<ConquestFlagComponent, TransformComponent>();
+        while (query.MoveNext(out _, out var flag, out var xform))
+        {
+            if (xform.GridUid is not { } grid)
+                continue;
+
+            if (!byGrid.TryGetValue(grid, out var list))
+                byGrid[grid] = list = new List<ConquestFlagComponent>();
+
+            list.Add(flag);
+        }
+
+        return byGrid;
+    }
+
+    /// <summary>
+    /// Warns the sector that a station's last banner has fallen and it is now on the clock. Announced once per
+    /// capture — reclaiming a banner clears the flag, so a station that is taken twice is reported twice.
+    /// </summary>
+    private void AnnounceControl(FactionConquestRuleComponent conquest, EntityUid stationUid,
+        FactionStationComponent station, string? captor)
+    {
+        if (!conquest.AnnouncedControl.Add(stationUid))
             return;
 
-        _chat.DispatchServerAnnouncement(Loc.GetString(conquest.BlackoutAnnouncement,
+        _chat.DispatchServerAnnouncement(Loc.GetString(conquest.ControlAnnouncement,
             ("station", station.StationName),
             ("faction", station.Faction),
-            ("minutes", (int) conquest.BlackoutToFall.TotalMinutes)));
+            ("captor", captor ?? station.Faction),
+            ("minutes", (int) conquest.HoldToFall.TotalMinutes)));
     }
 
     private void AnnounceFall(FactionConquestRuleComponent conquest, EntityUid stationUid, FactionStationComponent station)
@@ -292,24 +336,6 @@ public sealed class FactionConquestRuleSystem : GameRuleSystem<FactionConquestRu
 
         var ev = new FactionStationFellEvent(stationUid, station.Faction, station.StationName);
         RaiseLocalEvent(ref ev);
-    }
-
-    /// <summary>
-    /// Every grid that still has a charged APC on it, gathered in one sweep. A station whose APCs have all run
-    /// flat is dark — that is the signal we treat as "the power is gone".
-    /// </summary>
-    private HashSet<EntityUid> GetPoweredGrids()
-    {
-        var powered = new HashSet<EntityUid>();
-
-        var query = EntityQueryEnumerator<ApcComponent, BatteryComponent, TransformComponent>();
-        while (query.MoveNext(out _, out _, out var battery, out var xform))
-        {
-            if (battery.CurrentCharge > 0f && xform.GridUid is { } grid)
-                powered.Add(grid);
-        }
-
-        return powered;
     }
 
     /// <summary>

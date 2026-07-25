@@ -2,7 +2,9 @@ namespace Content.Server._Crescent.RoundEnd;
 
 /// <summary>
 /// Configures the conquest win condition: a faction stops counting as a holder of Taypan once its station has
-/// fallen, and the round ends when only one great power still holds one. Nothing here removes anyone from the
+/// fallen, and the round ends when only one great power still holds one. A station falls when every
+/// <see cref="Content.Shared._Crescent.RoundEnd.ConquestFlagComponent"/> planted on it has been in enemy hands
+/// for <see cref="HoldToFall"/> (or when the grid is outright destroyed). Nothing here removes anyone from the
 /// war or edits diplomacy — DSM and NCWL are at war by definition and remain so however the round goes.
 /// </summary>
 [RegisterComponent, Access(typeof(FactionConquestRuleSystem))]
@@ -28,9 +30,12 @@ public sealed partial class FactionConquestRuleComponent : Component
     [ViewVariables]
     public List<string>? ActiveMajors;
 
-    /// <summary>How long a station must sit without power before it counts as fallen.</summary>
+    /// <summary>
+    /// How long every banner on a station must stay in enemy hands before the station counts as fallen. Any of its
+    /// banners being reclaimed by the owning faction clears this clock, so the defenders can always answer a push.
+    /// </summary>
     [DataField]
-    public TimeSpan BlackoutToFall = TimeSpan.FromMinutes(10);
+    public TimeSpan HoldToFall = TimeSpan.FromMinutes(10);
 
     /// <summary>How often the win condition is evaluated.</summary>
     [DataField]
@@ -42,7 +47,7 @@ public sealed partial class FactionConquestRuleComponent : Component
 
     /// <summary>
     /// Grace window between the war looking settled and the round actually ending, so the factions still standing
-    /// get one last chance to move — restore a station's power and the pending victory is called off.
+    /// get one last chance to move — reclaim a fallen station's banners and the pending victory is called off.
     /// </summary>
     [DataField]
     public TimeSpan VictoryDelay = TimeSpan.FromMinutes(20);
@@ -66,32 +71,25 @@ public sealed partial class FactionConquestRuleComponent : Component
     [DataField]
     public string PendingAnnouncement = "faction-victory-pending";
 
-    /// <summary>Broadcast when a pending victory is called off (a station's power came back).</summary>
+    /// <summary>Broadcast when a pending victory is called off (a station's banners were reclaimed).</summary>
     [DataField]
     public string PendingCancelledAnnouncement = "faction-victory-cancelled";
 
-    /// <summary>Broadcast the moment a station goes dark, opening its <see cref="BlackoutToFall"/> clock.</summary>
+    /// <summary>Broadcast the moment a station's last banner falls to the enemy, opening its <see cref="HoldToFall"/> clock.</summary>
     [DataField]
-    public string BlackoutAnnouncement = "faction-station-blackout";
+    public string ControlAnnouncement = "faction-station-captured";
 
     /// <summary>When the next evaluation is due.</summary>
     [ViewVariables]
     public TimeSpan NextCheck;
 
-    /// <summary>Station grid -> when it went dark. Cleared as soon as power returns.</summary>
+    /// <summary>Station grid -> when its last banner fell to the enemy. Cleared as soon as any banner is reclaimed.</summary>
     [ViewVariables]
-    public Dictionary<EntityUid, TimeSpan> DarkSince = new();
+    public Dictionary<EntityUid, TimeSpan> ControlledSince = new();
 
-    /// <summary>
-    /// Stations that have been powered at least once. Mapped APCs are saved with no charge, so every station is
-    /// technically dark for the first moments of the round — nothing counts against a station until it has booted.
-    /// </summary>
+    /// <summary>Stations whose capture warning has gone out. Cleared when reclaimed, so a second capture warns again.</summary>
     [ViewVariables]
-    public HashSet<EntityUid> EverPowered = new();
-
-    /// <summary>Stations whose blackout warning has gone out. Cleared when power returns, so a second knockout warns again.</summary>
-    [ViewVariables]
-    public HashSet<EntityUid> AnnouncedBlackout = new();
+    public HashSet<EntityUid> AnnouncedControl = new();
 
     /// <summary>Stations whose fall has already been broadcast, so it is announced once.</summary>
     [ViewVariables]

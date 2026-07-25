@@ -1,6 +1,7 @@
 # Conquest win condition. A faction counts as holding Taypan while its station stands (stations are marked with
-# FactionStation via the gameMap prototype's gridComponents). A station falls when its grid is gone or when it has
-# had no powered APC for blackoutToFall.
+# FactionStation via the gameMap prototype's gridComponents). A station falls when its grid is gone or when every
+# ConquestFlag banner planted on it has been in enemy hands for holdToFall. Banners are placed by hand per map; a
+# station with no banners can only fall by being destroyed.
 #
 # Losing a station is scorekeeping only: nobody is removed from the war and no diplomacy is edited. DSM and NCWL
 # are at war by definition, in this round and every round after it, whatever happens to Aurora or Balreska.
@@ -24,7 +25,7 @@
     majorFactions:
     - DSM
     - NCWL
-    blackoutToFall: 600 # 10 minutes without power and the station is lost
+    holdToFall: 600 # 10 minutes with every banner in enemy hands and the station is lost
     victoryDelay: 1200 # 20 more minutes for whoever is left to respond before the round actually ends
     checkInterval: 10
     restartDelay: 60

@@ -1,8 +1,15 @@
 <ui:FancyWindow xmlns="https://spacestation14.io" xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
-                SetSize="400 500" Title="{Loc 'jukebox-menu-title'}">
+                SetSize="400 640" Title="{Loc 'jukebox-menu-title'}">
     <BoxContainer Margin="4 0" Orientation="Vertical">
         <ItemList Name="MusicList" SelectMode="Button" Margin="3 3 3 3"
-        HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="8"/>
+        HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="6"/>
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+            <Button Name="QueueAddButton" Text="{Loc 'jukebox-menu-queue-add'}" HorizontalExpand="True" />
+            <Button Name="QueueClearButton" Text="{Loc 'jukebox-menu-queue-clear'}" />
+        </BoxContainer>
+        <Label Name="QueueLabel" Text="{Loc 'jukebox-menu-queue-label'}" />
+        <ItemList Name="QueueList" SelectMode="Button" Margin="3 3 3 3"
+        HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="3"/>
         <BoxContainer Orientation="Vertical">
             <Label Name="SongSelected" Text="{Loc 'jukebox-menu-selectedsong'}" />
             <Label Name="SongName" Text="---" />
@@ -12,6 +19,7 @@
         VerticalExpand="False" SizeFlagsStretchRatio="1">
             <Button Name="PlayButton" Text="{Loc 'jukebox-menu-buttonplay'}" />
             <Button Name="StopButton" Text="{Loc 'jukebox-menu-buttonstop'}" />
+            <Button Name="NextButton" Text="{Loc 'jukebox-menu-buttonnext'}" />
             <Label Name="DurationLabel" Text="00:00 / 00:00" HorizontalAlignment="Right" HorizontalExpand="True"/>
         </BoxContainer>
     </BoxContainer>

@@ -412,4 +412,19 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
         // Only authorized members can have the UI open, so authorized is always true here.
         _ui.SetUiState(uid, TreasuryConsoleUiKey.Key, new TreasuryConsoleState(balance, true, robbed));
     }
+
+    /// <summary>
+    /// Refreshes the treasury UI for every console owned by <paramref name="station"/>. Called when the
+    /// balance is changed out-of-band (e.g. from the admin economy panel) so an open console reflects the
+    /// new balance immediately instead of waiting for the next withdraw/deposit/robbery tick.
+    /// </summary>
+    public void RefreshStationConsoles(EntityUid station)
+    {
+        var query = EntityQueryEnumerator<FactionTreasuryConsoleComponent>();
+        while (query.MoveNext(out var uid, out _))
+        {
+            if (_market.TryGetOwningStation(uid) == station)
+                UpdateUi(uid);
+        }
+    }
 }

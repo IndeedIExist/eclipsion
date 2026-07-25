@@ -20,15 +20,102 @@ public sealed class DroneConsoleBoundUserInterfaceState : BoundUserInterfaceStat
     // Key: NetEntity of the drone, Value: Name
     public List<(NetEntity Server, NetEntity Grid)> LinkedDrones;
 
+    // Carrier controls. IsCarrier false => hide the carrier control panel.
+    public bool IsCarrier;
+    public DroneStance Stance;
+    public DroneTargeting Targeting;
+    public DroneFormation Formation;
+    public int DeployedCount;
+    public int MaxDrones;
+    public List<string> SpawnableDrones;
+
     public DroneConsoleBoundUserInterfaceState(
         NavInterfaceState navState,
         IFFInterfaceState iffState,
-        List<(NetEntity, NetEntity)> linkedDrones)
+        List<(NetEntity, NetEntity)> linkedDrones,
+        bool isCarrier,
+        DroneStance stance,
+        DroneTargeting targeting,
+        DroneFormation formation,
+        int deployedCount,
+        int maxDrones,
+        List<string> spawnableDrones)
     {
         NavState = navState;
         IFFState = iffState;
         LinkedDrones = linkedDrones;
+        IsCarrier = isCarrier;
+        Stance = stance;
+        Targeting = targeting;
+        Formation = formation;
+        DeployedCount = deployedCount;
+        MaxDrones = maxDrones;
+        SpawnableDrones = spawnableDrones;
     }
+}
+
+/// <summary>
+///     Sent when the player picks the drones' targeting scope (enemies only / all non-friendly).
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class DroneConsoleSetTargetingMessage : BoundUserInterfaceMessage
+{
+    public DroneTargeting Targeting;
+
+    public DroneConsoleSetTargetingMessage(DroneTargeting targeting)
+    {
+        Targeting = targeting;
+    }
+}
+
+/// <summary>
+///     Sent when the player produces a drone of the given vessel prototype id from the carrier console.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class DroneConsoleSpawnMessage : BoundUserInterfaceMessage
+{
+    public string VesselId;
+
+    public DroneConsoleSpawnMessage(string vesselId)
+    {
+        VesselId = vesselId;
+    }
+}
+
+/// <summary>
+///     Sent when the player picks a combat stance for the carrier's drones.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class DroneConsoleSetStanceMessage : BoundUserInterfaceMessage
+{
+    public DroneStance Stance;
+
+    public DroneConsoleSetStanceMessage(DroneStance stance)
+    {
+        Stance = stance;
+    }
+}
+
+/// <summary>
+///     Sent when the player picks a formation for the carrier's drones.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class DroneConsoleSetFormationMessage : BoundUserInterfaceMessage
+{
+    public DroneFormation Formation;
+
+    public DroneConsoleSetFormationMessage(DroneFormation formation)
+    {
+        Formation = formation;
+    }
+}
+
+/// <summary>
+///     Sent when the player asks the carrier to deploy its docked drones.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class DroneConsoleDeployMessage : BoundUserInterfaceMessage
+{
 }
 
 /// <summary>

@@ -1,0 +1,90 @@
+# Conquest banners. Plant one (or several) by hand on a station that carries FactionStation. Once EVERY banner on a
+# station is enemy-held for the conquest rule's holdToFall window, the station falls. Reclaiming any one banner resets
+# the whole station's clock.
+#
+# Capturing is a click, not a zone: walk up to an enemy banner, use it, and stand still for captureTime seconds while
+# the do-after bar runs. Moving off or taking a hit cancels the attempt outright and keeps nothing. There is no capture
+# ring drawn — feedback is the do-after bar, a popup on flip, examine text, and the sector capture announcement fired
+# once the station's LAST banner falls.
+#
+# Prefer the faction-specific variants below (ConquestFlagDSM, ...): their colours make it obvious which station a
+# banner belongs to at a glance, and homeFaction is baked in so you cannot mis-map it. The plain ConquestFlag still
+# exists and auto-inherits whatever station's grid it is planted on.
+#
+# Every banner is indestructible (no Damageable — nothing can damage or blow it up) and immovable (anchored, with no
+# Anchorable/Pullable/Item, so it cannot be wrenched loose, pulled, or picked up).
+
+- type: entity
+  id: ConquestFlag
+  name: conquest banner
+  description: A faction's colours, planted as a claim. Tear it down and raise your own, and the station it flies over is written off.
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: Transform
+      anchored: true
+    - type: Clickable
+    - type: Sprite
+      sprite: Objects/Misc/Handy_Flags/blank_handy_flag.rsi
+      state: icon
+    - type: ConquestFlag
+      captureRange: 2.0
+      captureTime: 20
+      gracePeriod: 0
+
+# --- Faction-specific banners. homeFaction baked in, tinted to the faction's colours. ---
+
+- type: entity
+  parent: ConquestFlag
+  id: ConquestFlagDSM
+  suffix: DSM
+  name: DSM conquest banner
+  components:
+    - type: Sprite
+      color: "#E5B80B" # imperial gold
+    - type: ConquestFlag
+      homeFaction: DSM
+
+- type: entity
+  parent: ConquestFlag
+  id: ConquestFlagNCWL
+  suffix: NCWL
+  name: NCWL conquest banner
+  components:
+    - type: Sprite
+      color: "#C81919" # communard red
+    - type: ConquestFlag
+      homeFaction: NCWL
+
+- type: entity
+  parent: ConquestFlag
+  id: ConquestFlagSHI
+  suffix: SHI
+  name: SHI conquest banner
+  components:
+    - type: Sprite
+      color: "#17A2B8" # corporate cyan
+    - type: ConquestFlag
+      homeFaction: SHI
+
+- type: entity
+  parent: ConquestFlag
+  id: ConquestFlagTFSC
+  suffix: TFSC
+  name: TFSC conquest banner
+  components:
+    - type: Sprite
+      color: "#4CAF50" # coalition green
+    - type: ConquestFlag
+      homeFaction: TFSC
+
+- type: entity
+  parent: ConquestFlag
+  id: ConquestFlagCMM
+  suffix: CMM
+  name: CMM conquest banner
+  components:
+    - type: Sprite
+      color: "#3F6FB5" # minutemen blue
+    - type: ConquestFlag
+      homeFaction: CMM

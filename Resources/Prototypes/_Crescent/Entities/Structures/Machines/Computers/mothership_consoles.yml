@@ -198,6 +198,9 @@
   parent: BaseMothershipComputer
   name: homeguard light carrier fab console
   components:
+  # Drones are bought from the buyer's personal bank, not the faction treasury.
+  - type: ShipyardConsole
+    usesFactionTreasury: false
   - type: ShipyardListing
     iffColor: Orange
     shuttles:
@@ -209,6 +212,9 @@
   parent: BaseMothershipComputer
   name: imperial garrison light carrier fab console
   components:
+  # Drones are bought from the buyer's personal bank, not the faction treasury.
+  - type: ShipyardConsole
+    usesFactionTreasury: false
   - type: ShipyardListing
     iffColor: "#C677A5"
     shuttles:
@@ -335,6 +341,9 @@
   parent: BaseMothershipComputer
   name: zhipov internal shipyard
   components:
+  # Drone-only listing, so it bills the buyer's personal bank like the other drone fab consoles.
+  - type: ShipyardConsole
+    usesFactionTreasury: false
   - type: ShipyardListing
     iffColor: Orange
     shuttles:

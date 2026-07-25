@@ -21,6 +21,37 @@
                 <Button Name="SelectAllBtn" Text="Select All" Margin="2"/>
                 <Button Name="DeselectAllBtn" Text="Clear" Margin="2"/>
             </BoxContainer>
+
+            <BoxContainer Name="CarrierPanel" Orientation="Vertical" Margin="0 8 0 0">
+                <controls:StripeBack>
+                    <Label Text="Drone Control" FontColorOverride="LightGray" Align="Center"/>
+                </controls:StripeBack>
+
+                <Label Name="DeployedLabel" Text="Drones: 0/0" HorizontalAlignment="Center"/>
+
+                <BoxContainer Name="SpawnRow" Orientation="Horizontal" HorizontalExpand="True">
+                    <OptionButton Name="SpawnOption" HorizontalExpand="True" Margin="2"/>
+                    <Button Name="ProduceBtn" Text="Produce" Margin="2"/>
+                </BoxContainer>
+
+                <Button Name="DeployBtn" Text="Deploy Docked Drones" Margin="2"/>
+
+                <Label Text="Stance" Margin="0 6 0 0"/>
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                    <Button Name="StanceAttackBtn" Text="Attack" ToggleMode="True" HorizontalExpand="True" Margin="1"/>
+                    <Button Name="StanceDefendBtn" Text="Defend" ToggleMode="True" HorizontalExpand="True" Margin="1"/>
+                    <Button Name="StanceFollowBtn" Text="Follow" ToggleMode="True" HorizontalExpand="True" Margin="1"/>
+                </BoxContainer>
+
+                <Label Text="Targeting" Margin="0 6 0 0"/>
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                    <Button Name="TargetEnemiesBtn" Text="Enemies" ToggleMode="True" HorizontalExpand="True" Margin="1"/>
+                    <Button Name="TargetAllBtn" Text="All" ToggleMode="True" HorizontalExpand="True" Margin="1"/>
+                </BoxContainer>
+
+                <Label Text="Formation" Margin="0 6 0 0"/>
+                <OptionButton Name="FormationOption" HorizontalExpand="True" Margin="2"/>
+            </BoxContainer>
         </BoxContainer>
 
         <ui:ShuttleNavControl Name="NavRadar"

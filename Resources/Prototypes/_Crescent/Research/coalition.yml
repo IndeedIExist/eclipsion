@@ -1,0 +1,477 @@
+# Coalition Technology tree — an EXTRA, combined discipline.
+# This duplicates the Interdyne (IPM) and Cyberdawn (CD) catalogues into one shared TFSC tree so a station can
+# research everything off a single "coalition technology research server". It does NOT replace the original
+# Interdyne/Cyberdawn trees (interdyne.yml / cyberdawn.yml) — those stay intact so existing maps keep working.
+#
+# Technology ids here are prefixed "Coalition" so they never collide with the originals (a duplicate id would
+# crash prototype loading). recipeUnlocks and name locale keys are intentionally reused: a lathe recipe can be
+# unlocked by more than one technology, so pointing at the same recipes just means either tree grants them.
+
+# ---------------------------------------------------------------------------------------------------------------
+# Interdyne (medical / cybernetics) branch
+# ---------------------------------------------------------------------------------------------------------------
+
+# Tier 1
+- type: technology
+  id: CoalitionInterdyneClothes
+  name: research-technology-interdyne-clothing
+  icon:
+    sprite: _Crescent/Clothing/Syndicate/Belt/int_webbing.rsi
+    state: icon
+  discipline: Coalition
+  tier: 1
+  cost: 350
+  recipeUnlocks:
+  - ClothingUniformJumpsuitSyndicateInterdyne
+  - ClothingOuterArmorSyndicateApron
+  - ClothingBeltSyndicateWebbingInterdyne
+  - ClothingHeadHatSyndicateInterdyne
+
+- type: technology
+  id: CoalitionInterdyneHypo
+  name: research-technology-interdyne-hypo
+  icon:
+    sprite: _Goobstation/Objects/Specific/Medical/autoinjector.rsi
+    state: security-base
+  discipline: Coalition
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - HypoInterdyne
+  - CartridgeEphedrineInterdyne
+  - CartridgeTirizeneInterdyne
+  - CartridgeBicaridineInterdyne
+  - CartridgeSalineInterdyne
+  - CartridgeDermalineInterdyne
+  - CartridgePuncturaseInterdyne
+  - CartridgeAtropineInterdyne
+  - SyringeCase
+
+- type: technology
+  id: CoalitionInterdyneArmor
+  name: research-technology-interdyne-armor
+  icon:
+    sprite: _Crescent/Clothing/Syndicate/Head/traumahelmet.rsi
+    state: icon
+  discipline: Coalition
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - ClothingHeadHelmetSyndicateBasicInterdyne
+  - ClothingOuterArmorSyndicateArmorvestInterdyne
+  - ClothingOuterHardsuitTraumasec
+
+- type: technology
+  id: CoalitionInterdyneOptics
+  name: research-technology-interdyne-optics
+  icon:
+    sprite: _Crescent/Objects/Misc/cybernetics.rsi
+    state: interdyneoptics
+  discipline: Coalition
+  tier: 1
+  cost: 4000
+  recipeUnlocks:
+  - InterdyneOpticsInterdyne
+
+#Tier 2
+- type: technology
+  id: CoalitionInterdyneDefib
+  name: research-technology-interdyne-defib
+  icon:
+    sprite: Objects/Specific/Medical/defibsyndi.rsi
+    state: icon
+  discipline: Coalition
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+  - DefibrillatorSyndicate
+
+- type: technology
+  id: CoalitionInterdyneOmnitool
+  name: research-technology-interdyne-omnitool
+  icon:
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi
+    state: evil
+  discipline: Coalition
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+  - OmnimedToolSyndieInterdyne
+
+- type: technology
+  id: CoalitionInterdynePaineditor
+  name: research-technology-interdyne-paineditor
+  icon:
+    sprite: _Crescent/Objects/Misc/cybernetics.rsi
+    state: paineditor
+  discipline: Coalition
+  tier: 2
+  cost: 8500
+  recipeUnlocks:
+  - CyberneticsPainEditorInterdyne
+
+- type: technology
+  id: CoalitionInterdyneAdrenal
+  name: research-technology-interdyne-adrenalaccelerator
+  icon:
+    sprite: _Crescent/Objects/Misc/cybernetics.rsi
+    state: cherenzikovaccelerator
+  discipline: Coalition
+  tier: 2
+  cost: 8500
+  recipeUnlocks:
+  - CyberneticsAdrenalInterdyne
+
+# tier 3
+
+- type: technology
+  id: CoalitionInterdyneBloodPump
+  name: research-technology-interdyne-bloodpump
+  icon:
+    sprite: _Crescent/Objects/Misc/cybernetics.rsi
+    state: heartpump
+  discipline: Coalition
+  tier: 3
+  cost: 12500
+  recipeUnlocks:
+  - CyberneticsBloodPumpInterdyne
+
+- type: technology
+  id: CoalitionInterdynePryarms
+  name: research-technology-interdyne-pryarms
+  icon:
+    sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi
+    state: iconpry
+  discipline: Coalition
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - CrowbarLeftArmInterdyne
+  - CrowbarRightArmInterdyne
+
+# ---------------------------------------------------------------------------------------------------------------
+# Cyberdawn (weapons / infiltration / mecha) branch
+# ---------------------------------------------------------------------------------------------------------------
+
+# Tier 1
+- type: technology
+  id: CoalitionCyberdawnClothes
+  name: research-technology-cyberdawn-clothing
+  icon:
+    sprite: _Crescent/Clothing/Syndicate/Head/patriarch.rsi
+    state: icon
+  discipline: Coalition
+  tier: 1
+  cost: 3000
+  recipeUnlocks:
+  - ClothingUniformJumpsuitSyndicateSuitCyberdawn
+  - ClothingUniformJumpsuitSyndicateLabCyberdawn
+  - ClothingUniformJumpsuitSyndicateSoldierCyberdawn
+  - ClothingOuterArmorCyberdawnPatriarch
+  - ClothingHeadHatPatriarch
+  - ClothingOuterArmorKendoBoguCyberdawn
+  - ClothingOuterHardsuitCybersun
+
+- type: technology
+  id: CoalitionCyberdawnReverseEngi
+  name: research-technology-cyberdawn-reverse-engineering
+  icon:
+    sprite: Nyanotrasen/Structures/Machines/reverse_engineering.rsi
+    state: open
+  discipline: Coalition
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - ReverseEngineeringMachineCircuitboard
+  - AdvancedCapacitorStockPart
+  - AdvancedMatterBinStockPart
+  - NanoManipulatorStockPart
+  - RPED
+
+- type: technology
+  id: CoalitionCyberdawnBasicBallistics
+  name: research-technology-cyberdawn-basicballistics
+  icon:
+    sprite: _Crescent/Objects/Weapons/Guns/akms.rsi
+    state: base
+  discipline: Coalition
+  tier: 1
+  cost: 6000
+  recipeUnlocks:
+  - WeaponShotgunTuberCyberdawn
+  - WeaponSubMachineGunAtreidesCyberdawn
+  - WeaponRifleAkCyberdawn
+  - WeaponRifleKrinkovCyberdawn
+  - WeaponPistolViperWoodCyberdawn
+  - WeaponPistolAnsemCyberdawn
+
+- type: technology
+  id: CoalitionCyberdawnT1Infiltration
+  name: research-technology-cyberdawn-T1-Infiltration
+  icon:
+    sprite: Objects/Specific/Medical/syndi_implanter.rsi
+    state: implanter0
+  discipline: Coalition
+  tier: 1
+  cost: 7500
+  recipeUnlocks:
+  - DnaScramblerImplanter
+  - FreedomImplanter
+  - RadioJammerCyberdawn
+  - PowerSinkCyberdawn
+  - ClothingBackpackChameleonFillCyberdawn
+  - ClothingMaskGasVoiceChameleonCyberdawn
+  - AgentIDCardCyberdawn
+
+- type: technology
+  id: CoalitionCyberdawnLPCT1
+  name: research-technology-cyberdawn-CDTShipT1LPC
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: Coalition
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - SprigganLPC
+  - VelatorLPC
+  - TaipanLPC
+  - WispLPC
+  - WreckLPC
+
+#tier 2
+
+- type: technology
+  id: CoalitionCyberdawnT2Infiltration
+  name: research-technology-cyberdawn-T2-Infiltration
+  icon:
+    sprite: Objects/Tools/emag.rsi
+    state: icon
+  discipline: Coalition
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - EmagCyberdawn
+  - DoormagCyberdawn
+  - MufflerFlatpack
+  - EmpImplanter
+  - SyndicateJawsOfLifeCyberdawn
+  - StorageImplanter
+  - MicroBombImplanter
+  - DeathAcidifierImplanter
+
+- type: technology
+  id: CoalitionCyberdawnAdvancedBallistics
+  name: research-technology-cyberdawn-advancedballistics
+  icon:
+    sprite: _Crescent/Objects/Weapons/Guns/mayflower.rsi
+    state: base
+  discipline: Coalition
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - WeaponShotgunSaiga12TFSC
+  - WeaponSubMachineGunCorsairCyberdawn
+  - WeaponLightMachineGunTFSCRPD
+  - WeaponLightMachineGunCompaktCyberdawn
+  - WeaponRifleMayflower
+  - WeaponRifleUnderdogCyberdawn
+  - WeaponRifleSVDMarksmanTFSC
+  - WeaponSniperAK60Cyberdawn
+
+- type: technology
+  id: CoalitionCyberdawnLancer
+  name: research-technology-cyberdawn-marauder
+  icon:
+    sprite: _Crescent/Objects/Specific/mecha.rsi
+    state: marauder
+  discipline: Coalition
+  tier: 2
+  cost: 15000
+  recipeUnlocks:
+  - MarauderFlatpack
+  - WeaponMechSword
+  - WeaponMechCombatLightRifle
+
+- type: technology
+  id: CoalitionCyberdawnBoardingWeapons
+  name: research-technology-cyberdawn-boardingweapons
+  icon:
+    sprite: _Crescent/Objects/ShuttleWeapons/50cal.rsi
+    state: space_artillery
+  discipline: Coalition
+  tier: 2
+  cost: 9000
+  recipeUnlocks:
+  - ShuttleGunGrappleCircuitboard
+
+- type: technology
+  id: CoalitionCDTAdvancedFirearmcomponents
+  name: research-technology-cyberdawn-CDTAdvancedFirearmcomponents
+  icon:
+    sprite: _Crescent/Objects/Materials/materials.rsi
+    state: tubeloaderrobotics
+  discipline: Coalition
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - BallisticCycler1Craft
+  - TubeLoader1Craft
+  - LaserLocus1Craft
+  - HardlightGenerator1Craft
+
+- type: technology
+  id: CoalitionCDTAdvancedComponents
+  name: research-technology-cyberdawn-CDTAdvancedComponents
+  icon:
+    sprite: _Crescent/Objects/Materials/materials.rsi
+    state: advancedmechanic
+  discipline: Coalition
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - AdvancedMechatronics1Craft
+  - AdvancedElectronics1Craft
+
+- type: technology
+  id: CoalitionCyberdawnEnergyDagger
+  name: research-technology-cyberdawn-energydagger
+  icon:
+    sprite: Objects/Weapons/Melee/e_dagger.rsi
+    state: icon
+  discipline: Coalition
+  tier: 2
+  cost: 5000
+  recipeUnlocks:
+  - EnergyDagger
+
+- type: technology
+  id: CoalitionESword
+  name: research-technology-cyberdawn-CDTPhoronBlade
+  icon:
+    sprite: Objects/Weapons/Melee/e_sword.rsi
+    state: icon
+  discipline: Coalition
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+  - EnergySword
+  - EnergyShield
+
+- type: technology
+  id: CoalitionCyberdawnZhongyao
+  name: research-technology-cyberdawn-zhongyao
+  icon:
+    sprite: _Impstation/Clothing/OuterClothing/Hardsuits/syndicate_agent.rsi
+    state: icon
+  discipline: Coalition
+  tier: 2
+  cost: 5000
+  recipeUnlocks:
+  - ClothingOuterHardsuitSyndieMedicCyberdawn
+
+- type: technology
+  id: CoalitionCDTSaboteurcyborgs
+  name: research-technology-cyberdawn-CDTSaboteurcyborgs
+  icon:
+    sprite: Mobs/Silicon/chassis.rsi
+    state: synd_engi
+  discipline: Coalition
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - ReinforcementFlatpackSyndicateCyborgSaboteur
+
+- type: technology
+  id: CoalitionCDTMedicalcyborgs
+  name: research-technology-cyberdawn-CDTMedicalcyborgs
+  icon:
+    sprite: Mobs/Silicon/chassis.rsi
+    state: synd_medical
+  discipline: Coalition
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - ReinforcementFlatpackSyndicateCyborgMedical
+
+# tier 3
+
+- type: technology
+  id: CoalitionCyberdawnEgui
+  name: research-technology-cyberdawn-egui
+  icon:
+    sprite: _Goobstation/Clothing/OuterClothing/Hardsuits/cybersunstealth.rsi
+    state: icon
+  discipline: Coalition
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - ClothingOuterHardsuitCybersunStealthCyberdawn
+#  - ClothingOuterHardsuitCybersunDreadnoughtCyberdawn
+
+- type: technology
+  id: CoalitionCyberdawnPsybreaker
+  name: research-technology-cyberdawn-psybreaker
+  icon:
+    sprite: DeltaV/Objects/Weapons/Guns/Pistols/psibreaker.rsi
+    state: base
+  discipline: Coalition
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - WeaponPistolPsiBreakerCyberdawn
+  - MagazinePistolSpecialMindbreakerCyberdawn
+
+- type: technology
+  id: CoalitionCyberdawnThermals
+  name: research-technology-cyberdawn-thermals
+  icon:
+    sprite: Clothing/Eyes/Goggles/thermal.rsi
+    state: icon
+  discipline: Coalition
+  tier: 3
+  cost: 8000
+  recipeUnlocks:
+  - ClothingEyesThermalVisionGogglesCyberdawn
+
+- type: technology
+  id: CoalitionCyberdawnAdvancedLaunchers
+  name: research-technology-cyberdawn-advancedlaunchers
+  icon:
+    sprite: _Crescent/Objects/Weapons/Guns/rpg2.rsi
+    state: base
+  discipline: Coalition
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - WeaponLCartridgeRPGSmall
+  - WeaponLauncherRPGNSCP
+  - WeaponCartridgeRPGLarge
+  - WeaponLauncherRocketCyberdawn
+
+- type: technology
+  id: CoalitionESwordDouble
+  name: research-technology-cyberdawn-CDTDualPhoronBlade
+  icon:
+    sprite: Objects/Weapons/Melee/e_sword_double.rsi
+    state: icon
+  discipline: Coalition
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - EnergySwordDouble
+
+- type: technology
+  id: CoalitionCyberdawnT3Infiltration
+  name: research-technology-cyberdawn-T3-Infiltration
+  icon:
+    sprite: Objects/Specific/Medical/syndi_implanter.rsi
+    state: implanter0
+  discipline: Coalition
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - MacroBombImplanter
+  - ScramImplanter
+  - SyndicateBombCyberdawn
+  - StealthBoxCyberdawn

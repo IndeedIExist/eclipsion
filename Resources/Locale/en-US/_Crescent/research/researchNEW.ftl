@@ -6,6 +6,7 @@ research-discipline-astronautics = Astronautics
 research-discipline-biochemical = Biochemical
 research-discipline-interdyne = Interdyne
 research-discipline-cyberdawn = Cyberdawn
+research-discipline-coalition = Coalition Technology
 research-discipline-communard = Communard
 research-discipline-imperial = Imperial
 research-discipline-corporate = Shinohara

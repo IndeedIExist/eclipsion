@@ -35,6 +35,14 @@ public sealed partial class SpamEmitSoundComponent : BaseEmitSoundComponent
     public LocId? PopUp;
 
     /// <summary>
+    /// If true, the sound and popup are played only to this entity's own player (if any),
+    /// instead of to everyone in PVS range. Useful for personal alarms (e.g. Silicon low power)
+    /// that should not annoy everyone nearby.
+    /// </summary>
+    [DataField]
+    public bool PlayToOwnerOnly;
+
+    /// <summary>
     /// Whether the timer is currently running and sounds are being played.
     /// Do not set this directly, use <see cref="EmitSoundSystem.SetEnabled"/>
     /// </summary>

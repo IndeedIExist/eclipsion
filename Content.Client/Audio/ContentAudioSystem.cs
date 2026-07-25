@@ -87,6 +87,7 @@ public sealed partial class ContentAudioSystem : SharedContentAudioSystem
         //UpdateAmbientMusic();
         UpdateLobbyMusic();
         UpdateFades(frameTime);
+        UpdateDucking(frameTime);
     }
 
     #region Fades

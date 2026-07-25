@@ -8681,7 +8681,7 @@ entities:
     - type: Transform
       pos: -9.5,0.5
       parent: 1
-- proto: ComputerDroneControl
+- proto: ComputerDroneControlNCWL
   entities:
   - uid: 782
     components:

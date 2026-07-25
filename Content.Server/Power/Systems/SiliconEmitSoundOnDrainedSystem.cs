@@ -23,6 +23,7 @@ public sealed class EmitSoundOnCritSystem : EntitySystem
         spamComp.MaxInterval = component.MaxInterval;
         spamComp.PopUp = component.PopUp;
         spamComp.Sound = component.Sound;
+        spamComp.PlayToOwnerOnly = component.PlayToOwnerOnly;
         _emitSound.SetEnabled((uid, spamComp), true);
     }
 

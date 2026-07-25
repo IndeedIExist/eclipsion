@@ -23,6 +23,12 @@ public sealed class DroneConsoleBoundUserInterface : BoundUserInterface
 
         _window.OnMoveOrder += OnMoveOrder;
         _window.OnAttackOrder += OnAttackOrder;
+
+        _window.OnDeploy += () => SendMessage(new DroneConsoleDeployMessage());
+        _window.OnSetStance += stance => SendMessage(new DroneConsoleSetStanceMessage(stance));
+        _window.OnSetTargeting += targeting => SendMessage(new DroneConsoleSetTargetingMessage(targeting));
+        _window.OnSetFormation += formation => SendMessage(new DroneConsoleSetFormationMessage(formation));
+        _window.OnSpawn += vesselId => SendMessage(new DroneConsoleSpawnMessage(vesselId));
     }
 
     private void OnMoveOrder(EntityCoordinates coord)

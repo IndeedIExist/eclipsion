@@ -3,3 +3,7 @@ jukebox-menu-selectedsong = Selected Song:
 jukebox-menu-buttonplay = Play
 jukebox-menu-buttonpause = Pause
 jukebox-menu-buttonstop = Stop
+jukebox-menu-buttonnext = Next
+jukebox-menu-queue-add = Add to Queue
+jukebox-menu-queue-clear = Clear
+jukebox-menu-queue-label = Queue (click to remove):
