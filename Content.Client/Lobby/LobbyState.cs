@@ -223,11 +223,16 @@ namespace Content.Client.Lobby
                     Lobby!.AnimatedBg.Visible = true;
                     Lobby!.AnimatedBg.SetFromSpriteSpecifier(lobbyBackground.AnimatedBackground);
                 }
-                else
+                else if (lobbyBackground.Background is { } background)
                 {
                     Lobby!.AnimatedBg.Visible = false;
                     Lobby!.Background.Visible = true;
-                    Lobby!.Background.Texture = _resourceCache.GetResource<TextureResource>(lobbyBackground.Background);
+                    Lobby!.Background.Texture = _resourceCache.GetResource<TextureResource>(background);
+                }
+                else
+                {
+                    Lobby!.AnimatedBg.Visible = false;
+                    Lobby!.Background.Visible = false;
                 }
 
                 var name = string.IsNullOrEmpty(lobbyBackground.Name)

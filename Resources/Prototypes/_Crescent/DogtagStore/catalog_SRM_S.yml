@@ -99,7 +99,7 @@
   id: StoreListingSRMPinpointer
   name: Tracking Pinpointer
   description: A pinpointer that can track just about anything, even small and inconspicuous objects. Some come in sets.
-  icon: { sprite: Objects/Devices/pinpointer.rsi, state: icon }
+  icon: { sprite: Objects/Devices/pinpointer.rsi, state: pinpointer }
   productEntity: CrateSRMPinpointer
   cost:
     PietySRM: 2

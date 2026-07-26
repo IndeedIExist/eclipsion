@@ -191,3 +191,9 @@ research-technology-shinohara-oldntballistics = Old NT Gun Schematics
 research-technology-shinohara-ntartillery = NT Artillery Patent
 research-technology-shinohara-weaponcase = Shinohara Storage Standards
 research-technology-shinohara-grenades = Shinohara Grenade Patterns
+research-technology-shinohara-corpsec-shark = SHI Heavy Destroyers
+
+research-technology-biochemical-autoinjectors = Combat Autoinjectors
+research-technology-cyberdawn-boardingweapons = Cyberdawn Boarding Armaments
+research-technology-imperial-praetorian = Praetorian-Pattern LPC
+research-technology-imperial-fighters = Imperial Fighter Craft

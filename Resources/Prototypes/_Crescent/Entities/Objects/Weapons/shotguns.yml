@@ -710,9 +710,6 @@
     tags:
     - WeaponShotgunKammerer
   - type: Wieldable
-  - type: ReverseEngineering
-    recipes:
-      - WeaponShotgunProletarWorn
 
 - type: entity
   name: IRM DA-2 Matusa 12g (Surplus)
@@ -745,6 +742,3 @@
     tags:
     - WeaponShotgunKammerer
   - type: Wieldable
-  - type: ReverseEngineering
-    recipes:
-      - WeaponShotgunDSMMatusaWorn

@@ -25,9 +25,15 @@ public sealed partial class GameTicker
                 continue;
             }
 
-            if (!WhitelistedBackgroundExtensions.Contains(prototype.Background.Extension))
+            if (prototype.Background is not { } background)
             {
-                _sawmill.Warning($"Lobby background '{prototype.ID}' has an invalid extension '{prototype.Background.Extension}' and will be ignored.");
+                _sawmill.Warning($"Lobby background '{prototype.ID}' has neither a background nor an animated background and will be ignored.");
+                continue;
+            }
+
+            if (!WhitelistedBackgroundExtensions.Contains(background.Extension))
+            {
+                _sawmill.Warning($"Lobby background '{prototype.ID}' has an invalid extension '{background.Extension}' and will be ignored.");
                 continue;
             }
 

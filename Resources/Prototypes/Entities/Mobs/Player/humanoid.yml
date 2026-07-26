@@ -99,14 +99,6 @@
       nameSegments:
         - names_first_male
         - names_last
-      access:
-       - Command
-       - Hunter
-       - Maintenance
-       - Service
-       - External
-       - Mercenary # Frontier
-       - Captain # Frontier
 
 - type: startingGear
   id: HunterGhostGear
@@ -183,14 +175,6 @@
       nameSegments:
         - names_first_male
         - names_last
-      access:
-       - Command
-       - Hunter
-       - Maintenance
-       - Service
-       - External
-       - Mercenary # Frontier
-       - Captain # Frontier
 
 - type: startingGear
   id: HuntoverseerGhostGear
