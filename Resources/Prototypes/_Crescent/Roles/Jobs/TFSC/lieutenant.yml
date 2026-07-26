@@ -1,13 +1,19 @@
 - type: job
-  id: LieutenantNCSP
+  id: LieutenantTFSC
   name: job-name-lieutenant
   description: job-description-lieutenant
-  playTimeTracker: JobLieutenantNCSP
+  playTimeTracker: JobLieutenantTFSC
   weight: 11
   startingGear: LieutenantGear
   alwaysUseSpawner: true
   requireAdminNotify: true
   icon: "JobIconSyndieLieutenant"
+  chatNameColor: "#8d2121"
+  chatAmplification:
+    bubbleScale: 1.08
+    shoutBubbleScale: 1.3
+    radioScale: 1.2
+    radioBold: true
   supervisors: job-supervisors-gsc-officer
   canBeAntag: false
   requirements:
@@ -31,7 +37,7 @@
       - type: ChatRank
         rank: crescent-rank-boss
       - type: HullrotFaction
-        faction: GSC
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -75,9 +81,13 @@
   - Maintenance
   - Service
   - External
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
-  - SyndicateCommand
+  - SyndicateCommand # department head
   - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
 
 - type: startingGear
   id: LieutenantGear
@@ -87,6 +97,6 @@
     shoes: ClothingShoesBootsCombat
     outerClothing: ClothingOuterArmorSyndicateLieutenant
     id: LieutenantPDA
-    ears: ClothingHeadsetNCSP
+    ears: ClothingHeadsetTFSC
     pocket1: WeaponPistolViperWood
     pocket2: ClothingMaskGasSyndicate

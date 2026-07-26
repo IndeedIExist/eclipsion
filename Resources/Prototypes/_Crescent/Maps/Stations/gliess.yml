@@ -17,7 +17,7 @@
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: outpost
         - type: StationNameSetup
-          mapNameTemplate: 'ОСР Убежище'
+          mapNameTemplate: 'OCP Hunter''s Den'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: Grammar
@@ -34,7 +34,7 @@
 
 - type: gameMap
   id: GliessSanto
-  mapName: 'Глисс Санто'
+  mapName: 'Gliess Santo'
   mapPath: /Maps/_Crescent/Stations/gliess.yml
   minPlayers: 0
   stations:
@@ -51,11 +51,11 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Глисс Санто'
+          mapNameTemplate: 'Gliess Santo'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: VesselDescription
-          description: Независимая торговая станция, пережившая свои лучшие времена.
+          description: An independent trade station that has long passed its prime.
         - type: VesselMusic
           ambientMusicPrototype: GliessMusic
         - type: Grammar
@@ -67,6 +67,10 @@
             MarshalCMM: [ 1, 1 ]
             DeputyMarshalCMM: [ 1, 1 ]
             MinutemanCMM: [ 8, 8 ]
+            GliessianDockmaster: [ 1, 1 ]
+            GliessianSheriff: [ 1, 1 ]
+            GliessianDeputy: [ 2, 2 ]
             GliessianDockhand: [ 3, 3 ]
+            Spacer: [ -1, -1 ]
 
 

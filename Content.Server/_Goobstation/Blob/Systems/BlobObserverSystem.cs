@@ -244,7 +244,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
         {
             return;
         }
-        var state = new BlobChemSwapBoundUserInterfaceState(blobCoreComponent.ChemСolors, observerComponent.SelectedChemId);
+        var state = new BlobChemSwapBoundUserInterfaceState(blobCoreComponent.ChemColors, observerComponent.SelectedChemId);
 
         _uiSystem.SetUiState(uid, BlobChemSwapUiKey.Key, state);
     }

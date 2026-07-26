@@ -1,30 +1,27 @@
 - type: vessel
   id: Musinyane
-  name:  ТПШ Мяне
-  description: Легкий крейсер корпоративной безопасности, экипаж которого должен состоять из трех-четырех человек.
-  price: 75000
+  name: SHI Musinyane
+  description: A CorpSec light cruiser intended to be manned by a crew of three to four persons.
+  price: 50000
   category: Medium
   group: None
   path: /Maps/_Crescent/Shuttles/SHI/musinyane.yml
 
 - type: gameMap
   id: Musinyane
-  mapName: 'ТПШ Мяне'
+  mapName: 'SHI Musinyane'
   mapPath: /Maps/_Crescent/Shuttles/SHI/musinyane.yml
   minPlayers: 0
   stations:
     Musinyane:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: cruiser
         - type: StationNameSetup
-          mapNameTemplate: 'ТПШ Мяне {1}'
+          mapNameTemplate: 'SHI Musinyane {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

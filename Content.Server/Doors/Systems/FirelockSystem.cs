@@ -282,18 +282,24 @@ namespace Content.Server.Doors.Systems
                 var dir = directions[i];
                 var adjacentPos = tiles[i];
 
+                // Is there some airtight entity blocking this direction? If yes, don't include this direction in the
+                // pressure differential
+                if (HasAirtightBlocker(grid.GetAnchoredEntities(adjacentPos), dir.GetOpposite(), airtightQuery))
+                    continue;
+
                 if (gas != null)
                 {
-                    // Is there some airtight entity blocking this direction? If yes, don't include this direction in the
-                    // pressure differential
-                    if (HasAirtightBlocker(grid.GetAnchoredEntities(adjacentPos), dir.GetOpposite(), airtightQuery))
-                        continue;
-
                     var p = gas.Pressure;
                     minPressure = Math.Min(minPressure, p);
                     maxPressure = Math.Max(maxPressure, p);
                     minTemperature = Math.Min(minTemperature, gas.Temperature);
                     maxTemperature = Math.Max(maxTemperature, gas.Temperature);
+                }
+                else
+                {
+                    // Space / empty tile = vacuum (0 kPa)
+                    minPressure = Math.Min(minPressure, 0f);
+                    maxPressure = Math.Max(maxPressure, 0f);
                 }
 
                 holdingPressure |= maxPressure - minPressure > firelock.PressureThreshold;

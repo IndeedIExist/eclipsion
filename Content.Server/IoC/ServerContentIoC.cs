@@ -1,4 +1,3 @@
-using Content.Server._Art.TTS; // Art-TTS
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -32,7 +31,7 @@ using Content.Shared.Players.RateLimiting;
 using Content.Server._Forge.Discord; // Forge-Change
 using Content.Server._Forge.Sponsors; // Forge-Change
 using Content.Shared._Forge.Sponsors; // Forge-Change
-using Content.Server._Rat.JoinQueue;
+using Content.Server._Crescent.JoinQueue;
 
 namespace Content.Server.IoC
 {
@@ -80,7 +79,6 @@ namespace Content.Server.IoC
             IoCManager.Register<SponsorManager>(); // Forge-Change
             IoCManager.Register<ISharedSponsorManager, SponsorManager>(); // Forge-Change
             IoCManager.Register<JoinQueueManager>();
-            IoCManager.Register<TTSManager>(); // Art-TTS
         }
     }
 }

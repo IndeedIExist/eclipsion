@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Content.Server.Ghost;
 using Content.Server.GameTicking.Presets;
 using Content.Server.Maps;
+using Content.Shared.GameTicking;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -113,11 +114,20 @@ namespace Content.Server.GameTicking
             Preset = preset;
             ValidateMap();
             UpdateInfoText();
+            BroadcastGamemodeJobs();
 
             if (force)
             {
                 StartRound(true);
             }
+        }
+
+        private void BroadcastGamemodeJobs()
+        {
+            var preset = CurrentPreset ?? Preset;
+            var jobs = preset?.AvailableJobs?.Select(j => j.Id).ToList() ?? new List<string>();
+            var excluded = preset?.ExcludedJobs?.Select(j => j.Id).ToList() ?? new List<string>();
+            RaiseNetworkEvent(new TickerGamemodeJobsEvent(jobs, excluded), Filter.Empty().AddPlayers(_playerManager.NetworkedSessions));
         }
 
         public void SetGamePreset(string preset, bool force = false)

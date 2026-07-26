@@ -1,12 +1,16 @@
 - type: gameMap
   id: Tatsumoto
-  mapName: 'ТПШ Татсумото'
-  mapPath: /Maps/_Rat/Stations/tatsumoto.yml # Rat-change
+  mapName: 'SHI Tatsumoto'
+  mapPath: /Maps/_Crescent/Stations/tatsumoto.yml # Rat-change
   minPlayers: 0
   stations:
     Tatsumoto:
       stationProto: StandardCrescentStation
       gridComponents:
+        - type: FactionStation # conquest win condition
+          faction: SHI
+          fallAnnouncement: faction-station-fall-tatsumoto
+          stationName: SHI Tatsumoto
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
         - type: VesselIcon
@@ -17,11 +21,11 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'ТПШ Татсумо'
+          mapNameTemplate: 'SHI Tatsumoto'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: VesselDescription
-          description: Последний оплот военных дельцов
+          description: The last stronghold of military profiteers.
         - type: VesselMusic
           ambientMusicPrototype: TatsumotoMusic
         - type: Grammar
@@ -31,10 +35,10 @@
           overflowJobs: []
           availableJobs:
             ExecutiveSHI: [ 1, 1 ]
-            #BoardHRSHI: [ 1, 1 ]
+            BoardHRSHI: [ 1, 1 ]
             BoardSHI: [ 1, 1 ]
             HosSHI: [ 1, 1 ]
-            #HighsecSHI: [ 2, 2 ]
+            HighsecSHI: [ 2, 2 ]
             CorpsecSHI: [ 6, 6 ]
             MedtechSHI: [ 4, 4 ]
             EmployeeSHI: [ 8, 8 ]

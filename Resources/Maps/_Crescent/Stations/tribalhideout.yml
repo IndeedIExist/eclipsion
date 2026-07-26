@@ -24058,18 +24058,6 @@ entities:
     - type: Transform
       pos: 8.580323,-3.3694878
       parent: 1
-- proto: ShipyardManufactorum
-  entities:
-  - uid: 1290
-    components:
-    - type: Transform
-      pos: -3.5,-10.5
-      parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 1164
-    - type: MaterialSiloUtilizer
-      silo: 1164
 - proto: SignalButtonDirectional
   entities:
   - uid: 1291

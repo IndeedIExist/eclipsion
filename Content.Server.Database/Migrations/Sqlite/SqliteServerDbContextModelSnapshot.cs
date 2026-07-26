@@ -15,7 +15,7 @@ namespace Content.Server.Database.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.10");
 
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
@@ -256,8 +256,7 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("expiration_time");
 
-                    b.Property<DateTime?>("LastEditedAt")
-                        .IsRequired()
+                    b.Property<DateTime>("LastEditedAt")
                         .HasColumnType("TEXT")
                         .HasColumnName("last_edited_at");
 
@@ -385,8 +384,7 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("expiration_time");
 
-                    b.Property<DateTime?>("LastEditedAt")
-                        .IsRequired()
+                    b.Property<DateTime>("LastEditedAt")
                         .HasColumnType("TEXT")
                         .HasColumnName("last_edited_at");
 
@@ -908,6 +906,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("station_ai_name");
 
+                    b.Property<string>("Subfaction")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("subfaction");
+
                     b.Property<string>("Voice")
                         .IsRequired()
                         .HasColumnType("TEXT")
@@ -927,6 +930,74 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsUnique();
 
                     b.ToTable("profile", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RatFaction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("rat_faction_id");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("description");
+
+                    b.Property<bool>("IsWhitelisted")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("is_whitelisted");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("PK_rat_faction");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("rat_faction", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RatFactionManager", b =>
+                {
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<int>("FactionId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("faction_id");
+
+                    b.HasKey("PlayerUserId", "FactionId")
+                        .HasName("PK_rat_faction_manager");
+
+                    b.HasIndex("FactionId")
+                        .HasDatabaseName("IX_rat_faction_manager_faction_id");
+
+                    b.ToTable("rat_faction_manager", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RatFactionWhitelist", b =>
+                {
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<int>("FactionId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("faction_id");
+
+                    b.HasKey("PlayerUserId", "FactionId")
+                        .HasName("PK_rat_faction_whitelist");
+
+                    b.HasIndex("FactionId")
+                        .HasDatabaseName("IX_rat_faction_whitelist_faction_id");
+
+                    b.ToTable("rat_faction_whitelist", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.RoleWhitelist", b =>
@@ -1673,6 +1744,50 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Preference");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.RatFactionManager", b =>
+                {
+                    b.HasOne("Content.Server.Database.RatFaction", "Faction")
+                        .WithMany("Managers")
+                        .HasForeignKey("FactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_rat_faction_manager_rat_faction_faction_id");
+
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_rat_faction_manager_player_player_user_id");
+
+                    b.Navigation("Faction");
+
+                    b.Navigation("Player");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RatFactionWhitelist", b =>
+                {
+                    b.HasOne("Content.Server.Database.RatFaction", "Faction")
+                        .WithMany("Whitelists")
+                        .HasForeignKey("FactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_rat_faction_whitelist_rat_faction_faction_id");
+
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_rat_faction_whitelist_player_player_user_id");
+
+                    b.Navigation("Faction");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.RoleWhitelist", b =>
                 {
                     b.HasOne("Content.Server.Database.Player", "Player")
@@ -1959,6 +2074,13 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Loadouts");
 
                     b.Navigation("Traits");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RatFaction", b =>
+                {
+                    b.Navigation("Managers");
+
+                    b.Navigation("Whitelists");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Round", b =>

@@ -1,6 +1,7 @@
 # Softsuits
 - type: latheRecipe
   id: ClothingOuterSuitEmergency
+  category: Clothing
   result: ClothingOuterSuitEmergency
   completetime: 4
   materials:
@@ -10,6 +11,7 @@
 
 - type: latheRecipe
   id: ClothingOuterEVASuitHydro
+  category: Clothing
   result: ClothingOuterEVASuitHydro
   completetime: 4
   materials:
@@ -19,6 +21,7 @@
 
 - type: latheRecipe
   id: ClothingOuterEVASuitMailman
+  category: Clothing
   result: ClothingOuterEVASuitMailman
   completetime: 4
   materials:
@@ -28,6 +31,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetEVA
+  category: Armor
   result: ClothingHeadHelmetEVA
   completetime: 4
   materials:
@@ -38,6 +42,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetEVALarge
+  category: Armor
   result: ClothingHeadHelmetEVALarge
   completetime: 4
   materials:
@@ -48,6 +53,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitEVA
+  category: Armor
   result: ClothingOuterHardsuitEVA
   completetime: 4
   materials:
@@ -57,6 +63,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitVoidParamed
+  category: Armor
   result: ClothingOuterHardsuitVoidParamed
   completetime: 4
   materials:
@@ -68,6 +75,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitEVAPrisoner
+  category: Armor
   result: ClothingOuterHardsuitEVAPrisoner
   completetime: 4
   materials:
@@ -125,6 +133,7 @@
 # Basic hardsuits (T1 research)
 - type: latheRecipe
   id: ClothingOuterHardsuitBasic
+  category: Armor
   result: ClothingOuterHardsuitBasic
   completetime: 4
   materials:
@@ -137,6 +146,7 @@
 # Departmental hardsuits (T2 research)
 - type: latheRecipe
   id: ClothingOuterHardsuitAtmos
+  category: Armor
   result: ClothingOuterHardsuitAtmos
   completetime: 4
   materials:
@@ -149,6 +159,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitEngineering
+  category: Armor
   result: ClothingOuterHardsuitEngineering
   completetime: 4
   materials:
@@ -161,6 +172,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitSpatio
+  category: Armor
   result: ClothingOuterHardsuitSpatio
   completetime: 4
   materials:
@@ -173,6 +185,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitSalvage
+  category: Armor
   result: ClothingOuterHardsuitSalvage
   completetime: 4
   materials:
@@ -185,6 +198,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitClown
+  category: Armor
   result: ClothingOuterHardsuitClown
   completetime: 4
   materials:
@@ -197,6 +211,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitMime
+  category: Armor
   result: ClothingOuterHardsuitMime
   completetime: 4
   materials:
@@ -219,6 +234,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitPilot
+  category: Armor
   result: ClothingOuterHardsuitPilot
   completetime: 4
   materials:
@@ -231,6 +247,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitMercenary
+  category: Armor
   result: ClothingOuterHardsuitMercenary
   completetime: 4
   materials:
@@ -242,6 +259,7 @@
     
 - type: latheRecipe
   id: ClothingOuterHardsuitPrivateSecurity
+  category: Armor
   result: ClothingOuterHardsuitPrivateSecurity  
   completetime: 4
   materials:
@@ -253,6 +271,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitBrigmedic
+  category: Armor
   result: ClothingOuterHardsuitBrigmedic
   completetime: 4
   materials:
@@ -265,6 +284,7 @@
 # Departmental heads hardsuits (T3 research)
 - type: latheRecipe
   id: ClothingOuterHardsuitCap
+  category: Armor
   result: ClothingOuterHardsuitCap
   completetime: 4
   materials:
@@ -275,6 +295,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitScaf
+  category: Armor
   result: ClothingOuterHardsuitScaf
   completetime: 4
   materials:
@@ -285,6 +306,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitEngineeringWhite
+  category: Armor
   result: ClothingOuterHardsuitEngineeringWhite
   completetime: 4
   materials:
@@ -298,6 +320,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitMedical
+  category: Armor
   result: ClothingOuterHardsuitMedical
   completetime: 4
   materials:
@@ -311,6 +334,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitRd
+  category: Armor
   result: ClothingOuterHardsuitRd
   completetime: 4
   materials:
@@ -323,6 +347,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitLuxury
+  category: Armor
   result: ClothingOuterHardsuitLuxury
   completetime: 4
   materials:
@@ -334,6 +359,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitMaximPrototype
+  category: Armor
   result: ClothingOuterHardsuitMaximPrototype
   completetime: 4
   materials:
@@ -348,6 +374,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitSecurity
+  category: Armor
   result: ClothingOuterHardsuitSecurity
   completetime: 4
   materials:
@@ -359,6 +386,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitWarden
+  category: Armor
   result: ClothingOuterHardsuitWarden
   completetime: 4
   materials:

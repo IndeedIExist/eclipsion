@@ -85,12 +85,6 @@
     slots:
     - idcard
     - Belt
-  - type: UnpoweredFlashlight
-  - type: PointLight
-    enabled: false
-    radius: 1.5
-    softness: 5
-    autoRot: true
   - type: Ringer
   - type: DeviceNetwork
     deviceNetId: Wireless
@@ -102,12 +96,12 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - NanoChatCartridge # DeltaV
       - BountyContractsCartridge # _NF Ratgore
       - MoneyTransferCartridge # Ratgore
+      - GamblingCartridge # Crescent
+      - StockMarketCartridge
     cartridgeSlot:
       priority: -1
       name: device-pda-slot-component-slot-name-cartridge
@@ -148,7 +142,7 @@
     flavorKind: station-event-random-sentience-flavor-mechanical
     weight: 0.001 # 1,000 PDAs = as likely to be picked as 1 regular animal
   - type: BlockMovement
-    blockInteraction: false # lets the PDA toggle its own flashlight
+    blockInteraction: false
   - type: TypingIndicator
     proto: robot
   - type: Speech
@@ -162,11 +156,10 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - MedTekCartridge
       - NanoChatCartridge # DeltaV
+      - StockMarketCartridge
 
 - type: entity
   parent: BasePDA
@@ -235,12 +228,11 @@
     state: pda-interncadet
   - type: CartridgeLoader # DeltaV - Crime Assist + SecWatch
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - SecWatchCartridge
       - NanoChatCartridge
+      - StockMarketCartridge
 
 - type: entity
   parent: BasePDA
@@ -402,12 +394,11 @@
     state: pda-chaplain
   - type: CartridgeLoader # Nyanotrasen - Glimmer Monitor
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - GlimmerMonitorCartridge
       - NanoChatCartridge # DeltaV
       - PsiWatchCartridge
+      - StockMarketCartridge
 
 - type: entity
   name: logistics officer PDA # DeltaV - Logistics Department replacing Cargo
@@ -425,12 +416,11 @@
     state: pda-qm
   - type: CartridgeLoader # Adds the MailMetrics courier tracker
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - MailMetricsCartridge
       - NanoChatCartridge
       - StockTradingCartridge # DeltaV - StockTrading
+      - StockMarketCartridge
 
 - type: entity
   name: LO special PDA unit # DeltaV - Logistics Department replacing Cargo
@@ -448,12 +438,11 @@
     state: pda-qm
   - type: CartridgeLoader # Adds the MailMetrics courier tracker
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - MailMetricsCartridge # DeltaV - MailMetrics courier tracker
       - StockTradingCartridge # DeltaV - StockTrading
       - NanoChatCartridge # DeltaV
+      - StockMarketCartridge
 
 - type: entity
   parent: BasePDA
@@ -470,11 +459,10 @@
     state: pda-cargo
   - type: CartridgeLoader # DeltaV
     preinstalled:
-    - CrewManifestCartridge
     - NotekeeperCartridge
-    - NewsReaderCartridge
     - StockTradingCartridge # DeltaV - StockTrading
     - NanoChatCartridge # DeltaV
+    - StockMarketCartridge
 
 - type: entity
   parent: BasePDA
@@ -493,11 +481,10 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - AstroNavCartridge
       - NanoChatCartridge
+      - StockMarketCartridge
 
 - type: entity
   parent: BasePDA
@@ -534,12 +521,11 @@
     state: pda-lawyer
   - type: CartridgeLoader # DeltaV - Crime Assist + SecWatch
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - SecWatchCartridge
       - NanoChatCartridge
+      - StockMarketCartridge
 
 - type: entity
   parent: BasePDA
@@ -815,9 +801,7 @@
     state: pda-science
   - type: CartridgeLoader # Nyanotrasen - Glimmer Monitor
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - GlimmerMonitorCartridge
       - NanoChatCartridge # DeltaV
 
@@ -850,13 +834,12 @@
     state: pda-hos
   - type: CartridgeLoader # DeltaV - Crime Assist + SecWatch
     preinstalled:
-    - CrewManifestCartridge
     - NotekeeperCartridge
-    - NewsReaderCartridge
     - CrimeAssistCartridge # DeltaV
     - SecWatchCartridge # DeltaV: SecWatch replaces WantedList
     - LogProbeCartridge
     - NanoChatCartridge # DeltaV
+    - StockMarketCartridge
 
 - type: entity
   parent: BasePDA
@@ -874,12 +857,11 @@
     state: pda-hos
   - type: CartridgeLoader # DeltaV - Crime Assist + SecWatch
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - SecWatchCartridge
       - NanoChatCartridge
+      - StockMarketCartridge
 
 - type: entity
   parent: BasePDA
@@ -897,12 +879,11 @@
     state: pda-warden
   - type: CartridgeLoader # DeltaV - Crime Assist + SecWatch
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - SecWatchCartridge
       - NanoChatCartridge
+      - StockMarketCartridge
 
 - type: entity
   parent: BasePDA
@@ -919,9 +900,7 @@
     state: pda-security
   - type: CartridgeLoader # DeltaV - Crime Assist + SecWatch
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - SecWatchCartridge
       - NanoChatCartridge
@@ -947,9 +926,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - SecWatchCartridge # DeltaV: SecWatch replaces WantedList
       - LogProbeCartridge
       - NanoChatCartridge # DeltaV
@@ -969,9 +946,7 @@
     notificationsEnabled: false
     diskSpace: 10 # DeltaV
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - LogProbeCartridge
       - SecWatchCartridge # DeltaV: SecWatch replaces WantedList
       - StockTradingCartridge # Delta-V
@@ -1090,9 +1065,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - SecWatchCartridge # DeltaV: SecWatch replaces WantedList
       - LogProbeCartridge
       - NanoChatCartridge # DeltaV
@@ -1140,9 +1113,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - MedTekCartridge
       - CrimeAssistCartridge
       - SecWatchCartridge
@@ -1212,9 +1183,7 @@
     state: pda-reporter
   - type: CartridgeLoader # DeltaV
     preinstalled:
-    - CrewManifestCartridge
     - NotekeeperCartridge
-    - NewsReaderCartridge
     - StockTradingCartridge # DeltaV - StockTrading
     - NanoChatCartridge # DeltaV
 
@@ -1262,9 +1231,7 @@
     state: pda-detective
   - type: CartridgeLoader # DeltaV - Crime Assist + SecWatch
     preinstalled:
-    - CrewManifestCartridge
     - NotekeeperCartridge
-    - NewsReaderCartridge
     - CrimeAssistCartridge # DeltaV
     - SecWatchCartridge # DeltaV: SecWatch replaces WantedList
     - LogProbeCartridge
@@ -1293,9 +1260,7 @@
     state: pda-brigmedic
   - type: CartridgeLoader # DeltaV - Crime Assist + SecWatch
     preinstalled:
-    - CrewManifestCartridge
     - NotekeeperCartridge
-    - NewsReaderCartridge
     - CrimeAssistCartridge # DeltaV
     - SecWatchCartridge # DeltaV: SecWatch replaces WantedList
     - NanoChatCartridge # DeltaV
@@ -1385,9 +1350,7 @@
     state: pda-seniorofficer
   - type: CartridgeLoader # DeltaV - Crime Assist + SecWatch
     preinstalled:
-      - CrewManifestCartridge
       - NotekeeperCartridge
-      - NewsReaderCartridge
       - CrimeAssistCartridge
       - SecWatchCartridge
       - NanoChatCartridge

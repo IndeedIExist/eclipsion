@@ -52,6 +52,9 @@
         - !type:MachineFrameRegenerateProgress
       edges:
         - to: machine
+          completed:
+            # Player-built machines belong to their builder's faction, not to whatever grid they're sitting on.
+            - !type:SetFactionFromUser
           conditions:
             - !type:EntityAnchored
             - !type:MachineFrameComplete

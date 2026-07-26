@@ -1,0 +1,331 @@
+- type: entity
+  parent: BaseComputer
+  abstract: true
+  id: BaseComputerOverwatch
+  name: overwatch console
+  description: A computer console used to track faction members via wearable cameras.
+  placement:
+    mode: SnapgridCenter
+  components:
+  # - type: Computer
+  #   board: OverwatchComputerCircuitboard
+  - type: ApcPowerReceiver
+    powerLoad: 200
+  - type: ExtensionCableReceiver
+  - type: ActivatableUIRequiresPower
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.OverwatchUiKey.Key
+  - type: Sprite
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: generic
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: ["enum.WiresVisualLayers.MaintenancePanel"]
+      state: generic_panel_open
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+        computerLayerKeys:
+          True: { visible: true, shader: unshaded }
+          False: { visible: true, shader: shaded }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    offset: "0, 0.4"
+    castShadows: false
+  - type: SpamEmitSoundRequirePower
+  - type: SpamEmitSound
+    minInterval: 20
+    maxInterval: 60
+    sound:
+      collection: ComputerSFX
+      params:
+        volume: -3
+        maxDistance: 5
+        variation: 0.15
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    sound:
+      path: /Audio/_Crescent/Ambience/computer_loop.ogg
+      params:
+        volume: -12
+        maxDistance: 5
+  - type: EmitSoundOnUIOpen
+    sound:
+      path: /Audio/_Crescent/Ambience/Computers/type.ogg
+      params:
+        volume: -1
+        variation: 0.10
+        pitch: 1.10
+    blacklist:
+      tags:
+      - NoConsoleSound
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+        ents: []
+  - type: LightningTarget
+    priority: 1
+  - type: RequireProjectileTarget
+  - type: LanguageSpeaker
+    currentLanguage: TauCetiBasic
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    - RobotTalk
+    understands:
+    - TauCetiBasic
+    - RobotTalk
+  - type: Electrified
+    enabled: false
+    usesApcPower: true
+  - type: WiresPanel
+  - type: WiresVisuals
+  - type: Wires
+    boardName: wires-board-name-computer
+    layoutId: Computer
+  - type: UserInterface
+    interfaces:
+      enum.OverwatchUiKey.Key:
+        type: Content.Client._Crescent.Overwatch.OverwatchBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: OverwatchConsole
+  - type: StationAiWhitelist
+
+# - type: entity
+#   parent: BaseComputerCircuitboard
+#   id: OverwatchComputerCircuitboard
+#   name: overwatch computer board
+#   description: A computer printed circuit board for an overwatch console.
+#   components:
+#   - type: ComputerBoard
+#     prototype: BaseComputerOverwatch
+
+# - type: latheRecipe
+#   id: OverwatchComputerCircuitboard
+#   result: OverwatchComputerCircuitboard
+#   category: Circuitry
+#   completetime: 4
+#   materials:
+#     Steel: 100
+#     Glass: 500
+#     Gold: 100
+
+- type: entity
+  parent: BaseComputerOverwatch
+  id: DSMOverwatchComputer
+  name: overwatch console DSM
+  components:
+  - type: OverwatchConsole
+    faction: DSM
+  # - type: Sprite
+  #   layers:
+  #   - map: ["computerLayerScreen"]
+  #     state: dsm
+
+- type: entity
+  parent: BaseComputerOverwatch
+  id: NCWLOverwatchComputer
+  name: overwatch console NCWL
+  components:
+  - type: OverwatchConsole
+    faction: NCWL
+  # - type: Sprite
+  #   layers:
+  #   - map: ["computerLayerScreen"]
+  #     state: ncwl
+
+- type: entity
+  parent: BaseComputerOverwatch
+  id: SHIOverwatchComputer
+  name: overwatch console SHI
+  components:
+  - type: OverwatchConsole
+    faction: SHI
+  # - type: Sprite
+  #   layers:
+  #   - map: ["computerLayerScreen"]
+  #     state: shi
+
+- type: entity
+  parent: BaseComputerOverwatch
+  id: TAPOverwatchComputer
+  name: overwatch console TAP
+  components:
+  - type: OverwatchConsole
+    faction: TAP
+  # - type: Sprite
+  #   layers:
+  #   - map: ["computerLayerScreen"]
+  #     state: tap
+
+# One console for the whole Coalition. Interdyne, the Shipfitters, Gorlex and Cyberdawn each used to
+# have their own, but the charters were folded into the TFSC and no job grants those subfaction ids any
+# more — a console watching "faction: CD" showed an empty roster. The old company names survive as
+# departments, not as separate overwatch networks.
+- type: entity
+  parent: BaseComputerOverwatch
+  id: TFSCOverwatchComputer
+  name: overwatch console TFSC
+  components:
+  - type: OverwatchConsole
+    faction: TFSC
+  # - type: Sprite
+  #   layers:
+  #   - map: ["computerLayerScreen"]
+  #     state: tsp
+
+- type: entity
+  parent: BaseComputerOverwatch
+  id: SRMOverwatchComputer
+  name: overwatch console SRM
+  components:
+  - type: OverwatchConsole
+    faction: SRM
+  # - type: Sprite
+  #   layers:
+  #   - map: ["computerLayerScreen"]
+  #     state: tsp
+
+- type: entity
+  parent: BoxFolderBase
+  abstract: true
+  id: BaseOverwatchClipboard
+  name: overwatc digi-board
+  description: A bulky electric clipboard, filled with shipping orders and financing details. With so many compromising documents, you ought to keep this safe.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/qm_clipboard.rsi
+    layers:
+    - state: qm_clipboard
+    - state: qm_clipboard_paper
+      map: ["qm_clipboard_paper"]
+      visible: false
+    - state: qm_clipboard_pen
+      map: ["qm_clipboard_pen"]
+      visible: false
+    - state: qm_clipboard_over
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+      pen_slot: !type:ContainerSlot {}
+  - type: ItemSlots
+    slots:
+      pen_slot:
+        name: clipboard-slot-component-slot-name-pen
+        whitelist:
+          tags:
+            - Write
+        insertOnInteract: true
+  - type: Item
+    sprite: Objects/Misc/qm_clipboard.rsi
+    size: Small
+  - type: Clothing
+    slots: [belt]
+    quickEquip: false
+    sprite: Objects/Misc/qm_clipboard.rsi
+  - type: Storage
+    grid:
+    - 0,0,4,3
+    quickInsert: true
+    whitelist:
+      tags:
+        - Document
+  - type: StorageFill
+    contents: []
+  - type: ItemMapper
+    mapLayers:
+      qm_clipboard_paper:
+        whitelist:
+          tags:
+          - Document
+      qm_clipboard_pen:
+        whitelist:
+          tags:
+          - Write
+  - type: CargoOrderConsole
+  - type: BankClient
+  - type: ActivatableUI
+    verbText: overwatch-clipboard-computer-verb-text
+    key: enum.OverwatchUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.OverwatchUiKey.Key:
+        type: Content.Client._Crescent.Overwatch.OverwatchBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    damage:
+      types:
+        Blunt: 10
+
+- type: entity
+  parent: BaseOverwatchClipboard
+  id: DSMOverwatchClipboard
+  name: overwatch console DSM
+  components:
+  - type: OverwatchConsole
+    faction: DSM
+
+- type: entity
+  parent: BaseOverwatchClipboard
+  id: NCWLOverwatchClipboard
+  name: overwatch console NCWL
+  components:
+  - type: OverwatchConsole
+    faction: NCWL
+
+- type: entity
+  parent: BaseOverwatchClipboard
+  id: SHIOverwatchClipboard
+  name: overwatch console SHI
+  components:
+  - type: OverwatchConsole
+    faction: SHI
+
+- type: entity
+  parent: BaseOverwatchClipboard
+  id: TAPOverwatchClipboard
+  name: overwatch console TAP
+  components:
+  - type: OverwatchConsole
+    faction: TAP
+
+# As above: one Coalition tablet in place of the four per-company ones.
+- type: entity
+  parent: BaseOverwatchClipboard
+  id: TFSCOverwatchClipboard
+  name: overwatch console TFSC
+  components:
+  - type: OverwatchConsole
+    faction: TFSC
+
+- type: entity
+  parent: BaseOverwatchClipboard
+  id: SRMOverwatchClipboard
+  name: overwatch console SRM
+  components:
+  - type: OverwatchConsole
+    faction: SRM

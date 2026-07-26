@@ -1,0 +1,12 @@
+- type: construction
+  name: Signal Transmitter
+  id: SignalTransmitterDevice
+  graph: SignalTransmitterDevice
+  startNode: start
+  targetNode: transmitter
+  category: construction-category-tools
+  description: Device assembled from scrap. Starts a 10-minute countdown.
+  icon:
+    sprite: Objects/Devices/declaration_of_war.rsi
+    state: declarator
+  objectType: Item

@@ -8,6 +8,7 @@ job-name-utility-ipc = NT Engineer IPC
 job-name-ncwl-faction-leader = Flagman
 job-name-ncwl-kommissar = Kommissar
 job-name-ncwl-mvd-grunt = Starshina
+job-name-ncwl-mvd-officer = Serzhant
 job-name-ncwl-fleetkapitan = Unionkapitan
 job-name-ncwl-partisan = Partisan
 job-name-ncwl-industry-taskmaster = Sindikat Overseer
@@ -43,7 +44,7 @@ job-name-levyman = Man-at-Arms
 job-name-knight = Knight Banneret
 job-name-ritter = Baronial Ritter
 job-name-courtier = Courtier
-job-name-ministerlabor = Minister of Labor
+job-name-ministerlabor = Minister of Finance
 job-name-logisticsofficer = Minister of Wealth
 job-name-adjutant = Imperial Adjutant
 job-name-archmaester = Scribe Archmaester
@@ -121,6 +122,17 @@ job-name-gliess-dockmaster = Gliessian Dockmaster
 
 # conscript-ncwl - for PLANETFALL
 # someones been here before... i am only retracing steps...
+job-name-conscript-ncwl-ship-captain = Clementine Admiral
+job-name-conscript-ncwl-ship-crew = Clementine Artificer
+job-name-conscript-ncwl-leader = Major
+job-name-conscript-ncwl-officer = Kommissar
+job-name-conscript-ncwl-amr = Specialist (AMR)
+job-name-conscript-ncwl-lmg = Specialist (LMG)
+job-name-conscript-ncwl-doctor = Doktor
+job-name-conscript-ncwl-smg = Breacher (SMG)
+job-name-conscript-ncwl-shotgun = Breacher (Shotgun)
+job-name-conscript-ncwl-rifleman = Soldat (Rifle)
+job-name-conscript-ncwl-cadet = Cadet
 
 job-name-planetfall-team1-leader = SHI Commander
 job-name-planetfall-team1-subleader = SHI Squad Leader
@@ -128,6 +140,17 @@ job-name-planetfall-team1-member = SHI Infantry
 
 # conscript-dsm - for PLANETFALL
 # someones been here before... i am only retracing steps...
+job-name-conscript-dsm-ship-captain = Nemesis Grand Steward
+job-name-conscript-dsm-ship-crew = Nemesis Steward
+job-name-conscript-dsm-leader = Knight-Bannaret
+job-name-conscript-dsm-officer = Knight
+job-name-conscript-dsm-amr = Ward (AMR)
+job-name-conscript-dsm-lmg = Ward (LMG)
+job-name-conscript-dsm-doctor = Medicant
+job-name-conscript-dsm-smg = Squire (SMG)
+job-name-conscript-dsm-shotgun = Squire (Shotgun)
+job-name-conscript-dsm-rifleman = Armsman (Rifle)
+job-name-conscript-dsm-cadet = Recruit
 
 job-name-planetfall-team2-leader = PTA Commander
 job-name-planetfall-team2-subleader = PTA Squad Leader
@@ -136,7 +159,7 @@ job-name-planetfall-team2-member = PTA Infantry
 # unionfall-ncwl
 
 job-name-unionfall-ncwl-ship-captain = Ship Captain
-job-name-unionfall-ncwl-ship-crew = Ship Crew
+job-name-unionfall-ncwl-ship-crew = Ship Engineer
 job-name-unionfall-ncwl-leader = Fleet Kommandant
 job-name-unionfall-ncwl-officer = Kommissar
 job-name-unionfall-ncwl-doctor = Doktor
@@ -145,8 +168,8 @@ job-name-unionfall-ncwl-cadet = Cadet
 
 # unionfall-dsm
 job-name-unionfall-dsm-ship-captain = Ship Grand Steward
-job-name-unionfall-dsm-ship-crew = Ship Steward
-job-name-unionfall-dsm-leader = Knight-Bannaret
+job-name-unionfall-dsm-ship-crew = Ship Engineer
+job-name-unionfall-dsm-leader = Knight Banneret
 job-name-unionfall-dsm-officer = Knight
 job-name-unionfall-dsm-doctor = Medicant
 job-name-unionfall-dsm-rifleman = Man-at-arms

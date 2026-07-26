@@ -1,16 +1,17 @@
 # nanotrasen
 job-description-nt-melee-borg = Engage threats in close combat. Crush skulls with your fists. Coordinate with fellow NT assets.
 job-description-nt-ranged-borg = Engage threats in ranged combat. Pulverize corpses with a drill. Coordinate with fellow NT assets.
-job-description-nt-utility-ipc = Load ammunition and upkeep nanotrasen ships. Coordinate with fellow NT assets.
+job-description-nt-utility-ipc = Load ammunition and upkeep Nanotrasen ships. Coordinate with fellow NT assets.
 
 # ncwl
 
 job-description-ncwl-faction-leader = Lead the League from the external end. Maintain relations or war plans with other factions. Manage the Homeguard. Don't die.
 job-description-ncwl-kommissar = Be the brain of the Communist Party's will. Keep the proletarian masses in line, and order around your small MVD detachment.
-job-description-ncwl-mvd-grunt = Be the hand of the Chengridz Communist Party. Ensure the proletariat are cohesive. 
+job-description-ncwl-mvd-grunt = Be the hand of the Chengridz Communist Party. Ensure the proletariat are cohesive.
+job-description-ncwl-mvd-officer = Be the hand of the Central Committee. Lead your small squad and carry out the Kommissar's orders. 
 job-description-ncwl-fleetkapitan = Command the mass of Partisans. Listen to the Major. Maintain battlefield cohesion.
 job-description-ncwl-partisan = Defend the League. Listen to your Unionkapitan. Do what you're told.
-job-description-ncwl-industry-taskmaster = Ensure materials are being refined into trade goods and ammo. Organize fleet maintenance.
+job-description-ncwl-industry-taskmaster = Run every worker below you. Turn the orders handed down from above into labour on the floor. Keep the Sindikat's crews working.
 job-description-ncwl-industry-artificer = Listen to the Overseer. Gather resources for the League. Do repairs and shipmods.
 job-description-ncwl-medical-director = Keep the League alive and healthy. Coordinate research. Order cybernetics and new drugs.
 job-description-ncwl-medical-doctor = Keep the Workers and the Homeguard alive. Assist the Homeguard on missions. Make drugs, save those lost in space.
@@ -20,11 +21,11 @@ job-description-ncwl-newbie = Listen to union leaders. Work where you are needed
 
 # syndicate
 
-job-description-ringleader = Coordinate the NCSP. Approve and uphold contracts.
-job-description-lieutenant = Assist your Ringleader to coordinate the NCSP. Approve and uphold contracts.
+job-description-ringleader = Coordinate the TFSC. Approve and uphold contracts.
+job-description-lieutenant = Assist your Ringleader to coordinate the TFSC. Approve and uphold contracts.
 job-description-infanteer = Follow your contracts. Hunt bounties. Sell to the highest bidder.
 job-description-technician = Follow your contracts. Hunt bounties. Maintain your vessel's artillery.
-job-description-coordinator = Coordinate Interdyne Pharmaceuticals. Keep track of stock. See to it that contracts are fullfilled.
+job-description-coordinator = Coordinate Interdyne Pharmaceuticals. Keep track of stock. See to it that contracts are fulfilled.
 job-description-ripperdoc = Follow your contracts. Tend to your fellow mercenaries.
 job-description-traumasec = Secure policyholders. Tend to their medical needs. Eliminate threats to the policyholder.
 job-description-operative = Sabotage enemy vessels and gather intelligence for the Syndicate.
@@ -33,7 +34,7 @@ job-description-cyberdawntech = Research new technologies for the Family.
 job-description-shipbreaker = Repair Syndicate vessels, take the others apart for scrap.
 job-description-foreman = Coordinate the SAWs. Lead pirate boardings. Scrap vessels.
 ghost-role-information-CS-core-description = An advanced artificial intelligence created by Cybersun. You have been operating for hundreds of years, complete the goals of CDT, and protect your ship and crew.
-ghost-role-information-syndicate-cyborg-description = You are a piece of technology lost to the ages fulfill your laws and glorious to Cybersun.
+ghost-role-information-syndicate-cyborg-description = You are a piece of technology lost to the ages. Fulfill your laws and bring glory to Cybersun.
 
 # empire
 
@@ -41,13 +42,13 @@ job-description-freeholder = Obey the Imperial hierarchy. Earn Credits for the L
 job-description-levyman = Obey your liege, the Lord Admiral. Uphold the will of the Kaiserin.
 job-description-knight = Organize the Imperial Navy. Obey your liege, the Lord Admiral.
 job-description-ritter = Don your Exoplate. Obey your liege, the Lord Admiral. Bring glory in battle.
-job-description-courtier = Obey  your liege, the Lord Admiral. Intrigue for power and rank within his prestigious court.
-job-description-labor = Oversee industrial and trade efforts on behalf of  your liege, the Lord Admiral.
+job-description-courtier = Obey your liege, the Lord Admiral. Intrigue for power and rank within his prestigious court.
+job-description-labor = Oversee industrial and trade efforts on behalf of your liege, the Lord Admiral.
 job-description-adjutant = Obey the Kaiserin, and your liege, the Lord Admiral. Attempt to coordinate the Empire.
 job-description-governor = Exercise the Kaiserin's will. Protect your fief. The Mandate must survive.
 job-description-logistics = Outfit your liege, the Lord Admiral's military with vessels and munitions.
 job-description-wealth = Oversee the barony's economy, generate revenue for your liege, the Lord Admiral and pay his men.
-job-description-foremanimp = Coordinate the workers of your liege, the Lord Admiral.
+job-description-foremanimp = Run every worker below you. Turn the orders of your liege, the Lord Admiral, into labour on the floor. Keep the barony's crews working.
 job-description-scribe = Explore, discover new technologies, and recover derelicts.
 job-description-archmaester = Coordinate the Scribes Guild, discover new technologies for the Lord Admiral.
 job-description-surgeon = Tend to the bodily ails of your comrades.
@@ -103,11 +104,11 @@ job-description-kanoneer = Tend to repairs and maintenance of the armaments and 
 job-description-soldat = Be the boots on the ground of the 43rd Battlegroup. Patrol the sector. Vanquish psionicists.
 job-description-sanitat = Tend to the wounded and the sickly of the 43rd Battlegroup. Diagnose the many mental illnesses of your peers.
 job-description-steward = Ensure the smooth running of the 43rd Battlegroup. Be the glue that holds it together.
-job-description-oberartz = Sector Crescent is trapped with your magnificient mind and your overwhelming Faustian Spirit.
+job-description-oberartz = Lead the medical and research wing of the 43rd Battlegroup. Sector Crescent is trapped with your magnificent mind and your overwhelming Faustian Spirit.
 job-description-logistat = Organise the vast cargoes that maintain the 43rd Battlegroup. Forget where the Battlegroup's container of speakers went.
 job-description-handels = Peddle the cargoes that maintain the 43rd Battlegroup and your credit balance.
-job-description-forscher = Trapped within such a bountiful space of curiosities. Such potential for research is within your grasp.
-job-description-chirurgeon = So many new dissections to catalog. But do you delay that amputation another hour.
+job-description-forscher = Research new technologies and study anomalies for the 43rd Battlegroup. Trapped within such a bountiful space of curiosities, such potential is within your grasp.
+job-description-chirurgeon = Tend to the wounded of the 43rd Battlegroup as its surgeon. So many new dissections to catalog... but do you delay that amputation another hour?
 job-description-vorarbeiter = Guide the Arbeiters in new industrial conquests. Mine the stars and forge the 43rd Battlegroup's might.
 job-description-arbeiter = The industrial life blood of the Authoritat. Follow the Vorarbeiter's direction. Fear the psionicist.
 
@@ -121,7 +122,7 @@ job-description-gliess-dockmaster = Make sure nobody blows up your station.
 job-description-dockhand = Assist the Dockmaster in upkeeping Gliess Santo.
 
 # conscript-ncwl - for PLANETFALL
-job-description-conscript-ncwl-ship-captain = Pilot the Clementine. Ensure it's safety and use its armaments well. Go down with the ship.
+job-description-conscript-ncwl-ship-captain = Pilot the Clementine. Ensure its safety and use its armaments well. Go down with the ship.
 job-description-conscript-ncwl-ship-crew = Man the guns and fix holes. Load ammo. Help the soldiers do their job. Don't leave the ship.
 job-description-conscript-ncwl-leader = Lead the remnants of the NCWL. Ensure the League takes control of Vladzena.
 job-description-conscript-ncwl-officer = Command the men in infantry combat. Ensure cohesion. Listen to your superiors.
@@ -134,7 +135,7 @@ job-description-conscript-ncwl-rifleman = Be the rank and file. Be the corpses t
 job-description-conscript-ncwl-cadet = Listen to your superiors. Keep your head down and learn. (Bolt-action Rifle)
 
 # conscript-dsm - for PLANETFALL
-job-description-conscript-dsm-ship-captain = Pilot the Nemesis. Ensure it's safety and use its armaments well. Go down with the ship.
+job-description-conscript-dsm-ship-captain = Pilot the Nemesis. Ensure its safety and use its armaments well. Go down with the ship.
 job-description-conscript-dsm-ship-crew = Man the guns and fix holes. Load ammo. Help the soldiers do their job. Don't leave the ship.
 job-description-conscript-dsm-leader = Lead the punishment regimen. Reclaim the honor of your house. Stamp out the League.
 job-description-conscript-dsm-officer = Command the men in infantry combat. Ensure cohesion. Listen to your superiors.
@@ -159,7 +160,7 @@ job-description-unionfall-ncwl-cadet = Listen to your superiors. Keep your head 
 job-description-unionfall-dsm-ship-captain = Pilot the fleet's anchors. Coordinate with other vessels. Go down with your ship.
 job-description-unionfall-dsm-ship-crew = Man the guns and fix holes. Load ammo. Don't leave the ship. Listen to the Grand Steward.
 job-description-unionfall-dsm-leader = Lead the punishment regimen. Reclaim the honor of your house. Stamp out the League.
-job-description-unionfall-dsm-officer = Lead small squads. Ensure cohesion. Listen to the Knight-Bannaret.
+job-description-unionfall-dsm-officer = Lead small squads. Ensure cohesion. Listen to the Knight Banneret.
 job-description-unionfall-dsm-doctor = Keep your fellow men alive.
 job-description-unionfall-dsm-rifleman = Be the rank and file. Pilot fighters and ultralights. Listen to your superiors.
 job-description-unionfall-dsm-cadet = Listen to your superiors. Keep your head down and learn.

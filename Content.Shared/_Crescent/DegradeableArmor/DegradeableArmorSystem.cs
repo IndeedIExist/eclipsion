@@ -79,13 +79,13 @@ public sealed class DegradeableArmorSystem : EntitySystem
             return;
         if (owner.Comp.armorHealth == owner.Comp.armorMaxHealth)
         {
-            _popup.PopupEntity("This armor piece is not damaged!", owner.Owner, args.User, PopupType.Medium);
+            _popup.PopupEntity(Loc.GetString("degradeable-armor-not-damaged"), owner.Owner, args.User, PopupType.Medium);
             return;
         }
 
         if (_inventory.TryGetContainingSlot(owner.Owner, out var def))
         {
-            _popup.PopupClient("You can't repair this piece whilst wearing it!", args.User, args.User, PopupType.Medium);
+            _popup.PopupClient(Loc.GetString("degradeable-armor-cant-repair-worn"), args.User, args.User, PopupType.Medium);
             return;
         }
 
@@ -135,7 +135,7 @@ public sealed class DegradeableArmorSystem : EntitySystem
         {
             msg.PushNewline();
 
-            var armorType = Loc.GetString("armor-damage-type-" + flatArmor.Key.ToLower());
+            var armorType = Loc.GetString("armor-damage-type-" + flatArmor.Key.ToLowerInvariant());
             msg.AddMarkup(Loc.GetString("armor-reduction-value",
                 ("type", armorType),
                 ("value", (int)(flatArmor.Value * (component.armorHealth+000.1f)/component.armorMaxHealth))
@@ -143,7 +143,7 @@ public sealed class DegradeableArmorSystem : EntitySystem
         }
 
         msg.PushNewline();
-        var armorMaterial = Loc.GetString($"armor-degradation-{component.armorType.ToString().ToLower()}");
+        var armorMaterial = Loc.GetString($"armor-degradation-{component.armorType.ToString().ToLowerInvariant()}");
         msg.AddMarkup(Loc.GetString("armor-material-examine", ("material", armorMaterial)));
 
         return msg;
@@ -178,7 +178,8 @@ public sealed class DegradeableArmorSystem : EntitySystem
                 {
                     trueReduction *= component.armorHealth / component.armorMaxHealth;
                     trueReduction *= component.armorHealth / component.armorMaxHealth;
-                    _stamina.TakeStaminaDamage(component.wearer, args.Args.stoppingPower);
+                    if (component.wearer != EntityUid.Invalid)
+                        _stamina.TakeStaminaDamage(component.wearer, args.Args.stoppingPower);
                     break;
                 }
                 // Spreads damage internally
@@ -191,19 +192,21 @@ public sealed class DegradeableArmorSystem : EntitySystem
                 case ArmorDegradation.Plastic:
                 {
                     trueReduction *= (component.armorHealth + (float) value * 2) / component.armorMaxHealth;
-                    _stamina.TakeStaminaDamage(component.wearer, args.Args.stoppingPower);
+                    if (component.wearer != EntityUid.Invalid)
+                        _stamina.TakeStaminaDamage(component.wearer, args.Args.stoppingPower);
                     break;
                 }
             }
 
             trueReduction = Math.Clamp(trueReduction - args.Args.HullrotArmorPen, 0f, (float) value);
-            armorDamage += (float) value * component.armorDamageCoefficients[type];
-            //Logger.Error($"Damage adjusted for type {type}, old {value}, new {Math.Max(0f, (float) value - trueReduction)}  Armor damage {armorDamage}. Armor Health {component.armorHealth}. Stamina damage {trueReduction * component.staminaConversions[type]}");
+            // Safe access: if a damage type isn't in the coefficients dict, default to 1.0 (full armor damage).
+            var coeff = component.armorDamageCoefficients.TryGetValue(type, out var c) ? c : 1f;
+            armorDamage += (float) value * coeff;
             damageDictionary[type] = Math.Max(0f, (float) value - trueReduction);
         }
-        var wasBroken = component.armorHealth <= 0;
+        var healthBefore = component.armorHealth;
         component.armorHealth = Math.Max(0, component.armorHealth - armorDamage);
-        if (!wasBroken && component.armorHealth <= 0 && component.breakSound != null)
+        if (healthBefore > 0 && component.armorHealth <= 0 && component.breakSound != null)
         {
             _audio.PlayPredicted(component.breakSound, uid, component.wearer != EntityUid.Invalid ? component.wearer : uid);
         }

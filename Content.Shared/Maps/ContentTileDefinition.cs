@@ -143,7 +143,47 @@ namespace Content.Shared.Maps
         /// </summary>
         [DataField("indestructible")] public bool Indestructible = false;
 
+        // _RMC14 start
+        // These come with the RMC14 tile prototypes. The systems that act on them (xeno weeds,
+        // digging, tunnels) were NOT ported, so nothing reads these yet - they exist so the
+        // ported yaml keeps its data and validates instead of erroring out. If you port one of
+        // those systems, wire it up here rather than re-adding the field.
 
+        /// <summary>
+        /// Whether a xeno can dig this tile out. Not yet consumed by any system.
+        /// </summary>
+        [DataField] public bool CanDig;
+
+        /// <summary>
+        /// Whether xeno weeds spread onto this tile. Not yet consumed by any system.
+        /// </summary>
+        [DataField] public bool WeedsSpreadable = true;
+
+        /// <summary>
+        /// Whether this tile only holds weeds sourced from a neighbouring tile. Not yet consumed by any system.
+        /// </summary>
+        [DataField] public bool SemiWeedable;
+
+        /// <summary>
+        /// Whether a xeno tunnel may be placed on this tile. Not yet consumed by any system.
+        /// </summary>
+        [DataField] public bool CanPlaceTunnel = true;
+
+        /// <summary>
+        /// Whether this tile refuses anchoring entities to it. Not yet consumed by any system.
+        /// </summary>
+        [DataField] public bool BlockAnchoring;
+
+        /// <summary>
+        /// Whether this tile refuses construction on top of it. Not yet consumed by any system.
+        /// </summary>
+        [DataField] public bool BlockConstruction;
+
+        /// <summary>
+        /// Colour this tile draws as on the RMC14 minimap. Not yet consumed by any system.
+        /// </summary>
+        [DataField] public Color? MinimapColor;
+        // _RMC14 end
 
         public void AssignTileId(ushort id)
         {

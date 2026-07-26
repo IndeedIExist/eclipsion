@@ -1,3 +1,4 @@
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Execution;
@@ -45,6 +46,36 @@ public sealed partial class ExecutionComponent : Component
     public LocId CompleteExternalMeleeExecutionMessage = "execution-popup-melee-complete-external";
 
     /// <summary>
+    /// Shown to the attacker when readying a gun execution.
+    /// </summary>
+    [DataField]
+    public LocId InternalGunExecutionMessage = "execution-popup-gun-initial-internal";
+
+    /// <summary>
+    /// Shown to bystanders and the victim of a gun execution when it is started.
+    /// </summary>
+    [DataField]
+    public LocId ExternalGunExecutionMessage = "execution-popup-gun-initial-external";
+
+    /// <summary>
+    /// Shown to the attacker upon completion of a gun execution.
+    /// </summary>
+    [DataField]
+    public LocId CompleteInternalGunExecutionMessage = "execution-popup-gun-complete-internal";
+
+    /// <summary>
+    /// Shown to bystanders and the victim of a gun execution when it is completed.
+    /// </summary>
+    [DataField]
+    public LocId CompleteExternalGunExecutionMessage = "execution-popup-gun-complete-external";
+
+    /// <summary>
+    /// Shown to the attacker when a gun execution fails because the weapon has nothing to fire.
+    /// </summary>
+    [DataField]
+    public LocId EmptyGunExecutionMessage = "execution-popup-gun-empty";
+
+    /// <summary>
     /// Shown to the person performing the self execution when starting one.
     /// </summary>
     [DataField]
@@ -67,6 +98,19 @@ public sealed partial class ExecutionComponent : Component
     /// </summary>
     [DataField]
     public LocId CompleteExternalSelfExecutionMessage = "execution-popup-self-complete-external";
+
+    /// <summary>
+    /// Track played for the whole execution channel. Stops as soon as the execution completes or is
+    /// interrupted.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? ExecutionSound = new SoundPathSpecifier("/Audio/_Crescent/execution.ogg");
+
+    /// <summary>
+    /// The currently-playing execution track entity, kept so it can be stopped on interrupt/completion.
+    /// Server-side bookkeeping; not networked.
+    /// </summary>
+    public EntityUid? ExecutionStream;
 
     // Not networked because this is transient inside of a tick.
     /// <summary>

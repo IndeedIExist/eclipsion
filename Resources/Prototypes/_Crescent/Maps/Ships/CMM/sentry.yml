@@ -8,7 +8,7 @@
     A swift and small fighter featuring plasma gatlings. Can handle shields and armor but at close range.
     LOADOUT: 2x 150cc 'Starburst' plasma gatling
     MINIMUM CREW: 1x Pilot
-    Original prototype design featured dual hardlight repeaters. After TSP was disbanded and milita lost DSM backing access to such technology was lost.
+    Original prototype design featured dual hardlight repeaters. After TSP was disbanded and the militia lost DSM backing, access to such technology was lost.
   price: 20000
   category: Small
   group: None
@@ -22,9 +22,6 @@
   stations:
     Sentry:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
@@ -38,5 +35,5 @@
         - type: VesselDesignation
           designation: vessel-designation-fighter
         - type: VesselDescription
-          description: A small compact fighter, excells at short range brawl.
+          description: A small compact fighter, excels at short-range brawling.
 

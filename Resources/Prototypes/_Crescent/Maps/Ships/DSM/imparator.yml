@@ -1,9 +1,9 @@
 - type: vessel
   id: Imparator
-  name: БМС Триумвир
+  name: DSM Imparator
   description: |
-    Имперский артиллерийский корабль, предназначенный для стрельбы с задних линий и огневой поддержки на расстоянии. Слаб в ближнем бою, имеет только 1 PDT как вторичное оружие.
-    LOADOUT: 1x SHI 120mm Cannon, 1x SHI 20x135mm PDT
+    An imperial support ship, made to shoot from the backlines and provide firepower from a distance. It suffers in close-quarters combat, relying on its plasma gatling for point defense.
+    LOADOUT: 1x 200cc 'Retribution' Pulse Laser, 1x 150cc 'Starburst' Plasma Gatling
     MINIMUM CREW: 1x Pilot, 1x Gun Loader (optional)
   price: 37000
   category: Small
@@ -12,26 +12,23 @@
 
 - type: gameMap
   id: Imparator
-  mapName: 'БМС Триумвир'
+  mapName: 'DSM Imparator'
   mapPath: /Maps/_Crescent/Shuttles/DSM/imparator.yml
   minPlayers: 0
   stations:
     Imparator:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Триумвир {1}'
+          mapNameTemplate: 'DSM Imparator {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-fighter
         - type: VesselDescription
-          description: Мудрые рыцари знают, что этот небольшой, но мощный корабль способен доставить немало праведных неприятностей.
+          description: Wise ritters know that this small but powerful ship can cause some righteous trouble.

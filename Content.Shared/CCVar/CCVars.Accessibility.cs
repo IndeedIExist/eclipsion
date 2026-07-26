@@ -33,6 +33,13 @@ public sealed partial class CCVars
         CVarDef.Create("accessibility.screen_shake_intensity", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
+    ///     Toggles screen shake effects (gun recoil oscillation and sustained auto-fire vibration).
+    ///     When false, GunScreenShakeSystem will not apply any offset to the camera.
+    /// </summary>
+    public static readonly CVarDef<bool> ScreenShakeEnabled =
+        CVarDef.Create("accessibility.screen_shake_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
     ///     A generic toggle for various visual effects that are color sensitive.
     ///     As of 2/16/24, only applies to progress bar colors.
     /// </summary>

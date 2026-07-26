@@ -24,4 +24,11 @@ public sealed partial class SiliconEmitSoundOnDrainedComponent : Component
 
     [DataField]
     public string? PopUp;
+
+    /// <summary>
+    ///     If true, the drained alarm is played only to the Silicon's own player,
+    ///     instead of to everyone in PVS range.
+    /// </summary>
+    [DataField]
+    public bool PlayToOwnerOnly;
 }

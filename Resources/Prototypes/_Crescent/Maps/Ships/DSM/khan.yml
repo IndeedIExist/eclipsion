@@ -1,9 +1,9 @@
 - type: vessel
   id: Khan
-  name: БМС Кхан
+  name: DSM Khan
   description: |
-    Имперский сверхлёгкий истребитель.
-    LOADOUT: 1x 800c "Rimward" Hybrid Plasma Blaster
+    An imperial ultralight fighter armed with two plasma gatlings.
+    LOADOUT: 2x 150cc 'Starburst' Plasma Gatlings
     MINIMUM CREW: 1x Pilot
   price: 10000
   category: Small
@@ -12,22 +12,19 @@
 
 - type: gameMap
   id: Khan
-  mapName: 'БМС Кхан'
+  mapName: 'DSM Khan'
   mapPath: /Maps/_Crescent/Shuttles/DSM/khan.yml
   minPlayers: 0
   stations:
     Khan:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: ultralight
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Кхан {1}'
+          mapNameTemplate: 'DSM Khan {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

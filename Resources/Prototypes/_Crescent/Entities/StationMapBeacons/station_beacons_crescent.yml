@@ -348,15 +348,6 @@
     - type: NavMapBeacon
       defaultText: station-beacon-crescent-dispensary
 
-- type: entity
-  parent: DefaultStationBeaconSupply
-  id: StationBeaconCrescentDeedConsole
-  name: map beacon
-  suffix: DeedConsole
-  components:
-    - type: NavMapBeacon
-      defaultText: station-beacon-crescent-deedconsole
-
 # COLOR: ENGINEERING
 
 - type: entity

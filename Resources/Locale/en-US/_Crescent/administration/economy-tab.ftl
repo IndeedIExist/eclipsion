@@ -1,0 +1,16 @@
+admin-menu-economy-tab-type = Category
+admin-menu-economy-search = Search by name or ID...
+admin-menu-economy-refresh = Refresh
+admin-menu-economy-no-selection = Select an entry to edit its price
+admin-menu-economy-selected = { $name } ({ $id })
+admin-menu-economy-price = Price
+admin-menu-economy-save = Save
+admin-menu-economy-loading = Loading...
+admin-menu-economy-loaded = Loaded { $count } entries
+admin-menu-economy-invalid-price = Invalid price
+admin-menu-economy-saved = Saved price for { $name }
+admin-menu-economy-category-items = Items
+admin-menu-economy-category-vessels = Shuttles
+admin-menu-economy-category-treasury = Faction Treasuries
+admin-menu-economy-category-players = Player Banks
+admin-menu-economy-category-stocks = Stock Market

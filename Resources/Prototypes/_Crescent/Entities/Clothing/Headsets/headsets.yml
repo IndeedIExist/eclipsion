@@ -16,7 +16,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSP
+  id: ClothingHeadsetTFSC
   name: hired gun's headset
   description: To communicate with your brothers in arms.
   components:
@@ -33,7 +33,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSPInterdyne
+  id: ClothingHeadsetTFSCInterdyne
   name: combat medic's headset
   description: To communicate with your brothers in arms.
   components:
@@ -50,7 +50,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSPCyberdawn
+  id: ClothingHeadsetTFSCCyberdawn
   name: cyberdawn headset
   description: To communicate with your brothers in arms.
   components:
@@ -67,7 +67,7 @@
 
 - type: entity
   parent: ClothingHeadset
-  id: ClothingHeadsetNCSPSaws
+  id: ClothingHeadsetTFSCSaws
   name: shipbreaker's headset
   description: To communicate with your brothers in arms.
   components:
@@ -210,3 +210,152 @@
       sprite: _Crescent/Clothing/Ears/Headsets/cmm.rsi
     - type: Clothing
       sprite: _Crescent/Clothing/Ears/Headsets/cmm.rsi
+
+      #Planetfall Headsets
+
+- type: entity
+  parent: ClothingHeadsetPlanetfall
+  id: ClothingHeadsetNCWL_Planetfall
+  name: union headset
+  description: To communicate with your comrades.
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+          - EncryptionKeyNCWL
+    - type: Sprite
+      sprite: _Crescent/Clothing/Headsets/ncwl.rsi
+    - type: Clothing
+      sprite: _Crescent/Clothing/Headsets/ncwl.rsi
+
+- type: entity
+  parent: ClothingHeadsetPlanetfall
+  id: ClothingHeadsetEmpireCiv_Planetfall
+  name: imperial headset
+  description: To communicate with your brothers in arms.
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+          - EncryptionKeyEmpireCiv
+    - type: Sprite
+      sprite: _Crescent/Clothing/Headsets/imperial.rsi
+    - type: Clothing
+      sprite: _Crescent/Clothing/Headsets/imperial.rsi
+
+- type: entity
+  parent: ClothingHeadsetPlanetfall
+  id: ClothingHeadsetEmpire_Planetfall
+  name: imperial headset
+  description: To communicate with your brothers in arms.
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+          - EncryptionKeyEmpire
+          - EncryptionKeyEmpireCiv
+    - type: Sprite
+      sprite: _Crescent/Clothing/Headsets/imperial.rsi
+    - type: Clothing
+      sprite: _Crescent/Clothing/Headsets/imperial.rsi
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetTFSCCommand
+  name: hired gun's headset
+  description: To communicate with your brothers in arms.
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+          - EncryptionKeyTFSCCommand
+          - EncryptionKeySyndiesGorlex
+          - EncryptionKeyTraffic
+    - type: Sprite
+      sprite: Clothing/Ears/Headsets/base_syndicate.rsi
+    - type: Clothing
+      sprite: Clothing/Ears/Headsets/base_syndicate.rsi
+
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetTFSCInterdyneCommand
+  name: combat medic's headset
+  description: To communicate with your brothers in arms.
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+          - EncryptionKeyTFSCCommand
+          - EncryptionKeySyndiesInterdyne
+          - EncryptionKeyTraffic
+    - type: Sprite
+      sprite: Clothing/Ears/Headsets/base_syndicate.rsi
+    - type: Clothing
+      sprite: Clothing/Ears/Headsets/base_syndicate.rsi
+
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetTFSCCyberdawnCommand
+  name: cyberdawn headset
+  description: To communicate with your brothers in arms.
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+          - EncryptionKeyTFSCCommand
+          - EncryptionKeySyndiesCyberdawn
+          - EncryptionKeyTraffic
+    - type: Sprite
+      sprite: Clothing/Ears/Headsets/base_syndicate.rsi
+    - type: Clothing
+      sprite: Clothing/Ears/Headsets/base_syndicate.rsi
+
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetTFSCSawsCommand
+  name: shipbreaker's headset
+  description: To communicate with your brothers in arms.
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+          - EncryptionKeyTFSCCommand
+          - EncryptionKeySyndiesSaws
+          - EncryptionKeyTraffic
+    - type: Sprite
+      sprite: Clothing/Ears/Headsets/base_syndicate.rsi
+    - type: Clothing
+      sprite: Clothing/Ears/Headsets/base_syndicate.rsi
+
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetNCWLCommand
+  name: union headset
+  description: To communicate with your comrades.
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+          - EncryptionKeyNCWLCommand
+          - EncryptionKeyNCWL
+          - EncryptionKeyTraffic
+    - type: Sprite
+      sprite: _Crescent/Clothing/Headsets/ncwl.rsi
+    - type: Clothing
+      sprite: _Crescent/Clothing/Headsets/ncwl.rsi
+  
+- type: entity
+  parent: ClothingHeadsetPlanetfall
+  id: ClothingHeadsetNCWLCommand_Planetfall
+  name: union headset
+  description: To communicate with your comrades.
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+          - EncryptionKeyNCWLCommand
+          - EncryptionKeyNCWL
+    - type: Sprite
+      sprite: _Crescent/Clothing/Headsets/ncwl.rsi
+    - type: Clothing
+      sprite: _Crescent/Clothing/Headsets/ncwl.rsi

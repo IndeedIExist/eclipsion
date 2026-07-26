@@ -7,6 +7,10 @@
     Freeport:
       stationProto: StandardCrescentStation
       gridComponents:
+        - type: FactionStation # conquest win condition
+          faction: TFSC
+          fallAnnouncement: faction-station-fall-freeport
+          stationName: The Freeport
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
         - type: MapIcon
@@ -26,16 +30,16 @@
         - type: StationJobs
           overflowJobs: []
           availableJobs: #28 pop - ratgore
-            RingleaderNCSP: [ 1, 1 ]
-            LieutenantNCSP: [ 1, 1 ]
-            InfanteerNCSP: [ 4, 4 ]
-            TechnicianNCSP: [ 2, 2 ]
-            CoordinatorNCSP: [ 1, 1 ]
-            TraumasecNCSP: [ 3, 3 ]
-            RipperdocNCSP: [ 2, 2 ]
-            IntelligenceOfficerNCSP: [ 1, 1 ]
-            OperativeNCSP: [ 4, 4 ]
-            CyberdawnTechNCSP: [ 2, 2 ]
-            ForemanNCSP: [ 1, 1 ]
-            ShipbreakerNCSP: [ 6, 6 ]
+            RingleaderTFSC: [ 1, 1 ]
+            LieutenantTFSC: [ 1, 1 ]
+            InfanteerTFSC: [ 4, 4 ]
+            TechnicianTFSC: [ 2, 2 ]
+            CoordinatorTFSC: [ 1, 1 ]
+            TraumasecTFSC: [ 3, 3 ]
+            RipperdocTFSC: [ 2, 2 ]
+            IntelligenceOfficerTFSC: [ 1, 1 ]
+            OperativeTFSC: [ 4, 4 ]
+            CyberdawnTechTFSC: [ 2, 2 ]
+            ForemanTFSC: [ 1, 1 ]
+            ShipbreakerTFSC: [ 6, 6 ]
             # Contractor: [ 15, 15 ] - ratgore

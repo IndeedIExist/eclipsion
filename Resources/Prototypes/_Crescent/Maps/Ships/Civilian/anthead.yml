@@ -3,9 +3,9 @@
 
 - type: vessel
   id: Anthead
-  name: Мулова
+  name: Anthead
   description: |
-    Переработана из остатков кабины более крупного корабля. "Мулова" теперь служит свою вторую жизнь в качестве корабля сопровождения. На ней отсутствует искусственная гравитация. Но сойдет для любого наемника-новичка. Комплектуется базовыми инструментами для сборки.
+    Recycled from the remains of a larger ship's cockpit. The Anthead now serves its second lease on life as an escort ship. It's lacking on-board gravity. But it'll do for any first-time merc. Comes with basic salvage tools.
     LOADOUT: 2x 20mm 'Screamer' light autocannons
     MINIMUM CREW: 1x Pilot
   price: 17000
@@ -15,22 +15,19 @@
 
 - type: gameMap
   id: Anthead
-  mapName: 'Мулова'
+  mapName: 'Anthead'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/anthead.yml
   minPlayers: 0
   stations:
     Anthead:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'Мулова {1}'
+          mapNameTemplate: 'Anthead {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

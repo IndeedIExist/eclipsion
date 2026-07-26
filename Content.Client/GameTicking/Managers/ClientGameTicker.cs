@@ -37,10 +37,16 @@ namespace Content.Client.GameTicking.Managers
         [ViewVariables] public IReadOnlyDictionary<NetEntity, Dictionary<string, uint?>> JobsAvailable => _jobsAvailable;
         [ViewVariables] public IReadOnlyDictionary<NetEntity, string> StationNames => _stationNames;
 
+        private List<string> _gamemodeAvailableJobs = new();
+        private List<string> _gamemodeExcludedJobs = new();
+        [ViewVariables] public IReadOnlyList<string> GamemodeAvailableJobs => _gamemodeAvailableJobs;
+        [ViewVariables] public IReadOnlyList<string> GamemodeExcludedJobs => _gamemodeExcludedJobs;
+
         public event Action? InfoBlobUpdated;
         public event Action? LobbyStatusUpdated;
         public event Action? LobbyLateJoinStatusUpdated;
         public event Action<IReadOnlyDictionary<NetEntity, Dictionary<string, uint?>>>? LobbyJobsAvailableUpdated;
+        public event Action? GamemodeJobsUpdated;
 
         public override void Initialize()
         {
@@ -54,6 +60,7 @@ namespace Content.Client.GameTicking.Managers
             SubscribeNetworkEvent<RequestWindowAttentionEvent>(OnAttentionRequest);
             SubscribeNetworkEvent<TickerLateJoinStatusEvent>(LateJoinStatus);
             SubscribeNetworkEvent<TickerJobsAvailableEvent>(UpdateJobsAvailable);
+            SubscribeNetworkEvent<TickerGamemodeJobsEvent>(UpdateGamemodeJobs);
 
             _admin.AdminStatusUpdated += OnAdminUpdated;
             OnAdminUpdated();
@@ -102,6 +109,13 @@ namespace Content.Client.GameTicking.Managers
             }
 
             LobbyJobsAvailableUpdated?.Invoke(JobsAvailable);
+        }
+
+        private void UpdateGamemodeJobs(TickerGamemodeJobsEvent message)
+        {
+            _gamemodeAvailableJobs = message.AvailableJobs;
+            _gamemodeExcludedJobs = message.ExcludedJobs;
+            GamemodeJobsUpdated?.Invoke();
         }
 
         private void JoinLobby(TickerJoinLobbyEvent message)

@@ -43,8 +43,7 @@ public sealed class UnionfallCapturePointSystem : EntitySystem
 
 private void OnComponentInit(EntityUid uid, UnionfallCapturePointComponent component, ComponentInit args)
 {
-    // Announcement timer'ları buradan kaldırıldı.
-    // Tüm announcement'lar UnionfallAnnouncerSystem üzerinden yönetiliyor.
+    // Announcement timers live in UnionfallAnnouncerSystem, not here.
 }
 
     public override void Update(float frameTime)

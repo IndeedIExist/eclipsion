@@ -8681,7 +8681,7 @@ entities:
     - type: Transform
       pos: -9.5,0.5
       parent: 1
-- proto: ComputerDroneControl
+- proto: ComputerDroneControlNCWL
   entities:
   - uid: 782
     components:
@@ -11359,13 +11359,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 12.5,11.5
       parent: 1
-- proto: RatNCWLLightCarrierComputer
-  entities:
-  - uid: 1029
-    components:
-    - type: Transform
-      pos: 0.5,-0.5
-      parent: 1
 - proto: ReinforcedGirder
   entities:
   - uid: 1151
@@ -11639,35 +11632,6 @@ entities:
     components:
     - type: Transform
       pos: -8.714531,4.6029716
-      parent: 1
-- proto: SpawnPointLatejoin
-  entities:
-  - uid: 1180
-    components:
-    - type: Transform
-      pos: 7.5,-4.5
-      parent: 1
-- proto: SpawnPointNCWLPartisan
-  entities:
-  - uid: 1181
-    components:
-    - type: Transform
-      pos: 7.5,-4.5
-      parent: 1
-  - uid: 1182
-    components:
-    - type: Transform
-      pos: 6.5,-3.5
-      parent: 1
-  - uid: 1183
-    components:
-    - type: Transform
-      pos: 5.5,-3.5
-      parent: 1
-  - uid: 1184
-    components:
-    - type: Transform
-      pos: 7.5,-3.5
       parent: 1
 - proto: StairStageDark
   entities:

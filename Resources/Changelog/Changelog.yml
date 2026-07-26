@@ -1,16 +1,226 @@
 Entries:
-- author: Lost soul
+- author: Saint
   changes:
-    - message: Fly you fools!
-      type: Fix
-  id: 5605
-  time: '101-07-07T03:23:53.0000000+00:00'
-  url: https://api.github.com/repos/space-wizards/space-station-14/pulls/23654
+    - message: Added the Stock Market and its Economic Console, letting players buy and sell company shares.
+      type: Add
+    - message: Added the Faction Treasury and Taxation console for managing and taxing faction funds.
+      type: Add
+  id: 6001
+  time: '2026-07-11T00:00:00.0000000+00:00'
+  url: null
 
-- author: St. Serraine
+- author: Taleryn
   changes:
-    - message: Love Blooms
+    - message: Rebranded internal content and assets from Rat to Crescent/Eclipsion (parallaxes, sprites, localization).
+      type: Tweak
+  id: 6002
+  time: '2026-07-12T00:00:00.0000000+00:00'
+  url: null
+
+- author: Taleryn
+  changes:
+    - message: Reworked the Overwatch console with a new panel-based interface.
+      type: Tweak
+    - message: Rebuilt the Diplomacy console UI.
+      type: Tweak
+    - message: Added the Mainframe console with faction announcement broadcasting.
+      type: Add
+    - message: Added a Payment console for issuing faction payroll and bonuses.
+      type: Add
+    - message: Added a gambling cartridge for PDAs.
+      type: Add
+    - message: Reworked the Alert console panel.
+      type: Tweak
+  id: 6003
+  time: '2026-07-14T00:00:00.0000000+00:00'
+  url: null
+
+- author: Taleryn
+  changes:
+    - message: Overhauled the guidebook with updated Hullrot/Eclipsion lore and gameplay entries.
+      type: Tweak
+    - message: Reworked the NCWL role selection menu.
+      type: Tweak
+  id: 6004
+  time: '2026-07-14T00:00:00.0000000+00:00'
+  url: null
+
+- author: Taleryn
+  changes:
+    - message: Reorganized faction rank structures for ATH, CMM, DSM, NCWL, SHI, SRM and TFSC.
+      type: Tweak
+    - message: Adjusted the NCWL and DSM role menus.
+      type: Tweak
+    - message: Cleaned up and archived unused shuttle and station maps into a dedicated folder.
+      type: Tweak
+  id: 6005
+  time: '2026-07-15T00:00:00.0000000+00:00'
+  url: null
+
+- author: Taleryn
+  changes:
+    - message: Updated TFSC ship maps, jobs and loadouts.
+      type: Tweak
+    - message: Updated empire role and job supervisor text.
+      type: Tweak
+  id: 6006
+  time: '2026-07-16T00:00:00.0000000+00:00'
+  url: null
+
+- author: Taleryn
+  changes:
+    - message: Added the Faction Recruitment console.
+      type: Add
+    - message: Updated the Hyperwar and Unionfall maps and their game modes.
+      type: Tweak
+    - message: Tweaked the shipyard console.
+      type: Tweak
+    - message: Removed the round-end credits screen.
+      type: Remove
+    - message: Fixed various errors and content issues.
       type: Fix
-  id: 5606
-  time: '101-01-07T03:23:53.0000000+00:00'
+  id: 6007
+  time: '2026-07-18T00:00:00.0000000+00:00'
+  url: null
+
+- author: Taleryn
+  changes:
+    - message: Fixed lathes and microforges ignoring machine part upgrades. Better manipulators speed up printing and better matter bins cut material cost again.
+      type: Fix
+    - message: Fixed severe server lag when printing large batches in lathes and ore processors.
+      type: Fix
+    - message: Research servers are now faction-locked. A lathe only draws research from its own faction's server, so dropping a microforge onto someone else's grid no longer grants access to their research.
+      type: Tweak
+    - message: Machines you construct now belong to your faction rather than to whatever grid they were built on.
+      type: Tweak
+    - message: Imperial and Union microforges can now only be operated by members of their own faction.
+      type: Tweak
+    - message: Lathe recipes are now sorted into categories, including new Armor, Clothing, Medical, Ship parts, Power and Implants filters. The microforge's recipe list is browsable instead of one flat alphabetical wall.
+      type: Add
+  id: 6008
+  time: '2026-07-20T00:00:00.0000000+00:00'
+  url: null
+
+- author: Taleryn
+  changes:
+    - message: Reworked the sector stock market. The four faction companies no longer drift at random - their price only moves when something actually happens in the round, such as casualties, a station falling, treasury swings or a won war. Reading the war correctly is now the whole skill of trading them.
+      type: Tweak
+    - message: Added two neutral companies, the Free Merchants Network and Trans-Cluster Construction, which profit from the chaos the factions generate and give traders somewhere to hedge.
+      type: Add
+    - message: Share prices and player portfolios now survive round and server restarts. A faction that spent three rounds losing starts the fourth one cheap.
+      type: Add
+    - message: Added a news tab to the stock market cartridge, explaining why each price moved.
+      type: Add
+    - message: Companies whose faction is not fielded in the current game mode are delisted for the round. Existing holdings are untouched and still show under your portfolio, they just cannot be traded until that faction is back.
+      type: Tweak
+    - message: Going to war now seizes your holdings in the enemy faction's company. The forced sale pays the floor price rather than the market price, so being caught holding enemy stock when the shooting starts is a real loss.
+      type: Add
+    - message: Added a stocks category to the admin economy tab, and a stockmarket console command for listing, freezing, resetting and shocking the market.
+      type: Add
+    - message: Faction relations now survive round and server restarts, and the faction status widget fills in as soon as you join instead of staying blank until someone works a console.
+      type: Fix
+    - message: Fixed radio TTS playing a separate overlapping copy of every line, one per nearby listener.
+      type: Fix
+    - message: TTS now starts at a low volume instead of being silent by default, and no longer errors when a speaker disconnects mid-sentence.
+      type: Fix
+    - message: Fixed the adminvoice command finding no voices on packaged servers.
+      type: Fix
+    - message: Shuttle console ID cards are now locked unless the console is in captain access mode, and are ejected when the console is closed.
+      type: Fix
+    - message: Fixed admin permissions, poker hand names and diplomacy labels breaking on servers whose host machine runs a Turkish system locale.
+      type: Fix
+    - message: Translated the remaining Russian text in the alert console interface.
+      type: Tweak
+    - message: Lathes wired to a material silo no longer go blind when the silo loses power. They fall back to whatever is loaded in their own hopper instead of reporting empty while the interface still showed the materials sitting there.
+      type: Fix
+    - message: A silo losing power no longer drags every connected lathe's materials into itself, where nobody could reach them until power came back.
+      type: Fix
+    - message: Ore processors now hold onto a run and hand the whole thing over at once when the queue finishes, instead of dropping a sheet at a time. Queue a shift's worth of ore in one go and collect the stacks at the end. Cutting the power hands over whatever it managed to make.
+      type: Tweak
+    - message: The lathe build queue now lists repeated items as one line with a count, so a few hundred queued sheets no longer bog down the interface.
+      type: Tweak
+  id: 6009
+  time: '2026-07-21T00:00:00.0000000+00:00'
+  url: null
+- author: Taleryn
+  changes:
+    - message: The Taypani Freestations Coalition is no longer four squabbling companies. Gorlex, Interdyne, Cyberdawn and the Shipfitters are now one faction with one keyring, under a single Ringleader - the old company names survive only as the names of its departments.
+      type: Tweak
+    - message: The Coalition now fields a single station, the rebuilt Freeport, in place of Jackal, Hayes, Dochenskaya and the Anvil. It counts for the conquest win condition like every other faction capital.
+      type: Tweak
+    - message: The Freeport has a command mainframe, a payroll console, a taxation console and a treasury vault - the vault sits in the Ringleader's office and only the Ringleader can open it. Everyone else trips the alarm.
+      type: Add
+    - message: "Tatsumoto finally has the economy it was written for: a Shinohara command mainframe on the bridge, and payroll, taxation and treasury consoles in the executive's office."
+      type: Add
+    - message: Coalition command staff now carry a single Coalition access elevator covering every department instead of one per company.
+      type: Tweak
+    - message: Treasury vaults now run on station power. An unpowered vault cannot be robbed, and cutting the power mid-heist kills the siphon - the thieves keep only what has already come out. It locks the owners out too, so it is a real decision.
+      type: Tweak
+    - message: A faction's own crew can no longer rob its treasury vault. Members without command access are simply turned away instead of tripping the alarm and starting a heist - only outsiders can crack a vault. Membership is read off the person, so a stolen ID card will not pass you off as staff.
+      type: Fix
+    - message: The Coalition's treasury, taxation and payroll consoles now open for the whole command tier - ringleader, lieutenant, coordinator, foreman and intelligence officer - rather than the ringleader alone.
+      type: Fix
+    - message: Added recruitment terminals to the Freeport and to Tatsumoto, so both factions can hire on shift like the League and the Mandate already could.
+      type: Add
+    - message: The recruitment console can no longer demote a faction's own command. It used to recognise them by chat rank alone, which meant Shinohara - who hands out no ranks at all - could reassign its own executives down to shop floor. It now also refuses anyone whose job belongs to the faction but is off the console's hiring list.
+      type: Fix
+    - message: Deed consoles and shipyard manufactorums have been stripped out of every station. Neither machine has a place in the sector's economy any more, and the Shinohara research node and flatpack that built the manufactorum are gone with them.
+      type: Remove
+    - message: Shuttle hull plating, electronics and engine components are no longer manufactured. LPCs have been printed straight from ore for a while now, so the intermediate parts were dead weight.
+      type: Remove
+  id: 6010
+  time: '2026-07-21T00:00:00.0000000+00:00'
+  url: null
+- author: Taleryn
+  changes:
+    - message: updated taleryn approved
+      type: Tweak
+  id: 6011
+  time: '2026-07-21T00:00:00.0000000+00:00'
+  url: null
+- author: Taleryn
+  changes:
+    - message: Anyone can now pay into a faction treasury vault by clicking it with cash in hand. Drawing money out is still command only, and only an authorized member can call off a robbery in progress - a stranger's deposit no longer counts as re-securing the vault.
+      type: Tweak
+    - message: Depositing cash into a vault you don't have access to no longer sounds the intrusion alarm or denies you outright.
+      type: Fix
+    - message: The Coalition now has its own overwatch console and squad tablet. Byblik was running a Cyberdawn-branded one whose roster was permanently empty, since its crew are all TFSC.
+      type: Fix
+    - message: Folded the leftover Interdyne, Shipfitters, Gorlex and Cyberdawn command mainframes, overwatch consoles, squad tablets and payroll consoles into their single TFSC equivalents. The charters merged long ago; nothing granted those subfaction ids any more, so all sixteen were unusable and unplaced.
+      type: Remove
+  id: 6012
+  time: '2026-07-26T00:00:00.0000000+00:00'
+  url: null
+- author: Taleryn
+  changes:
+    - message: The NCWL DS3 Militant now fires slower (12 -> 8 rounds a second). It was putting out more raw damage per second than any other 9x39mm weapon while also carrying the biggest magazines, on a round that already shrugs off most armour.
+      type: Tweak
+  id: 6013
+  time: '2026-07-26T00:00:00.0000000+00:00'
+  url: null
+- author: Taleryn
+  changes:
+    - message: Hyperwar armoury racks now hand out tools. Every faction's automated war armoury has a Tools and a Construction Supplies section - welders, wrench, screwdriver, wirecutters, crowbar, multitool, network configurator, jaws of life, power drill, gas analyser, t-ray, holofan projector, extinguisher, insulated gloves, welding mask and goggles, plus steel, plasteel, glass, cabling, power cells and a welding fuel tank.
+      type: Add
+    - message: The ship ordnance depot was missing whole calibres. 88mm flak (both the Corpus feeder box and the older Prince box), 60mm rocket pod magazines in all four patterns, and 240mm torpedoes are now stocked, along with loose 20/35/50mm rounds for topping off a part-spent drum.
+      type: Fix
+    - message: The ship ordnance depot also stocks the legacy platforms that still sit on hulls in the map pool - 20mm Vulcan boxes, 43mm slugthrower DU and HE boxes, 90mm automortar, 60mm Needler, Lancer and Hephaestus shells, Idna and Gargoyle torpedoes, 48mm rocket magazines and Type 99 120mm shells. It previously carried inert and EMP slugthrower ammunition but none of the ammunition that actually does damage.
+      type: Fix
+    - message: Coolant is now available at the ship ordnance depot. The 320mm accelerator cannon will not fire a shot without it, and there was nowhere in hyperwar to get any.
+      type: Fix
+  id: 6014
+  time: '2026-07-26T00:00:00.0000000+00:00'
+  url: null
+- author: Taleryn
+  changes:
+    - message: Four narcotics were showing their raw text keys instead of a name and description. JV-102, Naiser, Fall and Exile-Minus now read properly wherever the reagent is named.
+      type: Fix
+    - message: Five research technologies had no name at all and listed their internal id in the research console. They are now Combat Autoinjectors, Cyberdawn Boarding Armaments, Praetorian-Pattern LPC, Imperial Fighter Craft and SHI Heavy Destroyers.
+      type: Fix
+    - message: The Tracking Pinpointer in the SRM dogtag store had no icon. The listing was pointing at a sprite state that does not exist.
+      type: Fix
+    - message: The surplus Proletar and Matusa shotguns no longer offer reverse engineering. They pointed at lathe recipes that were never added, so the machine could never learn anything from them.
+      type: Tweak
+  id: 6015
+  time: '2026-07-26T00:00:00.0000000+00:00'
   url: null

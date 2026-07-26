@@ -1,0 +1,8 @@
+- type: microwaveMealRecipe
+  id: RecipeRatLollipop
+  name: lolipoprecipe
+  result: RatLollipop
+  time: 5
+  reagents:
+    Sugar: 15
+    Water: 10 

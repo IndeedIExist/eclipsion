@@ -5,8 +5,8 @@
   id: Corsair
   name: TS Corsair
   description: |
-    A fast destroyer, its missiles wont do alot against shields but they shred armor.
-    LOADOUT: 1x 120mm 'Anvil' mono-barreled artillery cannon, 6x 60mm 'Azimuth' LMLs
+    A fast destroyer, its missiles won't do a lot against shields but they shred armor.
+    LOADOUT: 2x 120mm 'Anvil' Artillery, 2x 60mm 'Azimuth' Rocket Pod, 1x 300cc 'Bolter' Plasma Caster
     MINIMUM CREW: 1x Pilot, 1-2x Loaders
   price: 100000
   category: Small
@@ -21,9 +21,6 @@
   stations:
     Corsair:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:

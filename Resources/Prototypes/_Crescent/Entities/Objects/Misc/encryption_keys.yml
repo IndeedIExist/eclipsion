@@ -7,7 +7,6 @@
   - type: EncryptionKey
     channels:
     - NCWL
-    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -23,7 +22,6 @@
   - type: EncryptionKey
     channels:
     - NCWL
-    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -33,7 +31,7 @@
 - type: entity
   parent: EncryptionKey
   id: EncryptionKeySyndies
-  name: ncsp encryption key
+  name: tfsc encryption key
   description: An encryption key used by the Syndicate.
   components:
   - type: EncryptionKey
@@ -126,7 +124,6 @@
     channels:
     - Imperial
     - EmpireCiv
-    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -142,7 +139,6 @@
   - type: EncryptionKey
     channels:
     - EmpireCiv
-    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -263,3 +259,37 @@
     layers:
     - state: crypt_silver
     - state: common_label
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyTFSCCommand
+  name: TFSC Command encryption key
+  description: An encryption key used by the Syndicate Command.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Syndicate
+    - SyndicateCommand
+    - Common
+    defaultChannel: Common
+  - type: Sprite
+    layers:
+    - state: crypt_gray
+    - state: common_label
+
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyNCWLCommand
+  name: NCWL Command encryption key
+  description: An encryption key used by the Union.
+  components:
+  - type: EncryptionKey
+    channels:
+    - NCWL
+    - NCWLCommand
+    - Common
+    defaultChannel: Common
+  - type: Sprite
+    layers:
+    - state: crypt_silver
+    - state: com_label

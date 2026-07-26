@@ -1,0 +1,111 @@
+- type: job
+  id: planetfall_governor
+  name: Olywier
+  description: job-description-governor
+  playTimeTracker: JobGovernorDSM
+  weight: 100
+  startingGear: planetfall_governor_gear
+  alwaysUseSpawner: true
+  requireAdminNotify: true
+  whitelisted: false
+  icon: "JobIconImperialGovernor"
+  chatNameColor: "#ffd000"
+  chatAmplification:
+    bubbleScale: 1.095
+    shoutBubbleScale: 1.35
+    radioScale: 1.39
+    radioBold: true
+  supervisors: job-supervisors-imperial
+  canBeAntag: false
+  requirements:
+    - !type:FactionRequirement
+      factionID: "DSM"
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+    - !type:CharacterOverallTimeRequirement
+      min: 100000
+    - !type:SexRequirement
+      sex: Male
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Muted
+        - Pacifist
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: HullrotFaction
+        faction: DSM
+      - type: LanguageAdder
+        addSpoken:
+          - HighImperial
+          - LowImperial
+          - Tradeband
+        addUnderstood:
+          - HighImperial
+          - LowImperial
+          - Tradeband
+  access:
+  - EmergencyShuttleRepealAll
+  - Captain
+  - HeadOfPersonnel
+  - ChiefEngineer
+  - ChiefMedicalOfficer
+  - HeadOfSecurity
+  - ResearchDirector
+  - Frontier
+  - Cryogenics
+  - Security
+  - Detective
+  - Armory
+  - Brig
+  - Lawyer
+  - Engineering
+  - Mail
+  - Medical
+  - Quartermaster
+  - Salvage
+  - Cargo
+  - Research
+  - StationTrafficController
+  - Maintenance
+  - External
+  - Theatre
+  - Bar
+  - Chemistry
+  - Kitchen
+  - Chapel
+  - Hydroponics
+  - Atmospherics
+  - Command
+  - Service
+  - LogisticsWealth
+  - ScribesGuild
+  - Archmaester
+  - Advocatus
+  - EmpireNoble
+  - EmpireAdjutant
+  - DSMFunds
+  - EmpireGovernor
+  - EmpireSoldier
+  - Empire
+  - Mercenary
+
+- type: startingGear
+  id: planetfall_governor_gear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitImperialGovernor
+    shoes: ClothingShoesBootsImperialGovernorBoots
+    head: ClothingHeadHoodMysta
+    neck: ClothingNeckCloakImperialGovernor
+    back: ClothingBackpackSatchelLeather
+    gloves: ClothingHandsGlovesImperialGovernorGloves
+    id: GovernorPDA
+    ears: ClothingHeadsetEmpire_Planetfall
+    pocket2: RomaineBible
+  storage:
+    back:
+    - CigarRoyalCase
+    - FlippoEngravedLighter
+    - LuxuryPen

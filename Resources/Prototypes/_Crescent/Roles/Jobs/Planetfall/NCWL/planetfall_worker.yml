@@ -1,0 +1,48 @@
+- type: job
+  id: planetfall_worker
+  name: job-name-ncwl-newbie
+  description: job-description-ncwl-newbie
+  playTimeTracker: JobWorkerNCWL
+  weight: 1
+  startingGear: planetfall_worker_gear
+  alwaysUseSpawner: true
+  requireAdminNotify: false
+  icon: "JobIconNCWLWorker"
+  supervisors: job-supervisors-ncwl-worker
+  canBeAntag: false
+  requirements:
+    - !type:FactionRequirement
+      factionID: "NCWL"
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - Voidborn
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: HullrotFaction
+        faction: NCWL
+      - type: LanguageAdder
+        addSpoken:
+          - Dockta
+        addUnderstood:
+          - Dockta
+  access:
+  - Command
+  - Maintenance
+  - Service
+  - NCWLGeneral
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: planetfall_worker_gear
+  equipment:
+    shoes: ClothingShoesBootsSalvage
+    jumpsuit: ClothingUniformJumpsuitNCWLTrainee
+    id: NCWLWorkerPDA
+    belt: ClothingBeltSalvageWebbingFilledNF
+    back: ClothingBackpackNCWL
+    ears: ClothingHeadsetNCWL_Planetfall
+    head: ClothingHeadHatNCWLCapsoft

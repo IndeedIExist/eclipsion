@@ -3,8 +3,8 @@
 
 - type: vessel
   id: Bogatyr
-  name: ЛРНП Богатырь
-  description: Продвинутый коммунарский тяжёлый эскорт.
+  name: NCWL Bogatyr
+  description: An advanced communard heavy escort.
   price: 90000
   category: Small
   group: None
@@ -12,22 +12,19 @@
 
 - type: gameMap
   id: Bogatyr
-  mapName: 'ЛРНП Богатырь'
+  mapName: 'NCWL Bogatyr'
   mapPath: /Maps/_Crescent/Shuttles/NCWL/bogatyr.yml
   minPlayers: 0
   stations:
     Bogatyr:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
-            state: corvette
+            state: destroyer
         - type: StationNameSetup
-          mapNameTemplate: 'ЛРНП Богатырь {1}'
+          mapNameTemplate: 'NCWL Bogatyr {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

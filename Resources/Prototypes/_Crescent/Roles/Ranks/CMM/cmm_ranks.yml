@@ -1,0 +1,90 @@
+# CMM Ranks
+- type: rank
+  id: RatRankCMMMarshalHigh
+  name: Sector Marshal
+  prefix: Sect. Marshal
+  paygrade: CMM-C5
+
+- type: rank
+  id: RatRankCMMMarshalLead
+  name: Senior Marshal
+  prefix: Sr. Marshal
+  paygrade: CMM-C4
+
+- type: rank
+  id: RatRankCMMMarshalSenior
+  name: Marshal
+  prefix: Marshal
+  paygrade: CMM-C3
+
+- type: rank
+  id: RatRankCMMMarshalMiddle
+  name: 2nd Marshal
+  prefix: 2nd Marshal
+  paygrade: CMM-C2
+
+- type: rank
+  id: RatRankCMMMarshalJunior
+  name: Militia Major
+  prefix: Major
+  paygrade: CMM-C1
+
+- type: rank
+  id: RatRankCMMMinutemanTop
+  name: Militia Captain
+  prefix: Captain
+  paygrade: CMM10
+
+- type: rank
+  id: RatRankCMMMinutemanFirst
+  name: 1st Lieutenant (Militia)
+  prefix: 1st Lt.
+  paygrade: CMM9
+
+- type: rank
+  id: RatRankCMMMinutemanSecond
+  name: 2nd Lieutenant (Militia)
+  prefix: 2nd Lt.
+  paygrade: CMM8
+
+- type: rank
+  id: RatRankCMMMinutemanThird
+  name: Gunnery Sergeant (Militia)
+  prefix: Gunn. Sgt.
+  paygrade: CMM7
+
+- type: rank
+  id: RatRankCMMMinutemanSrLead
+  name: Staff Sergeant (Militia)
+  prefix: Staff Sgt.
+  paygrade: CMM6
+
+- type: rank
+  id: RatRankCMMMinutemanLead
+  name: Sergeant (Militia)
+  prefix: Sergeant
+  paygrade: CMM5
+
+- type: rank
+  id: RatRankCMMMinutemanSenior
+  name: Corporal (Militia)
+  prefix: Corporal
+  paygrade: CMM4
+
+- type: rank
+  id: RatRankCMMMinutemanMiddle
+  name: Junior Corporal (Militia)
+  prefix: Jr. Corporal
+  paygrade: CMM3
+
+- type: rank
+  id: RatRankCMMMinutemanJunior
+  name: Private First Class (Militia)
+  prefix: PFC
+  paygrade: CMM2
+
+- type: rank
+  id: RatRankCMMMinutemanNovice
+  name: Private (Militia)
+  prefix: Private
+  paygrade: CMM1

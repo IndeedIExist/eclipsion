@@ -11,5 +11,5 @@
     <Control SetSize="21 21">
         <TextureButton Name="Help" StyleClasses="HelpButton"/>
     </Control>
-    <BoxContainer Name="OptionsContainer" SetWidth="400"/>
+    <BoxContainer Name="OptionsContainer" HorizontalExpand="True"/>
 </BoxContainer>

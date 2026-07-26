@@ -1,7 +1,18 @@
 # MARK: Uniforms
 
 - type: latheRecipe
+  id: ClothingOuterArmorMVDCoat
+  category: Armor
+  result: ClothingOuterArmorMVDCoat
+  completetime: 4
+  materials:
+    Cloth: 2000
+    Gold: 1000
+    Plastic: 500
+
+- type: latheRecipe
   id: ClothingOuterNCWLEVA
+  category: Clothing
   result: ClothingOuterNCWLEVA
   completetime: 2
   materials:
@@ -10,6 +21,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetNCWLEVA
+  category: Armor
   result: ClothingHeadHelmetNCWLEVA
   completetime: 2
   materials:
@@ -19,6 +31,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatNCWLCapsoft
+  category: Clothing
   result: ClothingHeadHatNCWLCapsoft
   completetime: 2
   materials:
@@ -26,6 +39,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatNCWLCapsoftMedical
+  category: Clothing
   result: ClothingHeadHatNCWLCapsoftMedical
   completetime: 2
   materials:
@@ -33,6 +47,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatNCWLTanker
+  category: Clothing
   result: ClothingHeadHatNCWLTanker
   completetime: 2
   materials:
@@ -40,6 +55,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitNCWLMedic
+  category: Clothing
   result: ClothingUniformJumpsuitNCWLMedic
   completetime: 2
   materials:
@@ -47,6 +63,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitNCWLArtificer
+  category: Clothing
   result: ClothingUniformJumpsuitNCWLArtificer
   completetime: 2
   materials:
@@ -54,6 +71,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitNCWL
+  category: Clothing
   result: ClothingUniformJumpsuitNCWL
   completetime: 2
   materials:
@@ -61,6 +79,7 @@
 
 - type: latheRecipe
   id: ClothingMaskNCWLBalaclava
+  category: Clothing
   result: ClothingMaskNCWLBalaclava
   completetime: 2
   materials:
@@ -68,6 +87,7 @@
 
 - type: latheRecipe
   id: ClothingEyesGlassesNCWL
+  category: Clothing
   result: ClothingEyesGlassesNCWL
   completetime: 2
   materials:
@@ -76,6 +96,7 @@
 
 - type: latheRecipe
   id: ClothingMaskNCWLGasmask
+  category: Clothing
   result: ClothingMaskNCWLGasmask
   completetime: 2
   materials:
@@ -84,6 +105,7 @@
 
 - type: latheRecipe
   id: ClothingBeltNCWLWebbing
+  category: Clothing
   result: ClothingBeltNCWLWebbing
   completetime: 2
   materials:
@@ -93,6 +115,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorNCWLLightBodyarmor
+  category: Armor
   result: ClothingOuterArmorNCWLLightBodyarmor
   completetime: 2
   materials:
@@ -101,6 +124,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetNCWLBasic
+  category: Armor
   result: ClothingHeadHelmetNCWLBasic
   completetime: 2
   materials:
@@ -109,6 +133,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorNCWLHeavyCarapace
+  category: Armor
   result: ClothingOuterArmorNCWLHeavyCarapace
   completetime: 2
   materials:
@@ -118,6 +143,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetNCWLHeavy
+  category: Armor
   result: ClothingHeadHelmetNCWLHeavy
   completetime: 2
   materials:
@@ -126,6 +152,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetNCWLRiot
+  category: Armor
   result: ClothingHeadHelmetNCWLRiot
   completetime: 2
   materials:
@@ -134,6 +161,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorNCWLEngi
+  category: Armor
   result: ClothingOuterArmorNCWLEngi
   completetime: 2
   materials:
@@ -143,6 +171,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorNCWLLogi
+  category: Armor
   result: ClothingOuterArmorNCWLLogi
   completetime: 2
   materials:
@@ -152,6 +181,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorNCWLCarapaceVrachev
+  category: Armor
   result: ClothingOuterArmorNCWLCarapaceVrachev
   completetime: 2
   materials:
@@ -161,6 +191,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorNCWLMedi
+  category: Armor
   result: ClothingOuterArmorNCWLMedi
   completetime: 2
   materials:
@@ -170,6 +201,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorNCWLCarapaceDoktor
+  category: Armor
   result: ClothingOuterArmorNCWLCarapaceDoktor
   completetime: 2
   materials:
@@ -180,6 +212,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorNCWLCarapaceKapitan
+  category: Armor
   result: ClothingOuterArmorNCWLCarapaceKapitan
   completetime: 2
   materials:
@@ -189,6 +222,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorNCWLCarapace
+  category: Armor
   result: ClothingOuterArmorNCWLCarapace
   completetime: 2
   materials:
@@ -198,6 +232,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorNCWLOpremeCarapace
+  category: Armor
   result: ClothingOuterArmorNCWLOpremeCarapace
   completetime: 2
   materials:
@@ -210,6 +245,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitNCWLEngi
+  category: Armor
   result: ClothingOuterHardsuitNCWLEngi
   completetime: 2
   materials:
@@ -219,6 +255,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitNCWLMedi
+  category: Armor
   result: ClothingOuterHardsuitNCWLMedi
   completetime: 2
   materials:
@@ -229,6 +266,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitNCWLInfantry
+  category: Armor
   result: ClothingOuterHardsuitNCWLInfantry
   completetime: 2
   materials:
@@ -239,6 +277,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitNCWLPetya
+  category: Armor
   result: ClothingOuterHardsuitNCWLPetya
   completetime: 2
   materials:
@@ -249,6 +288,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitNCWLJuggernaut
+  category: Armor
   result: ClothingOuterHardsuitNCWLJuggernaut
   completetime: 2
   materials:
@@ -262,6 +302,7 @@
 
 - type: latheRecipe
   id: WeaponPistolComrade
+  category: Weapons
   result: WeaponPistolComrade
   completetime: 2
   materials:
@@ -270,6 +311,7 @@
 
 - type: latheRecipe
   id: WeaponPistolT91
+  category: Weapons
   result: WeaponPistolT91
   completetime: 2
   materials:
@@ -279,6 +321,7 @@
 
 - type: latheRecipe
   id: WeaponRevolverPython
+  category: Weapons
   result: WeaponRevolverPython
   completetime: 2
   materials:
@@ -287,6 +330,7 @@
 
 - type: latheRecipe
   id: WeaponRifleFAL
+  category: Weapons
   result: WeaponRifleFAL
   completetime: 2
   materials:
@@ -296,6 +340,7 @@
 
 - type: latheRecipe
   id: WeaponRifleNCWLRezerv
+  category: Weapons
   result: WeaponRifleNCWLRezerv
   completetime: 2
   materials:
@@ -305,6 +350,7 @@
 
 - type: latheRecipe
   id: WeaponShotgunProletar
+  category: Weapons
   result: WeaponShotgunProletar
   completetime: 2
   materials:
@@ -314,6 +360,7 @@
 
 - type: latheRecipe
   id: WeaponShotgunDoubleBarreledNCWL
+  category: Weapons
   result: WeaponShotgunDoubleBarreledNCWL
   completetime: 2
   materials:
@@ -323,6 +370,7 @@
 
 - type: latheRecipe
   id: WeaponShotgunToz123
+  category: Weapons
   result: WeaponShotgunToz123
   completetime: 2
   materials:
@@ -332,6 +380,7 @@
 
 - type: latheRecipe
   id: WeaponRifleNCWLBatanya
+  category: Weapons
   result: WeaponRifleNCWLBatanya
   completetime: 2
   materials:
@@ -341,6 +390,7 @@
 
 - type: latheRecipe
   id: WeaponSniperNCWLNovomosin
+  category: Weapons
   result: WeaponSniperNCWLNovomosin
   completetime: 2
   materials:
@@ -350,6 +400,7 @@
 
 - type: latheRecipe
   id: WeaponSniperMolot
+  category: Weapons
   result: WeaponSniperMolot
   completetime: 2
   materials:
@@ -360,6 +411,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunMilitant
+  category: Weapons
   result: WeaponSubMachineGunMilitant
   completetime: 2
   materials:
@@ -370,6 +422,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunBloodhound
+  category: Weapons
   result: WeaponSubMachineGunBloodhound
   completetime: 2
   materials:
@@ -378,6 +431,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunNCWLWatchdog
+  category: Weapons
   result: WeaponSubMachineGunNCWLWatchdog
   completetime: 2
   materials:
@@ -387,6 +441,7 @@
 
 - type: latheRecipe
   id: WeaponLauncherGM94
+  category: Weapons
   result: WeaponLauncherGM94
   completetime: 2
   materials:
@@ -397,6 +452,7 @@
 
 - type: latheRecipe
   id: WeaponLightMachineGunConscript
+  category: Weapons
   result: WeaponLightMachineGunConscript
   completetime: 2
   materials:
@@ -409,116 +465,177 @@
 
 - type: latheRecipe
   id: VanguardLPC
+  category: Shipyard
   result: ShipVoucherVanguard
   completetime: 1
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 1500
-    ShipHull: 4000
+    Steel: 6300
+    Plasma: 3200
+    Silver: 2800
+    Gold: 1200
+    Copper: 600
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: LodkaLPC
+  category: Shipyard
   result: ShipVoucherLodka
   completetime: 1
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 2000
-    ShipHull: 3000
+    Steel: 5600
+    Plasma: 2400
+    Silver: 2800
+    Gold: 1400
+    Copper: 800
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: MolotLPC
+  category: Shipyard
   result: ShipVoucherMolot
   completetime: 1
   materials:
-    StarshipEngineComponents: 2500
-    ShipComponents: 4500
-    ShipHull: 4000
+    Steel: 9300
+    Plasma: 3200
+    Silver: 5200
+    Gold: 2800
+    Copper: 1800
+    Tungsten: 500
+    Uranium: 500
 
 - type: latheRecipe
   id: KrechetLPC
+  category: Shipyard
   result: ShipVoucherKrechet
   completetime: 1
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 1500
-    ShipHull: 1000
+    Steel: 2700
+    Plasma: 800
+    Silver: 1600
+    Gold: 1200
+    Copper: 600
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: IvarodLPC
+  category: Shipyard
   result: ShipVoucherIvarod
   completetime: 1
   materials:
-    StarshipEngineComponents: 4000
-    ShipComponents: 4000
-    ShipHull: 9000
+    Steel: 14800
+    Plasma: 7200
+    Silver: 6800
+    Gold: 3200
+    Copper: 1600
+    Tungsten: 800
+    Uranium: 800
 
 - type: latheRecipe
   id: HindLPC
+  category: Shipyard
   result: ShipVoucherHind
   completetime: 1
   materials:
-    StarshipEngineComponents: 4000
-    ShipComponents: 5000
-    ShipHull: 6000
+    Steel: 12200
+    Plasma: 4800
+    Silver: 6400
+    Gold: 3600
+    Copper: 2000
+    Tungsten: 800
+    Uranium: 800
 
 - type: latheRecipe
   id: GargutLPC
+  category: Shipyard
   result: ShipVoucherGargut
   completetime: 1
   materials:
-    StarshipEngineComponents: 7000
-    ShipComponents: 8000
-    ShipHull: 11000
+    Steel: 21200
+    Plasma: 8800
+    Silver: 10800
+    Gold: 6000
+    Copper: 3200
+    Tungsten: 1400
+    Uranium: 1400
 
 - type: latheRecipe
   id: SternLPC
+  category: Shipyard
   result: ShipVoucherStern
   completetime: 1
   materials:
-    StarshipEngineComponents: 7000
-    ShipComponents: 8000
-    ShipHull: 13000
+    Steel: 23600
+    Plasma: 10400
+    Silver: 11600
+    Gold: 6000
+    Copper: 3200
+    Tungsten: 1400
+    Uranium: 1400
 
 - type: latheRecipe
   id: SunderLPC
+  category: Shipyard
   result: ShipVoucherSunder
   completetime: 1
   materials:
-    StarshipEngineComponents: 5000
-    ShipComponents: 6000
-    ShipHull: 11000
+    Steel: 19200
+    Plasma: 8800
+    Silver: 9200
+    Gold: 4400
+    Copper: 2400
+    Tungsten: 1000
+    Uranium: 1000
 
 - type: latheRecipe
   id: BogatyrLPC
+  category: Shipyard
   result: ShipVoucherBogatyr
   completetime: 1
   materials:
-    StarshipEngineComponents: 6000
-    ShipComponents: 4500
-    ShipHull: 8000
+    Steel: 14100
+    Plasma: 6400
+    Silver: 6800
+    Gold: 4200
+    Copper: 1800
+    Tungsten: 1200
+    Uranium: 1200
 
 - type: latheRecipe
   id: HornetDroneLPC
+  category: Shipyard
   result: ShipVoucherHornetDrone
   completetime: 1
   materials:
-    StarshipEngineComponents: 1500
-    ShipComponents: 1500
-    ShipHull: 4000
+    Steel: 6300
+    Plasma: 3200
+    Silver: 2800
+    Gold: 1200
+    Copper: 600
+    Tungsten: 300
+    Uranium: 300
 
 - type: latheRecipe
   id: WaspDroneLPC
+  category: Shipyard
   result: ShipVoucherWaspDrone
   completetime: 1
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 1000
-    ShipHull: 2000
+    Steel: 3400
+    Plasma: 1600
+    Silver: 1600
+    Gold: 800
+    Copper: 400
+    Tungsten: 200
+    Uranium: 200
 
 # MARK: Flatpacks
 
 - type: latheRecipe
   id: LancerFlatpack
+  category: Circuitry
   result: LancerFlatpack
   completetime: 2
   materials:
@@ -531,6 +648,7 @@
 
 - type: latheRecipe
   id: BogatyrFlatpack
+  category: Circuitry
   result: BogatyrFlatpack
   completetime: 2
   materials:
@@ -545,6 +663,7 @@
 
 - type: latheRecipe
   id:  BallisticCyclerNCWL
+  category: Ammo
   result: BallisticCycler1
   completetime: 1.5
   materials:
@@ -553,6 +672,7 @@
 
 - type: latheRecipe
   id:  TubeLoaderNCWL
+  category: Ammo
   result: TubeLoader1
   completetime: 1.5
   materials:
@@ -563,6 +683,7 @@
 
 - type: latheRecipe
   id: NCWLLugBaton
+  category: Weapons
   result: NCWLLugBaton
   completetime: 2
   materials:
@@ -570,6 +691,7 @@
 
 - type: latheRecipe
   id: NCWLRiotShield
+  category: Armor
   result: NCWLRiotShield
   completetime: 2
   materials:
@@ -578,6 +700,7 @@
 
 - type: latheRecipe
   id: ClothingBeltSheathNCWLKukri
+  category: Clothing
   result: ClothingBeltSheathNCWLKukri
   completetime: 2
   materials:
@@ -585,6 +708,7 @@
 
 - type: latheRecipe
   id: NCWLKukri
+  category: Weapons
   result: NCWLKukri
   completetime: 2
   materials:

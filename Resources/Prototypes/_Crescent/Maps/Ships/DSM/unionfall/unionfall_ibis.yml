@@ -1,7 +1,7 @@
 - type: vessel
   id: UnionfallIbis
   name: DSM Ibis
-  description: A heavy imperial fighter armed with missles and dual plasma repeaters.
+  description: A heavy imperial fighter armed with a torpedo pod and dual slugthrower cannons.
   price: 30000
   category: Small
   group: None

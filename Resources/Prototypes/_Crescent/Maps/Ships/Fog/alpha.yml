@@ -4,7 +4,7 @@
 - type: vessel
   id: Alpha
   name: NT Alpha
-  description: A remnant of the autonomous AI fleets developed by the NanoTrasen Corporation.
+  description: An autonomous NanoTrasen fighter unit recovered from the Fog. The IFF transponder still broadcasts. Whether that's reassuring or unsettling depends on who you ask.
   price: 42000
   category: Small
   group: None

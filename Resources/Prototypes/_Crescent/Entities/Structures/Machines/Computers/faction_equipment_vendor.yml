@@ -1,0 +1,124 @@
+# Faction equipment vendors: free "basic wardrobe" racks. Built on the ColMarTech automated-vendor
+# (CMAutomatedVendor) so they share the exact look/behaviour of every other autovendor. Each section uses
+# "takeAll", which lets a member draw one of each listed item (tracked per player, so it survives death/regear).
+# Hardsuits and voidsuits are intentionally excluded here -- draw those from an armory.
+#
+# One entity per faction. Point each faction's AccessReader at that faction's base access tag and list that
+# faction's clothing. Entry names are inherited from the item prototype, so there's nothing to keep in sync.
+
+- type: entity
+  parent: ColMarTechBase
+  id: DSMEquipmentVendor
+  name: imperial requisitions vendor
+  description: An imperial basic-equipment dispenser. Only sworn members of the Empire may draw one of each essential item here; outsiders must be mustered in first.
+  components:
+  - type: AccessReader
+    access:
+    - [ "Empire" ]
+  - type: ActivatableUIRequiresAccess
+    popupMessage: faction-vendor-access-denied
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    sections:
+    - name: Radio
+      takeAll: DSMRadio
+      entries:
+      - id: ClothingHeadsetEmpireCiv
+    - name: Backpacks
+      takeAll: DSMBack
+      entries:
+      - id: ClothingBackpackDSM
+    - name: Uniforms
+      takeAll: DSMUniform
+      entries:
+      - id: ClothingUniformJumpsuitImperialFreeholder
+      - id: ClothingUniformJumpsuitImperialCombat
+      - id: ClothingUniformJumpsuitImperialSoldierFormal
+      - id: ClothingUniformJumpsuitImperialDoctor
+      - id: ClothingUniformJumpsuitImperialSurgeon
+    - name: Headgear
+      takeAll: DSMHead
+      entries:
+      - id: ClothingHeadHatImperialHat
+      - id: ClothingHeadHatImperialSurgeon
+      - id: ClothingHeadHatDSMCapsoft
+      - id: ClothingHeadHelmetImperialWorkerHelmet
+    - name: Masks
+      takeAll: DSMMask
+      entries:
+      - id: ClothingMaskImperialCombatGasmask
+    - name: Gloves
+      takeAll: DSMGloves
+      entries:
+      - id: ClothingHandsGlovesImperialLonggloves
+      - id: ClothingHandsGlovesImperialWorkerGloves
+    - name: Footwear
+      takeAll: DSMShoes
+      entries:
+      - id: ClothingShoesBootsImperialJackboots
+      - id: ClothingShoesBootsImperialLongboots
+      - id: ClothingShoesBootsImperialClogs
+      - id: ClothingShoesBootsImperialLaceup
+      - id: ClothingShoesBootsMagDSM
+    - name: Neck
+      takeAll: DSMNeck
+      entries:
+      - id: ClothingNeckImperialBow
+      - id: ClothingNeckImperialBowJeweled
+
+- type: entity
+  parent: ColMarTechBase
+  id: NCWLEquipmentVendor
+  name: union requisitions vendor
+  description: A union basic-equipment dispenser. Only sworn members of the League may draw one of each essential item here; outsiders must be mustered in first.
+  components:
+  - type: AccessReader
+    access:
+    - [ "NCWLGeneral" ]
+  - type: ActivatableUIRequiresAccess
+    popupMessage: faction-vendor-access-denied
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    sections:
+    - name: Radio
+      takeAll: NCWLRadio
+      entries:
+      - id: ClothingHeadsetNCWL
+    - name: Backpacks
+      takeAll: NCWLBack
+      entries:
+      - id: ClothingBackpackNCWL
+      - id: ClothingBackpackSatchelNCWL
+      - id: ClothingBackpackDuffelNCWL
+    - name: Uniforms
+      takeAll: NCWLUniform
+      entries:
+      - id: ClothingUniformJumpsuitNCWL
+      - id: ClothingUniformJumpsuitNCWLMedic
+      - id: ClothingUniformJumpsuitNCWLArtificer
+      - id: ClothingUniformJumpsuitNCWLTelnikSleeved
+      - id: ClothingUniformJumpsuitNCWLTelnikSleeveless
+      - id: ClothingUniformJumpsuitNCWLTrainee
+      - id: ClothingUniformJumpsuitNCWLSkirt
+    - name: Headgear
+      takeAll: NCWLHead
+      entries:
+      - id: ClothingHeadHatNCWLBeret
+      - id: ClothingHeadHatNCWLTanker
+      - id: ClothingHeadHatNCWLCapsoft
+      - id: ClothingHeadHatNCWLCapsoftMedical
+    - name: Masks
+      takeAll: NCWLMask
+      entries:
+      - id: ClothingMaskNCWLBalaclava
+      - id: ClothingMaskNCWLGasmask
+    - name: Eyewear
+      takeAll: NCWLEyes
+      entries:
+      - id: ClothingEyesGlassesNCWL
+    - name: Footwear
+      takeAll: NCWLShoes
+      entries:
+      - id: ClothingShoesBootsMagNCWL

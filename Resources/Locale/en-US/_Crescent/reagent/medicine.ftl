@@ -15,3 +15,15 @@ reagent-desc-bloodeye = A chemical cocktail of combat drugs known to invoke viol
 
 reagent-name-jv201 = JV-201
 reagent-desc-jv201 = A versatile lubricant gel. It will increase the efficiency of living tissue, even if against organic will. Sourced from Carthage Industries.
+
+reagent-name-jv102 = JV-102
+reagent-desc-jv102 = An experimental battlefield stimulant that keeps a body upright well past the point it should have stopped. Slurred speech is a known and accepted side effect.
+
+reagent-name-naiser = Naiser
+reagent-desc-naiser = A field analgesic brewed to a Saint Romaine's Militia recipe. It smells of incense and closes wounds considerably faster than it has any right to.
+
+reagent-name-fall = Fall
+reagent-desc-fall = A cheap street narcotic, cut with whatever happened to be on hand. Users report euphoria and a spring in their step; medics report vomiting and poisoning.
+
+reagent-name-exileminus = Exile-Minus
+reagent-desc-exileminus = A watered-down knockoff of Exile. It patches up light wounds well enough, but stops helping entirely once the damage stacks up.

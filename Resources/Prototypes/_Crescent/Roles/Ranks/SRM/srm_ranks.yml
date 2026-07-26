@@ -1,0 +1,110 @@
+# SRM Ranks
+
+- type: rank
+  id: RatRankSRMOverseerSenior
+  name: Hunter’s Overlord
+  prefix: Overlord
+  paygrade: SRM-C6
+
+- type: rank
+  id: RatRankSRMOverseerMiddle
+  name: Grand Hunting Overseer
+  prefix: Grand Overseer
+  paygrade: SRM-C5
+
+- type: rank
+  id: RatRankSRMOverseerJunior
+  name: Hunting Overseer
+  prefix: Overseer
+  paygrade: SRM-C4
+
+- type: rank
+  id: RatRankSRMMontagneSenior
+  name: Hunting Seneschal
+  prefix: Seneschal
+  paygrade: SRM-C3
+
+- type: rank
+  id: RatRankSRMMontagneMiddle
+  name: Hunting Steward
+  prefix: Steward
+  paygrade: SRM-C2
+
+- type: rank
+  id: RatRankSRMMontagneJunior
+  name: Junior Hunting Steward
+  prefix: Jr. Steward
+  paygrade: SRM-C1
+
+- type: rank
+  id: RatRankSRMHunterSrLead
+  name: Hunting Elder
+  prefix: Elder
+  paygrade: SRM9
+
+- type: rank
+  id: RatRankSRMHunterHigh
+  name: Master Hunter
+  prefix: Master
+  paygrade: SRM8
+
+- type: rank
+  id: RatRankSRMHunterLead
+  name: Veteran Hunter
+  prefix: Veteran Brother
+  paygrade: SRM7
+
+- type: rank
+  id: RatRankSRMHunterSenior
+  name: Senior Hunter
+  prefix: Senior Brother-Hunter
+  paygrade: SRM6
+
+- type: rank
+  id: RatRankSRMHunterMiddle
+  name: Experienced Hunter
+  prefix: Brother-Hunter
+  paygrade: SRM5
+
+- type: rank
+  id: RatRankSRMHunterJunior
+  name: Hunter
+  prefix: Brother-Hunter
+  paygrade: SRM4
+
+- type: rank
+  id: RatRankSRMApprenticeHigh
+  name: Young Hunter
+  prefix: Young Brother
+  paygrade: SRM3
+
+- type: rank
+  id: RatRankSRMApprenticeMiddle
+  name: Hunting Apprentice
+  prefix: Apprentice
+  paygrade: SRM2
+
+- type: rank
+  id: RatRankSRMApprenticeJunior
+  name: Fresh Blood
+  prefix: Pup
+  paygrade: SRM1
+
+# SRM - Sisters
+- type: rank
+  id: RatRankSRMTenderSenior
+  name: Warden of Saint Serreyn
+  prefix: Sister Warden
+  paygrade: SRM-S3
+
+- type: rank
+  id: RatRankSRMTenderMiddle
+  name: Hospitalier Sister
+  prefix: Sister Hospitalier
+  paygrade: SRM-S2
+
+- type: rank
+  id: RatRankSRMTenderJunior
+  name: Novice Hospitalier
+  prefix: Sister of Mercy
+  paygrade: SRM-S1

@@ -1,0 +1,46 @@
+- type: gameMap
+  id: PortBalreskaHyperwar
+  mapName: 'NCWL Nova Balreska'
+  mapPath: /Maps/_Crescent/Hyperwar/marsovahyperwar.yml # hyperwar-version
+  minPlayers: 0
+  stations:
+    PortBalreskaHyperwar:
+      stationProto: StandardCrescentStation
+      gridComponents:
+        - type: FactionStation # conquest win condition
+          faction: NCWL
+          fallAnnouncement: faction-station-fall-balreska
+          stationName: NCWL Nova Balreska
+        - type: BlockShipWeaponProjectileGrid
+        - type: PreventPilot
+        - type: VesselIcon
+          iffIcon:
+            sprite: _Crescent/ShipIcons/ifficons.rsi
+            state: outpost
+        - type: MapIcon
+          iconType: Station
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'NCWL Nova Balreska'
+        - type: VesselDesignation
+          designation: vessel-designation-headquarters
+        - type: VesselDescription
+          description: A fortified communard stronghold built inside an asteroid.
+        - type: VesselMusic
+          ambientMusicPrototype: PortBalreskaMusic
+        - type: Grammar
+          attributes:
+            proper: true
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            CommandantNCWL: [ 1, 1 ]
+            KommissarNCWL: [ 1, 1 ]
+            MVDOfficerNCWL: [ 1, 1 ]
+            MVDGruntNCWL: [ 2, 2 ]
+            FleetkapitanNCWL: [ 4, 4 ]
+            PartisanNCWL: [ -1, -1 ]
+            IndustryTaskmasterNCWL: [ 4, 4 ]
+            DoctorNCWL: [ 4, 4 ]
+            ArtificerNCWL: [ 4, 4 ]
+            WorkerNCWL: [ -1, -1 ]

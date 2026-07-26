@@ -19,16 +19,16 @@ public abstract class SharedChatSystem : EntitySystem
     public const char LocalPrefix = '>';
     public const char ConsolePrefix = '/';
     public const char DeadPrefix = '\\';
-    public const char LOOCPrefix = '_'; // RU-Localization
+    public const char LOOCPrefix = '(';
     public const char OOCPrefix = '[';
-    public const char EmotesPrefix = '%'; // RU-Localization
+    public const char EmotesPrefix = '@';
     public const char EmotesAltPrefix = '*';
     public const char AdminPrefix = ']';
     public const char WhisperPrefix = ',';
     public const char TelepathicPrefix = '='; //Nyano - Summary: Adds the telepathic channel's prefix.
-    public const char DefaultChannelKey = 'р'; // RU-Localization
+    public const char DefaultChannelKey = 'h';
     // Art-TTS Start
-    public const int VoiceRange = 15; // Потому что это РАТГООООООООООООР
+    public const int VoiceRange = 15; // Because this is RATGOOOOOOOOOOOOR
     public const int WhisperClearRange = 3;
     public const int WhisperMuffledRange = 7;
     // Art-TTS End

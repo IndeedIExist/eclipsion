@@ -68,6 +68,29 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     }
 
     /// <summary>
+    /// The storage a machine actually draws from and puts things into: its silo when one is linked and reachable,
+    /// otherwise its own.
+    ///
+    /// The fallback is the important half. A silo counts as unreachable when it has lost power or when the whole
+    /// feature is switched off, and a linked machine that answered "nothing, anywhere" in that case would be unable
+    /// to see or spend the materials sitting inside its own hopper — while the UI, which has always fallen back to
+    /// local storage, kept cheerfully displaying them. Every silo redirection goes through here so the two can
+    /// never disagree again.
+    /// </summary>
+    private Entity<MaterialStorageComponent> GetEffectiveStorage(
+        EntityUid uid,
+        MaterialStorageComponent component,
+        MaterialSiloUtilizerComponent? utilizer)
+    {
+        if (Resolve(uid, ref utilizer, false)
+            && utilizer.Silo.HasValue
+            && _materialSilo.GetSiloStorage(uid, utilizer) is { } silo)
+            return silo;
+
+        return (uid, component);
+    }
+
+    /// <summary>
     /// Gets the volume of a specified material contained in this storage.
     /// </summary>
     /// <param name="uid"></param>
@@ -80,10 +103,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return 0; //you have nothing
 
-        if (Resolve(uid, ref utilizer, false) && utilizer.Silo.HasValue)
-            return _materialSilo.GetSiloMaterialAmount(uid, material, utilizer);
-
-        return component.Storage.GetValueOrDefault(material, 0);
+        return GetEffectiveStorage(uid, component, utilizer).Comp.Storage.GetValueOrDefault(material, 0);
     }
 
     /// <summary>
@@ -98,10 +118,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return 0;
 
-        if (Resolve(uid, ref utilizer, false) && utilizer.Silo.HasValue)
-            return _materialSilo.GetSiloTotalMaterialAmount(uid, utilizer);
-
-        return component.Storage.Values.Sum();
+        return GetEffectiveStorage(uid, component, utilizer).Comp.Storage.Values.Sum();
     }
 
     /// <summary>
@@ -117,11 +134,12 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return false;
 
-        var storageLimit = component.StorageLimit;
-        if (Resolve(uid, ref utilizer, false) && utilizer.Silo.HasValue)
-            storageLimit = _materialSilo.GetSiloStorage(uid, utilizer)?.Comp.StorageLimit;
+        // Limit and contents have to be read off the same storage, or a machine whose silo is out of reach would
+        // be measured against the silo's (absent) limit and accept anything at all.
+        var storage = GetEffectiveStorage(uid, component, utilizer);
 
-        return storageLimit == null || GetTotalMaterialAmount(uid, component) + volume <= storageLimit;
+        return storage.Comp.StorageLimit == null
+               || storage.Comp.Storage.Values.Sum() + volume <= storage.Comp.StorageLimit;
     }
 
     /// <summary>
@@ -181,29 +199,19 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return false;
 
-        var storage = component;
-        var storageUid = uid;
-        if (Resolve(uid, ref utilizer, false) && utilizer.Silo.HasValue)
-        {
-            var silo = _materialSilo.GetSiloStorage(uid, utilizer);
-            if (silo.HasValue)
-            {
-                storage = silo.Value.Comp;
-                storageUid = silo.Value;
-            }
-        }
+        var storage = GetEffectiveStorage(uid, component, utilizer);
 
         if (!CanChangeMaterialAmount(uid, materialId, volume, component, utilizer))
             return false;
 
-        storage.Storage.TryAdd(materialId, 0);
-        storage.Storage[materialId] += volume;
+        storage.Comp.Storage.TryAdd(materialId, 0);
+        storage.Comp.Storage[materialId] += volume;
 
         var ev = new MaterialAmountChangedEvent();
-        RaiseLocalEvent(storageUid, ref ev);
+        RaiseLocalEvent(storage, ref ev);
 
         if (dirty)
-            Dirty(storageUid, storage);
+            Dirty(storage);
         return true;
     }
 
@@ -219,17 +227,8 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         if (!Resolve(entity, ref entity.Comp))
             return false;
 
-        var storage = entity.Comp;
-        var storageUid = entity;
-        if (TryComp<MaterialSiloUtilizerComponent>(entity, out var utilizer) && utilizer.Silo.HasValue)
-        {
-            var silo = _materialSilo.GetSiloStorage(entity, utilizer);
-            if (silo.HasValue)
-            {
-                storage = silo.Value.Comp;
-                storageUid = silo.Value.Owner;
-            }
-        }
+        var utilizer = CompOrNull<MaterialSiloUtilizerComponent>(entity);
+        var storage = GetEffectiveStorage(entity, entity.Comp, utilizer);
 
         if (!CanChangeMaterialAmount(entity, materials, utilizer))
             return false;
@@ -240,7 +239,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
                 return false;
         }
 
-        Dirty(storageUid, storage);
+        Dirty(storage);
         return true;
     }
 

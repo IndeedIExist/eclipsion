@@ -3,10 +3,10 @@
 
 - type: vessel
   id: Slug
-  name: Слизень
+  name: Slug
   description: |
-    Переработан из останков уничтоженного грузового корабля, "Слизень" теперь живет своей второй жизнью в качестве судна для сборки. Его грузовой трюм теперь служит отсеком для сбора. Не забудьте заблокировать консоль, прежде чем оставить корабль без присмотра.
-    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1x Пилот
+    Recycled from the remains of a destroyed cargo ship, the Slug now lives its second life as a salvage ship. Its cargo hold now acting as a salvage bay. Remember to lock your console before leaving the ship unattended.
+    MINIMUM CREW: 1x Pilot
   price: 16000
   category: Small
   group: Scrap
@@ -14,26 +14,23 @@
 
 - type: gameMap
   id: Slug
-  mapName: 'Слизень'
+  mapName: 'Slug'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/slug.yml
   minPlayers: 0
   stations:
     Slug:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: civilian
         - type: StationNameSetup
-          mapNameTemplate: 'Слизень {1}'
+          mapNameTemplate: 'Slug {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-salvage
         - type: VesselDescription
-          description: Flying revived derelicts is non uncommon among less fortunate independents.
+          description: Flying revived derelicts is not uncommon among less fortunate independents.

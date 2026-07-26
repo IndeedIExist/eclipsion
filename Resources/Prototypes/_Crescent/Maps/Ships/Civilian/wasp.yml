@@ -3,10 +3,10 @@
 
 - type: vessel
   id: Wasp
-  name: Оса
+  name: Wasp
   description: |
-    Истребитель, созданный на базе корпуса "Бородавочника", едва функционирующий, едва безопасный для использования. Не используется здравомыслящими. Странным образом удерживает атмосферу.
-    LOADOUT: 1x 20mm 'Screamer' light autocannon
+    A fighter derived from the Warthog hull, barely functional, barely safe for use. Not used by the sane. Strangely holds atmosphere.
+    LOADOUT: 1x 20mm 'Screamer' Rotary Cannon
     MINIMUM CREW: 1x Unfortunate soul.
   price: 10000
   category: Small
@@ -15,22 +15,19 @@
 
 - type: gameMap
   id: Wasp
-  mapName: 'Оса'
+  mapName: 'Wasp'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/wasp.yml
   minPlayers: 0
   stations:
     Wasp:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'Оса {1}'
+          mapNameTemplate: 'Wasp {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'

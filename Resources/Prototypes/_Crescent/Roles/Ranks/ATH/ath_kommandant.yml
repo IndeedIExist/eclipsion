@@ -1,0 +1,17 @@
+- type: rank
+  id: RatRankKommandantSenior
+  name: Grand Admiral
+  prefix: Grand Admiral
+  paygrade: O8
+
+- type: rank
+  id: RatRankKommandantMiddle
+  name: Admiral
+  prefix: Admiral
+  paygrade: O7
+
+- type: rank
+  id: RatRankKommandantJunior
+  name: Rear Admiral
+  prefix: Rear Admiral
+  paygrade: O6

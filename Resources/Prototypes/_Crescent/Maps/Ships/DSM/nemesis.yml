@@ -3,8 +3,8 @@
 
 - type: vessel
   id: Nemesis
-  name: БМС Немезида
-  description: Тяжёлый авианосный эсминец, правый флак-пулемётный аккумулятор и грузовой отсек переделаны в стыковочный порт.
+  name: DSM Nemesis
+  description: A heavy destroyer carrier, the starboard flakgun gunbattery & cargo area has been salvaged and converted into a docking-port.
   price: 226750
   category: Large
   group: None
@@ -12,27 +12,23 @@
 
 - type: gameMap
   id: Nemesis
-  mapName: 'БМС Немезида'
+  mapName: 'DSM Nemesis'
   mapPath: /Maps/_Crescent/Shuttles/DSM/nemesis.yml
   minPlayers: 0
   stations:
     Nemesis:
       stationProto: StandardCrescentStation
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: battleship
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Немезида {1}'
+          mapNameTemplate: 'DSM Nemesis {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            LevymanDSM: [ 4, 4 ]
+          availableJobs: {} # Encore - drone cruiser, no crew roles spawn here

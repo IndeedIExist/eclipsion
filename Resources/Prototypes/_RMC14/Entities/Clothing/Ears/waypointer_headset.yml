@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingHeadset
+  id: RMCWaypointerHeadset
+  name: waypointer headset
+  description: Tactical headset that enables objective waypointer overlays.
+  components:
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/base.rsi

@@ -3,8 +3,8 @@
 
 - type: vessel
   id: Molot
-  name: ЛРНП Молот
-  description: Защищённый коммунарский бомбардировщик.
+  name: NCWL Molot
+  description: A shielded communard bomber.
   price: 40000
   category: Small
   group: None
@@ -12,18 +12,15 @@
 
 - type: gameMap
   id: Molot
-  mapName: 'ЛРНП Молот'
+  mapName: 'NCWL Molot'
   mapPath: /Maps/_Crescent/Shuttles/NCWL/molot.yml
   minPlayers: 0
   stations:
     Molot:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'ЛРНП Молот {1}'
+          mapNameTemplate: 'NCWL Molot {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

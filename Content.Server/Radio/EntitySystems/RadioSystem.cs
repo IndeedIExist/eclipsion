@@ -53,8 +53,13 @@ public sealed class RadioSystem : EntitySystem
     {
         if (args.Channel != null && component.Channels.Contains(args.Channel.ID))
         {
-            SendRadioMessage(uid, args.Message, args.Channel, uid, args.Language);
-            args.Channel = null; // prevent duplicate messages from other listeners.
+            // Orion-Edit-Start
+            if (SendRadioMessage(uid, args.Message, args.Channel, uid, args.Language)) // Einstein Engines - Language
+            {
+                args.RadioMessageSent = true;
+                args.Channel = null; // prevent duplicate messages from other listeners.
+            }
+            // Orion-Edit-End
         }
     }
 
@@ -81,14 +86,14 @@ public sealed class RadioSystem : EntitySystem
             if (listener != null && !_language.CanUnderstand(listener, args.Language.ID))
                 msg = args.LanguageObfuscatedChatMsg;
 
-            _netMan.ServerSendMessage(new MsgChatMessage { Message = msg}, actor.PlayerSession.Channel);
+            _netMan.ServerSendMessage(new MsgChatMessage { Message = msg }, actor.PlayerSession.Channel);
         }
     }
 
     /// <summary>
     /// Send radio message to all active radio listeners
     /// </summary>
-    public void SendRadioMessage(
+    public bool SendRadioMessage(
         EntityUid messageSource,
         string message,
         ProtoId<RadioChannelPrototype> channel,
@@ -96,13 +101,13 @@ public sealed class RadioSystem : EntitySystem
         int? frequency = null,
         LanguagePrototype? language = null,
         bool escapeMarkup = true
-        ) =>
-        SendRadioMessage(messageSource, message, _prototype.Index(channel), radioSource, escapeMarkup: escapeMarkup, frequency: frequency, language: language);
+        )
+        { return SendRadioMessage(messageSource, message, _prototype.Index(channel), radioSource, escapeMarkup: escapeMarkup, frequency: frequency, language: language); }
 
     /// <summary>
     /// Send radio message to all active radio listeners
     /// </summary>
-    public void SendRadioMessage(
+    public bool SendRadioMessage(
         EntityUid messageSource,
         string message,
         RadioChannelPrototype channel,
@@ -115,11 +120,11 @@ public sealed class RadioSystem : EntitySystem
             language = _language.GetLanguage(messageSource);
 
         if (!language.SpeechOverride.AllowRadio)
-            return;
+            return false;
 
         // TODO if radios ever garble / modify messages, feedback-prevention needs to be handled better than this.
         if (!_messages.Add(message))
-            return;
+            return false;
 
         var evt = new TransformSpeakerNameEvent(messageSource, Name(messageSource));
         evt.fromRadio = true;
@@ -154,6 +159,7 @@ public sealed class RadioSystem : EntitySystem
 
         var speakerQuery = GetEntityQuery<RadioSpeakerComponent>();
         var radioQuery = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
+        var sent = false; // Art-TTS
 
         if (frequency == null) // Nuclear-14
             frequency = GetFrequency(messageSource, channel); // Nuclear-14
@@ -187,6 +193,7 @@ public sealed class RadioSystem : EntitySystem
 
             // send the message
             RaiseLocalEvent(receiver, ref ev);
+            sent = true; // Art-TTS
         }
 
         if (name != Name(messageSource))
@@ -196,6 +203,7 @@ public sealed class RadioSystem : EntitySystem
 
         _replay.RecordServerMessage(msg);
         _messages.Remove(message);
+        return sent; // Art-TTS
     }
 
     private string WrapRadioMessage(

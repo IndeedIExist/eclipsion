@@ -244,16 +244,32 @@ namespace Content.Server.GameTicking
 
             DebugTools.AssertNotNull(data);
 
-            var newMind = _mind.CreateMind(data!.UserId, character.Name);
-            _mind.SetUserId(newMind, data.UserId);
-
             var jobPrototype = _prototypeManager.Index<JobPrototype>(jobId);
 
             _playTimeTrackings.PlayerRolesChanged(player);
 
-            var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, jobId, character);
-            DebugTools.AssertNotNull(mobMaybe);
+            var spawnPointType = !lateJoin && jobPrototype.AlwaysUseSpawner
+                ? SpawnPointType.Job
+                : SpawnPointType.Unset;
+
+            var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(
+                station,
+                jobId,
+                character,
+                spawnPointType: spawnPointType);
+
+            if (mobMaybe == null)
+            {
+                PlayerJoinLobby(player);
+                _chatManager.DispatchServerMessage(player,
+                    Loc.GetString("game-ticker-player-no-spawn-point-available-when-joining"));
+                return;
+            }
+
             var mob = mobMaybe!.Value;
+
+            var newMind = _mind.CreateMind(data!.UserId, character.Name);
+            _mind.SetUserId(newMind, data.UserId);
 
             if (jobPrototype.NameDataset == AiNamesDataset)
             {
@@ -385,16 +401,20 @@ namespace Content.Server.GameTicking
                 return;
 
             Entity<MindComponent?>? mind = player.GetMind();
+            var addObserverRole = false;
             if (mind == null)
             {
                 var name = GetPlayerProfile(player).Name;
                 var (mindId, mindComp) = _mind.CreateMind(player.UserId, name);
                 mind = (mindId, mindComp);
                 _mind.SetUserId(mind.Value, player.UserId);
-                _roles.MindAddRole(mind.Value, "MindRoleObserver");
+                addObserverRole = true;
             }
 
             var ghost = _ghost.SpawnGhost(mind.Value);
+            if (addObserverRole && ghost != null)
+                _roles.MindAddRole(mind.Value, "MindRoleObserver");
+
             _adminLogger.Add(LogType.LateJoin,
                 LogImpact.Low,
                 $"{player.Name} late joined the round as an Observer with {ToPrettyString(ghost):entity}.");

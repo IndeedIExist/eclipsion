@@ -10,3 +10,12 @@
     Piercing: 10
     Heat: 10
 
+
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: damageModifierSet
+  id: RatIpc
+  coefficients:
+    Blunt: 1.5
+    Slash: 1.5
+    Piercing: 1.5
+    Heat: 1.5

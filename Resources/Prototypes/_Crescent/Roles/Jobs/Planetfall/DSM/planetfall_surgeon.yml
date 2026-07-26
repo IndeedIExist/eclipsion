@@ -1,0 +1,64 @@
+- type: job
+  id: planetfall_surgeon
+  name: job-name-surgeon
+  description: job-description-surgeon
+  playTimeTracker: JobSurgeonDSM
+  weight: 2
+  startingGear: planetfall_surgeon_gear
+  alwaysUseSpawner: true
+  requireAdminNotify: false
+  icon: "JobIconImperialSurgeon"
+  chatNameColor: "#00e6d6"
+  supervisors: job-supervisors-imperial
+  canBeAntag: false
+  requirements:
+    - !type:FactionRequirement
+      factionID: "DSM"
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - Voidborn
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Blindness
+        - Pacifist
+        - WheelchairBound
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: HullrotFaction
+        faction: DSM
+      - type: CPRTraining
+      - type: SurgerySpeedModifier
+        speedModifier: 1.75
+      - type: LanguageAdder
+        addSpoken:
+          - LowImperial
+        addUnderstood:
+          - LowImperial
+  access:
+  - Command
+  - Empire
+  - Maintenance
+  - ScribesGuild
+  - Service
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: planetfall_surgeon_gear
+  equipment:
+    id: SurgeonPDA
+    ears: ClothingHeadsetEmpireCiv_Planetfall
+    eyes: ClothingEyesHudMedical
+    head: ClothingHeadHatImperialSurgeon
+    back: ClothingBackpackDSM
+    belt: ClothingBeltMedicalFilled
+    shoes: ClothingShoesBootsImperialLaceup
+    jumpsuit: ClothingUniformJumpsuitImperialSurgeon
+  storage:
+    back:
+    - ClothingHandsGlovesNitrile
+    - ClothingMaskSterile

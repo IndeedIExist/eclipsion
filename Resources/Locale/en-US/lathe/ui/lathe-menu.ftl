@@ -25,3 +25,4 @@ lathe-menu-connected-to-silo-message = Connected to material silo.
 lathe-menu-fabricating-message = Fabricating...
 lathe-menu-materials-title = Materials
 lathe-menu-queue-title = Build Queue
+lathe-menu-queue-item-count = {$index}. {$name} x{$count}

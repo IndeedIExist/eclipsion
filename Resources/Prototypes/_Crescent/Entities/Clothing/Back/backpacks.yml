@@ -37,7 +37,7 @@
 
 - type: entity
   parent: ClothingBackpack
-  id: ClothingBackpackNCSP
+  id: ClothingBackpackTFSC
   name: hired gun's backpack
   description: A robust backpack for mercenaries.
   components:
@@ -48,7 +48,7 @@
 
 - type: entity
   parent: ClothingBackpackSatchel
-  id: ClothingBackpackNCSPSatchel
+  id: ClothingBackpackTFSCSatchel
   name: hired gun's satchel
   description: A robust courier bag for mercenaries.
   components:
@@ -59,7 +59,7 @@
 
 - type: entity
   parent: ClothingBackpackDuffel
-  id: ClothingBackpackNCSPDuffelbag
+  id: ClothingBackpackTFSCDuffelbag
   name: hired gun's duffelbag
   description: A robust duffelbag for mercenaries.
   components:

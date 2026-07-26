@@ -12,6 +12,7 @@ using Content.Shared._Crescent.HullrotFaction;
 using Robust.Shared.Player;
 using Content.Server.Announcements.Systems;
 using Content.Server.GameTicking;
+using Content.Shared.GameTicking;
 using Content.Server.Popups;
 using Content.Server.DoAfter;
 using Content.Shared.Item.ItemToggle.Components;
@@ -28,7 +29,6 @@ namespace Content.Server._Crescent.UnionfallCapturePoint;
 
 public sealed class UnionfallShipNodeSystem : EntitySystem
 {
-
     [Dependency] private readonly AnnouncerSystem _announcer = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
@@ -36,12 +36,9 @@ public sealed class UnionfallShipNodeSystem : EntitySystem
     [Dependency] private readonly ExplosionSystem _explosionSystem = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!;
 
-    private ISawmill _sawmill = default!; //debug logging
+    private ISawmill _sawmill = default!;
 
-    private int nodesLeftDSM = 0;
-    private int nodesLeftNCWL = 0;
-
-    private bool isRoundEnding = false; //mlg don't kill me. need this to prevent round bugging out when the components get deleted.
+    private bool isRoundEnding = false;
 
     public override void Initialize()
     {
@@ -49,16 +46,31 @@ public sealed class UnionfallShipNodeSystem : EntitySystem
         SubscribeLocalEvent<UnionfallShipNodeComponent, ActivateInWorldEvent>(OnActivatedInWorld);
         SubscribeLocalEvent<UnionfallShipNodeComponent, UnionfallShipNodeDoAfterEvent>(OnCaptureDoAfter);
         SubscribeLocalEvent<UnionfallShipNodeComponent, DestructionEventArgs>(OnDestruction);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
         _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("unionfall.shipnodes");
+    }
+
+    private void OnRoundRestart(RoundRestartCleanupEvent args)
+    {
+        isRoundEnding = false;
     }
 
     private void OnComponentInit(EntityUid uid, UnionfallShipNodeComponent component, ComponentInit args)
     {
-        isRoundEnding = false;
-        if (component.OwningFaction == "DSM")
-            nodesLeftDSM += 1;
-        else if (component.OwningFaction == "NCWL") //could be "else" but just in case we get more factions
-            nodesLeftNCWL += 1;
+
+    }
+
+    private (int dsm, int ncwl) CountRemainingNodes()
+    {
+        int dsm = 0;
+        int ncwl = 0;
+        var query = EntityQueryEnumerator<UnionfallShipNodeComponent>();
+        while (query.MoveNext(out _, out var node))
+        {
+            if (node.OwningFaction == "DSM") dsm++;
+            else if (node.OwningFaction == "NCWL") ncwl++;
+        }
+        return (dsm, ncwl);
     }
 
     public override void Update(float frameTime)
@@ -67,36 +79,32 @@ public sealed class UnionfallShipNodeSystem : EntitySystem
         var query = EntityQueryEnumerator<UnionfallShipNodeComponent>();
         while (query.MoveNext(out var uid, out var capturepoint))
         {
-            capturepoint.GracePeriod -= frameTime; //we do it this way so we can VVedit in admin mode midgame
-            if (capturepoint.GracePeriod > 0f) //point is still in grace period
+            capturepoint.GracePeriod -= frameTime;
+            if (capturepoint.GracePeriod > 0f)
                 continue;
-            if (capturepoint.IsBeingCaptured == false) //if nobody's capping it then don't do anything
+            if (capturepoint.IsBeingCaptured == false)
                 continue;
-            else //someone is capping it rn
-            {
-                capturepoint.CurrentCaptureProgress -= frameTime; //this is how the timer decreases
-            }
 
-            if (capturepoint.CurrentCaptureProgress <= 0) //capturing complete. announce and count how many left
+            capturepoint.CurrentCaptureProgress -= frameTime;
+
+            if (capturepoint.CurrentCaptureProgress <= 0)
             {
                 var eventArgs = new DestructionEventArgs();
-
-                RaiseLocalEvent(uid, eventArgs); //should force OnDestruction to fire and do the same thing as when ti gets destroyed
+                RaiseLocalEvent(uid, eventArgs);
                 QueueDel(uid);
-
             }
         }
     }
 
     private void OnActivatedInWorld(EntityUid uid, UnionfallShipNodeComponent component, ActivateInWorldEvent args)
     {
-        if (component.GracePeriod > 0) //grace period still active
+        if (component.GracePeriod > 0)
         {
             _popup.PopupEntity(Loc.GetString("shipnode-grace-period-fail"), uid, args.User);
             return;
         }
 
-        if (!TryComp<HullrotFactionComponent>(args.User, out var comp)) //someone with no faction interacted with this. modified client only
+        if (!TryComp<HullrotFactionComponent>(args.User, out var comp))
             return;
         string faction = comp.Faction;
 
@@ -106,11 +114,10 @@ public sealed class UnionfallShipNodeSystem : EntitySystem
             return;
         }
 
-        if (component.OwningFaction == faction) //defusing
+        if (component.OwningFaction == faction)
             _popup.PopupEntity(Loc.GetString("shipnode-defusing"), uid, args.User);
         else
             _popup.PopupEntity(Loc.GetString("shipnode-sabotaging"), uid, args.User);
-
 
         DoAfterArgs doAfterArguments = new DoAfterArgs(EntityManager, args.User, component.DoAfterDelay, new UnionfallShipNodeDoAfterEvent(), uid, uid, null)
         {
@@ -128,21 +135,20 @@ public sealed class UnionfallShipNodeSystem : EntitySystem
         if (args.Target is null)
             return;
 
-        if (!TryComp<HullrotFactionComponent>(args.User, out var comp)) //someone with no faction interacted with this. modified client only
+        if (!TryComp<HullrotFactionComponent>(args.User, out var comp))
             return;
         string faction = comp.Faction;
 
-        if (component.OwningFaction != comp.Faction) // opposing faction rigged to blow
+        if (component.OwningFaction != comp.Faction)
         {
             component.IsBeingCaptured = true;
             _announcer.SendAnnouncement(_announcer.GetAnnouncementId("unionfallPointCapture"), Filter.Broadcast(),
                 "A " + component.OwningFaction + " cloner database has been rigged to explode! It will detonate in " + float.Round(component.CurrentCaptureProgress).ToString() + " seconds.");
         }
-        else if (component.OwningFaction == faction) // same faction interacted to defuse
+        else if (component.OwningFaction == faction)
         {
             component.IsBeingCaptured = false;
             component.CurrentCaptureProgress = component.TimeToCapture;
-
             _announcer.SendAnnouncement(_announcer.GetAnnouncementId("unionfallPointCapture"), Filter.Broadcast(),
                 "The " + component.OwningFaction + " cloner database has been defused.");
         }
@@ -151,30 +157,26 @@ public sealed class UnionfallShipNodeSystem : EntitySystem
     private void OnDestruction(EntityUid uid, UnionfallShipNodeComponent capturepoint, DestructionEventArgs args)
     {
         _explosionSystem.TriggerExplosive(uid);
-        if (isRoundEnding) //prevents this from triggering 6 times and breaking the round when they all get removed from the game
+        if (isRoundEnding)
             return;
-        if (capturepoint.OwningFaction == "NCWL")
-            nodesLeftNCWL -= 1;
-        else if (capturepoint.OwningFaction == "DSM")
-            nodesLeftDSM -= 1;
 
-        if (nodesLeftNCWL <= 0 || nodesLeftDSM <= 0)
+        var (dsm, ncwl) = CountRemainingNodes();
+        if (capturepoint.OwningFaction == "NCWL") ncwl -= 1;
+        else if (capturepoint.OwningFaction == "DSM") dsm -= 1;
+
+        if (ncwl <= 0 || dsm <= 0)
         {
             isRoundEnding = true;
-            nodesLeftDSM = 0; //prep for next round
-            nodesLeftNCWL = 0;
             _announcer.SendAnnouncement(_announcer.GetAnnouncementId("Fallback"), Filter.Broadcast(),
-            capturepoint.OwningFaction + " has lost all of their warships and cloner databases. They are doomed to a slow death in Taypan.");
+                capturepoint.OwningFaction + " has lost all of their warships and cloner databases. They are doomed to a slow death in Taypan.");
             _gameTicker.EndRound("All of " + capturepoint.OwningFaction + "'s cloner databases have been destroyed. ROUND OVER");
             capturepoint.CurrentCaptureProgress = 999999;
             Timer.Spawn(TimeSpan.FromMinutes(1), _gameTicker.RestartRound);
         }
-        else 
+        else
         {
             _announcer.SendAnnouncement(_announcer.GetAnnouncementId("Fallback"), Filter.Broadcast(),
-            "A " + capturepoint.OwningFaction + " cloner database has been destroyed! | REMAINING FOR DSM: " + nodesLeftDSM + " | REMAINING FOR NCWL: " + nodesLeftNCWL);
+                "A " + capturepoint.OwningFaction + " cloner database has been destroyed! | REMAINING FOR DSM: " + dsm + " | REMAINING FOR NCWL: " + ncwl);
         }
     }
-
-
 }

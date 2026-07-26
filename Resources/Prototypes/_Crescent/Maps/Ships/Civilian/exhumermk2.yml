@@ -3,11 +3,11 @@
 
 - type: vessel
   id: Exhumermk2
-  name: Эксатор МКII
+  name: Exhumer MKII
   description: |
-    Создан из обломков "Эксатор". "Экскаватор МКII" — это комбинированный промышленно-боевой корабль, способный выполнять обе задачи, но не преуспевающий ни в одной из них. Комплектуется рудным магнитом.
-    ВООРУЖЕНИЕ: 1x 120-мм пушка ТПШ, 2x турели ПВО "Оператор" 20-мм, 2x Стационарные универсальные точки крепления.
-    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1x Пилот, 1x Стрелок/Заряжающий
+    Made out of wrecked Exhumers, the Exhumer MKII is a combined Industrial/Combat ship, capable of doing both, but not excelling in either field. Comes with an Ore Magnet.
+    LOADOUT: 1x 120mm 'Anvil' mono-barreled artillery cannon, 2x 20mm 'Screamer' PD turrets, 3x Fixed Universal Hardpoints, 2x Small Ballistic Hardpoints.
+    MINIMUM CREW: 1x Pilot, 1x Gunner/Loader
   price: 50000
   category: Small
   group: Scrap
@@ -15,26 +15,23 @@
 
 - type: gameMap
   id: Exhumermk2
-  mapName: 'Эксатор МКII'
+  mapName: 'Exhumer MKII'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/exhumermk2.yml
   minPlayers: 0
   stations:
     Exhumermk2:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'Эксатор МКII {1}'
+          mapNameTemplate: 'Exhumer MKII {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-salvage
         - type: VesselDescription
-          description: Made out of destroyed exhumers, this ones armed to hopefully avoid the same
+          description: Made out of destroyed exhumers, this one's armed to hopefully avoid the same fate.

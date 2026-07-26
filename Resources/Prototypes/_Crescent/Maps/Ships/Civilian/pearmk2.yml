@@ -3,10 +3,10 @@
 
 - type: vessel
   id: Pearmk2
-  name: Груша МКII
+  name: Pear MKII
   description: |
-    "Груша МКII" — это боеспособная модернизация, сделанная из обломка "Груши". Ее вооружение собрано из пушек, добытых на заброшенных кораблях.
-    LOADOUT: 1x 88mm 'Corpus' flak-screen point defense system, 1x 20mm 'Screamer' light carbine repeater cannon, 1x Fixed Universal Hardpoint
+    The Pear MKII is a combat capable retrofit, made from a wreck of a pear. Its loadout is made out of scavenged ship guns salvaged from derelicts.
+    LOADOUT: 1x 88mm 'Stormreign' Flak Array, 1x 20mm 'Screamer' Rotary Cannon, 3x Fixed Universal Hardpoints
     MINIMUM CREW: 1x Pilot, 1x Gunner/Loader
   price: 30000
   category: Small
@@ -15,26 +15,23 @@
 
 - type: gameMap
   id: Pearmk2
-  mapName: 'Груша МКII'
+  mapName: 'Pear MKII'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/pearmk2.yml
   minPlayers: 0
   stations:
     Pearmk2:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'Груша МКII {1}'
+          mapNameTemplate: 'Pear MKII {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-gunship
         - type: VesselDescription
-          description: The Pear retrofitted to be a combat capable gunship. Goodluck!
+          description: The Pear retrofitted to be a combat capable gunship. Good luck!

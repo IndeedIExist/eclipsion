@@ -1,6 +1,6 @@
 - type: currency
   id: DogtagNCWL
-  displayName: Профсоюзные заслуги
+  displayName: Union Merits
   canWithdraw: false
 
 - type: currency
@@ -10,22 +10,22 @@
 
 - type: currency
   id: PlunderGSC
-  displayName: Репутация
+  displayName: Reputation
   canWithdraw: false
 
 - type: currency
   id: ScrapSAW
-  displayName: Металлолом
+  displayName: Scrap Metal
   canWithdraw: false
 
 - type: currency
   id: SampleIPM
-  displayName: Экзотические образцы
+  displayName: Exotic Samples
   canWithdraw: false
 
 - type: currency
   id: PietySRM
-  displayName: Благочестие
+  displayName: Piety
   canWithdraw: false
 
 # Gorlex Street cred

@@ -1,7 +1,7 @@
 - type: gameMap
   id: Countsman
-  mapName: 'БМС Ревизор'
-  mapPath: /Maps/_Rat/Stations/countsman.yml # rat-change
+  mapName: 'DSM Countsman'
+  mapPath: /Maps/_Crescent/Stations/countsman.yml # rat-change
   minPlayers: 0
   stations:
     Countsman:
@@ -16,11 +16,11 @@
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: capital
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Ревизор'
+          mapNameTemplate: 'DSM Countsman'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: VesselDescription
-          description: Обветшалый корабль-база, в котором размещается последняя сплочённая имперская армия в этой системе.
+          description: Almost a wreck.
         - type: VesselMusic
           ambientMusicPrototype: CountsmanMusic
         - type: Grammar
@@ -42,5 +42,5 @@
             CourtierDSM: [ 10, 10 ]
             LaborDSM: [ 1, 1 ]
             WealthDSM: [ 1, 1 ]
-            ForemanDSM: [ 3, 3 ]
+            ForemanDSM: [ 4, 4 ]
             FreeholderDSM: [ -1, -1 ]

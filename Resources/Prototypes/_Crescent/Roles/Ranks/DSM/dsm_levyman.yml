@@ -1,0 +1,29 @@
+- type: rank
+  id: RatRankLevymanHead
+  name: Centurion
+  prefix: Centurion
+  paygrade: L5
+
+- type: rank
+  id: RatRankLevymanLead
+  name: Tribune
+  prefix: Tribune
+  paygrade: L4
+
+- type: rank
+  id: RatRankLevymanSenior
+  name: Optio
+  prefix: Optio
+  paygrade: L3
+
+- type: rank
+  id: RatRankLevymanMiddle
+  name: Proctor
+  prefix: Proctor
+  paygrade: L2
+
+- type: rank
+  id: RatRankLevymanJunior
+  name: Levy
+  prefix: Levy
+  paygrade: L1

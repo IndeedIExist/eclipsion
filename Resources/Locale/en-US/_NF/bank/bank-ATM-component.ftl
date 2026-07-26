@@ -1,5 +1,5 @@
 ## UI
-bank-atm-menu-title = NCWL State Bank
+bank-atm-menu-title = Taypan Civil Bank
 bank-atm-menu-balance-label = Account Balance:{" "}
 bank-atm-menu-no-bank = No Bank Account!
 bank-atm-menu-withdraw-button = Withdraw

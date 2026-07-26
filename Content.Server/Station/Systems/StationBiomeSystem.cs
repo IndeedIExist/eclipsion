@@ -2,6 +2,7 @@ using Content.Server.Parallax;
 using Content.Server.Procedural;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
+using Content.Shared.Light.Components;
 using Content.Shared.Parallax.Biomes;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
@@ -38,6 +39,11 @@ public sealed partial class StationBiomeSystem : EntitySystem
             return;
 
         _biome.EnsurePlanet(mapUid!.Value, _proto.Index(map.Comp.Biome), map.Comp.Seed, mapLight: map.Comp.MapLightColor);
+        if (!map.Comp.EnableLightCycle && TryComp<LightCycleComponent>(mapUid, out var lightCycle))
+        {
+            lightCycle.Enabled = false;
+            Dirty(mapUid.Value, lightCycle);
+        }
 
         if (!TryComp<BiomeComponent>(mapUid, out var biomeComp))
             return; // Yea we JUST made a biome component one line above this trycomp. It turns out I need an engine PR to retrieve the component just added.

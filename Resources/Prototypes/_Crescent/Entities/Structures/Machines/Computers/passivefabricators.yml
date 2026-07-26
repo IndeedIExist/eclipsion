@@ -147,6 +147,131 @@
         type: AutominerBoundUserInterface
   - type: Destructible
     thresholds: []
+
+- type: entity
+  parent: AutominerPassiveFactory
+  id: BaseSingleOreAutominerPassiveFactory
+  abstract: true
+  components:
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+    flags:
+    - None
+  - type: Destructible
+    thresholds: []
+
+- type: entityList
+  id: autominerTungstenDropTable
+  entities:
+  - TungstenOre
+
+- type: entityList
+  id: autominerCoalDropTable
+  entities:
+  - Coal
+
+- type: entityList
+  id: autominerUraniumDropTable
+  entities:
+  - UraniumOre
+
+- type: entityList
+  id: autominerSilverDropTable
+  entities:
+  - SilverOre
+
+- type: entityList
+  id: autominerPlasmaDropTable
+  entities:
+  - PlasmaOre
+
+- type: entityList
+  id: autominerGoldDropTable
+  entities:
+  - GoldOre
+
+- type: entityList
+  id: autominerCopperDropTable
+  entities:
+  - CopperOre
+
+- type: entityList
+  id: autominerSteelDropTable
+  entities:
+  - SteelOre
+
+- type: entity
+  parent: BaseSingleOreAutominerPassiveFactory
+  id: AutominerPassiveFactoryTungsten
+  name: antique NT-AD-2 tungsten automated drill
+  description: An antique NanoTrasen mining drill calibrated to extract only tungsten ore. Looks like you could get it back in working order with some effort.
+  components:
+  - type: PassiveSpawningMachine
+    entityListProto: autominerTungstenDropTable
+
+- type: entity
+  parent: BaseSingleOreAutominerPassiveFactory
+  id: AutominerPassiveFactoryCoal
+  name: antique NT-AD-2 coal automated drill
+  description: An antique NanoTrasen mining drill calibrated to extract only coal. Looks like you could get it back in working order with some effort.
+  components:
+  - type: PassiveSpawningMachine
+    entityListProto: autominerCoalDropTable
+
+- type: entity
+  parent: BaseSingleOreAutominerPassiveFactory
+  id: AutominerPassiveFactoryUranium
+  name: antique NT-AD-2 uranium automated drill
+  description: An antique NanoTrasen mining drill calibrated to extract only uranium ore. Looks like you could get it back in working order with some effort.
+  components:
+  - type: PassiveSpawningMachine
+    entityListProto: autominerUraniumDropTable
+
+- type: entity
+  parent: BaseSingleOreAutominerPassiveFactory
+  id: AutominerPassiveFactorySilver
+  name: antique NT-AD-2 silver automated drill
+  description: An antique NanoTrasen mining drill calibrated to extract only silver ore. Looks like you could get it back in working order with some effort.
+  components:
+  - type: PassiveSpawningMachine
+    entityListProto: autominerSilverDropTable
+
+- type: entity
+  parent: BaseSingleOreAutominerPassiveFactory
+  id: AutominerPassiveFactoryPlasma
+  name: antique NT-AD-2 plasma automated drill
+  description: An antique NanoTrasen mining drill calibrated to extract only plasma ore. Looks like you could get it back in working order with some effort.
+  components:
+  - type: PassiveSpawningMachine
+    entityListProto: autominerPlasmaDropTable
+
+- type: entity
+  parent: BaseSingleOreAutominerPassiveFactory
+  id: AutominerPassiveFactoryGold
+  name: antique NT-AD-2 gold automated drill
+  description: An antique NanoTrasen mining drill calibrated to extract only gold ore. Looks like you could get it back in working order with some effort.
+  components:
+  - type: PassiveSpawningMachine
+    entityListProto: autominerGoldDropTable
+
+- type: entity
+  parent: BaseSingleOreAutominerPassiveFactory
+  id: AutominerPassiveFactoryCopper
+  name: antique NT-AD-2 copper automated drill
+  description: An antique NanoTrasen mining drill calibrated to extract only copper ore. Looks like you could get it back in working order with some effort.
+  components:
+  - type: PassiveSpawningMachine
+    entityListProto: autominerCopperDropTable
+
+- type: entity
+  parent: BaseSingleOreAutominerPassiveFactory
+  id: AutominerPassiveFactorySteel
+  name: antique NT-AD-2 steel automated drill
+  description: An antique NanoTrasen mining drill calibrated to extract only steel ore. Looks like you could get it back in working order with some effort.
+  components:
+  - type: PassiveSpawningMachine
+    entityListProto: autominerSteelDropTable
 #AUTOFOUNDRY
 
 - type: entityList

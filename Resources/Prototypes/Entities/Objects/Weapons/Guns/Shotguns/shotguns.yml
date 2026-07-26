@@ -5,6 +5,8 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  - type: GunCameraShake
+    magnitude: 0.10
   - type: Sprite
     layers:
     - state: icon
@@ -40,6 +42,8 @@
     proto: ShellShotgun
     soundInsert:
       collection: ShellReload
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container

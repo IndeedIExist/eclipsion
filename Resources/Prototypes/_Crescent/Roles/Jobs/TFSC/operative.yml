@@ -1,20 +1,20 @@
 - type: job
-  id: OperativeNCSP
+  id: OperativeTFSC
   name: job-name-operative
   description: job-description-operative
-  playTimeTracker: JobOperativeNCSP
+  playTimeTracker: JobOperativeTFSC
   ranks:
     RatRankTFSCOperativeLead:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobOperativeNCSP
+      tracker: JobOperativeTFSC
       min: 108000 # 30 hours
     RatRankTFSCOperativeSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobOperativeNCSP
+      tracker: JobOperativeTFSC
       min: 72000 # 20 hours
     RatRankTFSCOperativeMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobOperativeNCSP
+      tracker: JobOperativeTFSC
       min: 36000 # 10 hours
     RatRankTFSCOperativeJunior: []
   weight: 4
@@ -22,7 +22,8 @@
   alwaysUseSpawner: true
   requireAdminNotify: false
   icon: "JobIconSyndieOperative"
-  supervisors: You answer to the patriarch and the interests of the CyberDawn Technologies company.
+  chatNameColor: "#264180"
+  supervisors: You answer to the patriarch of the research wing, and above them the Ringleader.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -43,7 +44,7 @@
     components:
       - type: NukeOperative
       - type: HullrotFaction
-        faction: CD
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -54,7 +55,11 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
   - SyndicateRamzi
   - Engineering
   - Service
@@ -70,8 +75,8 @@
     id: OperativePDA
     gloves: ClothingHandsGlovesFingerless
     outerClothing: ClothingOuterArmorKendoBogu
-    ears: ClothingHeadsetNCSPCyberdawn
-    back: ClothingBackpackNCSP
+    ears: ClothingHeadsetTFSCCyberdawn
+    back: ClothingBackpackTFSC
     pocket1: WeaponPistolAnsem
     belt: ClothingBeltSyndicateWebbing
   storage:

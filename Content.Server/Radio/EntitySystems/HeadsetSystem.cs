@@ -29,7 +29,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         SubscribeLocalEvent<HeadsetComponent, RadioReceiveEvent>(OnHeadsetReceive);
         SubscribeLocalEvent<HeadsetComponent, EncryptionChannelsChangedEvent>(OnKeysChanged);
 
-        SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeEvent>(OnSpeak);
+        SubscribeLocalEvent<ActorComponent, EntitySpokeEvent>(OnSpeak);
 
         SubscribeLocalEvent<HeadsetComponent, EmpPulseEvent>(OnEmpPulse);
     }
@@ -54,14 +54,26 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             EnsureComp<ActiveRadioComponent>(uid).Channels = new(keyHolder.Channels);
     }
 
-    private void OnSpeak(EntityUid uid, WearingHeadsetComponent component, EntitySpokeEvent args)
+    private void OnSpeak(EntityUid uid, ActorComponent actor, EntitySpokeEvent args)
     {
+        // ActorComponent is on the player entity; get the WearingHeadsetComponent from them.
+        if (!TryComp(uid, out WearingHeadsetComponent? wearing))
+            return;
+
         if (args.Channel != null
-            && TryComp(component.Headset, out EncryptionKeyHolderComponent? keys)
+            && TryComp(wearing.Headset, out EncryptionKeyHolderComponent? keys)
             && keys.Channels.Contains(args.Channel.ID))
         {
-            _radio.SendRadioMessage(uid, args.Message, args.Channel, component.Headset);
-            args.Channel = null; // prevent duplicate messages from other listeners.
+            if (_radio.SendRadioMessage(
+                uid,
+                args.Message,
+                args.Channel,
+                wearing.Headset
+                ))
+            {
+                args.RadioMessageSent = true;
+                args.Channel = null;
+            }
         }
     }
 
@@ -111,10 +123,12 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         if (TryComp(parent, out ActorComponent? actor))
         {
             var canUnderstand = _language.CanUnderstand(parent, args.Language.ID);
+            var chatMessage = canUnderstand ? args.OriginalChatMsg : args.LanguageObfuscatedChatMsg;
             var msg = new MsgChatMessage
             {
-                Message = canUnderstand ? args.OriginalChatMsg : args.LanguageObfuscatedChatMsg
+                Message = chatMessage
             };
+
             _netMan.ServerSendMessage(msg, actor.PlayerSession.Channel);
 
             //Hullrot: Radio Sound Handling

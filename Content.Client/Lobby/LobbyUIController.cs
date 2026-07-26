@@ -29,6 +29,7 @@ using static Content.Shared.Humanoid.SharedHumanoidAppearanceSystem;
 using CharacterSetupGui = Content.Client.Lobby.UI.CharacterSetupGui;
 using HumanoidProfileEditor = Content.Client.Lobby.UI.HumanoidProfileEditor;
 using Content.Client._Forge.Sponsors;
+using Content.Client.GameTicking.Managers;
 
 namespace Content.Client.Lobby;
 
@@ -50,6 +51,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
     [UISystemDependency] private readonly SharedLoadoutSystem _loadouts = default!;
     [UISystemDependency] private readonly StationSpawningSystem _stationSpawning = default!;
+    private ClientGameTicker? _gameTicker;
 
     private CharacterSetupGui? _characterSetup;
     private HumanoidProfileEditor? _profileEditor;
@@ -73,18 +75,25 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         _configurationManager.OnValueChanged(CCVars.FlavorText, _ => _profileEditor?.RefreshFlavorText());
         _configurationManager.OnValueChanged(CCVars.GameRoleTimers, _ => RefreshProfileEditor());
         _configurationManager.OnValueChanged(CCVars.GameRoleWhitelist, _ => RefreshProfileEditor());
-
-        _preferencesManager.OnServerDataLoaded += PreferencesDataLoaded;
     }
 
     public void OnStateEntered(LobbyState state)
     {
+        _gameTicker = EntityManager.System<ClientGameTicker>();
+        _gameTicker.GamemodeJobsUpdated += OnGamemodeJobsUpdated;
+
         PreviewPanel?.SetLoaded(_preferencesManager.ServerDataLoaded);
         ReloadCharacterSetup();
     }
 
     public void OnStateExited(LobbyState state)
     {
+        if (_gameTicker != null)
+        {
+            _gameTicker.GamemodeJobsUpdated -= OnGamemodeJobsUpdated;
+            _gameTicker = null;
+        }
+
         PreviewPanel?.SetLoaded(false);
         _characterSetup?.Dispose();
         _profileEditor?.Dispose();
@@ -113,8 +122,29 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         if (_profileEditor == null)
             return;
 
-        _profileEditor.RefreshAntags();
-        _profileEditor.RefreshJobs();
+        // These run outside ReloadCharacterSetup (fired by manager events), so they need their own guard —
+        // a throw here (e.g. on gamemode change refreshing jobs) would otherwise black-screen the client.
+        try
+        {
+            _profileEditor.RefreshAntags();
+            _profileEditor.RefreshJobs();
+        }
+        catch (Exception e)
+        {
+            Logger.ErrorS("lobby", $"Failed to refresh character setup after requirements update: {e}");
+        }
+    }
+
+    private void OnGamemodeJobsUpdated()
+    {
+        try
+        {
+            _profileEditor?.RefreshJobs();
+        }
+        catch (Exception e)
+        {
+            Logger.ErrorS("lobby", $"Failed to refresh jobs after gamemode change: {e}");
+        }
     }
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs obj)
@@ -122,35 +152,52 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         if (_profileEditor == null)
             return;
 
-        if (obj.WasModified<SpeciesPrototype>())
-            _profileEditor.RefreshSpecies();
+        try
+        {
+            if (obj.WasModified<SpeciesPrototype>())
+                _profileEditor.RefreshSpecies();
 
-        if (obj.WasModified<AntagPrototype>())
-            _profileEditor.RefreshAntags();
+            if (obj.WasModified<AntagPrototype>())
+                _profileEditor.RefreshAntags();
 
-        if (obj.WasModified<JobPrototype>()
-            || obj.WasModified<DepartmentPrototype>())
-            _profileEditor.RefreshJobs();
+            if (obj.WasModified<JobPrototype>()
+                || obj.WasModified<DepartmentPrototype>())
+                _profileEditor.RefreshJobs();
 
-        if (obj.WasModified<TraitPrototype>())
-            _profileEditor.UpdateTraits(null, true);
+            if (obj.WasModified<TraitPrototype>())
+                _profileEditor.UpdateTraits(null, true);
 
-        if (obj.WasModified<LoadoutPrototype>())
-            _profileEditor.UpdateLoadouts(null, true);
+            if (obj.WasModified<LoadoutPrototype>())
+                _profileEditor.UpdateLoadouts(null, true);
+        }
+        catch (Exception e)
+        {
+            Logger.ErrorS("lobby", $"Failed to refresh character setup after prototype reload: {e}");
+        }
     }
 
 
     /// Reloads every single character setup control
     public void ReloadCharacterSetup()
     {
-        RefreshLobbyPreview();
-        var (characterGui, profileEditor) = EnsureGui();
-        characterGui.ReloadCharacterPickers();
-        characterGui.FactionSelector.SetProfile ((HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter,
-        _preferencesManager.Preferences?.SelectedCharacterIndex);
-        profileEditor.SetProfile(
-            (HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter,
-            _preferencesManager.Preferences?.SelectedCharacterIndex);
+        // Safety net: building the character setup off a bad/edge-case profile must never black-screen the
+        // whole client (it did — see the "customize crashes" reports). Log the real exception and degrade
+        // instead of letting it tear down the lobby UI.
+        try
+        {
+            RefreshLobbyPreview();
+            var (characterGui, profileEditor) = EnsureGui();
+            characterGui.ReloadCharacterPickers();
+            characterGui.FactionSelector.SetProfile((HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter,
+                _preferencesManager.Preferences?.SelectedCharacterIndex);
+            profileEditor.SetProfile(
+                (HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter,
+                _preferencesManager.Preferences?.SelectedCharacterIndex);
+        }
+        catch (Exception e)
+        {
+            Logger.ErrorS("lobby", $"Failed to reload character setup (likely a bad stored character): {e}");
+        }
     }
 
     /// Refreshes the character preview in the lobby chat
@@ -273,7 +320,13 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     public JobPrototype GetPreferredJob(HumanoidCharacterProfile profile)
     {
         var highPriorityJob = profile.JobPriorities.FirstOrDefault(p => p.Value == JobPriority.High).Key;
-        return _prototypeManager.Index<JobPrototype>(highPriorityJob ?? SharedGameTicker.FallbackOverflowJob);
+        // Fall back to the overflow job if the stored high-priority job no longer exists as a prototype
+        // (job removed between builds, filtered out by a gamemode, or a profile that never got revalidated).
+        // Indexing a missing prototype throws and would take down the whole lobby / character-setup UI.
+        if (highPriorityJob != null && _prototypeManager.TryIndex<JobPrototype>(highPriorityJob, out var job))
+            return job;
+
+        return _prototypeManager.Index<JobPrototype>(SharedGameTicker.FallbackOverflowJob);
     }
 
     public void RemoveDummyClothes(EntityUid dummy)

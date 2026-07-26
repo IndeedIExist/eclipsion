@@ -377,7 +377,7 @@
   name: Salvaged Thruster Flatpack
   description: Recycled thrusters from lost ultra-light designs such as Valor and Broadsword.
   icon: { sprite: _Crescent/Structures/thrustersyn.rsi, state: base }
-  productEntity: NCSPFighterThrusterFlatpack
+  productEntity: TFSCFighterThrusterFlatpack
   cost:
     ScrapSAW: 10
   categories:

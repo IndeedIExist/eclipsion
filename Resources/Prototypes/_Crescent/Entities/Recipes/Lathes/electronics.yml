@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: BasicElectronics1Electronics
+  category: Parts
   result: BasicElectronics1
   completetime: 0.5
   materials:
@@ -8,6 +9,7 @@
 
 - type: latheRecipe
   id: WeakLaserLocus1Electronics
+  category: Parts
   result: WeakLaserLocus1
   completetime: 0.5
   materials:
@@ -18,6 +20,7 @@
 
 - type: latheRecipe
   id: HardsuitElectronics1Electronics
+  category: Armor
   result: HardsuitElectronics1
   completetime: 0.5
   materials:
@@ -27,6 +30,7 @@
 
 - type: latheRecipe
   id: EMPGrenadeElectronics
+  category: Weapons
   result: EmpGrenade
   completetime: 1.5
   materials:

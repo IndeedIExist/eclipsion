@@ -1,0 +1,14 @@
+- type: entity
+  id: RatAnomalyStationEvent
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    earliestStart: 35
+    minimumPlayers: 1
+    weight: 7
+    duration: 900
+    maxOccurrences: 1
+  - type: AnomalyStationRule
+    stationMapPath: /Maps/_Crescent/Stations/old maps/oldgliess.yml
+    announcement: anomaly-station-event-anouncement

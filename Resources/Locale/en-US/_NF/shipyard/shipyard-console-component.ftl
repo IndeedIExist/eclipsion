@@ -8,8 +8,11 @@ shipyard-console-no-idcard = You are not wearing an ID card!
 shipyard-console-already-deeded = ID card already has a Deed
 shipyard-console-invalid-station = Not a valid station
 shipyard-console-no-bank = No bank account found
+shipyard-console-treasury-insufficient = The faction treasury cannot cover this requisition ({$cost} credits required).
+shipyard-console-faction-limit-reached = You have requisitioned your allotment of {$limit} vessels from the fleet reserve this shift.
 shipyard-console-no-deed = No ship deed found
 shipyard-console-sale-reqs = Ship must be docked and all crew disembarked
+shipyard-console-selling-disabled = This console does not buy ships.
 shipyard-console-deed-label = Registered Ship:
 shipyard-console-appraisal-label = Shuttle Estimated Value:{" "}
 

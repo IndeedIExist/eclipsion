@@ -1,0 +1,65 @@
+<BoxContainer xmlns="https://spacestation14.io"
+              xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+              xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+              Orientation="Vertical" Margin="6" VerticalExpand="True" HorizontalExpand="True">
+
+    <!-- Detection -->
+    <PanelContainer Margin="0 0 0 6">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderColor="#4d4d55" BorderThickness="2"/>
+        </PanelContainer.PanelOverride>
+
+        <BoxContainer Orientation="Vertical" Margin="8 6">
+            <Label Text="{Loc 'alert-console-section-detection'}" StyleClasses="ConsoleSubHeading"
+                   HorizontalAlignment="Center"/>
+            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" SetHeight="2" Margin="0 4"/>
+
+            <controls:MonotoneCheckBox Name="EnabledCheck" Text="{Loc 'alert-console-enabled'}" Margin="0 0 0 6"/>
+
+            <Label Text="{Loc 'alert-console-radius-label'}" StyleClasses="ConsoleText" Margin="0 0 0 2"/>
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 6">
+                <Slider Name="RadiusSlider" HorizontalExpand="True" MinValue="10" MaxValue="2000" Value="200"/>
+                <Label Name="RadiusValueLabel" StyleClasses="ConsoleText" Text="200 m" Margin="6 0 0 0"
+                       MinSize="70 0" VerticalAlignment="Center"/>
+            </BoxContainer>
+
+            <Label Text="{Loc 'alert-console-cooldown-label'}" StyleClasses="ConsoleText" Margin="0 0 0 2"/>
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                <Slider Name="CooldownSlider" HorizontalExpand="True" MinValue="5" MaxValue="3600" Value="60"/>
+                <Label Name="CooldownValueLabel" StyleClasses="ConsoleText" Text="60 sec" Margin="6 0 0 0"
+                       MinSize="70 0" VerticalAlignment="Center"/>
+            </BoxContainer>
+        </BoxContainer>
+    </PanelContainer>
+
+    <!-- Broadcast -->
+    <PanelContainer Margin="0 0 0 6">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderColor="#4d4d55" BorderThickness="2"/>
+        </PanelContainer.PanelOverride>
+
+        <BoxContainer Orientation="Vertical" Margin="8 6">
+            <Label Text="{Loc 'alert-console-section-broadcast'}" StyleClasses="ConsoleSubHeading"
+                   HorizontalAlignment="Center"/>
+            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" SetHeight="2" Margin="0 4"/>
+
+            <BoxContainer Orientation="Horizontal" Margin="0 0 0 6">
+                <Label Text="{Loc 'alert-console-channel-label'}" StyleClasses="ConsoleText"/>
+                <Label Name="ChannelLabel" StyleClasses="ConsoleText" Margin="6 0 0 0"/>
+            </BoxContainer>
+
+            <Label Text="{Loc 'alert-console-station-msg-label'}" StyleClasses="ConsoleText" Margin="0 0 0 2"/>
+            <LineEdit Name="StationMessageEdit" Margin="0 0 0 2"/>
+            <Label Text="{Loc 'alert-console-vars-hint'}" Margin="0 0 0 6" StyleClasses="LabelSecondaryColor"/>
+
+            <controls:MonotoneCheckBox Name="BroadcastCheck" Text="{Loc 'alert-console-broadcast'}" Margin="0 0 0 4"/>
+
+            <Label Text="{Loc 'alert-console-shuttle-msg-label'}" StyleClasses="ConsoleText" Margin="0 0 0 2"/>
+            <LineEdit Name="ShuttleMessageEdit"/>
+        </BoxContainer>
+    </PanelContainer>
+
+    <controls:MonotoneButton Name="SaveButton" Text="{Loc 'alert-console-save'}" HorizontalAlignment="Right"
+                             MinWidth="120"/>
+
+</BoxContainer>

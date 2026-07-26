@@ -1,6 +1,6 @@
 - type: gameMap
   id: Taypan1AsteroidBelt
-  mapName: 'Пояс Астероидов "Тайпан-1"'
+  mapName: 'Taypan-1 Asteroid Belt'
   mapPath: /Maps/_Crescent/Explorables/taypanone.yml
   minPlayers: 0
   stations:
@@ -13,4 +13,4 @@
             state: asteroids
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Пояс Астероидов "Тайпан-1"'
+          mapNameTemplate: 'Taypan-1 Asteroid Belt'

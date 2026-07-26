@@ -3,19 +3,19 @@
 
 - type: vessel
   id: Gorn
-  name: ГПИ Горн
+  name: ICM Gorn
   description: |
-    Промышленное судно небольшого размера. «Горн» отличается от стандартных добывающих шаттлов мощной буровой системой, наличием системы обработки полезных ископаемых, а также повышенной маневренностью.
-    СНАРЯЖЕНИЕ: 2x ТПШ 250с "Экскаватор" кинетический импульсатор
-    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1 пилот
-  price: 34000
+   A small industrial vessel. The “Gorn” differs from standard mining shuttles with its powerful drilling system, onboard ore processing system, and increased maneuverability.
+   EQUIPMENT: 2x Exhumer
+   MINIMUM CREW: 1 pilot
+  price: 31000
   category: Small
   group: Civilian
   path: /Maps/_Crescent/Shuttles/Civilian/gorn.yml
 
 - type: gameMap
   id: Gorn
-  mapName: 'ГПИ Горн'
+  mapName: 'ICM Gorn'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/gorn.yml
   minPlayers: 0
   stations:
@@ -30,11 +30,11 @@
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: civilian
         - type: StationNameSetup
-          mapNameTemplate: 'ГПИ Горн {1}'
+          mapNameTemplate: 'ICM Gorn {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-mining
         - type: VesselDescription
-          description: Добро пожаловать в ваш личный шахтерский рай.
+          description: Welcome to your personal mining paradise.

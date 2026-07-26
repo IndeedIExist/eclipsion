@@ -20,4 +20,5 @@ public enum WeaponArcAnimation : byte
     None,
     Thrust,
     Slash,
+    RapierThrust,
 }

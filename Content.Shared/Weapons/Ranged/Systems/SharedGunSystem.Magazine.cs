@@ -156,13 +156,6 @@ public abstract partial class SharedGunSystem
 
     private void FinaliseMagazineTakeAmmo(EntityUid uid, MagazineAmmoProviderComponent component, int count, int capacity, EntityUid? user, AppearanceComponent? appearance)
     {
-        // If no ammo then check for autoeject
-        if (component.AutoEject && count == 0)
-        {
-            EjectMagazine(uid, component);
-            Audio.PlayPredicted(component.SoundAutoEject, uid, user);
-        }
-
         UpdateMagazineAppearance(uid, appearance, true, count, capacity);
     }
 
@@ -196,13 +189,4 @@ public abstract partial class SharedGunSystem
         Appearance.SetData(uid, AmmoVisuals.AmmoMax, capacity, appearance);
     }
 
-    private void EjectMagazine(EntityUid uid, MagazineAmmoProviderComponent component)
-    {
-        var ent = GetMagazineEntity(uid);
-
-        if (ent == null)
-            return;
-
-        _slots.TryEject(uid, MagazineSlot, null, out var a, excludeUserAudio: true);
-    }
 }

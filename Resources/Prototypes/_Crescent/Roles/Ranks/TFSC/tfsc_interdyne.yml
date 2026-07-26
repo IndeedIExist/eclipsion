@@ -1,0 +1,86 @@
+# Coordinator
+- type: rank
+  id: RatRankTFSCCoordinatorHigh
+  name: Director
+  prefix: Director
+  paygrade: ID-C5
+
+- type: rank
+  id: RatRankTFSCCoordinatorLead
+  name: Deputy Director
+  prefix: Dep. Dir.
+  paygrade: ID-C4
+
+- type: rank
+  id: RatRankTFSCCoordinatorSenior
+  name: Senior Supervisor
+  prefix: Sr. Sup.
+  paygrade: ID-C3
+
+- type: rank
+  id: RatRankTFSCCoordinatorMiddle
+  name: Supervisor
+  prefix: Sup.
+  paygrade: ID-C2
+
+- type: rank
+  id: RatRankTFSCCoordinatorJunior
+  name: Junior Supervisor
+  prefix: Jr. Sup.
+  paygrade: ID-C1
+
+# Traumasec
+- type: rank
+  id: RatRankTFSCTraumasecHead
+  name: Chief Executor
+  prefix: Chief Exec.
+  paygrade: ID-E5
+
+- type: rank
+  id: RatRankTFSCTraumasecLead
+  name: Specialist Executor
+  prefix: Spec.
+  paygrade: ID-E4
+
+- type: rank
+  id: RatRankTFSCTraumasecSenior
+  name: First-Class Executor
+  prefix: Exec. 1st Cl.
+  paygrade: ID-E3
+
+- type: rank
+  id: RatRankTFSCTraumasecMiddle
+  name: Second-Class Executor
+  prefix: Exec. 2nd Cl.
+  paygrade: ID-E2
+
+- type: rank
+  id: RatRankTFSCTraumasecJunior
+  name: Third-Class Executor
+  prefix: Exec. 3rd Cl.
+  paygrade: ID-E1
+
+# Ripperdoc
+- type: rank
+  id: RatRankTFSCRipperdocLead
+  name: Lead Surgeon
+  prefix: Lead Surg.
+  paygrade: ID-D4
+
+- type: rank
+  id: RatRankTFSCRipperdocSenior
+  name: Senior Surgeon
+  prefix: Sr. Surg.
+  paygrade: ID-D3
+
+- type: rank
+  id: RatRankTFSCRipperdocMiddle
+  name: Surgeon
+  prefix: Surg.
+  paygrade: ID-D2
+
+- type: rank
+  id: RatRankTFSCRipperdocJunior
+  name: Intern
+  prefix: Intern
+  paygrade: ID-D1

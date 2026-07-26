@@ -82,24 +82,24 @@
   cost: 0
   exclusive: true
   items:
-    - ClothingBackpackNCSP
+    - ClothingBackpackTFSC
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutBackpacks
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - ForemanNCSP
-        - InfanteerNCSP
-        - IntelligenceOfficerNCSP
-        - LieutenantNCSP
-        - OperativeNCSP
-        - CyberdawnTechNCSP
-        - RingleaderNCSP
-        - RipperdocNCSP
-        - ShipbreakerNCSP
-        - TechnicianNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - ForemanTFSC
+        - InfanteerTFSC
+        - IntelligenceOfficerTFSC
+        - LieutenantTFSC
+        - OperativeTFSC
+        - CyberdawnTechTFSC
+        - RingleaderTFSC
+        - RipperdocTFSC
+        - ShipbreakerTFSC
+        - TechnicianTFSC
+        - CoordinatorTFSC
 
 - type: loadout
   id: LoadoutBackpackTFSCSatchel
@@ -107,24 +107,24 @@
   cost: 0
   exclusive: true
   items:
-    - ClothingBackpackNCSPSatchel
+    - ClothingBackpackTFSCSatchel
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutBackpacks
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - ForemanNCSP
-        - InfanteerNCSP
-        - IntelligenceOfficerNCSP
-        - LieutenantNCSP
-        - OperativeNCSP
-        - CyberdawnTechNCSP
-        - RingleaderNCSP
-        - RipperdocNCSP
-        - ShipbreakerNCSP
-        - TechnicianNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - ForemanTFSC
+        - InfanteerTFSC
+        - IntelligenceOfficerTFSC
+        - LieutenantTFSC
+        - OperativeTFSC
+        - CyberdawnTechTFSC
+        - RingleaderTFSC
+        - RipperdocTFSC
+        - ShipbreakerTFSC
+        - TechnicianTFSC
+        - CoordinatorTFSC
 
 - type: loadout
   id: LoadoutBackpackTFSCDuffel
@@ -132,24 +132,24 @@
   cost: 0
   exclusive: true
   items:
-    - ClothingBackpackNCSPDuffelbag
+    - ClothingBackpackTFSCDuffelbag
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutBackpacks
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - ForemanNCSP
-        - InfanteerNCSP
-        - IntelligenceOfficerNCSP
-        - LieutenantNCSP
-        - OperativeNCSP
-        - CyberdawnTechNCSP
-        - RingleaderNCSP
-        - RipperdocNCSP
-        - ShipbreakerNCSP
-        - TechnicianNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - ForemanTFSC
+        - InfanteerTFSC
+        - IntelligenceOfficerTFSC
+        - LieutenantTFSC
+        - OperativeTFSC
+        - CyberdawnTechTFSC
+        - RingleaderTFSC
+        - RipperdocTFSC
+        - ShipbreakerTFSC
+        - TechnicianTFSC
+        - CoordinatorTFSC
 
 - type: loadout
   id: LoadoutBackpackDSM

@@ -6,7 +6,7 @@
   name: TS Guard
   description: |
     Minutemen interceptor/fighter. Designed to chase down running vessels.
-    LOADOUT: 1x 35mm 'Scout' rotatory cannon
+    LOADOUT: 1x 35mm 'Scout' Autocannon
     MINIMUM CREW: 1x Pilot
   price: 15000
   category: Small
@@ -21,9 +21,6 @@
   stations:
     Guard:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:

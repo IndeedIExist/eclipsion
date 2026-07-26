@@ -23,7 +23,7 @@ public sealed class CameraRecoilSystem : SharedCameraRecoilSystem
 
     private void OnCvarChanged(float value)
     {
-        _intensity = 0;
+        _intensity = 0; // server-side directional kicks disabled; gun shake handled by GunScreenShakeSystem
     }
 // I AM SO SORRY BUT I'M TIRED OF NEWBUDDIES GETTING FRAGGED BECAUSE THEY'RE A LITTLE SLOW -wabash
     private void OnCameraKick(CameraKickEvent ev)

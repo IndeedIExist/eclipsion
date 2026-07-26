@@ -2,6 +2,7 @@
   id: WealthDSM
   name: job-name-wealth
   description: job-description-wealth
+  setPreference: false # hidden from job selection, kept for spawners/admin use
   playTimeTracker: JobWealthDSM
   ranks:
     RatRankKnightLead:

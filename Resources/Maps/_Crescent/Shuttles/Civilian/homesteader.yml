@@ -73,7 +73,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 25
+      baseMaxLinearVelocity: 30
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -2434,7 +2434,7 @@ entities:
     - type: Transform
       pos: -5.5,-1.5
       parent: 1
-- proto: ResearchAndDevelopmentServerGliessian
+- proto: ResearchAndDevelopmentServerGliessianShuttle
   entities:
   - uid: 407
     components:

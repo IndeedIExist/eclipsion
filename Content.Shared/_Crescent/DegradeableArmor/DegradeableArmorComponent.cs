@@ -40,7 +40,7 @@ public sealed partial class DegradeableArmorComponent : Component
     /// Sound played when the armor is fully broken (armorHealth <= 0)
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public SoundSpecifier? breakSound = new SoundPathSpecifier("/Audio/_Rat/Effects/armor_break.ogg");
+    public SoundSpecifier? breakSound = new SoundPathSpecifier("/Audio/_Crescent/Effects/armor_break.ogg");
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public DamageModifierSet initialModifiers = default!;

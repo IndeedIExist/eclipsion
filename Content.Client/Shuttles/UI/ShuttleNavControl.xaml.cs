@@ -22,7 +22,7 @@ using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Threading;
-using Content.Client._Rat.SpaceEvents; // Rat
+using Content.Client._Crescent.SpaceEvents; // Rat
 using Content.Shared.PointCannons; // Rat
 
 namespace Content.Client.Shuttles.UI;
@@ -1018,7 +1018,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         if (_coordinates == null || _rotation == null)
             return;
 
-        // Получаем текущую позицию на карте
+        // Get current map position
         var xformQuery = EntManager.GetEntityQuery<TransformComponent>();
         if (!xformQuery.TryGetComponent(_coordinates.Value.EntityId, out var xform)
             || xform.MapID == MapId.Nullspace)
@@ -1047,16 +1047,16 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         mapCenterUI.Y = -mapCenterUI.Y;
         var uiCenter = ScalePosition(mapCenterUI);
 
-        // Центр
+        // Center
         handle.DrawCircle(uiCenter, 500 * MinimapScale, new Color(1f, 0f, 0f, 0.03f));
         handle.DrawCircle(uiCenter, 500 * MinimapScale, new Color(1f, 0f, 0f, 0.2f), filled: false);
 
-        // Внешнее кольцо
+        // Outer ring
         DrawFilledRing(handle, uiCenter,
             4000 * MinimapScale, 4500 * MinimapScale,
             new Color(0f, 1f, 0f, 0.03f), new Color(0f, 1f, 0f, 0.2f));
 
-        // Хадал
+        // Hadal zone
         DrawFilledRing(handle, uiCenter,
             10000 * MinimapScale, 20000 * MinimapScale,
             new Color(1f, 0f, 0f, 0.01f), new Color(1f, 0f, 0f, 0.1f));

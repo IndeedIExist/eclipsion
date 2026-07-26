@@ -1,5 +1,5 @@
 ## UI
-adventure-list-start = NCWL State Bank
+adventure-list-start = Taypan Civil Bank
 adventure-mode-profit-text = made a total profit of: {" "}
 adventure-mode-loss-text = lost a total of: {" "}
 adventure-list-high = Today's Top Earners:

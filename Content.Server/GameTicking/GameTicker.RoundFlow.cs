@@ -796,6 +796,13 @@ namespace Content.Server.GameTicking
         {
             if (CurrentPreset == null) return;
 
+            if (CurrentPreset.RoundStartMessage != null)
+            {
+                _announcer.SendAnnouncement("basic-transmission", Filter.Broadcast(),
+                    CurrentPreset.RoundStartMessage, CurrentPreset.RoundStartSender);
+                return;
+            }
+
             var options = _prototypeManager.EnumeratePrototypes<RoundAnnouncementPrototype>().ToList();
 
             if (options.Count == 0)

@@ -1,2 +1,0 @@
-ent-HephInfo = { "" }
-    .desc = { "" }

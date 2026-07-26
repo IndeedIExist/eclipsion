@@ -11,6 +11,9 @@
   - type: Gun
     minAngle: 21
     maxAngle: 32
+  - type: UseDelay
+    delay: 0.4
+  - type: UseDelayBlockShoot
 
 - type: entity
   id: BaseGunWieldableDMR
@@ -24,3 +27,6 @@
   - type: Gun
     minAngle: 20
     maxAngle: 30
+  - type: UseDelay
+    delay: 0.4
+  - type: UseDelayBlockShoot

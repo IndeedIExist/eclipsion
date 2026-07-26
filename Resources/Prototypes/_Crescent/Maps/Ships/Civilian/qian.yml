@@ -3,34 +3,31 @@
 
 - type: vessel
   id: Qian
-  name: ОПТ Цянь
+  name: PTA Qian
   description: |
-    "Цянь" — крупнотоннажный грузовой перевозчик, модернизированный для выживания, способный перевозить огромные объемы грузов, чтобы обогатить любого капитана. Оснащен генератором щита, а также набором баллистических скорострельных орудий ПВО для самозащиты.
-    LOADOUT: 10x 20mm 'Screamer' light autocannons
+    The Qian is a large-scale cargo hauler, retrofitted to survive taypan, capable of carrying massive amounts of cargo to make any captain rich. It is equipped with a shield generator, as well as a bundle of ballistic PDTs in order to protect itself.
+    LOADOUT: 6x 20mm 'Screamer' Rotary Cannons
     MINIMUM CREW: 1x Pilot, 1x Cargo Worker
-  price: 130000
+  price: 120000
   category: Medium
   group: Civilian
   path: /Maps/_Crescent/Shuttles/Civilian/qian.yml
 
 - type: gameMap
   id: Qian
-  mapName: 'ОПТ Цянь'
+  mapName: 'PTA Qian'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/qian.yml
   minPlayers: 0
   stations:
     Qian:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: large_industrial
         - type: StationNameSetup
-          mapNameTemplate: 'ОПТ Цянь {1}'
+          mapNameTemplate: 'PTA Qian {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

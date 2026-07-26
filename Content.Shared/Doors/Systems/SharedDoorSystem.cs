@@ -90,6 +90,21 @@ public abstract partial class SharedDoorSystem : EntitySystem
     protected virtual void OnComponentInit(Entity<DoorComponent> ent, ref ComponentInit args)
     {
         var door = ent.Comp;
+
+        // A door can be saved (e.g. in a map) mid-animation, i.e. in the Opening/Closing state with a
+        // NextStateChange that is already in the past. Normally the Update loop advances such a door to
+        // Open/Closed, but that relies on the door's Update actually ticking. On grids that are merged in
+        // without their door updates running yet (e.g. worldgen debris wrecks), the door would stay stuck
+        // in Opening/Closing forever - and prying a stuck door is a silent no-op (OnAfterPry only handles
+        // Closed/Open). So if the pending state change is already overdue, resolve it straight away here.
+        if (door.NextStateChange is { } next && next <= GameTiming.CurTime
+            && door.State is DoorState.Opening or DoorState.Closing)
+        {
+            door.State = door.State == DoorState.Opening ? DoorState.Open : DoorState.Closed;
+            door.Partial = false;
+            door.NextStateChange = null;
+        }
+
         if (door.NextStateChange != null)
             _activeDoors.Add(ent);
         else

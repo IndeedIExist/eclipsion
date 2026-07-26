@@ -5,6 +5,7 @@
                 SetSize="850 700"
                 MinSize="100 200"
                 Resizable="True"
+                Modulate="#FFFFFFEE"
                 Title="{Loc 'guidebook-window-title'}">
     <SplitContainer Orientation="Horizontal" HorizontalExpand="True" Name="Split">
         <!-- Guide select -->

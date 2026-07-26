@@ -1,12 +1,16 @@
 - type: gameMap
   id: AuroraImperialis
-  mapName: 'БМС Аврора'
-  mapPath: /Maps/_Rat/Stations/aurora.yml # taleryn-version
+  mapName: 'DSM Aurora Imperialis'
+  mapPath: /Maps/_Crescent/Stations/aurora.yml # taleryn-version
   minPlayers: 0
   stations:
     AuroraImperialis:
       stationProto: StandardCrescentStation
       gridComponents:
+        - type: FactionStation # conquest win condition
+          faction: DSM
+          fallAnnouncement: faction-station-fall-aurora
+          stationName: DSM Aurora Imperialis
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
         - type: VesselIcon
@@ -17,11 +21,11 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Аврора'
+          mapNameTemplate: 'DSM Aurora'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: VesselDescription
-          description: Могущественная имперская крепость, являющаяся последним оплотом порядка в системе.
+          description: A powerful imperial fortress, serving as the last bastion of order in the system.
         - type: VesselMusic
           ambientMusicPrototype: CountsmanMusic
         - type: Grammar
@@ -32,16 +36,13 @@
           availableJobs:
             GovernorDSM: [ 1, 1 ]
             AdjutantDSM: [ 1, 1 ]
-            KnightDSM: [ 4, 4 ]
-            RitterDSM: [ 3, 3 ]
-            LevymanDSM: [ -1, -1 ]
-            ArchmaesterDSM: [ 1, 1 ]
-            ScribeDSM: [ 6, 6 ]
-            SurgeonDSM: [ 4, 4 ]
-            TemplarDSM: [ 2, 2 ]
-            AdvocatusDSM: [ 1, 1 ]
-            CourtierDSM: [ 10, 10 ]
             LaborDSM: [ 1, 1 ]
-            WealthDSM: [ 1, 1 ]
-            ForemanDSM: [ 3, 3 ]
+            CourtierDSM: [ 4, 4 ]
+            AdvocatusDSM: [ 1, 1 ]
+            TemplarDSM: [ 2, 2 ]
+            KnightDSM: [ 4, 4 ]
+            LevymanDSM: [ -1, -1 ]
+            ForemanDSM: [ 4, 4 ]
+            ScribeDSM: [ 6, 6 ]
+            SurgeonDSM: [ 6, 6 ]
             FreeholderDSM: [ -1, -1 ]

@@ -13,11 +13,11 @@
       tracker: JobEngineeringLeaderNCWL
       min: 36000 # 10 hours
     RatRankNCWLOfficerJunior: []
-  weight: 94
+  weight: 96
   startingGear: IndustryTaskmasterNCWLGear
   alwaysUseSpawner: true
   requireAdminNotify: false
-  icon: "JobIconNCWLEngineeringLeader"
+  icon: "JobIconNCWLMedicalLeader"
   supervisors: job-supervisors-ncwl-leaders
   canBeAntag: false
   requirements:
@@ -100,7 +100,7 @@
     gloves: ClothingHandsGlovesColorYellow
     head: ClothingHeadHatBeretEngineering
     eyes: ClothingEyesGlassesMeson
-    ears: ClothingHeadsetNCWL
+    ears: ClothingHeadsetNCWLCommand
     outerClothing: ClothingOuterArmorNCWLEngi
     belt: ClothingBeltSalvageWebbingFilledNF
     pocket2: RatRubberStampNCWLResearch

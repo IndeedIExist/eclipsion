@@ -11,9 +11,9 @@
       jobs:
         - CommandantNCWL
         - KommissarNCWL
-        - IntelligenceOfficerNCSP
-        - LieutenantNCSP
-        - RingleaderNCSP
+        - IntelligenceOfficerTFSC
+        - LieutenantTFSC
+        - RingleaderTFSC
         - KommandantATH
         - LeutnantATH
         - Antiquarian
@@ -33,9 +33,9 @@
       jobs:
         - CommandantNCWL
         - KommissarNCWL
-        - IntelligenceOfficerNCSP
-        - LieutenantNCSP
-        - RingleaderNCSP
+        - IntelligenceOfficerTFSC
+        - LieutenantTFSC
+        - RingleaderTFSC
         - KommandantATH
         - LeutnantATH
         - Antiquarian

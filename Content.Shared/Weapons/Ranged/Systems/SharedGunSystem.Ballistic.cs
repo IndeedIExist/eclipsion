@@ -210,10 +210,21 @@ public abstract partial class SharedGunSystem
             return;
 
         // Reset shotting for cycling
-        if (Resolve(uid, ref gunComp, false)
-            && gunComp is { FireRateModified: > 0f }
-            && !Paused(uid))
-            gunComp.NextFire = Timing.CurTime + TimeSpan.FromSeconds(1 / gunComp.FireRateModified);
+        if (Resolve(uid, ref gunComp, false) && !Paused(uid))
+        {
+            var nextFire = Timing.CurTime;
+
+            if (gunComp.FireRateModified > 0f)
+                nextFire += TimeSpan.FromSeconds(1 / gunComp.FireRateModified);
+
+            // Manually-cycled guns (e.g. pump/bolt-action shotguns) get a slight extra delay
+            // so racking the action doesn't let you immediately fire again.
+            if (!component.AutoCycle)
+                nextFire += component.CycleDelay;
+
+            if (nextFire > gunComp.NextFire)
+                gunComp.NextFire = nextFire;
+        }
 
         Dirty(uid, component);
         Audio.PlayPredicted(component.SoundRack, uid, user);
@@ -265,6 +276,14 @@ public abstract partial class SharedGunSystem
             if (component.Entities.Count > 0)
             {
                 entity = component.Entities[^1];
+
+                // The entity may not exist locally yet (e.g. an unresolved NetEntity from a networked state).
+                // Discard it instead of handing an invalid uid to EnsureShootable.
+                if (!Exists(entity))
+                {
+                    component.Entities.RemoveAt(component.Entities.Count - 1);
+                    continue;
+                }
 
                 args.Ammo.Add((entity, EnsureShootable(entity)));
                 // if entity in container it can't be ejected, so shell will remain in gun and block next shoot

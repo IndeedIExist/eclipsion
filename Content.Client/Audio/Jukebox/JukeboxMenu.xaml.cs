@@ -30,9 +30,18 @@ public sealed partial class JukeboxMenu : FancyWindow
     public event Action<bool>? OnPlayPressed;
     public event Action? OnStopPressed;
     public event Action<ProtoId<JukeboxPrototype>>? OnSongSelected;
+    public event Action<ProtoId<JukeboxPrototype>>? OnQueueAdd;
+    public event Action<int>? OnQueueRemove;
+    public event Action? OnQueueClear;
+    public event Action? OnQueueNext;
     public event Action<float>? SetTime;
 
     private EntityUid? _audio;
+
+    /// <summary>
+    /// The song highlighted in the list, used as the target for the queue button.
+    /// </summary>
+    private ProtoId<JukeboxPrototype>? _highlightedSong;
 
     private float _lockTimer;
 
@@ -49,7 +58,24 @@ public sealed partial class JukeboxMenu : FancyWindow
             if (entry.Metadata is not string juke)
                 return;
 
+            _highlightedSong = juke;
             OnSongSelected?.Invoke(juke);
+        };
+
+        QueueAddButton.OnPressed += _ =>
+        {
+            if (_highlightedSong is { } song)
+                OnQueueAdd?.Invoke(song);
+        };
+
+        QueueClearButton.OnPressed += _ =>
+        {
+            OnQueueClear?.Invoke();
+        };
+
+        QueueList.OnItemSelected += args =>
+        {
+            OnQueueRemove?.Invoke(args.ItemIndex);
         };
 
         PlayButton.OnPressed += args =>
@@ -60,6 +86,11 @@ public sealed partial class JukeboxMenu : FancyWindow
         StopButton.OnPressed += args =>
         {
             OnStopPressed?.Invoke();
+        };
+
+        NextButton.OnPressed += args =>
+        {
+            OnQueueNext?.Invoke();
         };
         PlaybackSlider.OnReleased += PlaybackSliderKeyUp;
 
@@ -92,6 +123,19 @@ public sealed partial class JukeboxMenu : FancyWindow
         foreach (var entry in jukeboxProtos.OrderBy(p => p.Name))
         {
             MusicList.AddItem(entry.Name, metadata: entry.ID);
+        }
+    }
+
+    /// <summary>
+    /// Re-populates the list of upcoming queued songs.
+    /// </summary>
+    public void PopulateQueue(IEnumerable<string> songNames)
+    {
+        QueueList.Clear();
+
+        foreach (var name in songNames)
+        {
+            QueueList.AddItem(name);
         }
     }
 

@@ -63,7 +63,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 25
+      baseMaxLinearVelocity: 30
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -8273,7 +8273,7 @@ entities:
     - type: Transform
       pos: 2.5,-2.5
       parent: 1
-- proto: WallReinforcedNCSP
+- proto: WallReinforcedTFSC
   entities:
   - uid: 1055
     components:

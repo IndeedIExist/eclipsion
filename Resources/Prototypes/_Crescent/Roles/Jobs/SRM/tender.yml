@@ -19,6 +19,7 @@
   requireAdminNotify: false
   whitelisted: true # Rat
   icon: "JobIconTender"
+  chatNameColor: "#B04A9A"
   supervisors: job-supervisors-srm-hunters
   canBeAntag: false
   requirements:

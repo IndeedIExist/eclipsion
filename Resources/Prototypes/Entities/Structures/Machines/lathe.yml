@@ -1761,6 +1761,8 @@
     idleState: icon
     runningState: building
     defaultProductionAmount: 10
+    batchOutput: true # everything from one run comes out together when the queue finishes
+    maxQueuePerRequest: 500 # meant to be fed a whole haul in one order
     staticRecipes:
     # - BluespaceCrystal
     # - NormalityCrystal
@@ -1786,10 +1788,6 @@
   - type: MaterialStorageMagnetPickup # Delta V - Summary: Adds magnet pull from Frontier
     magnetEnabled: True
     range: 0.30 # Delta V - End Magnet Pull
-  - type: MiningPoints # DeltaV - Source of mining points for miners
-    transferSound:
-      path: /Audio/Effects/Cargo/ping.ogg
-  - type: MiningPointsLathe # DeltaV
 
 - type: entity
   parent: OreProcessor

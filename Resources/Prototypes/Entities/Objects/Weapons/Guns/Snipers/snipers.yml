@@ -5,6 +5,8 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  - type: GunCameraShake
+    magnitude: 0.11
   - type: Sprite
     layers:
     - state: base
@@ -20,6 +22,9 @@
   - type: AmmoCounter
   - type: Wieldable
   - type: GunRequiresWield
+  - type: UseDelay
+    delay: 0.5
+  - type: UseDelayBlockShoot
   - type: Gun
     fireRate: 0.75
     selectedMode: SemiAuto
@@ -400,7 +405,7 @@
     - suitStorage
   - type: Appearance
   - type: Gun
-    damageModifier: 0.85 # enough to crit a fully armored soldier
+    damageModifier: 1.0
     fireRate: 8
     selectedMode: SemiAuto
     availableModes:
@@ -455,7 +460,7 @@
     - suitStorage
   - type: Appearance
   - type: Gun
-    damageModifier: 0.85 #enough to crit a fully armored soldier
+    damageModifier: 1.0
     fireRate: 8
     selectedMode: SemiAuto
     availableModes:

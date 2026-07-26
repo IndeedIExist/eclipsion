@@ -1,0 +1,69 @@
+- type: job
+  id: planetfall_doctor
+  name: job-name-ncwl-medical-doctor
+  description: job-description-ncwl-medical-doctor
+  playTimeTracker: JobMedicalWorkerNCWL
+  weight: 95
+  startingGear: planetfall_doctor_gear
+  alwaysUseSpawner: true
+  requireAdminNotify: false
+  icon: "JobIconNCWLMedicalWorker"
+  chatNameColor: "#00e6d6"
+  supervisors: job-supervisors-ncwl-unionized
+  canBeAntag: false
+  requirements:
+    - !type:CharacterOverallTimeRequirement
+      min: 1000
+    - !type:FactionRequirement
+      factionID: "NCWL"
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - Voidborn
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Muted
+        - Blindness
+        - Pacifist
+        - WheelchairBound
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: HullrotFaction
+        faction: NCWL
+      - type: CPRTraining
+      - type: SurgerySpeedModifier
+        speedModifier: 1.75
+      - type: LanguageAdder
+        addSpoken:
+          - Dockta
+        addUnderstood:
+          - Dockta
+  access:
+  - Command
+  - Maintenance
+  - Service
+  - NCWLGeneral
+  - NCWLJail
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: planetfall_doctor_gear
+  equipment:
+    shoes: ClothingShoesBootsCombat
+    jumpsuit: ClothingUniformJumpsuitNCWLMedic
+    id: NCWLMedicalWorkerPDA
+    outerClothing: ClothingOuterArmorNCWLMedi
+    belt: ClothingBeltMedicalFilled
+    back: ClothingBackpackNCWL
+    gloves: ClothingHandsGlovesNitrile
+    head: ClothingHeadHatNCWLCapsoftMedical
+    eyes: ClothingEyesHudMedical
+    ears: ClothingHeadsetNCWL_Planetfall
+  storage:
+     back:
+      - Portafib
+      - MedkitFilled

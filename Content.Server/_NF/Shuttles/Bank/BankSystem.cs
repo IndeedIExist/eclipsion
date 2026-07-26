@@ -8,6 +8,8 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Network;
 using Content.Server.Cargo.Components;
 using Content.Shared.Preferences.Loadouts;
+using Content.Shared.Mind.Components;
+using Content.Shared.Mind;
 
 namespace Content.Server.Bank;
 
@@ -23,8 +25,27 @@ public sealed partial class BankSystem : EntitySystem
         base.Initialize();
         _log = Logger.GetSawmill("bank");
         SubscribeLocalEvent<BankAccountComponent, ComponentGetState>(OnBankAccountChanged);
+        SubscribeLocalEvent<BankAccountComponent, MindAddedMessage>(OnMindAdded);
         InitializeATM();
         InitializeStationATM();
+    }
+
+    private void OnMindAdded(EntityUid uid, BankAccountComponent bank, ref MindAddedMessage args)
+    {
+        var mind = args.Mind.Comp;
+        if (mind.UserId == null)
+            return;
+
+        var prefs = _prefsManager.GetPreferences(mind.UserId.Value);
+        if (prefs.SelectedCharacter is not HumanoidCharacterProfile profile)
+            return;
+
+        if (bank.Balance != profile.BankBalance)
+        {
+            bank.Balance = profile.BankBalance;
+            EntityManager.Dirty(uid, bank);
+            _log.Info($"Mind transfer to {ToPrettyString(uid)}: bank balance reset to profile value {profile.BankBalance}");
+        }
     }
 
     // To ensure that bank account data gets saved, we are going to update the db every time the component changes
@@ -118,6 +139,27 @@ public sealed partial class BankSystem : EntitySystem
 
         bank.Balance += amount;
         _log.Info($"{mobUid} deposited {amount}");
+        EntityManager.Dirty(mobUid, bank);
+        return true;
+    }
+
+    /// <summary>
+    /// Sets a character's bank balance to an absolute value. Intended for admin tooling.
+    /// Dirtying the component routes the new value back into the saved character profile.
+    /// </summary>
+    /// <param name="mobUid">The UID the bank account is attached to, typically the player mob.</param>
+    /// <param name="amount">The absolute balance to set. Negative values are rejected.</param>
+    /// <returns>true if the balance was set, false otherwise.</returns>
+    public bool TrySetBankBalance(EntityUid mobUid, long amount)
+    {
+        if (amount < 0)
+            return false;
+
+        if (!TryComp<BankAccountComponent>(mobUid, out var bank))
+            return false;
+
+        bank.Balance = amount;
+        _log.Info($"{mobUid} balance set to {amount}");
         EntityManager.Dirty(mobUid, bank);
         return true;
     }

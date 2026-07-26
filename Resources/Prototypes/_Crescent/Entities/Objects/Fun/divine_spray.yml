@@ -1,0 +1,41 @@
+- type: entity
+  parent: BaseItem
+  id: SprayDivineSolMandate
+  name: divine sol mandate spray
+  description: A spray can loaded with the mark of the Divine Sol Mandate. Tag a tile again and again to paint the whole thing.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/spray_painter.rsi
+    state: spray_painter
+  - type: Item
+    sprite: Objects/Tools/spray_painter.rsi
+  - type: GraffitiSpray
+    stageOffset: 1.125,0
+    stageDecals:
+    - DivineSolMandate1
+    - DivineSolMandate2
+    - DivineSolMandate3
+    - DivineSolMandate4
+    - DivineSolMandate5
+    - DivineSolMandate6
+    - DivineSolMandate7
+    - DivineSolMandate8
+    stageSounds:
+    - !type:SoundPathSpecifier
+      path: /Audio/_Crescent/Spray/stage1.ogg
+    - !type:SoundPathSpecifier
+      path: /Audio/_Crescent/Spray/stage2.ogg
+    - !type:SoundPathSpecifier
+      path: /Audio/_Crescent/Spray/stage3.ogg
+    - !type:SoundPathSpecifier
+      path: /Audio/_Crescent/Spray/stage4.ogg
+    - !type:SoundPathSpecifier
+      path: /Audio/_Crescent/Spray/stage5.ogg
+    - !type:SoundPathSpecifier
+      path: /Audio/_Crescent/Spray/stage6.ogg
+    - !type:SoundPathSpecifier
+      path: /Audio/_Crescent/Spray/stage7.ogg
+    - !type:SoundPathSpecifier
+      path: /Audio/_Crescent/Spray/stage8.ogg
+  - type: StaticPrice
+    price: 40

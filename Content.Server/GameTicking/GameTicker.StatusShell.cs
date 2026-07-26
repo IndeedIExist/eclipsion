@@ -3,7 +3,7 @@ using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Robust.Server.ServerStatus;
 using Robust.Shared.Configuration;
-using Content.Server._Rat.JoinQueue;
+using Content.Server._Crescent.JoinQueue;
 
 namespace Content.Server.GameTicking
 {

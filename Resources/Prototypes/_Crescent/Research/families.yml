@@ -15,6 +15,7 @@
   - SmallMissileHardpointFlatpack
   - MediumMissileHardpointFlatpack
   - FixedHardpointFlatpack
+  - BaseWeaponTurretBolterFlatpack
 
 - type: technology
   id: FamiliesShips

@@ -11,7 +11,7 @@
           state: base
     - type: RandomSpawner
       prototypes:
-       - ThrusterNCSPWarship
+       - ThrusterTFSCWarship
        - MachineFrameDestroyed
       chance: 0.65
       #rarePrototypes:

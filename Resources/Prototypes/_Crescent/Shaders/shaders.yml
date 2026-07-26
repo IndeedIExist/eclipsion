@@ -7,3 +7,9 @@
   id: Erasure
   kind: source
   path: "/Textures/_Arcadis/Shaders/arayashiki_erase.swsl"
+
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: shader
+  id: CloneOrganOverlay
+  kind: source
+  path: "/Textures/_Crescent/Shaders/clone_organ_overlay.swsl"

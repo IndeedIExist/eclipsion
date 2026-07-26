@@ -11,6 +11,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpskirtPrivateSec
+  category: Clothing
   result: ClothingUniformJumpskirtPrivateSec
   completetime: 4
   materials:
@@ -18,6 +19,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitPrivateSec
+  category: Clothing
   result: ClothingUniformJumpsuitPrivateSec
   completetime: 4
   materials:

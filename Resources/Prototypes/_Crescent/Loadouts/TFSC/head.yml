@@ -11,8 +11,8 @@
       group: LoadoutHead
     - !type:CharacterJobRequirement
       jobs:
-        - ForemanNCSP
-        - ShipbreakerNCSP
+        - ForemanTFSC
+        - ShipbreakerTFSC
 
 - type: loadout
   id: LoadoutHeadTFSCArmamentsHat
@@ -26,10 +26,10 @@
       group: LoadoutHead
     - !type:CharacterJobRequirement
       jobs:
-        - ForemanNCSP
-        - InfanteerNCSP
-        - ShipbreakerNCSP
-        - TechnicianNCSP
+        - ForemanTFSC
+        - InfanteerTFSC
+        - ShipbreakerTFSC
+        - TechnicianTFSC
 
 - type: loadout
   id: LoadoutHeadHatSyndicateInterdyne
@@ -43,9 +43,9 @@
       group: LoadoutHead
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - RipperdocNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - RipperdocTFSC
+        - CoordinatorTFSC
 
 - type: loadout
   id: LoadoutHeadHatSyndicateInterdyneCap
@@ -59,9 +59,9 @@
       group: LoadoutHead
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - RipperdocNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - RipperdocTFSC
+        - CoordinatorTFSC
 
 - type: loadout
   id: LoadoutHeadHelmetSyndicateBasicInterdyne
@@ -75,5 +75,5 @@
       group: LoadoutHead
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - CoordinatorTFSC

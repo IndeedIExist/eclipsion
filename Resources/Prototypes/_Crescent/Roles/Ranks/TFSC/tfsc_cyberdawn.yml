@@ -1,0 +1,63 @@
+# Patriarch
+- type: rank
+  id: RatRankTFSCPatriarchSenior
+  name: Sector Patriarch
+  prefix: Sect. Pat.
+  paygrade: CD-P3
+
+- type: rank
+  id: RatRankTFSCPatriarchMiddle
+  name: Patriarch
+  prefix: Patriarch
+  paygrade: CD-P2
+
+- type: rank
+  id: RatRankTFSCPatriarchJunior
+  name: Junior Patriarch
+  prefix: Jr. Pat.
+  paygrade: CD-P1
+
+# Operative
+- type: rank
+  id: RatRankTFSCOperativeLead
+  name: Lead Operative
+  prefix: Lead Op.
+  paygrade: CD-O4
+
+- type: rank
+  id: RatRankTFSCOperativeSenior
+  name: Senior Operator
+  prefix: Sr. Op.
+  paygrade: CD-O3
+
+- type: rank
+  id: RatRankTFSCOperativeMiddle
+  name: Operator
+  prefix: Op.
+  paygrade: CD-O2
+
+- type: rank
+  id: RatRankTFSCOperativeJunior
+  name: Junior Operator
+  prefix: Jr. Op.
+  paygrade: CD-O1
+
+# Researcher
+
+- type: rank
+  id: RatRankTFSCResearcherSenior
+  name: Senior Researcher
+  prefix: Sr. Res.
+  paygrade: CD-R3
+
+- type: rank
+  id: RatRankTFSCResearcherMiddle
+  name: Researcher
+  prefix: Res.
+  paygrade: CD-R2
+
+- type: rank
+  id: RatRankTFSCResearcherJunior
+  name: Junior Researcher
+  prefix: Jr. Res.
+  paygrade: CD-R1

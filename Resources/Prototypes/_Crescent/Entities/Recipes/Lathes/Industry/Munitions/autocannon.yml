@@ -1,6 +1,7 @@
 #20mm
 - type: latheRecipe
   id: Magazine20mm
+  category: Ammo
   result: Magazine20mm
   completetime: 2
   materials:
@@ -16,6 +17,7 @@
 #35mm
 - type: latheRecipe
   id: Magazine35mm
+  category: Ammo
   result: Magazine35mm
   completetime: 4
   materials:
@@ -33,6 +35,7 @@
 #50mm
 - type: latheRecipe
   id: Magazine50mm
+  category: Ammo
   result: Magazine50mm
   completetime: 5
   materials:

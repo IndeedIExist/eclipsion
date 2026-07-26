@@ -1,22 +1,21 @@
-If you’re new to roleplaying or are unfamiliar with IC and OOC please read on. If not, skip to the next section.
+[color=#ffffff]In Character and Out of Character[/color]
 
-SS14 is at its core a roleplaying game - You play a role on the station through your character which you can customise from the lobby prior to joining the game. You can select the roles or jobs your character plays via the customisation menu too. When you’re in a round playing your character, you are IC or In Character. When you’re in character you forget any knowledge of previous rounds or essentially of the outside world and you play as if you’re a member of the station's crew.
+If you are new to roleplaying, read this section. If not, skip ahead.
 
-Therefore, OOC or Out of Character is any conversations you have outside of the game world e.g. in the OOC chat, on discord or with your friends. You shouldn’t discuss the current round or anything that’s IC (in character) in out of character OOC chats. Likewise anything you see or read in OOC cannot be used by your character in game such as if someone on discord names a traitor or tells you they’re dying in a certain location and for you to go help them. This is known as metagaming and will get you banned if discovered.
+At its core this is a roleplaying game. You play a character you build in the lobby before joining. While you are in a round you are [bold]IC[/bold] (In Character): your character only knows what they have personally seen and heard, and behaves as a real person in that setting would. Forget anything you know from previous rounds or from outside the game.
 
-If you suspect a player in game is metagaming (e.g. you’re a traitor and they just walk up to you and kill you without you doing anything to antagonise them) then report them via ahelp or discord.
+[bold]OOC[/bold] (Out Of Character) is anything outside the game world - the OOC chat, Discord, or talking with friends. Do not carry OOC information into the round, and do not bring round events into OOC while the round is still running. Using outside knowledge to gain an in-game advantage is [bold]metagaming[/bold], and it will get you banned. Example: a friend on Discord tells you where an enemy is hiding and you go straight there. If you think someone is metagaming, report it with ahelp.
 
-To summarise, when you’re in game, don’t discuss the round anywhere else until the round is over and don’t share information about the round in OOC such as if you’re dying, where you are or if you find a traitor.
+[color=#ffffff]Conflict and Combat[/color]
 
+There are no secret "antagonists" rolled at the start of the round here. Taypan is a frontier at war: every faction has its own goals, and conflict between them is expected and encouraged. You do not need special permission to fight an enemy faction - but it should grow out of the story, not out of boredom.
 
-Traitors, antagonists, RDM and “self antag”
+Killing a player ends a conflict quickly, but try to make it mean something first. A living hostage is almost always worth more than a corpse, and turning every round into a deathmatch gets stale for everyone.
 
-If in your character customisation settings you selected the chance to become an antagonist (antag) or other traitor role, it is not guaranteed that you will be one. When a traitor gamemode round starts there is a random roll of all the players who selected the chance to become a traitor and only some get selected. They will be notified they are a traitor in chat and will have a set of objectives they can view by pressing C.
+Two rules matter most, and both are explained in full in the Roleplay Rules (Guidebook, Numpad 0):
 
-Being an antagonist is not an excuse to go on a murder spree. Your job is to complete your objectives which on occasion will include escaping alive or dying a glorious death. How you complete your objectives is up to you so murder is valid but try to have fun (ideally not at everyones expense but that’s up to you).
+ - Never turn on your own faction's leadership ([bold]mutiny[/bold]) without prior admin approval.
 
-If you suspect an antagonist such as a traitor or cultist etc report them to security as fast as possible and if necessary do what you can to protect yourself. Remember traitors are people too, so ideally they should be arrested and prosecuted under space law and not just murdered (but do what you need to do to survive).
+ - Never [bold]round-remove[/bold] - permanently destroying a body so it can never be revived - a member of your own faction, under any circumstance. Between enemy factions in active combat it is allowed.
 
-RDM or random deathmatch is the act of killing someone for no reason or attempting to. If you are being attacked it is likely the other person could be an antag but if you’re unsure, ask the admins for help (ahelp) to check this when convenient.
-
-Self antag or self antagonising is when you are NOT an antagonist which is determined at round start on traitor modes, and you go out of your way to break the law, damage the station or commit murder. Breaking the law is not inherently self antagging, but murdering, attacking, attempting to break into high security areas etc are examples of self antagging and will get you banned. Unless you are an official antagonist then you are a normal member of the crew who’s only objective is to complete their shift in their designated role.
+Read the Guidebook's Rules section before you play. When in doubt, ask an admin with ahelp.

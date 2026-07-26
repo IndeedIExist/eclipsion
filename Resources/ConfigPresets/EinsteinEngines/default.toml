@@ -24,10 +24,9 @@ hub_urls = "https://hub.spacestation14.com/, https://web.networkgamez.com/, http
 flavor_text = true
 
 [infolinks]
-discord    = "https://discord.gg/X4QEXxUrsJ"
-github     = "https://github.com/Simple-Station/Einstein-Engines"
-website    = "https://simplestation.org/"
-bug_report = "https://github.com/Simple-Station/Einstein-Engines/issues/new/choose"
+discord    = "https://discord.gg/tUbZ7CK7DC"
+github     = "https://github.com/eclipsion-team/eclipsion"
+bug_report = "https://github.com/eclipsion-team/eclipsion/issues/new/choose"
 
 [net]
 max_connections = 1024
@@ -41,7 +40,7 @@ limit = 10.0
 fork_id = "EinsteinEngines"
 
 [server]
-rules_file   = "DefaultRuleset"
+rules_file   = "HullrotRuleset"
 
 [ooc]
 enable_during_round = true

@@ -9,17 +9,17 @@
       group: LoadoutBelt
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - ForemanNCSP
-        - InfanteerNCSP
-        - IntelligenceOfficerNCSP
-        - LieutenantNCSP
-        - OperativeNCSP
-        - CyberdawnTechNCSP
-        - RingleaderNCSP
-        - RipperdocNCSP
-        - ShipbreakerNCSP
-        - TechnicianNCSP
+        - TraumasecTFSC
+        - ForemanTFSC
+        - InfanteerTFSC
+        - IntelligenceOfficerTFSC
+        - LieutenantTFSC
+        - OperativeTFSC
+        - CyberdawnTechTFSC
+        - RingleaderTFSC
+        - RipperdocTFSC
+        - ShipbreakerTFSC
+        - TechnicianTFSC
 
 - type: loadout
   id: LoadoutBeltIPMWebbing
@@ -32,6 +32,6 @@
       group: LoadoutBelt
     - !type:CharacterJobRequirement
       jobs:
-        - TraumasecNCSP
-        - RipperdocNCSP
-        - CoordinatorNCSP
+        - TraumasecTFSC
+        - RipperdocTFSC
+        - CoordinatorTFSC

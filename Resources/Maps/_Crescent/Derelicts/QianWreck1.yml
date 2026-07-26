@@ -11921,8 +11921,6 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -5353.5347
-      state: Opening
 - proto: WindoorSecurePlasma
   entities:
   - uid: 1530

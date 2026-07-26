@@ -3,8 +3,8 @@
 
 - type: vessel
   id: Bhaalgorn
-  name: Балгорн
-  description: Тяжелый эсминец переднего края, специализирующийся на фугасном и ракетном вооружении.
+  name: Bhaalgorn
+  description: A heavy frontliner destroyer with a focus on explosive and missile armament.
   price: 75000
   category: Medium
   group: None
@@ -12,18 +12,15 @@
 
 - type: gameMap
   id: Bhaalgorn
-  mapName: 'Балгорн'
+  mapName: 'Bhaalgorn'
   mapPath: /Maps/_Crescent/Shuttles/TAP/bhaalgorn.yml
   minPlayers: 0
   stations:
     Bhaalgorn:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Балгорн {1}'
+          mapNameTemplate: 'Bhaalgorn {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

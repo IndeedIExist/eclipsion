@@ -22,6 +22,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHelmetBasic
+  category: Armor
   result: ClothingHeadHelmetBasic
   completetime: 2
   materials:
@@ -134,6 +135,7 @@
 
 - type: latheRecipe
   id: ClothingEyesGlassesSecurity
+  category: Clothing
   result: ClothingEyesGlassesSecurity
   completetime: 2
   materials:
@@ -142,6 +144,7 @@
 
 - type: latheRecipe
   id: ClothingEyesHudSecurity
+  category: Clothing
   result: ClothingEyesHudSecurity
   completetime: 2
   materials:
@@ -150,6 +153,7 @@
 
 - type: latheRecipe
   id: HoloprojectorSecurity
+  category: Tools
   result: HoloprojectorSecurityEmpty
   completetime: 2
   materials:
@@ -159,6 +163,7 @@
 
 - type: latheRecipe
   id: RiotShield
+  category: Armor
   result: RiotShield
   completetime: 4
   materials:
@@ -167,6 +172,7 @@
 
 - type: latheRecipe
   id: TelescopicShield
+  category: Armor
   result: TelescopicShield
   completetime: 4
   materials:
@@ -258,6 +264,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazinePistolCaselessRiflePractice
+  category: Ammo
   result: MagazinePistolCaselessRiflePractice
   materials:
     Steel: 85
@@ -265,6 +272,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazinePistolCaselessRifle
+  category: Ammo
   result: MagazinePistolCaselessRifle
   materials:
     Steel: 145
@@ -272,6 +280,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazinePistolCaselessRifleRubber
+  category: Ammo
   result: MagazinePistolCaselessRifleRubber
   materials:
     Plastic: 145
@@ -280,6 +289,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineCaselessRifleShortPractice
+  category: Ammo
   result: MagazineCaselessRifleShortPractice
   materials:
     Steel: 150
@@ -287,6 +297,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineCaselessRifleShort
+  category: Ammo
   result: MagazineCaselessRifleShort
   materials:
     Steel: 250
@@ -294,6 +305,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineCaselessRifleShortRubber
+  category: Ammo
   result: MagazineCaselessRifleShortRubber
   materials:
     Plastic: 250
@@ -302,6 +314,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineCaselessRiflePractice
+  category: Ammo
   result: MagazineCaselessRiflePractice
   materials:
     Steel: 250
@@ -309,6 +322,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineCaselessRifle
+  category: Ammo
   result: MagazineCaselessRifle
   materials:
     Steel: 350
@@ -316,6 +330,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineCaselessRifleRubber
+  category: Ammo
   result: MagazineCaselessRifleRubber
   materials:
     Plastic: 350
@@ -323,6 +338,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineCaselessRifleIncendiary
+  category: Ammo
   result: MagazineCaselessRifleIncendiary
   materials:
     Plastic: 350
@@ -330,6 +346,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineCaselessRifleUranium
+  category: Ammo
   result: MagazineCaselessRifleUranium
   materials:
     Uranium: 350
@@ -337,6 +354,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineCaselessRifleShrapnel
+  category: Ammo
   result: MagazineCaselessRifleShrapnel
   materials:
     Steel: 350
@@ -345,6 +363,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineBoxCaselessRiflePractice
+  category: Ammo
   result: MagazineBoxCaselessRiflePractice
   materials:
     Steel: 500
@@ -352,6 +371,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineBoxCaselessRifle
+  category: Ammo
   result: MagazineBoxCaselessRifle
   materials:
     Steel: 720
@@ -359,6 +379,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineBoxCaselessRifleRubber
+  category: Ammo
   result: MagazineBoxCaselessRifleRubber
   materials:
     Steel: 720
@@ -366,6 +387,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineBoxCaselessRifleIncendiary
+  category: Ammo
   result: MagazineBoxCaselessRifleIncendiary
   materials:
     Plastic: 720
@@ -373,6 +395,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineBoxCaselessRifleUranium
+  category: Ammo
   result: MagazineBoxCaselessRifleUranium
   materials:
     Uranium: 720
@@ -380,6 +403,7 @@
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineBoxCaselessRifleShrapnel
+  category: Ammo
   result: MagazineBoxCaselessRifleShrapnel
   materials:
     Steel: 720
@@ -1097,6 +1121,7 @@
 
 - type: latheRecipe
   id: MagazineGrenadeEmpty
+  category: Ammo
   result: MagazineGrenadeEmpty
   completetime: 3
   materials:
@@ -1105,6 +1130,7 @@
 
 - type: latheRecipe
   id: GrenadeEMP
+  category: Weapons
   result: GrenadeEMP
   completetime: 3
   materials:
@@ -1114,6 +1140,7 @@
 
 - type: latheRecipe
   id: GrenadeBlast
+  category: Weapons
   result: GrenadeBlast
   completetime: 3
   materials:
@@ -1122,6 +1149,7 @@
 
 - type: latheRecipe
   id: GrenadeFlash
+  category: Weapons
   result: GrenadeFlash
   completetime: 3
   materials:
@@ -1131,6 +1159,7 @@
 
 - type: latheRecipe
   id: PortableRecharger
+  category: Power
   result: PortableRecharger
   completetime: 15
   materials:
@@ -1150,6 +1179,7 @@
 
 - type: latheRecipe
   id: ShellShotgunSlug
+  category: Ammo
   result: ShellShotgunSlug
   completetime: 2
   materials:
@@ -1244,6 +1274,7 @@
 
 - type: latheRecipe
   id: ClothingEyesNightVisionSecurityGoggles
+  category: Clothing
   result: ClothingEyesNightVisionSecurityGoggles
   completetime: 5
   materials:
@@ -1254,6 +1285,7 @@
 
 - type: latheRecipe
   id: EnergyCutlass
+  category: Weapons
   result: EnergyCutlass
   completetime: 10
   materials:

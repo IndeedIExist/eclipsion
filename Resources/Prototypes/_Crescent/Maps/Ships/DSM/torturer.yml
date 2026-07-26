@@ -1,9 +1,9 @@
 - type: vessel
   id: Torturer
-  name: БМС Тортунер
+  name: DSM Torturer
   description: |
-    Стелс-бомбардировщик для имперского использования. Минимальные удобства для экипажа и хрупкий корпус, но взамен имеет ИФФ-покров для скрытных боевых действий, способный завершать битвы до их начала.
-    LOADOUT: 1x 180mm 'Magwell' Torpedo Launcher, 1x 'Lancer' MRM Launcher, 4x 180c 'Torch' Pressure Gatlings
+    A stealth bomber, made for imperial use. Comes with little crew accommodations, and a fragile hull, but in exchange - it sports an IFF cloak for stealth engagements, capable of ending battles before they start.
+    LOADOUT: 4x 350cc 'Glare' Burst Lasers, 2x 200cc 'Retribution' Pulse Lasers
     MINIMUM CREW: 1x Pilot, 1x Loader
   price: 58000
   category: Small
@@ -12,26 +12,23 @@
 
 - type: gameMap
   id: Torturer
-  mapName: 'БМС Тортунер'
+  mapName: 'DSM Torturer'
   mapPath: /Maps/_Crescent/Shuttles/DSM/torturer.yml
   minPlayers: 0
   stations:
     Torturer:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Тортунер {1}'
+          mapNameTemplate: 'DSM Torturer {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-fighter
         - type: VesselDescription
-          description: Любой сообразительный рыцарь может превратить этот маленький корабль в оружие ужаса.
+          description: Any smart ritter can turn this little ship into a terror weapon. 

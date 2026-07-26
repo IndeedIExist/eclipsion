@@ -1,11 +1,13 @@
 department-NCWL = New Crescent Worker's League
-department-NCSP = Taypan Freestation Coalition
+department-TFSC = Taypan Freestation Coalition
 department-DSM = Divine Sol Mandate
 department-SRM = Sixth St. Romaine's Militia
 department-SHI = Shinohara Heavy Industries
 department-CMM = Colonial Minutemen
 department-TAP = Taypani-Atyrian Pact
 department-ATH = Central Sol Authority
+department-UnionfallNCWL = NCWL Homeguard
+department-UnionfallDSM = DSM Punishment Regimen
 department-NCWL-W = NCWL Homeguard Remnants
 department-DSM-W = DSM Penal Division
 department-pf = Planetfall Teams

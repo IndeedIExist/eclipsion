@@ -43,6 +43,14 @@ public sealed partial class ShipSteererComponent : Component
     public bool AvoidCollisions = true;
 
     /// <summary>
+    /// Whether to also avoid the grid our target sits on. Off by default so orbiting/approaching a target
+    /// grid still works; turned on for formation-following so a drone routes around its carrier instead of
+    /// ramming through it.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool AvoidTargetGrid = false;
+
+    /// <summary>
     /// Try to evade collisions this far into the future even if stationary.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]

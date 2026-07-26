@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -13,6 +14,20 @@ public sealed partial class JukeboxComponent : Component
 
     [DataField, AutoNetworkedField]
     public EntityUid? AudioStream;
+
+    /// <summary>
+    /// Upcoming songs to play after the current one finishes, in order.
+    /// The currently playing track is not included here.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public List<ProtoId<JukeboxPrototype>> Queue = new();
+
+    /// <summary>
+    /// Whether the jukebox should automatically advance to the next queued
+    /// song when the current one ends. Cleared when the user presses stop.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool QueueActive;
 
     /// <summary>
     /// RSI state for the jukebox being on.
@@ -59,6 +74,24 @@ public sealed class JukeboxSetTimeMessage(float songTime) : BoundUserInterfaceMe
 {
     public float SongTime { get; } = songTime;
 }
+
+[Serializable, NetSerializable]
+public sealed class JukeboxQueueAddMessage(ProtoId<JukeboxPrototype> songId) : BoundUserInterfaceMessage
+{
+    public ProtoId<JukeboxPrototype> SongId { get; } = songId;
+}
+
+[Serializable, NetSerializable]
+public sealed class JukeboxQueueRemoveMessage(int index) : BoundUserInterfaceMessage
+{
+    public int Index { get; } = index;
+}
+
+[Serializable, NetSerializable]
+public sealed class JukeboxQueueClearMessage : BoundUserInterfaceMessage;
+
+[Serializable, NetSerializable]
+public sealed class JukeboxQueueNextMessage : BoundUserInterfaceMessage;
 
 [Serializable, NetSerializable]
 public enum JukeboxVisuals : byte

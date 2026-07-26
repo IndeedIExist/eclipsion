@@ -16,6 +16,7 @@
   description: department-Civilian-description
   color: "#9FED58"
   weight: 5
+  # Spacer and GliessianDockhand live in the Independents department, see _Crescent/Roles/Jobs/departments.yml
   roles:
   #- OrdnancemanCMM
   #- MachinistCMM
@@ -24,8 +25,6 @@
   #- WatchmasterCMM
   - DeputyMarshalCMM
   - MarshalCMM
-  - Spacer
-  - GliessianDockhand
   editorHidden: true
 
 - type: department
@@ -107,23 +106,23 @@
   editorHidden: false
 
 - type: department
-  id: NCSP
-  description: department-NCSP-description
+  id: TFSC
+  description: department-TFSC-description
   color: "#DC143C"
   weight: 90
   roles:
-  - RingleaderNCSP
-  - LieutenantNCSP
-  - InfanteerNCSP
-  - TechnicianNCSP
-  - CoordinatorNCSP
-  - RipperdocNCSP
-  - TraumasecNCSP
-  - OperativeNCSP
-  - IntelligenceOfficerNCSP
-  - CyberdawnTechNCSP
-  - ForemanNCSP
-  - ShipbreakerNCSP
+  - RingleaderTFSC
+  - LieutenantTFSC
+  - InfanteerTFSC
+  - TechnicianTFSC
+  - CoordinatorTFSC
+  - RipperdocTFSC
+  - TraumasecTFSC
+  - OperativeTFSC
+  - IntelligenceOfficerTFSC
+  - CyberdawnTechTFSC
+  - ForemanTFSC
+  - ShipbreakerTFSC
   editorHidden: false
 
 - type: department
@@ -233,6 +232,38 @@
   - ArbeiterATH
   editorHidden: true
   primary: false
+
+  # UNIONFALL
+
+- type: department
+  id: UnionfallNCWL
+  description: department-UnionfallNCWL-description
+  color: "#FFD580"
+  weight: 13
+  roles:
+  - UnionfallLeaderNCWL
+  - UnionfallOfficerNCWL
+  - UnionfallShipCaptainNCWL
+  - UnionfallShipCrewNCWL
+  - UnionfallDoctorNCWL
+  - UnionfallRiflemanNCWL
+  - UnionfallCadetNCWL
+  editorHidden: false
+
+- type: department
+  id: UnionfallDSM
+  description: department-UnionfallDSM-description
+  color: "#684871"
+  weight: 12
+  roles:
+  - UnionfallLeaderDSM
+  - UnionfallOfficerDSM
+  - UnionfallShipCaptainDSM
+  - UnionfallShipCrewDSM
+  - UnionfallDoctorDSM
+  - UnionfallRiflemanDSM
+  - UnionfallCadetDSM
+  editorHidden: false
 
   # CONSCRIPT
 

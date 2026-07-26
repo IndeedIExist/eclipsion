@@ -1,6 +1,6 @@
 - type: gameMap
   id: Hayes
-  mapName: 'БИ Эпитафия'
+  mapName: 'IPM Hayes'
   mapPath: /Maps/_Crescent/Stations/hayes.yml
   minPlayers: 0
   stations:
@@ -12,12 +12,12 @@
         - type: PreventPilot
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'БИ Эпитафия'
+          mapNameTemplate: 'IPM Hayes'
         - type: VesselDesignation
           designation: vessel-designation-outpost
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            CoordinatorNCSP: [ 1, 1 ]
-            RipperdocNCSP: [ 4, 4 ]
-            TraumasecNCSP: [ 3, 3 ]
+            CoordinatorTFSC: [ 1, 1 ]
+            RipperdocTFSC: [ 4, 4 ]
+            TraumasecTFSC: [ 3, 3 ]

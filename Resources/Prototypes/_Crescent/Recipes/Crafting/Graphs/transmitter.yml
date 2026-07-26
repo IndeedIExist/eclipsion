@@ -1,0 +1,26 @@
+- type: constructionGraph
+  id: SignalTransmitterDevice
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: transmitter
+          steps:
+            - tag: TransmitterPartCircuitBoard
+              name: Broken transmitter circuit board
+              icon:
+                sprite: Objects/Materials/Scrap/generic.rsi
+                state: junk-intercom-1
+            - tag: TransmitterPartAntenna
+              name: Broken antenna
+              icon:
+                sprite: Objects/Materials/Scrap/generic.rsi
+                state: junk-camera
+            - tag: TransmitterPartPowerModule
+              name: Broken power module
+              icon:
+                sprite: Objects/Materials/Scrap/generic.rsi
+                state: junk-intercom-3
+              doAfter: 10
+    - node: transmitter
+      entity: SignalTransmitterDevice

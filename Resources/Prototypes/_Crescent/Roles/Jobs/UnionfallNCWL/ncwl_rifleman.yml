@@ -7,6 +7,7 @@
   startingGear: UnionfallRiflemanNCWLGear
   alwaysUseSpawner: true
   icon: "JobIconUnionfallNCWLRifleman"
+  chatNameColor: "#cf7200"
   requirements:
     - !type:FactionRequirement
       factionID: "NCWL"

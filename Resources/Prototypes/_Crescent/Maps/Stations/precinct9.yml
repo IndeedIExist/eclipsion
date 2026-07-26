@@ -10,7 +10,7 @@
         - type: BlockShipWeaponProjectileGrid
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'КММ Проктор Анналис'
+          mapNameTemplate: 'CMM Proctor Annalis'
         - type: Grammar
           attributes:
             proper: true

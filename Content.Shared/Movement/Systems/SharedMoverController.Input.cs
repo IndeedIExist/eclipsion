@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Shared.Alert;
 using Content.Shared.CCVar;
 using Content.Shared.Follower.Components;
+using Content.Shared.Ghost; // _Crescent: ghosts skip sprint cooldown/sound.
 using Content.Shared.Input;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
@@ -119,6 +120,7 @@ namespace Content.Shared.Movement.Systems
             entity.Comp.CanMove = state.CanMove;
             entity.Comp.RelativeEntity = EnsureEntity<InputMoverComponent>(state.RelativeEntity, entity.Owner);
             entity.Comp.DefaultSprinting = state.DefaultSprinting;
+            entity.Comp.NextSprintTime = state.NextSprintTime; // _Crescent: keep sprint cooldown in sync.
 
             // Reset
             entity.Comp.LastInputTick = GameTick.Zero;
@@ -149,7 +151,8 @@ namespace Content.Shared.Movement.Systems
                 HeldMoveButtons = entity.Comp.HeldMoveButtons,
                 RelativeRotation = entity.Comp.RelativeRotation,
                 TargetRelativeRotation = entity.Comp.TargetRelativeRotation,
-                DefaultSprinting = entity.Comp.DefaultSprinting
+                DefaultSprinting = entity.Comp.DefaultSprinting,
+                NextSprintTime = entity.Comp.NextSprintTime // _Crescent: sprint cooldown timestamp.
             };
         }
 
@@ -510,8 +513,45 @@ namespace Content.Shared.Movement.Systems
 
             var entityComp = new Entity<InputMoverComponent>(owner:entity, comp:input);
 
+            // Prevent sprinting for mechs: if this entity is a mech, always treat as not-sprinting.
+            // This ensures shift/hold-run cannot make a mech move faster than walking.
+            if (HasComp<Content.Shared.Mech.Components.MechComponent>(entity))
+            {
+                SetMoveInput(entityComp, subTick, false, MoveButtons.Walk);
+                WalkingAlert(entityComp);
+                return;
+            }
+
+            // _Crescent: remember whether we were running before applying the new input.
+            var wasSprinting = input.Sprinting;
+
+            // _Crescent: figure out whether this input would begin a sprint.
+            // With DefaultSprinting the run key being held (walking) starts the sprint; otherwise it's inverted.
+            var willSprint = input.DefaultSprinting ? walking : !walking;
+
+            // _Crescent: ghosts are incorporeal — no sprint cooldown and no sprint-start sound.
+            var isGhost = HasComp<GhostComponent>(entity);
+
+            // _Crescent: block starting a sprint while the cooldown is still ticking.
+            // This stops people from spamming shift (run-toggle) and the sprint-start sound with it.
+            if (!isGhost && !wasSprinting && willSprint && Timing.CurTime < input.NextSprintTime)
+                return;
+
             SetMoveInput(entityComp, subTick, walking, MoveButtons.Walk);
             WalkingAlert(entityComp);
+
+            if (!wasSprinting && input.Sprinting)
+            {
+                // _Crescent: play a cue only when we cross from walking into running (never for ghosts).
+                if (!isGhost && input.SprintStartSound != null)
+                    _audio.PlayPredicted(input.SprintStartSound, entity, entity);
+            }
+            else if (!isGhost && wasSprinting && !input.Sprinting)
+            {
+                // _Crescent: sprint just ended, start the cooldown before the next sprint is allowed.
+                input.NextSprintTime = Timing.CurTime + input.SprintCooldown;
+                Dirty(entity, input);
+            }
         }
         // WWDP edit end
         

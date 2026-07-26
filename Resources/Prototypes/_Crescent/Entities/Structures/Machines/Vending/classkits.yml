@@ -1,0 +1,405 @@
+- type: entity
+  parent: ColMarTechBase
+  id: ColMarTechEquipmentNCWL
+  name: automated communard equipment rack
+  description: An automated rack connected to a massive storage of standard League equipment.
+  components:
+  - type: AccessReader
+    access:
+    - [ "NCWLGeneral" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - PartisanNCWL
+    sections:
+    - name: Class Kit
+      choices: { CMClass: 1 }
+      entries:
+      - id: CMVendorBundleRiflemanApparelNCWL
+        name: basic NCWL kit
+        recommended: true
+    - name: Armor
+      choices: { CMArmour: 1 }
+      entries:
+      - id: ClothingOuterHardsuitNCWLInfantry
+        name: NCWL hardsuit
+        recommended: true
+      - id: ClothingOuterArmorNCWLHeavyCarapace
+        name: NCWL body armor
+    - name: Primary Weapon
+      choices: { CMWeapon: 1 }
+      entries:
+      - id: WeaponRifleFAL
+        name: NCWL MK-2 Falin 5.56x45mm
+        recommended: true
+      - id: WeaponShotgunProletar
+        name: NCWL Toz-97 Proletariat 12 gauge
+      - id: WeaponSubMachineGunNCWLWatchdog
+        name: NCWL DS1 Watchdog 9x19mm
+    - name: Utilities
+      choices: { CMUtilities: 2 }
+      entries:
+      - id: ExGrenade
+        name: fragmentation grenade
+      - id: EmpGrenade
+        name: EMP Grenade
+      - id: BreachingCharge
+        name: breaching charge
+      - id: HandHeldMassScannerEE
+        name: handheld mass scanner
+        recommended: true
+    - name: Ammunition
+      choices: { CMAmmo: 2 }
+      entries:
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm PSTF auto)
+      - id: MagazineLightRifle
+        name: 30-round magazine (5.56x45mm)
+      - id: MagazineShotgun
+        name: 10-round magazine (12 gauge)
+
+- type: entity
+  parent: ColMarTechBase
+  id: ColMarTechEquipmentDSM
+  name: automated imperial equipment rack
+  description: An automated rack connected to a massive storage of standard Imperial equipment.
+  components:
+  - type: AccessReader
+    access:
+    - [ "EmpireSoldier" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - LevymanDSM
+    sections:
+    - name: Class Kit
+      choices: { CMClass: 1 }
+      entries:
+      - id: CMVendorBundleRiflemanApparelDSM
+        name: basic DSM kit
+        recommended: true
+    - name: Armor
+      choices: { CMArmour: 1 }
+      entries:
+      - id: ClothingOuterHardsuitImperialSoldier
+        name: DSM hardsuit
+        recommended: true
+      - id: ClothingOuterArmorImperialTrooperArmor
+        name: DSM body armor
+    - name: Primary Weapon
+      choices: { CMWeapon: 1 }
+      entries:
+      - id: WeaponShotgunReno
+        name: DSM DA-13 Reno 12 gauge
+      - id: WeaponRifleMiller
+        name: DSM DA-8 Miller 5.56x45mm
+        recommended: true
+      - id: WeaponSubMachineGunBeetle
+        name: HP Mac-11 Beetle 9x19mm
+    - name: Utilities
+      choices: { CMUtilities: 2 }
+      entries:
+      - id: ExGrenade
+        name: fragmentation grenade
+      - id: EmpGrenade
+        name: EMP Grenade
+      - id: BreachingCharge
+        name: breaching charge
+      - id: HandHeldMassScannerEE
+        name: handheld mass scanner
+        recommended: true
+    - name: Ammunition
+      choices: { CMAmmo: 2 }
+      entries:
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm PSTF auto)
+      - id: MagazineLightRifle
+        name: 30-round magazine (5.56x45mm)
+      - id: MagazineShotgun
+        name: 10-round magazine (12 gauge)
+
+- type: entity
+  parent: ColMarTechBase
+  id: ColMarTechEquipmentInterdyne
+  name: automated Interdyne equipment rack
+  description: An automated rack connected to a massive storage of standard Interdyne Pharmaceuticals equipment.
+  components:
+  - type: AccessReader
+    access:
+    - [ "SyndicateInterdyne" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - TraumasecTFSC
+    - RipperdocTFSC
+    - CoordinatorTFSC
+    sections:
+    - name: Standard Kit
+      choices: { CMClass: 1 }
+      entries:
+      - id: CMVendorBundleIPMApparel
+        name: standard kit
+        recommended: true
+    - name: Armor
+      choices: { CMArmour: 1 }
+      entries:
+      - id: ClothingOuterHardsuitTraumasec
+        name: Interdyne TraumaSec hardsuit
+        recommended: true
+      - id: ClothingOuterArmorSyndicateArmorvestInterdyne
+        name: TraumaSec ballistic vest
+    - name: Primary Weapon
+      choices: { CMWeapon: 1 }
+      entries:
+      - id: WeaponRifleKrinkov
+        name: KVST AKS-74U Krinkov 5.56x45mm
+        recommended: true
+      - id: WeaponSubMachineGunAtreides
+        name: Atreides
+      - id: WeaponShotgunTFSCSaiga12
+        name: KVST Saiga-12k Hammer 12 gauge
+    - name: EVA and Utilities
+      choices: { CMUtilities: 2 }
+      entries:
+      - id: HandHeldMassScannerEE
+        name: handheld mass scanner
+        recommended: true
+      - id: SHIHG7FlashbangHandgrenade
+        name: TPSh HG-07 flashbang grenade
+      - id: F1Handgrenade
+        name: F-1 Grenade
+    - name: Ammunition
+      choices: { CMAmmo: 2 }
+      entries:
+      - id: MagazineLightRifle
+        name: 30-round magazine (5.56x45mm)
+        recommended: true
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm PSTF auto)
+      - id: MagazineShotgun
+        name: 10-round magazine (12 gauge)
+
+- type: entity
+  parent: ColMarTechBase
+  id: ColMarTechEquipmentCMM
+  name: automated minutemen equipment rack
+  description: An automated rack connected to a massive storage of standard Minutemen equipment.
+  components:
+  - type: AccessReader
+    access:
+    - [ "GliessSheriff" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - OrdnancemanCMM
+    - MachinistCMM
+    - PhysicianCMM
+    - MinutemanCMM
+    - WatchmasterCMM
+    - DeputyMarshalCMM
+    - MarshalCMM
+    sections:
+    - name: Class Kit
+      choices: { CMClass: 1 }
+      entries:
+      - id: CMVendorBundleRiflemanApparelCMM
+        name: basic minutemen kit
+        recommended: true
+    - name: Armor
+      choices: { CMArmour: 1 }
+      entries:
+      - id: ClothingOuterHardsuitMidshipman
+        name: Minutemen "Midshipman" hardsuit
+        recommended: true
+      - id: ClothingOuterArmorCMM
+        name: patrol cuirass
+    - name: Primary Weapon
+      choices: { CMWeapon: 1 }
+      entries:
+      - id: WeaponShotgunSHIDoubleBarreled4g
+        name: SHI M135 Double-Barrel 12g
+      - id: WeaponRifleCMMNimrod
+        name: CMM M32 Nimrod 7.62x51mm
+        recommended: true
+      - id: WeaponSubMachineGunMP5
+        name: NT MP5 9x19mm
+    - name: Secondary Weapon
+      choices: { CMPistol: 1 }
+      entries:
+      - id: WeaponRevolverSnubnose
+        name: NT-6R Bulldog .327
+      - id: WeaponPistolHKUSP
+        name: NT MX-32 Lockwell 9x19mm
+        recommended: true
+    - name: Utilities
+      choices: { CMUtilities: 2 }
+      entries:
+      - id: ExGrenade
+        name: fragmentation grenade
+      - id: EmpGrenade
+        name: EMP Grenade
+      - id: BreachingCharge
+        name: breaching charge
+      - id: HandHeldMassScannerEE
+        name: handheld mass scanner
+        recommended: true
+    - name: Ammunition
+      choices: { CMAmmo: 4 }
+      entries:
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm PSTF auto)
+      - id: MagazineBoxRifle
+        name: ammunition box (7.62x51mm)
+      - id: BoxLethalshot
+        name: shotgun shell box (.50 lethal)
+      - id: MagazinePistol
+        name: 18-round pistol magazine (9x19mm PSTF auto)
+      - id: SpeedLoaderMagnum
+        name: speed loader (.45 magnum)
+
+- type: entity
+  parent: ColMarTechBase
+  id: ColMarTechEquipmentSHI
+  name: automated corporate equipment rack
+  description: An automated rack connected to a massive storage of standard Shinohara corporate security equipment.
+  components:
+  - type: AccessReader
+    access:
+    - [ "Shinohara" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - EmployeeSHI
+    - MedtechSHI
+    - CorpsecSHI
+    - HighsecSHI
+    - HosSHI
+    - BoardSHI
+    - BoardHRSHI
+    - ExecutiveSHI
+    sections:
+    - name: Standard Kit
+      choices: { CMClass: 1 }
+      entries:
+      - id: CMVendorBundleCorpSecApparel
+        name: standard corporate kit
+        recommended: true
+    - name: Armor
+      choices: { CMArmour: 1 }
+      entries:
+      - id: ClothingOuterHardsuitHighsec
+        name: Shinohara combat hardsuit SVBT-2
+        recommended: true
+      #- id: ClothingOuterHardsuitHighsecUA
+      #  name: Shinohara combat hardsuit SVBT-2-UA
+      #  recommended: true
+    - name: Primary Weapon
+      choices: { CMWeapon: 1 }
+      entries:
+      - id: WeaponRifleLecter
+        name: TPSh Lecter
+        recommended: true
+      - id: WeaponRifleHoundMarksman
+        name: TPSh M215 "Hound" 5.56x45
+      - id: WeaponSubMachineGunMP49
+        name: TPSh MP49 "Warden" 9x19mm
+    - name: Secondary Weapon
+      choices: { CMPistol: 1 }
+      entries:
+      - id: WeaponPistolHimehabu
+        name: TPSh M002 "Himehabu" 9x19
+        recommended: true
+      - id: ClothingBeltSheathSHIKatanaFilled
+        name: Katana sheath (katana included)
+    - name: Utilities
+      choices: { CMUtilities: 3 }
+      entries:
+      - id: ExGrenade
+        name: fragmentation grenade
+      - id: EmpGrenade
+        name: EMP Grenade
+      - id: BreachingCharge
+        name: breaching charge
+      - id: HandHeldMassScannerEE
+        name: handheld mass scanner
+        recommended: true
+    - name: Ammunition
+      choices: { CMAmmo: 4 }
+      entries:
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm PSTF auto)
+      - id: MagazineLightRifle
+        name: 30-round magazine (5.56x45mm Imperial)
+      - id: MagazinePistol
+        name: 18-round pistol magazine (9x19mm PSTF auto)
+
+- type: entity
+  parent: ColMarTechBase
+  id: ColMarTechEquipmentGSC
+  name: automated mercenary equipment rack
+  description: An automated rack connected to a massive storage of standard freelance mercenary equipment.
+  components:
+  - type: AccessReader
+    access:
+    - [ "SyndicateGorlex" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - RingleaderTFSC
+    - LieutenantTFSC
+    - InfanteerTFSC
+    - TechnicianTFSC
+    sections:
+    - name: Standard Kit
+      choices: { CMClass: 1 }
+      entries:
+      - id: CMVendorBundleGSCApparel
+        name: standard mercenary kit
+        recommended: true
+    - name: Armor
+      choices: { CMArmour: 1 }
+      entries:
+      - id: ClothingOuterHardsuitSyndicateBG
+        name: BULWARK mk.II assault hardsuit
+        recommended: true
+      - id: ClothingOuterHardsuitSyndicateSellsword
+        name: modified SELLSWORD mk.IIB hardsuit
+      - id: ClothingOuterHardsuitSyndicateFreiritter
+        name: custom FREIRITTER mkIIC hardsuit
+    - name: Primary Weapon
+      choices: { CMWeapon: 1 }
+      entries:
+      - id: WeaponRifleAk
+        name: AKMS
+        recommended: true
+      - id: WeaponSubMachineGunAtreides
+        name: Atreides SMG
+      - id: WeaponShotgunKammerer
+        name: Kammerer
+    - name: Utilities
+      choices: { CMUtilities: 4 }
+      entries:
+      - id: ExGrenade
+        name: fragmentation grenade
+      - id: EmpGrenade
+        name: EMP Grenade
+      - id: BreachingCharge
+        name: breaching charge
+      - id: HandHeldMassScannerEE
+        name: handheld mass scanner
+        recommended: true
+    - name: Ammunition
+      choices: { CMAmmo: 4 }
+      entries:
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm PSTF auto)
+      - id: MagazineRifle
+        name: 25-round magazine (7.62x51mm USM)
+      - id: BoxLethalshot
+        name: shotgun shell box (.50 lethal)

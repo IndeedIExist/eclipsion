@@ -3,8 +3,8 @@
 
 - type: vessel
   id: Sasha
-  name: ЛРНП Саша
-  description: Устаревший коммунарский военный корабль.
+  name: NCWL Sasha
+  description: An antiquated communard warship.
   price: 125000
   category: Small
   group: None
@@ -12,25 +12,22 @@
 
 - type: gameMap
   id: Sasha
-  mapName: 'ЛРНП Саша'
+  mapName: 'NCWL Sasha'
   mapPath: /Maps/_Crescent/Shuttles/NCWL/sasha.yml
   minPlayers: 0
   stations:
     Sasha:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
       - type: StationNameSetup
-        mapNameTemplate: 'ЛРНП Саша {1}'
+        mapNameTemplate: 'NCWL Sasha {1}'
         nameGenerator:
           !type:NanotrasenNameGenerator
           prefixCreator: '14'
       - type: VesselDesignation
         designation: vessel-designation-warship
       - type: VesselDescription
-        description: Реликт иного времени.
+        description: A relic of another time.
       - type: VesselIcon
         iffIcon:
           sprite: _Crescent/ShipIcons/ifficons.rsi

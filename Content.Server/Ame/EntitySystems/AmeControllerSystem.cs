@@ -4,6 +4,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Ame.Components;
 using Content.Server.Chat.Managers;
+using Content.Server.Chat.Systems;
 using Content.Server.NodeContainer;
 using Content.Server.Power.Components;
 using Content.Shared.Ame.Components;
@@ -25,6 +26,7 @@ public sealed class AmeControllerSystem : EntitySystem
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IAdminManager _adminManager = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
@@ -56,6 +58,18 @@ public sealed class AmeControllerSystem : EntitySystem
         var query = EntityQueryEnumerator<AmeControllerComponent, NodeContainerComponent>();
         while (query.MoveNext(out var uid, out var controller, out var nodes))
         {
+            // A reactor that has passed the point of no return detonates once the final countdown elapses.
+            if (controller.ExplosionTime != null)
+            {
+                if (curTime >= controller.ExplosionTime.Value)
+                {
+                    controller.ExplosionTime = null;
+                    if (TryGetAMENodeGroup(uid, out var group, nodes))
+                        group.ExplodeCores();
+                }
+                continue;
+            }
+
             if (controller.NextUpdate <= curTime)
                 UpdateController(uid, curTime, controller, nodes);
             else if (controller.NextUIUpdate <= curTime)
@@ -112,6 +126,8 @@ public sealed class AmeControllerSystem : EntitySystem
                 // only play audio if we actually had an injection
                 if (availableInject > 0)
                     _audioSystem.PlayPvs(controller.InjectSound, uid, AudioParams.Default.WithVolume(overloading ? 10f : 0f));
+                if (overloading)
+                    AnnounceOverload(uid, curTime, controller);
                 UpdateUi(uid, controller);
             }
         }
@@ -121,8 +137,55 @@ public sealed class AmeControllerSystem : EntitySystem
         group.UpdateCoreVisuals();
         UpdateDisplay(uid, controller.Stability, controller);
 
-        if (controller.Stability <= 0)
-            group.ExplodeCores();
+        // Once the reactor becomes critically unstable, arm a short countdown and warn the sector,
+        // rather than detonating instantly, so there is always a heads-up before the blast.
+        if (controller.Stability <= 0 && controller.ExplosionTime == null)
+            ArmExplosion(uid, curTime, controller);
+    }
+
+    /// <summary>
+    /// Locks in the detonation: schedules the explosion <see cref="AmeControllerComponent.FinalWarningTime"/>
+    /// from now and broadcasts the final "imminent detonation" warning once.
+    /// </summary>
+    private void ArmExplosion(EntityUid uid, TimeSpan curTime, AmeControllerComponent controller)
+    {
+        controller.ExplosionTime = curTime + controller.FinalWarningTime;
+
+        var gridName = GetGridName(uid);
+        var seconds = (int) controller.FinalWarningTime.TotalSeconds;
+        var message = Loc.GetString("ame-imminent-announcement", ("grid", gridName), ("seconds", seconds));
+        var sender = Loc.GetString("ame-overload-announcement-sender");
+        _chatSystem.DispatchGlobalAnnouncement(message, sender, playSound: true, colorOverride: Color.Red);
+    }
+
+    /// <summary>
+    /// Broadcasts a sector-wide warning that the AME on this controller's grid is overloading,
+    /// naming the grid the engine is aboard. Rate-limited per controller to avoid spam.
+    /// </summary>
+    private void AnnounceOverload(EntityUid uid, TimeSpan curTime, AmeControllerComponent controller)
+    {
+        // Only warn a limited number of times per overload event; the imminent-detonation warning is separate.
+        if (controller.OverloadAnnouncementsSent >= controller.MaxOverloadAnnouncements)
+            return;
+
+        if (curTime < controller.NextOverloadAnnouncement)
+            return;
+
+        controller.NextOverloadAnnouncement = curTime + controller.OverloadAnnouncementCooldown;
+        controller.OverloadAnnouncementsSent++;
+
+        var message = Loc.GetString("ame-overload-announcement", ("grid", GetGridName(uid)));
+        var sender = Loc.GetString("ame-overload-announcement-sender");
+        _chatSystem.DispatchGlobalAnnouncement(message, sender, playSound: true, colorOverride: Color.Red);
+    }
+
+    /// <summary>
+    /// Name the grid (ship/station) the engine is aboard so responders know where to go.
+    /// </summary>
+    private string GetGridName(EntityUid uid)
+    {
+        var gridUid = Transform(uid).GridUid;
+        return gridUid != null ? Name(gridUid.Value) : Loc.GetString("ame-overload-announcement-unknown-grid");
     }
 
     public void UpdateUi(EntityUid uid, AmeControllerComponent? controller = null)
@@ -230,8 +293,15 @@ public sealed class AmeControllerSystem : EntitySystem
 
         controller.Injecting = value;
         UpdateDisplay(uid, controller.Stability, controller);
-        if (!value && TryComp<PowerSupplierComponent>(uid, out var powerOut))
-            powerOut.MaxSupply = 0;
+        if (!value)
+        {
+            // Overload event is over; let a future overload warn again.
+            controller.OverloadAnnouncementsSent = 0;
+            controller.NextOverloadAnnouncement = TimeSpan.Zero;
+
+            if (TryComp<PowerSupplierComponent>(uid, out var powerOut))
+                powerOut.MaxSupply = 0;
+        }
 
         UpdateUi(uid, controller);
 

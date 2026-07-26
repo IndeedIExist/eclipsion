@@ -1,0 +1,30 @@
+- type: guideEntry
+  id: Lore
+  name: Lore
+  text: "/ServerInfo/_Crescent/Guidebook/Lore.xml"
+  priority: 30
+  children:
+  - LoreHadalAbyss
+  - LoreTaypan
+  - LoreCollapse
+
+- type: guideEntry
+  id: LoreHadalAbyss
+  name: The Hadal Abyss
+  text: "/ServerInfo/_Crescent/Guidebook/LoreHadalAbyss.xml"
+
+- type: guideEntry
+  id: LoreTaypan
+  name: Taypan
+  text: "/ServerInfo/_Crescent/Guidebook/LoreTaypan.xml"
+
+- type: guideEntry
+  id: LoreCollapse
+  name: Count Olywir and the Collapse
+  text: "/ServerInfo/_Crescent/Guidebook/LoreCollapse.xml"
+
+- type: guideEntry
+  id: Factions
+  name: Factions
+  text: "/ServerInfo/_Crescent/Guidebook/Factions.xml"
+  priority: 40

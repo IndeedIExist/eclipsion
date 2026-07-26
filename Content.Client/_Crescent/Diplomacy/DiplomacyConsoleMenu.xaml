@@ -1,0 +1,5 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               Title="{Loc 'diplomacy-console-title'}"
+               MinSize="500 400">
+    <BoxContainer Name="PanelHost" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True"/>
+</DefaultWindow>

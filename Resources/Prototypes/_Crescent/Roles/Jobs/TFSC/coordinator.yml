@@ -1,24 +1,24 @@
 - type: job
-  id: CoordinatorNCSP
+  id: CoordinatorTFSC
   name: job-name-coordinator
   description: job-description-coordinator
-  playTimeTracker: JobCoordinatorNCSP
+  playTimeTracker: JobCoordinatorTFSC
   ranks:
     RatRankTFSCCoordinatorHigh:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCoordinatorNCSP
+      tracker: JobCoordinatorTFSC
       min: 144000 # 40 hours
     RatRankTFSCCoordinatorLead:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCoordinatorNCSP
+      tracker: JobCoordinatorTFSC
       min: 108000 # 30 hours
     RatRankTFSCCoordinatorSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCoordinatorNCSP
+      tracker: JobCoordinatorTFSC
       min: 72000 # 20 hours
     RatRankTFSCCoordinatorMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCoordinatorNCSP
+      tracker: JobCoordinatorTFSC
       min: 36000 # 10 hours
     RatRankTFSCCoordinatorJunior: []
   weight: 8
@@ -27,7 +27,13 @@
   whitelisted: true # Rat
   requireAdminNotify: true
   icon: "JobIconSyndieCoordinator"
-  supervisors: You answer to the interests of the Interdyne Pharmaceuticals company. Organize your employees. Secure stakeholders and profit.
+  chatNameColor: "#e2e2e2"
+  chatAmplification:
+    bubbleScale: 1.09
+    shoutBubbleScale: 1.32
+    radioScale: 1.23
+    radioBold: true
+  supervisors: You answer to the Ringleader. Head the Coalition's medical wing - organize your employees, secure stakeholders and profit.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -48,7 +54,7 @@
   - !type:AddComponentSpecial
     components:
       - type: HullrotFaction
-        faction: IPM
+        faction: TFSC
       - type: CPRTraining
       - type: SurgerySpeedModifier
         speedModifier: 2.5
@@ -62,8 +68,13 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
   - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
+  - SyndicateCommand # department head
   - Service
   - External
   - Mercenary # Frontier
@@ -78,10 +89,10 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatSyndicateInterdyneBeret
     id: CoordinatorPDA
-    ears: ClothingHeadsetNCSPInterdyne
-    pocket1: AccessElevatorIPM
+    ears: ClothingHeadsetTFSCInterdyneCommand
+    pocket1: AccessElevatorTFSC
     pocket2: WeaponPistolHKUSP
-    back: ClothingBackpackNCSP
+    back: ClothingBackpackTFSC
   storage:
     back:
       - Flash

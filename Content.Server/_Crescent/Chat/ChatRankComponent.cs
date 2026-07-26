@@ -8,6 +8,9 @@ namespace Content.Server.Crescent.Chat;
 [RegisterComponent]
 public sealed partial class ChatRankComponent : Component
 {
+    /// <summary>The floor rank a body carries before any role grants one. Treated as "no rank" by rank checks.</summary>
+    public const string DefaultRank = "crescent-rank-private";
+
     [DataField]
-    public string Rank = "crescent-rank-private";
+    public string Rank = DefaultRank;
 }

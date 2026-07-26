@@ -1,33 +1,30 @@
 - type: vessel
   id: Impel
-  name: БМС Велит
+  name: DSM Impel
   description: |
-    Имперский грузовой шаттл с большим грузовым отсеком и одним упакованным грузовым мехом. Некоторым предприимчивым владельцам кораблей удалось получить бонусы от обходных путей, потраченных на разбор обломков, которые обычно используются для финансирования более совершенного судна.
+    An Imperial hauler shuttle with a large cargohold, and one packed up cargo mech. Some enterprising freeholders have managed to acquire bonuses from detours spent salvaging, which usually is used to fund a better vessel.
     LOADOUT: UNARMED
     MINIMUM CREW: 1x Pilot
-  price: 30000
+  price: 22000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/DSM/impel.yml
 
 - type: gameMap
   id: Impel
-  mapName: 'БМС Велит'
+  mapName: 'DSM Imp'
   mapPath: /Maps/_Crescent/Shuttles/DSM/impel.yml
   minPlayers: 0
   stations:
     Impel:
       stationProto: StandardCrescentCivilianVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: hauler
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Велит {1}'
+          mapNameTemplate: 'DSM Impel {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

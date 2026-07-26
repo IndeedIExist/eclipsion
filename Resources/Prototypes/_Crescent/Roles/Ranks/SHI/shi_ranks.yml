@@ -1,0 +1,160 @@
+## SHI - Executive
+- type: rank
+  id: RatRankSHIExecutiveTop
+  name: Executive Director
+  prefix: Shiiti
+  paygrade: SHI-E6
+
+- type: rank
+  id: RatRankSHIExecutiveHigh
+  name: Sector Director
+  prefix: Juitii
+  paygrade: SHI-E5
+
+- type: rank
+  id: RatRankSHIExecutiveLead
+  name: Director
+  prefix: Shonii
+  paygrade: SHI-E4
+
+- type: rank
+  id: RatRankSHIExecutiveSenior
+  name: Deputy Director
+  prefix: Jicho
+  paygrade: SHI-E3
+
+- type: rank
+  id: RatRankSHIExecutiveMiddle
+  name: Sector Manager
+  prefix: Kacho
+  paygrade: SHI-E2
+
+- type: rank
+  id: RatRankSHIExecutiveJunior
+  name: Manager
+  prefix: Kakaricho
+  paygrade: SHI-E1
+
+## SHI - Board
+- type: rank
+  id: RatRankSHIBoardTop
+  name: Chief Corporate Executive
+  prefix: Jushi
+  paygrade: SHI-B6
+
+- type: rank
+  id: RatRankSHIBoardHigh
+  name: Corporate Supervisor
+  prefix: Hatiige
+  paygrade: SHI-B5
+
+- type: rank
+  id: RatRankSHIBoardLead
+  name: Corporate Executive Specialist
+  prefix: Rokuige
+  paygrade: SHI-B4
+
+- type: rank
+  id: RatRankSHIBoardSenior
+  name: Senior Corporate Executive
+  prefix: Kyo To
+  paygrade: SHI-B3
+
+- type: rank
+  id: RatRankSHIBoardMiddle
+  name: Corporate Executive
+  prefix: Ke Yu
+  paygrade: SHI-B2
+
+- type: rank
+  id: RatRankSHIBoardJunior
+  name: Junior Corporate Executive
+  prefix: Ko Shi
+  paygrade: SHI-B1
+
+## SHI - MedTech
+- type: rank
+  id: RatRankSHIMedTechLead
+  name: Lead Corporate Researcher
+  prefix: Judan
+  paygrade: SHI-R4
+
+- type: rank
+  id: RatRankSHIMedTechHigh
+  name: Senior Corporate Researcher
+  prefix: Tengen
+  paygrade: SHI-R3
+
+- type: rank
+  id: RatRankSHIMedTechMiddle
+  name: Corporate Researcher
+  prefix: Oza
+  paygrade: SHI-R2
+
+- type: rank
+  id: RatRankSHIMedTechJunior
+  name: Junior Corporate Researcher
+  prefix: Gosei
+  paygrade: SHI-R1
+
+## SHI - Workers
+- type: rank
+  id: RatRankSHIWorkerLead
+  name: Lead Corporate Employee
+  prefix: Wakashigara
+  paygrade: SHI-W4
+
+- type: rank
+  id: RatRankSHIWorkerHigh
+  name: Senior Corporate Employee
+  prefix: Wakashu
+  paygrade: SHI-W3
+
+- type: rank
+  id: RatRankSHIWorkerMiddle
+  name: Corporate Employee
+  prefix: Shatei
+  paygrade: SHI-W2
+
+- type: rank
+  id: RatRankSHIWorkerJunior
+  name: Corporate Intern
+  prefix: Intern
+  paygrade: SHI-W1
+
+## SHI - CorpSec
+- type: rank
+  id: RatRankSHICorpSecChief
+  name: Chief Corporate Security Officer
+  prefix: Kaigun Chusa
+  paygrade: SHI-CS6
+
+- type: rank
+  id: RatRankSHICorpSecHigh
+  name: Head of Corporate Security Division
+  prefix: Kaigun Taisa
+  paygrade: SHI-CS5
+
+- type: rank
+  id: RatRankSHICorpSecLead
+  name: Lead Corporate Security Officer
+  prefix: Gunbugyo
+  paygrade: SHI-CS4
+
+- type: rank
+  id: RatRankSHICorpSecSenior
+  name: Senior Corporate Security Officer
+  prefix: Bansho
+  paygrade: SHI-CS3
+
+- type: rank
+  id: RatRankSHICorpSecMiddle
+  name: Corporate Security Officer
+  prefix: Shomyo
+  paygrade: SHI-CS2
+
+- type: rank
+  id: RatRankSHICorpSecJunior
+  name: Corporate Security Cadet
+  prefix: Cadet
+  paygrade: SHI-CS1

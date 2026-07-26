@@ -15,9 +15,6 @@
   stations:
     Courageous:
       stationProto: FlagshipCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: StationNameSetup
           mapNameTemplate: 'CMM Courageous {1}'

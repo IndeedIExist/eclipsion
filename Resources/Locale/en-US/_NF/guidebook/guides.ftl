@@ -1,5 +1,5 @@
 guide-entry-nf14 = New Crescent
-guide-entry-bank = NCWL State Bank
+guide-entry-bank = Taypan Civil Bank
 guide-entry-shipyard = Shipyard
 guide-entry-shipyard-ambition = Ambition
 guide-entry-shipyard-brigand = Brigand

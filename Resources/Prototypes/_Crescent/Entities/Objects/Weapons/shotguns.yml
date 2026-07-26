@@ -228,9 +228,8 @@
       gun_chamber: !type:ContainerSlot
   - type: ChamberMagazineAmmoProvider
     autoCycle: false #its a lever gun its not semi auto....
-    autoEject: true
-    soundAutoEject:
-      path: /Audio/Weapons/Guns/EmptyAlarm/M1_empty_alarm.ogg
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: Appearance
   - type: StaticPrice
     price: 2000
@@ -375,6 +374,8 @@
     whitelist:
       tags:
       - ShellShotgun
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: ReverseEngineering # Sector Crescent
     recipes:
       - WeaponShotgunDSMMatusa
@@ -416,6 +417,8 @@
     whitelist:
       tags:
       - ShellShotgun
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: ReverseEngineering
     recipes:
       - WeaponShotgunDoubleBarreledNCWL
@@ -424,8 +427,8 @@
 - type: entity
   # Don't parent to BaseWeaponShotgun because it differs significantly
   parent: [BaseItem, BaseGunWieldable]
-  id: WeaponShotgunNCSPSaiga12
-  name: NCSP Saiga-12k Hammer 12g
+  id: WeaponShotgunTFSCSaiga12
+  name: TFSC Saiga-12k Hammer 12g
   description: A magazine-fed shotgun in use by terrorist forces. Uses 12 gauge shotgun shells.
   components:
   - type: Sprite
@@ -483,6 +486,8 @@
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
   - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -522,7 +527,7 @@
   - type: ReverseEngineering
     difficulty: 2
     recipes:
-      - WeaponShotgunSaiga12NCSP
+      - WeaponShotgunSaiga12TFSC
       - WeaponShotgunTuberCyberdawn
 
 - type: entity
@@ -587,6 +592,8 @@
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
   - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -662,12 +669,76 @@
     capacity: 4
   - type: Wieldable
   - type: Gun
-    fireRate: 2.8 #nerf because shotguns are stronger now
+    fireRate: 3.2 #nerf because shotguns are stronger now
     projectileSpeed: 45
     shotgunSpreadMultiplier: 0.15
     soundGunshot:
       path: /Audio/_Crescent/Weapons/Guns/supressed_shotgun/suppressed_shotgun_fire.ogg
-  - type: ReverseEngineering 
+  - type: ReverseEngineering
     difficulty: 2
     recipes:
       - WeaponShotgunHarba
+
+- type: entity
+  name: NCWL Toz-97 Proletar 12g (Worn)
+  parent: [BaseWeaponShotgun, BaseGunWieldable]
+  id: WeaponShotgunProletarWorn
+  description: >
+    A Proletar pulled from decades of active service and never properly retired. 
+    The stock is cracked, the barrel bands are spotted with rust, and the pump 
+    action catches on every other stroke. Unionfall quartermasters stamp these 
+    'fit for duty' and hand them to anyone without a better option.
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,4,1
+    sprite: _Crescent/Objects/Weapons/Guns/proletar.rsi
+  - type: Sprite
+    sprite: _Crescent/Objects/Weapons/Guns/proletar.rsi
+  - type: Clothing
+    sprite: _Crescent/Objects/Weapons/Guns/proletar.rsi
+  - type: GunRequiresWield
+  - type: Gun
+    fireRate: 2.5
+    damageModifier: 0.75 
+    shotgunSpreadMultiplier: 3.5
+  - type: BallisticAmmoProvider
+    capacity: 8
+    autoCycle: false
+  - type: Tag
+    tags:
+    - WeaponShotgunKammerer
+  - type: Wieldable
+
+- type: entity
+  name: IRM DA-2 Matusa 12g (Surplus)
+  parent: [BaseWeaponShotgun, BaseGunWieldable]
+  id: WeaponShotgunDSMMatusaWorn
+  description: >
+    A Matusa dredged out of a long-forgotten Unionfall armory crate. The cylinder 
+    wobbles on its axis, the finish has surrendered entirely to oxidation, and the 
+    grip tape is held together by electrical tape over electrical tape. It still 
+    cycles — barely — and that is apparently enough for the front line.
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _Crescent/Objects/Weapons/Guns/surplus_dsm_shotgun.rsi
+  - type: Clothing
+    sprite: _Crescent/Objects/Weapons/Guns/surplus_dsm_shotgun.rsi
+  - type: GunRequiresWield
+  - type: Gun
+    fireRate: 2.5
+    damageModifier: 0.75 
+    shotgunSpreadMultiplier: 3.5
+    soundGunshot:
+      path: /Audio/Weapons/Guns/UnionfallWeapons/shotgun_fire_1.ogg
+    fireOnDropChance: 1
+  - type: BallisticAmmoProvider
+    capacity: 8
+    autoCycle: false
+  - type: Tag
+    tags:
+    - WeaponShotgunKammerer
+  - type: Wieldable

@@ -5,30 +5,30 @@
 
 - type: storeCategory
   id: StoreCategorySRMTools
-  name: Инструменты
+  name: Tools
   priority: 6
 
 - type: storeCategory
   id: StoreCategorySRMSupport
-  name: Медицина и поддержка
+  name: Medical and Support
   priority: 8
 
 - type: storeCategory
   id: StoreCategorySRMMaterials
-  name: Материалы
+  name: Materials
   priority: 10
 
 - type: storeCategory
   id: StoreCategorySRMPietySerraine
-  name: Обрывки писания
+  name: Scripture Fragments
   priority: 12
 
 #LPCs
 
 - type: listing
   id: StoreListingSRMSpider
-  name: ОСР Паук LPC
-  description: Фабпринт-диск LPC с образцом шаттла-невидимки класса "Паук". Его необходимо обменять на консоли верфи.
+  name: SRM Spider LPC
+  description: A fabprint disk LPC containing the blueprint of a stealth shuttle, class "Spider". Must be redeemed at a shipyard console.
   icon: { sprite: _Crescent/Objects/Misc/lpcchip.rsi, state: icon }
   productEntity: ShipVoucherSpider
   cost:
@@ -38,8 +38,8 @@
 
 - type: listing
   id: StoreListingSRMSaintsfall
-  name: ОСР Сейнтсфол LPC
-  description: Фабпринт-диск LPC с образцом боевого корабля класса "Сейнтсфол". Его необходимо обменять на консоли верфи.
+  name: SRM Saintsfall LPC
+  description: A fabprint disk LPC containing the blueprint of a combat vessel, class "Saintsfall". Must be redeemed at a shipyard console.
   icon: { sprite: _Crescent/Objects/Misc/lpcchip.rsi, state: icon }
   productEntity: ShipVoucherSaintsfall
   cost:
@@ -53,8 +53,8 @@
 
 - type: listing
   id: StoreListingSRMJaws
-  name: Челюсти жизни
-  description: Пара челюстей жизни, сорванных с какого-то невезучего ублюдка во время налёта на судно Cyberdawn.
+  name: Jaws of Life
+  description: A pair of jaws of life, ripped off some unlucky bastard during a raid on a Cyberdawn vessel.
   icon: { sprite: Objects/Tools/jaws_of_life.rsi, state: syn_jaws_pry }
   productEntity: SyndicateJawsOfLife
   cost:
@@ -64,8 +64,8 @@
 
 - type: listing
   id: StoreListingSRMEVA
-  name: Набор EVA
-  description: Стандартные боевые ботинки и несколько реактивных ранцев, пригодных для абордажных действий... если вам повезёт.
+  name: EVA Kit
+  description: Standard combat boots and a few jetpacks, suitable for boarding actions... if you're lucky.
   icon: { sprite: _NF/Clothing/Shoes/Boots/magboots-combat.rsi, state: icon }
   productEntity: CrateSRMEVA
   cost:
@@ -75,8 +75,8 @@
 
 - type: listing
   id: StoreListingSRMHeavyMagboots
-  name: Тяжёлые боевые магботинки
-  description: Тяжелые боевые ботинки, которые делают вас немного медленнее, но в них можно носить оружие. Некоторые из них поставляются в комплекте.
+  name: Heavy Combat Magboots
+  description: Heavy combat boots that make you a bit slower, but you can holster weapons in them. Some come in sets.
   icon: { sprite: Clothing/Shoes/Boots/magboots-combat.rsi, state: icon }
   productEntity: CrateSRMMagboots
   cost:
@@ -86,8 +86,8 @@
 
 - type: listing
   id: StoreListingSRMToolbox
-  name: Украденный ящик инструментов
-  description: Ящик с инструментами, украденный у какого-то бедолаги, только что покинувшего Фрипорт. Вряд ли он ему ещё понадобится. Некоторые из них приходят комплектами.
+  name: Stolen Toolbox
+  description: A toolbox stolen from some poor soul who just left Freeport. He probably won't be needing it anymore. Some come in sets.
   icon: { sprite: Objects/Tools/Toolboxes/toolbox_syn.rsi, state: icon }
   productEntity: CrateSRMToolbox
   cost:
@@ -97,9 +97,9 @@
 
 - type: listing
   id: StoreListingSRMPinpointer
-  name: Отслеживающий пинпоинтер
-  description: С помощью пинпоинтера можно отследить все, что угодно, даже мелкие и незаметные предметы. Некоторые из них поставляются в комплектах.
-  icon: { sprite: Objects/Devices/pinpointer.rsi, state: pinpointer_thief }
+  name: Tracking Pinpointer
+  description: A pinpointer that can track just about anything, even small and inconspicuous objects. Some come in sets.
+  icon: { sprite: Objects/Devices/pinpointer.rsi, state: pinpointer }
   productEntity: CrateSRMPinpointer
   cost:
     PietySRM: 2
@@ -112,8 +112,8 @@
 
 - type: listing
   id: StoreListingSRMMedkitShipment
-  name: Поставка аптечек
-  description: Пара крепких аптечек, которые часто используются смотрительницами для подлатывания охотников-идиотов.
+  name: Medkit Shipment
+  description: A pair of sturdy medkits, frequently used by stewardesses to patch up idiot hunters.
   icon: { sprite: Objects/Specific/Medical/firstaidkits.rsi, state: blackkit }
   productEntity: CrateSRMMedkit
   cost:
@@ -123,8 +123,8 @@
 
 - type: listing
   id: StoreListingSRMMedicalSupplies
-  name: Поставка медицинских припасов
-  description: Груз, полный всех медицинских принадлежностей, которые могут понадобиться для эффективной сортировки в полевых условиях.
+  name: Medical Supplies Shipment
+  description: A crate full of all the medical supplies you could need for effective field triage.
   icon: { sprite: _Shitmed/Clothing/Back/Duffels/abductor.rsi, state: icon }
   productEntity: CrateSRMMedicalSupplies
   cost:
@@ -134,8 +134,8 @@
 
 - type: listing
   id: StoreListingSRMCompactDefibrillator
-  name: Компактный дефибриллятор
-  description: Компактный дефибриллятор, который можно пристегнуть к поясу для удобства использования в экстренных ситуациях. Некоторые из них поставляются в комплекте.
+  name: Compact Defibrillator
+  description: A compact defibrillator that can be clipped to your belt for convenient use in emergency situations. Some come in sets.
   icon: { sprite: Objects/Specific/Medical/defibsmall.rsi, state: icon }
   productEntity: CrateSRMDefibrillator
   cost:
@@ -145,8 +145,8 @@
 
 - type: listing
   id: StoreListingSRMNvg
-  name: Очки ночного виденья
-  description: Очки ночного видения, обычно используемые охотниками при выключенном свете.
+  name: Night Vision Goggles
+  description: Night vision goggles, commonly used by hunters in low-light conditions.
   icon: { sprite: Clothing/Eyes/Goggles/nightvision.rsi, state: icon }
   productEntity: ClothingEyesNightVisionGoggles
   cost:
@@ -156,8 +156,8 @@
 
 - type: listing
   id: StoreListingSRMNVgMedical
-  name: Медицинские очки ночного виденья
-  description: Очки ночного видения со встроенными медицинскими стёклами, пригодятся тем, кто работает в условиях низкой освещённости.
+  name: Medical Night Vision Goggles
+  description: Night vision goggles with built-in medical lenses, useful for those working in low-light conditions.
   icon: { sprite: Clothing/Eyes/Goggles/medical_nightvision.rsi, state: icon }
   productEntity: ClothingEyesNightVisionMedicalGoggles
   cost:
@@ -167,8 +167,8 @@
 
 - type: listing
   id: StoreListingSRMNvgAdvanced
-  name: Продвинутые очки ночного видения
-  description: Усовершенствованные очки ночного видения, улучшенные возможностью считывать идентификационные данные человека издалека.
+  name: Advanced Night Vision Goggles
+  description: Enhanced night vision goggles, improved with the ability to read a person's identification data from a distance.
   icon: { sprite: Clothing/Eyes/Goggles/security_nightvision.rsi, state: icon }
   productEntity: ClothingEyesNightVisionSecurityGoggles
   cost:
@@ -178,8 +178,8 @@
 
 - type: listing
   id: StoreListingSRMThermoMonocle
-  name: Термальный монокль
-  description: Монокль, который позволяет владельцу видеть тепловые сигналы, полезен сам по себе.
+  name: Thermal Monocle
+  description: A monocle that allows the wearer to see heat signatures, useful on its own.
   icon: { sprite: Clothing/Eyes/Goggles/monocle_thermal.rsi, state: icon }
   productEntity: ClothingEyesThermalVisionMonocle
   cost:
@@ -189,8 +189,8 @@
 
 - type: listing
   id: StoreListingSRMMassScanner
-  name: Сканер масс
-  description: Портативное устройство, удобное для работы в космосе. Некоторые из них поставляются в комплекте.
+  name: Mass Scanner
+  description: A portable device, handy for working in space. Some come in sets.
   icon: { sprite: Objects/Tools/handheld_mass_scanner.rsi, state: icon }
   productEntity: CrateSRMMassScanner
   cost:
@@ -200,8 +200,8 @@
 
 - type: listing
   id: StoreListingSRMMedScanner
-  name: Медицинский сканер
-  description: Сканер, используемый в медицинских целях, полезен для проведения операций смотрительницами на местах.
+  name: Medical Scanner
+  description: A scanner used for medical purposes, useful for field operations conducted by stewardesses.
   icon: { sprite: Objects/Specific/Medical/healthanalyzer.rsi, state: icon }
   productEntity: HandheldHealthAnalyzer
   cost:
@@ -211,8 +211,8 @@
 
 - type: listing
   id: StoreListingSRMMRE
-  name: ИРП
-  description: Ваш классический MRE, созданный не для вкуса, а для охотников в пути.
+  name: MRE
+  description: Your classic MRE, made not for taste but for hunters on the go.
   icon: { sprite: Objects/Consumable/Food/bay_food.rsi, state: meatmre }
   productEntity: BoxMRE
   cost:
@@ -222,8 +222,8 @@
 
 - type: listing
   id: StoreListingSRMHuntSupplies
-  name: Припасы для охоты
-  description: Ящик, набитый до отвала различным полезным для охоты снаряжением. Кажется, его собирали с любовью.
+  name: Hunting Supplies
+  description: A crate packed to the brim with various useful hunting equipment. Seems like it was assembled with care.
   icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
   productEntity: CrateSRMNLHuntSupplies
   cost:
@@ -233,8 +233,8 @@
 
 - type: listing
   id: StoreListingSRMBolaShipment
-  name: Ящик с болой
-  description: Партия с несколькими обычными и парой энергобол для эффективного отлова рабов... я имел ввиду реквизиции активов!
+  name: Bola Crate
+  description: A shipment with several regular bolas and a couple of energy bolas for efficient asset requisition.
   icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
   productEntity: CrateSRMBolaShipment
   cost:
@@ -244,8 +244,8 @@
 
 - type: listing
   id: StoreListingSRMDisablerShipment
-  name: Ящик дизайблеров
-  description: Ящик с несколькими дизейплерами и дизейблер-пулемётом. Если кому-то не хватило в оружейке, жадины!
+  name: Disabler Crate
+  description: A crate with several disablers and a disabler machine gun. For those who didn't get enough from the armory!
   icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
   productEntity: CrateSRMDisablerShipment
   cost:
@@ -259,8 +259,8 @@
 
 - type: listing
   id: StoreListingSRMPlasteel
-  name: Поставка пластали
-  description: Партия пластали, пригодной для различных строительных целей.
+  name: Plasteel Shipment
+  description: A batch of plasteel, suitable for various construction purposes.
   icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
   productEntity: CrateMaterialPlasteel
   cost:
@@ -270,8 +270,8 @@
 
 - type: listing
   id: StoreListingSRMPlastic
-  name: Поставка пластика
-  description: Партия пластика для любого способа уничтожения черепах, который вы только пожелаете.
+  name: Plastic Shipment
+  description: A batch of plastic for whatever turtle-killing method you desire.
   icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
   productEntity: CrateMaterialPlastic
   cost:
@@ -281,8 +281,8 @@
 
 - type: listing
   id: StoreListingSRMSteel
-  name: Поставка стали
-  description: Партия стали, пригодная для различных ремонтных работ.
+  name: Steel Shipment
+  description: A batch of steel, suitable for various repair work.
   icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
   productEntity: CrateMaterialSteel
   cost:
@@ -292,8 +292,8 @@
 
 - type: listing
   id: StoreListingSRMGlass
-  name: Поставка стекла
-  description: Осторожно, не наткнись на него, он хрупкий.
+  name: Glass Shipment
+  description: Careful, don't bump into it, it's fragile.
   icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
   productEntity: CrateMaterialGlass
   cost:
@@ -307,8 +307,8 @@
 
 - type: listing
   id: StoreListingSRMPRLowSerraine
-  name: Часть писания
-  description: Предмет благочестия, используемый охотниками для обмена различных товаров и услуг. Этот предмет выглядит довольно изношенным и поврежденным.
+  name: Scripture Fragment
+  description: A piety item used by hunters to trade for various goods and services. This one looks quite worn and damaged.
   icon: { sprite: _Crescent/Objects/TradeGoods/deed.rsi, state: icon }
   productEntity: PietyRedeemableLow
   cost:
@@ -318,8 +318,8 @@
 
 - type: listing
   id: StoreListingSRMPRSerraine
-  name: Часть писания
-  description: Частичка благочестия, используемая охотниками для выкупа различных товаров и услуг. Этот, похоже, в приличном состоянии.
+  name: Scripture Fragment
+  description: A piety item used by hunters to redeem various goods and services. This one seems to be in decent condition.
   icon: { sprite: _Crescent/Objects/TradeGoods/deed.rsi, state: icon }
   productEntity: PietyRedeemable
   cost:
@@ -329,8 +329,8 @@
 
 - type: listing
   id: StoreListingSRMPRHighSerraine
-  name: Часть писания
-  description: Частичка благочестия, используемая охотниками для выкупа различных товаров и услуг. Этот, похоже, почти не тронут.
+  name: Scripture Fragment
+  description: A piety item used by hunters to redeem various goods and services. This one looks almost untouched.
   icon: { sprite: _Crescent/Objects/TradeGoods/deed.rsi, state: icon }
   productEntity: PietyRedeemableHigh
   cost:

@@ -44,60 +44,9 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SaveToFile();
         }
 
-        private void InitToggleWalk()
-        {
-            if (_cfg.GetCVar(CCVars.ToggleWalk))
-            {
-                ToggleFunctions.Add(EngineKeyFunctions.Walk);
-            }
-            else
-            {
-                ToggleFunctions.Remove(EngineKeyFunctions.Walk);
-            }
-        }
-
-        private void HandleToggleWalk(BaseButton.ButtonToggledEventArgs args)
-        {
-            _cfg.SetCVar(CCVars.ToggleWalk, args.Pressed);
-            _cfg.SaveToFile();
-            InitToggleWalk();
-
-            if (!_keyControls.TryGetValue(EngineKeyFunctions.Walk, out var keyControl))
-            {
-                return;
-            }
-
-            var bindingType = args.Pressed ? KeyBindingType.Toggle : KeyBindingType.State;
-            for (var i = 0; i <= 1; i++)
-            {
-                var binding = (i == 0 ? keyControl.BindButton1 : keyControl.BindButton2).Binding;
-                if (binding == null)
-                {
-                    continue;
-                }
-
-                var registration = new KeyBindingRegistration
-                {
-                    Function = EngineKeyFunctions.Walk,
-                    BaseKey = binding.BaseKey,
-                    Mod1 = binding.Mod1,
-                    Mod2 = binding.Mod2,
-                    Mod3 = binding.Mod3,
-                    Priority = binding.Priority,
-                    Type = bindingType,
-                    CanFocus = binding.CanFocus,
-                    CanRepeat = binding.CanRepeat,
-                };
-
-                _deferCommands.Add(() =>
-                {
-                    _inputManager.RemoveBinding(binding);
-                    _inputManager.RegisterBinding(registration);
-                });
-            }
-
-            _deferCommands.Add(_inputManager.SaveToUserData);
-        }
+        // _Crescent: the "toggle walk" option was removed — sprint is always hold-to-run.
+        // The Walk keybind is forced to a held (State) binding on client startup
+        // (see Content.Client EntryPoint.ForceHoldToSprint).
 
         private void HandleHoldLookUp(BaseButton.ButtonToggledEventArgs args)
         {
@@ -219,9 +168,7 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(EngineKeyFunctions.MoveDown);
             AddButton(EngineKeyFunctions.MoveRight);
             AddButton(EngineKeyFunctions.Walk);
-            AddCheckBox("ui-options-hotkey-toggle-walk", _cfg.GetCVar(CCVars.ToggleWalk), HandleToggleWalk);
             AddCheckBox("ui-options-hotkey-default-walk", _cfg.GetCVar(CCVars.DefaultWalk), HandleDefaultWalk);
-            InitToggleWalk();
 
             AddHeader("ui-options-header-camera");
             AddButton(EngineKeyFunctions.CameraRotateLeft);

@@ -114,7 +114,7 @@
   name: NCWLCoordinator
   components:
   - type: SpawnPoint
-    job_id: CoordinatorNCWL
+    job_id: WorkerOverbossNCWL
   - type: Sprite
     layers:
       - state: green
@@ -152,7 +152,7 @@
   name: ringleader
   components:
   - type: SpawnPoint
-    job_id: RingleaderNCSP
+    job_id: RingleaderTFSC
   - type: Sprite
     layers:
       - state: green
@@ -164,7 +164,7 @@
   name: lieutenant
   components:
   - type: SpawnPoint
-    job_id: LieutenantNCSP
+    job_id: LieutenantTFSC
   - type: Sprite
     layers:
       - state: green
@@ -176,7 +176,7 @@
   name: cyberdawn researcher
   components:
   - type: SpawnPoint
-    job_id: CyberdawnTechNCSP
+    job_id: CyberdawnTechTFSC
   - type: Sprite
     layers:
       - state: green
@@ -188,7 +188,7 @@
   name: infanteer
   components:
   - type: SpawnPoint
-    job_id: InfanteerNCSP
+    job_id: InfanteerTFSC
   - type: Sprite
     layers:
       - state: green
@@ -200,7 +200,7 @@
   name: artillery technician
   components:
   - type: SpawnPoint
-    job_id: TechnicianNCSP
+    job_id: TechnicianTFSC
   - type: Sprite
     layers:
       - state: green
@@ -212,7 +212,7 @@
   name: ripperdoc
   components:
   - type: SpawnPoint
-    job_id: RipperdocNCSP
+    job_id: RipperdocTFSC
   - type: Sprite
     layers:
       - state: green
@@ -224,7 +224,7 @@
   name: traumasec
   components:
   - type: SpawnPoint
-    job_id: TraumasecNCSP
+    job_id: TraumasecTFSC
   - type: Sprite
     layers:
       - state: green
@@ -236,7 +236,7 @@
   name: cyberdawn agent
   components:
   - type: SpawnPoint
-    job_id: OperativeNCSP
+    job_id: OperativeTFSC
   - type: Sprite
     layers:
       - state: green
@@ -248,7 +248,7 @@
   name: patriarch
   components:
   - type: SpawnPoint
-    job_id: IntelligenceOfficerNCSP
+    job_id: IntelligenceOfficerTFSC
   - type: Sprite
     layers:
       - state: green
@@ -260,7 +260,7 @@
   name: shipbreaker
   components:
   - type: SpawnPoint
-    job_id: ShipbreakerNCSP
+    job_id: ShipbreakerTFSC
   - type: Sprite
     layers:
       - state: green
@@ -272,7 +272,7 @@
   name: foreman
   components:
   - type: SpawnPoint
-    job_id: ForemanNCSP
+    job_id: ForemanTFSC
   - type: Sprite
     layers:
       - state: green
@@ -1294,3 +1294,364 @@
       - state: green
       - state: passenger
 
+#planetfall
+
+#dsm
+
+- type: entity
+  id: SpawnPointPlanetfallGovernorDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallGovernorDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_governor
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallAdvocatusDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallAdvocatusDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_advocatus
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallCourtierDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallCourtierDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_courtier
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallFreeholderDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallFreeholderDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_freeholder
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallLevymanDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallLevymanDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_levyman
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+#ncwl
+
+- type: entity
+  id: SpawnPointPlanetfallKapitanNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallKapitanNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_kapitan
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallMVDOfficerNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallMVDOfficerNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_mvdofficer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallMVDGruntNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallMVDGruntNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_mvdgrunt
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallPartisanNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallPartisanNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_partisan
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallDoctorNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallDoctorNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_doctor
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallWorkerNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallWorkerNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_worker
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallSurgeonDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallSurgeonDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_surgeon
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+#unionfall
+
+#dsm
+
+- type: entity
+  id: SpawnPointUnionfallCadetDSM
+  parent: SpawnPointJobBase
+  name: UnionfallCadetDSM
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallCadetDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallRiflemanDSM
+  parent: SpawnPointJobBase
+  name: UnionfallRiflemanDSM
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallRiflemanDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallDoctorDSM
+  parent: SpawnPointJobBase
+  name: UnionfallDoctorDSM
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallDoctorDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallOfficerDSM
+  parent: SpawnPointJobBase
+  name: UnionfallOfficerDSM
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallOfficerDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallLeaderDSM
+  parent: SpawnPointJobBase
+  name: UnionfallLeaderDSM
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallLeaderDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallShipCaptainDSM
+  parent: SpawnPointJobBase
+  name: UnionfallShipCaptainDSM
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallShipCaptainDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallShipCrewDSM
+  parent: SpawnPointJobBase
+  name: UnionfallShipCrewDSM
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallShipCrewDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+#ncwl
+
+- type: entity
+  id: SpawnPointUnionfallCadetNCWL
+  parent: SpawnPointJobBase
+  name: UnionfallCadetNCWL
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallCadetNCWL
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallRiflemanNCWL
+  parent: SpawnPointJobBase
+  name: UnionfallRiflemanNCWL
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallRiflemanNCWL
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallDoctorNCWL
+  parent: SpawnPointJobBase
+  name: UnionfallDoctorNCWL
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallDoctorNCWL
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallOfficerNCWL
+  parent: SpawnPointJobBase
+  name: UnionfallOfficerNCWL
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallOfficerNCWL
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallLeaderNCWL
+  parent: SpawnPointJobBase
+  name: UnionfallLeaderNCWL
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallLeaderNCWL
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallShipCaptainNCWL
+  parent: SpawnPointJobBase
+  name: UnionfallShipCaptainNCWL
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallShipCaptainNCWL
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointUnionfallShipCrewNCWL
+  parent: SpawnPointJobBase
+  name: UnionfallShipCrewNCWL
+  components:
+  - type: SpawnPoint
+    job_id: UnionfallShipCrewNCWL
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+# ===== merged from _Rat (full-hullrot consolidation) =====
+# empire
+
+- type: entity
+  id: SpawnPointRegentEmpire
+  parent: SpawnPointJobBase
+  name: regent Empire
+  components:
+  - type: SpawnPoint
+    job_id: RegentEmpireDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPretorianKnight
+  parent: SpawnPointJobBase
+  name: pretorian knight
+  components:
+  - type: SpawnPoint
+    job_id: PretorianKnightDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointVagrant
+  parent: SpawnPointJobBase
+  name: Vagrant
+  components:
+  - type: SpawnPoint
+    job_id: Vagrant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger

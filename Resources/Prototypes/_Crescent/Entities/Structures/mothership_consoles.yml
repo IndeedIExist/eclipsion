@@ -21,6 +21,9 @@
   parent: BaseMothershipComputer
   name: homeguard light carrier fab console
   components:
+  # Drones are bought from the buyer's personal bank, not the faction treasury.
+  - type: ShipyardConsole
+    usesFactionTreasury: false
   - type: ShipyardListing
     iffColor: Orange
     shuttles:
@@ -32,6 +35,9 @@
   parent: BaseMothershipComputer
   name: imperial garrison light carrier fab console
   components:
+  # Drones are bought from the buyer's personal bank, not the faction treasury.
+  - type: ShipyardConsole
+    usesFactionTreasury: false
   - type: ShipyardListing
     iffColor: "#C677A5"
     shuttles:
@@ -137,7 +143,7 @@
     - buffalo
     - gazpachov
     - Musinyane
-    #- Chanchu
+    - Chanchu
     - Nazaar
 
 - type: entity
@@ -148,7 +154,7 @@
   - type: ShipyardListing
     iffColor: IndianRed
     shuttles:
-    #- Velator
+    - Velator
     #- Taipan
     - Wreck
     - Spriggan

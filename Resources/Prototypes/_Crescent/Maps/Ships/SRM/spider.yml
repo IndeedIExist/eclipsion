@@ -1,7 +1,7 @@
 - type: vessel
   id: Spider
-  name: ОСР Паук
-  description: Переделанный гражданский корпус, превращенный в хрупкий военный шаттл.
+  name: SRM Spider
+  description: A repurposed civilian hull, converted into a fragile EWAR shuttle.
   price: 100000
   category: Small
   group: None
@@ -9,18 +9,15 @@
 
 - type: gameMap
   id: Spider
-  mapName: 'ОСР Паук'
+  mapName: 'SRM Spider'
   mapPath: /Maps/_Crescent/Shuttles/SRM/spider.yml
   minPlayers: 0
   stations:
     Spider:
       stationProto: FlagshipCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'ОСР Паук {1}'
+          mapNameTemplate: 'Spider {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -299,6 +299,10 @@ namespace Content.Server.Atmos.EntitySystems
                 return;
 
             RemCompDeferred<OnFireComponent>(uid);
+            // Always clear the alert here — the update loop won't see this entity anymore
+            // once OnFireComponent is removed, so it would never get a chance to clear it.
+            _alertsSystem.ClearAlert(uid, flammable.FireAlert);
+
             if (!flammable.OnFire)
                 return;
 
@@ -307,6 +311,7 @@ namespace Content.Server.Atmos.EntitySystems
             flammable.FireStacks = 0;
             flammable.IgnoreFireProtection = false;
 
+            RaiseLocalEvent(uid, new MoodRemoveEffectEvent("OnFire"));
             _ignitionSourceSystem.SetIgnited(uid, false);
 
             UpdateAppearance(uid, flammable);

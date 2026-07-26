@@ -1,13 +1,14 @@
 - type: job
-  id: TechnicianNCSP
+  id: TechnicianTFSC
   name: job-name-technician
   description: job-description-technician
-  playTimeTracker: JobTechnicianNCSP
+  playTimeTracker: JobTechnicianTFSC
   weight: 9
   startingGear: TechnicianGear
   alwaysUseSpawner: true
   requireAdminNotify: false
   icon: "JobIconSyndieNewblood"
+  chatNameColor: "#3b0707"
   supervisors: job-supervisors-gsc-newbie
   canBeAntag: false
   requirements:
@@ -31,7 +32,7 @@
       - type: ChatRank
         rank: crescent-rank-pfc
       - type: HullrotFaction
-        faction: GSC
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -40,8 +41,12 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
   - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
   - Service
   - External
   - Mercenary # Frontier
@@ -54,7 +59,7 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatSyndicateArmaments
     id: InfanteerPDA
-    back: ClothingBackpackNCSPSatchelFilledInfanteer
-    ears: ClothingHeadsetNCSP
+    back: ClothingBackpackTFSCSatchelFilledInfanteer
+    ears: ClothingHeadsetTFSC
     pocket1: WeaponPistolViperWood
     pocket2: ClothingMaskGasSyndicate

@@ -3,9 +3,9 @@
 
 - type: vessel
   id: Einherji
-  name: Эйнхери
+  name: Einherji
   description: |
-    Тяжелый истребитель переднего края с энергоемким вооружением.
+    A heavy frontliner fighter with energy-heavy weaponry.
     LOADOUT: 2x 400c Plasmacasters, 1x 180mm Idna Torpedo Pod
   price: 31000
   category: Small
@@ -14,18 +14,15 @@
 
 - type: gameMap
   id: Einherji
-  mapName: 'Эйнхери'
+  mapName: 'Einherji'
   mapPath: /Maps/_Crescent/Shuttles/TAP/einherji.yml
   minPlayers: 0
   stations:
     Einherji:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Эйнхери {1}'
+          mapNameTemplate: 'Einherji {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

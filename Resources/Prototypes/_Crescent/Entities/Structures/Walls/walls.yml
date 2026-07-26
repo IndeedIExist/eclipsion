@@ -391,3 +391,29 @@
   - type: Icon
     sprite: _Crescent/Structures/remnantHollowCorners.rsi
     state: state0
+
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: entity
+  id: RatWallInvisible
+  name: Invisible Wall
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Tag
+    tags:
+      - Wall
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Airtight

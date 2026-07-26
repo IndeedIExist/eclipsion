@@ -8,6 +8,7 @@
 
 - type: latheRecipe
   id: KitchenKnife
+  category: Weapons
   result: KitchenKnife
   completetime: 2
   materials:
@@ -16,6 +17,7 @@
 
 - type: latheRecipe
   id: DrinkMug
+  category: Food
   result: DrinkMug
   completetime: 0.8
   materials:
@@ -23,6 +25,7 @@
 
 - type: latheRecipe
   id: DrinkMugMetal
+  category: Food
   result: DrinkMugMetal
   completetime: 0.8
   materials:

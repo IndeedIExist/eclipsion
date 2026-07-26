@@ -215,9 +215,25 @@ namespace Content.Client.Lobby
         {
             if (_gameTicker.LobbyBackground != null)
             {
-                Lobby!.Background.Texture = _resourceCache.GetResource<TextureResource>(_gameTicker.LobbyBackground.Background);
-
                 var lobbyBackground = _gameTicker.LobbyBackground;
+
+                if (lobbyBackground.AnimatedBackground != null)
+                {
+                    Lobby!.Background.Visible = false;
+                    Lobby!.AnimatedBg.Visible = true;
+                    Lobby!.AnimatedBg.SetFromSpriteSpecifier(lobbyBackground.AnimatedBackground);
+                }
+                else if (lobbyBackground.Background is { } background)
+                {
+                    Lobby!.AnimatedBg.Visible = false;
+                    Lobby!.Background.Visible = true;
+                    Lobby!.Background.Texture = _resourceCache.GetResource<TextureResource>(background);
+                }
+                else
+                {
+                    Lobby!.AnimatedBg.Visible = false;
+                    Lobby!.Background.Visible = false;
+                }
 
                 var name = string.IsNullOrEmpty(lobbyBackground.Name)
                     ? Loc.GetString("lobby-state-background-unknown-title")
@@ -237,6 +253,8 @@ namespace Content.Client.Lobby
             }
 
             _sawmill.Warning("_gameTicker.LobbyBackground was null! No lobby background selected.");
+            Lobby!.AnimatedBg.Visible = false;
+            Lobby!.Background.Visible = true;
             Lobby!.Background.Texture = null;
             Lobby!.LobbyBackground.SetMarkup(Loc.GetString("lobby-state-background-no-background-text"));
         }

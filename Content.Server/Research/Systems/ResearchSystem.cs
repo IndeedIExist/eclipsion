@@ -3,6 +3,7 @@ using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Station.Systems;
+using Content.Shared._Crescent.Factions;
 using Content.Shared.Access.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Research.Components;
@@ -21,6 +22,7 @@ namespace Content.Server.Research.Systems
         [Dependency] private readonly AccessReaderSystem _accessReader = default!;
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
         [Dependency] private readonly EntityLookupSystem _lookup = default!;
+        [Dependency] private readonly FactionMachineSystem _factionMachine = default!;
 
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly RadioSystem _radio = default!;
@@ -113,7 +115,7 @@ namespace Content.Server.Research.Systems
             {
                 while (allServers.MoveNext(out var uid, out var comp))
                 {
-                    if (_station.GetOwningStation(uid) == stationUid)
+                    if (_station.GetOwningStation(uid) == stationUid && _factionMachine.SameFaction(gridUid, uid))
                         list.Add(comp.ServerName);
                 }
             }
@@ -132,7 +134,7 @@ namespace Content.Server.Research.Systems
             {
                 while (allServers.MoveNext(out var uid, out var comp))
                 {
-                    if (_station.GetOwningStation(uid) == stationUid)
+                    if (_station.GetOwningStation(uid) == stationUid && _factionMachine.SameFaction(gridUid, uid))
                         list.Add(comp.Id);
                 }
             }
@@ -141,6 +143,11 @@ namespace Content.Server.Research.Systems
             return serverList;
         }
 
+        /// <summary>
+        /// The research servers a client is allowed to use: on the same grid, and belonging to the same faction.
+        /// The faction check is what stops someone from anchoring their own lathe on a station and pulling that
+        /// station's research; see <see cref="FactionMachineComponent"/>.
+        /// </summary>
         public HashSet<Entity<ResearchServerComponent>> GetServers(EntityUid client)
         {
             ClientLookup.Clear();
@@ -150,6 +157,7 @@ namespace Content.Server.Research.Systems
                 return ClientLookup;
 
             _lookup.GetGridEntities(grid, ClientLookup);
+            ClientLookup.RemoveWhere(server => !_factionMachine.SameFaction(client, server));
             return ClientLookup;
         }
 

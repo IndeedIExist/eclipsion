@@ -1,6 +1,7 @@
 - type: emote
   id: Flip
   name: chat-emote-name-flip
+  icon: Interface/AdminActions/flip.png # temporary, no dedicated emote art
   whitelist:
     components:
     - HumanoidAppearance

@@ -127,7 +127,6 @@
     - FullAuto
     fireOnDropChance: 0.3
   - type: ChamberMagazineAmmoProvider
-    autoEject: true
   - type: MagazineVisuals
     magState: mag
     steps: 1

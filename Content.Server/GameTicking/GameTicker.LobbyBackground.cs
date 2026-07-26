@@ -19,9 +19,21 @@ public sealed partial class GameTicker
     {
         foreach (var prototype in _prototypeManager.EnumeratePrototypes<LobbyBackgroundPrototype>())
         {
-            if (!WhitelistedBackgroundExtensions.Contains(prototype.Background.Extension))
+            if (prototype.AnimatedBackground != null)
             {
-                _sawmill.Warning($"Lobby background '{prototype.ID}' has an invalid extension '{prototype.Background.Extension}' and will be ignored.");
+                _lobbyBackgrounds.Add(prototype);
+                continue;
+            }
+
+            if (prototype.Background is not { } background)
+            {
+                _sawmill.Warning($"Lobby background '{prototype.ID}' has neither a background nor an animated background and will be ignored.");
+                continue;
+            }
+
+            if (!WhitelistedBackgroundExtensions.Contains(background.Extension))
+            {
+                _sawmill.Warning($"Lobby background '{prototype.ID}' has an invalid extension '{background.Extension}' and will be ignored.");
                 continue;
             }
 

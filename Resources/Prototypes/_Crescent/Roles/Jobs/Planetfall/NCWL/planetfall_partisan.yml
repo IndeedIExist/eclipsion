@@ -1,0 +1,71 @@
+- type: job
+  id: planetfall_partisan
+  name: job-name-ncwl-partisan
+  description: job-description-ncwl-partisan
+  playTimeTracker: JobHomeguardSoldatNCWL
+  weight: 97
+  startingGear: planetfall_partisan_gear
+  alwaysUseSpawner: true
+  requireAdminNotify: false
+  icon: "JobIconNCWLHomeguardSoldat"
+  supervisors: job-supervisors-ncwl-partisan
+  canBeAntag: false
+  requirements:
+    - !type:FactionRequirement
+      factionID: "NCWL"
+    - !type:CharacterOverallTimeRequirement
+      min: 1000
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - Voidborn
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Muted
+        - Blindness
+        - Pacifist
+        - WheelchairBound
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: HullrotFaction
+        faction: NCWL
+      - type: LanguageAdder
+        addSpoken:
+          - Dockta
+        addUnderstood:
+          - Dockta
+  access:
+  - Command
+  - Maintenance
+  - Service
+  - NCWLGeneral
+  - NCWLJail
+  - NCWLArmory
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: planetfall_partisan_gear
+  equipment:
+    shoes: ClothingShoesBootsCombat
+    jumpsuit: ClothingUniformJumpsuitNCWL
+    id: NCWLHomeguardSoldatPDA
+    outerClothing: ClothingOuterArmorNCWLHeavyCarapace
+    pocket1: WeaponPistolComrade
+    back: ClothingBackpackNCWL
+    gloves: ClothingHandsGlovesCombat
+    suitstorage: WeaponRifleFAL
+    head: ClothingHeadHelmetNCWLBasic
+    eyes: ClothingEyesGlassesNCWL
+    ears: ClothingHeadsetNCWL_Planetfall
+    belt: ClothingBeltNCWLPouches
+  storage:
+    belt:
+      - MagazineLightRifle
+      - MagazineLightRifle
+      - MagazinePistol
+      - MagazineLightRifle
+      - MagazineLightRifle

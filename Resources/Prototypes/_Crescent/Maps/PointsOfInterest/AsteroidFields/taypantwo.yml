@@ -13,5 +13,5 @@
             state: asteroids
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Пояс Астероидов "Тайпан-2"'
+          mapNameTemplate: 'Taypan-2 Asteroid Belt'
 

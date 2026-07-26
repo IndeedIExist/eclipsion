@@ -296,7 +296,7 @@
 #cargo
 - type: entity
   parent: [BaseStructureUnanchorable, VendingMachine]
-  id: NCSPCargoDispenser
+  id: TFSCCargoDispenser
   name: grinning jackal dispensary
   description: Excess goods are sold here to licensed traders.
   components:

@@ -1,11 +1,11 @@
 - type: entity
   parent: BaseFlatpack
-  id: NCSPWarshipThrusterFlatpack
+  id: TFSCWarshipThrusterFlatpack
   name: syndicate warship thruster flatpack
   description: A flatpack used for constructing warship thrusters with Syndicate IFF clearance.
   components:
   - type: Flatpack
-    entity: ThrusterNCSPWarship
+    entity: ThrusterTFSCWarship
   - type: Sprite
     layers:
     - state: ame-part
@@ -14,12 +14,12 @@
 
 - type: entity
   parent: BaseFlatpack
-  id: NCSPFighterThrusterFlatpack
+  id: TFSCFighterThrusterFlatpack
   name: syndicate fighter thruster flatpack
   description: A flatpack used for constructing smallshuttle thrusters with Syndicate IFF clearance.
   components:
   - type: Flatpack
-    entity: ThrusterNCSPFighter
+    entity: ThrusterTFSCFighter
   - type: Sprite
     layers:
     - state: ame-part
@@ -805,20 +805,6 @@
   components:
   - type: Flatpack
     entity: ScrapRefiner
-  - type: Sprite
-    layers:
-    - state: ame-part
-  - type: StaticPrice
-    price: 500
-
-- type: entity
-  parent: BaseFlatpack
-  id: ShipyardManufactorumFlatpack
-  name: SHI shipyard manufactorum flatpack
-  description: Parts used to build a shipyard manufactorum. Activate with a multitool to deploy.
-  components:
-  - type: Flatpack
-    entity: ShipyardManufactorum
   - type: Sprite
     layers:
     - state: ame-part

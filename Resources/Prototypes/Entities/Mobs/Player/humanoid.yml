@@ -50,6 +50,159 @@
     - type: RandomHumanoidSpawner
       settings: DeathSquad
 
+- type: entity
+  id: RandomHumanoidSpawnerAPRTHunter
+  name: APRT Hunter
+  suffix: Hunter, APRT Hunter
+  components:
+    - type: Sprite
+      sprite: _Crescent/Clothing/SRM/OuterClothing/huntercoat.rsi
+      state: icon
+    - type: RandomHumanoidSpawner
+      settings: APRTHunterSpawner
+
+- type: randomHumanoidSettings
+  id: APRTHunterSpawner
+  randomizeName: true
+  speciesBlacklist:
+    - Voidborn
+    - Monkey
+    - Kobold
+    - Reptilian
+    - Diona
+    - Arachnid
+    - Felinid
+    - Oni
+    - Vox
+    - IPC
+    - Moth
+  components:
+    - type: GhostRole
+      name: Hunter
+      description: Saint Romaine's Militia, Hunter. You are here for great hunt.
+      rules: Help imperials, kill commies.
+      raffle:
+        settings: short
+    - type: LanguageAdder
+      addSpoken:
+        - LowImperial
+      addUnderstood:
+        - LowImperial   
+    - type: GhostTakeoverAvailable
+    - type: Loadout
+      prototypes: [ HunterGhostGear ]
+    - type: HullrotFaction
+      faction: SRM
+    - type: Telepathic
+    - type: BibleUser
+    - type: RandomMetadata
+      nameSegments:
+        - names_first_male
+        - names_last
+
+- type: startingGear
+  id: HunterGhostGear
+  equipment:
+    id: HunterPDA
+    ears: ClothingHeadsetHunter
+    eyes: ClothingEyesGlassesSunglasses
+    jumpsuit: ClothingUniformJumpsuitHunter
+    neck: ClothingNeckMantleSr
+    shoes: ClothingShoesBootsImperialJackboots
+    outerClothing: ClothingOuterArmorClarizianTrooperArmor
+    gloves: ClothingHandsGlovesHunter
+    suitstorage: WeaponRifleHunter
+    head: ClothingHeadHatHunter
+    pocket1: RomaineBible
+    pocket2: KaiserAutoinjector
+    back: ClothingBackpackSRM
+    belt: ClothingBeltSheathKhopeshFilled
+  storage:
+    back:
+      - MedkitCombatFilled
+      - MagazineRifle
+      - MagazineRifle
+      - MagazineRifle
+      - MagazineRifle
+      - Portafib
+
+- type: entity
+  id: RandomHumanoidSpawnerAPRTHuntoverseer
+  name: APRT Hunt Overseer
+  suffix: Hunt Overseer, APRT Hunt Overseer
+  components:
+    - type: Sprite
+      sprite: _Crescent/Clothing/SRM/OuterClothing/huntercoat.rsi
+      state: icon
+    - type: RandomHumanoidSpawner
+      settings: APRTHuntOverseerSpawner
+
+- type: randomHumanoidSettings
+  id: APRTHuntOverseerSpawner
+  randomizeName: true
+  speciesBlacklist:
+    - Voidborn
+    - Monkey
+    - Kobold
+    - Reptilian
+    - Diona
+    - Arachnid
+    - Felinid
+    - Oni
+    - Vox
+    - IPC
+    - Moth
+  components:
+    - type: GhostRole
+      name: Hunt Overseer
+      description: Saint Romaine's Militia, Hunter. You are here for great hunt.
+      rules: Command your squad, help dsm, kill commies.
+      raffle:
+        settings: short
+    - type: LanguageAdder
+      addSpoken:
+        - LowImperial
+      addUnderstood:
+        - LowImperial   
+    - type: GhostTakeoverAvailable
+    - type: Loadout
+      prototypes: [ HuntoverseerGhostGear ]
+    - type: HullrotFaction
+      faction: SRM
+    - type: Telepathic
+    - type: BibleUser
+    - type: RandomMetadata
+      nameSegments:
+        - names_first_male
+        - names_last
+
+- type: startingGear
+  id: HuntoverseerGhostGear
+  equipment:
+    id: HunterPDA
+    ears: ClothingHeadsetHunter
+    neck: ClothingNeckMantleCap
+    eyes: ClothingEyesGlassesSunglasses
+    jumpsuit: ClothingUniformJumpsuitHunter
+    shoes: ClothingShoesBootsImperialJackboots
+    head: ClothingHeadHatHunterOverseer
+    outerClothing: ClothingOuterArmorClarizianTrooperArmor
+    gloves: ClothingHandsGlovesHunter
+    suitstorage: WeaponSniperImperator
+    pocket1: RomaineBible
+    pocket2: KaiserAutoinjector
+    back: ClothingBackpackSRM
+    belt: ClothingBeltSheathKhopeshFilled
+  storage:
+    back:
+      - MedkitCombatFilled
+      - MagazineRifle
+      - MagazineRifle
+      - MagazineRifle
+      - MagazineRifle
+
+        
+
 - type: randomHumanoidSettings
   id: DeathSquad
   randomizeName: false

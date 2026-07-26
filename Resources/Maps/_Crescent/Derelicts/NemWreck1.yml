@@ -88,7 +88,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 15
+      baseMaxLinearVelocity: 20
     - type: VesselDesignation
       designation: vessel-designation-assault-carrier
     - type: GridPathfinding
@@ -8157,8 +8157,6 @@ entities:
       pos: -1.5,-16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2739.0947
-      state: Closing
     - type: DeviceNetwork
       deviceLists:
       - 12
@@ -8169,8 +8167,6 @@ entities:
       pos: -2.5,-16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2740.028
-      state: Closing
     - type: DeviceNetwork
       deviceLists:
       - 12
@@ -8205,8 +8201,6 @@ entities:
       pos: -3.5,-17.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2732.9282
-      state: Closing
     - type: DeviceNetwork
       deviceLists:
       - 13
@@ -8216,8 +8210,6 @@ entities:
       pos: -3.5,-18.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2733.3948
-      state: Closing
     - type: DeviceNetwork
       deviceLists:
       - 13
@@ -8267,8 +8259,6 @@ entities:
       pos: -2.5,-4.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2743.3281
-      state: Closing
     - type: DeviceNetwork
       deviceLists:
       - 11
@@ -8303,8 +8293,6 @@ entities:
       pos: -2.5,-5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2741.8616
-      state: Closing
     - type: DeviceNetwork
       deviceLists:
       - 11

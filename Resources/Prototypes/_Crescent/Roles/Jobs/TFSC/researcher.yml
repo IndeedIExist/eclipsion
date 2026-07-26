@@ -1,16 +1,16 @@
 - type: job
-  id: CyberdawnTechNCSP
+  id: CyberdawnTechTFSC
   name: job-name-cyberdawntech
   description: job-description-cyberdawntech
-  playTimeTracker: JobCyberdawnTechNCSP
+  playTimeTracker: JobCyberdawnTechTFSC
   ranks:
     RatRankTFSCResearcherSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCyberdawnTechNCSP
+      tracker: JobCyberdawnTechTFSC
       min: 72000 # 20 hours
     RatRankTFSCResearcherMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobCyberdawnTechNCSP
+      tracker: JobCyberdawnTechTFSC
       min: 36000 # 10 hours
     RatRankTFSCResearcherJunior: []
   weight: 3
@@ -18,7 +18,8 @@
   alwaysUseSpawner: true
   requireAdminNotify: false
   icon: "JobIconCyberdawnTech"
-  supervisors: You answer to the patriarch and the interests of the CyberDawn Technologies company.
+  chatNameColor: "#2e4e9a"
+  supervisors: You answer to the patriarch of the research wing, and above them the Ringleader.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -39,7 +40,7 @@
     components:
       - type: NukeOperative
       - type: HullrotFaction
-        faction: CD
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -52,7 +53,11 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
   - SyndicateRamzi
   - Engineering
   - Service
@@ -66,6 +71,6 @@
     jumpsuit: ClothingUniformJumpsuitSyndicateLabCyberdawn
     shoes: ClothingShoesBootsCombat
     id: CyberdawnTechPDA
-    ears: ClothingHeadsetNCSPCyberdawn
-    back: ClothingBackpackNCSPFilledInfanteer
+    ears: ClothingHeadsetTFSCCyberdawn
+    back: ClothingBackpackTFSCFilledInfanteer
     gloves: ClothingHandsGlovesFingerless

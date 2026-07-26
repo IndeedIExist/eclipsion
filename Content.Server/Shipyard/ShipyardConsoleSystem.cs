@@ -1,3 +1,4 @@
+using Content.Server._Crescent.Economy;
 using Content.Server.Cargo.Components;
 using Content.Server.Cargo.Systems;
 using Content.Server.Radio.EntitySystems;
@@ -19,6 +20,7 @@ public sealed class ShipyardConsoleSystem : SharedShipyardConsoleSystem
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly ShipyardSystem _shipyard = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly EconomyPriceSystem _economyPrice = default!;
 
     public override void Initialize()
     {
@@ -31,7 +33,7 @@ public sealed class ShipyardConsoleSystem : SharedShipyardConsoleSystem
         */
     }
 
-    protected override void TryPurchase(Entity<ShipyardConsoleComponent> ent, EntityUid user, VesselPrototype vessel)
+    protected override void TryPurchase(Entity<ShipyardConsoleComponent> ent, EntityUid user, VesselPrototype vessel, string? customName = null)
     {
         // client prevents asking for this so dont need feedback for validation
         if (_whitelist.IsWhitelistFail(vessel.Whitelist, ent))
@@ -40,9 +42,11 @@ public sealed class ShipyardConsoleSystem : SharedShipyardConsoleSystem
         if (GetBankAccount(ent) is not {} bank)
             return;
 
-        if (bank.Comp.Balance < vessel.Price)
+        var vesselPrice = _economyPrice.GetVesselPrice(vessel);
+
+        if (bank.Comp.Balance < vesselPrice)
         {
-            var popup = Loc.GetString("cargo-console-insufficient-funds", ("cost", vessel.Price));
+            var popup = Loc.GetString("cargo-console-insufficient-funds", ("cost", vesselPrice));
             Popup.PopupEntity(popup, ent, user);
             Audio.PlayPvs(ent.Comp.DenySound, ent);
             return;
@@ -56,9 +60,12 @@ public sealed class ShipyardConsoleSystem : SharedShipyardConsoleSystem
             return;
         }
 
-        _meta.SetEntityName(shuttle, $"{vessel.Name} {_random.Next(1000):000}");
+        if (!string.IsNullOrWhiteSpace(customName))
+         _meta.SetEntityName(shuttle, $"{vessel.Name} - {customName}");
+        else
+         _meta.SetEntityName(shuttle, $"{vessel.Name} {_random.Next(1000):000}");
 
-        _cargo.UpdateBankAccount(bank, bank.Comp, -vessel.Price);
+        _cargo.UpdateBankAccount(bank, bank.Comp, -vesselPrice);
 
         var message = Loc.GetString("shipyard-console-docking", ("vessel", vessel.Name.ToString()));
         _radio.SendRadioMessage(ent, message, ent.Comp.Channel, ent);

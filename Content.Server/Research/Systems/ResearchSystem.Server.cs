@@ -49,7 +49,24 @@ public sealed partial class ResearchSystem
 
         if (!CanRun(uid))
             return;
-        ModifyServerPoints(uid, GetPointsPerSecond(uid, component) * time, component);
+
+        var points = GetPointsPerSecond(uid, component) * time + GetPassivePoints(component, time);
+        ModifyServerPoints(uid, points, component);
+    }
+
+    /// <summary>
+    /// Gets the whole points the server passively generated over the given number of seconds.
+    /// The remainder is buffered so that rates that don't divide evenly into a tick aren't lost to truncation.
+    /// </summary>
+    private static int GetPassivePoints(ResearchServerComponent component, int time)
+    {
+        if (component.PassivePointsPerMinute <= 0)
+            return 0;
+
+        component.PassivePointBuffer += component.PassivePointsPerMinute * time / 60f;
+        var points = (int) component.PassivePointBuffer;
+        component.PassivePointBuffer -= points;
+        return points;
     }
 
     /// <summary>

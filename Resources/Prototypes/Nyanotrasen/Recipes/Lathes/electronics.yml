@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: ReverseEngineeringMachineCircuitboard
+  category: Circuitry
   result: ReverseEngineeringMachineCircuitboard
   completetime: 4
   materials:
@@ -9,6 +10,7 @@
 
 - type: latheRecipe
   id: SalvageMagnetMachineCircuitboard
+  category: Circuitry
   result: SalvageMagnetMachineCircuitboard
   completetime: 4
   materials:
@@ -18,6 +20,7 @@
 
 - type: latheRecipe
   id: CrewMonitoringComputerCircuitboard
+  category: Circuitry
   result: CrewMonitoringComputerCircuitboard
   completetime: 4
   materials:
@@ -27,6 +30,7 @@
 
 - type: latheRecipe
   id: ClothingEyesHudMedical
+  category: Clothing
   icon: { sprite: Clothing/Eyes/Hud/med.rsi, state: icon }
   result: ClothingEyesHudMedical
   completetime: 4
@@ -37,6 +41,7 @@
 
 - type: latheRecipe
   id: DeepFryerMachineCircuitboard
+  category: Circuitry
   icon: { sprite: Objects/Misc/module.rsi, state: id_mod }
   result: DeepFryerMachineCircuitboard
   completetime: 4

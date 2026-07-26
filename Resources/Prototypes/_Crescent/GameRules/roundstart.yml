@@ -5,10 +5,10 @@
   - type: BasicStationEventScheduler
     scheduledGameRules: !type:NestedSelector
       tableId: HullrotEventsTable
-    minimumTimeUntilFirstEvent: 1500 # 25 minutes
+    minimumTimeUntilFirstEvent: 900  # 15 minutes (ECLIPSION CHANGES)
     minMaxEventTiming:
-      min: 1800 # min 30 minutes between events
-      max: 3600 # max 60 minutes between events
+      min: 1500 # min 25 minutes between events (ECLIPSION CHANGES)
+      max: 2400 # max 40 minutes between events (ECLIPSION CHANGES)
 
 - type: entityTable
   id: HullrotEventsTable
@@ -16,3 +16,8 @@
     children:
     - id: NanoTrasenProbe
     - id: InfestedStation
+
+    # Rat-start
+    - id: RatAnomalyStationEvent
+    - id: RatEmpZoneEvent
+    # Rat-stop

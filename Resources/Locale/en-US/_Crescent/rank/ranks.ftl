@@ -35,7 +35,7 @@ crescent-rank-dsm-conscript = Fyrdman
 # dsm-conscript
 crescent-rank-dsm-captain = Grand Steward
 crescent-rank-dsm-crew = Steward
-crescent-rank-dsm-leader = Knight-Bannaret
+crescent-rank-dsm-leader = Knight Banneret
 crescent-rank-dsm-officer = Knight
 crescent-rank-dsm-specialist = Lancer
 crescent-rank-dsm-cqc = Fencer

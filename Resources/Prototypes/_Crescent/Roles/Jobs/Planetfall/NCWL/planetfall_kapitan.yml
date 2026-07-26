@@ -1,0 +1,105 @@
+- type: job
+  id: planetfall_kapitan
+  name: Kapitan
+  description: 
+  playTimeTracker: JobHomeguardSquadCaptainNCWL
+  weight: 98
+  startingGear: planetfall_kapitan_gear
+  alwaysUseSpawner: true
+  requireAdminNotify: false
+  icon: "JobIconNCWLHomeguardSquadCaptain"
+  chatNameColor: "#e39b20"
+  chatAmplification:
+    bubbleScale: 1.08
+    shoutBubbleScale: 1.3
+    radioScale: 1.2
+    radioBold: true
+  supervisors: job-supervisors-ncwl-leaders
+  canBeAntag: false
+  requirements:
+    - !type:CharacterOverallTimeRequirement
+      min: 20000
+    - !type:FactionRequirement
+      factionID: "NCWL"
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - Voidborn
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Muted
+        - Blindness
+        - Pacifist
+        - WheelchairBound
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: HullrotFaction
+        faction: NCWL
+      - type: LanguageAdder
+        addSpoken:
+          - Dockta
+        addUnderstood:
+          - Dockta
+  access:
+  - EmergencyShuttleRepealAll
+  - Captain
+  - HeadOfPersonnel
+  - ChiefEngineer
+  - ChiefMedicalOfficer
+  - HeadOfSecurity
+  - ResearchDirector
+  - Frontier # Frontier
+  - Command
+  - Cryogenics
+  - Security
+  - Detective
+  - Armory
+  - Brig
+  - Lawyer
+  - Engineering
+  - Mail # Frontier
+  - Medical
+  - Mercenary # Frontier
+  - Quartermaster
+  - Salvage
+  - Cargo
+  - Research
+  - Service
+  - StationTrafficController # Frontier
+  - Maintenance
+  - External
+  - Janitor
+  - Theatre
+  - Bar
+  - Chemistry
+  - Kitchen
+  - Chapel
+  - Hydroponics
+  - Atmospherics
+  - NCWLGeneral
+  - NCWLJail
+  - NCWLArmory
+  - NCWLCommand
+
+- type: startingGear
+  id: planetfall_kapitan_gear
+  equipment:
+    shoes: ClothingShoesBootsCombat
+    jumpsuit: ClothingUniformJumpsuitNCWL
+    id: NCWLHomeguardSquadCaptainPDA
+    outerClothing: ClothingOuterArmorNCWLCarapaceKapitan
+    belt: ClothingBeltNCWLPouches
+    pocket1: WeaponPistolT91
+    back: ClothingBackpackNCWL
+    gloves: ClothingHandsGlovesCombat
+    head: ClothingHeadHelmetNCWLHeavy
+    suitstorage: WeaponRifleNCWLBatanya
+    ears: ClothingHeadsetNCWLCommand_Planetfall
+    eyes: ClothingEyesGlassesNCWL
+  storage:
+    back:
+      - MagazineRifle
+      - MagazineRifle
+      - MedkitCombatFilled

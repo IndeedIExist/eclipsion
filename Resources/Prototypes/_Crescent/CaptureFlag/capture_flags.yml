@@ -1,0 +1,22 @@
+- type: entity
+  id: CaptureFlag
+  name: capture-flag-name
+  description: capture-flag-description
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: Transform
+      anchored: true
+    - type: Clickable
+    - type: Sprite
+      sprite: Objects/Misc/Handy_Flags/NT_handy_flag.rsi
+      state: icon
+    - type: CaptureFlag
+      radius: 2.0
+      captureTime: 45
+      neutralizeTime: 45
+      decayWhenInactive: true
+      decayRate: 1
+      dominationEnabled: true
+      dominationHoldTime: 900
+

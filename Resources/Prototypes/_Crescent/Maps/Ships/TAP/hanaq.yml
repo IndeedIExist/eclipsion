@@ -1,7 +1,7 @@
 - type: vessel
   id: Hanaq
   name: TAP Hanaq
-  description: A disproportionately expensive Pact warship. Comes with the best the thukkers can produce.
+  description: A disproportionately expensive Pact warship. Comes with the best the Thukkers can produce.
   price: 30000
   category: Small
   group: None

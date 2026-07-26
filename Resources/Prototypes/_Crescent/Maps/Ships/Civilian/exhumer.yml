@@ -3,31 +3,31 @@
 
 - type: vessel
   id: Exhumer
-  name: ГПИ Эксатор
-  description: Древний и широко используемый дизайн. ГПИ Экскаватор — это корвет начального уровня для добычи, оснащённый основным спасательным оборудованием и горнодобывающими импульсными установками для автоматической добычи.  
-  price: 30000
+  name: ICM Exhumer
+  description: |
+    An ancient and widely used design, the ICM Exhumer is an entry-level mining corvette, equipped with mining pulsers; this ship is the backbone of taypan's mining industry.
+    LOADOUT: 2x SHI 250c "Exhumer" kinetic pulsers
+    MINIMUM CREW: 1x Pilot
+  price: 26000
   category: Small
   group: Civilian
   path: /Maps/_Crescent/Shuttles/Civilian/exhumer.yml
 
 - type: gameMap
   id: Exhumer
-  mapName: 'ГПИ Эксатор'
+  mapName: 'ICM Exhumer'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/exhumer.yml
   minPlayers: 0
   stations:
     Exhumer:
       stationProto: StandardCrescentCivilianVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: miner
         - type: StationNameSetup
-          mapNameTemplate: 'ГПИ Эксатор {1}'
+          mapNameTemplate: 'ICM Exhumer {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

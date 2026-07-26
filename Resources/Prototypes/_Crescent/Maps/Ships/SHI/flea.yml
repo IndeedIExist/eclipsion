@@ -1,7 +1,7 @@
 - type: vessel
   id: Flea
-  name: ТПШ Блоха
-  description: Модернизированный "Термит", "Блоха" выполняет роль скрытного абордажного модуля.
+  name: SHI Flea
+  description: A refitted Termite, the Flea acts as a stealth boarder pod.
   price: 22500
   category: Small
   group: None
@@ -9,22 +9,19 @@
 
 - type: gameMap
   id: Flea
-  mapName: 'ТПШ Блоха'
+  mapName: 'SHI Flea'
   mapPath: /Maps/_Crescent/Shuttles/SHI/flea.yml
   minPlayers: 0
   stations:
     Flea:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'ТПШ Блоха {1}'
+          mapNameTemplate: 'SHI Flea {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

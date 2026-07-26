@@ -30,6 +30,7 @@
   alwaysUseSpawner: true
   requireAdminNotify: false
   icon: "JobIconMedtech"
+  chatNameColor: "#44c8e3"
   supervisors: job-supervisors-shi
   canBeAntag: false
   requirements:

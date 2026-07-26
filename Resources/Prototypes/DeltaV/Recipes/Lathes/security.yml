@@ -121,6 +121,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorPlateCarrier
+  category: Armor
   result: ClothingOuterArmorPlateCarrier
   completetime: 10
   materials:
@@ -129,6 +130,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorDuraVest
+  category: Armor
   result: ClothingOuterArmorDuraVest
   completetime: 10
   materials:

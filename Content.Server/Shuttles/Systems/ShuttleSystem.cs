@@ -1,6 +1,6 @@
 using System.Linq;
 using Content.Server._Crescent.HullrotSelfDeleteTimer;
-using Content.Server._Rat.Shuttles.Components;
+using Content.Server._Crescent.Shuttles.Components;
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Systems;
 using Content.Server.Buckle.Systems;
@@ -19,7 +19,7 @@ using Content.Shared.Salvage;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
 using Content.Shared.Throwing;
-using Content.Shared._Rat.Shuttles.Components;
+using Content.Shared._Crescent.Shuttles.Components;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Server.GameStates;

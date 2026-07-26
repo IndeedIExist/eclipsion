@@ -10,6 +10,7 @@
   abstract: true
   parent: BaseRoboticsRecipe
   id: BaseBorgLimbRecipe
+  category: Robotics
   materials:
     Steel: 250
     Glass: 100
@@ -19,6 +20,7 @@
   abstract: true
   parent: BaseRoboticsRecipe
   id: BaseBorgModuleRecipe
+  category: Robotics
   completetime: 3
   materials:
     Steel: 250
@@ -31,6 +33,7 @@
   abstract: true
   parent: BaseBorgModuleRecipe
   id: BaseGoldBorgModuleRecipe
+  category: Robotics
   materials:
     Steel: 500
     Glass: 500
@@ -44,6 +47,7 @@
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: ProximitySensor
+  category: Parts
   result: ProximitySensor
   materials:
     Steel: 200
@@ -52,6 +56,7 @@
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: SciFlash
+  category: Weapons
   result: SciFlash
   materials:
     Glass: 100
@@ -73,101 +78,120 @@
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LeftArmBorg
+  category: Robotics
   result: LeftArmBorg
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: RightArmBorg
+  category: Robotics
   result: RightArmBorg
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LeftLegBorg
+  category: Robotics
   result: LeftLegBorg
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: RightLegBorg
+  category: Robotics
   result: RightLegBorg
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LightHeadBorg
+  category: Robotics
   result: LightHeadBorg
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: TorsoBorg
+  category: Robotics
   result: TorsoBorg
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: RightArmBorgEngineer
+  category: Robotics
   result: RightArmBorgEngineer
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LeftArmBorgEngineer
+  category: Robotics
   result: LeftArmBorgEngineer
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LeftLegBorgEngineer
+  category: Robotics
   result: LeftLegBorgEngineer
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: RightLegBorgEngineer
+  category: Robotics
   result: RightLegBorgEngineer
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: HeadBorgEngineer
+  category: Robotics
   result: HeadBorgEngineer
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: TorsoBorgEngineer
+  category: Robotics
   result: TorsoBorgEngineer
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LeftArmBorgMedical
+  category: Robotics
   result: LeftArmBorgMedical
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: RightArmBorgMedical
+  category: Robotics
   result: RightArmBorgMedical
 
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LeftLegBorgMedical
+  category: Robotics
   result: LeftLegBorgMedical
 
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: RightLegBorgMedical
+  category: Robotics
   result: RightLegBorgMedical
 
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: HeadBorgMedical
+  category: Robotics
   result: HeadBorgMedical
 
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: TorsoBorgMedical
+  category: Robotics
   result: TorsoBorgMedical
 
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LeftArmBorgMining
+  category: Robotics
   result: LeftArmBorgMining
 
 
@@ -206,51 +230,61 @@
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LeftArmBorgService
+  category: Robotics
   result: LeftArmBorgService
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: RightArmBorgService
+  category: Robotics
   result: RightArmBorgService
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LeftLegBorgService
+  category: Robotics
   result: LeftLegBorgService
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: RightLegBorgService
+  category: Robotics
   result: RightLegBorgService
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: HeadBorgService
+  category: Robotics
   result: HeadBorgService
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: TorsoBorgService
+  category: Robotics
   result: TorsoBorgService
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: LeftLegBorgJanitor
+  category: Robotics
   result: LeftLegBorgJanitor
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: RightLegBorgJanitor
+  category: Robotics
   result: RightLegBorgJanitor
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: HeadBorgJanitor
+  category: Robotics
   result: HeadBorgJanitor
 
 - type: latheRecipe
   parent: BaseBorgLimbRecipe
   id: TorsoBorgJanitor
+  category: Robotics
   result: TorsoBorgJanitor
 
 # Parts
@@ -258,6 +292,7 @@
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: MMI
+  category: Robotics
   result: MMI
   completetime: 3
   icon:
@@ -272,6 +307,7 @@
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: PositronicBrain
+  category: Robotics
   result: PositronicBrain
   completetime: 3
   materials:
@@ -284,6 +320,7 @@
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: ReverseMMI
+  category: Robotics
   result: ReverseMMI
   completetime: 3
   materials:
@@ -297,26 +334,31 @@
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleCable
+  category: Robotics
   result: BorgModuleCable
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleFireExtinguisher
+  category: Robotics
   result: BorgModuleFireExtinguisher
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleGPS
+  category: Robotics
   result: BorgModuleGPS
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleRadiationDetection
+  category: Robotics
   result: BorgModuleRadiationDetection
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleTool
+  category: Robotics
   result: BorgModuleTool
 
 # Engineering Modules
@@ -324,16 +366,19 @@
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleAdvancedTool
+  category: Robotics
   result: BorgModuleAdvancedTool
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleConstruction
+  category: Robotics
   result: BorgModuleConstruction
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleRCD
+  category: Robotics
   result: BorgModuleRCD
 
 # Janitor Modules
@@ -341,16 +386,19 @@
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleLightReplacer
+  category: Robotics
   result: BorgModuleLightReplacer
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleCleaning
+  category: Robotics
   result: BorgModuleCleaning
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleAdvancedCleaning
+  category: Robotics
   result: BorgModuleAdvancedCleaning
 
 # Medical Modules
@@ -358,21 +406,25 @@
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleDiagnosis
+  category: Robotics
   result: BorgModuleDiagnosis
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleTreatment
+  category: Robotics
   result: BorgModuleTreatment
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleAdvancedTreatment
+  category: Robotics
   result: BorgModuleAdvancedTreatment
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleDefibrillator
+  category: Robotics
   result: BorgModuleDefibrillator
 
 # Science Modules
@@ -380,11 +432,13 @@
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleArtifact
+  category: Robotics
   result: BorgModuleArtifact
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleAnomaly
+  category: Robotics
   result: BorgModuleAnomaly
 
 # Service Modules
@@ -392,26 +446,31 @@
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleService
+  category: Robotics
   result: BorgModuleService
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleGardening
+  category: Robotics
   result: BorgModuleGardening
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleHarvesting
+  category: Robotics
   result: BorgModuleHarvesting
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleClowning
+  category: Robotics
   result: BorgModuleClowning
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleMusique
+  category: Robotics
   result: BorgModuleMusique
 
 # Logistics/Cargo Modules
@@ -419,21 +478,25 @@
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModulePka
+  category: Robotics
   result: BorgModulePka
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleJetpack
+  category: Robotics
   result: BorgModuleJetpack
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleAppraisal
+  category: Robotics
   result: BorgModuleAppraisal
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleMining
+  category: Robotics
   result: BorgModuleMining
 
 # - type: latheRecipe

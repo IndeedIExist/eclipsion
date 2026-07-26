@@ -17,18 +17,6 @@
     path: /Audio/_Crescent/Jukebox/flip-flap.ogg
 
 - type: jukebox
-  id: BlueMonday
-  name: New Order - Blue Monday
-  path:
-    path: /Audio/_Crescent/Jukebox/bluemonday.ogg
-
-- type: jukebox
-  id: IFoughtTheLaw
-  name: Dead Kennedys - I Fought the Law
-  path:
-    path: /Audio/_Crescent/Jukebox/ifoughtthelaw.ogg
-
-- type: jukebox
   id: Luftballoons
   name: Nena - Luftballoons
   path:
@@ -135,12 +123,6 @@
   name: Lube - Kombat
   path:
     path: /Audio/_Crescent/Jukebox/kombat.ogg
-
-- type: jukebox
-  id: KletkiSong
-  name: Lube - Kletki
-  path:
-    path: /Audio/_Crescent/Jukebox/kletki.ogg
 
 - type: jukebox
   id: bloodtypeSong
@@ -317,12 +299,6 @@
     path: /Audio/_Crescent/Jukebox/discoinferno.ogg
 
 - type: jukebox
-  id: drevnerusskomvoine
-  name: Ballada o Drevnerusskom Voine
-  path:
-    path: /Audio/_Crescent/Jukebox/drevnerusskomvoine.ogg
-
-- type: jukebox
   id: fallenkingdom
   name: Fallen Kingdom
   path:
@@ -345,12 +321,6 @@
   name: King of Streets
   path:
     path: /Audio/_Crescent/Jukebox/kingofthestreets.ogg
-
-- type: jukebox
-  id: krovzakrov
-  name: Krov za Krov
-  path:
-    path: /Audio/_Crescent/Jukebox/krovzakrov.ogg
 
 - type: jukebox
   id: maximuminstinct
@@ -387,3 +357,27 @@
   name: Dark Fantasy
   path:
     path: /Audio/_Crescent/Jukebox/darkfantasy.ogg
+
+- type: jukebox
+  id: altingunanlatamamderdimi
+  name: Altin Gun - Anlatamam Derdimi
+  path:
+    path: /Audio/_Crescent/Jukebox/AltinGunAnlatamamDerdimi.ogg
+
+- type: jukebox
+  id: altingungocadunya
+  name: Altin Gun - Goca Dunya
+  path:
+    path: /Audio/_Crescent/Jukebox/AltinGunGocaDunya.ogg
+
+- type: jukebox
+  id: altingunsupurgesiyoncadan
+  name: Altin Gun - Supurgesi Yoncadan
+  path:
+    path: /Audio/_Crescent/Jukebox/AltinGunSupurgesiYoncadan.ogg
+
+- type: jukebox
+  id: altingunyucedagbasinda
+  name: Altin Gun - Yuce Dag Basinda
+  path:
+    path: /Audio/_Crescent/Jukebox/AltinGunYuceDagBasinda.ogg

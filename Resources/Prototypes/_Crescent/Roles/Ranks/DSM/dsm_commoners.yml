@@ -1,0 +1,17 @@
+- type: rank
+  id: RatRankFreeholderSenior
+  name: Pronoiar
+  prefix: Pronoiar
+  paygrade: IC3
+
+- type: rank
+  id: RatRankFreeholderMiddle
+  name: Yeoman
+  prefix: Yeoman
+  paygrade: IC2
+
+- type: rank
+  id: RatRankFreeholderJunior
+  name: Freeholder
+  prefix: Freeholder
+  paygrade: IC1

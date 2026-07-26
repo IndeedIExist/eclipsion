@@ -53,9 +53,6 @@ public sealed class SuffocationSoundSystem : EntitySystem
         if (!TryComp<ActorComponent>((EntityUid) ent, out var actor)) //ONLY players get to make suffocation sounds.
             return;
 
-        // if (_random.Next(0, 3) != 0) //66% chance to NOT play noise because we suffocate kinda quick
-        //     return;
-
         if (component.Sex == Sex.Male)
             _audio.PlayPvs(_random.Pick(_maleGasps.PickFiles).ToString(), ent.Owner, _params);
         else if (component.Sex == Sex.Female)

@@ -77,6 +77,7 @@
   - ClothingOuterHardsuitNCWLInfantry
   - WeaponShotgunDoubleBarreledNCWL
   - WeaponShotgunProletar
+  - WeaponRifleNCWLRezerv
 
 - type: technology
   id: CommunardFighters

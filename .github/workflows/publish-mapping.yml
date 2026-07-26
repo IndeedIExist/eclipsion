@@ -15,9 +15,9 @@ jobs:
         submodules: 'recursive'
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3.2.0
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 10.0.x
+        dotnet-version: 10.0.302
 
     - name: Get Engine Tag
       run: |
@@ -25,7 +25,7 @@ jobs:
         git fetch --depth=1
 
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore --property Configuration=Release
 
     - name: Build Packaging
       run: dotnet build Content.Packaging --configuration Release --no-restore /m

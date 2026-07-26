@@ -19,6 +19,10 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
 
+    // Reused each tick to defer queue advancement until after the entity query
+    // enumerator has finished iterating (see Update).
+    private readonly List<EntityUid> _toAdvance = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -27,6 +31,10 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         SubscribeLocalEvent<JukeboxComponent, JukeboxPauseMessage>(OnJukeboxPause);
         SubscribeLocalEvent<JukeboxComponent, JukeboxStopMessage>(OnJukeboxStop);
         SubscribeLocalEvent<JukeboxComponent, JukeboxSetTimeMessage>(OnJukeboxSetTime);
+        SubscribeLocalEvent<JukeboxComponent, JukeboxQueueAddMessage>(OnJukeboxQueueAdd);
+        SubscribeLocalEvent<JukeboxComponent, JukeboxQueueRemoveMessage>(OnJukeboxQueueRemove);
+        SubscribeLocalEvent<JukeboxComponent, JukeboxQueueClearMessage>(OnJukeboxQueueClear);
+        SubscribeLocalEvent<JukeboxComponent, JukeboxQueueNextMessage>(OnJukeboxQueueNext);
         SubscribeLocalEvent<JukeboxComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<JukeboxComponent, ComponentShutdown>(OnComponentShutdown);
 
@@ -83,6 +91,99 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         }
     }
 
+    private void OnJukeboxQueueAdd(EntityUid uid, JukeboxComponent component, JukeboxQueueAddMessage args)
+    {
+        if (string.IsNullOrEmpty(args.SongId) || !_protoManager.HasIndex(args.SongId))
+            return;
+
+        component.Queue.Add(args.SongId);
+        // Adding to the queue implies the user wants it to keep playing, so make
+        // sure it advances once the current song ends.
+        component.QueueActive = true;
+
+        // Nothing is playing right now, so kick off the queue immediately.
+        if (!Exists(component.AudioStream))
+            AdvanceQueue(uid, component);
+        else
+            Dirty(uid, component);
+    }
+
+    private void OnJukeboxQueueRemove(EntityUid uid, JukeboxComponent component, JukeboxQueueRemoveMessage args)
+    {
+        if (args.Index < 0 || args.Index >= component.Queue.Count)
+            return;
+
+        component.Queue.RemoveAt(args.Index);
+        Dirty(uid, component);
+    }
+
+    private void OnJukeboxQueueClear(EntityUid uid, JukeboxComponent component, JukeboxQueueClearMessage args)
+    {
+        component.Queue.Clear();
+        Dirty(uid, component);
+    }
+
+    private void OnJukeboxQueueNext(EntityUid uid, JukeboxComponent component, JukeboxQueueNextMessage args)
+    {
+        // Nothing queued to skip to, so leave the current song playing.
+        if (component.Queue.Count == 0)
+            return;
+
+        component.QueueActive = true;
+        AdvanceQueue(uid, component);
+    }
+
+    /// <summary>
+    /// Pops the next song off the queue and starts playing it. Deactivates the
+    /// queue if there is nothing left to play.
+    /// </summary>
+    private void AdvanceQueue(EntityUid uid, JukeboxComponent component)
+    {
+        if (component.Queue.Count == 0)
+        {
+            component.QueueActive = false;
+            Dirty(uid, component);
+            return;
+        }
+
+        var next = component.Queue[0];
+        component.Queue.RemoveAt(0);
+        component.SelectedSongId = next;
+        component.QueueActive = true;
+        PlaySelected(uid, component);
+    }
+
+    /// <summary>
+    /// Plays <see cref="JukeboxComponent.SelectedSongId"/> from the start.
+    /// </summary>
+    private void PlaySelected(EntityUid uid, JukeboxComponent component)
+    {
+        component.AudioStream = Audio.Stop(component.AudioStream);
+
+        if (string.IsNullOrEmpty(component.SelectedSongId) ||
+            !_protoManager.TryIndex(component.SelectedSongId, out var jukeboxProto))
+        {
+            Dirty(uid, component);
+            return;
+        }
+
+        component.AudioStream = Audio.PlayPvs(jukeboxProto.Path, uid, AudioParams.Default.WithMaxDistance(10f))?.Entity;
+
+        // If the track failed to start there is no stream, which would make the queue
+        // try to advance again every tick. Stop the queue instead of spinning.
+        if (!Exists(component.AudioStream))
+            component.QueueActive = false;
+
+        // Ratgore start
+        if (!HasComp<ActiveInstrumentComponent>(uid))
+        {
+            AddComp<ActiveInstrumentComponent>(uid);
+        }
+        // Ratgore end
+
+        Dirty(uid, component);
+    }
+
     private void OnPowerChanged(Entity<JukeboxComponent> entity, ref PowerChangedEvent args)
     {
         TryUpdateVisualState(entity);
@@ -101,9 +202,10 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
     private void Stop(Entity<JukeboxComponent> entity)
     {
         Audio.SetState(entity.Comp.AudioStream, AudioState.Stopped);
+        entity.Comp.QueueActive = false;
         Dirty(entity);
 
-        RemComp<ActiveInstrumentComponent>(entity); // Ratgore change: умные вещи говорит нейронка
+        RemComp<ActiveInstrumentComponent>(entity); // Ratgore change: the neural net is the one saying clever things
     }
 
     private void OnJukeboxSelected(EntityUid uid, JukeboxComponent component, JukeboxSelectedMessage args)
@@ -137,7 +239,28 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
                     TryUpdateVisualState(uid, comp);
                 }
             }
+
+            // The stream entity is removed once a track finishes playing. A paused
+            // track still exists, so this only fires on a natural end (or stop, but
+            // stopping clears QueueActive so we won't restart).
+            //
+            // We only collect here and advance below: AdvanceQueue spawns a new audio
+            // entity, and spawning/deleting entities while this EntityQueryEnumerator is
+            // still iterating can corrupt the enumeration (this was freezing the jukebox
+            // on the song change).
+            if (comp.QueueActive && !Exists(comp.AudioStream))
+            {
+                _toAdvance.Add(uid);
+            }
         }
+
+        foreach (var uid in _toAdvance)
+        {
+            if (TryComp<JukeboxComponent>(uid, out var comp))
+                AdvanceQueue(uid, comp);
+        }
+
+        _toAdvance.Clear();
     }
 
     private void OnComponentShutdown(EntityUid uid, JukeboxComponent component, ComponentShutdown args)

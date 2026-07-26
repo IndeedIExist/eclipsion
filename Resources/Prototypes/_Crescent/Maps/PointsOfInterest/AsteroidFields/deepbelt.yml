@@ -15,4 +15,4 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Факел-7'
+          mapNameTemplate: 'Torch-7'

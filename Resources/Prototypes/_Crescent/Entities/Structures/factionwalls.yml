@@ -50,23 +50,23 @@
 
 - type: entity
   parent: WallPlastitanium
-  id: WallPlastitaniumNCSP
-  suffix: NCSP Warship
+  id: WallPlastitaniumTFSC
+  suffix: TFSC Warship
   components:
     - type: NpcFactionMember
       factions:
-        - NCSPWarship
+        - TFSCWarship
 
 #reinforced
 
 - type: entity
   parent: WallReinforced
-  id: WallReinforcedNCSP
-  suffix: NCSP Warship
+  id: WallReinforcedTFSC
+  suffix: TFSC Warship
   components:
     - type: NpcFactionMember
       factions:
-        - NCSPWarship
+        - TFSCWarship
 
 - type: entity
   parent: WallReinforced
@@ -230,12 +230,12 @@
 
 - type: entity
   parent: WallShuttle
-  id: WallShuttleNCSP
-  suffix: NCSP Warship
+  id: WallShuttleTFSC
+  suffix: TFSC Warship
   components:
     - type: NpcFactionMember
       factions:
-        - NCSPWarship
+        - TFSCWarship
 
 #Mining
 

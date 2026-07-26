@@ -5,5 +5,20 @@
 
 - type: guideEntry
   id: HullrotRuleset
-  name: RatGore Rules
-  text: "/ServerInfo/_Rat/ServerRules/RatRuleset.xml"
+  name: Hullrot
+  text: "/ServerInfo/_Crescent/ServerRules/HullrotRuleset.xml"
+  children:
+  - RoleplayRules
+  - Tutorial
+  - Lore
+  - Factions
+  - Gamemodes
+  - Glossary
+  - Radio
+  - Chemicals
+
+- type: guideEntry
+  id: RoleplayRules
+  name: Roleplay Rules
+  text: "/ServerInfo/_Crescent/ServerRules/RoleplayRules.xml"
+  priority: 10

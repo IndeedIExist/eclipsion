@@ -1,0 +1,50 @@
+<BoxContainer xmlns="https://spacestation14.io"
+              xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+              Orientation="Vertical" Margin="6" VerticalExpand="True" HorizontalExpand="True">
+
+    <!-- Treasury readout -->
+    <PanelContainer Margin="0 0 0 6">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderColor="#4d4d55" BorderThickness="2"/>
+        </PanelContainer.PanelOverride>
+
+        <BoxContainer Orientation="Horizontal" Margin="8 6">
+            <Label Text="{Loc 'payment-console-treasury-label'}" StyleClasses="ConsoleSubHeading"/>
+            <Label Name="TreasuryLabel" StyleClasses="ConsoleHeading" Margin="8 0 0 0"/>
+            <Control HorizontalExpand="True"/>
+            <Label Name="PayrollLabel" StyleClasses="ConsoleText"/>
+        </BoxContainer>
+    </PanelContainer>
+
+    <Label Text="{Loc 'payment-console-hint'}" StyleClasses="LabelSecondaryColor" Margin="2 0 0 6"/>
+
+    <!-- Roster -->
+    <PanelContainer VerticalExpand="True" HorizontalExpand="True">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BorderColor="#4d4d55" BorderThickness="2"/>
+        </PanelContainer.PanelOverride>
+
+        <BoxContainer Orientation="Vertical" Margin="6" VerticalExpand="True" HorizontalExpand="True">
+            <Label Text="{Loc 'payment-console-roster-title'}" StyleClasses="ConsoleSubHeading"
+                   HorizontalAlignment="Center"/>
+
+            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" SetHeight="2" Margin="0 4"/>
+
+            <!-- Column headers, kept in step with the row layout in PaymentPanel.BuildRow. -->
+            <BoxContainer Orientation="Horizontal" Margin="6 0 6 4" SeparationOverride="4">
+                <Label Text="{Loc 'payment-console-col-name'}" StyleClasses="LabelSecondaryColor"
+                       HorizontalExpand="True" SizeFlagsStretchRatio="2"/>
+                <Label Text="{Loc 'payment-console-col-job'}" StyleClasses="LabelSecondaryColor"
+                       HorizontalExpand="True" SizeFlagsStretchRatio="1.5"/>
+                <Label Text="{Loc 'payment-console-col-status'}" StyleClasses="LabelSecondaryColor" MinWidth="90"/>
+                <Label Text="{Loc 'payment-console-col-salary'}" StyleClasses="LabelSecondaryColor" MinWidth="90"/>
+                <Control MinWidth="218"/>
+            </BoxContainer>
+
+            <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+                <BoxContainer Name="MembersContainer" Orientation="Vertical" SeparationOverride="2" HorizontalExpand="True"/>
+            </ScrollContainer>
+        </BoxContainer>
+    </PanelContainer>
+
+</BoxContainer>

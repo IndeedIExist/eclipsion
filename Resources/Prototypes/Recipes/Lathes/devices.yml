@@ -137,6 +137,7 @@
 
 - type: latheRecipe
   id: ClothingBackpackHolding
+  category: Clothing
   result: ClothingBackpackHolding
   completetime: 5
   materials:
@@ -149,6 +150,7 @@
 
 - type: latheRecipe
   id: ClothingBackpackSatchelHolding
+  category: Clothing
   result: ClothingBackpackSatchelHolding
   completetime: 5
   materials:
@@ -161,6 +163,7 @@
 
 - type: latheRecipe
   id: ClothingBackpackDuffelHolding
+  category: Clothing
   result: ClothingBackpackDuffelHolding
   completetime: 5
   materials:
@@ -173,6 +176,7 @@
 
 - type: latheRecipe
   id: OreBagOfHolding
+  category: Tools
   result: OreBagOfHolding
   completetime: 5
   materials:
@@ -184,6 +188,7 @@
 
 - type: latheRecipe
   id: ClothingMaskWeldingGas
+  category: Clothing
   result: ClothingMaskWeldingGas
   completetime: 3
   materials:
@@ -241,6 +246,7 @@
 
 - type: latheRecipe
   id: ClothingEyesNightVisionGoggles
+  category: Clothing
   result: ClothingEyesNightVisionGoggles
   completetime: 2
   materials:
@@ -251,6 +257,7 @@
 
 - type: latheRecipe
   id: ClothingEyesNightVisionDiagnosticGoggles
+  category: Clothing
   result: ClothingEyesNightVisionDiagnosticGoggles
   completetime: 2
   materials:
@@ -261,6 +268,7 @@
 
 - type: latheRecipe
   id: ClothingEyesThermalVisionGoggles
+  category: Clothing
   result: ClothingEyesThermalVisionGoggles
   completetime: 2
   materials:

@@ -30,6 +30,22 @@ public sealed partial class ShipyardConsoleComponent : Component
     [DataField]
     public ProtoId<RadioChannelPrototype> Channel = "Command";
 
+    /// <summary>
+    /// Whether ships can be sold at this console. Defaults to true so every existing shipyard keeps
+    /// working; set to false on LPC-only / empty consoles to prevent selling (and money exploits).
+    /// </summary>
+    [DataField]
+    public bool CanSell = true;
+
+    /// <summary>
+    /// Whether purchases/sales at this console are paid from (and refunded to) the owning station's
+    /// faction treasury instead of the buyer's personal bank account. Faction/mothership shipyards set
+    /// this true; civilian shipyards leave it false so players buy ships with their own money, and the
+    /// UI shows their personal balance. Only takes effect when the station actually has a faction.
+    /// </summary>
+    [DataField]
+    public bool UsesFactionTreasury = false;
+
     /// Hullrot edit
     public static string TargetIdCardSlotId = "ShipyardConsole-targetId";
 

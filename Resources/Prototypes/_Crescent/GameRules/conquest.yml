@@ -1,0 +1,39 @@
+# Conquest win condition. A faction counts as holding Taypan while its station stands (stations are marked with
+# FactionStation via the gameMap prototype's gridComponents). A station falls when its grid is gone or when every
+# ConquestFlag banner planted on it has been in enemy hands for holdToFall. Banners are placed by hand per map; a
+# station with no banners can only fall by being destroyed.
+#
+# Losing a station is scorekeeping only: nobody is removed from the war and no diplomacy is edited. DSM and NCWL
+# are at war by definition, in this round and every round after it, whatever happens to Aurora or Balreska.
+#
+# Who wins: exactly one great power left takes it — surviving minors do NOT block this, since the war being
+# fought is the one between the great powers; if BOTH great powers fall the minors are not made to finish each
+# other off and every survivor shares the sector; two great powers still alive settles nothing. A settled war
+# then waits out victoryDelay before the round actually ends (announced sector-wide), so whoever is left gets one
+# last window to move — restoring a station's power calls the pending victory off entirely.
+#
+# If the round instead hits the 4h cap, the surviving great power is credited; if none survives, nobody won.
+#
+# CMM is deliberately absent: it fields no station on the current map, so it cannot take part yet.
+
+- type: entity
+  id: HullrotConquest
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: FactionConquestRule
+    majorFactions:
+    - DSM
+    - NCWL
+    holdToFall: 600 # 10 minutes with every banner in enemy hands and the station is lost
+    victoryDelay: 1200 # 20 more minutes for whoever is left to respond before the round actually ends
+    checkInterval: 10
+    restartDelay: 60
+    minorVictoryAnnouncement: faction-victory-minors
+    timeoutAnnouncement: faction-victory-timeout
+    victoryAnnouncements:
+      DSM: faction-victory-dsm
+      NCWL: faction-victory-ncwl
+      SHI: faction-victory-shi
+      TFSC: faction-victory-tfsc
+      CMM: faction-victory-cmm

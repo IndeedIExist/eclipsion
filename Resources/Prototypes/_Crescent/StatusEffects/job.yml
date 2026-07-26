@@ -708,3 +708,18 @@
     state: hl_ncwl_faclead
 
 
+
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconImperialRegent
+  icon:
+    sprite: /Textures/_Crescent/Interface/Misc/job_icons.rsi
+    state: Regent
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconImperialPretorian
+  icon:
+    sprite: /Textures/_Crescent/Interface/Misc/job_icons.rsi
+    state: Pretorian

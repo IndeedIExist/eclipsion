@@ -37,6 +37,11 @@ namespace Content.Shared.Shipyard
         public readonly List<string> ShipyardPrototypes;
         public readonly string ShipyardName;
 
+        /// <summary>
+        /// Whether this console allows selling ships. When false the client greys out the sell button.
+        /// </summary>
+        public readonly bool CanSell;
+
         public ShipyardConsoleInterfaceState(
             long balance,
             bool accessGranted,
@@ -45,7 +50,8 @@ namespace Content.Shared.Shipyard
             bool isTargetIdPresent,
             byte uiKey,
             List<string> shipyardPrototypes,
-            string shipyardName)
+            string shipyardName,
+            bool canSell)
         {
             Balance = balance;
             AccessGranted = accessGranted;
@@ -55,6 +61,7 @@ namespace Content.Shared.Shipyard
             UiKey = uiKey;
             ShipyardPrototypes = shipyardPrototypes;
             ShipyardName = shipyardName;
+            CanSell = canSell;
         }
     }
 

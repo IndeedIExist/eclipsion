@@ -1,30 +1,29 @@
 - type: vessel
   id: Redemptor
-  name: БМС Редемптор
-  description: Лёгкий истребитель для сопровождения и преследования.
-  price: 30000
+  name: DSM Redemptor
+  description: |
+    A light fighter designed for escort and harassment duty.
+    LOADOUT: 2x 200cc 'Retribution' pulse laser
+  price: 17000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/DSM/redemptor.yml
 
 - type: gameMap
   id: Redemptor
-  mapName: 'БМС Редемптор'
+  mapName: 'DSM Redemptor'
   mapPath: /Maps/_Crescent/Shuttles/DSM/redemptor.yml
   minPlayers: 0
   stations:
     Redemptor:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Редемптор {1}'
+          mapNameTemplate: 'DSM Redemptor {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -5,8 +5,8 @@
   id: Mojave
   name: NAP Mojave
   description: |
-    An a retrofitted cargoship, the Mojave now serves the NAP as a combat freighter, delivering goods with an armament that'll make any pirate think twice. 
-    LOADOUT: 2x 60mm Needlers, 2x 90mm Automortars, 4x 180mm Magwells, 2x 20mm Operators, 8x 20x135 NT-MG02.
+    A retrofitted cargoship, the Mojave now serves the NAP as a combat freighter, delivering goods with an armament that'll make any pirate think twice.
+    LOADOUT: 4x 35mm 'Scout' Autocannons, 6x 20mm 'Screamer' Rotary Cannons
     MINIMUM CREW: 1x Pilot, 1x Gunner, 2x Crew/Loaders
     EVENT ONLY, NOT MADE FOR FREEPLAY
   price: 200000
@@ -22,9 +22,6 @@
   stations:
     Mojave:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
@@ -38,4 +35,4 @@
         - type: VesselDesignation
           designation: vessel-designation-expeditions
         - type: VesselDescription
-          description: The Mojave was made for hauling goods across pirate infested sectors. Pray it's enough to survive taypan.
+          description: The Mojave was made for hauling goods across pirate-infested sectors. Pray it's enough to survive Taypan.

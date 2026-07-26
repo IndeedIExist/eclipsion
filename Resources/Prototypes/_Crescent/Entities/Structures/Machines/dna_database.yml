@@ -1,0 +1,33 @@
+- type: entity
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
+  id: ComputerDnaDatabase
+  name: ent-ComputerDnaDatabase
+  description: ent-ComputerDnaDatabase.desc
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: DnaDatabase
+    - type: Sprite
+      sprite: Structures/Machines/computers.rsi
+      layers:
+        - map: ["computerLayerBody"]
+          state: computer
+        - map: ["computerLayerKeyboard"]
+          state: generic_keyboard
+        - map: ["computerLayerScreen"]
+          state: dna
+        - map: ["computerLayerKeys"]
+          state: generic_keys
+    - type: ActivatableUI
+      key: enum.DnaDatabaseUiKey.Key
+    - type: UserInterface
+      interfaces:
+        enum.DnaDatabaseUiKey.Key:
+          type: DnaDatabaseBoundUserInterface
+    - type: PointLight
+      radius: 1.5
+      energy: 1.6
+      color: "#1f8c28"
+    - type: GuideHelp
+      guides:
+        - Cloning

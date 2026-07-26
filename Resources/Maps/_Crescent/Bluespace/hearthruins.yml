@@ -64,7 +64,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 1
+      baseMaxLinearVelocity: 6
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -4566,11 +4566,15 @@ entities:
     - type: Transform
       pos: -9.491826,1.5285718
       parent: 1
+    - type: Stack
+      count: 2
   - uid: 729
     components:
     - type: Transform
       pos: 5.649862,-3.4361312
       parent: 1
+    - type: Stack
+      count: 2
 - proto: NanotrasenMechatronics1
   entities:
   - uid: 730
@@ -4578,6 +4582,8 @@ entities:
     - type: Transform
       pos: -5.4761496,-1.4184058
       parent: 1
+    - type: Stack
+      count: 2
 - proto: PaperBin20
   entities:
   - uid: 470

@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Shared.Alert;
 using Content.Shared.CCVar;
 using Content.Shared.Movement.Systems;
+using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
@@ -85,6 +86,20 @@ namespace Content.Shared.Movement.Components
 
         [DataField]
         public ProtoId<AlertPrototype> WalkingAlert = "Walking";
+
+        // _Crescent: sound played when the mover toggles into running mode. Disabled — sprint cue was too noisy.
+        [DataField]
+        public SoundSpecifier? SprintStartSound = null;
+
+        // _Crescent: how long the mover must wait after stopping a sprint before it can sprint again.
+        // Stops run-toggle / sprint-sound spam.
+        [DataField]
+        public TimeSpan SprintCooldown = TimeSpan.FromSeconds(3);
+
+        // _Crescent: game time at which the next sprint is allowed. Set when a sprint ends.
+        [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+        [ViewVariables(VVAccess.ReadWrite)]
+        public TimeSpan NextSprintTime;
     }
 
     [Serializable, NetSerializable]
@@ -96,5 +111,6 @@ namespace Content.Shared.Movement.Components
         public Angle RelativeRotation;
         public TimeSpan LerpTarget;
         public bool CanMove, DefaultSprinting;
+        public TimeSpan NextSprintTime; // _Crescent: sprint cooldown timestamp.
     }
 }

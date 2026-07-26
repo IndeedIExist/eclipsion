@@ -3,37 +3,34 @@
 
 - type: vessel
   id: Termite
-  name: ГПИ Термит  
+  name: ICM Termite
   description: |
-    Экономичная горнодобывающая капсула, также используемая как дешёвый грузовой транспорт. Оснащена лишь необходимым минимумом для полётов и выхода в открытый космос.  
-    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1 пилот  
-  price: 15000
+    A frugal mining pod, or otherwise used as a cheap cargo hauler. Has the skeleton necessities for spaceflight and EVA.
+    MINIMUM CREW: 1x Pilot
+  price: 13000
   category: Small
   group: Civilian
   path: /Maps/_Crescent/Shuttles/Civilian/termite.yml
 
 - type: gameMap
   id: Termite
-  mapName: 'ГПИ Термит'
+  mapName: 'ICM Termite'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/termite.yml
   minPlayers: 0
   stations:
     Termite:
       stationProto: StandardCrescentCivilianVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: civilian
         - type: StationNameSetup
-          mapNameTemplate: 'ГПИ Термит {1}'
+          mapNameTemplate: 'ICM Termite {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-mining
         - type: VesselDescription
-          description: Держится на надежде и мечтах. Пилоты часто молятся перед тем, как отстыковать «Термит». 
+          description: Held together by hopes and dreams. Spacers often say a prayer before undocking a Termite.

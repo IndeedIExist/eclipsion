@@ -1,7 +1,7 @@
 - type: vessel
   id: Saintsfall
-  name: ОСР Сейнтсфол
-  description: Перепрофилированный истребитель, используемый в основном охотниками.
+  name: SRM Saintsfall
+  description: A repurposed fighter pod, used primarily by Hunters.
   price: 60000
   category: Small
   group: None
@@ -9,18 +9,15 @@
 
 - type: gameMap
   id: Saintsfall
-  mapName: 'ОСР Сейнтсфол'
+  mapName: 'SRM Saintsfall'
   mapPath: /Maps/_Crescent/Shuttles/SRM/saintsfall.yml
   minPlayers: 0
   stations:
     Saintsfall:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'ОСР Сейнтсфол {1}'
+          mapNameTemplate: 'Saintsfall {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

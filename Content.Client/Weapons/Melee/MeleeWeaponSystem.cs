@@ -3,9 +3,11 @@ using Content.Client.Gameplay;
 using Content.Shared.CombatMode;
 using Content.Shared.Effects;
 using Content.Shared.Hands.Components;
+using Content.Shared.Input;
 using Content.Shared.Mobs.Components;
 using Content.Shared.StatusEffect;
 using Content.Shared.Weapons.Melee;
+using Content.Shared.Weapons.Melee.Components;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Wieldable.Components;
@@ -34,18 +36,82 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
     private const string MeleeLungeKey = "melee-lunge";
 
+    // Soft (middle-click) melee attacks are deliberately slow so they can't be spammed like the
+    // left-click wide slash - a single, committed poke roughly once every couple of seconds.
+    private static readonly TimeSpan SoftAttackCooldown = TimeSpan.FromSeconds(2);
+    private TimeSpan _nextSoftAttack;
+
     public override void Initialize()
     {
         base.Initialize();
         _xformQuery = GetEntityQuery<TransformComponent>();
         SubscribeNetworkEvent<MeleeLungeEvent>(OnMeleeLunge);
+        SubscribeNetworkEvent<ParryVisualEvent>(OnParryVisual);
+        SubscribeNetworkEvent<RiposteVisualEvent>(OnRiposteVisual);
+        SubscribeNetworkEvent<RiposteWindowOpenEvent>(OnRiposteWindowOpen);
+        SubscribeNetworkEvent<MeleeImpactEffectEvent>(OnMeleeImpactEffect);
         UpdatesOutsidePrediction = true;
+        InitializeShake();
+    }
+
+    /// <summary>
+    /// Victim's side of a landed hit (screen shake) - the attacker already got this locally via <see cref="DoDamageEffect"/>.
+    /// </summary>
+    private void OnMeleeImpactEffect(MeleeImpactEffectEvent ev)
+    {
+        foreach (var netTarget in ev.Targets)
+        {
+            var target = GetEntity(netTarget);
+            if (!Exists(target))
+                continue;
+
+            if (target == _player.LocalEntity)
+                TriggerMeleeShake(0.07f);
+        }
+    }
+
+    private void OnParryVisual(ParryVisualEvent ev)
+    {
+        var ent = GetEntity(ev.Parrier);
+        if (!Exists(ent))
+            return;
+
+        DoParryAnimation(ent);
+    }
+
+    private void OnRiposteWindowOpen(RiposteWindowOpenEvent ev)
+    {
+        var ent = GetEntity(ev.Parrier);
+        if (!Exists(ent))
+            return;
+
+        // Perfect parry already gets a popup ("Strike now for a riposte!") from SharedParrySystem;
+        // this is just the local screen kick for whoever actually earned it.
+        if (ent == _player.LocalEntity)
+            TriggerMeleeShake(0.12f);
+    }
+
+    private void OnRiposteVisual(RiposteVisualEvent ev)
+    {
+        var ent = GetEntity(ev.Attacker);
+        if (!Exists(ent))
+            return;
+
+        _color.RaiseEffect(Color.Gold, new List<EntityUid> { ent }, Filter.Local());
+
+        if (ent == _player.LocalEntity)
+            TriggerMeleeShake(0.1f);
+
+        var weapon = GetEntity(ev.Weapon);
+        if (weapon.Valid && Exists(weapon))
+            DoRiposteAnimation(ent, weapon);
     }
 
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
         UpdateEffects();
+        UpdateMeleeShake(frameTime);
     }
 
     public override void Update(float frameTime)
@@ -86,70 +152,77 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 altDown = false;
         }
 
-        if ((weapon.AutoAttack || !useDown && !altDown) && weapon.Attacking)
+        // Right-click: Parry attempt (requires holding a melee weapon, not unarmed or gun)
+        if (altDown && !useDown)
+        {
+            if (weaponUid != entity
+                && !HasComp<GunComponent>(weaponUid)
+                && TryComp<ParryComponent>(entity, out var parry)
+                && !parry.IsParrying
+                && parry.NextParryTime <= Timing.CurTime)
+            {
+                RaisePredictiveEvent(new ParryAttemptEvent(GetNetEntity(weaponUid)));
+                DoParryAnimation(entity);
+            }
+            return;
+        }
+
+        // Middle-click: soft (light) attack for a held weapon - a single-target poke on a long
+        // cooldown so it can't be spammed like the left-click wide slash. For melee weapons this is
+        // the soft attack; for a gun (whose weapon entity carries a melee component) it's a
+        // pistol-whip / bash. Left-click still fires the gun as normal.
+        var middleDown = _inputSystem.CmdStates.GetState(ContentKeyFunctions.MouseMiddle) == BoundKeyState.Down;
+        if (middleDown
+            && weaponUid != entity
+            && !weapon.Attacking
+            && weapon.NextAttack <= Timing.CurTime
+            && Timing.CurTime >= _nextSoftAttack)
+        {
+            var softPos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);
+            var softCoords = TransformSystem.ToCoordinates(softPos);
+
+            EntityUid? softTarget = null;
+            if (_stateManager.CurrentState is GameplayStateBase softScreen)
+                softTarget = softScreen.GetClickedEntity(softPos);
+
+            RaisePredictiveEvent(new LightAttackEvent(
+                softTarget != null ? GetNetEntity(softTarget.Value) : null,
+                GetNetEntity(weaponUid),
+                GetNetCoordinates(softCoords)));
+
+            _nextSoftAttack = Timing.CurTime + SoftAttackCooldown;
+            return;
+        }
+
+        if ((weapon.AutoAttack || !useDown) && weapon.Attacking)
             RaisePredictiveEvent(new StopAttackEvent(GetNetEntity(weaponUid)));
 
-        if (weapon.Attacking || weapon.NextAttack > Timing.CurTime || !useDown && !altDown)
+        if (weapon.Attacking || weapon.NextAttack > Timing.CurTime || !useDown)
             return;
-
-        // TODO using targeted actions while combat mode is enabled should NOT trigger attacks.
 
         var mousePos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);
         var coordinates = TransformSystem.ToCoordinates(mousePos);
 
-        // Heavy attack.
-        if (!weapon.DisableHeavy &&
-            (!weapon.SwapKeys ? altDown : useDown))
+        // Fists (unarmed - the "weapon" is the mob itself) do a precise single-target light attack
+        // instead of the wide heavy swing, so a bare-handed left-click is just a straight punch.
+        if (weaponUid == entity)
         {
-            // If it's an unarmed attack then do a disarm
-            if (weapon.AltDisarm && weaponUid == entity)
-            {
-                EntityUid? target = null;
-
-                if (_stateManager.CurrentState is GameplayStateBase screen)
-                {
-                    target = screen.GetClickedEntity(mousePos);
-                }
-
-                EntityManager.RaisePredictiveEvent(new DisarmAttackEvent(GetNetEntity(target), GetNetCoordinates(coordinates)));
-                return;
-            }
-
-            ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
-            return;
-        }
-
-        // Light attack
-        if (!weapon.DisableClick &&
-            (!weapon.SwapKeys ? useDown : altDown))
-        {
-            var attackerPos = TransformSystem.GetMapCoordinates(entity);
-
-            if (mousePos.MapId != attackerPos.MapId ||
-                (attackerPos.Position - mousePos.Position).Length() > weapon.Range * weapon.LightRangeModifier)
-            {
-                if (weapon.HeavyOnLightMiss)
-                    ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
-
-                return;
-            }
-
             EntityUid? target = null;
-
             if (_stateManager.CurrentState is GameplayStateBase screen)
                 target = screen.GetClickedEntity(mousePos);
 
-            // Don't light-attack if interaction will be handling this instead
-            if (Interaction.CombatModeCanHandInteract(entity, target))
-                return;
+            RaisePredictiveEvent(new LightAttackEvent(
+                target != null ? GetNetEntity(target.Value) : null,
+                GetNetEntity(weaponUid),
+                GetNetCoordinates(coordinates)));
+            return;
+        }
 
-            if (weapon.HeavyOnLightMiss && !CanDoLightAttack(entity, target, weapon, out _))
-            {
-                ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
-                return;
-            }
-
-            RaisePredictiveEvent(new LightAttackEvent(GetNetEntity(target), GetNetEntity(weaponUid), GetNetCoordinates(coordinates)));
+        // Left-click: Wide slash attack for held melee weapons.
+        if (!weapon.DisableHeavy && useDown)
+        {
+            ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
+            return;
         }
     }
 
@@ -162,8 +235,15 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         return Interaction.InRangeUnobstructed(user, target, targetCoordinates, targetLocalAngle, range);
     }
 
-    protected override void DoDamageEffect(List<EntityUid> targets, EntityUid? user, TransformComponent targetXform) =>
+    protected override void DoDamageEffect(List<EntityUid> targets, EntityUid? user, TransformComponent targetXform)
+    {
         _color.RaiseEffect(Color.Red, targets, Filter.Local());
+
+        // Instant local feedback for the attacker (this only runs on the attacker's own client, via
+        // prediction). The victim gets the same shake over the network - see OnMeleeImpactEffect.
+        if (user == _player.LocalEntity)
+            TriggerMeleeShake(0.045f);
+    }
 
     protected override bool DoDisarm(EntityUid user, DisarmAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
     {
@@ -220,10 +300,9 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         var ent = GetEntity(ev.Entity);
         var entWeapon = GetEntity(ev.Weapon);
 
-        // Entity might not have been sent by PVS.
-        if (!Exists(ent) || Exists(entWeapon))
+        if (!Exists(ent))
             return;
 
-        DoLunge(ent, entWeapon, ev.Angle, ev.LocalPos, ev.Animation);
+        DoLunge(ent, entWeapon, ev.Angle, ev.LocalPos, ev.Animation, false);
     }
 }

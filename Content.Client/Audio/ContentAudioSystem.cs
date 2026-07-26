@@ -32,7 +32,8 @@ public sealed partial class ContentAudioSystem : SharedContentAudioSystem
     public const float InterfaceMultiplier = 2f;
     public const float AnnouncerMultiplier = 3f;
     public const float CommunicationsMultiplier = 3f;
-    public const float TTSMultiplier = 1f; // Art-TTS
+    // Multiplier for boombox / jukebox individual volume cvar.
+    public const float BoomboxMultiplier = 3f;
 
     public override void Initialize()
     {
@@ -88,6 +89,7 @@ public sealed partial class ContentAudioSystem : SharedContentAudioSystem
         //UpdateAmbientMusic();
         UpdateLobbyMusic();
         UpdateFades(frameTime);
+        UpdateDucking(frameTime);
     }
 
     #region Fades

@@ -27,13 +27,6 @@
                 <Button Name="ColorPreset4Button" Text="Meteor Purple" Modulate="#8178CCFF" HorizontalExpand="True" />
             </GridContainer>
             <Control />
-            <BoxContainer Orientation="Horizontal">
-                <LineEdit Name="CustomColorLineEdit"
-                          HorizontalExpand="True"
-                          PlaceHolder="FFFFFF" />
-                <Button Name="ApplyColorButton" Text="Apply Color" />
-            </BoxContainer>
-            <Control />
         </GridContainer>
     </BoxContainer>
 </controls:FancyWindow>

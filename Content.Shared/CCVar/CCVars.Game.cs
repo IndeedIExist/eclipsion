@@ -33,7 +33,7 @@ public sealed partial class CCVars
     ///     Controls the default game preset.
     /// </summary>
     public static readonly CVarDef<string>
-        GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "ratadventure", CVar.ARCHIVE);
+        GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "freeplaydsmncwl", CVar.ARCHIVE);
 
     /// <summary>
     ///     Controls if the game can force a different preset if the current preset's criteria are not met.
@@ -352,14 +352,12 @@ public sealed partial class CCVars
     public static readonly CVarDef<bool> AllowSlotQuickSwap =
         CVarDef.Create("game.slot_quick_swap", true, CVar.REPLICATED);
 
-#if EXCEPTION_TOLERANCE
     /// <summary>
     ///     Amount of times round start must fail before the server is shut down.
     ///     Set to 0 or a negative number to disable.
     /// </summary>
     public static readonly CVarDef<int> RoundStartFailShutdownCount =
         CVarDef.Create("game.round_start_fail_shutdown_count", 5, CVar.SERVERONLY | CVar.SERVER);
-#endif
 
     /// <summary>
     /// Delay between station alert level changes.
@@ -401,4 +399,11 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> UseDynamicHostname =
         CVarDef.Create("game.use_dynamic_hostname", false, CVar.SERVERONLY);
+
+    /// <summary>
+    /// How many ships a single player may purchase from a faction shipyard (one paid from the faction
+    /// treasury) per round. Prevents a single player from draining the treasury. Set to 0 to disable the limit.
+    /// </summary>
+    public static readonly CVarDef<int> ShipyardFactionShipLimit =
+        CVarDef.Create("shipyard.faction_ship_limit", 2, CVar.SERVERONLY);
 }

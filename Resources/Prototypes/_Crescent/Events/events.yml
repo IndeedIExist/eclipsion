@@ -73,7 +73,7 @@
      endAnnouncement: true
      earliestStart: 15
      minimumPlayers: 25
-     weight: 5
+     weight: 8
      startDelay: 10
      duration: 2100
      maxDuration: 2400
@@ -94,9 +94,9 @@
    - type: StationEvent
      startAnnouncement: true
      endAnnouncement: true
-     earliestStart: 25
+     earliestStart: 15
      minimumPlayers: 5
-     weight: 5
+     weight: 8
      startDelay: 10
      duration: 2100
      maxDuration: 3000
@@ -116,9 +116,9 @@
    - type: StationEvent
      startAnnouncement: true
      endAnnouncement: true
-     earliestStart: 25
+     earliestStart: 15
      minimumPlayers: 5
-     weight: 5
+     weight: 8
      startDelay: 10
      duration: 2100
      maxDuration: 3000

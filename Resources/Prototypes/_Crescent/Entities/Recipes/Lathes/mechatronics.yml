@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: BasicMechatronics1Mechatronics
+  category: Parts
   result: BasicMechatronics1
   completetime: 0.5
   materials:
@@ -8,6 +9,7 @@
 
 - type: latheRecipe
   id: PlastitaniumFibreAlloy1Mechatronics
+  category: Parts
   result: PlastitaniumFibreAlloy1
   completetime: 0.5
   materials:
@@ -17,6 +19,7 @@
 
 - type: latheRecipe
   id: WeaponPistolMk58Mechatronics
+  category: Weapons
   result: WeaponPistolMk58
   completetime: 1.5
   materials:
@@ -25,6 +28,7 @@
 
 - type: latheRecipe
   id: WeaponRifleM90GrenadeLauncherMechatronics
+  category: Weapons
   result: WeaponRifleM90GrenadeLauncher
   completetime: 2.5
   materials:

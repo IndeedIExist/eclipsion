@@ -6,7 +6,7 @@
   name: TS Jury
   description: |
     An outdated interceptor refitted and modified to survive current day Taypan, made to support its allies by disabling ships with it's ion gattling cannons.
-    LOADOUT: 2x Ion Gatling guns, 2x 20x135mm PDT
+    LOADOUT: 2x 500i 'Bizmuth' Ion Gatling, 2x 20x135mm PDT
     MINIMUM CREW: 1x Pilot
   price: 34000
   category: Small
@@ -21,9 +21,6 @@
   stations:
     Jury:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:

@@ -1,6 +1,6 @@
 ---
-name: Запросить что-то новое
-about: "Пожалуйста, сначала опишите ваш запрос в Discord, если вы не являетесь мейнтейнером."
+name: Request something new
+about: "Please describe your request in Discord first if you are not a maintainer."
 title: ''
 labels: ["Type: Feature"]
 assignees: ''
@@ -8,20 +8,20 @@ assignees: ''
 ---
 
 <!--
-Это свободный формат — оформляйте запрос так, как считаете нужным
-Удалите эти комментарии перед отправкой
+This is a free-form format — lay out your request however you see fit
+Delete these comments before submitting
 -->
 
-# Описание
+# Description
 <!--
-Опишите ваш запрос как можно подробнее
+Describe your request in as much detail as possible
 -->
 
-Я хочу сыр косичку
+I want string cheese
 
-# Медиа
+# Media
 <!--
-Если применимо, добавьте изображения или даже видео, чтобы наглядно объяснить ваше предложение
+If applicable, add images or even video to help explain your proposal
 -->
 
-![Пример скриншота](https://i.postimg.cc/gcTykm48/e07f1cf697803e2204bf7f1b35c865b0.jpg)
+![Example screenshot](https://i.postimg.cc/gcTykm48/e07f1cf697803e2204bf7f1b35c865b0.jpg)

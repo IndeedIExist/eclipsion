@@ -1,0 +1,38 @@
+# Author Info
+# Discord: ChangelingRUES
+- type: vessel
+  id: Dugong
+  name: SAW Dugongmk2
+  description: |
+   Once a peaceful trading ship that died in the expanses of Taipan. It was resurrected to serve PC as a wandering merchant of their goods.
+
+   ARMAMENT: 2x 20mm 'Screamer' rotary cannons.
+   MINIMUM CREW: 1 pilot
+  price: 40000
+  category: Medium
+  group: Civilian
+  path: /Maps/_Crescent/Shuttles/TFSC/dugong.yml
+
+- type: gameMap
+  id: Dugong
+  mapName: 'SAW Dugongmk2'
+  mapPath: /Maps/_Crescent/Shuttles/TFSC/dugong.yml
+  minPlayers: 0
+  stations:
+    Dugong:
+      stationProto: StandardCrescentCivilianVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
+      components:
+        - type: VesselIcon
+          iffIcon:
+            sprite: _Crescent/ShipIcons/ifficons.rsi
+            state: hauler
+        - type: StationNameSetup
+          mapNameTemplate: 'SAW Dugongmk2 {1}'
+          nameGenerator:
+           !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: VesselDesignation
+          designation: The Manatee was unarmed... The Dugong is capable of fighting back

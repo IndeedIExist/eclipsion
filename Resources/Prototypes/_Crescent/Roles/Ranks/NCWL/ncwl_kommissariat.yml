@@ -1,0 +1,56 @@
+# Komissariat
+- type: rank
+  id: RatRankKommissarLead
+  name: Chief Commissar
+  prefix: Chief Commissar
+  paygrade: K5
+
+- type: rank
+  id: RatRankKommissarSenior
+  name: Senior Commissar
+  prefix: Sr. Commissar
+  paygrade: K4
+
+- type: rank
+  id: RatRankKommissarMiddle
+  name: Commissar
+  prefix: Commissar
+  paygrade: K3
+
+- type: rank
+  id: RatRankKommissarJunior
+  name: Junior Commissar
+  prefix: Jr. Commissar
+  paygrade: K2
+
+- type: rank
+  id: RatRankKommissarNovice
+  name: Commissar Cadet
+  prefix: Commissar Cadet
+  paygrade: K1
+
+## MVD
+
+- type: rank
+  id: RatRankMVDGruntLead
+  name: MVD Lieutenant
+  prefix: Lt. Militia
+  paygrade: MVD4
+
+- type: rank
+  id: RatRankMVDGruntSenior
+  name: MVD Sergeant
+  prefix: Sgt. Militia
+  paygrade: MVD3
+
+- type: rank
+  id: RatRankMVDGruntMiddle
+  name: MVD Militia
+  prefix: Militia
+  paygrade: MVD2
+
+- type: rank
+  id: RatRankMVDGruntJunior
+  name: Junior Militia
+  prefix: Jr. Militia
+  paygrade: MVD1

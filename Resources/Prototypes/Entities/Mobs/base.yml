@@ -135,6 +135,7 @@
     damage:
       groups:
         Brute: 5
+  - type: Parry
 
 # Used for mobs that are affected by atmospherics, pressure, and heat
 - type: entity

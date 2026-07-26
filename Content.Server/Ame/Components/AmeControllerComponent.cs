@@ -98,4 +98,44 @@ public sealed partial class AmeControllerComponent : SharedAmeControllerComponen
     /// </summary>
     [DataField]
     public TimeSpan CooldownDuration = TimeSpan.FromSeconds(10f);
+
+    /// <summary>
+    /// Time at which the next "AME overloading" station-wide announcement can be broadcast.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan NextOverloadAnnouncement;
+
+    /// <summary>
+    /// Time between "AME overloading" announcements. Prevents spam while the reactor is overloaded.
+    /// </summary>
+    [DataField]
+    public TimeSpan OverloadAnnouncementCooldown = TimeSpan.FromSeconds(30f);
+
+    /// <summary>
+    /// How many "AME overloading" announcements to broadcast per overload event before going quiet.
+    /// A separate imminent-detonation warning still fires right before the explosion.
+    /// </summary>
+    [DataField]
+    public int MaxOverloadAnnouncements = 2;
+
+    /// <summary>
+    /// How many "AME overloading" announcements have been broadcast for the current overload event.
+    /// Reset when the reactor stops injecting.
+    /// </summary>
+    [DataField]
+    public int OverloadAnnouncementsSent;
+
+    /// <summary>
+    /// How long before detonation the final warning is broadcast. Once the reactor becomes
+    /// critically unstable the explosion is delayed by this amount so responders get a heads-up.
+    /// </summary>
+    [DataField]
+    public TimeSpan FinalWarningTime = TimeSpan.FromSeconds(10f);
+
+    /// <summary>
+    /// When set, the reactor has passed the point of no return and will explode at this time.
+    /// Runtime-only state (not persisted in prototypes).
+    /// </summary>
+    [ViewVariables]
+    public TimeSpan? ExplosionTime;
 }

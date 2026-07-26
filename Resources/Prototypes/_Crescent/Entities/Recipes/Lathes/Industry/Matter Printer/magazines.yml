@@ -1,6 +1,7 @@
 
 - type: latheRecipe
   id: LightRifleMag
+  category: Ammo
   result: MagazineLightRifleEmpty
   completetime: 1
   materials:
@@ -8,6 +9,7 @@
 
 - type: latheRecipe
   id: RifleMag
+  category: Ammo
   result: MagazineRifleEmpty
   completetime: 1
   materials:
@@ -15,6 +17,7 @@
 
 - type: latheRecipe
   id: RifleDrum
+  category: Ammo
   result: MagazineRifleDrumEmpty
   completetime: 1
   materials:
@@ -22,6 +25,7 @@
 
 - type: latheRecipe
   id: MagazinePistolSubMachineGunEmpty
+  category: Ammo
   result: MagazinePistolSubMachineGunEmpty
   completetime: 1
   materials:
@@ -29,6 +33,7 @@
 
 - type: latheRecipe
   id: MagazineShotgunEmpty
+  category: Ammo
   result: MagazineShotgunEmpty
   completetime: 5
   materials:
@@ -37,6 +42,7 @@
 # .35 Pistol Magazines
 - type: latheRecipe
   id: MagazinePistolEmpty
+  category: Ammo
   result: MagazinePistolEmpty
   completetime: 1
   materials:
@@ -44,6 +50,7 @@
 
 - type: latheRecipe
   id: MagazinePistolSubMachineGunTopMountedEmpty
+  category: Ammo
   result: MagazinePistolSubMachineGunTopMountedEmpty
   completetime: 5
   materials:
@@ -51,6 +58,7 @@
 
 - type: latheRecipe
   id: MagazineMagnumEmpty
+  category: Ammo
   result: MagazineMagnumEmpty
   completetime: 5
   materials:
@@ -58,6 +66,7 @@
 
 - type: latheRecipe
   id: MagazinePistol6mmSmgEmpty
+  category: Ammo
   result: MagazinePistol6mmSmgEmpty
   completetime: 5
   materials:
@@ -72,6 +81,7 @@
 
 - type: latheRecipe
   id: MagazineRiflePanEmpty
+  category: Ammo
   result: MagazineRiflePanEmpty
   completetime: 5
   materials:
@@ -79,6 +89,7 @@
 
 - type: latheRecipe
   id: SpeedLoaderMagnumEmpty
+  category: Ammo
   result: SpeedLoaderMagnumEmpty
   completetime: 5
   materials:
@@ -86,6 +97,7 @@
 
 - type: latheRecipe
   id: MagazineRocketEmpty
+  category: Ammo
   result: MagazineRocketEmpty
   completetime: 1
   materials:
@@ -100,6 +112,7 @@
 
 - type: latheRecipe
   id: DrumMagazineShotgunEmpty
+  category: Ammo
   result: DrumMagazineShotgunEmpty
   completetime: 1
   materials:

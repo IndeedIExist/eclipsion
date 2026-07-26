@@ -20,4 +20,4 @@
           overflowJobs: []
           availableJobs:
             UnionfallShipCaptainDSM: [ 1, 1 ]
-            UnionfallShipCrewDSM: [ 10, 10 ]
+            UnionfallShipCrewDSM: [ 2, 2 ]

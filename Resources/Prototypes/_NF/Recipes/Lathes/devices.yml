@@ -1,5 +1,6 @@
 - type: latheRecipe
   id: ClothingBackpackMessengerHolding
+  category: Clothing
   result: ClothingBackpackMessengerHolding
   completetime: 5
   materials:
@@ -20,6 +21,7 @@
 
 - type: latheRecipe
   id: WeaponCrusher
+  category: Weapons
   result: WeaponCrusher
   completetime: 5
   materials:
@@ -29,6 +31,7 @@
 
 - type: latheRecipe
   id: WeaponCrusherDagger
+  category: Weapons
   result: WeaponCrusherDagger
   completetime: 5
   materials:
@@ -38,6 +41,7 @@
 
 - type: latheRecipe
   id: WeaponCrusherGlaive
+  category: Weapons
   result: WeaponCrusherGlaive
   completetime: 5
   materials:

@@ -61,6 +61,7 @@
 
 - type: latheRecipe
   id: UtilityBeltChiefEngineer
+  category: Clothing
   result: ClothingBeltChiefEngineer
   completetime: 6
   materials:
@@ -69,6 +70,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunCheshyre
+  category: Weapons
   result: WeaponSubMachineGunCheshyre
   completetime: 4
   materials:
@@ -77,6 +79,7 @@
 
 - type: latheRecipe
   id: WeaponPistolRongyu
+  category: Weapons
   result: WeaponPistolRongyu
   completetime: 4
   materials:
@@ -84,6 +87,7 @@
 
 - type: latheRecipe
   id: WeaponSpecialMako
+  category: Weapons
   result: WeaponSpecialMako
   completetime: 4
   materials:
@@ -94,6 +98,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorPangTaiVest
+  category: Armor
   result: ClothingOuterArmorPangTaiVest
   completetime: 4
   materials:
@@ -103,6 +108,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatPangtaiCorvidHelmet
+  category: Clothing
   result: ClothingHeadHatPangtaiCorvidHelmet
   completetime: 4
   materials:
@@ -112,6 +118,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorPangTaiKorund
+  category: Armor
   result: ClothingOuterArmorPangTaiKorund
   completetime: 4
   materials:
@@ -121,6 +128,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatPangtaiKorundHelmet
+  category: Clothing
   result: ClothingHeadHatPangtaiKorundHelmet
   completetime: 4
   materials:
@@ -131,6 +139,7 @@
 
 - type: latheRecipe
   id: WeaponRifleM90GrenadeLauncherNT
+  category: Weapons
   result: WeaponRifleM90GrenadeLauncher
   completetime: 5
   materials:
@@ -139,6 +148,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunMP5NT
+  category: Weapons
   result: WeaponSubMachineGunMP5
   completetime: 5
   materials:
@@ -147,6 +157,7 @@
 
 - type: latheRecipe
   id: WeaponShotgunSpasNT
+  category: Weapons
   result: WeaponShotgunSpas
   completetime: 5
   materials:
@@ -154,6 +165,7 @@
 
 - type: latheRecipe
   id: WeaponRevolverSnubnoseNT
+  category: Weapons
   result: WeaponRevolverSnubnose
   completetime: 5
   materials:
@@ -161,6 +173,7 @@
 
 - type: latheRecipe
   id:  WeaponPistolHKUSPNT
+  category: Weapons
   result:  WeaponPistolHKUSP
   completetime: 5
   materials:
@@ -168,6 +181,7 @@
 
 - type: latheRecipe
   id: MissileRackFlatpackCraft
+  category: Circuitry
   result: MissileRackFlatpack
   completetime: 5
   materials:
@@ -177,6 +191,7 @@
 
 - type: latheRecipe
   id: VulcanFlatpackCraft
+  category: Circuitry
   result: VulcanFlatpack
   completetime: 5
   materials:
@@ -185,6 +200,7 @@
 
 - type: latheRecipe
   id: HardlineBeamPulserFlatpackCraft
+  category: Circuitry
   result: HardlineBeamPulserFlatpack
   completetime: 5
   materials:
@@ -196,6 +212,7 @@
 
 - type: latheRecipe
   id: SHIFighterThrusterFlatpackCraft
+  category: Shipyard
   result: SHIFighterThrusterFlatpack
   completetime: 5
   materials:
@@ -205,6 +222,7 @@
 
 - type: latheRecipe
   id: SHIWarshipThrusterFlatpackCraft
+  category: Shipyard
   result: SHIWarshipThrusterFlatpack
   completetime: 5
   materials:
@@ -213,6 +231,7 @@
 
 - type: latheRecipe
   id: WeaponPistolBlastpopBlueCraft
+  category: Weapons
   result: WeaponPistolBlastpopBlue
   completetime: 5
   materials:
@@ -220,6 +239,7 @@
 
 - type: latheRecipe
   id: WeaponPistolBlastpopRedCraft
+  category: Weapons
   result: WeaponPistolBlastpopRed
   completetime: 5
   materials:
@@ -227,6 +247,7 @@
 
 - type: latheRecipe
   id: WeaponPistolBlastpopGoldCraft
+  category: Weapons
   result: WeaponPistolBlastpopGold
   completetime: 5
   materials:
@@ -234,6 +255,7 @@
 
 - type: latheRecipe
   id: WeaponPistolBlastpopGrayCraft
+  category: Weapons
   result: WeaponPistolBlastpopGray
   completetime: 5
   materials:
@@ -241,6 +263,7 @@
 
 - type: latheRecipe
   id: ClothingOuterHardsuitHEVCraft
+  category: Armor
   result: ClothingOuterHardsuitHEV
   completetime: 5
   materials:
@@ -250,6 +273,7 @@
 
 - type: latheRecipe
   id: ClothingOuterArmorShinoharaArmorCraft
+  category: Armor
   result: ClothingOuterArmorShinoharaArmor
   completetime: 5
   materials:
@@ -258,6 +282,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatShinoharaBeretCraft
+  category: Clothing
   result: ClothingHeadHatShinoharaBeret
   completetime: 5
   materials:
@@ -265,6 +290,7 @@
 
 - type: latheRecipe
   id: ClothingUniformJumpsuitShinoharaSecurityCraft
+  category: Clothing
   result: ClothingUniformJumpsuitShinoharaSecurity
   completetime: 5
   materials:
@@ -272,6 +298,7 @@
 
 - type: latheRecipe
   id: WeaponPistolHimehabuCraft
+  category: Weapons
   result: WeaponPistolHimehabu
   completetime: 5
   materials:
@@ -280,6 +307,7 @@
 
 - type: latheRecipe
   id: WeaponSubMachineGunSabreCraft
+  category: Weapons
   result: WeaponSubMachineGunSabre
   completetime: 5
   materials:
@@ -289,6 +317,7 @@
 
 - type: latheRecipe
   id: WeaponPistolMk58Craft
+  category: Weapons
   result: WeaponPistolMk58
   completetime: 5
   materials:
@@ -296,6 +325,7 @@
 
 - type: latheRecipe
   id: WeaponPistolViperCraft
+  category: Weapons
   result: WeaponPistolViper
   completetime: 5
   materials:
@@ -303,6 +333,7 @@
 
 - type: latheRecipe
   id: ClothingHeadHatShinoharaHelmetCraft
+  category: Clothing
   result: ClothingHeadHatShinoharaHelmet
   completetime: 5
   materials:
@@ -312,6 +343,7 @@
 
 - type: latheRecipe
   id: WeaponPistolSmartpistolCraft
+  category: Weapons
   result: WeaponPistolSmartpistol
   completetime: 5
   materials:
@@ -322,6 +354,7 @@
 
 - type: latheRecipe
   id: MagazinePistolSmartgunCraft
+  category: Ammo
   result: MagazinePistolSmartgun
   completetime: 5
   materials:
@@ -330,6 +363,7 @@
 
 - type: latheRecipe
   id: EnergyKatanaCraft
+  category: Weapons
   result: EnergyKatana
   completetime: 5
   materials:
@@ -341,6 +375,7 @@
 
 - type: latheRecipe
   id: WeaponLauncherHammerheadCraft
+  category: Weapons
   result: WeaponLauncherHammerhead
   completetime: 5
   materials:
@@ -351,27 +386,42 @@
 
 - type: latheRecipe
   id: TermiteLPC
+  category: Shipyard
   result: ShipVoucherTermite
   completetime: 1
   materials: #its a termite, it deserves to be this cheap
-    StarshipEngineComponents: 500
-    ShipComponents: 500
-    ShipHull: 500
+    Steel: 1100
+    Plasma: 400
+    Silver: 600
+    Gold: 400
+    Copper: 200
+    Tungsten: 100
+    Uranium: 100
 
 - type: latheRecipe
   id: ParacelsusLPC
+  category: Shipyard
   result: ShipVoucherParacelsus
   completetime: 1
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 1000
-    ShipHull: 2500
+    Steel: 4000
+    Plasma: 2000
+    Silver: 1800
+    Gold: 800
+    Copper: 400
+    Tungsten: 200
+    Uranium: 200
 
 - type: latheRecipe
   id: ExhumerLPC
+  category: Shipyard
   result: ShipVoucherExhumer
   completetime: 1
   materials:
-    StarshipEngineComponents: 1000
-    ShipComponents: 2000
-    ShipHull: 1500
+    Steel: 3800
+    Plasma: 1200
+    Silver: 2200
+    Gold: 1200
+    Copper: 800
+    Tungsten: 200
+    Uranium: 200

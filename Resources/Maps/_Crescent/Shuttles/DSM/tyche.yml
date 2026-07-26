@@ -2876,7 +2876,7 @@ entities:
             2166: 13,4
     - type: OccluderTree
     - type: Shuttle
-      baseMaxLinearVelocity: 25
+      baseMaxLinearVelocity: 30
     - type: GridPathfinding
     - type: SpreaderGrid
     - type: GravityShake

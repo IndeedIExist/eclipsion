@@ -1,4 +1,3 @@
-using Content.Shared.DeltaV.Salvage.Components;
 using Content.Shared.Storage;
 using Content.Shared.Interaction;
 using Content.Shared.Materials;
@@ -19,7 +18,7 @@ public sealed class OreBagSystem : EntitySystem
     {
         if (!args.CanReach
           || args.Target == null
-          || !HasComp<MiningPointsLatheComponent>(args.Target)
+          || !HasComp<MaterialStorageComponent>(args.Target)
           || !_timing.IsFirstTimePredicted)
             return;
 

@@ -4,7 +4,7 @@
 - type: vessel
   id: Brilliant
   name: NT Brilliant
-  description: A remnant of the autonomous AI fleets developed by the NanoTrasen Corporation.
+  description: A massive autonomous warship deployed by NanoTrasen to push back the abyssal spread from the Fracture. It's been adrift in the Fog for years. It still fires. Nobody's sure how.
   price: 450000
   category: Large
   group: None

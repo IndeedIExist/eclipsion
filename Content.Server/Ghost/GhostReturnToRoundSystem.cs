@@ -2,8 +2,10 @@ using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
+using Content.Shared._Crescent.GameRules.Components;
 using Content.Shared.Database;
 using Content.Shared.CCVar;
+using Content.Shared.GameTicking.Components;
 using Content.Shared.Ghost;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -71,7 +73,7 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
         if (_mindSystem.TryGetMind(uid, out _, out var mind) && mind.TimeOfDeath.HasValue)
             deathTime = mind.TimeOfDeath.Value;
 
-        var timeUntilRespawn = TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.GhostRespawnTime));
+        var timeUntilRespawn = GetGamemodeRespawnTime();
         var timePast = _gameTiming.CurTime - deathTime;
         // WD EDIT END
         if (timePast >= timeUntilRespawn)
@@ -97,5 +99,24 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
         // WD EDIT END
 
         wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
+    }
+
+    /// <summary>
+    /// Returns the respawn time for the current active gamemode.
+    /// Checks for a <see cref="GamemodeRespawnTimeComponent"/> on any active game rule;
+    /// falls back to the ghost.respawn_time CVar if none is found.
+    /// </summary>
+    private TimeSpan GetGamemodeRespawnTime()
+    {
+        var query = EntityQueryEnumerator<GamemodeRespawnTimeComponent, GameRuleComponent>();
+        while (query.MoveNext(out var uid, out var respawnComp, out var rule))
+        {
+            if (!_ticker.IsGameRuleActive(uid, rule))
+                continue;
+
+            return TimeSpan.FromMinutes(respawnComp.RespawnTimeMinutes);
+        }
+
+        return TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.GhostRespawnTime));
     }
 }

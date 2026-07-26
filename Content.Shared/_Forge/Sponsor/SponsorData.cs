@@ -5,14 +5,14 @@ public sealed class SponsorData
 {
     public static readonly Dictionary<string, SponsorLevel> RolesMap = new()
     {
-        { "1356590198628155526", SponsorLevel.Level1 }, // Педаль
-        { "1460211939312537630", SponsorLevel.Level2 }, // Рядовой
-        { "1460212133290836009", SponsorLevel.Level3 }, // Сержант
-        { "1460212173086130339", SponsorLevel.Level4 }, // Майор
-        { "1460212230539710639", SponsorLevel.Level5 }, // Адмирал
-        { "1460212505778454588", SponsorLevel.Level6 }, // Резерв1
-        { "1460212525663785145", SponsorLevel.Level7 }, // Резерв2
-        { "1460212547239280650", SponsorLevel.Level8 } // Резерв3
+        { "1356590198628155526", SponsorLevel.Level1 }, // Ensign
+        { "1460211939312537630", SponsorLevel.Level2 }, // Private
+        { "1460212133290836009", SponsorLevel.Level3 }, // Sergeant
+        { "1460212173086130339", SponsorLevel.Level4 }, // Major
+        { "1460212230539710639", SponsorLevel.Level5 }, // Admiral
+        { "1460212505778454588", SponsorLevel.Level6 }, // Reserve1
+        { "1460212525663785145", SponsorLevel.Level7 }, // Reserve2
+        { "1460212547239280650", SponsorLevel.Level8 } // Reserve3
     };
 
     public static readonly Dictionary<SponsorLevel, string> SponsorColor = new()

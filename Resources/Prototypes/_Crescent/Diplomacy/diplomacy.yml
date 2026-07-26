@@ -20,7 +20,7 @@
       ColdWar
 
 - type: diplomacy
-  id: NCSP
+  id: TFSC
   relations:
     SHI:
       ColdWar
@@ -30,13 +30,13 @@
 - type: diplomacy
   id: SHI
   relations:
-    NCSP:
+    TFSC:
       ColdWar
 
 - type: diplomacy
   id: TSP
   relations:
-    NCSP:
+    TFSC:
       ColdWar
     NCWL:
       ColdWar
@@ -48,7 +48,7 @@
       ColdWar
     NCWL:
       ColdWar
-    NCSP:
+    TFSC:
       ColdWar
     SHI:
       ColdWar

@@ -1,0 +1,27 @@
+- type: entity
+  parent: [BaseComputerAiAccess, BaseStructureDisableToolUse, BaseStructureUnanchorable]
+  id: ComputerDiplomacyConsole
+  name: Diplomacy Console
+  description: A console for managing relations between factions.
+  components:
+    - type: DiplomacyConsole
+    - type: Sprite
+      layers:
+        - map: ["computerLayerBody"]
+          state: computer
+        - map: ["computerLayerKeyboard"]
+          state: generic_keyboard
+        - map: ["computerLayerScreen"]
+          state: generic
+        - map: ["computerLayerKeys"]
+          state: generic_keys
+        - map: ["enum.WiresVisualLayers.MaintenancePanel"]
+          state: generic_panel_open
+    - type: ActivatableUI
+      key: enum.DiplomacyConsoleUiKey.Key
+    - type: UserInterface
+      interfaces:
+        enum.DiplomacyConsoleUiKey.Key:
+          type: DiplomacyConsoleBoundUserInterface
+        enum.WiresUiKey.Key:
+          type: WiresBoundUserInterface

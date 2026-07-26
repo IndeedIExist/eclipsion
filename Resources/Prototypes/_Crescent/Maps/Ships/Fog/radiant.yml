@@ -4,7 +4,7 @@
 - type: vessel
   id: Radiant
   name: NT Radiant
-  description: A remnant of the autonomous AI fleets developed by the NanoTrasen Corporation.
+  description: The largest autonomous hull ever fielded by NanoTrasen, built to hold the line against whatever comes out of the Fog. It's yours now, if you can afford it.
   price: 1000000 
   category: Large
   group: None

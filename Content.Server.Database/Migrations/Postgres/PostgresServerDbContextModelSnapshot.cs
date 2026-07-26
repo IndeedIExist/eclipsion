@@ -20,7 +20,7 @@ namespace Content.Server.Database.Migrations.Postgres
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "10.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -275,8 +275,7 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("expiration_time");
 
-                    b.Property<DateTime?>("LastEditedAt")
-                        .IsRequired()
+                    b.Property<DateTime>("LastEditedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("last_edited_at");
 
@@ -410,8 +409,7 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("expiration_time");
 
-                    b.Property<DateTime?>("LastEditedAt")
-                        .IsRequired()
+                    b.Property<DateTime>("LastEditedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("last_edited_at");
 
@@ -838,7 +836,7 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("bigint")
                         .HasColumnName("bank_balance");
 
-                    b.Property<string[]>("CharacterFlags")
+                    b.PrimitiveCollection<string[]>("CharacterFlags")
                         .IsRequired()
                         .HasColumnType("text[]")
                         .HasColumnName("character_flags");
@@ -959,6 +957,11 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("station_ai_name");
 
+                    b.Property<string>("Subfaction")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("subfaction");
+
                     b.Property<string>("Voice")
                         .IsRequired()
                         .HasColumnType("text")
@@ -978,6 +981,76 @@ namespace Content.Server.Database.Migrations.Postgres
                         .IsUnique();
 
                     b.ToTable("profile", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RatFaction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("rat_faction_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
+                    b.Property<bool>("IsWhitelisted")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_whitelisted");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("PK_rat_faction");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("rat_faction", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RatFactionManager", b =>
+                {
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<int>("FactionId")
+                        .HasColumnType("integer")
+                        .HasColumnName("faction_id");
+
+                    b.HasKey("PlayerUserId", "FactionId")
+                        .HasName("PK_rat_faction_manager");
+
+                    b.HasIndex("FactionId")
+                        .HasDatabaseName("IX_rat_faction_manager_faction_id");
+
+                    b.ToTable("rat_faction_manager", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RatFactionWhitelist", b =>
+                {
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<int>("FactionId")
+                        .HasColumnType("integer")
+                        .HasColumnName("faction_id");
+
+                    b.HasKey("PlayerUserId", "FactionId")
+                        .HasName("PK_rat_faction_whitelist");
+
+                    b.HasIndex("FactionId")
+                        .HasDatabaseName("IX_rat_faction_whitelist_faction_id");
+
+                    b.ToTable("rat_faction_whitelist", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.RoleWhitelist", b =>
@@ -1746,6 +1819,50 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Preference");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.RatFactionManager", b =>
+                {
+                    b.HasOne("Content.Server.Database.RatFaction", "Faction")
+                        .WithMany("Managers")
+                        .HasForeignKey("FactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_rat_faction_manager_rat_faction_faction_id");
+
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_rat_faction_manager_player_player_user_id");
+
+                    b.Navigation("Faction");
+
+                    b.Navigation("Player");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RatFactionWhitelist", b =>
+                {
+                    b.HasOne("Content.Server.Database.RatFaction", "Faction")
+                        .WithMany("Whitelists")
+                        .HasForeignKey("FactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_rat_faction_whitelist_rat_faction_faction_id");
+
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_rat_faction_whitelist_player_player_user_id");
+
+                    b.Navigation("Faction");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.RoleWhitelist", b =>
                 {
                     b.HasOne("Content.Server.Database.Player", "Player")
@@ -2032,6 +2149,13 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Loadouts");
 
                     b.Navigation("Traits");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RatFaction", b =>
+                {
+                    b.Navigation("Managers");
+
+                    b.Navigation("Whitelists");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Round", b =>

@@ -10,6 +10,6 @@
   - type: Item
     size: Tiny
   - type: MiningVoucher
-    vendorWhitelist: # it's the only mining points vendor :)
+    vendorWhitelist: # it's the only salvage vendor :)
      components:
-     - PointsVendor
+     - ShopVendor

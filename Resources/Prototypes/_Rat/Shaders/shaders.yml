@@ -1,4 +1,0 @@
-- type: shader
-  id: CloneOrganOverlay
-  kind: source
-  path: "/Textures/_Rat/Shaders/clone_organ_overlay.swsl"

@@ -161,7 +161,7 @@ public class StaticSpriteView : Control
         }
         else
         {
-            // Подписаться на событие появления сущности
+            // Subscribe to entity spawn event
             Entity = null;
             NetEnt = netEnt;
         }
@@ -180,9 +180,8 @@ public class StaticSpriteView : Control
             return;
         }
 
-        // Создаем глубокую копию спрайта
         _cachedSprite = new SpriteComponent();
-        _cachedSprite.CopyFrom(sprite); // Используем встроенный метод копирования
+        _cachedSprite.CopyFrom(sprite);
 
         Entity = new(uid.Value, sprite, xform);
         NetEnt = EntMan.GetNetEntity(uid);
@@ -270,10 +269,10 @@ public class StaticSpriteView : Control
             uid,
             position,
             scale,
-            _cachedWorldRotation, // Используем сохраненный поворот
+            _cachedWorldRotation,
             _eyeRotation,
             OverrideDirection,
-            _cachedSprite, // Кэшированный спрайт
+            _cachedSprite,
             xform
         );
 
@@ -285,8 +284,8 @@ public class StaticSpriteView : Control
         [NotNullWhen(true)] out SpriteComponent? sprite,
         [NotNullWhen(true)] out TransformComponent? xform)
     {
-        sprite = _cachedSprite; // Возвращаем кэшированный спрайт
-        xform = null; // Не используем текущий transform
+        sprite = _cachedSprite;
+        xform = null;
 
         if (NetEnt != null && Entity == null && EntMan.TryGetEntity(NetEnt, out var ent))
             SetEntity(ent);

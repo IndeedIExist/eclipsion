@@ -1,3 +1,0 @@
-ent-PhoneInstrument = red phone
-    .desc = Should anything ever go wrong...
-    .suffix = harmony intercom

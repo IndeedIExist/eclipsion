@@ -88,6 +88,10 @@ public sealed partial class ContentAudioSystem
         switch (args.NewState)
         {
             case LobbyState:
+                // _Crescent: entering the lobby (via respawn or "return to lobby") does not trigger a
+                // round restart, so lingering in-round world audio (e.g. looping shower sounds) would
+                // otherwise keep playing forever. Silence it before the lobby music starts.
+                SilenceAudio();
                 StartLobbyMusic();
                 break;
             default:

@@ -1,9 +1,9 @@
 - type: vessel
   id: Magnate
-  name: БМС Магнат
+  name: DSM Magnate FSV
   description: |
-    Имперский корабль огневой поддержки, предназначенный для помощи флоту с помощью пусковой гаргульи для обхода вражеских щитов.
-    LOADOUT: 1x Gargoyle LRM launcher, 2x 400c plasmacasters, 2x 180c torch PDT
+    An imperial fire support vessel, designed for fleet support with its gargoyle launcher for bypassing enemy shields.
+    LOADOUT: 1x 240mm 'Gargoyle' torpedo launcher, 4x 200cc 'Retribution' pulse laser
     MINIMUM CREW: 1x Pilot, 1x Gunner, 1x Loader (optional)
     SHIELD: Errant-class
     SPEED: 25m/s
@@ -14,22 +14,19 @@
 
 - type: gameMap
   id: Magnate
-  mapName: 'БМС Магнат'
+  mapName: 'DSM Magnate'
   mapPath: /Maps/_Crescent/Shuttles/DSM/magnate.yml
   minPlayers: 0
   stations:
     Magnate:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Магнат {1}'
+          mapNameTemplate: 'DSM Magnate FSV {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

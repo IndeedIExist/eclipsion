@@ -1,0 +1,1301 @@
+# Hyperwar automated armory vendors.
+# Free (no points) CMAutomatedVendor racks that hand out the full WEAPON + ARMOR
+# arsenal from each faction's tech tree, so no research is needed during hyperwar.
+# NCWL pulls from the Communard tree, DSM pulls from the Imperial tree,
+# Shinohara pulls from the Corporate tree, TSFC pulls from Cyberdawn + Interdyne
+# (plus the SAW / GSC gear that has no tech tree of its own).
+
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarNCWLArmoryVendor
+  name: automated NCWL war armory
+  description: An automated rack wired straight into the League's wartime stockpile. Everything the arsenal can research, no tithe required.
+  components:
+  - type: AccessReader
+    access:
+    - [ "NCWLGeneral" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - PartisanNCWL
+    sections:
+    - name: Primary Weapons
+      entries:
+      - id: WeaponRifleFAL
+        name: MK-2 Falin 5.56x45mm
+        recommended: true
+      - id: WeaponRifleNCWLBatanya
+        name: Batanya battle rifle
+      - id: WeaponSubMachineGunNCWLWatchdog
+        name: DS1 Watchdog 9x19mm
+      - id: WeaponSubMachineGunBloodhound
+        name: Bloodhound SMG
+      - id: WeaponSubMachineGunMilitant
+        name: Militant SMG
+      - id: WeaponShotgunProletar
+        name: Toz-97 Proletariat 12 gauge
+      - id: WeaponShotgunDoubleBarreledNCWL
+        name: double-barreled shotgun
+      - id: WeaponShotgunToz123
+        name: Toz-123 shotgun
+      - id: WeaponLightMachineGunConscript
+        name: Conscript LMG
+      - id: WeaponSniperNCWLNovomosin
+        name: Novomosin sniper rifle
+      - id: WeaponSniperMolot
+        name: Molot sniper rifle
+      - id: WeaponLauncherGM94
+        name: GM-94 grenade launcher
+    - name: Sidearms
+      entries:
+      - id: WeaponPistolComrade
+        name: Comrade pistol
+      - id: WeaponPistolT91
+        name: T91 pistol
+      - id: WeaponRevolverPython
+        name: Python revolver
+    - name: Melee
+      entries:
+      - id: NCWLLugBaton
+        name: lug baton
+      - id: NCWLKukri
+        name: vibro kukri
+    - name: Armor
+      entries:
+      - id: NCWLRiotShield
+        name: riot shield
+      - id: RiotBulletShield
+        name: bullet shield
+      - id: ClothingOuterHardsuitNCWLInfantry
+        name: infantry hardsuit
+      - id: ClothingOuterHardsuitNCWLPetya
+        name: Petya heavy hardsuit
+      - id: ClothingOuterHardsuitNCWLJuggernaut
+        name: Commienaut juggernaut hardsuit
+      - id: ClothingOuterHardsuitNCWLEngi
+        name: engineer hardsuit
+      - id: ClothingOuterHardsuitNCWLMedi
+        name: medic hardsuit
+      - id: ClothingMaskNCWLGasmask
+        name: League gas mask
+    - name: Ammunition
+      entries:
+      - id: MagazineLightRifle
+        name: 30-round magazine (5.56x45mm)
+      - id: MagazineRifle
+        name: 20-round magazine (7.62x51mm)
+      - id: BoxSpeedLoaderRifle
+        name: box of stripper clips (7.62x51mm)
+      - id: MagazineHeavyRifleBoxmag
+        name: Conscript box magazine (12.7x99mm)
+      - id: MagazineHeavyRifle
+        name: heavy rifle magazine (12.7x99mm)
+      - id: MagazineAntiMateriel
+        name: anti-materiel magazine (15.2x169mm)
+      - id: BoxRoundsAntiMateriel
+        name: box of rounds (15.2x169mm)
+      - id: MagazineCaselessRifle
+        name: Militant magazine (10x24mm caseless)
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm)
+      - id: MagazineMagnumSub
+        name: Bloodhound magazine (.45 magnum)
+      - id: MagazineShotgun
+        name: 10-round magazine (12 gauge)
+      - id: BoxLethalshot
+        name: box of buckshot shells (12 gauge)
+      - id: BoxShotgunSlug
+        name: box of slug shells (12 gauge)
+      - id: BoxLethalshot4g
+        name: box of buckshot shells (4 gauge)
+      - id: MagazinePistol
+        name: pistol magazine (9x19mm)
+      - id: MagazineMagnum
+        name: magnum magazine (.45)
+      - id: SpeedLoaderMagnum
+        name: magnum speed loader (.45)
+    - name: Grenade Shells
+      entries:
+      - id: Cartridge40mmFrag
+        name: 40mm frag grenade
+      - id: Cartridge40mmHEDP
+        name: 40mm HEDP grenade
+      - id: Cartridge40mmThermobaric
+        name: 40mm thermobaric grenade
+      - id: Cartridge40mmCan
+        name: 40mm canister shell
+      - id: Cartridge40mmSmoke
+        name: 40mm smoke grenade
+      - id: Cartridge40mmEMP
+        name: 40mm EMP grenade
+    - name: Utilities
+      entries:
+      - id: ClothingBeltNCWLWebbing
+        name: League webbing
+      - id: ClothingBeltNCWLPouches
+        name: League pouch belt
+      - id: ClothingBeltNCWLDoubleHolster
+        name: League double holster
+      - id: ClothingShoesBootsMagNCWL
+        name: League magboots
+      - id: DoubleEmergencyOxygenTankFilled
+        name: double emergency oxygen tank
+      - id: JetpackCaptainFilled
+      - id: HandHeldMassScannerEE
+      - id: BoxMRE
+    - name: Tools
+      entries:
+      - id: ClothingBeltUtilityFilled
+        name: filled tool belt
+        recommended: true
+      - id: Welder
+      - id: WelderIndustrial
+      - id: Wrench
+      - id: Screwdriver
+      - id: Wirecutter
+      - id: Crowbar
+      - id: Multitool
+      - id: NetworkConfigurator
+      - id: JawsOfLife
+      - id: PowerDrill
+      - id: GasAnalyzer
+      - id: trayScanner
+      - id: HolofanProjector
+      - id: FireExtinguisher
+      - id: ClothingHandsGlovesColorYellow
+      - id: ClothingHeadHatWelding
+      - id: ClothingEyesGlassesMeson
+    - name: Construction Supplies
+      entries:
+      - id: SheetSteel
+        name: steel sheets
+      - id: SheetPlasteel
+        name: plasteel sheets
+      - id: SheetGlass
+        name: glass sheets
+      - id: SheetRGlass
+        name: reinforced glass sheets
+      - id: CableApcStack10
+        name: LV cable coil
+      - id: CableMVStack10
+        name: MV cable coil
+      - id: CableHVStack10
+        name: HV cable coil
+      - id: PowerCellHigh
+      - id: WeldingFuelTankFull
+    - name: Medical
+      entries:
+      - id: MedkitCombatFilled
+      - id: EmergencyMedipen
+      - id: CombatMedipen
+      - id: SpaceMedipen
+      - id: AntiPoisonMedipen
+      - id: ChemicalMedipen
+      - id: PainMedipen
+      - id: SurvivalMedipen
+      - id: BruteAutoInjector
+      - id: BurnAutoInjector
+      - id: AirlossAutoInjector
+    - name: Combat Drugs
+      entries:
+      - id: KaiserAutoinjector
+        recommended: true
+      - id: NaiserAutoinjector
+      - id: MechaniteAutoinjector
+      - id: BloodeyeAutoinjector
+      - id: ExileAutoinjector
+      - id: ExileminusAutoinjector
+      - id: CrashAutoinjector
+      - id: FallAutoinjector
+      - id: JVAutoInjector
+      - id: JV102AutoInjector
+      - id: NarcanAutoinjector
+
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarDSMArmoryVendor
+  name: automated DSM war armory
+  description: An automated rack wired straight into the Mandate's wartime stockpile. Everything the arsenal can research, no tithe required.
+  components:
+  - type: AccessReader
+    # Base "Empire" tag so every DSM member -- riflemen, officers AND freeholders --
+    # can draw gear. The DSM hyperwar jobs carry "Empire", not "EmpireSoldier".
+    access:
+    - [ "Empire" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/armory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - LevymanDSM
+    sections:
+    - name: Primary Weapons
+      entries:
+      - id: WeaponRifleMiller
+        name: DA-8 Miller 5.56x45mm
+        recommended: true
+      - id: WeaponRifleHunter
+        name: Hunter rifle
+      - id: WeaponRifleDSMLegionnaire
+        name: Legionnaire rifle
+      - id: WeaponSubMachineGunC20rHullrot
+        name: C-20r SMG
+      - id: WeaponSubMachineGunBeetle
+        name: Mac-11 Beetle 9x19mm
+      - id: WeaponShotgunDSMMatusa
+        name: Matusa shotgun
+      - id: WeaponShotgunReno
+        name: DA-13 Reno 12 gauge
+      - id: WeaponLightMachineGunDSMDominion
+        name: Dominion LMG
+      - id: WeaponSniperDSMLegax
+        name: Legax sniper rifle
+      - id: WeaponSniperImperator
+        name: Imperator sniper rifle
+      - id: WeaponDSMPlasmaRifle
+        name: Seethe plasma rifle
+      - id: WeaponLauncherM320
+        name: M320 grenade launcher
+    - name: Sidearms
+      entries:
+      - id: WeaponPistolComplianceImperial
+        name: Compliance pistol
+      - id: WeaponPistolNeoVolker
+        name: Neo-Volker pistol
+      - id: WeaponRevolverArgenti
+        name: Argenti revolver
+    - name: Melee
+      entries:
+      - id: DSMRapier
+        name: dueling rapier
+      - id: DSMSabre
+        name: sabre
+      - id: ZweihanderDSM
+        name: zweihander
+      - id: DSMDuelingKhopesh
+        name: dueling khopesh
+      - id: SRMKhopesh
+        name: vibro khopesh
+      - id: DSMBaton
+        name: baton
+      - id: ImperialPsionBoundlightStaff
+        name: boundlight staff
+    - name: Armor
+      entries:
+      - id: RiotBulletShield
+        name: bullet shield
+      - id: ClothingOuterHardsuitImperialSoldier
+        name: soldier hardsuit
+      - id: ClothingOuterHardsuitImperialKnight
+        name: knight hardsuit
+      - id: ClothingOuterHardsuitImperialNullweavePsion
+        name: nullweave psion hardsuit
+      - id: ClothingOuterHardsuitImperialJuggernaut
+        name: juggernaut hardsuit
+      - id: ClothingOuterHardsuitImperialWorker
+        name: worker hardsuit
+      - id: ClothingMaskImperialCombatGasmask
+        name: imperial combat gas mask
+    - name: Ammunition
+      entries:
+      - id: MagazineLightRifle
+        name: 30-round magazine (5.56x45mm)
+      - id: MagazineLightRifleBox
+        name: Dominion box magazine (5.56x45mm)
+      - id: MagazineBoxLightRifleSurplus
+        name: surplus ammo box (5.56x45mm)
+      - id: BoxSpeedLoaderLightRifle
+        name: box of stripper clips (5.56x45mm)
+      - id: MagazineRifle
+        name: 20-round magazine (7.62x51mm)
+      - id: MagazineAntiMateriel
+        name: anti-materiel magazine (15.2x169mm)
+      - id: BoxRoundsAntiMateriel
+        name: box of rounds (15.2x169mm)
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm)
+      - id: MagazinePistolSubMachineGunHeavy
+        name: C-20r magazine (11mm)
+      - id: MagazineShotgun
+        name: 10-round magazine (12 gauge)
+      - id: BoxLethalshot
+        name: box of buckshot shells (12 gauge)
+      - id: BoxShotgunSlug
+        name: box of slug shells (12 gauge)
+      - id: MagazinePistol
+        name: pistol magazine (9x19mm)
+      - id: MagazineMagnum
+        name: magnum magazine (.45)
+      - id: SpeedLoaderMagnum
+        name: magnum speed loader (.45)
+    - name: Grenade Shells
+      entries:
+      - id: Cartridge40mmFrag
+        name: 40mm frag grenade
+      - id: Cartridge40mmHEDP
+        name: 40mm HEDP grenade
+      - id: Cartridge40mmThermobaric
+        name: 40mm thermobaric grenade
+      - id: Cartridge40mmCan
+        name: 40mm canister shell
+      - id: Cartridge40mmSmoke
+        name: 40mm smoke grenade
+      - id: Cartridge40mmEMP
+        name: 40mm EMP grenade
+    - name: Utilities
+      entries:
+      - id: ClothingBeltAuthorityWebbing
+        name: ballistic combat webbing
+      - id: ClothingShoesBootsMagDSM
+        name: imperial magboots
+      - id: DoubleEmergencyOxygenTankFilled
+        name: double emergency oxygen tank
+      - id: JetpackCaptainFilled
+      - id: HandHeldMassScannerEE
+      - id: BoxMRE
+    - name: Tools
+      entries:
+      - id: ClothingBeltUtilityFilled
+        name: filled tool belt
+        recommended: true
+      - id: Welder
+      - id: WelderIndustrial
+      - id: Wrench
+      - id: Screwdriver
+      - id: Wirecutter
+      - id: Crowbar
+      - id: Multitool
+      - id: NetworkConfigurator
+      - id: JawsOfLife
+      - id: PowerDrill
+      - id: GasAnalyzer
+      - id: trayScanner
+      - id: HolofanProjector
+      - id: FireExtinguisher
+      - id: ClothingHandsGlovesColorYellow
+      - id: ClothingHeadHatWelding
+      - id: ClothingEyesGlassesMeson
+    - name: Construction Supplies
+      entries:
+      - id: SheetSteel
+        name: steel sheets
+      - id: SheetPlasteel
+        name: plasteel sheets
+      - id: SheetGlass
+        name: glass sheets
+      - id: SheetRGlass
+        name: reinforced glass sheets
+      - id: CableApcStack10
+        name: LV cable coil
+      - id: CableMVStack10
+        name: MV cable coil
+      - id: CableHVStack10
+        name: HV cable coil
+      - id: PowerCellHigh
+      - id: WeldingFuelTankFull
+    - name: Medical
+      entries:
+      - id: MedkitCombatFilled
+      - id: EmergencyMedipen
+      - id: CombatMedipen
+      - id: SpaceMedipen
+      - id: AntiPoisonMedipen
+      - id: ChemicalMedipen
+      - id: PainMedipen
+      - id: SurvivalMedipen
+      - id: BruteAutoInjector
+      - id: BurnAutoInjector
+      - id: AirlossAutoInjector
+    - name: Combat Drugs
+      entries:
+      - id: KaiserAutoinjector
+        recommended: true
+      - id: NaiserAutoinjector
+      - id: MechaniteAutoinjector
+      - id: BloodeyeAutoinjector
+      - id: ExileAutoinjector
+      - id: ExileminusAutoinjector
+      - id: CrashAutoinjector
+      - id: FallAutoinjector
+      - id: JVAutoInjector
+      - id: JV102AutoInjector
+      - id: NarcanAutoinjector
+
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarShinoharaArmoryVendor
+  name: automated Shinohara war armory
+  description: An automated rack wired straight into the Group's wartime stockpile. Everything the arsenal can research, no tithe required.
+  components:
+  - type: AccessReader
+    access:
+    - [ "Shinohara" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/armory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - CorpsecSHI
+    sections:
+    - name: Primary Weapons
+      entries:
+      - id: WeaponRifleSHINimrod
+        name: Nimrod assault rifle
+        recommended: true
+      - id: WeaponRifleGoro
+        name: Goro rifle
+      - id: WeaponRifleHoundMarksman
+        name: Hound marksman rifle
+      - id: WeaponRifleLecter
+        name: Lecter rifle
+      - id: WeaponRifleBarghest
+        name: Barghest rifle
+      - id: WeaponRifleM90GrenadeLauncher
+        name: M90gl rifle
+      - id: WeaponSubMachineGunMP49
+        name: MP49 SMG
+      - id: WeaponSubMachineGunSabre
+        name: Sabre SMG
+      - id: WeaponSubMachineGunWt550Hullrot
+        name: WT550 SMG
+      - id: WeaponShotgunBlaster
+        name: Blaster shotgun
+      - id: WeaponShotgunSHIDoubleBarreled4g
+        name: 4-gauge double-barreled shotgun
+      - id: WeaponShotgunEnforcer
+        name: Enforcer shotgun
+      - id: WeaponShotgunSpas
+        name: SPAS-12 shotgun
+      - id: WeaponLightMachineGunL6
+        name: L6 SAW
+      - id: WeaponSniperHristov
+        name: Hristov anti-materiel rifle
+      - id: WeaponLauncherMilkor
+        name: Milkor grenade launcher
+      - id: WeaponLauncherDisposableRocket
+        name: disposable rocket launcher
+      - id: WeaponLauncherHammerhead
+        name: Hammerhead launcher
+    - name: Sidearms
+      entries:
+      - id: WeaponPistolMk58
+        name: Mk58 pistol
+      - id: WeaponPistolSmartpistol
+        name: smartpistol
+      - id: WeaponRevolverInspector
+        name: Inspector revolver
+      - id: WeaponRevolverMateba
+        name: Mateba revolver
+      - id: WeaponPistolBlastpopGray
+        name: Blastpop (gray)
+      - id: WeaponPistolBlastpopRed
+        name: Blastpop (red)
+      - id: WeaponPistolBlastpopBlue
+        name: Blastpop (blue)
+      - id: WeaponPistolBlastpopGreen
+        name: Blastpop (green)
+      - id: WeaponPistolBlastpopGold
+        name: Blastpop (gold)
+      - id: WeaponPistolBlastpopPurple
+        name: Blastpop (purple)
+    - name: Melee
+      entries:
+      - id: SHIKatana
+        name: Shinohara katana
+      - id: ClothingBeltSheathSHIKatana
+        name: katana sheath
+      - id: SHIKatanaShiverBlade
+        name: Shiver blade
+      - id: TelescopicBaton
+        name: telescopic baton
+    - name: Armor
+      entries:
+      - id: ClothingOuterHardsuitHighsec
+        name: highsec hardsuit
+      - id: ClothingOuterHardsuitHighsecUA
+        name: highsec hardsuit (UA)
+      - id: ClothingOuterHardsuitHighsecIndependent
+        name: independent highsec hardsuit
+      - id: ClothingOuterHardsuitSHIJuggernaut
+        name: Shinohara juggernaut hardsuit
+      - id: ClothingOuterHardsuitSHISpeedsuit
+        name: Shinohara speedsuit
+      - id: ClothingOuterHardsuitCombine
+        name: Combine hardsuit
+      - id: ClothingOuterHardsuitHEV
+        name: HEV hardsuit
+      - id: ClothingOuterHardsuitMetrocop
+        name: Metrocop hardsuit
+      - id: ClothingOuterArmorShinoharaArmorHighsec
+        name: highsec armor
+      - id: ClothingOuterArmorShinoharaArmorHighsecUA
+        name: highsec armor (UA)
+      - id: ClothingOuterArmorShinoharaArmorBulwark
+        name: Bulwark armor
+      - id: ClothingOuterArmorShinoharaArmor
+        name: corpsec armor
+      - id: ClothingOuterArmorShinoharaHOSVest
+        name: security chief vest
+      - id: ClothingHeadHatShinoharaHelmet
+        name: highsec helmet
+      - id: ClothingHeadHatShinoharaHelmetUA
+        name: highsec helmet (UA)
+      - id: ClothingHeadHatShinoharaNonevaHelm
+        name: corpsec helmet
+    - name: Grenades
+      entries:
+      - id: SHIHG17SmartHandgrenade
+        name: HG-17 smart grenade
+      - id: SHIHG19SmartHandgrenadeEMP
+        name: HG-19 smart EMP grenade
+      - id: HG13M2MiniHandgrenade
+        name: HG-13 mini grenade
+      - id: SHIHG7FlashbangHandgrenade
+        name: HG-7 flashbang
+      - id: SHIHG3TearGasHandgrenade
+        name: HG-3 tear gas grenade
+    - name: Cybernetics
+      entries:
+      - id: ShinoharaOptics
+        name: Shinohara cybereyes
+      - id: CyberneticsDermalArmor
+        name: dermal armor
+      - id: CyberneticsMantisBladeLeft
+        name: mantis blade (left)
+      - id: CyberneticsMantisBladeRight
+        name: mantis blade (right)
+    - name: Ammunition
+      entries:
+      - id: MagazineLightRifle
+        name: 30-round magazine (5.56x45mm)
+      - id: MagazineRifle
+        name: rifle magazine
+      - id: MagazineHeavyRifle
+        name: heavy rifle magazine
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm)
+      - id: MagazinePistolSubMachineGunHeavy
+        name: heavy SMG magazine (11mm)
+      - id: MagazinePistol6mmSmg
+        name: Sabre SMG magazine (6mm)
+      - id: MagazineAntiMateriel
+        name: anti-materiel magazine (15.2x169mm)
+      - id: BoxRoundsAntiMateriel
+        name: box of rounds (15.2x169mm)
+      - id: MagazineShotgun
+        name: 10-round magazine (12 gauge)
+      - id: BoxLethalshot
+        name: box of buckshot shells (12 gauge)
+      - id: BoxShotgunSlug
+        name: box of slug shells (12 gauge)
+      - id: BoxLethalshot4g
+        name: box of buckshot shells (4 gauge)
+      - id: MagazinePistol
+        name: pistol magazine (9x19mm)
+      - id: MagazinePistolSmartgun
+        name: smartpistol magazine (12mm)
+      - id: MagazineMagnum
+        name: magnum magazine (.45)
+      - id: SpeedLoaderMagnum
+        name: magnum speed loader (.45)
+      - id: CartridgeHammerheadRocket
+        name: Hammerhead rocket
+    - name: Grenade Shells
+      entries:
+      - id: Cartridge40mmFrag
+        name: 40mm frag grenade
+      - id: Cartridge40mmHEDP
+        name: 40mm HEDP grenade
+      - id: Cartridge40mmThermobaric
+        name: 40mm thermobaric grenade
+      - id: Cartridge40mmCan
+        name: 40mm canister shell
+      - id: Cartridge40mmSmoke
+        name: 40mm smoke grenade
+      - id: Cartridge40mmEMP
+        name: 40mm EMP grenade
+    - name: Utilities
+      entries:
+      - id: ClothingBeltMilitaryWebbing
+        name: military webbing
+      - id: ClothingShoesBootsMagAdv
+        name: advanced magboots
+      - id: DoubleEmergencyOxygenTankFilled
+        name: double emergency oxygen tank
+      - id: JetpackCaptainFilled
+      - id: HandHeldMassScannerEE
+      - id: BoxMRE
+    - name: Tools
+      entries:
+      - id: ClothingBeltUtilityFilled
+        name: filled tool belt
+        recommended: true
+      - id: Welder
+      - id: WelderIndustrial
+      - id: Wrench
+      - id: Screwdriver
+      - id: Wirecutter
+      - id: Crowbar
+      - id: Multitool
+      - id: NetworkConfigurator
+      - id: JawsOfLife
+      - id: PowerDrill
+      - id: GasAnalyzer
+      - id: trayScanner
+      - id: HolofanProjector
+      - id: FireExtinguisher
+      - id: ClothingHandsGlovesColorYellow
+      - id: ClothingHeadHatWelding
+      - id: ClothingEyesGlassesMeson
+    - name: Construction Supplies
+      entries:
+      - id: SheetSteel
+        name: steel sheets
+      - id: SheetPlasteel
+        name: plasteel sheets
+      - id: SheetGlass
+        name: glass sheets
+      - id: SheetRGlass
+        name: reinforced glass sheets
+      - id: CableApcStack10
+        name: LV cable coil
+      - id: CableMVStack10
+        name: MV cable coil
+      - id: CableHVStack10
+        name: HV cable coil
+      - id: PowerCellHigh
+      - id: WeldingFuelTankFull
+    - name: Medical
+      entries:
+      - id: MedkitCombatFilled
+      - id: EmergencyMedipen
+      - id: CombatMedipen
+      - id: SpaceMedipen
+      - id: AntiPoisonMedipen
+      - id: ChemicalMedipen
+      - id: PainMedipen
+      - id: SurvivalMedipen
+      - id: BruteAutoInjector
+      - id: BurnAutoInjector
+      - id: AirlossAutoInjector
+    - name: Combat Drugs
+      entries:
+      - id: KaiserAutoinjector
+        recommended: true
+      - id: NaiserAutoinjector
+      - id: MechaniteAutoinjector
+      - id: BloodeyeAutoinjector
+      - id: ExileAutoinjector
+      - id: ExileminusAutoinjector
+      - id: CrashAutoinjector
+      - id: FallAutoinjector
+      - id: JVAutoInjector
+      - id: JV102AutoInjector
+      - id: NarcanAutoinjector
+
+# TSFC is a coalition, so its arsenal is split by member corp: Cyberdawn and IPM
+# (Interdyne) each have a tech tree, SAW and GSC do not and pull from their
+# dogtag catalogs instead.
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarTSFCArmoryVendor
+  name: automated TSFC war armory
+  description: An automated rack wired straight into the Coalition's wartime stockpile. Cyberdawn, SAW, IPM and GSC hardware, no tithe required.
+  components:
+  - type: AccessReader
+    access:
+    - [ "SyndicateBasic" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - InfanteerTFSC
+    sections:
+    - name: Cyberdawn Weapons
+      entries:
+      - id: WeaponRifleUnderdog
+        name: Underdog rifle
+        recommended: true
+      - id: WeaponRifleAk
+        name: AK rifle
+      - id: WeaponRifleKrinkov
+        name: Krinkov carbine
+      - id: WeaponRifleMayflower
+        name: Mayflower rifle
+      - id: WeaponRifleSVDMarksman
+        name: SVD marksman rifle
+      - id: WeaponSniperAK60
+        name: AK-60 sniper rifle
+      - id: WeaponShotgunTuber
+        name: Tuber shotgun
+      - id: WeaponShotgunTFSCSaiga12
+        name: Saiga-12 shotgun
+      - id: WeaponSubMachineGunAtreidesHullrot
+        name: Atreides SMG
+      - id: WeaponSubMachineGunCorsair
+        name: Corsair SMG
+      - id: WeaponLightMachineGunTFSCRPD
+        name: RPD light machine gun
+      - id: WeaponLightMachineGunCompakt
+        name: Compakt light machine gun
+      - id: WeaponPistolViperWood
+        name: Viper pistol
+      - id: WeaponPistolAnsem
+        name: Ansem pistol
+      - id: WeaponPistolPsiBreaker
+        name: Psibreaker pistol
+      - id: EnergyDaggerBox
+        name: energy dagger
+      - id: EnergySword
+        name: energy sword
+      - id: EnergySwordDouble
+        name: double-bladed energy sword
+    - name: SAW Equipment
+      entries:
+      - id: LavalandWeaponKineticMachete
+        name: kinetic machete
+      - id: SecBreachingHammer
+        name: breaching hammer
+      - id: WeaponDonorPlasmaCutter
+        name: plasma cutter
+      - id: RCDRecharging
+        name: experimental RCD
+      - id: ClothingOuterHardsuitRamzi
+        name: Ramzi hardsuit
+    - name: IPM Medical
+      entries:
+      - id: MedkitCombatFilled
+        name: combat medkit
+      - id: SecHypo
+        name: Interdyne hypospray
+      - id: SyringeCase
+        name: syringe case
+      - id: DefibrillatorSyndicate
+        name: syndicate defibrillator
+      - id: OmnimedToolSyndie
+        name: syndicate omnimed tool
+      - id: InterdyneOptics
+        name: Interdyne optics
+      - id: CyberneticsPainEditor
+        name: pain editor
+      - id: CyberneticsAdrenal
+        name: adrenal implant
+      - id: CyberneticsBloodPump
+        name: blood pump
+      - id: CrowbarLeftArm
+        name: pry arm (left)
+      - id: CrowbarRightArm
+        name: pry arm (right)
+      - id: CartridgeBicaridine
+        name: bicaridine cartridge
+      - id: CartridgeDermaline
+        name: dermaline cartridge
+      - id: CartridgeSaline
+        name: saline cartridge
+      - id: CartridgeTirizene
+        name: tirizene cartridge
+      - id: CartridgeEphedrine
+        name: ephedrine cartridge
+      - id: CartridgePuncturase
+        name: puncturase cartridge
+      - id: CartridgeAtropine
+        name: atropine cartridge
+    - name: GSC Ordnance
+      entries:
+      - id: WeaponLauncherRocket
+        name: RPG-7 launcher
+      - id: WeaponLauncherSmallRocket
+        name: RPG-2 launcher
+      - id: CartridgeRPG7Heat
+        name: RPG-7 HEAT rocket
+      - id: CartridgeRPG7Frag
+        name: RPG-7 frag rocket
+      - id: CartridgeRPG7Tandem
+        name: RPG-7 tandem rocket
+      - id: CartridgeRPG7Thermobaric
+        name: RPG-7 thermobaric rocket
+      - id: CartridgeRPG2Heat
+        name: RPG-2 HEAT rocket
+      - id: CartridgeRPG2Frag
+        name: RPG-2 frag rocket
+      - id: TFSCRGD5Handgrenade
+        name: RGD-5 hand grenade
+      - id: ClothingBackpackDuffelSyndicateBreachingChargetBundle
+        name: breaching charge bundle
+    - name: Armor
+      entries:
+      - id: ClothingOuterHardsuitCybersun
+        name: Cybersun hardsuit
+      - id: ClothingOuterHardsuitCybersunStealth
+        name: Cybersun stealth hardsuit
+      - id: ClothingOuterHardsuitSyndieMedic
+        name: syndicate medic hardsuit
+      - id: ClothingOuterHardsuitTraumasec
+        name: Traumasec hardsuit
+      - id: ClothingOuterHardsuitSyndicateBG
+        name: syndicate bodyguard hardsuit
+      - id: ClothingOuterHardsuitSyndicateBulwar
+        name: Bulwark hardsuit
+      - id: ClothingOuterArmorCyberdawnPatriarch
+        name: Patriarch armor
+      - id: ClothingOuterArmorKendoBogu
+        name: kendo bogu
+      - id: ClothingOuterArmorSyndicateArmorvestInterdyne
+        name: Interdyne armor vest
+      - id: ClothingHeadHelmetSyndicateBasicInterdyne
+        name: Interdyne helmet
+      - id: ClothingOuterArmorSyndicateApron
+        name: armored apron
+      - id: ClothingHeadHatPatriarch
+        name: Patriarch hat
+      - id: ClothingEyesThermalVisionGoggles
+        name: thermal vision goggles
+    - name: Infiltration
+      entries:
+      - id: Emag
+        name: cryptographic sequencer
+      - id: Doorjack
+        name: doorjack
+      - id: RadioJammer
+        name: radio jammer
+      - id: PowerSink
+        name: power sink
+      - id: SyndicateJawsOfLife
+        name: syndicate jaws of life
+      - id: StealthBox
+        name: stealth box
+      - id: SyndicateBomb
+        name: syndicate bomb
+      - id: AgentIDCard
+        name: agent ID card
+      - id: ClothingBackpackChameleonFill
+        name: chameleon backpack
+      - id: ClothingMaskGasVoiceChameleon
+        name: chameleon voice mask
+      - id: DnaScramblerImplanter
+        name: DNA scrambler implanter
+      - id: FreedomImplanter
+        name: freedom implanter
+      - id: EmpImplanter
+        name: EMP implanter
+      - id: StorageImplanter
+        name: storage implanter
+      - id: MicroBombImplanter
+        name: micro-bomb implanter
+      - id: MacroBombImplanter
+        name: macro-bomb implanter
+      - id: ScramImplanter
+        name: scram implanter
+    - name: Ammunition
+      entries:
+      - id: MagazineLightRifle
+        name: 30-round magazine (5.56x45mm)
+      - id: MagazineRifle
+        name: rifle magazine
+      - id: MagazineRifleDrum
+        name: rifle drum magazine
+      - id: MagazineHeavyRifle
+        name: heavy rifle magazine
+      - id: MagazineLightRifleBox
+        name: Compakt box magazine (5.56x45mm)
+      - id: MagazineAntiMateriel
+        name: anti-materiel magazine (15.2x169mm)
+      - id: BoxRoundsAntiMateriel
+        name: box of rounds (15.2x169mm)
+      - id: MagazinePistolSubMachineGun
+        name: 35-round SMG magazine (9x19mm)
+      - id: MagazinePistolSubMachineGunHeavy
+        name: Corsair magazine (11mm)
+      - id: MagazineShotgun
+        name: 10-round magazine (12 gauge)
+      - id: DrumMagazineShotgunBuck
+        name: shotgun drum magazine (12 gauge)
+      - id: BoxLethalshot
+        name: box of buckshot shells (12 gauge)
+      - id: BoxShotgunSlug
+        name: box of slug shells (12 gauge)
+      - id: MagazinePistol
+        name: pistol magazine (9x19mm)
+      - id: MagazinePistolHeavy
+        name: Ansem magazine (11mm)
+      - id: MagazinePistolSpecialMindbreaker
+        name: mindbreaker magazine
+    - name: Utilities
+      entries:
+      - id: ClothingBeltSyndicateWebbing
+        name: syndicate webbing
+      - id: ClothingShoesBootsMagSyndie
+        name: blood-red magboots
+      - id: DoubleEmergencyOxygenTankFilled
+        name: double emergency oxygen tank
+      - id: JetpackCaptainFilled
+      - id: HandHeldMassScannerEE
+      - id: BoxMRE
+    # No jaws of life here -- SyndicateJawsOfLife is already stocked under Infiltration.
+    - name: Tools
+      entries:
+      - id: ClothingBeltUtilityFilled
+        name: filled tool belt
+        recommended: true
+      - id: Welder
+      - id: WelderIndustrial
+      - id: Wrench
+      - id: Screwdriver
+      - id: Wirecutter
+      - id: Crowbar
+      - id: Multitool
+      - id: NetworkConfigurator
+      - id: PowerDrill
+      - id: GasAnalyzer
+      - id: trayScanner
+      - id: HolofanProjector
+      - id: FireExtinguisher
+      - id: ClothingHandsGlovesColorYellow
+      - id: ClothingHeadHatWelding
+      - id: ClothingEyesGlassesMeson
+    - name: Construction Supplies
+      entries:
+      - id: SheetSteel
+        name: steel sheets
+      - id: SheetPlasteel
+        name: plasteel sheets
+      - id: SheetGlass
+        name: glass sheets
+      - id: SheetRGlass
+        name: reinforced glass sheets
+      - id: CableApcStack10
+        name: LV cable coil
+      - id: CableMVStack10
+        name: MV cable coil
+      - id: CableHVStack10
+        name: HV cable coil
+      - id: PowerCellHigh
+      - id: WeldingFuelTankFull
+    - name: Medical
+      entries:
+      - id: EmergencyMedipen
+      - id: CombatMedipen
+      - id: SpaceMedipen
+      - id: AntiPoisonMedipen
+      - id: ChemicalMedipen
+      - id: PainMedipen
+      - id: SurvivalMedipen
+      - id: BruteAutoInjector
+      - id: BurnAutoInjector
+      - id: AirlossAutoInjector
+    - name: Combat Drugs
+      entries:
+      - id: KaiserAutoinjector
+        recommended: true
+      - id: NaiserAutoinjector
+      - id: MechaniteAutoinjector
+      - id: BloodeyeAutoinjector
+      - id: ExileAutoinjector
+      - id: ExileminusAutoinjector
+      - id: CrashAutoinjector
+      - id: FallAutoinjector
+      - id: JVAutoInjector
+      - id: JV102AutoInjector
+      - id: NarcanAutoinjector
+
+# Automated ship ammunition depot (replaces the old credit-based ShipWarVendory).
+# Free, unlimited, open to everyone (no AccessReader) so any ship crew can restock.
+# Entry names are omitted so each shows its own prototype name, except where several
+# prototypes share one name and the UI would show duplicate rows.
+# Covers both the shipgun-rework calibers (20/35/48/50/60/88/90/95/120/240/300/330mm)
+# and the older platforms that still sit on hulls in the map pool.
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarShipAmmoVendor
+  name: automated ship ordnance depot
+  description: An automated depot wired into the fleet magazines. All ship-gun ordnance, free to restock.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    sections:
+    - name: Autocannon Drums
+      entries:
+      - id: Magazine20mm
+      - id: Magazine20mmFrag
+      - id: Magazine35mm
+      - id: Magazine35mmHE
+      - id: Magazine50mm
+      - id: Magazine50mmHE
+      - id: Magazine50mmSAPHE
+    # Loose rounds, for topping off a part-spent drum instead of swapping it.
+    - name: Autocannon Rounds
+      entries:
+      - id: Cartridge20mm
+      - id: Cartridge20mmFrag
+      - id: Cartridge35mm
+      - id: Cartridge35mmHE
+      - id: Cartridge50mm
+      - id: Cartridge50mmHE
+      - id: Cartridge50mmSAPHE
+    - name: 88mm Flak
+      entries:
+      - id: MagazineCorpus
+        name: 88mm 'Corpus' feeder box
+      - id: CorpusCartridge
+        name: 88mm 'Corpus' flak shell
+      - id: MagazineFlak
+        name: 88mm 'Prince' flak box
+      - id: FlakCartridge
+        name: 88mm 'Prince' flak shell
+    - name: 90mm Autocannon Clips
+      entries:
+      - id: MagazineResolute
+      - id: MagazineResoluteAP
+      - id: MagazineResoluteHE
+    - name: Cannon Shells
+      entries:
+      - id: Cartridge90mm
+      - id: Cartridge90mmAP
+      - id: Cartridge90mmHE
+      - id: Cartridge120mm
+      - id: Cartridge120mmFlak
+      - id: Cartridge120mmFlux
+      - id: Cartridge300mm
+      # Type 99 120mm artillery.
+      - id: CartridgeShellArmorPiercing
+      - id: CartridgeShellHighExplosive
+      - id: CartridgeShellPractice
+      - id: CartridgeRailHighExplosive
+    - name: Rocket Pods
+      entries:
+      - id: Magazine48mmRocket
+      - id: Magazine48mmRocketGorlex
+      - id: Cartridge48mmRocket
+      - id: Cartridge48mmRocketGorlex
+      - id: Magazine60mm
+      - id: Magazine60mmNCWL
+      - id: Magazine60mmGorlex
+      - id: Magazine60mmSHI
+      - id: Cartridge60mmRocket
+      - id: Cartridge60mmRocketNCWL
+      - id: Cartridge60mmRocketGorlex
+      - id: Cartridge60mmRocketAdvanced
+    - name: Missiles
+      entries:
+      - id: Cartridge95mmRocket
+      - id: Cartridge95mmRocketNCWL
+      - id: Cartridge95mmRocketGSC
+      - id: Cartridge330mmRocket
+      - id: SwarmrocketClip
+      - id: SwarmerRocketsGuidedCartridge
+      - id: MagazineSwarmer
+      - id: SwarmerRocketCartridge
+      - id: LanceRocketCartridge
+    - name: Torpedoes
+      entries:
+      - id: Cartridge240mmRocket
+      - id: Cartridge240mmRocketNCWL
+      - id: IdnaTorpedo
+      - id: TorpGarg
+      - id: TorpGargEMP
+      - id: TorpCatapult
+    - name: Shipgun Ordnance
+      entries:
+      - id: MagazineVulcan
+      - id: CartridgeVulcanStandard
+      - id: MagazineLightRifleBoxSlug
+      - id: MagazineLightRifleBoxSlugHE
+      - id: MagazineLightRifleBoxSlugInert
+      - id: MagazineLightRifleBoxSlugEMP
+      - id: CartridgeMachineGunArmorPiercing
+      - id: CartridgeMachineGunHighExplosive
+      - id: CartridgeMachineGunEMP
+      - id: CartridgeMachineGunPractice
+      - id: MagazineMortar
+      - id: CartridgeMortarStandardTurret
+      - id: MagazineNeedler
+      - id: Needler
+      - id: HeavyMortarCartridge
+      - id: SmartBomb
+      - id: MagazineRocketEmpty
+        name: 48mm rocket magazine (empty)
+      - id: MagazineRocketLowYield
+        name: 48mm rocket magazine (low-yield)
+      - id: MagazineRocketHighYield
+        name: 48mm rocket magazine (high-yield)
+      - id: MagazineRocketEMP
+        name: 48mm rocket magazine (EMP)
+      - id: CartridgeRocketLowYield
+      - id: CartridgeRocketHighYield
+      - id: CartridgeRocketEMP
+    - name: Energy & Exotic
+      entries:
+      - id: LensXray
+      - id: LensInfared
+      - id: LensMicrowave
+      - id: LensPlasma
+      - id: StandardAntimatterCanister
+      - id: PlasmaAntimatterCanister
+      - id: GuidedAntimatterCanister
+      - id: PowerCageHardliner
+    # The 320mm accelerator cannon will not fire at all without coolant loaded.
+    - name: Coolant
+      entries:
+      - id: CoolantCartridge30
+      - id: CoolantCartridge10
+
+# Automated ship LPC (fabprint disk) vendors, one per faction.
+# Every regular NCWL / DSM ship LPC, free. Unionfall event ships are NOT included.
+# Redeem the disk at a shipyard console to spawn the ship.
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarNCWLShipVendor
+  name: automated NCWL LPC printer
+  description: An automated fabprint press stocked with every League ship pattern. Redeem a disk at a shipyard console.
+  components:
+  - type: AccessReader
+    access:
+    - [ "NCWLGeneral" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - PartisanNCWL
+    sections:
+    - name: Warships
+      entries:
+      - id: ShipVoucherVanguard
+      - id: ShipVoucherLodka
+      - id: ShipVoucherKrechet
+      - id: ShipVoucherMolot
+      - id: ShipVoucherIvarod
+      - id: ShipVoucherHind
+      - id: ShipVoucherGargut
+      - id: ShipVoucherStern
+      - id: ShipVoucherSunder
+      - id: ShipVoucherBogatyr
+    - name: Drones
+      entries:
+      - id: ShipVoucherHornetDrone
+      - id: ShipVoucherWaspDrone
+
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarDSMShipVendor
+  name: automated DSM LPC printer
+  description: An automated fabprint press stocked with every Mandate ship pattern. Redeem a disk at a shipyard console.
+  components:
+  - type: AccessReader
+    # Base "Empire" tag so every DSM member -- freeholders included -- can print LPCs.
+    access:
+    - [ "Empire" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/armory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - LevymanDSM
+    sections:
+    - name: Warships
+      entries:
+      - id: ShipVoucherIbis
+      - id: ShipVoucherPraetorian
+      - id: ShipVoucherCovetor
+      - id: ShipVoucherRaider
+      - id: ShipVoucherTorturer
+      - id: ShipVoucherLaelaps
+      - id: ShipVoucherRedemptor
+      - id: ShipVoucherPerigale
+      - id: ShipVoucherKhan
+      - id: ShipVoucherJanissary
+      - id: ShipVoucherMagnate
+      - id: ShipVoucherSunesis
+      - id: ShipVoucherPraxis
+      - id: ShipVoucherGnosis
+      - id: ShipVoucherNemesis
+      - id: ShipVoucherTriumphant
+      - id: ShipVoucherSuzerain
+    - name: Drones
+      entries:
+      - id: ShipVoucherRocinanteDrone
+      - id: ShipVoucherValorDrone
+
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarShinoharaShipVendor
+  name: automated Shinohara LPC printer
+  description: An automated fabprint press stocked with every Group ship pattern. Redeem a disk at a shipyard console.
+  components:
+  - type: AccessReader
+    access:
+    - [ "Shinohara" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/armory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - CorpsecSHI
+    sections:
+    - name: Warships
+      entries:
+      - id: ShipVoucherShark
+      - id: ShipVoucherFujin
+      - id: ShipVoucherNazaar
+      - id: ShipVoucherMusinyane
+      - id: ShipVoucherFlea
+    - name: Civilian
+      entries:
+      - id: ShipVoucherBuffalo
+      - id: ShipVoucherGazpachov
+      - id: ShipVoucherChanchu
+
+- type: entity
+  parent: ColMarTechBase
+  id: HyperwarTSFCShipVendor
+  name: automated TSFC LPC printer
+  description: An automated fabprint press stocked with every Coalition ship pattern. Redeem a disk at a shipyard console.
+  components:
+  - type: AccessReader
+    access:
+    - [ "SyndicateBasic" ]
+  - type: Sprite
+    sprite: _Crescent/Structures/syndicatearmory.rsi
+  - type: CMAutomatedVendor
+    jobs:
+    - InfanteerTFSC
+    sections:
+    - name: Cyberdawn
+      entries:
+      - id: ShipVoucherSpriggan
+      - id: ShipVoucherVelator
+      - id: ShipVoucherTaipan
+      - id: ShipVoucherWisp
+      - id: ShipVoucherWreck
+    - name: SAW
+      entries:
+      - id: ShipVoucherAmadeus
+      - id: ShipVoucherCaracal
+      - id: ShipVoucherGeode
+      - id: ShipVoucherHyena
+      - id: ShipVoucherMercuryMK2
+      - id: ShipVoucherRockchipper
+      - id: ShipVoucherRokh
+      - id: ShipVoucherScabrak
+      - id: ShipVoucherShanty
+      - id: ShipVoucherThanapod
+    - name: GSC
+      entries:
+      - id: ShipVoucherBodybag
+      - id: ShipVoucherCleaver
+      - id: ShipVoucherCorvax
+      - id: ShipVoucherEradicator
+      - id: ShipVoucherGnat
+      - id: ShipVoucherItch
+      - id: ShipVoucherOuroboros
+      - id: ShipVoucherPiranha
+      - id: ShipVoucherReaver
+      - id: ShipVoucherScuttlefish
+      - id: ShipVoucherSinn
+      - id: ShipVoucherTick
+      - id: ShipVoucherWolf
+    - name: IPM
+      entries:
+      - id: ShipVoucherFridge
+      - id: ShipVoucherHarpy
+      - id: ShipVoucherHarrier
+      - id: ShipVoucherHulk
+      - id: ShipVoucherMatabele
+      - id: ShipVoucherMeatwagon

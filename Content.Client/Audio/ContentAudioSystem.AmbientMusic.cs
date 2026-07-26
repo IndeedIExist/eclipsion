@@ -71,6 +71,11 @@ public sealed partial class ContentAudioSystem
     // List of available ambient music tracks to sift through.
     private List<AmbientMusicPrototype>? _musicTracks;
 
+    // Shuffle bags: keyed by SoundCollectionPrototype ID.
+    // Each bag holds tracks not yet played; when empty it refills and reshuffles.
+    // Shared across ambient and combat so each collection is independently no-repeat.
+    private readonly Dictionary<string, List<string>> _musicBags = new();
+
     // Time in seconds for ambient music tracks to fade in. Set to 0 to play immediately.
     private float _ambientMusicFadeInTime = 10f;
 
@@ -143,7 +148,7 @@ public sealed partial class ContentAudioSystem
 
         SoundCollectionPrototype soundcol = _protMan.Index<SoundCollectionPrototype>(_musicProto.ID);
 
-        string path = _random.Pick(soundcol.PickFiles).ToString(); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
+        string path = PickNext(soundcol); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
 
         PlayMusicTrack(path, _musicProto.Sound.Params.Volume, _ambientMusicFadeInTime, false);
 
@@ -192,7 +197,7 @@ public sealed partial class ContentAudioSystem
 
         SoundCollectionPrototype soundcol = _protMan.Index<SoundCollectionPrototype>(_musicProto.ID);
 
-        string path = _random.Pick(soundcol.PickFiles).ToString(); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
+        string path = PickNext(soundcol); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
 
         PlayMusicTrack(path, _musicProto.Sound.Params.Volume, _ambientMusicFadeInTime, false);
 
@@ -252,7 +257,7 @@ public sealed partial class ContentAudioSystem
 
         SoundCollectionPrototype soundcol = _protMan.Index<SoundCollectionPrototype>(_musicProto.ID);
 
-        string path = _random.Pick(soundcol.PickFiles).ToString(); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
+        string path = PickNext(soundcol); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
 
         PlayMusicTrack(path, _musicProto.Sound.Params.Volume, _ambientMusicFadeInTime, false);
 
@@ -327,7 +332,7 @@ public sealed partial class ContentAudioSystem
                 _musicProto = factionCombatMusicPrototype;
                 SoundCollectionPrototype soundcol = _protMan.Index<SoundCollectionPrototype>(_musicProto.ID);
 
-                string path = _random.Pick(soundcol.PickFiles).ToString(); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
+                string path = PickNext(soundcol); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
 
                 PlayMusicTrack(path, _musicProto.Sound.Params.Volume, _combatMusicFadeInTime, true);
             }
@@ -336,7 +341,7 @@ public sealed partial class ContentAudioSystem
                 _musicProto = _protMan.Index<AmbientMusicPrototype>("combatmodedefault");
                 SoundCollectionPrototype soundcol = _protMan.Index<SoundCollectionPrototype>(_musicProto.ID);
 
-                string path = _random.Pick(soundcol.PickFiles).ToString(); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
+                string path = PickNext(soundcol); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
 
                 PlayMusicTrack(path, _musicProto.Sound.Params.Volume, _combatMusicFadeInTime, true);
             }
@@ -371,7 +376,7 @@ public sealed partial class ContentAudioSystem
             }
             SoundCollectionPrototype soundcol = _protMan.Index<SoundCollectionPrototype>(_musicProto.ID); //THIS IS WHAT ERRORS!
 
-            string path = _random.Pick(soundcol.PickFiles).ToString(); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
+            string path = PickNext(soundcol); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
 
             PlayMusicTrack(path, _musicProto.Sound.Params.Volume, _ambientMusicFadeInTime, false);
 
@@ -408,6 +413,24 @@ public sealed partial class ContentAudioSystem
             FadeIn(_ambientMusicStream, strim.Value.Component, fadein);
     }
 
+    /// <summary>
+    /// Picks the next unplayed track from a sound collection.
+    /// Once all tracks have been played once the bag refills and reshuffles,
+    /// guaranteeing no track repeats until the whole collection has been heard.
+    /// </summary>
+    private string PickNext(SoundCollectionPrototype soundcol)
+    {
+        if (!_musicBags.TryGetValue(soundcol.ID, out var bag) || bag.Count == 0)
+        {
+            bag = soundcol.PickFiles.Select(f => f.ToString()).ToList();
+            _random.Shuffle(bag);
+            _musicBags[soundcol.ID] = bag;
+        }
+        var track = bag[^1];
+        bag.RemoveAt(bag.Count - 1);
+        return track;
+    }
+
     private List<AmbientMusicPrototype> GetTracks()
     {
         List<AmbientMusicPrototype> musictracks = new List<AmbientMusicPrototype>();
@@ -433,9 +456,11 @@ public sealed partial class ContentAudioSystem
 
         //this changes the music volume live, while the music is playing. otherwise, the line above that changes the slider is the one that matters.
 
+        // GetDuckedVolume keeps any active boombox duck applied, otherwise moving the slider
+        // would jump the music back to full volume until the ducking update ran again.
         if (_ambientMusicStream != null && _musicProto != null && !_isCombatMusicPlaying)
         {
-            _audio.SetVolume(_ambientMusicStream, _musicProto.Sound.Params.Volume + _volumeSliderAmbient);
+            _audio.SetVolume(_ambientMusicStream, GetDuckedVolume(_musicProto.Sound.Params.Volume + _volumeSliderAmbient));
         }
     }
 
@@ -447,7 +472,7 @@ public sealed partial class ContentAudioSystem
 
         if (_ambientMusicStream != null && _musicProto != null && _isCombatMusicPlaying)
         {
-            _audio.SetVolume(_ambientMusicStream, _musicProto.Sound.Params.Volume + _volumeSliderCombat);
+            _audio.SetVolume(_ambientMusicStream, GetDuckedVolume(_musicProto.Sound.Params.Volume + _volumeSliderCombat));
         }
     }
 
@@ -503,7 +528,7 @@ public sealed partial class ContentAudioSystem
         }
         SoundCollectionPrototype soundcol = _protMan.Index<SoundCollectionPrototype>(_musicProto.ID); //THIS IS WHAT ERRORS!
 
-        string path = _random.Pick(soundcol.PickFiles).ToString(); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
+        string path = PickNext(soundcol); // THIS WILL PICK A RANDOM SOUND. WE MAY WANT TO SPECIFY ONE INSTEAD!!
 
         PlayMusicTrack(path, _musicProto.Sound.Params.Volume, _ambientMusicFadeInTime, false);
 
@@ -520,7 +545,10 @@ public sealed partial class ContentAudioSystem
     private void OnProtoReload(PrototypesReloadedEventArgs obj)
     {
         if (obj.WasModified<AmbientMusicPrototype>())
+        {
             _musicTracks = GetTracks();
+            _musicBags.Clear(); // rebuild bags on next pick
+        }
     }
     ///<summary>
     /// This function handles the change from lobby to gameplay, disabling music when you're not in gameplay state.

@@ -3,35 +3,32 @@
 
 - type: vessel
   id: Birdie
-  name: ГПИ Пташка
-  description: Гражданский транспорт-шаттл, переоборудованный медицинским снаряжением для использования в качестве лёгкого судна медэвакуации.  
-  price: 32000
+  name: ICM Birdie
+  description: A civilian ferry shuttle, refitted with medical supplies to act as a nimble medevac carrier.
+  price: 26000
   category: Small
   group: Civilian
   path: /Maps/_Crescent/Shuttles/Civilian/birdie.yml
 
 - type: gameMap
   id: Birdie
-  mapName: 'ГПИ Пташка'
+  mapName: 'ICM Birdie'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/birdie.yml
   minPlayers: 0
   stations:
     Birdie:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: civilian
         - type: StationNameSetup
-          mapNameTemplate: 'ГПИ Пташка {1}'
+          mapNameTemplate: 'ICM Birdie {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-expeditions
         - type: VesselDescription
-          description: Идеален для быстрого реагирования на травмы.  
+          description: Perfect for trauma response.

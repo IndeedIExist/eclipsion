@@ -1,0 +1,19 @@
+# Admin Faction Commands
+rat-faction-admin-no-factions = No factions in database.
+rat-faction-admin-list-header = Factions:
+rat-faction-admin-total = Total factions: { $count }
+rat-faction-admin-created = Created faction '{ $name }' (whitelisted: { $whitelisted }).
+rat-faction-admin-deleted = Deleted faction ID { $id }.
+rat-faction-admin-delete-failed = Failed to delete faction ID { $id }. Faction may not exist.
+rat-faction-admin-no-subfactions = No subfactions found.
+rat-faction-admin-list-columns = ID | Name | Whitelisted | Description
+rat-faction-admin-yes = yes
+rat-faction-admin-no = no
+rat-faction-admin-set-manager = Set '{ $playerName }' as manager of subfaction ID { $factionId }.
+rat-faction-admin-remove-manager = Removed '{ $playerName }' as manager of subfaction ID { $factionId }.
+rat-faction-admin-invalid-boolean = Invalid boolean value: { $value }
+rat-faction-admin-invalid-id = Invalid subfaction ID: { $id }. Must be a number.
+rat-faction-admin-player-not-found = Player '{ $playerName }' not found.
+rat-faction-admin-faction-not-found = Failed to set manager for subfaction ID { $factionId }. Subfaction may not exist or player is already a manager.
+rat-faction-admin-remove-failed = Failed to remove manager from subfaction ID { $factionId }. Subfaction or manager may not exist.
+rat-faction-admin-use-factionlist = Use 'factionlist' to see subfaction IDs

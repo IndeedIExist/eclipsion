@@ -9,7 +9,7 @@ namespace Content.Shared.Shuttles.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ShuttleMapParallaxComponent : Component
 {
-    public static readonly ResPath FallbackTexture = new ResPath("/Textures/_Rat/Parallaxes/space_map.png");
+    public static readonly ResPath FallbackTexture = new ResPath("/Textures/_Crescent/Parallaxes/space_map.png");
 
     // TODO: This should ideally be shared with parallax stuff to avoid duplication, for now it's just a texture
     [DataField, AutoNetworkedField]

@@ -92,13 +92,21 @@ public sealed class ReflectSystem : EntitySystem
             args.Cancelled = true;
     }
 
+    private float GetEffectiveReflectProb(EntityUid reflector, ReflectComponent reflect)
+    {
+        var prob = reflect.ReflectProb;
+        if (TryComp<DeflectMasteryComponent>(reflector, out var mastery))
+            prob = MathF.Min(1f, prob + mastery.CurrentBonus);
+        return prob;
+    }
+
     private bool TryReflectProjectile(EntityUid user, EntityUid reflector, EntityUid projectile, ProjectileComponent? projectileComp = null, ReflectComponent? reflect = null)
     {
         if (!Resolve(reflector, ref reflect, false) ||
             !_toggle.IsActivated(reflector) ||
             !TryComp<ReflectiveComponent>(projectile, out var reflective) ||
             (reflect.Reflects & reflective.Reflective) == 0x0 ||
-            !_random.Prob(reflect.ReflectProb) ||
+            !_random.Prob(GetEffectiveReflectProb(reflector, reflect)) ||
             !TryComp<PhysicsComponent>(projectile, out var physics))
         {
             return false;
@@ -165,7 +173,7 @@ public sealed class ReflectSystem : EntitySystem
     {
         if (!TryComp<ReflectComponent>(reflector, out var reflect) ||
             !_toggle.IsActivated(reflector) ||
-            !_random.Prob(reflect.ReflectProb))
+            !_random.Prob(GetEffectiveReflectProb(reflector, reflect)))
         {
             newDirection = null;
             return false;

@@ -1,7 +1,7 @@
 - type: gameMap
   id: Dawnbreaker
-  mapName: 'ТК Анвил'
-  mapPath: /Maps/_Rat/Stations/byblik.yml # Rat-change
+  mapName: 'CD Anvil'
+  mapPath: /Maps/_Crescent/Stations/byblik.yml # Rat-change
   minPlayers: 0
   stations:
     Dawnbreaker:
@@ -13,9 +13,11 @@
         - type: PreventPilot
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'ТК Анвил'
+          mapNameTemplate: 'CD Anvil'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
+        - type: VesselDescription
+          description: Cyberdawn research station.
         - type: VesselMusic
           ambientMusicPrototype: JackalMusic
         - type: Grammar
@@ -24,6 +26,6 @@
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            IntelligenceOfficerNCSP: [ 1, 1 ]
-            OperativeNCSP: [ 4, 4 ]
-            CyberdawnTechNCSP: [ 3, 3 ]
+            IntelligenceOfficerTFSC: [ 1, 1 ]
+            OperativeTFSC: [ 4, 4 ]
+            CyberdawnTechTFSC: [ 3, 3 ]

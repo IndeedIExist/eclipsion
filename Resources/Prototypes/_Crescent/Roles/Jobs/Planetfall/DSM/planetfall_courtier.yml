@@ -1,0 +1,56 @@
+- type: job
+  id: planetfall_courtier
+  name: job-name-courtier
+  description: job-description-courtier
+  playTimeTracker: JobCourtierDSM
+  weight: 52
+  startingGear: planetfall_courtier_gear
+  alwaysUseSpawner: true
+  requireAdminNotify: false
+  icon: "JobIconImperialCourtier"
+  chatNameColor: "#b5af00"
+  supervisors: job-supervisors-imperial
+  canBeAntag: false
+  requirements:
+    - !type:FactionRequirement
+      factionID: "DSM"
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: HullrotFaction
+        faction: DSM
+      - type: LanguageAdder
+        addSpoken:
+          - HighImperial
+          - LowImperial
+          - Tradeband
+        addUnderstood:
+          - HighImperial
+          - LowImperial
+          - Tradeband
+  access:
+  - Command
+  - Empire
+  - EmpireNoble
+  - Maintenance
+  - Service
+  - EmpireSoldier
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: planetfall_courtier_gear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitImperialNobleMale
+    shoes: ClothingShoesBootsImperialLaceup
+    back: ClothingBackpackSatchelLeather
+    id: CourtierPDA
+    ears: ClothingHeadsetEmpire_Planetfall
+    head: ClothingHeadHatImperialBeret
+    neck: ClothingNeckCloakImperialCapelet
+    gloves: ClothingHandsGlovesImperialGovernorGloves
+    pocket1: SpaceCash5000

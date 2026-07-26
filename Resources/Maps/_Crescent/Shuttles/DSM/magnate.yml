@@ -60,7 +60,7 @@ entities:
     - type: SpreaderGrid
     - type: SelfDeleteGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 25
+      baseMaxLinearVelocity: 30
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier

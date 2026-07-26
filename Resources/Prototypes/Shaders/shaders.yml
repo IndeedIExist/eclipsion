@@ -15,6 +15,11 @@
   path: "/Textures/Shaders/gradient_circle_mask.swsl"
 
 - type: shader
+  id: BloodCorners
+  kind: source
+  path: "/Textures/Shaders/blood_corners.swsl"
+
+- type: shader
   id: WorldGradientCircle
   kind: source
   path: "/Textures/Shaders/world_gradient_circle.swsl"

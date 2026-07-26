@@ -1,0 +1,4 @@
+- files: [ "stage1", "stage2", "stage3", "stage4", "stage5", "stage6", "stage7", "stage8" ]
+  license: "CC-BY-SA-3.0"
+  copyright: "Provided by the Crescent/Hullrot fork team for the Divine Sol Mandate spray."
+  source: "https://github.com/ss14-art/ratgore"

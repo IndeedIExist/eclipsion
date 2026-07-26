@@ -1,8 +1,13 @@
-Welcome to Space Station 14! You have just started your shift aboard a Nanotrasen space station and along with your crewmates should cooperate, perform your job role to the best of your ability and have fun (not at the expense of others hopefully).
+Welcome to Hullrot: Eclipsion.
 
-Please make sure you understand the server rules (F1) and if you have any questions, consult this guide, your colleagues on shift in person or over radio or via discord. You can also ask admins for help (ahelp) by hitting the escape key > admin help and typing a message to any online admins. Especially do this if you witness someone breaking rules.
+This is a roleplay-heavy server, not a round-based deathmatch. You are not a lone crewmember on a company station - you are one person living in Taypan, a cold and unforgiving stretch of frontier space where rival factions, ships and crews fight, trade and survive. Everyone who joins helps build that world, so take your character and the setting seriously.
 
-To reiterate, you are all a crew of people who work together (even the clown) and you should not be harming each other unless you have an extremely good reason (self defence) and even then, call security over radio, stun and detain, do not commit murder as a non antagonist (see antagonist further down).
+Before anything else: open the Guidebook (press Numpad 0, or click the Guidebook button in the game menu) and read the Rules section in full. It holds both the server rules and the Roleplay Rules, which cover mutiny, round removal and hate speech. You are expected to know them before you join a round.
 
+You belong to a faction and a role within it. Play that role, follow your chain of command, and stay in character. Taypan is dangerous: you will die, and you will lose the gear you were carrying. Do not let that get to you - it is part of the setting.
 
-Instead of intents, we have combat mode. Check controls below for its keybind. You can't attack anybody with it off, so no more hitting yourself with your own crowbar.
+If you have questions, ask your crew in person or over the radio. If you need an admin - for example if you think someone is breaking the rules - press Escape > Admin Help (ahelp) and message the staff.
+
+Instead of clicking to attack, we use Combat Mode. Check the Controls section below for its keybind. With it off you cannot harm anyone, so you will not hit yourself with your own tools.
+
+Hullrot: Eclipsion is free software, licensed under the GNU AGPLv3. You are entitled to the complete source code of the server you are playing on: https://github.com/eclipsion-team/eclipsion

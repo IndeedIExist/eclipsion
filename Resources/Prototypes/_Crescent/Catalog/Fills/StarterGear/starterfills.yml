@@ -132,8 +132,8 @@
 
 - type: entity
   categories: [ HideSpawnMenu ]
-  parent: ClothingBackpackNCSPSatchel
-  id: ClothingBackpackNCSPSatchelFilledInfanteer
+  parent: ClothingBackpackTFSCSatchel
+  id: ClothingBackpackTFSCSatchelFilledInfanteer
   components:
   - type: StorageFill
     contents:
@@ -145,8 +145,8 @@
 
 - type: entity
   categories: [ HideSpawnMenu ]
-  parent: ClothingBackpackNCSP
-  id: ClothingBackpackNCSPFilledInfanteer
+  parent: ClothingBackpackTFSC
+  id: ClothingBackpackTFSCFilledInfanteer
   components:
   - type: StorageFill
     contents:
@@ -158,8 +158,8 @@
 
 - type: entity
   categories: [ HideSpawnMenu ]
-  parent: ClothingBackpackNCSPDuffelbag
-  id: ClothingBackpackNCSPDuffelbagFilledInfanteer
+  parent: ClothingBackpackTFSCDuffelbag
+  id: ClothingBackpackTFSCDuffelbagFilledInfanteer
   components:
   - type: StorageFill
     contents:
@@ -171,8 +171,8 @@
 
 - type: entity
   categories: [ HideSpawnMenu ]
-  parent: ClothingBackpackNCSPDuffelbag
-  id: ClothingBackpackNCSPDuffelbagSAWS
+  parent: ClothingBackpackTFSCDuffelbag
+  id: ClothingBackpackTFSCDuffelbagSAWS
   components:
   - type: StorageFill
     contents:
@@ -189,8 +189,8 @@
 
 - type: entity
   categories: [ HideSpawnMenu ]
-  parent: ClothingBackpackNCSP
-  id: ClothingBackpackNCSPSAWS
+  parent: ClothingBackpackTFSC
+  id: ClothingBackpackTFSCSAWS
   components:
   - type: StorageFill
     contents:
@@ -207,8 +207,8 @@
 
 - type: entity
   categories: [ HideSpawnMenu ]
-  parent: ClothingBackpackNCSPSatchel
-  id: ClothingBackpackNCSPSatchelSAWS
+  parent: ClothingBackpackTFSCSatchel
+  id: ClothingBackpackTFSCSatchelSAWS
   components:
   - type: StorageFill
     contents:

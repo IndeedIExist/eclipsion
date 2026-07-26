@@ -1,24 +1,52 @@
+# The old "Space Station 14" category is a standalone reference bucket (outside Hullrot).
+# It only keeps the vanilla help pages that in-game items link to via GuideHelp.
+# Chemicals, Glossary and Radio have been moved into the Hullrot section.
 - type: guideEntry
   id: SS14
   name: guide-entry-ss14
   text: "/ServerInfo/Guidebook/SpaceStation14.xml"
   children:
   - Controls
+  - Writing
   - Jobs
   - Survival
-  - Chemicals
   - Species
-  - Writing
-  - Glossary
   - LoadoutInfo
   - Psionics
 
 - type: guideEntry
   id: Writing
   name: guide-entry-writing
-  text: "/ServerInfo/Guidebook/Writing.xml"
+  text: "/ServerInfo/_Crescent/Guidebook/Writing.xml"
+  priority: 80
 
 - type: guideEntry
   id: Glossary
   name: guide-entry-glossary
-  text: "/ServerInfo/Guidebook/Glossary.xml"
+  text: "/ServerInfo/_Crescent/Guidebook/Glossary.xml"
+  priority: 70
+  children:
+  - GlossaryDSM
+  - GlossaryNCWL
+  - GlossarySHI
+  - GlossaryTFSC
+
+- type: guideEntry
+  id: GlossaryDSM
+  name: DSM
+  text: "/ServerInfo/_Crescent/Guidebook/GlossaryDSM.xml"
+
+- type: guideEntry
+  id: GlossaryNCWL
+  name: NCWL
+  text: "/ServerInfo/_Crescent/Guidebook/GlossaryNCWL.xml"
+
+- type: guideEntry
+  id: GlossarySHI
+  name: Shinohara
+  text: "/ServerInfo/_Crescent/Guidebook/GlossarySHI.xml"
+
+- type: guideEntry
+  id: GlossaryTFSC
+  name: TFSC
+  text: "/ServerInfo/_Crescent/Guidebook/GlossaryTFSC.xml"

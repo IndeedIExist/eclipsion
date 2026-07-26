@@ -1,0 +1,24 @@
+﻿- type: worldgenConfig
+  id: RatWorld
+  components:
+  - type: WorldController
+  - type: BiomeSelection
+    biomes:
+    - RatStandard
+    - RatCraster
+    - RatAsteroidsStandardTaypan
+    - RatGraveyardMax
+    - RatGraveyardMin
+
+# Hyperwar variant: keeps the central belt (RatCraster) but drops the
+# surrounding ring (RatAsteroidsStandardTaypan) for a cleaner central battlefield.
+- type: worldgenConfig
+  id: RatWorldHyperwar
+  components:
+  - type: WorldController
+  - type: BiomeSelection
+    biomes:
+    - RatStandard
+    - RatCraster
+    - RatGraveyardMax
+    - RatGraveyardMin

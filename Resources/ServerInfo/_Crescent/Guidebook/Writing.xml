@@ -1,0 +1,30 @@
+<Document>
+[head=2][color=#e8b04b]Writing & Records[/color][/head]
+
+Paper still runs the war. Orders, reports, passports and propaganda all move on physical documents, and a well-written page can be as powerful as a rifle. Writing is a core roleplay tool on Hullrot: Eclipsion, so use it.
+
+[head=3][color=#e8b04b]Paper and pens[/color][/head]
+
+- Pick up a sheet of [color=#6ab7d6]paper[/color] and use it with a [color=#6ab7d6]pen[/color] in hand to write on it.
+- Use a [color=#6ab7d6]stamp[/color] to mark a document as official, since orders, warrants, and rulings carry weight when properly stamped.
+- Write your text, then close the window to save it. Others can read the page by examining or activating it.
+
+[head=3][color=#e8b04b]Formatting[/color][/head]
+
+You can use the same markup shown throughout this guidebook to make documents clear and official-looking. Wrap text in tags written inside square brackets.
+
+- A [color=#6ab7d6]head[/color] tag makes a title.
+- A [color=#6ab7d6]bold[/color] tag emphasizes text.
+- A [color=#6ab7d6]color[/color] tag with a hex code colors text.
+
+Each tag is opened and then closed again after the text it affects. If you have seen the formatting in this guidebook, you already know how it looks.
+
+[head=3][color=#e8b04b]What to write[/color][/head]
+
+- [bold]Orders and reports.[/bold] Commanders issue written orders and soldiers file after-action reports. A paper trail keeps a faction organized.
+- [bold]Propaganda.[/bold] The League and the Mandate both fight a war of ideas. Leaflets, manifestos, and declarations shape morale.
+- [bold]Identity and permits.[/bold] Passports, contracts, and permits define who a character is and what they are allowed to do.
+- [bold]Personal writing.[/bold] Journals, letters, and last words make characters feel real and give others something to discover.
+
+[color=#6ab7d6]Tip:[/color] a stamped, signed, well-formatted document is far more convincing in-character than a scrawled note. If you want people to take your orders seriously, make them look official.
+</Document>

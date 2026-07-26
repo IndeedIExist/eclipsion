@@ -1,86 +1,86 @@
 - type: entity
   parent: Paper
   id: UnionfallNCWLCadetNote
-  name: брифинг революционного бойца ЛРНП
+  name: NCWL Revolutionary Soldier Briefing
   components:
   - type: Paper
     content: |
-      ЛИГА РАБОЧИХ НОВОГО ПОЛУМЕСЯЦА
-      БРИФИНГ РЕВОЛЮЦИОННОГО БОЙЦА
+      NEW CRESCENT WORKERS LEAGUE
+      REVOLUTIONARY SOLDIER BRIEFING
 
-      Товарищ,
+      Comrade,
 
-      После падения Новы Белраски
-      революционные силы
-      Лиги Рабочих Нового Полумесяца
-      отступили в сектор Тайпан.
+      After the fall of Nova Belraska,
+      the revolutionary forces of the
+      New Crescent Workers League have
+      withdrawn to the Taypan sector.
 
-      Наш флот сейчас действует с
-      переоборудованного грузового судна «Дорогая Клементина».
+      Our fleet now operates from the
+      converted freighter "Dear Clementine".
 
-      Божественный Мандат Солнца обнаружил
-      наше присутствие и движется, чтобы раздавить
-      то, что они считают последними
-      остатками революции.
+      The Divine Sol Mandate has detected
+      our presence and is moving to crush
+      what they believe to be the final
+      remnants of the revolution.
 
-      Они ошибаются.
-
-      ------------------------------------------------
-
-      ЗАДАЧА
-
-      Уничтожьте базы данных клонирования Мандата,
-      расположенные на их военных кораблях.
-
-      Эти системы позволяют имперским солдатам
-      бесконечно возвращаться в бой.
-
-      Уничтожьте их, и флот Мандата
-      рухнет.
-
-      Методы:
-
-      • Уничтожьте их, используя корабельное вооружение
-      • Проникните на вражеские суда и совершите диверсию
-
-      Порядок диверсии:
-      - Время взаимодействия: 10 секунд
-      - Таймер детонации: 60 секунд
-
-      Вражеские инженеры могут обезвредить устройство.
+      They are mistaken.
 
       ------------------------------------------------
 
-      БЕЗДНА ГРЯДЁТ
+      OBJECTIVE
 
-      В начале операции оба
-      флота изолированы внутри защитного
-      барьера.
+      Destroy the Mandate Cloner Databases
+      located aboard their warships.
 
-      Длительность: 20 минут.
+      These systems allow imperial soldiers
+      to endlessly return to battle.
 
-      Используйте это время, чтобы:
+      Destroy them and the Mandate fleet
+      will collapse.
 
-      • Организовать команды
-      • Подготовить истребители
-      • Скоординировать действия с командованием
+      Methods:
 
-      Когда барьер падёт,
-      начнётся битва.
+      • Destroy them using ship weapons
+      • Board enemy vessels and sabotage them
+
+      Sabotage procedure:
+      - Interaction time: 10 seconds
+      - Detonation timer: 60 seconds
+
+      Enemy engineers may disarm the device.
 
       ------------------------------------------------
 
-      ПРИКАЗЫ ВСЕМ БОЙЦАМ
+      HADAL TIDE
 
-      1. Доложите Комиссару или Адмиралу.
-      2. Присоединитесь к команде действующего корабля или получите
-         талон на истребитель.
-      3. Совершите вылет через консоль верфи.
-      4. Держите строй и следуйте приказам.
+      At the start of the operation both
+      fleets are confined within a defensive
+      barrier.
 
-      Революция выживет, только если мы будем сражаться.
+      Duration: 20 minutes.
 
-      Держись, товарищ.
+      Use this time to:
 
-      Да здравствуют Рабочие.
-      Да здравствует Революция.
+      • Organize crews
+      • Prepare fighters
+      • Coordinate with command
+
+      When the barrier falls,
+      the battle begins.
+
+      ------------------------------------------------
+
+      ORDERS TO ALL SOLDIERS
+
+      1. Report to the Kommissar or Admiral.
+      2. Join an active ship crew or obtain
+         a fighter voucher.
+      3. Deploy via the shipyard console.
+      4. Maintain formation and follow orders.
+
+      The revolution survives only if we fight.
+
+      Stand firm, comrade.
+
+      Long live the Workers.
+      Long live the Revolution.

@@ -9,7 +9,7 @@ using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
-using Content.Shared._Rat.Ranks;
+using Content.Shared._Crescent.Ranks;
 
 namespace Content.Shared.Roles
 {

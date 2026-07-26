@@ -4,7 +4,7 @@ meta:
   engineVersion: 268.1.0
   forkId: ""
   forkVersion: ""
-  time: 04/17/2026 18:03:50
+  time: 06/03/2026 23:56:57
   entityCount: 3827
 maps: []
 grids:
@@ -125,7 +125,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 15
+      baseMaxLinearVelocity: 20
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -1866,6 +1866,80 @@ entities:
             7714: -17,-6
             7719: -17,-5
             7724: -17,-4
+            7736: -2,5
+            7745: -2,11
+            7754: -16,-6
+            7759: -15,-6
+            7764: -14,-6
+            7775: -11,-10
+            7780: -11,-8
+            7785: -11,-7
+            7790: -11,-6
+            7797: -2,-1
+            7828: 15,-3
+            7834: 9,-32
+            7839: 10,-32
+            7844: 11,-32
+            7852: 13,-30
+            7859: 13,-19
+            7868: 14,-30
+            7878: 15,-30
+            7893: 1,-34
+            7899: 2,-37
+            7905: 6,-35
+            7910: 7,-35
+            7918: -6,-35
+            7921: -5,-35
+            7926: -4,-35
+            7931: -1,-37
+            7934: -16,-30
+            7942: -14,-30
+            7947: -13,-30
+            7957: -12,-30
+            7967: -11,-30
+            7974: -11,-19
+            7983: -10,-32
+            7986: -9,-32
+            7991: -8,-32
+            7997: -23,-29
+            8000: -22,-29
+            8005: -20,-29
+            8010: -19,-29
+            8018: 16,-30
+            8026: 18,-30
+            8034: 21,-29
+            8039: 22,-29
+            8044: 24,-29
+            8053: 16,-3
+            8058: 17,-3
+            8098: 18,4
+            8114: 19,6
+            8135: 18,20
+            8176: 19,18
+            8195: 10,31
+            8203: 11,30
+            8216: 12,30
+            8227: 13,29
+            8240: 14,29
+            8251: 15,27
+            8267: 8,32
+            8275: 8,33
+            8283: 8,34
+            8296: 9,32
+            8348: -4,32
+            8356: -4,33
+            8361: -4,34
+            8369: -3,32
+            8377: -3,33
+            8385: -3,34
+            8401: -10,30
+            8409: -10,31
+            8416: -2,17
+            8425: -2,23
+            8434: -18,-4
+            8437: -17,-6
+            8442: -17,-5
+            8447: -17,-4
         - node:
             zIndex: 1
             id: LatticeCornerNW
@@ -2590,6 +2664,91 @@ entities:
             7665: -3,34
             7681: -10,30
             7727: -17,-4
+            7756: -16,-6
+            7761: -15,-6
+            7766: -14,-6
+            7769: -13,-6
+            7805: 13,-10
+            7810: 13,-8
+            7815: 13,-7
+            7820: 13,-6
+            7823: 15,-4
+            7831: 15,-3
+            7836: 9,-32
+            7841: 10,-32
+            7846: 11,-32
+            7849: 12,-32
+            7854: 13,-30
+            7862: 13,-19
+            7870: 14,-30
+            7880: 15,-30
+            7888: 0,-37
+            7896: 1,-34
+            7902: 3,-37
+            7907: 6,-35
+            7912: 7,-35
+            7915: 8,-35
+            7923: -5,-35
+            7928: -4,-35
+            7936: -16,-30
+            7944: -14,-30
+            7949: -13,-30
+            7959: -12,-30
+            7969: -11,-30
+            7977: -11,-19
+            7988: -9,-32
+            7993: -8,-32
+            8002: -22,-29
+            8007: -20,-29
+            8012: -19,-29
+            8020: 16,-30
+            8028: 18,-30
+            8036: 21,-29
+            8041: 22,-29
+            8046: 24,-29
+            8049: 25,-29
+            8055: 16,-3
+            8060: 17,-3
+            8063: 18,-3
+            8068: 18,-2
+            8073: 18,-1
+            8078: 18,0
+            8083: 18,1
+            8088: 18,2
+            8093: 18,3
+            8101: 18,4
+            8104: 19,4
+            8109: 19,5
+            8117: 19,6
+            8120: 20,6
+            8138: 18,20
+            8143: 18,21
+            8148: 18,22
+            8153: 18,23
+            8158: 18,24
+            8163: 18,25
+            8168: 18,26
+            8179: 19,18
+            8184: 19,19
+            8198: 10,31
+            8206: 11,30
+            8219: 12,30
+            8230: 13,29
+            8243: 14,29
+            8254: 15,27
+            8259: 15,28
+            8270: 8,32
+            8278: 8,33
+            8286: 8,34
+            8299: 9,32
+            8304: 9,33
+            8309: 9,34
+            8351: -4,32
+            8372: -3,32
+            8380: -3,33
+            8388: -3,34
+            8404: -10,30
+            8450: -17,-4
         - node:
             zIndex: 1
             id: LatticeCornerSE
@@ -3045,6 +3204,64 @@ entities:
             7700: -2,23
             7717: -17,-5
             7722: -17,-4
+            7734: -2,5
+            7743: -2,11
+            7772: -11,-13
+            7778: -11,-8
+            7783: -11,-7
+            7788: -11,-6
+            7795: -2,-1
+            7826: 15,-3
+            7857: 13,-19
+            7873: 14,-19
+            7883: 15,-19
+            7891: 1,-34
+            7939: -15,-19
+            7952: -13,-19
+            7962: -12,-19
+            7972: -11,-19
+            7980: -11,-18
+            8031: 20,-19
+            8096: 18,4
+            8112: 19,6
+            8123: 16,27
+            8128: 17,27
+            8133: 18,20
+            8174: 19,18
+            8193: 10,31
+            8201: 11,30
+            8209: 11,31
+            8214: 12,30
+            8225: 13,29
+            8233: 13,30
+            8238: 14,29
+            8249: 15,27
+            8265: 8,32
+            8273: 8,33
+            8281: 8,34
+            8289: 8,35
+            8294: 9,32
+            8318: -10,32
+            8321: -9,32
+            8326: -8,32
+            8331: -7,32
+            8336: -6,32
+            8341: -5,32
+            8346: -4,32
+            8354: -4,33
+            8359: -4,34
+            8364: -4,35
+            8367: -3,32
+            8375: -3,33
+            8383: -3,34
+            8391: -3,35
+            8396: -11,30
+            8399: -10,30
+            8407: -10,31
+            8414: -2,17
+            8423: -2,23
+            8440: -17,-5
+            8445: -17,-4
         - node:
             zIndex: 1
             id: LatticeCornerSW
@@ -3524,6 +3741,77 @@ entities:
             7670: -3,35
             7680: -10,30
             7726: -17,-4
+            7802: 13,-13
+            7809: 13,-8
+            7814: 13,-7
+            7819: 13,-6
+            7830: 15,-3
+            7861: 13,-19
+            7865: 13,-18
+            7875: 14,-19
+            7885: 15,-19
+            7895: 1,-34
+            7954: -13,-19
+            7964: -12,-19
+            7976: -11,-19
+            8015: -18,-19
+            8023: 17,-19
+            8067: 18,-2
+            8072: 18,-1
+            8077: 18,0
+            8082: 18,1
+            8087: 18,2
+            8092: 18,3
+            8100: 18,4
+            8108: 19,5
+            8116: 19,6
+            8125: 16,27
+            8130: 17,27
+            8137: 18,20
+            8142: 18,21
+            8147: 18,22
+            8152: 18,23
+            8157: 18,24
+            8162: 18,25
+            8167: 18,26
+            8171: 18,27
+            8178: 19,18
+            8183: 19,19
+            8187: 19,20
+            8190: 20,18
+            8197: 10,31
+            8205: 11,30
+            8211: 11,31
+            8218: 12,30
+            8222: 12,31
+            8229: 13,29
+            8235: 13,30
+            8242: 14,29
+            8246: 14,30
+            8253: 15,27
+            8258: 15,28
+            8262: 15,29
+            8269: 8,32
+            8277: 8,33
+            8285: 8,34
+            8291: 8,35
+            8298: 9,32
+            8303: 9,33
+            8308: 9,34
+            8312: 9,35
+            8315: 10,32
+            8323: -9,32
+            8328: -8,32
+            8333: -7,32
+            8338: -6,32
+            8343: -5,32
+            8350: -4,32
+            8371: -3,32
+            8379: -3,33
+            8387: -3,34
+            8393: -3,35
+            8403: -10,30
+            8449: -17,-4
         - node:
             id: LatticeEdgeE
           decals:
@@ -4509,6 +4797,108 @@ entities:
             7712: -17,-6
             7716: -17,-5
             7721: -17,-4
+            7733: -2,5
+            7742: -2,11
+            7748: -1,5
+            7750: -1,11
+            7752: -16,-6
+            7757: -15,-6
+            7762: -14,-6
+            7771: -11,-13
+            7773: -11,-10
+            7777: -11,-8
+            7782: -11,-7
+            7787: -11,-6
+            7794: -2,-1
+            7798: -1,-1
+            7825: 15,-3
+            7832: 9,-32
+            7837: 10,-32
+            7842: 11,-32
+            7850: 13,-30
+            7856: 13,-19
+            7866: 14,-30
+            7872: 14,-19
+            7876: 15,-30
+            7882: 15,-19
+            7890: 1,-34
+            7897: 2,-37
+            7903: 6,-35
+            7908: 7,-35
+            7916: -6,-35
+            7919: -5,-35
+            7924: -4,-35
+            7929: -1,-37
+            7932: -16,-30
+            7938: -15,-19
+            7940: -14,-30
+            7945: -13,-30
+            7951: -13,-19
+            7955: -12,-30
+            7961: -12,-19
+            7965: -11,-30
+            7971: -11,-19
+            7979: -11,-18
+            7981: -10,-32
+            7984: -9,-32
+            7989: -8,-32
+            7994: -25,-27
+            7995: -23,-29
+            7998: -22,-29
+            8003: -20,-29
+            8008: -19,-29
+            8016: 16,-30
+            8024: 18,-30
+            8030: 20,-19
+            8032: 21,-29
+            8037: 22,-29
+            8042: 24,-29
+            8051: 16,-3
+            8056: 17,-3
+            8095: 18,4
+            8111: 19,6
+            8122: 16,27
+            8127: 17,27
+            8132: 18,20
+            8173: 19,18
+            8192: 10,31
+            8200: 11,30
+            8208: 11,31
+            8213: 12,30
+            8224: 13,29
+            8232: 13,30
+            8237: 14,29
+            8248: 15,27
+            8264: 8,32
+            8272: 8,33
+            8280: 8,34
+            8288: 8,35
+            8293: 9,32
+            8317: -10,32
+            8320: -9,32
+            8325: -8,32
+            8330: -7,32
+            8335: -6,32
+            8340: -5,32
+            8345: -4,32
+            8353: -4,33
+            8358: -4,34
+            8363: -4,35
+            8366: -3,32
+            8374: -3,33
+            8382: -3,34
+            8390: -3,35
+            8395: -11,30
+            8398: -10,30
+            8406: -10,31
+            8413: -2,17
+            8422: -2,23
+            8428: -1,17
+            8430: -1,23
+            8432: -18,-4
+            8435: -17,-6
+            8439: -17,-5
+            8444: -17,-4
         - node:
             id: LatticeEdgeN
           decals:
@@ -5610,6 +6000,121 @@ entities:
             7713: -17,-6
             7718: -17,-5
             7723: -17,-4
+            7729: -2,0
+            7731: -2,4
+            7735: -2,5
+            7738: -2,6
+            7740: -2,10
+            7744: -2,11
+            7747: -2,12
+            7753: -16,-6
+            7758: -15,-6
+            7763: -14,-6
+            7767: -13,-6
+            7774: -11,-10
+            7779: -11,-8
+            7784: -11,-7
+            7789: -11,-6
+            7792: -2,-2
+            7796: -2,-1
+            7803: 13,-10
+            7807: 13,-8
+            7812: 13,-7
+            7817: 13,-6
+            7821: 15,-4
+            7827: 15,-3
+            7833: 9,-32
+            7838: 10,-32
+            7843: 11,-32
+            7847: 12,-32
+            7851: 13,-30
+            7858: 13,-19
+            7867: 14,-30
+            7877: 15,-30
+            7886: 0,-37
+            7892: 1,-34
+            7898: 2,-37
+            7900: 3,-37
+            7904: 6,-35
+            7909: 7,-35
+            7913: 8,-35
+            7917: -6,-35
+            7920: -5,-35
+            7925: -4,-35
+            7930: -1,-37
+            7933: -16,-30
+            7941: -14,-30
+            7946: -13,-30
+            7956: -12,-30
+            7966: -11,-30
+            7973: -11,-19
+            7982: -10,-32
+            7985: -9,-32
+            7990: -8,-32
+            7996: -23,-29
+            7999: -22,-29
+            8004: -20,-29
+            8009: -19,-29
+            8017: 16,-30
+            8025: 18,-30
+            8033: 21,-29
+            8038: 22,-29
+            8043: 24,-29
+            8047: 25,-29
+            8052: 16,-3
+            8057: 17,-3
+            8061: 18,-3
+            8065: 18,-2
+            8070: 18,-1
+            8075: 18,0
+            8080: 18,1
+            8085: 18,2
+            8090: 18,3
+            8097: 18,4
+            8102: 19,4
+            8106: 19,5
+            8113: 19,6
+            8118: 20,6
+            8134: 18,20
+            8140: 18,21
+            8145: 18,22
+            8150: 18,23
+            8155: 18,24
+            8160: 18,25
+            8165: 18,26
+            8175: 19,18
+            8181: 19,19
+            8194: 10,31
+            8202: 11,30
+            8215: 12,30
+            8226: 13,29
+            8239: 14,29
+            8250: 15,27
+            8256: 15,28
+            8266: 8,32
+            8274: 8,33
+            8282: 8,34
+            8295: 9,32
+            8301: 9,33
+            8306: 9,34
+            8347: -4,32
+            8355: -4,33
+            8360: -4,34
+            8368: -3,32
+            8376: -3,33
+            8384: -3,34
+            8400: -10,30
+            8408: -10,31
+            8411: -2,16
+            8415: -2,17
+            8418: -2,18
+            8420: -2,22
+            8424: -2,23
+            8427: -2,24
+            8433: -18,-4
+            8436: -17,-6
+            8441: -17,-5
+            8446: -17,-4
         - node:
             id: LatticeEdgeS
           decals:
@@ -6453,6 +6958,106 @@ entities:
             7703: -2,24
             7715: -17,-5
             7720: -17,-4
+            7728: -2,0
+            7730: -2,4
+            7732: -2,5
+            7737: -2,6
+            7739: -2,10
+            7741: -2,11
+            7746: -2,12
+            7770: -11,-13
+            7776: -11,-8
+            7781: -11,-7
+            7786: -11,-6
+            7791: -2,-2
+            7793: -2,-1
+            7800: 13,-13
+            7806: 13,-8
+            7811: 13,-7
+            7816: 13,-6
+            7824: 15,-3
+            7855: 13,-19
+            7863: 13,-18
+            7871: 14,-19
+            7881: 15,-19
+            7889: 1,-34
+            7937: -15,-19
+            7950: -13,-19
+            7960: -12,-19
+            7970: -11,-19
+            7978: -11,-18
+            8013: -18,-19
+            8021: 17,-19
+            8029: 20,-19
+            8064: 18,-2
+            8069: 18,-1
+            8074: 18,0
+            8079: 18,1
+            8084: 18,2
+            8089: 18,3
+            8094: 18,4
+            8105: 19,5
+            8110: 19,6
+            8121: 16,27
+            8126: 17,27
+            8131: 18,20
+            8139: 18,21
+            8144: 18,22
+            8149: 18,23
+            8154: 18,24
+            8159: 18,25
+            8164: 18,26
+            8169: 18,27
+            8172: 19,18
+            8180: 19,19
+            8185: 19,20
+            8188: 20,18
+            8191: 10,31
+            8199: 11,30
+            8207: 11,31
+            8212: 12,30
+            8220: 12,31
+            8223: 13,29
+            8231: 13,30
+            8236: 14,29
+            8244: 14,30
+            8247: 15,27
+            8255: 15,28
+            8260: 15,29
+            8263: 8,32
+            8271: 8,33
+            8279: 8,34
+            8287: 8,35
+            8292: 9,32
+            8300: 9,33
+            8305: 9,34
+            8310: 9,35
+            8313: 10,32
+            8316: -10,32
+            8319: -9,32
+            8324: -8,32
+            8329: -7,32
+            8334: -6,32
+            8339: -5,32
+            8344: -4,32
+            8352: -4,33
+            8357: -4,34
+            8362: -4,35
+            8365: -3,32
+            8373: -3,33
+            8381: -3,34
+            8389: -3,35
+            8394: -11,30
+            8397: -10,30
+            8405: -10,31
+            8410: -2,16
+            8412: -2,17
+            8417: -2,18
+            8419: -2,22
+            8421: -2,23
+            8426: -2,24
+            8438: -17,-5
+            8443: -17,-4
         - node:
             id: LatticeEdgeW
           decals:
@@ -7475,6 +8080,124 @@ entities:
             7706: -1,17
             7708: -1,23
             7725: -17,-4
+            7749: -1,5
+            7751: -1,11
+            7755: -16,-6
+            7760: -15,-6
+            7765: -14,-6
+            7768: -13,-6
+            7799: -1,-1
+            7801: 13,-13
+            7804: 13,-10
+            7808: 13,-8
+            7813: 13,-7
+            7818: 13,-6
+            7822: 15,-4
+            7829: 15,-3
+            7835: 9,-32
+            7840: 10,-32
+            7845: 11,-32
+            7848: 12,-32
+            7853: 13,-30
+            7860: 13,-19
+            7864: 13,-18
+            7869: 14,-30
+            7874: 14,-19
+            7879: 15,-30
+            7884: 15,-19
+            7887: 0,-37
+            7894: 1,-34
+            7901: 3,-37
+            7906: 6,-35
+            7911: 7,-35
+            7914: 8,-35
+            7922: -5,-35
+            7927: -4,-35
+            7935: -16,-30
+            7943: -14,-30
+            7948: -13,-30
+            7953: -13,-19
+            7958: -12,-30
+            7963: -12,-19
+            7968: -11,-30
+            7975: -11,-19
+            7987: -9,-32
+            7992: -8,-32
+            8001: -22,-29
+            8006: -20,-29
+            8011: -19,-29
+            8014: -18,-19
+            8019: 16,-30
+            8022: 17,-19
+            8027: 18,-30
+            8035: 21,-29
+            8040: 22,-29
+            8045: 24,-29
+            8048: 25,-29
+            8050: 27,-27
+            8054: 16,-3
+            8059: 17,-3
+            8062: 18,-3
+            8066: 18,-2
+            8071: 18,-1
+            8076: 18,0
+            8081: 18,1
+            8086: 18,2
+            8091: 18,3
+            8099: 18,4
+            8103: 19,4
+            8107: 19,5
+            8115: 19,6
+            8119: 20,6
+            8124: 16,27
+            8129: 17,27
+            8136: 18,20
+            8141: 18,21
+            8146: 18,22
+            8151: 18,23
+            8156: 18,24
+            8161: 18,25
+            8166: 18,26
+            8170: 18,27
+            8177: 19,18
+            8182: 19,19
+            8186: 19,20
+            8189: 20,18
+            8196: 10,31
+            8204: 11,30
+            8210: 11,31
+            8217: 12,30
+            8221: 12,31
+            8228: 13,29
+            8234: 13,30
+            8241: 14,29
+            8245: 14,30
+            8252: 15,27
+            8257: 15,28
+            8261: 15,29
+            8268: 8,32
+            8276: 8,33
+            8284: 8,34
+            8290: 8,35
+            8297: 9,32
+            8302: 9,33
+            8307: 9,34
+            8311: 9,35
+            8314: 10,32
+            8322: -9,32
+            8327: -8,32
+            8332: -7,32
+            8337: -6,32
+            8342: -5,32
+            8349: -4,32
+            8370: -3,32
+            8378: -3,33
+            8386: -3,34
+            8392: -3,35
+            8402: -10,30
+            8429: -1,17
+            8431: -1,23
+            8448: -17,-4
         - node:
             color: '#DE3A3A96'
             id: MedDecal
@@ -8923,8 +9646,6 @@ entities:
       pos: 6.5,25.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -7711.5415
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -9025,7 +9746,7 @@ entities:
       linearDamping: 0
       canCollide: False
     - type: InsideEntityStorage
-- proto: AirlockSyndicateHorizontalLockedNCSPGorlex
+- proto: AirlockSyndicateHorizontalLockedTFSCGorlex
   entities:
   - uid: 69
     components:
@@ -9151,14 +9872,14 @@ entities:
     - type: Transform
       pos: 13.5,3.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPCommand
+- proto: AirlockSyndicateLockedTFSCCommand
   entities:
   - uid: 93
     components:
     - type: Transform
       pos: -5.5,-24.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPGorlex
+- proto: AirlockSyndicateLockedTFSCGorlex
   entities:
   - uid: 94
     components:
@@ -9236,7 +9957,7 @@ entities:
     - type: Transform
       pos: 1.5,31.5
       parent: 1
-- proto: AirlockSyndicateLockedNCSPRingleader
+- proto: AirlockSyndicateLockedTFSCRingleader
   entities:
   - uid: 108
     components:
@@ -9467,7 +10188,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: PointCannon
@@ -17338,7 +18059,7 @@ entities:
     - type: Transform
       pos: 15.573593,-0.615314
       parent: 1
-- proto: ClothingBackpackNCSP
+- proto: ClothingBackpackTFSC
   entities:
   - uid: 1656
     components:
@@ -17513,7 +18234,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ClothingHeadsetNCSP
+- proto: ClothingHeadsetTFSC
   entities:
   - uid: 1660
     components:
@@ -22589,14 +23310,6 @@ entities:
     - type: Transform
       pos: 12.5,5.5
       parent: 1
-- proto: JackalMothershipComputer
-  entities:
-  - uid: 2497
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 14.5,21.5
-      parent: 1
 - proto: JetpackBlackFilled
   entities:
   - uid: 31
@@ -22913,6 +23626,146 @@ entities:
     - type: InsideEntityStorage
 - proto: Magazine35mm
   entities:
+  - uid: 1874
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1875
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1876
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1877
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1878
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1879
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1880
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1881
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1882
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1883
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1884
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1885
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1886
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1887
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1888
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1889
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1890
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1891
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1892
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1893
+    components:
+    - type: Transform
+      parent: 1873
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
   - uid: 1895
     components:
     - type: Transform
@@ -23057,148 +23910,6 @@ entities:
     components:
     - type: Transform
       parent: 1894
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-- proto: Magazine35mm
-  entities:
-  - uid: 1874
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1875
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1876
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1877
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1878
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1879
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1880
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1881
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1882
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1883
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1884
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1885
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1886
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1887
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1888
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1889
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1890
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1891
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1892
-    components:
-    - type: Transform
-      parent: 1873
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1893
-    components:
-    - type: Transform
-      parent: 1873
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -26299,6 +27010,14 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -10.5,29.5
       parent: 1
+- proto: RatJackalMothershipComputer
+  entities:
+  - uid: 2497
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 14.5,21.5
+      parent: 1
 - proto: Recycler
   entities:
   - uid: 2926
@@ -26980,7 +27699,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-- proto: ThrusterNCSPWarship
+- proto: ThrusterTFSCWarship
   entities:
   - uid: 3021
     components:
@@ -31209,7 +31928,7 @@ entities:
       pos: 0.5,0.5
       parent: 1
     - type: WarpPoint
-      location: МГ Гидра
+      location: GSC Jackal
 - proto: WeaponPistolBlastpopGray
   entities:
   - uid: 3798
@@ -31290,7 +32009,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer
@@ -31318,7 +32037,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: PointCannon
@@ -31348,7 +32067,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: PointCannon
@@ -31378,7 +32097,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: PointCannon
@@ -31408,7 +32127,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: PointCannon
@@ -31438,7 +32157,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: PointCannon
@@ -31468,7 +32187,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: PointCannon
@@ -31498,7 +32217,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: PointCannon
@@ -31528,7 +32247,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer
@@ -31554,9 +32273,7 @@ entities:
       pos: 9.5,31.5
       parent: 1
     - type: ApcPowerReceiver
-      powerLoad: 0
-    - type: ApcPowerReceiverBattery
-      enabled: True
+      powerLoad: 5
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -31582,7 +32299,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer
@@ -31610,7 +32327,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer
@@ -31638,7 +32355,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer
@@ -31666,7 +32383,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer
@@ -31694,7 +32411,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer
@@ -31722,7 +32439,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer
@@ -31750,7 +32467,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer
@@ -31778,7 +32495,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer
@@ -31806,7 +32523,7 @@ entities:
     - type: ApcPowerReceiver
       powerLoad: 1000
     - type: Battery
-      startingCharge: 995
+      startingCharge: 992.5
     - type: ApcPowerReceiverBattery
       enabled: True
     - type: ContainerContainer

@@ -5,8 +5,8 @@
   id: Cog
   name: NCWL Cog
   description: |
-    Made from recycled materials recycled from derelicts, this is the cheapest mining vessel in the sector, fielded by communards.
-    LOADOUT: 2x SHI 250c "Exhumer" kinetic Pulser
+    Made from materials recycled from derelicts, this is the cheapest mining vessel in the sector, fielded by communards.
+    LOADOUT: 2x SHI 250c "Exhumer" kinetic pulsers
   price: 20000
   category: Small
   group: None
@@ -20,9 +20,6 @@
   stations:
     Cog:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:

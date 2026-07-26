@@ -3,10 +3,10 @@
 
 - type: vessel
   id: Bee
-  name: Пчела
+  name: Bee
   description: |
-    Вариант "Осы", "Пчела" несет 180-мм пусковую установку "Идна" с двумя предзаряженными торпедами, требующую частой перезарядки для непрерывного использования. С этим истребителем разумно применять тактику "ударил-убежал".
-    LOADOUT: 1x 30mm miniswamer rocket pod
+    A variant of the Wasp, the Bee carries a 30mm 'Pila' micromissile launcher, unleashing a rapid swarm of missiles at the cost of frequent reloading for continuous use. It is wise to consider hit-and-run tactics with this fighter.
+    LOADOUT: 1x 30mm 'Pila' micromissile launcher
     MINIMUM CREW: 1x Brave Pilot
   price: 12000
   category: Small
@@ -15,26 +15,23 @@
 
 - type: gameMap
   id: Bee
-  mapName: 'Пчела'
+  mapName: 'Bee'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/bee.yml
   minPlayers: 0
   stations:
     Bee:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'Пчела {1}'
+          mapNameTemplate: 'Bee {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-fighter
         - type: VesselDescription
-          description: The Bee gets it's name from it's loadout- sting once and die.
+          description: The Bee gets its name from its loadout- sting once and die.

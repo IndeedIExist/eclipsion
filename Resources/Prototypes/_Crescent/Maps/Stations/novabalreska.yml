@@ -1,12 +1,16 @@
 - type: gameMap
   id: PortBalreska
-  mapName: 'ЛРНП Марсова'
-  mapPath: /Maps/_Rat/Stations/marsova.yml
+  mapName: 'NCWL Nova Balreska'
+  mapPath: /Maps/_Crescent/Stations/nova_balreska.yml
   minPlayers: 0
   stations:
     PortBalreska:
       stationProto: StandardCrescentStation
       gridComponents:
+        - type: FactionStation # conquest win condition
+          faction: NCWL
+          fallAnnouncement: faction-station-fall-balreska
+          stationName: NCWL Nova Balreska
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
         - type: VesselIcon
@@ -17,11 +21,11 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'ЛРНП Марсова'
+          mapNameTemplate: 'NCWL Nova Balreska'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: VesselDescription
-          description: Прочная коммунарская крепость, построенная вокруг кровоточащего разрыва в нашей реальности.
+          description: A fortified communard stronghold built inside an asteroid.
         - type: VesselMusic
           ambientMusicPrototype: PortBalreskaMusic
         - type: Grammar
@@ -33,13 +37,10 @@
             CommandantNCWL: [ 1, 1 ]
             KommissarNCWL: [ 1, 1 ]
             MVDOfficerNCWL: [ 1, 1 ]
-            MVDGruntNCWL: [ 4, 4 ]
-            FleetkapitanNCWL: [ 5, 5 ]
+            MVDGruntNCWL: [ 2, 2 ]
+            FleetkapitanNCWL: [ 4, 4 ]
             PartisanNCWL: [ -1, -1 ]
-            DirectorNCWL: [ 1, 1 ]
-            DoctorNCWL: [ 5, 5 ]
-            IndustryTaskmasterNCWL: [ 1, 1 ]
-            ArtificerNCWL: [ 5, 5 ]
-            WorkerOverbossNCWL: [ 1, 1 ]
-            DockhandNCWL: [ 5, 5 ]
+            IndustryTaskmasterNCWL: [ 4, 4 ]
+            DoctorNCWL: [ 6, 6 ]
+            ArtificerNCWL: [ 6, 6 ]
             WorkerNCWL: [ -1, -1 ]

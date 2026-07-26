@@ -1,0 +1,47 @@
+- type: rank
+  id: RatRankNCWLEnlistedTop
+  name: Senior Warrant Officer
+  prefix: Sr. Warrant
+  paygrade: E8
+
+- type: rank
+  id: RatRankNCWLEnlistedBased
+  name: Warrant Officer
+  prefix: Warrant
+  paygrade: E7
+
+- type: rank
+  id: RatRankNCWLEnlistedHigh
+  name: Master Sergeant
+  prefix: Master Sgt.
+  paygrade: E6
+
+- type: rank
+  id: RatRankNCWLEnlistedLead
+  name: Staff Sergeant
+  prefix: Staff Sgt.
+  paygrade: E5
+
+- type: rank
+  id: RatRankNCWLEnlistedSenior
+  name: Sergeant
+  prefix: Sergeant
+  paygrade: E4
+
+- type: rank
+  id: RatRankNCWLEnlistedMiddle
+  name: Junior Sergeant
+  prefix: Jr. Sgt.
+  paygrade: E3
+
+- type: rank
+  id: RatRankNCWLEnlistedJunior
+  name: Corporal
+  prefix: Corporal
+  paygrade: E2
+
+- type: rank
+  id: RatRankNCWLEnlistedNovice
+  name: Private
+  prefix: Private
+  paygrade: E1

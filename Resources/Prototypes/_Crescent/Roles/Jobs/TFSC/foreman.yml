@@ -1,15 +1,21 @@
 - type: job
-  id: ForemanNCSP
+  id: ForemanTFSC
   name: job-name-foreman
   description: job-description-foreman
-  playTimeTracker: JobForemanNCSP
+  playTimeTracker: JobForemanTFSC
   weight: 2
   startingGear: ForemanGear
   alwaysUseSpawner: true
   whitelisted: true # Rat
   requireAdminNotify: true
   icon: "JobIconSyndieForeman"
-  supervisors: You're the leader of the SAW. You answer to your own interests
+  chatNameColor: "#dda52d"
+  chatAmplification:
+    bubbleScale: 1.09
+    shoutBubbleScale: 1.32
+    radioScale: 1.23
+    radioBold: true
+  supervisors: You answer to the Ringleader. Head the Coalition's shipbreaking and engineering wing.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -32,7 +38,7 @@
       - type: ChatRank
         rank: crescent-rank-foreman
       - type: HullrotFaction
-        faction: SAW
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -43,9 +49,13 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
+  - SyndicateInterdyne
   - SyndicateSaws
-  - SyndicateCommand
+  - SyndicateRamzi
+  - SyndicateCommand # department head
   - Service
   - External
   - Mercenary # Frontier
@@ -58,13 +68,13 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatHardhatSyndicateForeman
     id: ForemanPDA
-    ears: ClothingHeadsetNCSPSaws
+    ears: ClothingHeadsetTFSCSawsCommand
     outerClothing: ClothingOuterArmorSyndicateForeman
     belt: ClothingBeltUtilityEngineering
     pocket1: WeaponPistolViperWood
     gloves: ClothingHandsGlovesFingerless
-    pocket2: AccessElevatorSAW
-    back: ClothingBackpackNCSPFilledInfanteer
+    pocket2: AccessElevatorTFSC
+    back: ClothingBackpackTFSCFilledInfanteer
   storage:
     back:
       - RatRubberStampTFSCSAW

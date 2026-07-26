@@ -1,0 +1,25 @@
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: LifeInsuranceComputerCircuitboard
+  name: Interdyne insurance console (machine board)
+  components:
+  - type: Sprite
+    state: cpu_medical
+  - type: ComputerBoard
+    prototype: ComputerInterdyneLifeInsurance
+
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: LifeInsuranceCloningMachineCircuitboard
+  name: IPM cloning safety machine (machine board)
+  components:
+  - type: Sprite
+    state: medical
+  - type: MachineBoard
+    prototype: LifeInsuranceCloningMachine
+    requirements:
+      Manipulator: 2
+      Capacitor: 1
+    materialRequirements:
+      Glass: 5
+      Cable: 2

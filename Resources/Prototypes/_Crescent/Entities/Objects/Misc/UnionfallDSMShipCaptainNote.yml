@@ -1,64 +1,65 @@
 - type: entity
   parent: Paper
   id: UnionfallDSMShipCaptainNote
-  name: доклад инженерного корпуса
+  name: Engineering Corps Report
   components:
   - type: Paper
     content: |
-      ПОЛКОВОЙ БАТАЛЬОН
-      ДОКЛАД ИНЖЕНЕРНОГО КОРПУСА
+      REGIMENT BATTALION
+      ENGINEERING CORPS REPORT
 
-      Сэр,
+      Sir,
 
-      Я не хочу говорить плохо,
-      но, доверившись нам, вы должны знать правду.
+      I do not wish to speak poorly,
+      but given our trust I must be honest.
 
-      Поддерживать эту ржавую развалину на плаву —
-      настоящее чудо. Корабль буквально
-      разваливается на части.
+      Keeping this rusted wreck running
+      is a miracle. The ship is literally
+      falling apart.
 
-      Припасов мало, одно и то же моторное масло
-      циркулирует слишком долго, и большая часть
-      судна проржавела и покрылась грязью.
+      Supplies have been scarce, the same
+      engine oil has circulated far too long,
+      and much of the vessel has rusted and
+      become filthy.
 
-      Некоторые образцы вооружения также подверглись коррозии.
-      Мы опорожнили их, чтобы удалить ржавчину.
+      Some of the weapons were also corroded.
+      We emptied them to remove the rust.
 
-      Обязательно перезарядите их перед битвой.
-
-      ------------------------------------------------
-
-      СТАТУС КОРАБЛЯ
-
-      Чтобы повысить ваши шансы на выживание в
-      предстоящих сражениях, мы переместили
-      мостик на более защищённую позицию.
-
-      Перемещение было поспешным, и некоторые
-      заключённые уже превратили старый
-      мостик в импровизированный бар.
-
-      Прошу простить корабль за его недостатки.
-
-      Заключённые, которых мы перевозим, должны либо
-      скоро обрести искупление, либо мы должны достичь
-      пункта назначения, прежде чем они усугубят
-      ситуацию ещё больше.
-
-      За Кайзера!
+      Be sure to reload them before battle.
 
       ------------------------------------------------
 
-      ПРИМЕЧАНИЕ
+      SHIP STATUS
 
-      Ваши вещи были перенесены на
-      новый мостик.
+      To improve your survival chances in the
+      upcoming engagements we relocated the
+      bridge to a more secure position.
 
-      Мы знаем, что некоторых предметов не хватает.
-      Во время перемещения нескольким заключённым
-      удалось разграбить часть вашего имущества.
+      The move was rushed however, and some
+      prisoners have already turned the old
+      bridge into a makeshift bar.
 
-      Большую часть мы вернули, однако мы
-      подозреваем, что ваше особенное оружие
-      сейчас может находиться где-то в
-      жилых отсеках.
+      Please excuse the ship's shortcomings.
+
+      The prisoners we carry must either reach
+      redemption soon, or we must reach our
+      destination before they worsen the
+      situation further.
+
+      For the Kaiser!
+
+      ------------------------------------------------
+
+      NOTE
+
+      Your belongings have been moved to the
+      new bridge.
+
+      We are aware that some items are missing.
+      During the relocation several prisoners
+      managed to loot part of your property.
+
+      We recovered most of it, however we
+      suspect that your special gun may
+      currently be somewhere in the
+      dormitories.

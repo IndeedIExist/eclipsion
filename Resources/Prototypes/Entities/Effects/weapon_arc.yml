@@ -47,6 +47,29 @@
     - type: WeaponArcVisuals
       animation: Slash
 
+- type: entity
+  id: WeaponArcParry
+  parent: WeaponArcStatic
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: WeaponArcVisuals
+      fadeOut: false
+    - type: Sprite
+      sprite: Effects/arcs.rsi
+      state: slash
+      color: "#88ccffcc"
+    - type: TimedDespawn
+      lifetime: 0.5
+
+- type: entity
+  id: WeaponArcRapierThrust
+  parent: WeaponArcStatic
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: WeaponArcVisuals
+      animation: RapierThrust
+    - type: TimedDespawn
+      lifetime: 0.30
 
 - type: entity
   id: WeaponArcBite

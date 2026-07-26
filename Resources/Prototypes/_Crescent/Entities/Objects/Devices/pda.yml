@@ -150,7 +150,7 @@
   description: Red for Syndicate.
   components:
   - type: Pda
-    id: NCSPIDCardRingleader
+    id: TFSCIDCardRingleader
     state: pda-syndiofficer
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -165,7 +165,7 @@
   description: Red for Syndicate.
   components:
   - type: Pda
-    id: NCSPIDCardLieutenant
+    id: TFSCIDCardLieutenant
     state: pda-syndiofficer
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -180,7 +180,7 @@
   description: Red for Syndicate. Has the Gorlex logo stamped at the back.
   components:
   - type: Pda
-    id: NCSPIDCardInfanteer
+    id: TFSCIDCardInfanteer
     state: pda-syndi
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -194,7 +194,7 @@
   description: Red for Syndicate. Has the Gorlex logo stamped at the back.
   components:
   - type: Pda
-    id: NCSPIDCardInfanteer
+    id: TFSCIDCardInfanteer
     state: pda-syndi
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -208,7 +208,7 @@
   description: Red for Syndicate. Has the Interdyne Pharmaceutics logo stamped at the back. Has a thumbdrive version of a health analyzer wired crudely at one end.
   components:
   - type: Pda
-    id: NCSPIDCardCoordinator
+    id: TFSCIDCardCoordinator
     state: pda-syndimedic
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -228,7 +228,7 @@
   description: Red for Syndicate. Has the Interdyne Pharmaceutics logo stamped at the back. Has a thumbdrive version of a health analyzer wired crudely at one end.
   components:
   - type: Pda
-    id: NCSPIDCardRipperdoc
+    id: TFSCIDCardRipperdoc
     state: pda-syndimedic
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -248,7 +248,7 @@
   description: Red for Syndicate. Has the Interdyne Pharmaceutics logo stamped at the back.
   components:
   - type: Pda
-    id: NCSPIDCardTraumasec
+    id: TFSCIDCardTraumasec
     state: pda-syndimedic
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -268,7 +268,7 @@
   description: Red for Syndicate. Has the name 'Cyberdawn' stamped at the back.
   components:
   - type: Pda
-    id: NCSPIDCardOperative
+    id: TFSCIDCardOperative
     state: pda-syndi
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -282,7 +282,7 @@
   description: Red for Syndicate. Has the name 'Cyberdawn' stamped at the back.
   components:
   - type: Pda
-    id: NCSPIDCardCyberdawnTech
+    id: TFSCIDCardCyberdawnTech
     state: pda-syndi
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -296,7 +296,7 @@
   description: Red for Syndicate. Has the name 'Cyberdawn' stamped at the back.
   components:
   - type: Pda
-    id: NCSPIDCardIntelligenceOfficer
+    id: TFSCIDCardIntelligenceOfficer
     state: pda-syndiofficer
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -311,7 +311,7 @@
   description: Red for Syndicate. Has the name 'SAWS' stamped at the back.
   components:
   - type: Pda
-    id: NCSPIDCardForeman
+    id: TFSCIDCardForeman
     state: pda-syndiofficer
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -326,7 +326,7 @@
   description: Red for Syndicate. Has the name 'SAWS' stamped at the back.
   components:
   - type: Pda
-    id: NCSPIDCardShipbreaker
+    id: TFSCIDCardShipbreaker
     state: pda-syndi
   - type: PdaBorderColor
     borderColor: "#DC143C"
@@ -1304,3 +1304,32 @@
     borderColor: "#808080"
   - type: Icon
     state: pda-corpsec
+
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: entity
+  parent: [BasePDA, StreeCredRedeemable]
+  id: RegentEmpirePDA
+  name: regent's PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardRegentEmpire
+    state: noble
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: noble
+
+- type: entity
+  parent: [BasePDA, StreeCredRedeemable]
+  id: PretorianKnightPDA
+  name: pretorian's PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardPretorianKnight
+    state: noble
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: noble

@@ -1,49 +1,49 @@
 - type: dataset
   id: names_moth_first_female
   values:
-  - Атропос # Acherontia atropos
-  - Бетулара # Biston betularia
-  - Дафна # Daphnis
-  - Эврипта # Eurypteryx
-  - Эудрия # Eudryas
-  - Ирис # Salassa iris
-  - Лахезис # Acherontia lachesis
-  - Луна # Actias luna
-  - Лиманзия # Lymantria
-  - Мейпл # Dryocampa rubicunda, «Розовая кленовая моль»
-  - Мима # Mimas
-  - Нефела # Nephele
-  - Рози # Dryocampa rubicunda
-  - Скарлет # Cosmosoma myrodora, «Алое осовидное мотыльковое»
-  - Стикс # Acherontia styx
+  - Atropos # Acherontia atropos
+  - Betularia # Biston betularia
+  - Daphne # Daphnis
+  - Eurypta # Eurypteryx
+  - Eudryas # Eudryas
+  - Iris # Salassa iris
+  - Lachesis # Acherontia lachesis
+  - Luna # Actias luna
+  - Lymanzia # Lymantria
+  - Maple # Dryocampa rubicunda, "Rosy Maple"
+  - Mima # Mimas
+  - Nephele # Nephele
+  - Rosie # Dryocampa rubicunda
+  - Scarlet # Cosmosoma myrodora, "Scarlet-bodied wasp moth"
+  - Styx # Acherontia styx
 
-  # Другие языки
-  - Авелайна # Галисийское "моль" (avelaíña)
-  - Фалена # Итальянское "зимняя моль"
-  - Менодора # Греческое "дар луны"
-  - Молие # Румынское "моль"
-  - Полилья # Испанское "моль"
+  # Other languages
+  - Avelaina # Galician "moth" (avelaíña)
+  - Falena # Italian "winter moth"
+  - Menodora # Greek "moon gift"
+  - Molie # Romanian "moth"
+  - Polilla # Spanish "moth"
 
-  # Миф и легенда
-  - Алфея # Персонаж греческой мифологии
-  - Аврора # Римская богиня рассвета
-  - Гелла # Персонаж греческой мифологии
-  - Селена # Греческая богиня луны
-  - Никс # Греческая богиня ночи
+  # Myth and legend
+  - Althea # Greek mythological figure
+  - Aurora # Roman goddess of the dawn
+  - Helle # Greek mythological figure
+  - Selene # Greek goddess of the moon
+  - Nyx # Greek goddess of the night
 
-  # Забавные имена
-  - Энджел
-  - Сэнди
-  - Либерти
+  # Fun names
+  - Angel
+  - Sandy
+  - Liberty
 
-  # Обычные имена, наполнение
-  - Беатрикс
-  - Дейзи
-  - Доун
-  - Элизабет
-  - Люси
-  - Руби
-  - Сара
-  - Сиенна
-  - Уиллоу
-  - Зои
+  # Common names, filler
+  - Beatrix
+  - Daisy
+  - Dawn
+  - Elizabeth
+  - Lucy
+  - Ruby
+  - Sarah
+  - Sienna
+  - Willow
+  - Zoey

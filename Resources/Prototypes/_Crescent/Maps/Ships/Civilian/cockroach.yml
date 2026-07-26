@@ -3,9 +3,9 @@
 
 - type: vessel
   id: Cockroach
-  name: Таракан
+  name: Cockroach
   description: |
-    "Таракан" — это грузовое судно значительного размера, проворное и маневренное, но его грузовой отсек полностью открыт в космос. Рекомендуется сопровождение, так как это делает корабль уязвимым для атак пиратов.
+    The Cockroach is an Industrial Carrier, capable of fielding ships for both mining and salvaging. The ships it fields mines for it, while it collects the ores via its ore array magnets. Equipped for long-term mining, a promising vessel.
     LOADOUT: 6x 20mm 'Screamer' light autocannons
     MINIMUM CREW: 1x Captain, 2x Miner Crew
   price: 85000
@@ -15,22 +15,19 @@
 
 - type: gameMap
   id: Cockroach
-  mapName: 'Таракан'
+  mapName: 'Cockroach'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/cockroach.yml
   minPlayers: 0
   stations:
     Cockroach:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: large_industrial
         - type: StationNameSetup
-          mapNameTemplate: 'Таракан {1}'
+          mapNameTemplate: 'Cockroach {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

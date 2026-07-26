@@ -1,16 +1,16 @@
 - type: job
-  id: IntelligenceOfficerNCSP
+  id: IntelligenceOfficerTFSC
   name: job-name-intelligenceofficer
   description: job-description-intelligenceofficer
-  playTimeTracker: JobIntelligenceOfficerNCSP
+  playTimeTracker: JobIntelligenceOfficerTFSC
   ranks:
     RatRankTFSCPatriarchSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobIntelligenceOfficerNCSP
+      tracker: JobIntelligenceOfficerTFSC
       min: 72000 # 20 hours
     RatRankTFSCPatriarchMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobIntelligenceOfficerNCSP
+      tracker: JobIntelligenceOfficerTFSC
       min: 36000 # 10 hours
     RatRankTFSCPatriarchJunior: []
   weight: 5
@@ -19,7 +19,13 @@
   whitelisted: true # Rat
   requireAdminNotify: true
   icon: "JobIconSyndieIntelligenceOfficer"
-  supervisors: You answer to the interests of the CyberDawn Technologies company. Protect your technology, make money,  take out competition.
+  chatNameColor: "#839cd7"
+  chatAmplification:
+    bubbleScale: 1.09
+    shoutBubbleScale: 1.32
+    radioScale: 1.23
+    radioBold: true
+  supervisors: You answer to the Ringleader. Head the Coalition's research wing - protect your technology, make money, take out competition.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -31,7 +37,8 @@
     - !type:FactionRequirement
       factionID: "TFSC"
     - !type:SexRequirement
-      sex: Male
+      inverted: true
+      sex: Female
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
@@ -42,7 +49,7 @@
     components:
       - type: NukeOperative
       - type: HullrotFaction
-        faction: CD
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -57,9 +64,13 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
   - SyndicateRamzi
-  - SyndicateCommand
+  - SyndicateCommand # department head
   - Service
   - External
   - Mercenary # Frontier
@@ -72,9 +83,9 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatPatriarch
     id: IntelligenceOfficerPDA
-    back: ClothingBackpackNCSPFilledInfanteer
+    back: ClothingBackpackTFSCFilledInfanteer
     gloves: ClothingHandsGlovesFingerless
     outerClothing: ClothingOuterArmorCyberdawnPatriarch
-    ears: ClothingHeadsetNCSPCyberdawn
-    pocket1: AccessElevatorCD
+    ears: ClothingHeadsetTFSCCyberdawnCommand
+    pocket1: AccessElevatorTFSC
     pocket2: RatRubberStampTFSCCyberDawn

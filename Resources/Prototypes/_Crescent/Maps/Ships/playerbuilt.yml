@@ -5,12 +5,12 @@
   price: 1
   category: Small
   group: None
-  path: /Maps/_Crescent/Shuttles/NCSP/rockchipper.yml
+  path: /Maps/_Crescent/Shuttles/TFSC/rockchipper.yml
 
 - type: gameMap
   id: Playerbuilt
   mapName: 'PBS Shuttle'
-  mapPath: /Maps/_Crescent/Shuttles/NCSP/rockchipper.yml
+  mapPath: /Maps/_Crescent/Shuttles/TFSC/rockchipper.yml
   minPlayers: 0
   stations:
     Playerbuilt:

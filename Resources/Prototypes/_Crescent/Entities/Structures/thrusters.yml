@@ -1,13 +1,13 @@
 #faction-flagged thrusters
 
 - type: entity
-  id: ThrusterNCSPFighter
+  id: ThrusterTFSCFighter
   parent: Thruster
-  suffix: NCSP, Fighter
+  suffix: TFSC, Fighter
   components:
     - type: NpcFactionMember
       factions:
-        - NCSPFighter
+        - TFSCFighter
     - type: Damageable
       damageContainer: StructuralInorganic
       damageModifierSet: StructuralMetallicStrong
@@ -39,12 +39,12 @@
         visible: false
         offset: 0, 1
     - type: Machine
-      board: NCSPFighterCircuitBoard
+      board: TFSCFighterCircuitBoard
 
 - type: entity
-  id: ThrusterNCSPSmuggler
+  id: ThrusterTFSCSmuggler
   parent: Thruster
-  suffix: NCSP, Smuggler
+  suffix: TFSC, Smuggler
   components:
     - type: Damageable
       damageContainer: StructuralInorganic
@@ -77,7 +77,7 @@
         visible: false
         offset: 0, 1
     - type: Machine
-      board: NCSPSmugglerCircuitBoard
+      board: TFSCSmugglerCircuitBoard
 
 - type: entity
   id: ThrusterCMMFighter
@@ -245,13 +245,13 @@
       board: SRMFighterCircuitBoard
 
 - type: entity
-  id: ThrusterNCSPWarship
+  id: ThrusterTFSCWarship
   parent: Thruster
-  suffix: NCSP, Warship
+  suffix: TFSC, Warship
   components:
     - type: NpcFactionMember
       factions:
-        - NCSPWarship
+        - TFSCWarship
     - type: Damageable
       damageContainer: StructuralInorganic
       damageModifierSet: StructuralMetallicStrong
@@ -283,7 +283,7 @@
         visible: false
         offset: 0, 1
     - type: Machine
-      board: NCSPWarshipCircuitBoard
+      board: TFSCWarshipCircuitBoard
 
 - type: entity
   id: ThrusterNCWLWarship

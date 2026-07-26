@@ -1,87 +1,87 @@
 - type: entity
   parent: Paper
   id: UnionfallDSMCadetNote
-  name: брифинг дисциплинарного полка Мандата
+  name: Mandate Disciplinary Regiment Briefing
   components:
   - type: Paper
     content: |
-      БОЖЕСТВЕННЫЙ МАНДАТ СОЛНЦА
-      БРИФИНГ ДИСЦИПЛИНАРНОГО ПОЛКА
+      DIVINE SOL MANDATE
+      DISCIPLINARY REGIMENT BRIEFING
 
-      Солдаты Полка,
+      Soldiers of the Regiment,
 
-      Вы служите в дисциплинарном полку Мандата —
-      формировании, состоящем из опозоренных солдат,
-      преступников и осуждённых ветеранов.
+      You serve in a Mandate disciplinary regiment —
+      a formation composed of disgraced soldiers,
+      criminals and condemned veterans.
 
-      Мандат не тратит впустую ни одного полезного слугу.
+      Mandate wastes no useful servant.
 
-      В секторе Тайпан наш патрульный флот обнаружил
-      остатки повстанческого флота, принадлежащего
-      Лиге Рабочих Нового Полумесяца.
+      In the Taypan sector our patrol fleet has detected
+      the remnants of a rebel warfleet belonging to the
+      New Crescent Workers League.
 
-      Отказ связи не позволяет запросить подкрепление.
-      Поэтому эта битва ложится только на нас.
+      Communications failure prevents reinforcement.
+      Therefore this battle falls to us alone.
 
-      Считайте это своим шансом на искупление.
-
-      ------------------------------------------------
-
-      ЗАДАЧА
-
-      Уничтожьте базы данных клонирования противника,
-      расположенные на их военных кораблях.
-
-      Эти устройства позволяют силам повстанцев снова и снова
-      возвращаться на поле боя.
-
-      Уничтожьте их — и восстание умрёт здесь.
-
-      Методы:
-
-      • Уничтожьте их, используя корабельное вооружение
-      • Проникните на вражеские суда и совершите диверсию
-
-      Порядок диверсии:
-      - Время взаимодействия: 10 секунд
-      - Таймер детонации: 60 секунд
-
-      Вражеские техники могут обезвредить устройство. Защищайте его до последнего вздоха.
+      Consider this your opportunity for redemption.
 
       ------------------------------------------------
 
-      БЕЗДНА ГРЯДЁТ
+      OBJECTIVE
 
-      В начале операции оба флота находятся
-      внутри защитных барьеров.
+      Destroy the enemy Cloner Databases located aboard
+      their warships.
 
-      Длительность: 20 минут.
+      These devices allow rebel forces to continuously
+      return to the battlefield.
 
-      Используйте это время, чтобы:
+      Eliminate them and the rebellion dies here.
 
-      • Организовать корабельные команды
-      • Развернуть истребители
-      • Сформировать абордажные партии
+      Methods:
 
-      Как только барьер падёт,
-      начнётся сражение флотов.
+      • Destroy them using ship weaponry
+      • Board enemy vessels and sabotage them
+
+      Sabotage procedure:
+      - Interaction time: 10 seconds
+      - Detonation timer: 60 seconds
+
+      Enemy technicians may disarm the device. So defend it till your last breath.
 
       ------------------------------------------------
 
-      ПРИКАЗЫ
+      HADAL TIDE
 
-      1. Доложите Рыцарю-Знаменосцу
-         или Верховному Стюарду.
+      At the beginning of the operation both fleets are
+      contained within protective barriers.
 
-      2. Присоединитесь к команде действующего корабля
-         или получите талон на истребитель.
+      Duration: 20 minutes.
 
-      3. Совершите вылет через консоль верфи.
+      Use this time to:
 
-      4. Следуйте приказам командования флота Мандата.
+      • Organize ship crews
+      • Deploy fighters
+      • Form boarding parties
 
-      Искупление достигается через послушание.
+      Once the barrier collapses,
+      the fleet engagement will begin.
 
-      ЗА КАЙЗЕРА!
+      ------------------------------------------------
 
-      СЛАВА МАНДАТУ!
+      ORDERS
+
+      1. Report to the Knight Banneret
+         or the Grand Steward.
+
+      2. Join an operational ship crew
+         or acquire a fighter voucher.
+
+      3. Deploy through the shipyard console.
+
+      4. Follow Mandate fleet command.
+
+      Redemption is earned through obedience.
+
+      FOR THE KAISER!
+
+      GLORY TO MANDATE!

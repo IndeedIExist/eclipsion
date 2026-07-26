@@ -1,6 +1,7 @@
 #90mm
 - type: latheRecipe
   id: Cartridge90mm
+  category: Ammo
   result: Cartridge90mm
   completetime: 5
   materials:
@@ -23,6 +24,7 @@
 #120mm
 - type: latheRecipe
   id: Cartridge120mm
+  category: Ammo
   result: Cartridge120mm
   completetime: 7
   materials:
@@ -46,6 +48,7 @@
 #300mm
 - type: latheRecipe
   id: Cartridge300mm
+  category: Ammo
   result: Cartridge300mm
   completetime: 2
   materials:

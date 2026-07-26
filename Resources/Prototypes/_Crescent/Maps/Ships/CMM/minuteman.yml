@@ -5,8 +5,8 @@
   id: Minuteman
   name: TS Minuteman
   description: |
-    A corvette designated for wolfpack attacks and taking down enemy shields quickly as support vessel in bigger fleets.
-    LOADOUT: 1x 200w 'Curse' ion blaster, 2x 48mm 'Shortbow' SRMs
+    A corvette designated for wolfpack attacks, delivering concentrated missile fire as a support vessel in bigger fleets.
+    LOADOUT: 1x 95mm 'Arbalest' Medium Missile System, 2x 48mm 'Shortbow' SRM
     MINIMUM CREW: 1x Pilot, Loader Optional
   price: 45000
   category: Small
@@ -21,9 +21,6 @@
   stations:
     Minuteman:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
@@ -37,4 +34,4 @@
         - type: VesselDesignation
           designation: vessel-designation-corvette
         - type: VesselDescription
-          description: Small and swift corvette featuring an ion blaster, best in wolfpack tatics taking down shields and firing its missile load in a pack.
+          description: Small and swift corvette, best in wolfpack tactics, firing its missile load in a pack.

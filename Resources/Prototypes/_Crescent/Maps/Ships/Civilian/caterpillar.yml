@@ -3,10 +3,10 @@
 
 - type: vessel
   id: Caterpillar
-  name: Гусеница
+  name: Caterpillar
   description: |
-    "Гусеница" — это грузовое судно значительного размера, проворное и маневренное, но его грузовой отсек полностью открыт в космос. Рекомендуется сопровождение, так как это делает корабль уязвимым для атак пиратов.
-    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1x Пилот
+    The Caterpillar is a sizable cargo ship that is agile and nimble, but its cargo bay is entirely exposed to space. Escorts are recommended, since this makes the ship vulnerable to pirate attacks.
+    MINIMUM CREW: 1x Pilot
   price: 20000
   category: Medium
   group: Scrap
@@ -14,22 +14,19 @@
 
 - type: gameMap
   id: Caterpillar
-  mapName: 'Гусеница'
+  mapName: 'Caterpillar'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/caterpillar.yml
   minPlayers: 0
   stations:
     Caterpillar:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: hauler
         - type: StationNameSetup
-          mapNameTemplate: 'Гусеница {1}'
+          mapNameTemplate: 'Caterpillar {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

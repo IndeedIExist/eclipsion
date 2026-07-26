@@ -4,7 +4,7 @@
 - type: vessel
   id: Beta
   name: NT Beta
-  description: A remnant of the autonomous AI fleets developed by the NanoTrasen Corporation.
+  description: One of NanoTrasen's autonomous frontline drones, salvaged from the Fog. Lighter than the Alpha and cheaper to run, with just as much willingness to shoot at things.
   price: 36000
   category: Small
   group: None

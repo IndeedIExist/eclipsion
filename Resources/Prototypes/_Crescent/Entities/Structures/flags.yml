@@ -148,7 +148,7 @@
   parent: BaseSign
   id: ImperialFlag
   name: imperial banner
-  description: "A strip of fabric with the insignia of House Kircheis on it."
+  description: "A strip of fabric with the insignia of House Vogsburg on it."
   components:
   - type: WallMount
     arc: 360

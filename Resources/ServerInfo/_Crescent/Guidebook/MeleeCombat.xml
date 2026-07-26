@@ -1,0 +1,50 @@
+<Document>
+[head=2][color=#e8b04b]Melee Combat[/color][/head]
+
+Melee on Hullrot: Eclipsion is not a simple click-fest. Swings, parries, stamina and positioning all matter, and a skilled fighter with a blade can beat a panicking one with a gun. This page explains how to actually win a melee fight.
+
+[head=3][color=#e8b04b]The three attacks[/color][/head]
+
+- [color=#6ab7d6][keybind="LeftClick"/][/color] is your [bold]slash[/bold], the standard attack. Aim it at an enemy to strike them, or at an object to hit it.
+- [color=#6ab7d6][keybind="RightClick"/][/color] is your [bold]parry or block[/bold]. It raises your guard to catch an incoming attack, and timing is everything.
+- [color=#6ab7d6][keybind="MiddleMouse"/][/color] is a [bold]soft attack[/bold], a light and controlled hit. Use it to break a window, tap open a crate, or interact with something fragile [color=#6ab7d6]without[/color] committing a full swing.
+
+[head=3][color=#e8b04b]Parrying and timing[/color][/head]
+
+A parry only rewards you if it lands in the [bold]moment the enemy's blow arrives[/bold]. Hold your parry too early and you waste stamina, and react too late and you eat the hit.
+
+- A [color=#8fc98a]well-timed parry[/color] stops the incoming damage and can stagger your opponent, opening them up for your counter.
+- A [color=#d9776c]mistimed parry[/color] leaves you exposed and drains your stamina for nothing.
+
+Watch your opponent's swings and learn their rhythm. Parry [bold]reactively[/bold] rather than on a loop. Against multiple attackers parrying becomes much harder, so try not to let yourself get surrounded.
+
+[head=3][color=#e8b04b]Stamina[/color][/head]
+
+Every swing and every parry costs [color=#e8b04b]stamina[/color]. When your stamina runs out you are staggered and briefly helpless, which in a melee fight usually means you lose.
+
+- Do not spam-swing. Throwing endless attacks empties your stamina and leaves you defenceless.
+- Land committed hits, parry the important blows, and give yourself moments to recover.
+- Draining [bold]your opponent's[/bold] stamina is a win condition. Pressure them into blocking and swinging until they gas out, then punish.
+
+[head=3][color=#e8b04b]Wielding melee weapons[/color][/head]
+
+Larger weapons like the zweihander and other heavy blades are far more effective when wielded in [bold]two hands[/bold]. Press [color=#6ab7d6][keybind="Z"/][/color] while holding one to wield it, which improves your reach and damage. You need a free hand to wield, so you cannot wield a weapon and hold a shield or gun at the same time.
+
+Lighter weapons such as kukris, batons, and daggers can be used one-handed, letting you keep a sidearm or shield ready.
+
+[head=3][color=#e8b04b]Executions[/color][/head]
+
+You cannot instantly kill a healthy enemy in melee. To finish someone off you must first beat them down into a [color=#d9776c]critical state[/color] through normal combat.
+
+Once they are downed and critical, stand over them and use the [color=#6ab7d6][keybind="RightClick"/][/color] execute option to finish them.
+
+[color=#d9776c]Remember the rules.[/color] Executing a downed enemy is [color=#8fc98a]allowed[/color] during active combat between factions, but round-removing a member of your [bold]own faction[/bold] is forbidden. See the Roleplay Rules for details.
+
+[head=3][color=#e8b04b]Practical tips[/color][/head]
+
+- Keep moving. A stationary target is easy to shoot and easy to surround.
+- Use doorways and corners to fight enemies one at a time instead of all at once.
+- A shield in your off-hand can soak hits while you swing with the other.
+- Do not bring a knife to a gunfight in the open. Close the distance through cover first.
+- Watch your stamina bar as closely as your health.
+</Document>

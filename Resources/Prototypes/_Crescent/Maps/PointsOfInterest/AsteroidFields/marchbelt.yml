@@ -1,6 +1,6 @@
 - type: gameMap
   id: Marchbelt
-  mapName: 'Пояс "Марш"'
+  mapName: 'March Belt'
   mapPath: /Maps/_Crescent/Explorables/marchbelt.yml
   minPlayers: 0
   stations:
@@ -13,4 +13,4 @@
             state: asteroids
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Пояс "Марш"'
+          mapNameTemplate: 'March Belt'

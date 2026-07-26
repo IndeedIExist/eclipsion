@@ -57,7 +57,7 @@ namespace Content.Server.GameTicking
 
                     // Make the player actually join the game.
                     // timer time must be > tick length
-                    // Timer.Spawn(0, () => _playerManager.JoinGame(args.Session)); // Forge-Change ломает авторизацию, держать в комменте
+                    // Timer.Spawn(0, () => _playerManager.JoinGame(args.Session)); // Forge-Change: breaks authentication, keep it commented out
 
                     var record = await _db.GetPlayerRecordByUserId(args.Session.UserId);
                     var firstConnection = record != null &&
@@ -214,6 +214,12 @@ namespace Content.Server.GameTicking
             RaiseNetworkEvent(new TickerJoinLobbyEvent(), client);
             RaiseNetworkEvent(GetStatusMsg(session), client);
             RaiseNetworkEvent(GetInfoMsg(), client);
+
+            var preset = CurrentPreset ?? Preset;
+            var gamemodeJobs = preset?.AvailableJobs?.Select(j => j.Id).ToList() ?? new List<string>();
+            var excludedJobs = preset?.ExcludedJobs?.Select(j => j.Id).ToList() ?? new List<string>();
+            RaiseNetworkEvent(new TickerGamemodeJobsEvent(gamemodeJobs, excludedJobs), client);
+
             RaiseLocalEvent(new PlayerJoinedLobbyEvent(session));
         }
 

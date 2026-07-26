@@ -39,15 +39,6 @@ public sealed partial class IFFConsoleWindow : FancyWindow,
             ColorPreset3Button.OnPressed += _ => TrySelectColor("#88B0D1FF");
         if (ColorPreset4Button != null)
             ColorPreset4Button.OnPressed += _ => TrySelectColor("#8178CCFF");
-
-        if (ApplyColorButton != null && CustomColorLineEdit != null)
-        {
-            ApplyColorButton.OnPressed += _ =>
-            {
-                var text = CustomColorLineEdit.Text.Trim();
-                TrySelectColor(text);
-            };
-        }
     }
 
     private void ShowIFFPressed(bool pressed)
@@ -125,11 +116,6 @@ public sealed partial class IFFConsoleWindow : FancyWindow,
             if (ColorPreset2Button != null) ColorPreset2Button.Visible = allow;
             if (ColorPreset3Button != null) ColorPreset3Button.Visible = allow;
             if (ColorPreset4Button != null) ColorPreset4Button.Visible = allow;
-            if (CustomColorLineEdit != null) CustomColorLineEdit.Visible = allow;
-            if (ApplyColorButton != null) ApplyColorButton.Visible = allow;
-
-            if (allow && CustomColorLineEdit != null)
-                CustomColorLineEdit.Text = state.Color.ToHex();
         }
     }
 }

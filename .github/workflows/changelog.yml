@@ -7,7 +7,7 @@ on:
 # Global environment variables
 env:
   # Hardcode the changelog path to avoid variable issues
-  CHANGELOG_DIR: ${{ github.workspace }}/Resources/Changelog/rat.yml
+  CHANGELOG_DIR: ${{ github.workspace }}/Resources/Changelog/Changelog.yml
   # PR number from GitHub event
   PR_NUMBER: ${{ github.event.number }}
   # Repository name (for API calls)

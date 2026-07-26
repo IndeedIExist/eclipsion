@@ -3,9 +3,9 @@
 
 - type: vessel
   id: Glaive
-  name: Глейв
+  name: Glaive
   description: |
-    Легкий торпедоносец с вулканной пушкой в качестве дополнительного оружия.
+    A light torpedo bomber with a vulcan gatling as a sidearm.
     LOADOUT: 1x 20mm Vulcan, 2x 180mm Idna Torpedoes
     MINIMUM CREW: 1x Pilot
   price: 20000
@@ -15,18 +15,15 @@
 
 - type: gameMap
   id: Glaive
-  mapName: 'Глейв'
+  mapName: 'Glaive'
   mapPath: /Maps/_Crescent/Shuttles/TAP/glaive.yml
   minPlayers: 0
   stations:
     Glaive:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Глейв {1}'
+          mapNameTemplate: 'Glaive {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

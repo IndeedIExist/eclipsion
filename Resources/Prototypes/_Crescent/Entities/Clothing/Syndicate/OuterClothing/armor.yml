@@ -179,8 +179,8 @@
     damageCoefficient: 1
   - type: DegradeableArmor
     armorMaxHealth: 700
-    armorType: Ceramic
-    armorRepair: NTCeramic
+    armorType: Metallic
+    armorRepair: SteelPlate
     initialModifiers:
       flatReductions:
         Blunt: 20

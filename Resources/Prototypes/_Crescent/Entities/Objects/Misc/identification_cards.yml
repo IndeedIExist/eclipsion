@@ -29,6 +29,12 @@
     - state: idcentcom
   - type: PresetIdCard
     job: CommandantNCWL
+  # Steal target for the DSM round-end directive. Parent tags are repeated because declaring the list replaces it.
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - NCWLLeaderIdCard
 
 - type: entity
   parent: IDCardStandard
@@ -199,135 +205,135 @@
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardRingleader
-  name: NCSP ID card
+  id: TFSCIDCardRingleader
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: RingleaderNCSP
+    job: RingleaderTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardCyberdawnTech
-  name: NCSP ID card
+  id: TFSCIDCardCyberdawnTech
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: CyberdawnTechNCSP
+    job: CyberdawnTechTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardLieutenant
-  name: NCSP ID card
+  id: TFSCIDCardLieutenant
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: LieutenantNCSP
+    job: LieutenantTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardInfanteer
-  name: NCSP ID card
+  id: TFSCIDCardInfanteer
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: InfanteerNCSP
+    job: InfanteerTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardCoordinator
-  name: NCSP ID card
+  id: TFSCIDCardCoordinator
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: CoordinatorNCSP
+    job: CoordinatorTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardRipperdoc
-  name: NCSP ID card
+  id: TFSCIDCardRipperdoc
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: RipperdocNCSP
+    job: RipperdocTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardTraumasec
-  name: NCSP ID card
+  id: TFSCIDCardTraumasec
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: TraumasecNCSP
+    job: TraumasecTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardOperative
-  name: NCSP ID card
+  id: TFSCIDCardOperative
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: OperativeNCSP
+    job: OperativeTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardIntelligenceOfficer
-  name: NCSP ID card
+  id: TFSCIDCardIntelligenceOfficer
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: IntelligenceOfficerNCSP
+    job: IntelligenceOfficerTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardForeman
-  name: NCSP ID card
+  id: TFSCIDCardForeman
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: ForemanNCSP
+    job: ForemanTFSC
 
 - type: entity
   parent: IDCardStandard
-  id: NCSPIDCardShipbreaker
-  name: NCSP ID card
+  id: TFSCIDCardShipbreaker
+  name: TFSC ID card
   components:
   - type: Sprite
     layers:
     - state: syndie
     - state: idzookeeper
   - type: PresetIdCard
-    job: ShipbreakerNCSP
+    job: ShipbreakerTFSC
 
 #empire
 
@@ -555,6 +561,12 @@
     - state: idseniorresearcher
   - type: PresetIdCard
     job: GovernorDSM
+  # Steal target for the NCWL round-end directive. Parent tags are repeated because declaring the list replaces it.
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - DSMLeaderIdCard
 
 #srm
 
@@ -1248,3 +1260,34 @@
   - type: PresetIdCard
     job: Spacer
 
+
+# ===== merged from _Rat (full-hullrot consolidation) =====
+- type: entity
+  parent: IDCardStandard
+  id: DSMIDCardRegentEmpire
+  name: imperial ID card
+  components:
+  - type: Currency
+    price:
+      PlunderGSC: 15
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idseniorresearcher
+  - type: PresetIdCard
+    job: RegentEmpireDSM
+
+- type: entity
+  parent: IDCardStandard
+  id: DSMIDCardPretorianKnight
+  name: imperial ID card
+  components:
+  - type: Currency
+    price:
+      PlunderGSC: 10
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idseniorresearcher
+  - type: PresetIdCard
+    job: PretorianKnightDSM

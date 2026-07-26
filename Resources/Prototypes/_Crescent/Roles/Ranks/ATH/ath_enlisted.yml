@@ -1,0 +1,59 @@
+- type: rank
+  id: RatRankATHEnlistedFirst
+  name: Staff Ensign
+  prefix: Staff Ensign
+  paygrade: E10
+
+- type: rank
+  id: RatRankATHEnlistedSecond
+  name: Senior Ensign
+  prefix: Senior Ensign
+  paygrade: E9
+
+- type: rank
+  id: RatRankATHEnlistedThird
+  name: Ensign
+  prefix: Ensign
+  paygrade: E8
+
+- type: rank
+  id: RatRankATHEnlistedBased
+  name: Staff Feldwebel
+  prefix: Staff Feldwebel
+  paygrade: E7
+
+- type: rank
+  id: RatRankATHEnlistedHigh
+  name: Senior Feldwebel
+  prefix: Senior Feldwebel
+  paygrade: E6
+
+- type: rank
+  id: RatRankATHEnlistedLead
+  name: Feldwebel
+  prefix: Feldwebel
+  paygrade: E5
+
+- type: rank
+  id: RatRankATHEnlistedSenior
+  name: Staff Corporal
+  prefix: Staff Corporal
+  paygrade: E4
+
+- type: rank
+  id: RatRankATHEnlistedMiddle
+  name: Senior Corporal
+  prefix: Senior Corporal
+  paygrade: E3
+
+- type: rank
+  id: RatRankATHEnlistedJunior
+  name: Corporal
+  prefix: Corporal
+  paygrade: E2
+
+- type: rank
+  id: RatRankATHEnlistedNovice
+  name: Sailor
+  prefix: Sailor
+  paygrade: E1

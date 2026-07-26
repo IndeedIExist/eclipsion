@@ -1,14 +1,20 @@
 - type: job
-  id: RingleaderNCSP
+  id: RingleaderTFSC
   name: job-name-ringleader
   description: job-description-ringleader
-  playTimeTracker: JobRingleaderNCSP
+  playTimeTracker: JobRingleaderTFSC
   weight: 12
   startingGear: RingleaderGear
   alwaysUseSpawner: true
   whitelisted: true # Rat
   requireAdminNotify: true
   icon: "JobIconSyndieRingleader"
+  chatNameColor: "#aa2828"
+  chatAmplification:
+    bubbleScale: 1.09
+    shoutBubbleScale: 1.32
+    radioScale: 1.23
+    radioBold: true
   supervisors: job-supervisors-gsc-ringleader
   canBeAntag: false
   requirements:
@@ -32,7 +38,7 @@
       - type: ChatRank
         rank: crescent-rank-synadmin
       - type: HullrotFaction
-        faction: GSC
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -76,11 +82,15 @@
   - Maintenance
   - Service
   - External
+  # Sole head of the Coalition: every department keyring plus the treasury/payroll tier.
   - SyndicateBasic
   - SyndicateCommand
   - SyndicateRingleader
   - SyndicateFunds
   - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
 
 - type: startingGear
   id: RingleaderGear
@@ -90,9 +100,9 @@
     head: ClothingHeadHatSyndicateOfficer
     outerClothing: ClothingOuterArmorSyndicateRingmaster
     id: RingleaderPDA
-    ears: ClothingHeadsetNCSP
+    ears: ClothingHeadsetTFSCCommand
     gloves: ClothingHandsGlovesFingerless
-    belt: AccessElevatorGSC
+    belt: AccessElevatorTFSC
     pocket1: WeaponPistolDeagleUranium
     pocket2: WeaponPistolDeagleUranium
     mask: ClothingMaskGasSyndicate

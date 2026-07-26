@@ -37,6 +37,7 @@
       visible: false
   - type: MeleeWeapon
     wideAnimationRotation: -135
+    attackRate: 1.0
     range: 1.75
     damage:
       types:
@@ -49,6 +50,7 @@
     maxTargets: 3
     angle: 20
     animation: WeaponArcThrust
+    meleeStaminaDamage: 12
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: DamageOtherOnHit

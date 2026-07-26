@@ -1,0 +1,71 @@
+- type: rank
+  id: RatRankNobleEmperor
+  name: Emperor
+  prefix: Emperor
+  paygrade: EMP
+
+- type: rank
+  id: RatRankNobleHighStellarch
+  name: High Stellarch
+  prefix: High Stellarch
+  paygrade: N9
+
+- type: rank
+  id: RatRankNobleStellarch
+  name: Stellarch
+  prefix: Stellarch
+  paygrade: N8
+
+- type: rank
+  id: RatRankNobleArchduke
+  name: Archduke
+  prefix: Lord Admiral
+  paygrade: N7
+
+- type: rank
+  id: RatRankNobleGrandDuke
+  name: Grand Duke
+  prefix: Lord Admiral
+  paygrade: N6
+
+- type: rank
+  id: RatRankNobleDuke
+  name: Duke
+  prefix: Duke
+  paygrade: N6
+
+- type: rank
+  id: RatRankNobleMarkgraf
+  name: Margrave
+  prefix: Margrave
+  paygrade: N5
+
+- type: rank
+  id: RatRankNobleMarquis
+  name: Marquis
+  prefix: Marquis
+  paygrade: N5
+
+- type: rank
+  id: RatRankNobleCount
+  name: Count
+  prefix: Count
+  paygrade: N4
+
+- type: rank
+  id: RatRankNobleViscount
+  name: Viscount
+  prefix: Viscount
+  paygrade: N3
+
+- type: rank
+  id: RatRankNobleBaron
+  name: Baron
+  prefix: Baron
+  paygrade: N2
+
+- type: rank
+  id: RatRankNoblePatrician
+  name: Patrician
+  prefix: Patrician
+  paygrade: N1

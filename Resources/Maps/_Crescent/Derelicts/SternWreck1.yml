@@ -74,7 +74,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 15
+      baseMaxLinearVelocity: 20
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -1789,8 +1789,6 @@ entities:
       pos: 0.5,-6.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -7224.691
-      state: Opening
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True

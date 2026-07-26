@@ -1,13 +1,14 @@
 - type: job
-  id: InfanteerNCSP
+  id: InfanteerTFSC
   name: job-name-infanteer
   description: job-description-infanteer
-  playTimeTracker: JobInfanteerNCSP
+  playTimeTracker: JobInfanteerTFSC
   weight: 10
   startingGear: InfanteerGear
   alwaysUseSpawner: true
   requireAdminNotify: false
   icon: "JobIconSyndiePrivateer"
+  chatNameColor: "#681919"
   supervisors: job-supervisors-gsc-infanteer
   canBeAntag: false
   requirements:
@@ -32,7 +33,7 @@
       - type: ChatRank
         rank: crescent-rank-op
       - type: HullrotFaction
-        faction: GSC
+        faction: TFSC
       - type: LanguageAdder
         addSpoken:
           - Freespeak
@@ -41,8 +42,12 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
   - SyndicateGorlex
+  - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
   - Service
   - External
   - Mercenary # Frontier
@@ -55,13 +60,13 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHelmetSyndicateBasic
     id: InfanteerPDA
-    ears: ClothingHeadsetNCSP
+    ears: ClothingHeadsetTFSC
     belt: ClothingBeltSyndicateWebbing
     outerClothing: ClothingOuterArmorSyndicateArmorvest
     pocket1: WeaponPistolViperWood
     pocket2: ClothingMaskGasSyndicate
     gloves: ClothingHandsGlovesFingerless
-    back: ClothingBackpackNCSP
+    back: ClothingBackpackTFSC
   storage:
     belt:
       - Flash

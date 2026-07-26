@@ -11,7 +11,7 @@ namespace Content.Shared.Weapons.Melee;
 /// <summary>
 /// When given to a mob lets them do unarmed attacks, or when given to an item lets someone wield it to do attacks.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), AutoGenerateComponentPause]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class MeleeWeaponComponent : Component
 {
     // TODO: This is becoming bloated as shit.
@@ -83,7 +83,7 @@ public sealed partial class MeleeWeaponComponent : Component
     ///     When power attacking, the required cooldown between swings is multiplied by this amount.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float HeavyRateModifier = 1.2f;
+    public float HeavyRateModifier = 1.75f;
     /// <summary>
     /// Are we currently holding down the mouse for an attack.
     /// Used so we can't just hold the mouse button and attack constantly.
@@ -111,7 +111,20 @@ public sealed partial class MeleeWeaponComponent : Component
     public DamageSpecifier Damage = default!;
 
     [DataField, AutoNetworkedField]
-    public FixedPoint2 BluntStaminaDamageFactor = FixedPoint2.New(1f);
+    public FixedPoint2 BluntStaminaDamageFactor = FixedPoint2.New(0.5f);
+
+    /// <summary>
+    /// Flat stamina damage applied to the target on every melee hit, regardless of damage type.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float MeleeStaminaDamage = 0f;
+
+    /// <summary>
+    /// Stamina restored to the attacker when they land a successful hit that deals damage.
+    /// Keeps skilled fighters sustainable while unskilled fighters who miss will tire out.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float StaminaOnHitRestore = 5f;
 
     /// <summary>
     /// Multiplies damage by this amount for single-target attacks.
@@ -190,6 +203,63 @@ public sealed partial class MeleeWeaponComponent : Component
     [DataField, AutoNetworkedField]
     public int MaxTargets = 3;
 
+    // --- Combo chain (successive light attacks) ---
+
+    /// <summary>
+    /// Current combo chain count for successive light attacks that land without missing,
+    /// getting parried, or letting the chain expire.
+    /// </summary>
+    [AutoNetworkedField]
+    public int ComboCount;
+
+    /// <summary>
+    /// If the combo chain isn't extended by another landed light attack before this time,
+    /// it resets back to zero.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
+    [AutoPausedField]
+    public TimeSpan ComboExpiresAt;
+
+    /// <summary>
+    /// How long after a landed light attack the combo chain stays alive.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float ComboWindowSeconds = 1.5f;
+
+    /// <summary>
+    /// Damage multiplier bonus applied per combo stack (e.g. 0.1 = +10% damage per stack).
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float ComboDamageBonusPerStack = 0.1f;
+
+    /// <summary>
+    /// Highest number of stacks the combo bonus can reach.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int MaxComboStacks = 3;
+
+    // --- Weapon parry/riposte personality ---
+    // Lets individual weapons feel different to parry with instead of every weapon
+    // sharing the same fixed timing off the wielder's ParryComponent.
+
+    /// <summary>
+    /// Overrides <see cref="ParryComponent.ParryWindowSeconds"/> while this weapon is held. Null uses the default.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float? ParryWindowOverride;
+
+    /// <summary>
+    /// Overrides <see cref="ParryComponent.PerfectParryWindowSeconds"/> while this weapon is held. Null uses the default.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float? PerfectParryWindowOverride;
+
+    /// <summary>
+    /// Overrides <see cref="ParryComponent.RiposteDamageMultiplier"/> for riposte attacks made with this weapon. Null uses the default.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float? RiposteDamageMultiplierOverride;
+
     // Sounds
 
     /// <summary>
@@ -209,6 +279,25 @@ public sealed partial class MeleeWeaponComponent : Component
     public SoundSpecifier? SoundHit;
 
     /// <summary>
+    /// Plays when hitting an unarmored target (outer clothing piercing resistance ≤ 35).
+    /// Falls back to SoundHit if null.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? SoundHitFlesh;
+
+    /// <summary>
+    /// Plays when a hit puts the target into a critical state. Takes priority over SoundHit/SoundHitFlesh.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? SoundHitCrit;
+
+    /// <summary>
+    /// Plays when a hit kills the target. Takes highest priority.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? SoundHitKill;
+
+    /// <summary>
     /// Plays if no damage is done to the target entity.
     /// </summary>
     [DataField, AutoNetworkedField]
@@ -222,6 +311,7 @@ public sealed partial class MeleeWeaponComponent : Component
     {
         DoStaminaInteraction = true,
         StaminaDisadvantage = true,
+        StaminaRangeModifier = 0.4f,
         DoHealthInteraction = true,
     };
 

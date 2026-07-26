@@ -12,12 +12,12 @@ using Content.Server.Gateway.Components;
 using Content.Server.Mind;
 using Content.Shared.Ghost;
 using Content.Shared.Parallax.Biomes;
-using Content.Shared._Rat.CCVar;
+using Content.Shared._Crescent.CCVar;
 
 namespace Content.Server._Horizon.GridCleanup;
 
 /// <summary>
-/// Автоматически удаляет мелкие гриды (менее 10 тайлов) после задержки в 600 секунд.
+/// Automatically deletes small grids (fewer than 10 tiles) after a 600 second delay.
 /// </summary>
 public sealed class GridCleanupSystem : EntitySystem
 {

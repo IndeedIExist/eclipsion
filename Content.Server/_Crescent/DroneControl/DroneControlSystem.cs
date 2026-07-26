@@ -12,6 +12,7 @@ using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Crescent.DroneControl;
 
@@ -21,6 +22,7 @@ public sealed class DroneControlSystem : EntitySystem
     [Dependency] private readonly DeviceNetworkSystem _deviceNetwork = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly HTNSystem _htn = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
@@ -35,7 +37,9 @@ public sealed class DroneControlSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<DroneControlConsoleComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerbs);
+        // Manual autolink is intentionally disabled: a carrier only fields the drones it produces, so players
+        // can't wire extra drones in with a multitool. Deployment/linking is handled by AutoDroneSystem.
+        // SubscribeLocalEvent<DroneControlConsoleComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerbs);
 
         SubscribeLocalEvent<DroneControlConsoleComponent, DroneConsoleMoveMessage>(OnMoveMsg);
         SubscribeLocalEvent<DroneControlConsoleComponent, DroneConsoleTargetMessage>(OnTargetMsg);
@@ -85,9 +89,22 @@ public sealed class DroneControlSystem : EntitySystem
     private void OnPacketReceived(Entity<DroneControlComponent> ent, ref DeviceNetworkPacketEvent args)
     {
         if (!args.Data.TryGetValue(DeviceNetworkConstants.Command, out string? cmd)
-            || !TryComp<HTNComponent>(ent, out var htn)
             || !args.Data.TryGetValue(DroneConsoleConstants.TargetCoords, out EntityCoordinates coords)
         )
+            return;
+
+        // A drone that has been claimed by a carrier is driven by AutoDroneSystem, so route the manual order
+        // there as a temporary override. An unclaimed auto-drone falls through to the HTN path below so it
+        // still responds to console orders.
+        if (TryComp<AutoDroneComponent>(ent, out var autoDrone) && autoDrone.CarrierConsole != null)
+        {
+            autoDrone.ManualCommand = cmd;
+            autoDrone.ManualTarget = coords;
+            autoDrone.ManualOverrideUntil = _timing.CurTime + autoDrone.ManualOverrideTimeout;
+            return;
+        }
+
+        if (!TryComp<HTNComponent>(ent, out var htn))
             return;
 
         var blackboard = htn.Blackboard;
@@ -110,24 +127,22 @@ public sealed class DroneControlSystem : EntitySystem
             return;
         }
 
-        var command = "";
-        switch (order)
+        if (!TryComp<DroneCarrierComponent>(console, out var carrier))
+            return;
+
+        var command = order == DroneOrderType.Move ? DroneConsoleConstants.CommandMove : DroneConsoleConstants.CommandTarget;
+
+        // Set the manual override directly on the selected claimed drones. This works on ANY clicked grid,
+        // including a friendly one (in case that ship has been captured by the enemy).
+        foreach (var drone in carrier.Slots.Values)
         {
-            case DroneOrderType.Move:
-                command = DroneConsoleConstants.CommandMove;
-                break;
-            case DroneOrderType.Target:
-                command = DroneConsoleConstants.CommandTarget;
-                break;
+            if (!selected.Contains(GetNetEntity(drone)) || !TryComp<AutoDroneComponent>(drone, out var ad))
+                continue;
+
+            ad.ManualCommand = command;
+            ad.ManualTarget = coordinates;
+            ad.ManualOverrideUntil = _timing.CurTime + ad.ManualOverrideTimeout;
         }
-
-        var payload = new NetworkPayload
-        {
-            [DeviceNetworkConstants.Command] = command,
-            [DroneConsoleConstants.TargetCoords] = coordinates
-        };
-
-        SendToSelected(console, selected, payload);
     }
 
     private void SendToSelected(EntityUid source, HashSet<NetEntity> selected, NetworkPayload payload)
@@ -149,37 +164,34 @@ public sealed class DroneControlSystem : EntitySystem
         var nav = _shuttleConsole.GetNavState(console, _shuttleConsole.GetAllDocks());
         var iffState = _shuttleConsole.GetIFFState(console, null);
 
+        // The carrier's own slot roster is authoritative - it always matches the drones it commands.
         var drones = new List<(NetEntity, NetEntity)>();
-        var toRemove = new List<EntityUid>();
+        var isCarrier = TryComp<DroneCarrierComponent>(console, out var carrier);
 
-        foreach (var (name, device) in _deviceList.GetDeviceList(console))
+        if (carrier != null)
         {
-            var xform = Transform(device);
-            if (xform.GridUid == null)
-                continue;
-
-            if (!_controlQuery.HasComp(device))
+            foreach (var drone in carrier.Slots.Values)
             {
-                toRemove.Add(device);
-                continue;
-            }
+                if (TerminatingOrDeleted(drone))
+                    continue;
 
-            drones.Add((GetNetEntity(device), GetNetEntity(xform.GridUid.Value)));
+                var xform = Transform(drone);
+                if (xform.GridUid == null)
+                    continue;
+
+                drones.Add((GetNetEntity(drone), GetNetEntity(xform.GridUid.Value)));
+            }
         }
 
-        // we have non-drone devices, clean up
-        if (toRemove.Count != 0)
-        {
-            var newList = new List<EntityUid>();
-            foreach (var (name, device) in _deviceList.GetDeviceList(console))
-            {
-                if (!toRemove.Contains(device))
-                    newList.Add(device);
-            }
-            _deviceList.UpdateDeviceList(console, newList);
-        }
-
-        _ui.SetUiState(console, DroneConsoleUiKey.Key, new DroneConsoleBoundUserInterfaceState(nav, iffState, drones));
+        _ui.SetUiState(console, DroneConsoleUiKey.Key, new DroneConsoleBoundUserInterfaceState(
+            nav, iffState, drones,
+            isCarrier,
+            carrier?.Stance ?? DroneStance.Attack,
+            carrier?.Targeting ?? DroneTargeting.Enemies,
+            carrier?.Formation ?? DroneFormation.Arrow,
+            carrier?.ProducedCount ?? 0,
+            carrier?.MaxDrones ?? 0,
+            carrier?.SpawnableDrones ?? new List<string>()));
     }
 
     public void TryAutolink(EntityUid fromEnt)

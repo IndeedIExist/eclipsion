@@ -1,6 +1,9 @@
 - type: emote
   id: WagTail
   name: chat-emote-name-tailwag
+  icon:
+    sprite: Interface/Actions/wagging.rsi
+    state: icon
   whitelist:
     tags:
     - VulpEmotes

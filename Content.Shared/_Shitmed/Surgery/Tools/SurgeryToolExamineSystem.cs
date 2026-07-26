@@ -13,6 +13,9 @@ public sealed class SurgeryToolExamineSystem : EntitySystem
 {
     [Dependency] private readonly ExamineSystemShared _examine = default!;
 
+    private static readonly SpriteSpecifier ScalpelIcon = new SpriteSpecifier.Rsi(
+        new ResPath("_Shitmed/Objects/Specific/Medical/Surgery/scalpel.rsi"), "scalpel");
+
     public override void Initialize()
     {
         SubscribeLocalEvent<SurgeryToolComponent, GetVerbsEvent<ExamineVerb>>(OnGetVerbs);
@@ -42,7 +45,7 @@ public sealed class SurgeryToolExamineSystem : EntitySystem
         RaiseLocalEvent(ent, ref ev);
 
         _examine.AddDetailedExamineVerb(args, ent.Comp, ev.Message,
-            Loc.GetString("surgery-tool-examinable-verb-text"), "/Textures/Objects/Specific/Medical/Surgery/scalpel.rsi/scalpel.png",
+            Loc.GetString("surgery-tool-examinable-verb-text"), ScalpelIcon,
             Loc.GetString("surgery-tool-examinable-verb-message"));
     }
 

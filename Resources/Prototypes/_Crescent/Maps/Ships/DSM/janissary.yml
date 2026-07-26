@@ -3,8 +3,8 @@
 
 - type: vessel
   id: Janissary
-  name: БМС Преторианец
-  description: Штурмовой корабль Немезиды, служба — покаяние.
+  name: DSM Janissary
+  description: A strike-craft of the Nemesis, service is penance.
   price: 36500
   category: Small
   group: None
@@ -12,22 +12,19 @@
 
 - type: gameMap
   id: Janissary
-  mapName: 'БМС Преторианец'
+  mapName: 'DSM Janissary'
   mapPath: /Maps/_Crescent/Shuttles/DSM/janissary.yml
   minPlayers: 0
   stations:
     Janissary:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Преторианец {1}'
+          mapNameTemplate: 'DSM Janissary {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

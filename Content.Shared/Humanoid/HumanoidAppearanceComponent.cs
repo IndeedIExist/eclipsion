@@ -1,4 +1,3 @@
-using Content.Shared._Art.TTS; // Art-TTS
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences; //DeltaV, used for Metempsychosis, Fugitive, and Paradox Anomaly
@@ -120,14 +119,6 @@ public sealed partial class HumanoidAppearanceComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float Width = 1f;
-
-    // Art-TTS Start
-    /// <summary>
-    ///    The voice of this humanoid.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public ProtoId<TTSVoicePrototype> Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice;
-    // Art-TTS End
 }
 
 [DataDefinition]

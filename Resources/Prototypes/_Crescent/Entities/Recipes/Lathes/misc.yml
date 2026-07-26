@@ -17,6 +17,7 @@
 
 - type: latheRecipe
   id: LatheHandHeldMassScanner # technically more costly but easier to make
+  category: Medical
   result: HandHeldMassScannerEE
   completetime: 0.5
   materials:

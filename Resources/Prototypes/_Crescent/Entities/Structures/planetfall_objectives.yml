@@ -1,0 +1,8 @@
+- type: entity
+  id: PlanetfallBarrierAnnouncerEntity
+  name: Planetfall barrier announcer
+  description: Hidden controller for the Planetfall timed barrier release.
+  components:
+  - type: Transform
+  - type: PlanetfallBarrierAnnouncer
+    releaseDelay: 1800

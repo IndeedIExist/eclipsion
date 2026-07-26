@@ -1,0 +1,17 @@
+- type: entity
+  parent: BaseItem
+  id: GamblingCartridge
+  name: casino cartridge
+  description: Slots, roulette and blackjack, played straight from your bank account. The house always wins.
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/cartridge.rsi
+    state: cart-y
+  - type: UIFragment
+    ui: !type:GamblingUi
+  - type: Cartridge
+    programName: gambling-program-name
+    icon:
+      sprite: Objects/Economy/cash.rsi
+      state: cash_10
+  - type: GamblingCartridge

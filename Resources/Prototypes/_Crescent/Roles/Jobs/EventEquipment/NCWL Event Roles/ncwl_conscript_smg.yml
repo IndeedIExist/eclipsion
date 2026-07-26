@@ -30,7 +30,7 @@
   - !type:AddComponentSpecial
     components:
       - type: ChatRank
-        rank: crescent-rank-ncwl-home-conscript
+        rank: crescent-rank-ncwl-conscript
       - type: HullrotFaction
         faction: NCWL
       - type: LanguageAdder

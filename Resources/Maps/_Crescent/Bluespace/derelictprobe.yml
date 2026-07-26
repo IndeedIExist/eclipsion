@@ -1559,6 +1559,8 @@ entities:
     - type: Transform
       pos: 1.5196804,3.3449214
       parent: 1
+    - type: Stack
+      count: 2
 - proto: NanotrasenMechatronics1
   entities:
   - uid: 206
@@ -1566,6 +1568,8 @@ entities:
     - type: Transform
       pos: 1.5665554,5.430859
       parent: 1
+    - type: Stack
+      count: 2
 - proto: PosterLegitNanotrasenLogo
   entities:
   - uid: 89

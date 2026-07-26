@@ -1,20 +1,20 @@
 - type: dataset
   id: names_oni_male
   values:
-  - Кийоси #陽
-  - Сатоси #明
-  - Тэру #光
-  - Хироси
-  - Такэси #天
-  - Эйити #永一
-  - Эйтироу #永一朗
-  - Кёсабуроу
-  - Цутому
-  - Цуюоси
-  - Кэнси
-  - Кэндзи
-  - Кэнити
-  - Сусуму
-  - Кёноскэ
-  - Суйсэй #Марс
-  - Сютэн #Отсылка
+  - Kiyoshi #陽
+  - Satoshi #明
+  - Teru #光
+  - Hiroshi
+  - Takashi #天
+  - Eeichi #永一
+  - Eeichirou #永一朗
+  - Kyousaburou
+  - Tsutomu
+  - Tsuyoshi
+  - Kenshi
+  - Kenji
+  - Kenichi
+  - Susumu
+  - Kyounosuke
+  - Suisei #Mars
+  - Shuten #Reference

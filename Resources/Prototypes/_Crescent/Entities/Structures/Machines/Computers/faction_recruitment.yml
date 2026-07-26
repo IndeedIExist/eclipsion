@@ -1,0 +1,127 @@
+# Faction recruitment (muster) consoles: one per faction. An authorized member of the faction walks up, picks a
+# nearby person and a role, and the console enlists (or promotes/reassigns) them — setting their HullrotFaction and
+# rewriting their held ID card (title/icon/department/access). It can also dismiss a member. Nothing touches the
+# saved character, so death/respawn reverts a recruit to their own faction.
+#
+# Operating the console is access-gated per faction (the AccessReader below), matching the ID card console tiers.
+# `FactionRecruitmentConsole.faction` is the FactionPrototype id written to recruits; `roles` are the JobPrototypes
+# whose title/icon/access each recruit receives.
+
+- type: entity
+  parent: BaseComputer
+  id: BaseFactionRecruitmentConsole
+  abstract: true
+  name: faction recruitment terminal
+  description: A muster terminal. Enlist nearby personnel into the faction and issue them the matching credentials.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: AccessReader
+  - type: ActivatableUIRequiresAccess
+    popupMessage: faction-recruitment-denied
+  - type: ActivatableUI
+    key: enum.FactionRecruitmentUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.FactionRecruitmentUiKey.Key:
+        type: Content.Client._Crescent.Factions.FactionRecruitmentConsoleBoundUserInterface
+  - type: Sprite
+    netsync: false
+    noRot: true
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: id
+    - map: ["computerLayerKeys"]
+      state: id_key
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    enabled: false
+
+- type: entity
+  parent: BaseFactionRecruitmentConsole
+  id: FactionRecruitmentConsoleDSM
+  name: Mandate recruitment terminal
+  suffix: DSM
+  components:
+  - type: AccessReader
+    access: [["EmpireNoble"], ["EmpireAdjutant"], ["EmpireGovernor"]]
+  - type: FactionRecruitmentConsole
+    faction: DSM
+    # Roles sourced from the DSM flagship Aurora Imperialis (Stations/aurora.yml) spawn points.
+    # High command (Governor, Adjutant, Advocatus, Ministers, Archmaester) is intentionally omitted:
+    # leadership roles must never be assignable from a console.
+    roles:
+    - FreeholderDSM
+    - LevymanDSM
+    - ScribeDSM
+    - SurgeonDSM
+    - ForemanDSM
+    - KnightDSM
+    - RitterDSM
+    - TemplarDSM
+    - CourtierDSM
+
+- type: entity
+  parent: BaseFactionRecruitmentConsole
+  id: FactionRecruitmentConsoleNCWL
+  name: League recruitment terminal
+  suffix: NCWL
+  components:
+  - type: AccessReader
+    access: [["NCWLCommand"], ["NCWLKommissar"]]
+  - type: FactionRecruitmentConsole
+    faction: NCWL
+    # Roles sourced from the NCWL station Nova Balreska (Stations/nova_balreska.yml) spawn points.
+    # High command (Worker Overboss, Kommissar, Commandant, Fleetkapitan) is intentionally omitted:
+    # leadership roles must never be assignable from a console.
+    roles:
+    - WorkerNCWL
+    - PartisanNCWL
+    - DoctorNCWL
+
+- type: entity
+  parent: BaseFactionRecruitmentConsole
+  id: FactionRecruitmentConsoleSHI
+  name: Shinohara recruitment terminal
+  suffix: SHI
+  components:
+  - type: AccessReader
+    access: [["ShinoharaOfficer"], ["ShinoharaExecutive"]]
+  - type: FactionRecruitmentConsole
+    faction: SHI
+    # Roles sourced from the Shinohara station Tatsumoto (Stations/tatsumoto.yml) spawn points.
+    # High command (Board, Executive) is intentionally omitted: leadership roles must never be
+    # assignable from a console.
+    roles:
+    - EmployeeSHI
+    - CorpsecSHI
+    - HighsecSHI
+
+- type: entity
+  parent: BaseFactionRecruitmentConsole
+  id: FactionRecruitmentConsoleTFSC
+  name: Coalition recruitment terminal
+  suffix: TFSC
+  components:
+  - type: AccessReader
+    access: [["SyndicateCommand"], ["SyndicateRingleader"]]
+  - type: FactionRecruitmentConsole
+    faction: TFSC
+    # Roles sourced from the Freeport (Stations/freeport.yml) spawn points, the Coalition's only station.
+    # Command (Ringleader, Lieutenant, Coordinator, Foreman, Intelligence Officer) is intentionally
+    # omitted: leadership roles must never be assignable from a console.
+    roles:
+    - TechnicianTFSC
+    - InfanteerTFSC
+    - OperativeTFSC
+    - ShipbreakerTFSC
+    - CyberdawnTechTFSC
+    - RipperdocTFSC
+    - TraumasecTFSC

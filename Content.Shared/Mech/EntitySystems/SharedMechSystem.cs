@@ -50,6 +50,7 @@ public abstract class SharedMechSystem : EntitySystem
     [Dependency] private readonly SharedMoverController _mover = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!; // Goobstation Change
     [Dependency] private readonly SharedVirtualItemSystem _virtualItem = default!; // Goobstation Change
@@ -141,6 +142,17 @@ public abstract class SharedMechSystem : EntitySystem
         component.PilotSlot = _container.EnsureContainer<ContainerSlot>(uid, component.PilotSlotId);
         component.EquipmentContainer = _container.EnsureContainer<Container>(uid, component.EquipmentContainerId);
         component.BatterySlot = _container.EnsureContainer<ContainerSlot>(uid, component.BatterySlotId);
+
+        // Ensure mechs have a fixed stable speed equal to the default player walk speed
+        // and that their sprint speed is the same (i.e., they cannot sprint faster than walking).
+        var moveComp = EnsureComp<MovementSpeedModifierComponent>(uid);
+        _movementSpeed.ChangeBaseSpeed(
+            uid,
+            MovementSpeedModifierComponent.DefaultBaseWalkSpeed,
+            MovementSpeedModifierComponent.DefaultBaseWalkSpeed,
+            moveComp.Acceleration,
+            moveComp);
+
         UpdateAppearance(uid, component);
     }
 

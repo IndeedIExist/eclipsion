@@ -1,0 +1,41 @@
+- type: rank
+  id: RatRankNCWLOfficerTop
+  name: Colonel
+  prefix: Colonel
+  paygrade: O7
+
+- type: rank
+  id: RatRankNCWLOfficerHigher
+  name: Lieutenant Colonel
+  prefix: Lt. Col.
+  paygrade: O6
+
+- type: rank
+  id: RatRankNCWLOfficerHigh
+  name: Major
+  prefix: Major
+  paygrade: O5
+
+- type: rank
+  id: RatRankNCWLOfficerLead
+  name: Captain
+  prefix: Captain
+  paygrade: O4
+
+- type: rank
+  id: RatRankNCWLOfficerSenior
+  name: Senior Lieutenant
+  prefix: Sr. Lt.
+  paygrade: O3
+
+- type: rank
+  id: RatRankNCWLOfficerMiddle
+  name: Lieutenant
+  prefix: Lieutenant
+  paygrade: O2
+
+- type: rank
+  id: RatRankNCWLOfficerJunior
+  name: Junior Lieutenant
+  prefix: Jr. Lt.
+  paygrade: O1

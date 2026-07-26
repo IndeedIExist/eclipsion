@@ -4,7 +4,7 @@
 - type: vessel
   id: Fulgur
   name: NT Fulgur
-  description: A remnant of the autonomous AI fleets developed by the NanoTrasen Corporation.
+  description: A long-range autonomous missile platform from NanoTrasen's Fog campaign. Recovered, refitted, and sold. The original paperwork didn't survive the salvage.
   price: 400000
   category: Large
   group: None

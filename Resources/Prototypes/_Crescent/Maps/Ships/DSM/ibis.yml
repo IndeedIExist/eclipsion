@@ -1,33 +1,30 @@
 - type: vessel
   id: Ibis
-  name: БМС Ибис
+  name: DSM Ibis
   description: |
-    Тяжёлый истребитель, оснащённый блуждающим эмиттером щита, предназначенный для миссий дальнего радиуса действия.
-    LOADOUT: 2x 150cc 'Starburst' hybrid plasma gatlings
+    A heavy fighter equipped with an errant shield emitter, designed for ranging and harassment missions.
+    LOADOUT: 2x 150cc 'Starburst' plasma gatling
     MINIMUM CREW: 1x Pilot
-  price: 38000
+  price: 30000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/DSM/ibis.yml
 
 - type: gameMap
   id: Ibis
-  mapName: 'БМС Ибис'
+  mapName: 'DSM Ibis'
   mapPath: /Maps/_Crescent/Shuttles/DSM/ibis.yml
   minPlayers: 0
   stations:
     Ibis:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Ибис {1}'
+          mapNameTemplate: 'DSM Ibis {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -1,0 +1,42 @@
+- type: gameMap
+  id: PlanetfallMap
+  mapName: 'Dominion Planet'
+  mapPath: /Maps/_Crescent/Planetfall/planetfallmap.yml
+  minPlayers: 0
+  stations:
+    PlanetfallMap:
+      stationProto: FlagshipCrescentVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Domain of Olywier'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-planet
+        - type: VesselDescription
+          description: Capital of Divine Sol Mandate
+        - type: StationBiome
+          biome: Grasslands
+          biomeLayers: []
+          dungeons: []
+          seed: 8675309
+          mapLightColor: '#D8B059'
+          enableLightCycle: false
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            planetfall_governor: [ 1, 1 ]
+            planetfall_advocatus: [ 1, 1 ]
+            planetfall_levyman: [ 12, 12 ]
+            planetfall_surgeon: [ 3, 3 ]
+            planetfall_courtier: [ 6, 6 ]
+            planetfall_freeholder: [ -1, -1 ]
+
+            planetfall_mvdofficer: [ 1, 1 ]
+            planetfall_mvdgrunt: [ 2, 2 ]
+            planetfall_kapitan: [ 5, 5 ]
+            planetfall_partisan: [ 12, 12 ]
+            planetfall_doctor: [ 3, 3 ]
+            planetfall_worker: [ -1, -1 ]
+            

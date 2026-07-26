@@ -1,0 +1,18 @@
+- type: rank
+  id: RatRankNCWLCommandSenior
+  name: Colonel General
+  prefix: Col. Gen.
+  paygrade: O10
+
+- type: rank
+  id: RatRankNCWLCommandMiddle
+  name: Lieutenant General
+  prefix: Lt. Gen.
+  paygrade: O9
+
+- type: rank
+  id: RatRankNCWLCommandJunior
+  name: Major General
+  prefix: Maj. Gen.
+  paygrade: O8
+  

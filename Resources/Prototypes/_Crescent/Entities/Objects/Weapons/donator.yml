@@ -13,7 +13,7 @@
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
-    sprite: _Crescent/Objects/Weapons/zodum.rsi
+    sprite: _Crescent/Objects/Weapons/Guns/zodum.rsi
   - type: Gun
     minAngle: 1
     maxAngle: 20
@@ -51,7 +51,7 @@
   parent: WeaponCaseZodum
   name: shinohara "SHI001P Zodum" case
   suffix: Donor - Zodum
-  description: A pistol case from Shinohara containing a extremly rare prototype of a custom made hand-cannon.
+  description: A pistol case from Shinohara containing an extremely rare prototype hand-cannon.
   components:
   - type: StorageFill
     contents:
@@ -138,7 +138,7 @@
   name: PTA XCR-6 Charge rifle 6x24mm
   parent: [BaseWeaponRifle, StreeCredRedeemableLow]
   id: WeaponSpecialChargeRifle
-  description: A experimental rifle developed by Pang Tai Arms. Extremly rare. This one has the serial number M-18. Chambered in 6×24mm.
+  description: An experimental rifle developed by Pang Tai Arms. Extremely rare. This one has the serial number M-18. Chambered in 6x24mm.
   components:
   - type: Clothing
     sprite: _Crescent/Objects/Weapons/Guns/charge_rifle.rsi
@@ -210,7 +210,7 @@
   parent: BaseItem
   id: WeaponSpecialKingpin
   suffix: Spawn case instead unless youre feeling generous
-  description: A heavy, unwieldly and too big to put in a bag what more could you ask not to have. has a toggle lock just like the P05 Brenner, Reloaded using 27mmR stripper clips or loose rounds.
+  description: Heavy, unwieldy, and too large for any bag you own. Features a toggle lock identical to the P05 Brenner. Reloaded using 27mmR stripper clips or loose rounds.
   components:
   - type: Item
     sprite: _Crescent/Objects/Weapons/Guns/kingpin.rsi
@@ -341,7 +341,7 @@
   parent: WeaponCaseKingpin
   name: Cyberdawn C-8X case
   suffix: Donor - Kingpin
-  description: A large Cyberdawn case with a experimental 27mm autocannon designed by Cyberdawn
+  description: A large Cyberdawn case containing an experimental 27mmR autocannon.
   components:
   - type: StorageFill
     contents:
@@ -358,7 +358,7 @@
   name: SHI-WTI AR-2 Pulser .350
   parent: [BaseWeaponRifle, StreeCredRedeemable]
   id: WeaponSpecialPulseRifle
-  description: A high quality pulse rifle developed by Wu-Tan Industries, a Shinohara subsidiary. Packs a pounch but lacks penetration, makes a loud clank sound when bolting that some find satisfying. Chambered in .350 PCM.
+  description: A high-quality pulse rifle developed by Wu-Tan Industries, a Shinohara subsidiary. Packs a punch but lacks penetration. Makes a loud clank when bolting that some find deeply satisfying. Chambered in .350 PCM.
   components:
   - type: Clothing
     sprite: _Crescent/Objects/Weapons/Guns/ar2.rsi
@@ -420,7 +420,7 @@
   parent: WeaponCasePulseRifle
   name: Wu-Tan Industries AR-2 case
   suffix: Donor - Pulser
-  description: A Wu-Tan Industries weapon case containing a AR-2 Pulse rifle
+  description: A Wu-Tan Industries weapon case containing an AR-2 Pulse Rifle.
   components:
   - type: StorageFill
     contents:
@@ -483,7 +483,7 @@
   name: DEW-17-Mod Cycler 95c
   parent: [BaseWeaponBatterySmall, StreeCredRedeemableLow]
   id: WeaponDonorCycler
-  description: A heavily modified DEW-17 laser pistol, its battery connection point has ben replaced with a miniature RTG capable of recharging the weapon indefinitely.
+  description: A heavily modified DEW-17 laser pistol. Its battery connection has been replaced with a miniature RTG that recharges the weapon indefinitely.
   components:
   - type: Item
     size: Normal

@@ -13,7 +13,7 @@
       tracker: JobFreeholderDSM
       min: 36000 # 10 hours
     RatRankFreeholderJunior: []
-  weight: 1
+  weight: 0
   startingGear: FreeholderGear
   alwaysUseSpawner: true
   requireAdminNotify: false

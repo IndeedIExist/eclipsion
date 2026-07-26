@@ -13,7 +13,6 @@ namespace Content.Server.Speech.EntitySystems
 
         private static readonly IReadOnlyDictionary<string, string> SpecialWords = new Dictionary<string, string>()
         {
-            { "ты", "ти" }, // RU-Localization
         };
 
         public override void Initialize()

@@ -1,0 +1,100 @@
+- type: job
+  id: planetfall_mvdgrunt
+  name: job-name-ncwl-mvd-grunt
+  description: job-description-ncwl-mvd-grunt
+  playTimeTracker: JobMVDGruntNCWL
+  weight: 99
+  startingGear: planetfall_mvdgrunt_gear
+  alwaysUseSpawner: true
+  requireAdminNotify: false
+  icon: "JobIconUnionfallNCWLRifleman"
+  supervisors: job-supervisors-ncwl-mvd
+  canBeAntag: false
+  requirements:
+    - !type:FactionRequirement
+      factionID: "NCWL"
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - Voidborn
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Muted
+        - Blindness
+        - Pacifist
+        - WheelchairBound
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: HullrotFaction
+        faction: NCWL
+      - type: LanguageAdder
+        addSpoken:
+          - Dockta
+        addUnderstood:
+          - Dockta
+  access:
+  - EmergencyShuttleRepealAll
+  - Captain
+  - HeadOfPersonnel
+  - ChiefEngineer
+  - ChiefMedicalOfficer
+  - HeadOfSecurity
+  - ResearchDirector
+  - Frontier # Frontier
+  - Command
+  - Cryogenics
+  - Security
+  - Detective
+  - Armory
+  - Brig
+  - Lawyer
+  - Engineering
+  - Mail # Frontier
+  - Medical
+  - Mercenary # Frontier
+  - Quartermaster
+  - Salvage
+  - Cargo
+  - Research
+  - Service
+  - StationTrafficController # Frontier
+  - Maintenance
+  - External
+  - Janitor
+  - Theatre
+  - Bar
+  - Chemistry
+  - Kitchen
+  - Chapel
+  - Hydroponics
+  - Atmospherics
+  - NCWLGeneral
+  - NCWLJail
+  - NCWLArmory
+  - NCWLCommand
+
+- type: startingGear
+  id: planetfall_mvdgrunt_gear
+  equipment:
+    shoes: ClothingShoesBootsMVD
+    jumpsuit: ClothingUniformJumpsuitMVD
+    id: NCWLMVDGruntPDA
+    outerClothing: ClothingOuterArmorMVDJacket
+    pocket1: WeaponRevolverPythonSecurity
+    back: ClothingBackpackNCWL
+    gloves: ClothingHandsGlovesMVD
+    belt: ClothingBeltSheathNCWLKukriFilled
+    ears: ClothingHeadsetNCWLCommand_Planetfall
+    eyes: ClothingEyesGlassesSecurity
+    head: ClothingHeadHatMVDHat
+    suitstorage: WeaponSubMachineGunMilitant
+    pocket2: BookOfKane
+  storage:
+    back:
+     - MagazineCaselessRifle
+     - MagazineCaselessRifle
+     - SpeedLoaderMagnum
+     - SpeedLoaderMagnum
+     - CigarNCWLCase

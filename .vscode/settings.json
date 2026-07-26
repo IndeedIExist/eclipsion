@@ -1,5 +1,7 @@
 {
     "omnisharp.analyzeOpenDocumentsOnly": true,
+    "dotnet.backgroundAnalysis.analyzerDiagnosticsScope": "openFiles",
+    "dotnet.backgroundAnalysis.compilerDiagnosticsScope": "openFiles",
     "dotnet.defaultSolution": "SpaceStation14.sln",
     "json.schemas": [
         {

@@ -64,4 +64,10 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<float> InterfaceVolume =
         CVarDef.Create("audio.interface_volume", 0.50f, CVar.ARCHIVE | CVar.CLIENTONLY);
+
+    /// <summary>
+    /// Boombox volume (per-client multiplier for boombox/jukebox playback).
+    /// </summary>
+    public static readonly CVarDef<float> BoomboxVolume =
+        CVarDef.Create("audio.boombox_volume", 1.0f, CVar.ARCHIVE | CVar.CLIENTONLY);
 }

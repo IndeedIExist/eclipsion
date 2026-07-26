@@ -149,6 +149,19 @@ namespace Content.Shared.GameTicking
         }
     }
 
+    [Serializable, NetSerializable]
+    public sealed class TickerGamemodeJobsEvent : EntityEventArgs
+    {
+        public List<string> AvailableJobs { get; }
+        public List<string> ExcludedJobs { get; }
+
+        public TickerGamemodeJobsEvent(List<string> availableJobs, List<string> excludedJobs)
+        {
+            AvailableJobs = availableJobs;
+            ExcludedJobs = excludedJobs;
+        }
+    }
+
     [Serializable, NetSerializable, DataDefinition]
     public sealed partial class RoundEndMessageEvent : EntityEventArgs
     {

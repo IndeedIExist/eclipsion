@@ -5,6 +5,8 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  - type: GunCameraShake
+    magnitude: 0.09
   - type: Sprite
   - type: Item
     size: Huge
@@ -64,6 +66,7 @@
     price: 500
   - type: UseDelay
     delay: 1
+  - type: UseDelayBlockShoot
   - type: Execution
   - type: MeleeWeapon
     attackRate: 1.4

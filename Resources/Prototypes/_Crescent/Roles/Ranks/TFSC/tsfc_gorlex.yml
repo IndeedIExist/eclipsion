@@ -1,0 +1,83 @@
+## GSC - Ringleader
+
+- type: rank
+  id: RatRankGSCRingleaderSenior
+  name: Warlord of the Order
+  prefix: Warlord
+  paygrade: GSC-R3
+
+- type: rank
+  id: RatRankGSCRingleaderMiddle
+  name: Grandmaster of the Order
+  prefix: Grandmaster
+  paygrade: GSC-R2
+
+- type: rank
+  id: RatRankGSCRingleaderJunior
+  name: Leader of the Order
+  prefix: Leader
+  paygrade: GSC-R1
+
+## GSC - Officer
+
+- type: rank
+  id: RatRankGSCOfficerSenior
+  name: Knight Commander of the Order
+  prefix: Knight Cmdr.
+  paygrade: GSC-O3
+
+- type: rank
+  id: RatRankGSCOfficerMiddle
+  name: Knight Captain of the Order
+  prefix: Knight Capt.
+  paygrade: GSC-O2
+
+- type: rank
+  id: RatRankGSCOfficerJunior
+  name: Knight Lieutenant of the Order
+  prefix: Knight Lt.
+  paygrade: GSC-O1
+
+## GSC - Soldiers
+
+- type: rank
+  id: RatRankGSCSoldierTop
+  name: Knight Sergeant of the Order
+  prefix: Knight Sgt.
+  paygrade: GSC7
+
+- type: rank
+  id: RatRankGSCSoldierHead
+  name: Veteran Knight of the Order
+  prefix: Knight
+  paygrade: GSC6
+
+- type: rank
+  id: RatRankGSCSoldierSrLead
+  name: Knight of the Order
+  prefix: Knight
+  paygrade: GSC5
+
+- type: rank
+  id: RatRankGSCSoldierLead
+  name: Junior Knight of the Order
+  prefix: Jr. Knight
+  paygrade: GSC4
+
+- type: rank
+  id: RatRankGSCSoldierHigh
+  name: Squire of the Order
+  prefix: Squire
+  paygrade: GSC3
+
+- type: rank
+  id: RatRankGSCSoldierMiddle
+  name: Warrior of the Order
+  prefix: Warrior
+  paygrade: GSC2
+
+- type: rank
+  id: RatRankGSCSoldierJunior
+  name: Initiate of the Order
+  prefix: Initiate
+  paygrade: GSC1

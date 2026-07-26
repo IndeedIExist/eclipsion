@@ -1,20 +1,20 @@
 - type: job
-  id: RipperdocNCSP
+  id: RipperdocTFSC
   name: job-name-ripperdoc
   description: job-description-ripperdoc
-  playTimeTracker: JobRipperdocNCSP
+  playTimeTracker: JobRipperdocTFSC
   ranks:
     RatRankTFSCRipperdocLead:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobRipperdocNCSP
+      tracker: JobRipperdocTFSC
       min: 108000 # 30 hours
     RatRankTFSCRipperdocSenior:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobRipperdocNCSP
+      tracker: JobRipperdocTFSC
       min: 72000 # 20 hours
     RatRankTFSCRipperdocMiddle:
     - !type:CharacterPlaytimeRequirement
-      tracker: JobRipperdocNCSP
+      tracker: JobRipperdocTFSC
       min: 36000 # 10 hours
     RatRankTFSCRipperdocJunior: []
   weight: 6
@@ -22,7 +22,8 @@
   alwaysUseSpawner: true
   requireAdminNotify: false
   icon: "JobIconSyndieRipperdoc"
-  supervisors: You answer to the interests of the Interdyne Pharmaceuticals company's coordinator and your peers.
+  chatNameColor: "#d4c6c6"
+  supervisors: You answer to the coordinator of the medical wing and your peers, and above them the Ringleader.
   canBeAntag: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -42,7 +43,7 @@
   - !type:AddComponentSpecial
     components:
       - type: HullrotFaction
-        faction: IPM
+        faction: TFSC
       - type: CPRTraining
       - type: SurgerySpeedModifier
         speedModifier: 1.75
@@ -54,8 +55,12 @@
   access:
   - Command
   - Maintenance
+  # One Coalition, one keyring: the old company tags survive only as department names.
   - SyndicateBasic
+  - SyndicateGorlex
   - SyndicateInterdyne
+  - SyndicateSaws
+  - SyndicateRamzi
   - Service
   - External
   - Mercenary # Frontier
@@ -67,11 +72,11 @@
     jumpsuit: ClothingUniformJumpsuitSyndicateInterdyneScrubs
     shoes: ClothingShoesBootsCombat
     id: RipperdocPDA
-    ears: ClothingHeadsetNCSPInterdyne
+    ears: ClothingHeadsetTFSCInterdyne
     mask: ClothingMaskSyndicateFacemask
     pocket1: WeaponPistolHKUSP
     pocket2: MagazinePistol
-    back: ClothingBackpackNCSP
+    back: ClothingBackpackTFSC
     belt: ClothingBeltSyndicateWebbingInterdyne
   storage:
     belt:

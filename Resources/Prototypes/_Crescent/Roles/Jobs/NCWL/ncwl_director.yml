@@ -2,6 +2,7 @@
   id: DirectorNCWL
   name: job-name-ncwl-medical-director
   description: job-description-ncwl-medical-director
+  setPreference: false # hidden from job selection, kept for spawners/admin use
   playTimeTracker: JobMedicalLeaderNCWL
   ranks:
     RatRankNCWLOfficerSenior:
@@ -105,5 +106,5 @@
     gloves: ClothingHandsGlovesNitrile
     head: ClothingHeadHatNCWLBeretMedi
     eyes: ClothingEyesHudMedical
-    ears: ClothingHeadsetNCWL
+    ears: ClothingHeadsetNCWLCommand
     pocket2: RatRubberStampNCWLMedical

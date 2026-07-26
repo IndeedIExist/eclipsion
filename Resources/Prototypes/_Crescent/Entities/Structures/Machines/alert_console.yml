@@ -1,0 +1,27 @@
+- type: entity
+  parent: BaseComputer
+  id: ComputerAlertConsole
+  name: Alert System Console  
+  description: Automatically notifies about incoming shuttles.
+  components:
+  - type: AlertConsole
+    enabled: false
+  - type: ActivatableUI
+    key: enum.AlertConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.AlertConsoleUiKey.Key:
+        type: AlertConsoleBoundUserInterface
+  - type: Sprite
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: ["enum.WiresVisualLayers.MaintenancePanel"]
+      state: generic_panel_open

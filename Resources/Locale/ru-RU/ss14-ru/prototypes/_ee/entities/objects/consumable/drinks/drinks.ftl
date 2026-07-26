@@ -1,9 +1,0 @@
-ent-DrinkVodkaSportsDrink = { ent-DrinkGlass }
-    .suffix = vodka sports drink
-    .desc = { ent-DrinkGlass.desc }
-ent-DrinkRoninRefresher = { ent-DrinkGlass }
-    .suffix = ronin refresher
-    .desc = { ent-DrinkGlass.desc }
-ent-DrinkDeadlifter = { ent-DrinkGlass }
-    .suffix = deadlifter
-    .desc = { ent-DrinkGlass.desc }

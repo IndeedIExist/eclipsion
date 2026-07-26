@@ -240,7 +240,7 @@ public sealed class BlobCoreSystem : EntitySystem
             if (!_tile.TryGetComponent(blobTile, out var blobTileComponent))
                 continue;
 
-            blobTileComponent.Color = component.ChemСolors[newChem];
+            blobTileComponent.Color = component.ChemColors[newChem];
             Dirty(blobTile, blobTileComponent);
 
             ChangeBlobEntChem(blobTile, newChem);
@@ -251,7 +251,7 @@ public sealed class BlobCoreSystem : EntitySystem
             if (!TryComp<BlobbernautComponent>(blobFactoryComponent.Blobbernaut, out var blobbernautComponent))
                 continue;
 
-            blobbernautComponent.Color = component.ChemСolors[newChem];
+            blobbernautComponent.Color = component.ChemColors[newChem];
             Dirty(blobFactoryComponent.Blobbernaut.Value, blobbernautComponent);
 
             if (TryComp<MeleeWeaponComponent>(blobFactoryComponent.Blobbernaut, out var meleeWeaponComponent))
@@ -344,7 +344,7 @@ public sealed class BlobCoreSystem : EntitySystem
 
         coreComp.BlobTiles.Add(tile);
 
-        tileComp.Color = coreComp.ChemСolors[coreComp.CurrentChem];
+        tileComp.Color = coreComp.ChemColors[coreComp.CurrentChem];
         tileComp.Core = core;
         Dirty(tile, tileComp);
 

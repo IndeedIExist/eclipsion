@@ -1,6 +1,7 @@
 # 40mm
 - type: latheRecipe
   id: Cartridge40mmFrag
+  category: Ammo
   result: Cartridge40mmFrag
   completetime: 1
   materials:
@@ -8,6 +9,7 @@
 
 - type: latheRecipe
   id: Cartridge40mmCan
+  category: Ammo
   result: Cartridge40mmCan
   completetime: 1
   materials:
@@ -15,6 +17,7 @@
 
 - type: latheRecipe
   id: Cartridge40mmHEDP
+  category: Ammo
   result: Cartridge40mmHEDP
   completetime: 2
   materials:
@@ -23,6 +26,7 @@
 
 - type: latheRecipe
   id: Cartridge40mmSmoke
+  category: Ammo
   result: Cartridge40mmSmoke
   completetime: 1
   materials:
@@ -30,6 +34,7 @@
 
 - type: latheRecipe
   id: Cartridge40mmThermobaric
+  category: Ammo
   result: Cartridge40mmThermobaric
   completetime: 2
   materials:
@@ -37,6 +42,7 @@
 
 - type: latheRecipe
   id: Cartridge40mmEMP
+  category: Ammo
   result: Cartridge40mmEMP
   completetime: 2
   materials:
@@ -46,6 +52,7 @@
 # 48mm
 - type: latheRecipe
   id: Cartridge48mmRocket
+  category: Ammo
   result: Cartridge48mmRocket
   completetime: 2
   materials:
@@ -61,6 +68,7 @@
 # 60mm
 - type: latheRecipe
   id: Cartridge60mmRocket
+  category: Ammo
   result: Cartridge60mmRocket
   completetime: 3
   materials:
@@ -90,6 +98,7 @@
 # 70mm / RPG-7 Rockets
 - type: latheRecipe
   id: CartridgeRPG7Heat
+  category: Ammo
   result: CartridgeRPG7Heat
   completetime: 4
   materials:
@@ -98,6 +107,7 @@
 
 - type: latheRecipe
   id: CartridgeRPG7Tandem
+  category: Ammo
   result: CartridgeRPG7Tandem
   completetime: 5
   materials:
@@ -106,6 +116,7 @@
 
 - type: latheRecipe
   id: CartridgeRPG7Thermobaric
+  category: Ammo
   result: CartridgeRPG7Thermobaric
   completetime: 4
   materials:
@@ -113,6 +124,7 @@
 
 - type: latheRecipe
   id: CartridgeRPG7Emp
+  category: Ammo
   result: CartridgeRPG7Emp
   completetime: 6
   materials:
@@ -121,6 +133,7 @@
 
 - type: latheRecipe
   id: CartridgeRPG7Frag
+  category: Ammo
   result: CartridgeRPG7Frag
   completetime: 6
   materials:
@@ -129,6 +142,7 @@
 # 80mm / RPG-2 Rockets
 - type: latheRecipe
   id: CartridgeRPG2Heat
+  category: Ammo
   result: CartridgeRPG2Heat
   completetime: 5
   materials:
@@ -137,6 +151,7 @@
 
 - type: latheRecipe
   id: CartridgeRPG2Frag
+  category: Ammo
   result: CartridgeRPG2Frag
   completetime: 5
   materials:
@@ -145,6 +160,7 @@
 # 95mm
 - type: latheRecipe
   id: Cartridge95mmRocket
+  category: Ammo
   result: Cartridge95mmRocket
   completetime: 6
   materials:
@@ -167,6 +183,7 @@
 # 240mm
 - type: latheRecipe
   id: Cartridge240mmRocket
+  category: Ammo
   result: Cartridge240mmRocket
   completetime: 8
   materials:
@@ -183,6 +200,7 @@
 # 330mm
 - type: latheRecipe
   id: Cartridge330mmRocket
+  category: Ammo
   result: Cartridge330mmRocket
   completetime: 12
   materials:

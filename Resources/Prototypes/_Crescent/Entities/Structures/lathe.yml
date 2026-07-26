@@ -268,7 +268,8 @@
       - SignalTrigger
       - TimerTrigger
       - EMPGrenadeElectronics
-      - GrenadeDSMG4Twistcap
+      # GrenadeDSMG4Twistcap moved to the DSM dynamicRecipes block below: it's DSM gear (Imperial
+      # discipline, SurplusImperialRifling) and must not print for free on a non-faction forge.
       - DrumMagazineShotgunSlug
       - DrumMagazineShotgunEmpty
       - DrumMagazineShotgunBuck
@@ -550,14 +551,14 @@
       - SyndicateJawsOfLifeCyberdawn
       - SyndicateBombCyberdawn
       - StealthBoxCyberdawn
-      - WeaponLightMachineGunNCSPRPD
+      - WeaponLightMachineGunTFSCRPD
       - WeaponLightMachineGunCompaktCyberdawn
       - WeaponRifleUnderdogCyberdawn
       - WeaponRifleMayflower
-      - WeaponRifleSVDMarksmanNCSP
+      - WeaponRifleSVDMarksmanTFSC
       - WeaponSniperAK60Cyberdawn
       - WeaponShotgunTuberCyberdawn
-      - WeaponShotgunSaiga12NCSP
+      - WeaponShotgunSaiga12TFSC
       - WeaponLauncherRPGNSCP
       - WeaponLCartridgeRPGSmall
       - WeaponLauncherRocketCyberdawn
@@ -641,6 +642,7 @@
       - MediumMissileHardpointFlatpack
       - SmallMissileHardpointFlatpack
       - SmallEnergyHardpointFlatpack #tap additions, dont know where else to put em
+      - MediumEnergyHardpointFlatpack # Families research unlocked it but the forge was missing it
       - WeaponTurretSmallMachinegunFlatpack
       - WeaponTurretMediumMachinegunFlatpack
       - WeaponTurretSmallArtilleryFlatpack
@@ -723,6 +725,9 @@
       - AlkhuldLPC
       # TAP end
       # DSM start
+      - GrenadeDSMG4Twistcap # Imperial: SurplusImperialRifling (was wrongly in staticRecipes)
+      - RedemptorLPC # Imperial: ImperialFighter (unlocked alongside IbisLPC but was missing here)
+      - ClothingNeckCloakImperialCapelet # Imperial: AdvancedImperialClothes (was missing here)
       - ClothingMaskImperialCombatGasmask
       - ClothingOuterCoatImperialParade
       - ClothingUniformJumpsuitImperialDoctor
@@ -892,7 +897,6 @@
       - ClothingUniformJumpsuitShinoharaDoctor
       - ClothingOuterHardsuitHEV
       - WeaponLauncherDisposableRocket
-      - ShipyardManufactorumFlatpack
       - ScrapRefinerFlatpack
       - ClothingUniformJumpsuitShinoharaSecurity
       - ClothingOuterArmorShinoharaHOSVest
@@ -957,6 +961,7 @@
       - WeaponRifleGoro
       - WeaponRifleLecterSHI
       - WeaponRevolverMateba
+      - WeaponRevolverInspector # Corporate research unlocked it but the forge was missing it
       - WeaponSubMachineGunSabre
       - WeaponLightMachineGunL6
       - WeaponLauncherMilkor
@@ -1455,6 +1460,7 @@
       - ShuttleGunFriendshipCircuitboard
       - ShuttleGunPerforatorCircuitboard
       - ShuttleGunSvalinnMachineGunCircuitboard
+      - ShuttleGunGrappleCircuitboard # Cyberdawn research unlocked it but the forge was missing it
       - Signaller
       - SignalTrigger
       - SpeedLoaderMagnumIncendiary
@@ -1693,45 +1699,6 @@
     runningState: base_machine_processing
     staticRecipes:
     - JugBoriaticFuelCraft
-
-#ship parts
-
-- type: entity
-  parent: [BaseLathe, BaseMaterialSiloUtilizer]
-  id: ShipyardManufactorum
-  name: SHI shipyard manufactorum
-  description: An automated assembler, constructing vessel components out of minerals.
-  components:
-  - type: Sprite
-    sprite: _Crescent/Structures/shipfab.rsi
-    layers:
-    - state: base_machine
-      map: ["enum.LatheVisualLayers.IsRunning"]
-    - state: buttons_on
-      shader: unshaded
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
-  - type: MaterialStorage
-    dropOnDeconstruct: false #should drop ores instead of ingots/sheets
-    ignoreColor: true
-    canEjectStoredMaterials: true
-    whitelist:
-      tags:
-      - Ingot
-      - Sheet
-      - Metal
-  - type: Lathe
-    idleState: base_machine
-    runningState: base_machine_processing
-    staticRecipes:
-    - ShipHull
-    - ShipElectronics
-    - ShipEngine
-  - type: Anchorable
-    flags:
-    - Anchorable
-  - type: MaterialStorageMagnetPickup
-    magnetEnabled: False
-    range: 0.3
 
 #organs
 
@@ -2088,3 +2055,509 @@
   - type: Anchorable
     flags:
     - Anchorable
+
+
+# Planetfall
+#
+# These two hold their faction's whole catalogue in staticRecipes on purpose. There is no R&D server on the
+# surface, so anything gated behind research would simply never be printable. The station forges in
+# faction_microforge.yml are the opposite case and carry no faction gear of their own.
+
+- type: entity
+  parent: [BaseLathe, BaseMaterialSiloUtilizer, BaseFactionMicroforge]
+  id: MicroforgeDSM
+  name: imperial field microforge
+  description: An Imperial microforge built for surface deployment, with all patterns pre-loaded.
+  components:
+  - type: FactionMachine
+    faction: DSM
+  - type: MaterialStorage
+    dropOnDeconstruct: false
+    ignoreColor: true
+    canEjectStoredMaterials: true
+    whitelist:
+      tags:
+      - DrugComponent
+      - Sheet
+      - CraftMaterials
+      - Ingot
+      - ShipParts
+      - RawMaterial
+  - type: Sprite
+    sprite: _Crescent/Structures/nanoforge.rsi
+    layers:
+    - state: fab-active
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: fab-idle
+    - state: fab-idle
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: fab-load
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: fab-o
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Lathe
+    idleState: fab-idle
+    runningState: fab-active
+    staticRecipes:
+      # DSM
+      - ClothingMaskImperialCombatGasmask
+      - ClothingOuterCoatImperialParade
+      - ClothingUniformJumpsuitImperialDoctor
+      - ClothingUniformJumpsuitImperialFreeholder
+      - ClothingHandsGlovesImperialWorkerGloves
+      - ClothingShoesBootsImperialLongboots
+      - ClothingHandsGlovesImperialLonggloves
+      - ClothingHeadHelmetImperialWorkerHelmet
+      - ClothingHeadHatImperialPeakedCap
+      - ClothingHeadHatImperialHat
+      - ClothingHeadHatImperialBeret
+      - ClothingUniformJumpsuitImperialCombat
+      - ClothingUniformJumpsuitImperialNobleMale
+      - ClothingUniformJumpsuitImperialNobleFemale
+      - ClothingUniformJumpsuitImperialSoldierFormal
+      - ClothingMaskImperialGovernorMask
+      - ClothingOuterCoatImperialGovernor
+      - ClothingNeckCloakImperialGovernor
+      - ClothingNeckImperialGreatcoat
+      - ClothingHeadHelmetImperialTrooperHelmet
+      - ClothingOuterArmorImperialTrooperArmor
+      - ClothingHeadHelmetImperialKnightCommanderHelmet
+      - ClothingOuterArmorImperialArmorPrestige
+      - ClothingHeadHatClarizeBeret
+      - ImperialPsionBoundlightStaff
+      - WeaponRifleMiller
+      - WeaponRevolverArgenti
+      - WeaponPistolComplianceImperial
+      - ClothingBeltSheathDSMRapier
+      - ClothingBeltSheathDSMSabre
+      - DSMRapier
+      - DSMSabre
+      - DSMDuelingKhopesh
+      - DSMZweihander
+      - DSMBaton
+      - WeaponLightMachineGunDSMDominion
+      - WeaponSniperImperator
+      - WeaponShotgunDSMMatusa
+      - WeaponShotgunReno
+      - WeaponSniperDSMLegax
+      - WeaponRifleDSMLegionnaire
+      - WeaponPlasmaRifleSeethe
+      - WeaponSubMachineGunC20rImperial
+      - WeaponPistolNeoVolker
+      - ClothingBeltSheathKhopesh
+      - SRMKhopesh
+      - WeaponSubMachineGunBeetle
+      - WeaponRifleHunter
+      - WeaponLauncherM320
+      - BallisticCyclerDSM
+      - TubeLoaderDSM
+      # Shared
+      - BaseCartridgeRailgun15mm
+      - MagazineClip18gBuck
+      - MagazinePulse470Fmj
+      - MagazinePulse470
+      - MagazinePulse350Fmj
+      - MagazinePulse350
+      - MagazineBoxImperialRifleBig
+      - MagazineHeavyRifleSmall
+      - CombatKnife
+      - ExplosivePayload
+      - FlashPayload
+      - ChemicalPayload
+      - VoiceTrigger
+      - SignalTrigger
+      - TimerTrigger
+      - EMPGrenadeElectronics
+      - GrenadeDSMG4Twistcap
+      - DrumMagazineShotgunSlug
+      - DrumMagazineShotgunEmpty
+      - DrumMagazineShotgunBuck
+      - MagazineSmgSmartgun
+      - MagazineHeavyRifleBoxmag
+      - MagazinePistolHeavy
+      - MagazineBoxHeavyPistol
+      - SpeedLoader27mmAutocannonHE
+      - MagazineBoxAntiMateriel
+      - MagazineBoxHeavyRifle
+      - MagazineBoxRifle
+      - MagazineBoxLightRifle
+      - MagazineBoxCaselessRifle
+      - MagazineBoxCaselessRifleBig
+      - BoxShotgunFlash4g
+      - BoxShotgunSlug4g
+      - BoxLethalshot4g
+      - BoxBeanbag4g
+      - BoxLethalshot
+      - MagazinePistolCaselessRifle
+      - MagazineCaselessRifleShort
+      - MagazineCaselessRifle
+      - BoxShotgunLumen
+      - BoxShotgunFlare
+      - MagazineBoxMagnum
+      - MagazineBoxPistol
+      - MagazineAntiMateriel
+      - MagazineHeavyRifle
+      - MagazineRifleDrum
+      - MagazineRifle
+      - MagazineLightRifle
+      - MagazineShotgunSlug
+      - MagazineShotgun
+      - SpeedLoader127x99
+      - SpeedLoaderMagnum
+      - MagazineMagnumSub
+      - MagazineMagnum
+      - MagazinePistolSubMachineGunHeavy
+      - MagazinePistolSubMachineGun
+      - MagazinePistol6mmSmg
+      - MagazinePistolSmartgun
+      - MagazinePistol
+      - MagazinePistol6mm
+      - MagazinePistolSubMachineGunTopMounted
+      - Wirecutter
+      - Igniter
+      - Signaller
+      - Screwdriver
+      - Welder
+      - Wrench
+      - Crowbar
+      - Multitool
+      - NetworkConfigurator
+      - SprayPainter
+      - HandheldGPSBasic
+      - TRayScanner
+      - AirTank
+      - GasAnalyzer
+      - UtilityBelt
+      - Pickaxe
+      - ModularReceiver
+      - AppraisalTool
+      - Beaker
+      - Syringe
+      - HandLabeler
+      - LightTube
+      - LedLightTube
+      - SodiumLightTube
+      - ExteriorLightTube
+      - LightBulb
+      - LedLightBulb
+      - SprayBottle
+      - MopItem
+      - Holoprojector
+      - LightReplacer
+      - PowerCellSmall
+      - PowerCellMedium
+      - VehicleWheelchairFolded
+      - RollerBedSpawnFolded
+      - CheapRollerBedSpawnFolded
+      - EmergencyRollerBedSpawnFolded
+      - MicroManipulatorStockPart
+      - MatterBinStockPart
+      - CapacitorStockPart
+      - ConveyorBeltAssembly
+      - ClothingHeadHatWelding
+      - TradebandTranslator
+      - ClothingBeltSalvageWebbing
+      - Scalpel
+      - Retractor
+      - Cautery
+      - Drill
+      - Saw
+      - Hemostat
+      - BoneGel
+      - ParamedHypo
+      - MothroachCubeBiochemical
+      - CowCubeBiochemical
+      - GoatCubeBiochemical
+      - CryostasisBeaker
+      - SyringeCryostasis
+      - StasisBedMachineCircuitboardBiochemical
+      - ClothingHandsGlovesNitrile
+      - ClothingMaskSterile
+      - Brutepack
+      - Ointment
+      - Gauze
+      - SyringeCase
+      - DisposableSyringe
+      - CartridgeAtropine
+      - CartridgeEpinephrine
+      - CartridgeBicaridine
+      - CartridgeDermaline
+      - CartridgeSaline
+      - HandheldHealthAnalyzer
+      - BodyBag
+      - LargeBeaker
+      - Dropper
+      - Jug
+      - Defibrillator
+      - MiningDrill
+      - ClothingMaskWeldingGas
+      - PowerCellHigh
+      - PowerCellMicrortg
+      - WelderExperimental
+      - PowerDrill
+      - JawsOfLife
+      - OreBagOfHolding
+      - ClothingBackpackHolding
+      - ClothingBackpackSatchelHolding
+      - ClothingBackpackDuffelHolding
+      - Truncheon
+      - MagazineRifleShrapnel
+      - MagazinePistolShrapnel
+      - MagazinePistolSubMachineGunShrapnel
+      - MagazineMagnumShrapnel
+      - MagazineLightRifleShrapnel
+      - RPED
+      - HoloprojectorField
+      - EMPGrenadeElectronics
+  - type: MaterialStorageMagnetPickup
+    magnetEnabled: True
+    range: 0.3
+
+- type: entity
+  parent: [BaseLathe, BaseMaterialSiloUtilizer, BaseFactionMicroforge]
+  id: MicroforgeNCWL
+  name: union field microforge
+  description: A Union microforge built for surface deployment, with all patterns pre-loaded.
+  components:
+  - type: FactionMachine
+    faction: NCWL
+  - type: MaterialStorage
+    dropOnDeconstruct: false
+    ignoreColor: true
+    canEjectStoredMaterials: true
+    whitelist:
+      tags:
+      - DrugComponent
+      - Sheet
+      - CraftMaterials
+      - Ingot
+      - ShipParts
+      - RawMaterial
+  - type: Sprite
+    sprite: _Crescent/Structures/nanoforge.rsi
+    layers:
+    - state: fab-active
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: fab-idle
+    - state: fab-idle
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: fab-load
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: fab-o
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Lathe
+    idleState: fab-idle
+    runningState: fab-active
+    staticRecipes:
+      # NCWL
+      - ClothingHeadHatNCWLCapsoft
+      - ClothingHeadHatNCWLCapsoftMedical
+      - ClothingHeadHatNCWLTanker
+      - ClothingUniformJumpsuitNCWLMedic
+      - ClothingUniformJumpsuitNCWLArtificer
+      - ClothingUniformJumpsuitNCWL
+      - ClothingMaskNCWLBalaclava
+      - ClothingEyesGlassesNCWL
+      - ClothingMaskNCWLGasmask
+      - ClothingBeltNCWLWebbing
+      - ClothingOuterArmorNCWLEngi
+      - ClothingOuterArmorNCWLLogi
+      - ClothingOuterArmorNCWLCarapaceVrachev
+      - ClothingOuterArmorNCWLMedi
+      - ClothingOuterArmorNCWLCarapaceDoktor
+      - ClothingOuterArmorNCWLCarapaceKapitan
+      - ClothingOuterArmorNCWLCarapace
+      - ClothingOuterArmorMVDCoat
+      - ClothingOuterArmorNCWLOpremeCarapace
+      - ClothingOuterArmorNCWLLightBodyarmor
+      - ClothingOuterArmorNCWLHeavyCarapace
+      - ClothingHeadHelmetNCWLBasic
+      - ClothingHeadHelmetNCWLHeavy
+      - ClothingHeadHelmetNCWLRiot
+      - NCWLRiotShield
+      - NCWLLugBaton
+      - WeaponRifleFAL
+      - WeaponRifleNCWLRezerv
+      - WeaponPistolComrade
+      - WeaponSubMachineGunNCWLWatchdog
+      - WeaponSubMachineGunBloodhound
+      - WeaponSubMachineGunMilitant
+      - WeaponRifleNCWLBatanya
+      - WeaponShotgunDoubleBarreledNCWL
+      - WeaponShotgunToz123
+      - WeaponSniperNCWLNovomosin
+      - WeaponSniperMolot
+      - WeaponLightMachineGunConscript
+      - WeaponShotgunProletar
+      - WeaponPistolT91
+      - WeaponRevolverPython
+      - WeaponLauncherGM94
+      - NCWLKukri
+      - ClothingBeltSheathNCWLKukri
+      - BallisticCyclerNCWL
+      - TubeLoaderNCWL
+      # Shared
+      - BaseCartridgeRailgun15mm
+      - MagazineClip18gBuck
+      - MagazinePulse470Fmj
+      - MagazinePulse470
+      - MagazinePulse350Fmj
+      - MagazinePulse350
+      - MagazineBoxImperialRifleBig
+      - MagazineHeavyRifleSmall
+      - CombatKnife
+      - ExplosivePayload
+      - FlashPayload
+      - ChemicalPayload
+      - VoiceTrigger
+      - SignalTrigger
+      - TimerTrigger
+      - EMPGrenadeElectronics
+      - GrenadeDSMG4Twistcap
+      - DrumMagazineShotgunSlug
+      - DrumMagazineShotgunEmpty
+      - DrumMagazineShotgunBuck
+      - MagazineSmgSmartgun
+      - MagazineHeavyRifleBoxmag
+      - MagazinePistolHeavy
+      - MagazineBoxHeavyPistol
+      - SpeedLoader27mmAutocannonHE
+      - MagazineBoxAntiMateriel
+      - MagazineBoxHeavyRifle
+      - MagazineBoxRifle
+      - MagazineBoxLightRifle
+      - MagazineBoxCaselessRifle
+      - MagazineBoxCaselessRifleBig
+      - BoxShotgunFlash4g
+      - BoxShotgunSlug4g
+      - BoxLethalshot4g
+      - BoxBeanbag4g
+      - BoxLethalshot
+      - MagazinePistolCaselessRifle
+      - MagazineCaselessRifleShort
+      - MagazineCaselessRifle
+      - BoxShotgunLumen
+      - BoxShotgunFlare
+      - MagazineBoxMagnum
+      - MagazineBoxPistol
+      - MagazineAntiMateriel
+      - MagazineHeavyRifle
+      - MagazineRifleDrum
+      - MagazineRifle
+      - MagazineLightRifle
+      - MagazineShotgunSlug
+      - MagazineShotgun
+      - SpeedLoader127x99
+      - SpeedLoaderMagnum
+      - MagazineMagnumSub
+      - MagazineMagnum
+      - MagazinePistolSubMachineGunHeavy
+      - MagazinePistolSubMachineGun
+      - MagazinePistol6mmSmg
+      - MagazinePistolSmartgun
+      - MagazinePistol
+      - MagazinePistol6mm
+      - MagazinePistolSubMachineGunTopMounted
+      - Wirecutter
+      - Igniter
+      - Signaller
+      - Screwdriver
+      - Welder
+      - Wrench
+      - Crowbar
+      - Multitool
+      - NetworkConfigurator
+      - SprayPainter
+      - HandheldGPSBasic
+      - TRayScanner
+      - AirTank
+      - GasAnalyzer
+      - UtilityBelt
+      - Pickaxe
+      - ModularReceiver
+      - AppraisalTool
+      - Beaker
+      - Syringe
+      - HandLabeler
+      - LightTube
+      - LedLightTube
+      - SodiumLightTube
+      - ExteriorLightTube
+      - LightBulb
+      - LedLightBulb
+      - SprayBottle
+      - MopItem
+      - Holoprojector
+      - LightReplacer
+      - PowerCellSmall
+      - PowerCellMedium
+      - VehicleWheelchairFolded
+      - RollerBedSpawnFolded
+      - CheapRollerBedSpawnFolded
+      - EmergencyRollerBedSpawnFolded
+      - MicroManipulatorStockPart
+      - MatterBinStockPart
+      - CapacitorStockPart
+      - ConveyorBeltAssembly
+      - ClothingHeadHatWelding
+      - TradebandTranslator
+      - ClothingBeltSalvageWebbing
+      - Scalpel
+      - Retractor
+      - Cautery
+      - Drill
+      - Saw
+      - Hemostat
+      - BoneGel
+      - ParamedHypo
+      - MothroachCubeBiochemical
+      - CowCubeBiochemical
+      - GoatCubeBiochemical
+      - CryostasisBeaker
+      - SyringeCryostasis
+      - StasisBedMachineCircuitboardBiochemical
+      - ClothingHandsGlovesNitrile
+      - ClothingMaskSterile
+      - Brutepack
+      - Ointment
+      - Gauze
+      - SyringeCase
+      - DisposableSyringe
+      - CartridgeAtropine
+      - CartridgeEpinephrine
+      - CartridgeBicaridine
+      - CartridgeDermaline
+      - CartridgeSaline
+      - HandheldHealthAnalyzer
+      - BodyBag
+      - LargeBeaker
+      - Dropper
+      - Jug
+      - Defibrillator
+      - MiningDrill
+      - ClothingMaskWeldingGas
+      - PowerCellHigh
+      - PowerCellMicrortg
+      - WelderExperimental
+      - PowerDrill
+      - JawsOfLife
+      - OreBagOfHolding
+      - ClothingBackpackHolding
+      - ClothingBackpackSatchelHolding
+      - ClothingBackpackDuffelHolding
+      - Truncheon
+      - MagazineRifleShrapnel
+      - MagazinePistolShrapnel
+      - MagazinePistolSubMachineGunShrapnel
+      - MagazineMagnumShrapnel
+      - MagazineLightRifleShrapnel
+      - RPED
+      - HoloprojectorField
+      - WeaponCivilianDisabler
+      - WeaponEnergyGunMini
+      - ClothingEyesNightVisionGoggles
+  - type: MaterialStorageMagnetPickup
+    magnetEnabled: True
+    range: 0.3

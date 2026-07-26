@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
+using Content.Server.Construction;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Lathe.Components;
 using Content.Server.Materials;
@@ -13,6 +14,8 @@ using Content.Shared.Atmos;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Construction;
+using Content.Shared.Stacks;
 using Content.Shared.UserInterface;
 using Content.Shared.Database;
 using Content.Shared.Emag.Components;
@@ -39,6 +42,7 @@ namespace Content.Server.Lathe
     {
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IPrototypeManager _proto = default!;
+        [Dependency] private readonly IComponentFactory _componentFactory = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
         [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
         [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
@@ -59,6 +63,18 @@ namespace Content.Server.Lathe
         /// </summary>
         private readonly List<GasMixture> _environments = new();
 
+        /// <summary>
+        /// Lathes that wanted a UI update but got rate limited, flushed in <see cref="Update"/>.
+        /// </summary>
+        private readonly HashSet<EntityUid> _pendingUiUpdates = new();
+
+        /// <summary>
+        /// Reusable snapshot buffer for <see cref="FlushPendingUiUpdates"/>.
+        /// </summary>
+        private readonly List<EntityUid> _uiUpdateBuffer = new();
+
+        private static readonly TimeSpan UiUpdateInterval = TimeSpan.FromSeconds(0.5);
+
         public override void Initialize()
         {
             base.Initialize();
@@ -67,11 +83,14 @@ namespace Content.Server.Lathe
             SubscribeLocalEvent<LatheComponent, PowerChangedEvent>(OnPowerChanged);
             SubscribeLocalEvent<LatheComponent, TechnologyDatabaseModifiedEvent>(OnDatabaseModified);
             SubscribeLocalEvent<LatheComponent, ResearchRegistrationChangedEvent>(OnResearchRegistrationChanged);
+            SubscribeLocalEvent<LatheComponent, RefreshPartsEvent>(OnPartsRefresh);
+            SubscribeLocalEvent<LatheComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+            SubscribeLocalEvent<LatheComponent, MachineDeconstructedEvent>(OnDeconstructed);
 
             SubscribeLocalEvent<LatheComponent, LatheQueueRecipeMessage>(OnLatheQueueRecipeMessage);
             SubscribeLocalEvent<LatheComponent, LatheSyncRequestMessage>(OnLatheSyncRequestMessage);
 
-            SubscribeLocalEvent<LatheComponent, BeforeActivatableUIOpenEvent>((u, c, _) => UpdateUserInterfaceState(u, c));
+            SubscribeLocalEvent<LatheComponent, BeforeActivatableUIOpenEvent>((u, c, _) => UpdateUserInterfaceState(u, c, true));
             SubscribeLocalEvent<LatheComponent, MaterialAmountChangedEvent>(OnMaterialAmountChanged);
             SubscribeLocalEvent<TechnologyDatabaseComponent, LatheGetRecipesEvent>(OnGetRecipes);
             SubscribeLocalEvent<EmagLatheRecipesComponent, LatheGetRecipesEvent>(GetEmagLatheRecipes);
@@ -120,6 +139,36 @@ namespace Content.Server.Lathe
                     }
                 }
             }
+
+            FlushPendingUiUpdates();
+        }
+
+        private void FlushPendingUiUpdates()
+        {
+            if (_pendingUiUpdates.Count == 0)
+                return;
+
+            // Snapshot into a reusable buffer rather than a fresh array: pushing an update removes the lathe
+            // from the set as it goes, and this runs every tick for as long as anything is printing.
+            _uiUpdateBuffer.Clear();
+            _uiUpdateBuffer.AddRange(_pendingUiUpdates);
+
+            foreach (var uid in _uiUpdateBuffer)
+            {
+                // Dropped either because the lathe is gone or because the last viewer closed the UI while the
+                // update was still queued. Without this the entry would sit here and eventually push a full
+                // recipe catalogue at nobody.
+                if (!TryComp<LatheComponent>(uid, out var lathe) || !_uiSys.IsUiOpen(uid, LatheUiKey.Key))
+                {
+                    _pendingUiUpdates.Remove(uid);
+                    continue;
+                }
+
+                if (_timing.CurTime < lathe.NextUiUpdate)
+                    continue;
+
+                UpdateUserInterfaceState(uid, lathe, true);
+            }
         }
 
         private void OnGetWhitelist(EntityUid uid, LatheComponent component, ref GetMaterialWhitelistEvent args)
@@ -155,13 +204,44 @@ namespace Content.Server.Lathe
             return true;
         }
 
+        /// <summary>
+        /// The recipes this lathe can make. The returned list is the caller's own copy — the cached original
+        /// backs every later call, so handing it out directly would let one caller's edit silently change what
+        /// every other caller sees. Internal hot paths use <see cref="EnsureCachedRecipes"/> and skip the copy.
+        /// </summary>
         public List<ProtoId<LatheRecipePrototype>> GetAvailableRecipes(EntityUid uid, LatheComponent component, bool getUnavailable = false)
         {
-            var ev = new LatheGetRecipesEvent(uid, getUnavailable)
+            // The "everything, available or not" query is only used for whitelist building, so it isn't cached.
+            if (!getUnavailable)
+                return new List<ProtoId<LatheRecipePrototype>>(EnsureCachedRecipes(uid, component));
+
+            var ev = new LatheGetRecipesEvent(uid, true)
             {
                 Recipes = new List<ProtoId<LatheRecipePrototype>>(component.StaticRecipes)
             };
             RaiseLocalEvent(uid, ev);
+
+            return ev.Recipes;
+        }
+
+        /// <summary>
+        /// The live cached recipe list, rebuilt only when something invalidated it. Never hand this to a caller
+        /// that might modify it; see <see cref="GetAvailableRecipes"/>.
+        /// </summary>
+        private List<ProtoId<LatheRecipePrototype>> EnsureCachedRecipes(EntityUid uid, LatheComponent component)
+        {
+            if (component.CachedRecipes is { } cached)
+                return cached;
+
+            var ev = new LatheGetRecipesEvent(uid, false)
+            {
+                Recipes = new List<ProtoId<LatheRecipePrototype>>(component.StaticRecipes)
+            };
+            RaiseLocalEvent(uid, ev);
+
+            component.CachedRecipes = ev.Recipes;
+            component.CachedRecipeLookup = new HashSet<ProtoId<LatheRecipePrototype>>(ev.Recipes);
+
             return ev.Recipes;
         }
 
@@ -203,6 +283,7 @@ namespace Content.Server.Lathe
 
             var time = _reagentSpeed.ApplySpeed(uid, recipe.CompleteTime) * component.TimeMultiplier;
 
+            var wasProducing = HasComp<LatheProducingComponent>(uid);
             var lathe = EnsureComp<LatheProducingComponent>(uid);
             lathe.StartTime = _timing.CurTime;
             lathe.ProductionLength = time;
@@ -211,7 +292,11 @@ namespace Content.Server.Lathe
             var ev = new LatheStartPrintingEvent(recipe);
             RaiseLocalEvent(uid, ref ev);
 
-            _audio.PlayPvs(component.ProducingSound, uid);
+            // A batch lathe is doing one job as far as the player is concerned, so it gets one start-up
+            // sound rather than one per item; a few hundred overlapping copies is both noise and traffic.
+            if (!component.BatchOutput || !wasProducing)
+                _audio.PlayPvs(component.ProducingSound, uid);
+
             UpdateRunningAppearance(uid, true);
             UpdateUserInterfaceState(uid, component);
 
@@ -231,8 +316,16 @@ namespace Content.Server.Lathe
             {
                 if (comp.CurrentRecipe.Result is { } resultProto)
                 {
-                    var result = Spawn(resultProto, Transform(uid).Coordinates);
-                    _stack.TryMergeToContacts(result);
+                    if (comp.BatchOutput)
+                    {
+                        // Tallied now, handed over once the queue runs dry. See FlushPendingOutput.
+                        comp.PendingOutput[resultProto] = comp.PendingOutput.GetValueOrDefault(resultProto) + 1;
+                    }
+                    else
+                    {
+                        var result = Spawn(resultProto, Transform(uid).Coordinates);
+                        _stack.TryMergeToContacts(result);
+                    }
                 }
 
                 if (comp.CurrentRecipe.ResultReagents is { } resultReagents &&
@@ -265,10 +358,51 @@ namespace Content.Server.Lathe
 
             if (!TryStartProducing(uid, comp))
             {
+                // Nothing left to make (or no power to make it with), so the run is over and whatever it
+                // built gets handed over.
+                FlushPendingOutput(uid, comp);
                 RemCompDeferred(uid, prodComp);
                 UpdateUserInterfaceState(uid, comp);
                 UpdateRunningAppearance(uid, false);
             }
+        }
+
+        /// <summary>
+        /// Drops everything a batch run built, merged into as few stacks as the stack size allows. A hundred
+        /// queued sheets leave as a handful of full stacks rather than a hundred one-sheet entities that then
+        /// have to find each other.
+        /// </summary>
+        public void FlushPendingOutput(EntityUid uid, LatheComponent? component = null)
+        {
+            if (!Resolve(uid, ref component, false) || component.PendingOutput.Count == 0)
+                return;
+
+            var coords = Transform(uid).Coordinates;
+
+            foreach (var (resultProto, count) in component.PendingOutput)
+            {
+                if (!_proto.TryIndex<EntityPrototype>(resultProto, out var proto))
+                    continue;
+
+                // A recipe's result prototype can itself be a stack of more than one, so the run's total is
+                // counted in stack units, not in entities.
+                if (proto.TryGetComponent<StackComponent>(out var stackProto, _componentFactory))
+                {
+                    foreach (var spawned in _stack.SpawnMultiple(resultProto, stackProto.Count * count, coords))
+                    {
+                        _stack.TryMergeToContacts(spawned);
+                    }
+                }
+                else
+                {
+                    for (var i = 0; i < count; i++)
+                    {
+                        Spawn(resultProto, coords);
+                    }
+                }
+            }
+
+            component.PendingOutput.Clear();
         }
 
         public void OnProductionComplete(EntityUid uid, LatheRecipePrototype recipe)
@@ -277,15 +411,69 @@ namespace Content.Server.Lathe
             RaiseLocalEvent(uid, ev);
         }
 
-        public void UpdateUserInterfaceState(EntityUid uid, LatheComponent? component = null)
+        /// <summary>
+        /// Pushes a fresh UI state. Each state carries the lathe's whole recipe list, which is well over a
+        /// thousand entries on the bigger lathes, so bulk work (queueing, finishing an item) only asks for an
+        /// update and gets coalesced here rather than re-sending the catalogue per item.
+        /// </summary>
+        /// <param name="immediate">Bypass the rate limit. Used when a player is waiting on the result, e.g. opening the UI.</param>
+        public void UpdateUserInterfaceState(EntityUid uid, LatheComponent? component = null, bool immediate = false)
         {
             if (!Resolve(uid, ref component))
                 return;
 
+            // BeforeActivatableUIOpenEvent fires before the UI counts as open, so the immediate path has to
+            // skip both of these checks or the state would never be seeded for the player opening it.
+            if (!immediate)
+            {
+                // Nobody's looking, so there's nothing to update. The UI refreshes itself on open.
+                if (!_uiSys.IsUiOpen(uid, LatheUiKey.Key))
+                {
+                    _pendingUiUpdates.Remove(uid);
+                    return;
+                }
+
+                if (_timing.CurTime < component.NextUiUpdate)
+                {
+                    _pendingUiUpdates.Add(uid);
+                    return;
+                }
+            }
+
+            _pendingUiUpdates.Remove(uid);
+            component.NextUiUpdate = _timing.CurTime + UiUpdateInterval;
+
             var producing = component.CurrentRecipe ?? component.Queue.FirstOrDefault();
 
-            var state = new LatheUpdateState(GetAvailableRecipes(uid, component), component.Queue, producing);
+            // Safe to alias the cache here: invalidation replaces the list rather than clearing it in place, so
+            // a state still waiting to be serialized keeps the roster it was built with.
+            var state = new LatheUpdateState(EnsureCachedRecipes(uid, component), BuildQueueSummary(component.Queue), producing);
             _uiSys.SetUiState(uid, LatheUiKey.Key, state);
+        }
+
+        /// <summary>
+        /// Collapses the queue into runs of the same recipe. Sending it job by job means sending a whole
+        /// recipe prototype per job, so a 500 item order would put a hundred kilobytes on the wire every time
+        /// the interface refreshed.
+        /// </summary>
+        private static List<LatheQueueEntry> BuildQueueSummary(List<LatheRecipePrototype> queue)
+        {
+            var summary = new List<LatheQueueEntry>();
+
+            foreach (var recipe in queue)
+            {
+                if (summary.Count > 0 && summary[^1].Recipe.Id == recipe.ID)
+                {
+                    var last = summary[^1];
+                    last.Count++;
+                    summary[^1] = last;
+                    continue;
+                }
+
+                summary.Add(new LatheQueueEntry(recipe.ID, 1));
+            }
+
+            return summary;
         }
 
         private void OnGetRecipes(EntityUid uid, TechnologyDatabaseComponent component, LatheGetRecipesEvent args)
@@ -356,6 +544,9 @@ namespace Content.Server.Lathe
             {
                 RemComp<LatheProducingComponent>(uid);
                 UpdateRunningAppearance(uid, false);
+                // A dead machine shouldn't sit on a half-finished batch: the queue survives the outage, but
+                // what it already built comes out now rather than being held until it can finish.
+                FlushPendingOutput(uid, component);
             }
             else if (component.CurrentRecipe != null)
             {
@@ -366,6 +557,7 @@ namespace Content.Server.Lathe
 
         private void OnDatabaseModified(EntityUid uid, LatheComponent component, ref TechnologyDatabaseModifiedEvent args)
         {
+            InvalidateRecipeCache(uid, component);
             UpdateUserInterfaceState(uid, component);
 
             // Goobstation - Lathe message on recipes update - Start
@@ -380,12 +572,54 @@ namespace Content.Server.Lathe
 
         private void OnResearchRegistrationChanged(EntityUid uid, LatheComponent component, ref ResearchRegistrationChangedEvent args)
         {
+            InvalidateRecipeCache(uid, component);
             UpdateUserInterfaceState(uid, component);
+        }
+
+        private void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args)
+        {
+            // The prototype's own multipliers are the baseline that part ratings scale off of, otherwise
+            // stock parts would reset variants like the industrial ore processor back to 1x.
+            component.BaseTimeMultiplier ??= component.TimeMultiplier;
+            component.BaseMaterialUseMultiplier ??= component.MaterialUseMultiplier;
+
+            var printTimeRating = Rating(args, component.MachinePartPrintSpeed);
+            var materialUseRating = Rating(args, component.MachinePartMaterialUse);
+
+            component.TimeMultiplier = component.BaseTimeMultiplier.Value *
+                                       MathF.Pow(component.PartRatingPrintTimeMultiplier, printTimeRating - 1);
+            component.MaterialUseMultiplier = component.BaseMaterialUseMultiplier.Value *
+                                              MathF.Pow(component.PartRatingMaterialUseMultiplier, materialUseRating - 1);
+            Dirty(uid, component);
+        }
+
+        /// <summary>
+        /// A part rating, treating "no such part fitted" as the stock rating of 1 rather than 0.
+        /// <see cref="ConstructionSystem.GetPartsRatings"/> reports 0 for every part type the machine does not
+        /// have, and most lathes here are mapped in with no machine board at all, so a raw lookup would read
+        /// as rating 0 and hand every one of them pow(0.5, -1) = double print time for having no upgrades to
+        /// begin with. Rating 1 is the neutral value: the prototype's own multipliers come through unchanged.
+        /// </summary>
+        private static float Rating(RefreshPartsEvent args, string partId)
+        {
+            return args.PartRatings.TryGetValue(partId, out var rating) && rating > 0f ? rating : 1f;
+        }
+
+        private void OnDeconstructed(EntityUid uid, LatheComponent component, MachineDeconstructedEvent args)
+        {
+            FlushPendingOutput(uid, component);
+        }
+
+        private void OnUpgradeExamine(EntityUid uid, LatheComponent component, UpgradeExamineEvent args)
+        {
+            args.AddPercentageUpgrade("lathe-component-upgrade-speed", 1 / component.TimeMultiplier);
+            args.AddPercentageUpgrade("lathe-component-upgrade-material-use", component.MaterialUseMultiplier);
         }
 
         protected override bool HasRecipe(EntityUid uid, LatheRecipePrototype recipe, LatheComponent component)
         {
-            return GetAvailableRecipes(uid, component).Contains(recipe.ID);
+            EnsureCachedRecipes(uid, component);
+            return component.CachedRecipeLookup?.Contains(recipe.ID) == true;
         }
 
         #region UI Messages
@@ -395,7 +629,7 @@ namespace Content.Server.Lathe
             if (_proto.TryIndex(args.ID, out LatheRecipePrototype? recipe))
             {
                 var count = 0;
-                var clampedQuantity = Math.Min(args.Quantity, 100);
+                var clampedQuantity = Math.Min(args.Quantity, component.MaxQueuePerRequest);
                 for (var i = 0; i < clampedQuantity; i++)
                 {
                     if (TryAddToQueue(uid, recipe, component))
@@ -411,12 +645,13 @@ namespace Content.Server.Lathe
                 }
             }
             TryStartProducing(uid, component);
-            UpdateUserInterfaceState(uid, component);
+            // The player just clicked, so answer immediately rather than making them wait out the rate limit.
+            UpdateUserInterfaceState(uid, component, true);
         }
 
         private void OnLatheSyncRequestMessage(EntityUid uid, LatheComponent component, LatheSyncRequestMessage args)
         {
-            UpdateUserInterfaceState(uid, component);
+            UpdateUserInterfaceState(uid, component, true);
         }
         #endregion
     }

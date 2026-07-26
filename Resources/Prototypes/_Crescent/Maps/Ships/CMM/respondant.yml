@@ -5,9 +5,9 @@
   id: Respondant
   name: TS Respondant
   description: |
-    LOADOUT: 2x 50mm 'Striker' gatlings, 2x 60mm 'Azimuth' LMLs
+    A compact corvette built to brawl. Once a militia mainstay, the Respondant trades armor for a punchy mix of autocannons and rocket pods, letting a skilled pilot chip away at targets before closing in for the kill.
+    LOADOUT: 2x 50mm 'Striker' Heavy Autocannons, 2x 60mm 'Azimuth' Rocket Pods
     MINIMUM CREW: 1x Pilot, 1x Loader Optional
-    DESC.
   price: 35000
   category: Small
   group: None
@@ -21,9 +21,6 @@
   stations:
     Respondant:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
@@ -37,4 +34,4 @@
         - type: VesselDesignation
           designation: vessel-designation-corvette
         - type: VesselDescription
-          description: A compact corvette, good at brawling. Skilled pilot might pick targets range at range with its Strikers.
+          description: A compact corvette, good at brawling. A skilled pilot can pick targets off at range with its Strikers.

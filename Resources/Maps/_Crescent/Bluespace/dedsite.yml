@@ -6002,11 +6002,15 @@ entities:
     - type: Transform
       pos: 24.485401,8.650811
       parent: 1
+    - type: Stack
+      count: 2
   - uid: 1248
     components:
     - type: Transform
       pos: 16.395193,11.518655
       parent: 1
+    - type: Stack
+      count: 2
 - proto: NanotrasenMechatronics1
   entities:
   - uid: 1249
@@ -6014,11 +6018,15 @@ entities:
     - type: Transform
       pos: -5.4423933,16.43237
       parent: 1
+    - type: Stack
+      count: 2
   - uid: 1250
     components:
     - type: Transform
       pos: -0.24471211,27.485952
       parent: 1
+    - type: Stack
+      count: 2
 - proto: OreBox
   entities:
   - uid: 732

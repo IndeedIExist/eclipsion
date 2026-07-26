@@ -2,6 +2,7 @@
   id: ArchmaesterDSM
   name: job-name-archmaester
   description: job-description-archmaester
+  setPreference: false # hidden from job selection, kept for spawners/admin use
   playTimeTracker: JobArchmaesterDSM
   ranks:
     RatRankNobleDuke:

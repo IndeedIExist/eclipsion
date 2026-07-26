@@ -64,7 +64,7 @@
     difficulty: 2
     recipes:
       - WeaponLightMachineGunCompaktCyberdawn
-      - WeaponLightMachineGunNCSPRPD
+      - WeaponLightMachineGunTFSCRPD
 
 - type: entity
   name: C 54 ROW
@@ -189,6 +189,7 @@
     price: 5500
   - type: UseDelay
     delay: 1
+  - type: UseDelayBlockShoot
   - type: Contraband
   - type: DisarmMalus
     malus: -1
@@ -206,8 +207,8 @@
       - WeaponLightMachineGunConscript
 
 - type: entity
-  name: NCSP RPD 7.62x51mm
-  id: WeaponLightMachineGunNCSPRPD
+  name: TFSC RPD 7.62x51mm
+  id: WeaponLightMachineGunTFSCRPD
   parent: BaseWeaponLightMachineGun
   description: A bulky machinegun made from ancient schematics. Chambered in 7.62x51mm.
   components:
@@ -258,7 +259,7 @@
   - type: ReverseEngineering # Sector Crescent
     difficulty: 2
     recipes:
-      - WeaponLightMachineGunNCSPRPD
+      - WeaponLightMachineGunTFSCRPD
       - WeaponLightMachineGunCompaktCyberdawn
 
 - type: entity

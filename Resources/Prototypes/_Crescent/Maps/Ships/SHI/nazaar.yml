@@ -1,30 +1,27 @@
 - type: vessel
   id: Nazaar
-  name: ТПШ Назар
-  description: Патрульный канонерский катер Корпоративной Безопасности.
-  price: 27500
+  name: SHI Nazaar
+  description: A CorpSec patrol gunboat.
+  price: 18000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/SHI/nazaar.yml
 
 - type: gameMap
   id: Nazaar
-  mapName: 'ТПШ Назар'
+  mapName: 'SHI Nazaar'
   mapPath: /Maps/_Crescent/Shuttles/SHI/nazaar.yml
   minPlayers: 0
   stations:
     Nazaar:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'ТПШ Назар {1}'
+          mapNameTemplate: 'SHI Nazaar {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

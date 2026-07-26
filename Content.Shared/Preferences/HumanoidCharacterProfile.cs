@@ -1,6 +1,6 @@
 using System.Linq;
 using System.Text.RegularExpressions;
-using Content.Shared._Art.TTS; // Art-TTS
+using Content.Shared._EE.Contractors.Prototypes;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Clothing.Loadouts.Systems;
@@ -24,7 +24,7 @@ namespace Content.Shared.Preferences;
 [Serializable, NetSerializable]
 public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 {
-    private static readonly Regex RestrictedNameRegex = new("[^А-Яа-яёЁ0-9' -]"); // RU-Localization
+    private static readonly Regex RestrictedNameRegex = new("[^A-Za-z0-9' -]");
     private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
     public const int MaxNameLength = 64;
@@ -92,11 +92,6 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     [DataField]
     public Sex Sex { get; private set; } = Sex.Male;
 
-    // Art-TTS Start
-    [DataField]
-    public string Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice;
-    // Art-TTS End
-
     [DataField]
     public Gender Gender { get; private set; } = Gender.Male;
 
@@ -139,8 +134,14 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     [DataField]
     public long BankBalance { get; private set; } = 0;
 
+    /// <summary>
+    /// Primary faction (DSM, NCWL, NanoTrasen, etc.) - from FactionPrototype
+    /// </summary>
     [DataField]
     public string Faction { get; private set; } = "";
+
+    [DataField]
+    public string Subfaction { get; private set; } = "";
 
     [DataField]
     public List<string> CharacterFlags { get; private set; } = new();
@@ -160,7 +161,6 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         float width,
         int age,
         Sex sex,
-        string voice, // Art-TTS
         Gender gender,
         string? displayPronouns,
         string? stationAiName,
@@ -174,6 +174,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         HashSet<LoadoutPreference> loadoutPreferences,
         long bankWealth,
         string proFaction,
+        string proSubfaction,
         List<string> characterFlags
     )
     {
@@ -190,7 +191,6 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         Width = width;
         Age = age;
         Sex = sex;
-        Voice = voice; // Art-TTS
         Gender = gender;
         DisplayPronouns = displayPronouns;
         StationAiName = stationAiName;
@@ -204,6 +204,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         _loadoutPreferences = loadoutPreferences;
         BankBalance = bankWealth;
         Faction = proFaction;
+        Subfaction = proSubfaction;
         CharacterFlags = characterFlags;
     }
 
@@ -223,7 +224,6 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             other.Width,
             other.Age,
             other.Sex,
-            other.Voice, // Art-TTS
             other.Gender,
             other.DisplayPronouns,
             other.StationAiName,
@@ -237,6 +237,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             new HashSet<LoadoutPreference>(other.LoadoutPreferences),
             other.BankBalance,
             other.Faction,
+            other.Subfaction,
             other.CharacterFlags) { }
 
     /// <summary>
@@ -322,19 +323,12 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
                 break;
         }
 
-        // Art-TTS Start
-        var voiceId = random.Pick(prototypeManager
-        .EnumeratePrototypes<TTSVoicePrototype>()
-        .Where(o => CanHaveVoice(o, sex)).ToArray()).ID;
-        // Art-TTS End
-
         var name = GetName(species, gender);
 
         return new HumanoidCharacterProfile()
         {
             Name = name,
             Sex = sex,
-            Voice = voiceId, // Art-TTS
             Age = age,
             Gender = gender,
             Species = species,
@@ -360,9 +354,6 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     // EE - Contractors Change End
     public HumanoidCharacterProfile WithSex(Sex sex) => new(this) { Sex = sex };
 
-    // Art-TTS Start
-    public HumanoidCharacterProfile WithVoice(string voice) => new(this) { Voice = voice };
-    // Art-TTS End
     public HumanoidCharacterProfile WithGender(Gender gender) => new(this) { Gender = gender };
 
     public HumanoidCharacterProfile WithDisplayPronouns(string? displayPronouns) =>
@@ -447,6 +438,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     }
 
     public HumanoidCharacterProfile WithFaction(string newFaction) => new(this) { Faction = newFaction };
+    public HumanoidCharacterProfile WithSubfaction(string newSubfaction) => new(this) { Subfaction = newSubfaction };
     public HumanoidCharacterProfile WithBank(long amount) => new(this) { BankBalance = amount };
     public HumanoidCharacterProfile WithCharacterFlags(List<string> characterFlags) => new(this) { CharacterFlags = characterFlags };
 
@@ -465,7 +457,6 @@ public string Summary =>
             && Name == other.Name
             && Age == other.Age
             && Sex == other.Sex
-            && Voice == other.Voice // Art-TTS
             && Gender == other.Gender
             && Species == other.Species
             // EE - Contractors Change Start
@@ -482,6 +473,7 @@ public string Summary =>
             && Appearance.MemberwiseEquals(other.Appearance)
             && FlavorText == other.FlavorText
             && Faction == other.Faction
+            && Subfaction == other.Subfaction
             && BankBalance == other.BankBalance
             && CharacterFlags.SequenceEqual(other.CharacterFlags);
     }
@@ -508,6 +500,18 @@ public string Summary =>
 
         if (!validFaction)
             Faction = "";
+
+        // EE Contractor fields (Nationality/Employer/Lifepath) are prototype-backed but were never added
+        // to validation. A removed/renamed prototype left them permanently invalid in the DB, surviving
+        // straight through to the client (EnsureValid is what auto-heals stale prefs). Reset stale values.
+        if (!prototypeManager.HasIndex<NationalityPrototype>(Nationality))
+            Nationality = SharedHumanoidAppearanceSystem.DefaultNationality;
+
+        if (!prototypeManager.HasIndex<EmployerPrototype>(Employer))
+            Employer = SharedHumanoidAppearanceSystem.DefaultEmployer;
+
+        if (!prototypeManager.HasIndex<LifepathPrototype>(Lifepath))
+            Lifepath = SharedHumanoidAppearanceSystem.DefaultLifepath;
 
         var sex = Sex switch
         {
@@ -611,6 +615,11 @@ public string Summary =>
                 _ => false
             }));
 
+        // The database enforces at most one High priority job per profile, so drop any extras.
+        var highPriorityJobs = priorities.Where(p => p.Value == JobPriority.High).Select(p => p.Key).ToArray();
+        for (var i = 1; i < highPriorityJobs.Length; i++)
+            priorities[highPriorityJobs[i]] = JobPriority.Medium;
+
         var antags = AntagPreferences
             .Where(id => prototypeManager.TryIndex<AntagPrototype>(id, out var antag) && antag.SetPreference)
             .Distinct()
@@ -652,22 +661,7 @@ public string Summary =>
 
         _loadoutPreferences.Clear();
         _loadoutPreferences.UnionWith(loadouts);
-        // Art-TTS Start
-        prototypeManager.TryIndex<TTSVoicePrototype>(Voice, out var voice);
-        if (voice == null || !CanHaveVoice(voice, Sex))
-            Voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
-        // Art-TTS End
     }
-
-    // Art-TTS Start
-    public static bool CanHaveVoice(TTSVoicePrototype voice, Sex sex)
-    {
-        return voice.RoundStart
-        && (sex == Sex.Unsexed
-        || voice.Sex == sex
-        || voice.Sex == Sex.Unsexed);
-    }
-    // Art-TTS End
 
     public ICharacterProfile Validated(ICommonSession session, IDependencyCollection collection)
     {
@@ -704,13 +698,13 @@ public string Summary =>
         hashCode.Add(Lifepath);
         hashCode.Add(Age);
         hashCode.Add((int) Sex);
-        hashCode.Add(Voice); // Art-TTS
         hashCode.Add((int) Gender);
         hashCode.Add(Appearance);
         hashCode.Add((int) SpawnPriority);
         hashCode.Add((int) PreferenceUnavailable);
         hashCode.Add(Customspeciename);
         hashCode.Add(Faction);
+        hashCode.Add(Subfaction);
         hashCode.Add(BankBalance);
         hashCode.Add(CharacterFlags);
         return hashCode.ToHashCode();

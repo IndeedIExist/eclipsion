@@ -4490,8 +4490,6 @@ entities:
       pos: -5.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2610.0674
-      state: Closing
   - uid: 701
     components:
     - type: Transform
@@ -4505,8 +4503,6 @@ entities:
       pos: 5.5,-4.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2617.4006
-      state: Closing
   - uid: 703
     components:
     - type: Transform
@@ -4514,8 +4510,6 @@ entities:
       pos: 6.5,-4.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2616.9673
-      state: Closing
 - proto: FoodSnackMREBrownie
   entities:
   - uid: 639

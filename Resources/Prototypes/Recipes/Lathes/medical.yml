@@ -49,6 +49,7 @@
 
 - type: latheRecipe
   id: BodyBag
+  category: Medical
   result: BodyBagFolded
   completetime: 2
   materials:
@@ -56,6 +57,7 @@
 
 - type: latheRecipe
   id: Brutepack
+  category: Medical
   result: Brutepack1
   completetime: 1
   materials:
@@ -64,6 +66,7 @@
 
 - type: latheRecipe
   id: Ointment
+  category: Medical
   result: Ointment1
   completetime: 1
   materials:
@@ -72,6 +75,7 @@
 
 - type: latheRecipe
   id: Gauze
+  category: Medical
   result: Gauze1
   completetime: 1
   materials:
@@ -98,6 +102,7 @@
 
 - type: latheRecipe
   id: ClothingHandsGlovesLatex
+  category: Clothing
   result: ClothingHandsGlovesLatex
   completetime: 2
   materials:
@@ -105,6 +110,7 @@
 
 - type: latheRecipe
   id: ClothingHandsGlovesNitrile
+  category: Clothing
   result: ClothingHandsGlovesNitrile
   completetime: 2
   materials:
@@ -113,6 +119,7 @@
 
 - type: latheRecipe
   id: ClothingMaskSterile
+  category: Clothing
   result: ClothingMaskSterile
   completetime: 2
   materials:
@@ -128,6 +135,7 @@
 
 - type: latheRecipe
   id: Implanter
+  category: Implants
   result: Implanter
   completetime: 1
   materials:
@@ -136,6 +144,7 @@
 
 - type: latheRecipe
   id: Defibrillator
+  category: Medical
   result: DefibrillatorEmpty
   completetime: 2
   materials:
@@ -143,6 +152,7 @@
 
 - type: latheRecipe
   id: Medkit
+  category: Medical
   result: Medkit
   name: lathe-recipe-Medkit-name
   completetime: 2
@@ -151,6 +161,7 @@
 
 - type: latheRecipe
   id: MedkitBurn
+  category: Medical
   result: MedkitBurn
   name: lathe-recipe-MedkitBurn-name
   completetime: 2
@@ -159,6 +170,7 @@
 
 - type: latheRecipe
   id: MedkitToxin
+  category: Medical
   result: MedkitToxin
   name: lathe-recipe-MedkitToxin-name
   completetime: 2
@@ -167,6 +179,7 @@
 
 - type: latheRecipe
   id: MedkitO2
+  category: Medical
   result: MedkitO2
   name: lathe-recipe-MedkitO2-name
   completetime: 2
@@ -175,6 +188,7 @@
 
 - type: latheRecipe
   id: MedkitBrute
+  category: Medical
   result: MedkitBrute
   name: lathe-recipe-MedkitBrute-name
   completetime: 2
@@ -183,6 +197,7 @@
 
 - type: latheRecipe
   id: MedkitAdvanced
+  category: Medical
   result: MedkitAdvanced
   name: lathe-recipe-MedkitAdvanced-name
   completetime: 2
@@ -191,6 +206,7 @@
 
 - type: latheRecipe
   id: MedkitRadiation
+  category: Medical
   result: MedkitRadiation
   name: lathe-recipe-MedkitRadiation-name
   completetime: 2
@@ -199,6 +215,7 @@
 
 - type: latheRecipe
   id: MedkitCombat
+  category: Medical
   result: MedkitCombat
   name: lathe-recipe-MedkitCombat-name
   completetime: 2
@@ -215,6 +232,7 @@
 
 - type: latheRecipe
   id: Jug
+  category: Food
   result: Jug
   completetime: 4
   materials:
@@ -222,6 +240,7 @@
 
 - type: latheRecipe
   id: RollerBedSpawnFolded
+  category: Medical
   result: RollerBedSpawnFolded
   completetime: 1
   materials:
@@ -230,6 +249,7 @@
 
 - type: latheRecipe
   id: CheapRollerBedSpawnFolded
+  category: Medical
   result: CheapRollerBedSpawnFolded
   completetime: 1
   materials:
@@ -238,6 +258,7 @@
 
 - type: latheRecipe
   id: EmergencyRollerBedSpawnFolded
+  category: Medical
   result: EmergencyRollerBedSpawnFolded
   completetime: 1
   materials:
@@ -254,6 +275,7 @@
 
 - type: latheRecipe
   id: ClothingEyesNightVisionMedicalGoggles
+  category: Clothing
   result: ClothingEyesNightVisionMedicalGoggles
   completetime: 7
   materials:
@@ -265,6 +287,7 @@
 
 - type: latheRecipe
   id: EnvirosuitExtinguisherRefill
+  category: Tools
   result: EnvirosuitExtinguisherRefill
   completetime: 3
   materials:

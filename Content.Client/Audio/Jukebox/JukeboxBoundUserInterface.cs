@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Content.Shared.Audio.Jukebox;
 using Robust.Client.Audio;
 using Robust.Client.UserInterface;
@@ -43,6 +44,11 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
 
         _menu.OnSongSelected += SelectSong;
 
+        _menu.OnQueueAdd += songid => SendMessage(new JukeboxQueueAddMessage(songid));
+        _menu.OnQueueRemove += index => SendMessage(new JukeboxQueueRemoveMessage(index));
+        _menu.OnQueueClear += () => SendMessage(new JukeboxQueueClearMessage());
+        _menu.OnQueueNext += () => SendMessage(new JukeboxQueueNextMessage());
+
         _menu.SetTime += SetTime;
         PopulateMusic();
         Reload();
@@ -67,6 +73,14 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
         {
             _menu.SetSelectedSong(string.Empty, 0f);
         }
+
+        var queueNames = new List<string>();
+        foreach (var songId in jukebox.Queue)
+        {
+            queueNames.Add(_protoManager.TryIndex(songId, out var queued) ? queued.Name : songId.Id);
+        }
+
+        _menu.PopulateQueue(queueNames);
     }
 
     public void PopulateMusic()

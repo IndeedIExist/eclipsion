@@ -6,7 +6,7 @@
   name: TS Sentinel
   description: |
     A relatively light corvette used to harass enemy with its short range plasma guns.
-    LOADOUT: 1x 300cc 'Bolter' plasma blaster, 2x 150cc 'starlight' plasma gatlings
+    LOADOUT: 1x 300cc 'Bolter' plasma caster, 2x 150cc 'Starburst' plasma gatlings
     MINIMUM CREW: 1x Pilot
   price: 45000
   category: Small
@@ -21,9 +21,6 @@
   stations:
     Sentinel:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:

@@ -82,6 +82,22 @@
     2: 0.75
     3: 0.75
 
+# Extra combined discipline: holds a duplicate of the Interdyne + Cyberdawn catalogue under one tree, for
+# stations that want the whole TFSC toolkit off a single server. The original Interdyne/Cyberdawn disciplines
+# above are left untouched so existing maps and servers keep working. Reuses the cyberdawn sprite state since
+# research_disciplines.rsi has no dedicated "coalition" icon.
+- type: techDiscipline
+  id: Coalition
+  name: research-discipline-coalition
+  color: "#FF6961"
+  icon:
+    sprite: _Crescent/Interface/Misc/research_disciplines.rsi
+    state: cyberdawn
+  tierPrerequisites:
+    1: 0
+    2: 0.75
+    3: 0.75
+
 - type: techDiscipline
   id: Imperial
   name: research-discipline-imperial

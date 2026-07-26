@@ -51,8 +51,10 @@
   - type: WiresPanel
   - type: Transform
     anchored: true
-  - type: Pullable
+  - type: OnToolsUse # Encore - drone server is fixed in place, can't be unbolted/pulled
+    disabled: true
   - type: DroneControl
+  - type: AutoDrone # Encore - auto-deploy, formation-follow and auto-engage. Remove for a manual-only drone.
   - type: ShipNpcTarget
   - type: HTN
     sleepPlayerCheckRangeOverride: 100000 # 100k aka basically never sleep
@@ -67,10 +69,10 @@
     range: 100000 # keep same as sleep range
 
 - type: entity
-  parent: BaseComputerAiAccess
+  parent: [ BaseComputerAiAccess, BaseStructureDisableToolUse ] # Encore - fixed in place (can't be unbolted), still destructible
   id: ComputerDroneControl
   name: drone control console
-  description: A console that lets you control linked drones.
+  description: A console that produces and commands a squadron of drones.
   components:
   - type: Sprite
     layers:
@@ -86,6 +88,11 @@
     board: DroneControlCircuitboard
   - type: DroneControlConsole
     maxOrderRadius: 4000
+  - type: DroneCarrier # Encore - produces and commands its own drone squadron. Override spawnableDrones per faction.
+    spawnableDrones:
+    - ValorDrone
+    - RocinanteDrone
+    iffColor: "#C677A5" # DSM
   - type: ActivatableUI
     key: enum.DroneConsoleUiKey.Key
   - type: UserInterface
@@ -113,6 +120,18 @@
     maxOrderRadius: null # infinite
   - type: RadarConsole
     maxRange: 2048
+
+# NCWL faction variant - produces NCWL drones instead of the DSM default.
+- type: entity
+  parent: ComputerDroneControl
+  id: ComputerDroneControlNCWL
+  suffix: NCWL
+  components:
+  - type: DroneCarrier
+    spawnableDrones:
+    - HornetDrone
+    - WaspDrone
+    iffColor: Orange # NCWL
 
 - type: deviceFrequency
   id: DroneControl

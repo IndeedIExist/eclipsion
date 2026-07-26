@@ -24,10 +24,12 @@ using Content.Client.Voting;
 using Content.Shared.Ame.Components;
 using Content.Shared.Gravity;
 using Content.Shared.Localizations;
+using System.Linq;
 using Robust.Client;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Replays.Loading;
+using Robust.Shared.Input;
 using Robust.Client.State;
 using Robust.Client.UserInterface;
 using Robust.Shared;
@@ -38,7 +40,7 @@ using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 using Content.Client._Forge.DiscordAuth; // Forge-Change
 using Content.Client._Forge.Sponsors; // Forge-Change
-using Content.Client._Rat.JoinQueue;
+using Content.Client._Crescent.JoinQueue;
 
 namespace Content.Client.Entry
 {
@@ -184,7 +186,48 @@ namespace Content.Client.Entry
             // Disable engine-default viewport since we use our own custom viewport control.
             _userInterfaceManager.MainViewport.Visible = false;
 
+            // _Crescent: sprint must always be hold-to-run. The old "toggle walk" option is gone,
+            // but players may still have a Toggle-type Walk bind saved from before — force it to State.
+            ForceHoldToSprint();
+
             SwitchToDefaultState();
+        }
+
+        /// <summary>
+        /// _Crescent: coerces any Toggle-type Walk keybinds (from the removed "toggle walk" option
+        /// or old saved keybinds) back to a held (State) binding, so sprinting is always hold-to-run.
+        /// </summary>
+        private void ForceHoldToSprint()
+        {
+            var changed = false;
+
+            // GetKeyBindings returns the live list, so snapshot it before mutating.
+            foreach (var binding in _inputManager.GetKeyBindings(EngineKeyFunctions.Walk).ToArray())
+            {
+                if (binding.BindingType != KeyBindingType.Toggle)
+                    continue;
+
+                var registration = new KeyBindingRegistration
+                {
+                    Function = EngineKeyFunctions.Walk,
+                    BaseKey = binding.BaseKey,
+                    Mod1 = binding.Mod1,
+                    Mod2 = binding.Mod2,
+                    Mod3 = binding.Mod3,
+                    Priority = binding.Priority,
+                    Type = KeyBindingType.State,
+                    CanFocus = binding.CanFocus,
+                    CanRepeat = binding.CanRepeat,
+                    AllowSubCombs = binding.AllowSubCombs,
+                };
+
+                _inputManager.RemoveBinding(binding);
+                _inputManager.RegisterBinding(registration);
+                changed = true;
+            }
+
+            if (changed)
+                _inputManager.SaveToUserData();
         }
 
         private void SwitchToDefaultState(bool disconnected = false)

@@ -3,27 +3,24 @@
 
 - type: vessel
   id: Stern
-  name: ЛРНП Стерн
-  description: Коммунарский тяжёлый линкор.
+  name: NCWL Stern
+  description: A communard heavy battleship.
   price: 350000
-  category: Small
+  category: Large
   group: None
   path: /Maps/_Crescent/Shuttles/NCWL/stern.yml
 
 - type: gameMap
   id: Stern
-  mapName: 'ЛРНП Стерн'
+  mapName: 'NCWL Stern'
   mapPath: /Maps/_Crescent/Shuttles/NCWL/stern.yml
   minPlayers: 0
   stations:
     Stern:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'ЛРНП Стерн {1}'
+          mapNameTemplate: 'NCWL Stern {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

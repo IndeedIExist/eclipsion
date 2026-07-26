@@ -91,7 +91,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 15
+      baseMaxLinearVelocity: 20
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -12685,8 +12685,6 @@ entities:
       pos: 2.5,-2.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4137.192
-      state: Closing
   - uid: 1451
     components:
     - type: Transform
@@ -12698,8 +12696,6 @@ entities:
       pos: 2.5,4.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4136.0586
-      state: Closing
   - uid: 1453
     components:
     - type: Transform
@@ -12711,16 +12707,12 @@ entities:
       pos: 10.5,-2.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4138.4253
-      state: Closing
   - uid: 1455
     components:
     - type: Transform
       pos: 10.5,4.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4134.592
-      state: Closing
   - uid: 1456
     components:
     - type: Transform
@@ -12737,8 +12729,6 @@ entities:
       pos: 1.5,-13.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4148.225
-      state: Closing
   - uid: 1459
     components:
     - type: Transform
@@ -12756,8 +12746,6 @@ entities:
       pos: 12.5,-10.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4144.2583
-      state: Closing
   - uid: 1462
     components:
     - type: Transform
@@ -12799,32 +12787,24 @@ entities:
       pos: 11.5,-4.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4139.225
-      state: Closing
   - uid: 1470
     components:
     - type: Transform
       pos: 0.5,-10.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4141.892
-      state: Closing
   - uid: 1471
     components:
     - type: Transform
       pos: 1.5,-4.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4140.692
-      state: Closing
   - uid: 1472
     components:
     - type: Transform
       pos: 11.5,-13.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4145.692
-      state: Closing
   - uid: 1473
     components:
     - type: Transform

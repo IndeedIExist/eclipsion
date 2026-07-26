@@ -1,0 +1,30 @@
+ent-ComputerDnaDatabase = DNA database
+    .desc = Faction cloning database console bound to the station grid. While offline, roles for the configured faction cannot be taken on this station, including unlimited slots. Any faction on the grid can use the console.
+
+dna-database-title = DNA Database
+dna-database-ui-description = Controls faction role recruitment on this station's grid. While offline, late join and job selection for that faction are blocked here. Enemy factions on the grid can use this console too.
+dna-database-faction = Faction: { $faction }
+dna-database-status-online = Status: online — role recruitment enabled
+dna-database-status-offline = Status: offline — new recruits cannot arrive
+dna-database-jobs = Open slots: { $available } / { $total }
+dna-database-jobs-with-unlimited = Open slots: { $available } / { $total }, unlimited roles: { $unlimited }
+dna-database-toggle = Toggle
+dna-database-enable = Enable database
+dna-database-disable = Disable database
+dna-database-announcer-name = DNA Database
+dna-database-announce-enabled = { $faction }: DNA database enabled. Recruitment resumed.
+dna-database-announce-disabled = { $faction }: DNA database disabled. New recruits cannot arrive.
+dna-database-unknown-faction = Unknown faction
+
+faction-DSM = Divine Sol Mandate
+faction-NCWL = New Crescent Worker's League
+faction-SHI = Shinohara Heavy Industries
+faction-SRM = Sixth St. Romaine's Militia
+faction-TAP = Taypani-Atyrian Pact
+faction-IPM = Interdyne Pharmaceuticals
+faction-SAW = Shipfitters and Astronautics Workers Union
+faction-GSC = Gorlex Security Consulting
+faction-CD = Cyberdawn Technologies
+faction-TSP = Colonial Minutemen
+faction-TFSC = Taypan Freestation Coalition
+faction-ATH = Central Sol Authority

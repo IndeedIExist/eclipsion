@@ -116,7 +116,7 @@ namespace Content.Client.Lobby
 
         private void HandlePreferencesAndSettings(MsgPreferencesAndSettings message)
         {
-            Preferences = message.Preferences;
+            Preferences = SanitizeReceivedPreferences(message.Preferences);
             Settings = message.Settings;
 
             OnServerDataLoaded?.Invoke();
@@ -124,9 +124,42 @@ namespace Content.Client.Lobby
 
         public void UpdatePreferences(MsgUpdatePreferences message)
         {
-            Preferences = message.Preferences;
+            Preferences = SanitizeReceivedPreferences(message.Preferences);
 
             OnServerDataLoaded?.Invoke();
+        }
+
+        /// <summary>
+        ///     Re-validate profiles the server sent us against the LOCAL prototype set before anything in the
+        ///     lobby UI touches them. The server validates against its own prototypes, but if this client is
+        ///     missing/behind on a prototype the profile references (job, marking, etc.) the character-setup UI
+        ///     would index a missing prototype and hard-crash the whole client (black screen). Validated() drops
+        ///     anything this client can't resolve, turning a crash into graceful degradation. Purely in-memory —
+        ///     nothing is written back unless the player explicitly saves.
+        /// </summary>
+        private PlayerPreferences SanitizeReceivedPreferences(PlayerPreferences prefs)
+        {
+            var session = _playerManager.LocalSession;
+            if (session == null)
+                return prefs;
+
+            var collection = IoCManager.Instance!;
+            var characters = new Dictionary<int, ICharacterProfile>(prefs.Characters.Count);
+            foreach (var (slot, profile) in prefs.Characters)
+            {
+                try
+                {
+                    characters[slot] = profile.Validated(session, collection);
+                }
+                catch (Exception e)
+                {
+                    // A profile we somehow can't even validate must not take the whole client down.
+                    Logger.ErrorS("prefs", $"Failed to validate received character in slot {slot}: {e}");
+                    characters[slot] = profile;
+                }
+            }
+
+            return new PlayerPreferences(characters, prefs.SelectedCharacterIndex, prefs.AdminOOCColor);
         }
     }
 }

@@ -15,9 +15,6 @@
   stations:
     Raider:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: StationNameSetup
           mapNameTemplate: 'DSM Raider {1}'

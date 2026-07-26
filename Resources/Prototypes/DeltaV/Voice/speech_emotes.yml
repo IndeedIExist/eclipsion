@@ -158,6 +158,7 @@
   id: Awoo
   name: delta-chat-emote-name-awoo
   category: Vocal
+  icon: Interface/Emotes/awoo.png
   whitelist:
     components:
     - Vocal

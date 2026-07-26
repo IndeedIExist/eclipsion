@@ -2,7 +2,7 @@
   name: hunter's vibrokhopesh
   parent: [BaseItem, StreeCredRedeemableHigh]
   id: SRMKhopesh
-  description: A ceremonial weapon belonging to the Hunters.
+  description: A vibro-alloy khopesh issued to veteran Hunters of the SRM. The broad curved blade is built to catch and redirect incoming fire - and in the hands of a skilled wielder, each parried shot builds into the next. Requires both hands to wield. Deflect chance stacks per parry from 65% up to 100%. Decays out of combat.
   components:
   - type: Sharp
   - type: Sprite
@@ -14,18 +14,26 @@
     attackRate: 1
     damage:
       types:
-        Slash: 34
+        Slash: 39
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
+    soundHitFlesh:
+        collection: SwordHitFlesh
+    soundHitCrit:
+        collection: SwordHitCrit
+    soundHitKill:
+        collection: SwordHitKill
     heavyDamageBaseModifier: 1
     heavyStaminaCost: 10
     heavyRateModifier: 1.2
     clickPartDamageMultiplier: 1.25
     lightRangeModifier: 1.15
     maxTargets: 4
+    meleeStaminaDamage: 10
   - type: Reflect
-    reflectProb: .6 #nerf
+    reflectProb: .65
     spread: 75
+  - type: DeflectMastery
   - type: Item
     size: Normal
     shape:
@@ -60,7 +68,7 @@
     range: 1.25 #Longer reach than with fists, but not longer than an actual sword
     damage:
       types:
-        Slash: 35
+        Slash: 40
         Structural: 20
     heavyDamageBaseModifier: 1.25
     heavyStaminaCost: 5
@@ -71,7 +79,13 @@
     maxTargets: 2
     angle: 45
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
+      collection: SwordHit
+    soundHitFlesh:
+      collection: SwordHitFlesh
+    soundHitCrit:
+      collection: SwordHitCrit
+    soundHitKill:
+      collection: SwordHitKill
   - type: Item
     sprite: _Crescent/Objects/Weapons/Melee/mantis_blade.rsi
   - type: MultiHandedItem
@@ -80,7 +94,7 @@
   name: machete
   parent: Machete
   id: IndependentMachete
-  description: A vicious looking blade.
+  description: Broad, heavy, and thoroughly unsubtle. The kind of blade that doesn't ask questions.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Weapons/Melee/machete.rsi
@@ -99,23 +113,30 @@
     sprite: _Crescent/Objects/Weapons/Melee/noble_rapier.rsi
     state: icon
   - type: MeleeWeapon
-    wideAnimationRotation: -135
+    wideAnimationRotation: 0
     range: 1.75
-    attackRate: 1.15
+    attackRate: 1.25
     damage:
       types:
-        Slash: 18
-        Piercing: 22
+        Piercing: 50
     heavyDamageBaseModifier: 1
-    heavyStaminaCost: 10
+    heavyStaminaCost: 0
     heavyRateModifier: 1.13
-    clickPartDamageMultiplier: 1.5
+    clickPartDamageMultiplier: 1.85
     lightRangeModifier: 1.15
-    maxTargets: 3
+    maxTargets: 1
     angle: 0.1
-    animation: WeaponArcThrust
+    animation: WeaponArcRapierThrust
+    wideAnimation: WeaponArcRapierThrust
+    meleeStaminaDamage: 7
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
+    soundHitFlesh:
+        collection: SwordHitFlesh
+    soundHitCrit:
+        collection: SwordHitCrit
+    soundHitKill:
+        collection: SwordHitKill
   - type: Item
     size: Normal
     shape:
@@ -139,7 +160,7 @@
   name: noble's sabre
   parent: [BaseItem, StreeCredRedeemableLow]
   id: DSMSabre
-  description: A ceremonial weapon belonging to the nobles of the mandate.
+  description: The standard sidearm of the Mandate's officer class, worn as much for prestige as for use. Its balance favors wide, sweeping cuts - a fighting habit the Saintsworn picked up somewhere in their bloody history and never saw fit to abandon.
   components:
   - type: Sharp
   - type: Sprite
@@ -147,11 +168,11 @@
     state: icon
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 1
+    attackRate: 1.1
     range: 1.4
     damage:
       types:
-        Slash: 36
+        Slash: 42
     heavyDamageBaseModifier: 1
     heavyStaminaCost: 8
     heavyRateModifier: 1.15
@@ -159,11 +180,15 @@
     lightRangeModifier: 1.15
     maxTargets: 4
     animation: WeaponArcThrust
+    meleeStaminaDamage: 10
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
-  - type: Reflect
-    reflectProb: .1
-    spread: 90
+        collection: SwordHit
+    soundHitFlesh:
+        collection: SwordHitFlesh
+    soundHitCrit:
+        collection: SwordHitCrit
+    soundHitKill:
+        collection: SwordHitKill
   - type: Item
     size: Normal
     shape:
@@ -280,15 +305,22 @@
     attackRate: 1
     damage:
       types:
-        Slash: 36
+        Slash: 41
     heavyDamageBaseModifier: 1
     heavyStaminaCost: 10
     heavyRateModifier: 1.15
     clickPartDamageMultiplier: 1.5
     lightRangeModifier: 1.2
     maxTargets: 3
+    meleeStaminaDamage: 7
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
+    soundHitFlesh:
+        collection: SwordHitFlesh
+    soundHitCrit:
+        collection: SwordHitCrit
+    soundHitKill:
+        collection: SwordHitKill
   - type: ThrowingAngle
     angle: 300
   - type: Item
@@ -310,7 +342,7 @@
   name: SHI-RIP9 cherenzikov shiver blade
   parent: [SHIKatana, StreeCredRedeemable]
   id: SHIKatanaShiverBlade
-  description: Combining cutting-edge contained plasma field technology with elegant neomilitarism, the RIP9 Cherenzikov is a favourite of SHI Liquidation agents and penthouse PMCs across known space. Don't just kill your enemy - make a statement. Shinohara Industrial™.
+  description: Combining cutting-edge contained plasma field technology with elegant neomilitarism, the RIP9 Cherenzikov is a favourite of SHI Liquidation agents and penthouse PMCs across known space. Don't just kill your enemy - make a statement. Shinohara Industrial™. Equipped with a short-range dash (1 charge on pickup, 3 max, recharges every 30 seconds).
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Weapons/Melee/shiverblade.rsi
@@ -326,7 +358,7 @@
     attackRate: 0.75
     damage:
       types:
-        Slash: 42 #Direct counter to vibro and has same damage as the double esword
+        Slash: 47 #Direct counter to vibro and has same damage as the double esword
     heavyRateModifier: 1.25 #Lighter weapon, makes up lower reflect chance with high speed
   - type: Item
     size: Normal
@@ -374,15 +406,22 @@
     range: 1.4
     damage:
       types:
-        Slash: 33
-    heavyDamageBaseModifier: 1
-    heavyStaminaCost: 10
+        Slash: 43
+    heavyDamageBaseModifier: 1.35
+    heavyStaminaCost: 12
     heavyRateModifier: 1.25
     clickPartDamageMultiplier: 1.5
     lightRangeModifier: 1.15
     maxTargets: 3
+    meleeStaminaDamage: 10
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
+    soundHitFlesh:
+        collection: SwordHitFlesh
+    soundHitCrit:
+        collection: SwordHitCrit
+    soundHitKill:
+        collection: SwordHitKill
   - type: Item
     size: Normal
     shape:
@@ -406,7 +445,7 @@
   name: chengridz jaeger's vibrokukri
   parent: [BaseItem, StreeCredRedeemableHigh]
   id: NCWLKukri
-  description: Taking the shape of a worker's tool, this vibro-alloy kukri is Chengridz's attempt at replicating the Sixth Subjugation Fireteam's signature weapon, following stolen Imperial blueprints.
+  description: Taking the shape of a worker's tool, this vibro-alloy kukri was built by Chengridz from stolen Imperial blueprints. Like the khopesh it imitates, each parried shot sharpens the wielder's deflection. Can also be thrown and embeds itself in targets, dealing damage over time. Requires both hands to wield. Deflect chance stacks per parry from 55% up to 90%. Decays out of combat.
   components:
   - type: Sharp
   - type: Sprite
@@ -418,15 +457,22 @@
     attackRate: 1
     damage:
       types:
-        Slash: 40
+        Slash: 42
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
+    soundHitFlesh:
+        collection: SwordHitFlesh
+    soundHitCrit:
+        collection: SwordHitCrit
+    soundHitKill:
+        collection: SwordHitKill
     heavyDamageBaseModifier: 1
     heavyStaminaCost: 10
     heavyRateModifier: 1.2
     clickPartDamageMultiplier: 1.25
     lightRangeModifier: 1.15
     maxTargets: 3
+    meleeStaminaDamage: 10
   - type: EmbeddableProjectile
     sound: /Audio/Weapons/star_hit.ogg
   - type: LandAtCursor
@@ -436,8 +482,9 @@
         Slash: 40
   - type: EmbedPassiveDamage
   - type: Reflect
-    reflectProb: .25
+    reflectProb: .55
     spread: 75
+  - type: DeflectMastery
   - type: Item
     size: Normal
     shape:
@@ -447,6 +494,7 @@
     tags:
     - Kukri
   - type: DisarmMalus
+  - type: MultiHandedItem
   - type: ReverseEngineering # SectorCrescent
     difficulty: 4
     recipes:
@@ -468,25 +516,26 @@
   - type: MeleeWeapon
     wideAnimationRotation: 200
     swingLeft: true
-    attackRate: 1.5
+    attackRate: 1.8
     range: 2
     damage:
       types:
         Slash: 15 # es heist das ZWEI hander, hanz # LARP
     heavyDamageBaseModifier: 0.8
     heavyStaminaCost: 20
-    heavyRateModifier: 1.167 # 1.75 attack rate with 1.5 base
+    heavyRateModifier: 1.2
     clickPartDamageMultiplier: 1.2 # Any higher and it oblitorates limbs
     maxTargets: 3
     angle: 100
+    meleeStaminaDamage: 20
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
+      collection: SwordHit
   - type: DamageOtherOnHit
     damage:
       types:
         Slash: 55
         Piercing: 20
-    staminaCost: 50
+    staminaCost: 15
   - type: ThrowingAngle
     angle: 225
   - type: EmbeddableProjectile

@@ -1,0 +1,108 @@
+- type: entity
+  id: CMVendorBundleRiflemanApparelNCWL
+  name: NCWL basic gear
+  description: Basic NCWL equipment. Includes a GPS, jetpack, magboots and more.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite:  _Crescent/Structures/syndicatearmory.rsi
+    state: "off"
+  - type: CMVendorBundle
+    bundle:
+    - ClothingHandsGlovesCombat
+    - ClothingMaskNCWLBalaclava
+    - HandheldGPSBasic
+    - DoubleEmergencyOxygenTankFilled
+    - JetpackBlackFilled
+    - ClothingShoesBootsMagNCWL
+
+- type: entity
+  id: CMVendorBundleRiflemanApparelDSM
+  name: DSM basic gear
+  description: Basic DSM equipment. Includes a GPS, jetpack, magboots and more.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite:  _Crescent/Structures/syndicatearmory.rsi
+    state: "off"
+  - type: CMVendorBundle
+    bundle:
+    - ClothingHandsGlovesImperialLonggloves
+    - ClothingMaskImperialCombatGasmask
+    - HandheldGPSBasic
+    - DoubleEmergencyOxygenTankFilled
+    - JetpackBlackFilled
+    - ClothingShoesBootsMagDSM
+
+- type: entity
+  id: CMVendorBundleRiflemanApparelCMM
+  name: Minutemen basic gear
+  description: Basic Minutemen equipment. Includes a GPS, jetpack, magboots and more.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite:  _Crescent/Structures/syndicatearmory.rsi
+    state: "off"
+  - type: CMVendorBundle
+    bundle:
+    - ClothingHandsGlovesCombat
+    - ClothingMaskGas
+    - HandheldGPSBasic
+    - DoubleEmergencyOxygenTankFilled
+    - JetpackBlackFilled
+    - ClothingShoesBootsMagCombat
+
+- type: entity
+  id: CMVendorBundleCorpSecApparel
+  name: Corporate security gear
+  description: Basic Shinogara corporate security equipment. Includes a GPS, jetpack, magboots and more.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite:  _Crescent/Structures/syndicatearmory.rsi
+    state: "off"
+  - type: CMVendorBundle
+    bundle:
+    - ClothingHandsGlovesCombat
+    - ClothingMaskGasSecurity
+    - HandheldGPSBasic
+    - DoubleEmergencyOxygenTankFilled
+    - JetpackBlackFilled
+    - ClothingShoesBootsMagCombat
+
+- type: entity
+  id: CMVendorBundleGSCApparel
+  name: Freelance mercenary gear
+  description: Basic Gorlex freelance mercenary equipment. Includes a GPS, jetpack, magboots and more.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite:  _Crescent/Structures/syndicatearmory.rsi
+    state: "off"
+  - type: CMVendorBundle
+    bundle:
+    - ClothingHandsGlovesCombat
+    - ClothingMaskGasSyndicate
+    - HandheldGPSBasic
+    - DoubleEmergencyOxygenTankFilled
+    - JetpackBlackFilled
+    - ClothingShoesBootsMagSyndie
+
+- type: entity
+  id: CMVendorBundleIPMApparel
+  name: Interdyne operative gear
+  description: Basic Interdyne operative equipment. Includes a GPS, jetpack, magboots and more.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite:  _Crescent/Structures/syndicatearmory.rsi
+    state: "off"
+  - type: CMVendorBundle
+    bundle:
+    - ClothingHandsGlovesCombat
+    - ClothingMaskSyndicateFacemask
+    - HandheldGPSBasic
+    - DoubleEmergencyOxygenTankFilled
+    - JetpackBlackFilled
+    - ClothingShoesBootsMagAdv
+    - VitalsTrackingImplanterInterdyne

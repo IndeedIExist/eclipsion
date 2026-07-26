@@ -78,6 +78,12 @@
         },
         {
             "name": "stamp-stc"
+        },
+        {
+            "name": "stamp-empire"
+        },
+        {
+            "name": "stamp-shi-corp"
         }
     ]
 }

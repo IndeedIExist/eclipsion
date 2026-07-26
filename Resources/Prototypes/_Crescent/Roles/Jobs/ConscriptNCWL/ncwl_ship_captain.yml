@@ -68,6 +68,7 @@
   - NCWLJail
   - NCWLArmory
   - NCWLCommand
+  - NCWLAdministrator
 
 - type: startingGear
   id: ConscriptShipCaptainNCWLGear

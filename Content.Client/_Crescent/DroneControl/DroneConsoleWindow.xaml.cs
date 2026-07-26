@@ -25,9 +25,16 @@ public sealed partial class DroneConsoleWindow : FancyWindow
     public Action<EntityCoordinates>? OnMoveOrder;
     public Action<EntityCoordinates>? OnAttackOrder;
 
+    public Action? OnDeploy;
+    public Action<DroneStance>? OnSetStance;
+    public Action<DroneTargeting>? OnSetTargeting;
+    public Action<DroneFormation>? OnSetFormation;
+    public Action<string>? OnSpawn;
+
     public HashSet<NetEntity> SelectedDrones = new();
 
     private readonly Dictionary<NetEntity, Button> _droneButtons = new();
+    private readonly List<string> _spawnableDrones = new();
 
     public DroneConsoleWindow()
     {
@@ -50,6 +57,33 @@ public sealed partial class DroneConsoleWindow : FancyWindow
         {
             SelectedDrones.Clear();
             RefreshButtonVisuals();
+        };
+
+        DeployBtn.OnPressed += _ => OnDeploy?.Invoke();
+
+        StanceAttackBtn.OnPressed += _ => OnSetStance?.Invoke(DroneStance.Attack);
+        StanceDefendBtn.OnPressed += _ => OnSetStance?.Invoke(DroneStance.Defend);
+        StanceFollowBtn.OnPressed += _ => OnSetStance?.Invoke(DroneStance.Follow);
+
+        TargetEnemiesBtn.OnPressed += _ => OnSetTargeting?.Invoke(DroneTargeting.Enemies);
+        TargetAllBtn.OnPressed += _ => OnSetTargeting?.Invoke(DroneTargeting.All);
+
+        foreach (var formation in Enum.GetValues<DroneFormation>())
+            FormationOption.AddItem(formation.ToString(), (int) formation);
+
+        FormationOption.OnItemSelected += args =>
+        {
+            FormationOption.SelectId(args.Id);
+            OnSetFormation?.Invoke((DroneFormation) args.Id);
+        };
+
+        SpawnOption.OnItemSelected += args => SpawnOption.SelectId(args.Id);
+
+        ProduceBtn.OnPressed += _ =>
+        {
+            var id = SpawnOption.SelectedId;
+            if (id >= 0 && id < _spawnableDrones.Count)
+                OnSpawn?.Invoke(_spawnableDrones[id]);
         };
     }
 
@@ -79,6 +113,37 @@ public sealed partial class DroneConsoleWindow : FancyWindow
     {
         NavRadar.UpdateState(state.NavState);
         NavRadar.UpdateState(state.IFFState);
+
+        CarrierPanel.Visible = state.IsCarrier;
+        if (state.IsCarrier)
+        {
+            DeployedLabel.Text = $"Drones: {state.DeployedCount}/{state.MaxDrones}";
+
+            StanceAttackBtn.Pressed = state.Stance == DroneStance.Attack;
+            StanceDefendBtn.Pressed = state.Stance == DroneStance.Defend;
+            StanceFollowBtn.Pressed = state.Stance == DroneStance.Follow;
+
+            TargetEnemiesBtn.Pressed = state.Targeting == DroneTargeting.Enemies;
+            TargetAllBtn.Pressed = state.Targeting == DroneTargeting.All;
+
+            FormationOption.SelectId((int) state.Formation);
+
+            // Rebuild the production dropdown only when the available list actually changes.
+            if (!_spawnableDrones.SequenceEqual(state.SpawnableDrones))
+            {
+                _spawnableDrones.Clear();
+                _spawnableDrones.AddRange(state.SpawnableDrones);
+
+                SpawnOption.Clear();
+                for (var i = 0; i < _spawnableDrones.Count; i++)
+                    SpawnOption.AddItem(_spawnableDrones[i], i);
+
+                if (_spawnableDrones.Count > 0)
+                    SpawnOption.SelectId(0);
+            }
+
+            SpawnRow.Visible = _spawnableDrones.Count > 0;
+        }
 
         // return if we already have all drones linked
         var match = 0;

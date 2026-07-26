@@ -24,6 +24,10 @@
     - id: unionfallPointCapture # point being captured
       path: comms/war_alarm.ogg
 
+    ## PLANETFALL
+    - id: planetfallEnemyPresence
+      path: comms/planetfall_enemypresence_5.ogg
+
     ### Events
     - id: anomalySpawn # An anomaly has spawned in a random place
       path: comms/announce.ogg

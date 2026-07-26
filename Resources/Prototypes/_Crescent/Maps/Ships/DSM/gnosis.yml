@@ -1,8 +1,8 @@
 - type: vessel
   id: Gnosis
-  name: БМС Августий
+  name: DSM Gnosis
   description: |
-    Имперский персональный и долгосрочный наблюдательный челнок, оборудованный и построенный для технологов. Часто используется для предоставления отчетов о ситуациях, представляющих интерес для технологов, или информации, полезной для Имперского флота.
+    An Imperial personal and long-term observation shuttle equipped and built for the Scribes Guild. Often utilized for providing reports on situations of interest towards the Scribes Guild, or information of use to the Imperial Navy.
     LOADOUT: UNARMED
     MINIMUM CREW: 1x Pilot
   price: 25000
@@ -12,22 +12,19 @@
 
 - type: gameMap
   id: Gnosis
-  mapName: 'БМС Августий'
+  mapName: 'DSM Gnosis'
   mapPath: /Maps/_Crescent/Shuttles/DSM/gnosis.yml
   minPlayers: 0
   stations:
     Gnosis:
       stationProto: StandardCrescentCivilianVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: civilian
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Августий {1}'
+          mapNameTemplate: 'DSM Gnosis {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

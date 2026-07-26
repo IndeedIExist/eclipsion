@@ -151,7 +151,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         foreach (var (_, key) in uis)
         {
-            if (key is TargetingConsoleUiKey.Key)
+            if (key is TargetingConsoleUiKey)
             {
                 args.Cancel();
             }
@@ -285,6 +285,8 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             {
                 component.accesState = ShuttleConsoleAccesState.NoAcces;
                 _popup.PopupEntity("Console locked", uid, args.User, PopupType.Small);
+                _itemSlotsSystem.TryEject(uid, SharedShuttleConsoleComponent.IdSlotName, args.User, out _);
+                _itemSlotsSystem.SetLock(uid, SharedShuttleConsoleComponent.IdSlotName, true);
                 return;
             }
             component.accesState = ShuttleConsoleAccesState.PilotAcces;
@@ -322,9 +324,13 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
     private void OnCrewSwitch(EntityUid uid, ShuttleConsoleComponent comp, SwitchedToCrewHudMessage args)
     {
-        if (!args.Visible)
+        // Crescent: only the captain has anything to do with the id slot, and leaving it unlocked for
+        // anyone else means the console eats the next swiped id instead of toggling its lock.
+        var unlockSlot = args.Visible && comp.accesState == ShuttleConsoleAccesState.CaptainAcces;
+
+        if (!unlockSlot)
             _itemSlotsSystem.TryEject(uid, comp.targetIdSlot, null, out var item);
-        _itemSlotsSystem.SetLock(uid, SharedShuttleConsoleComponent.IdSlotName, !args.Visible);
+        _itemSlotsSystem.SetLock(uid, SharedShuttleConsoleComponent.IdSlotName, !unlockSlot);
         UpdateState(uid, comp);
 
     }
@@ -441,6 +447,15 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         }
 
         RemovePilot(args.Actor);
+
+        // Crescent: the crew tab unlocks the id slot, and closing the window never told us to lock it
+        // back. Left open, the console swallows the next swiped id instead of locking.
+        if (component.accesState != ShuttleConsoleAccesState.NotDynamic
+            && !_ui.IsUiOpen(uid, ShuttleConsoleUiKey.Key))
+        {
+            _itemSlotsSystem.TryEject(uid, component.targetIdSlot, null, out _);
+            _itemSlotsSystem.SetLock(uid, SharedShuttleConsoleComponent.IdSlotName, true);
+        }
     }
 
     private void OnConsoleUIOpened(EntityUid uid, ShuttleConsoleComponent component, BoundUIOpenedEvent args)
