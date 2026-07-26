@@ -110,22 +110,51 @@ public sealed partial class ContentAudioSystem
 
     /// <summary>
     /// Applies the current duck offset on top of the ambient music's intended volume.
-    /// Skips while the stream is mid fade so the two systems don't fight.
     /// </summary>
     private void ApplyDuck()
     {
         if (_ambientMusicStream is not { } stream || _musicProto == null)
             return;
 
-        if (_fadingIn.ContainsKey(stream) || _fadingOut.ContainsKey(stream))
+        // The track is on its way out and will be stopped by the fade; leave it alone.
+        // _musicProto may already describe the *next* track at this point, so the volume
+        // we'd compute here wouldn't even belong to this stream.
+        if (_fadingOut.ContainsKey(stream))
             return;
 
         if (!TryComp(stream, out AudioComponent? comp))
             return;
 
         var slider = _isCombatMusicPlaying ? _volumeSliderCombat : _volumeSliderAmbient;
-        var baseVolume = _musicProto.Sound.Params.Volume + slider;
-        _audio.SetVolume(stream, baseVolume + _currentDuckDb, comp);
+        var target = GetDuckedVolume(_musicProto.Sound.Params.Volume + slider);
+
+        // Mid fade-in (10s for ambient tracks) we don't set the volume directly, we retarget
+        // the fade instead. Otherwise the duck would be ignored for the whole fade and then
+        // slam the volume down by MaxDuckDb in a single frame the moment the fade finished.
+        if (_fadingIn.TryGetValue(stream, out var fade))
+        {
+            _fadingIn[stream] = (fade.VolumeChange, target);
+            return;
+        }
+
+        // Volume round-trips through gain, so compare with an (inaudible) tolerance rather
+        // than exactly, otherwise we'd re-set the volume every single frame.
+        if (MathHelper.CloseTo(comp.Volume, target, 0.01f))
+            return;
+
+        _audio.SetVolume(stream, target, comp);
+    }
+
+    /// <summary>
+    /// Applies the current duck to an intended music volume, keeping the result above
+    /// <see cref="MinVolume"/>. Going under that floor breaks <see cref="FadeOut"/>: it would
+    /// compute a negative per-tick change, so the stream fades *up* instead of down, never
+    /// reaches MinVolume, is never stopped, and keeps playing over the next track.
+    /// </summary>
+    private float GetDuckedVolume(float baseVolume)
+    {
+        var floor = MathF.Min(baseVolume, MinVolume + 0.5f);
+        return MathF.Max(baseVolume + _currentDuckDb, floor);
     }
 
     private static float MoveToward(float current, float target, float maxDelta)

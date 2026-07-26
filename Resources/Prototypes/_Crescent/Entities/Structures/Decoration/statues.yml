@@ -1,0 +1,69 @@
+# Purely decorative versions of the SRM saint statues.
+# Same sprites as SRMDogtagStoreR / SRMDogtagStoreS, but with no store UI attached,
+# so they can be used as scenery on non-SRM stations.
+
+- type: entity
+  id: StatueSaintRomaine
+  parent: [ BaseStructure, BaseStructureUnanchorable ]
+  name: statue of Saint Romaine
+  description: A statue depicting the legendary Saint Romaine, wearing what appears to be his signature moth cloak.
+  components:
+  - type: InteractionOutline
+  # Same layer stack as the store version so the statue looks identical in-game.
+  - type: Sprite
+    sprite: _Crescent/Structures/statue_romaine.rsi
+    layers:
+    - state: icon
+    - state: icon
+      shader: unshaded
+    snapCardinals: false
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.45,0.25,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+        density: 1000
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20000
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+  - type: Repairable
+    doAfterDelay: 8
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  id: StatueSaintSerraine
+  parent: StatueSaintRomaine
+  name: statue of Saint Serraine
+  description: A statue depicting our dearest Saint Serraine, a veil placed over her head as a sign of respect.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/statue_serraine.rsi
+    layers:
+    - state: icon
+    - state: icon
+      shader: unshaded
+    snapCardinals: false

@@ -5,6 +5,7 @@
         <OutputPath>..\bin\Content.YAMLLinter\</OutputPath>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <ServerGarbageCollection>true</ServerGarbageCollection>
+        <GenerateTestingPlatformEntryPoint>false</GenerateTestingPlatformEntryPoint>
     </PropertyGroup>
 
   <ItemGroup>

@@ -352,14 +352,12 @@ public sealed partial class CCVars
     public static readonly CVarDef<bool> AllowSlotQuickSwap =
         CVarDef.Create("game.slot_quick_swap", true, CVar.REPLICATED);
 
-#if EXCEPTION_TOLERANCE
     /// <summary>
     ///     Amount of times round start must fail before the server is shut down.
     ///     Set to 0 or a negative number to disable.
     /// </summary>
     public static readonly CVarDef<int> RoundStartFailShutdownCount =
         CVarDef.Create("game.round_start_fail_shutdown_count", 5, CVar.SERVERONLY | CVar.SERVER);
-#endif
 
     /// <summary>
     /// Delay between station alert level changes.

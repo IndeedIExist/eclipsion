@@ -36,13 +36,13 @@ jobs:
           cd RobustToolbox
           git fetch --all --tags
 
-      - name: Setup .NET 9.0
-        uses: actions/setup-dotnet@v4
+      - name: Setup .NET 10.0
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.0.x
+          dotnet-version: 10.0.302
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore --property Configuration=Release
 
       - name: Build Packaging
         run: dotnet build Content.Packaging --configuration Release --no-restore /m

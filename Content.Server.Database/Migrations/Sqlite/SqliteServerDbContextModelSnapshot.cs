@@ -15,7 +15,7 @@ namespace Content.Server.Database.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.10");
 
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
@@ -256,8 +256,7 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("expiration_time");
 
-                    b.Property<DateTime?>("LastEditedAt")
-                        .IsRequired()
+                    b.Property<DateTime>("LastEditedAt")
                         .HasColumnType("TEXT")
                         .HasColumnName("last_edited_at");
 
@@ -385,8 +384,7 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("expiration_time");
 
-                    b.Property<DateTime?>("LastEditedAt")
-                        .IsRequired()
+                    b.Property<DateTime>("LastEditedAt")
                         .HasColumnType("TEXT")
                         .HasColumnName("last_edited_at");
 
@@ -907,6 +905,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<string>("StationAiName")
                         .HasColumnType("TEXT")
                         .HasColumnName("station_ai_name");
+
+                    b.Property<string>("Subfaction")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("subfaction");
 
                     b.Property<string>("Voice")
                         .IsRequired()

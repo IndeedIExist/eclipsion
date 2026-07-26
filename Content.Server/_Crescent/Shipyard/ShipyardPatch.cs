@@ -6,23 +6,16 @@ using Content.Shared.DeltaV.CCVars;
 using Content.Shared.Tag;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
-using Content.Server.Shuttles.Systems;
-using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles;
-using Content.Server.Station.Components;
 using Content.Server.Cargo.Systems;
-using Content.Server.Station.Systems;
-using Content.Shared.Shipyard;
 using Content.Shared.Shipyard;
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction;
-using Robust.Server.GameObjects;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.Map;
 using Content.Shared.CCVar;
-using Robust.Shared.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
@@ -1146,4 +1139,3 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         return true;
     }
 }
-

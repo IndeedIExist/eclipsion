@@ -456,9 +456,11 @@ public sealed partial class ContentAudioSystem
 
         //this changes the music volume live, while the music is playing. otherwise, the line above that changes the slider is the one that matters.
 
+        // GetDuckedVolume keeps any active boombox duck applied, otherwise moving the slider
+        // would jump the music back to full volume until the ducking update ran again.
         if (_ambientMusicStream != null && _musicProto != null && !_isCombatMusicPlaying)
         {
-            _audio.SetVolume(_ambientMusicStream, _musicProto.Sound.Params.Volume + _volumeSliderAmbient);
+            _audio.SetVolume(_ambientMusicStream, GetDuckedVolume(_musicProto.Sound.Params.Volume + _volumeSliderAmbient));
         }
     }
 
@@ -470,7 +472,7 @@ public sealed partial class ContentAudioSystem
 
         if (_ambientMusicStream != null && _musicProto != null && _isCombatMusicPlaying)
         {
-            _audio.SetVolume(_ambientMusicStream, _musicProto.Sound.Params.Volume + _volumeSliderCombat);
+            _audio.SetVolume(_ambientMusicStream, GetDuckedVolume(_musicProto.Sound.Params.Volume + _volumeSliderCombat));
         }
     }
 
