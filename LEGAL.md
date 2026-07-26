@@ -26,6 +26,36 @@ Commit
 [87c70a8](https://github.com/Simple-Station/Einstein-Engines/commit/87c70a89a67d0521a56388e6b1c3f2cb947943e4)  
 was pushed on **February 17, 2024 at 21:48 (UTC)**.
 
+### Source code availability (AGPLv3 §13)
+
+This project is distributed under the AGPLv3 and is operated as a network server.
+Anyone interacting with a server running this software is entitled to receive its complete
+corresponding source code.
+
+The complete corresponding source is published at:  
+<https://github.com/eclipsion-team/eclipsion>
+
+Server operators running a modified build **must** make their modified source available to their
+players under the same terms.
+
+### Modifications and upstream attribution
+
+This repository is a downstream fork. Under AGPLv3 §5(a), modified files carry notices stating that
+they were changed, and the original authors' copyright notices are preserved.
+
+Content originating from another Space Station 14 project is kept under a directory prefix
+(for example `_Goobstation/`, `_NF/`, `_EE/`) or inside a dedicated `Content.<Project>.*` assembly.
+Authoritative copyright and licensing for any individual file is recorded in its
+`SPDX-FileCopyrightText` / `SPDX-License-Identifier` header, or, for assets, in the `meta.json`
+of the containing `.rsi` directory.
+
+This project is the direct continuation of
+[HULLROT](https://github.com/Sector-Crescent/Hullrot) (content under `_Crescent`).
+
+Other major upstream projects include Space Station 14, Robust Toolbox, Einstein Engines,
+Goob-Station, Frontier Station 14, Delta-v, Nyanotrasen, RMC-14 and tgstation.
+A fuller list is given in the [README](./README.md#-attribution).
+
 ### Assets
 
 Most assets are licensed under  

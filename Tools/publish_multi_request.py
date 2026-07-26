@@ -10,7 +10,7 @@ from datetime import datetime
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# Цвета для консоли
+# Console colours
 class Colors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -22,7 +22,7 @@ class Colors:
     BOLD = '\033[1m'
 
 def log(message, level="INFO"):
-    """Логирование с временной меткой и цветом"""
+    """Log with a timestamp and colour"""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     colors = {
         "INFO": Colors.OKBLUE,
@@ -35,153 +35,155 @@ def log(message, level="INFO"):
     print(f"{color}[{timestamp}] [{level}]{Colors.ENDC} {message}")
     sys.stdout.flush()
 
-# Получение переменных окружения
+# Environment variables
 PUBLISH_TOKEN = os.environ.get("PUBLISH_TOKEN")
 VERSION = os.environ.get("GITHUB_SHA")
 RELEASE_DIR = "release"
 
-# Конфигурация для вашего форка
+# Fork configuration
+# TODO: ROBUST_CDN_URL still points at third-party (Corvax) infrastructure.
+# Replace it with this project's own Robust CDN before publishing builds.
 ROBUST_CDN_URL = "https://cdn.corvaxforge.ru/"
-FORK_ID = "ratgore"
+FORK_ID = "eclipsion"
 
 def main():
     log("=" * 80, "INFO")
-    log("НАЧАЛО ПУБЛИКАЦИИ СБОРКИ", "INFO")
+    log("STARTING BUILD PUBLISH", "INFO")
     log("=" * 80, "INFO")
-    
-    # Проверка переменных окружения
-    log("Проверка переменных окружения...", "INFO")
+
+    # Check environment variables
+    log("Checking environment variables...", "INFO")
     if not PUBLISH_TOKEN:
-        log("ОШИБКА: PUBLISH_TOKEN не установлен!", "ERROR")
+        log("ERROR: PUBLISH_TOKEN is not set!", "ERROR")
         sys.exit(1)
-    log(f"✓ PUBLISH_TOKEN установлен (длина: {len(PUBLISH_TOKEN)} символов)", "SUCCESS")
-    
+    log(f"✓ PUBLISH_TOKEN is set (length: {len(PUBLISH_TOKEN)} characters)", "SUCCESS")
+
     if not VERSION:
-        log("ОШИБКА: GITHUB_SHA (VERSION) не установлен!", "ERROR")
+        log("ERROR: GITHUB_SHA (VERSION) is not set!", "ERROR")
         sys.exit(1)
     log(f"✓ VERSION: {VERSION}", "SUCCESS")
-    
+
     log(f"✓ CDN URL: {ROBUST_CDN_URL}", "INFO")
     log(f"✓ FORK ID: {FORK_ID}", "INFO")
     log(f"✓ RELEASE DIR: {RELEASE_DIR}", "INFO")
-    
-    # Проверка директории с релизами
+
+    # Check the release directory
     log("", "INFO")
-    log("Проверка директории релизов...", "INFO")
+    log("Checking the release directory...", "INFO")
     if not os.path.exists(RELEASE_DIR):
-        log(f"ОШИБКА: Директория {RELEASE_DIR} не найдена!", "ERROR")
+        log(f"ERROR: Directory {RELEASE_DIR} not found!", "ERROR")
         sys.exit(1)
-    
+
     files = list(get_files_to_publish())
     if not files:
-        log(f"ОШИБКА: В директории {RELEASE_DIR} не найдено .zip файлов!", "ERROR")
+        log(f"ERROR: No .zip files found in directory {RELEASE_DIR}!", "ERROR")
         sys.exit(1)
-    
-    log(f"✓ Найдено файлов для публикации: {len(files)}", "SUCCESS")
+
+    log(f"✓ Files found to publish: {len(files)}", "SUCCESS")
     total_size = sum(os.path.getsize(f) for f in files)
-    log(f"✓ Общий размер: {total_size / (1024*1024):.2f} МБ", "SUCCESS")
+    log(f"✓ Total size: {total_size / (1024*1024):.2f} MB", "SUCCESS")
     for f in files:
         size_mb = os.path.getsize(f) / (1024*1024)
-        log(f"  - {os.path.basename(f)}: {size_mb:.2f} МБ", "DEBUG")
-    
-    # Получение версии движка
+        log(f"  - {os.path.basename(f)}: {size_mb:.2f} MB", "DEBUG")
+
+    # Get the engine version
     log("", "INFO")
-    log("Получение версии движка...", "INFO")
+    log("Getting the engine version...", "INFO")
     engine_version = get_engine_version()
     log(f"✓ Engine Version: {engine_version}", "SUCCESS")
-    
-    # Создание сессии
+
+    # Create the session
     log("", "INFO")
-    log("Создание HTTP сессии...", "INFO")
+    log("Creating HTTP session...", "INFO")
     session = requests.Session()
     session.headers = {
         "Authorization": f"Bearer {PUBLISH_TOKEN}",
     }
     session.verify = False
-    log("✓ Сессия создана", "SUCCESS")
-    
-    # Тест соединения
+    log("✓ Session created", "SUCCESS")
+
+    # Connection test
     log("", "INFO")
     log("=" * 80, "INFO")
-    log("ШАГ 1: ТЕСТ СОЕДИНЕНИЯ С CDN", "INFO")
+    log("STEP 1: CDN CONNECTION TEST", "INFO")
     log("=" * 80, "INFO")
     test_url = f"{ROBUST_CDN_URL}fork/{FORK_ID}/"
-    log(f"Отправка GET запроса: {test_url}", "INFO")
-    
+    log(f"Sending GET request: {test_url}", "INFO")
+
     try:
         test_resp = session.get(test_url, timeout=10)
-        log(f"✓ Ответ получен", "SUCCESS")
-        log(f"  Статус код: {test_resp.status_code}", "DEBUG")
+        log(f"✓ Response received", "SUCCESS")
+        log(f"  Status code: {test_resp.status_code}", "DEBUG")
         log(f"  Content-Type: {test_resp.headers.get('Content-Type', 'N/A')}", "DEBUG")
         log(f"  Content-Length: {test_resp.headers.get('Content-Length', 'N/A')}", "DEBUG")
-        
+
         if test_resp.status_code == 200:
-            log("✓ Соединение с CDN успешно установлено", "SUCCESS")
+            log("✓ Connection to the CDN established successfully", "SUCCESS")
         else:
-            log(f"⚠ Неожиданный статус код: {test_resp.status_code}", "WARNING")
-            log(f"  Ответ: {test_resp.text[:200]}", "DEBUG")
+            log(f"⚠ Unexpected status code: {test_resp.status_code}", "WARNING")
+            log(f"  Response: {test_resp.text[:200]}", "DEBUG")
     except Exception as e:
-        log(f"✗ ОШИБКА соединения: {e}", "ERROR")
-        log("Продолжаем несмотря на ошибку...", "WARNING")
-    
-    # Начало публикации
+        log(f"✗ CONNECTION ERROR: {e}", "ERROR")
+        log("Continuing despite the error...", "WARNING")
+
+    # Start the publish
     log("", "INFO")
     log("=" * 80, "INFO")
-    log("ШАГ 2: НАЧАЛО ПУБЛИКАЦИИ", "INFO")
+    log("STEP 2: STARTING THE PUBLISH", "INFO")
     log("=" * 80, "INFO")
-    
+
     start_url = f"{ROBUST_CDN_URL}fork/{FORK_ID}/publish/start"
     data = {
         "version": VERSION,
         "engineVersion": engine_version,
     }
-    
-    log(f"Отправка POST запроса: {start_url}", "INFO")
-    log(f"Данные запроса:", "DEBUG")
+
+    log(f"Sending POST request: {start_url}", "INFO")
+    log(f"Request data:", "DEBUG")
     log(f"  version: {data['version']}", "DEBUG")
     log(f"  engineVersion: {data['engineVersion']}", "DEBUG")
-    
+
     try:
         resp = session.post(start_url, json=data, timeout=30)
-        log(f"✓ Ответ получен", "SUCCESS")
-        log(f"  Статус код: {resp.status_code}", "DEBUG")
-        
+        log(f"✓ Response received", "SUCCESS")
+        log(f"  Status code: {resp.status_code}", "DEBUG")
+
         if resp.status_code == 200:
-            log("✓ Публикация успешно начата!", "SUCCESS")
+            log("✓ Publish started successfully!", "SUCCESS")
             try:
                 response_data = resp.json()
-                log(f"  Ответ сервера: {response_data}", "DEBUG")
+                log(f"  Server response: {response_data}", "DEBUG")
             except:
-                log(f"  Ответ (текст): {resp.text[:200]}", "DEBUG")
+                log(f"  Response (text): {resp.text[:200]}", "DEBUG")
         else:
-            log(f"✗ ОШИБКА: Статус код {resp.status_code}", "ERROR")
-            log(f"  Ответ сервера: {resp.text[:500]}", "ERROR")
+            log(f"✗ ERROR: Status code {resp.status_code}", "ERROR")
+            log(f"  Server response: {resp.text[:500]}", "ERROR")
             resp.raise_for_status()
     except requests.exceptions.HTTPError as e:
-        log(f"✗ HTTP ОШИБКА: {e}", "ERROR")
+        log(f"✗ HTTP ERROR: {e}", "ERROR")
         sys.exit(1)
     except Exception as e:
-        log(f"✗ НЕОЖИДАННАЯ ОШИБКА: {e}", "ERROR")
+        log(f"✗ UNEXPECTED ERROR: {e}", "ERROR")
         sys.exit(1)
-    
-    # Загрузка файлов
+
+    # Upload the files
     log("", "INFO")
     log("=" * 80, "INFO")
-    log("ШАГ 3: ЗАГРУЗКА ФАЙЛОВ", "INFO")
+    log("STEP 3: UPLOADING FILES", "INFO")
     log("=" * 80, "INFO")
-    
+
     file_url = f"{ROBUST_CDN_URL}fork/{FORK_ID}/publish/file"
-    
+
     for idx, file in enumerate(files, 1):
         file_name = os.path.basename(file)
         file_size = os.path.getsize(file)
         file_size_mb = file_size / (1024*1024)
-        
+
         log("", "INFO")
-        log(f"Файл {idx}/{len(files)}: {file_name}", "INFO")
-        log(f"  Размер: {file_size_mb:.2f} МБ ({file_size:,} байт)", "DEBUG")
-        log(f"  Путь: {file}", "DEBUG")
-        
+        log(f"File {idx}/{len(files)}: {file_name}", "INFO")
+        log(f"  Size: {file_size_mb:.2f} MB ({file_size:,} bytes)", "DEBUG")
+        log(f"  Path: {file}", "DEBUG")
+
         try:
             with open(file, "rb") as f:
                 headers = {
@@ -189,94 +191,94 @@ def main():
                     "Robust-Cdn-Publish-File": file_name,
                     "Robust-Cdn-Publish-Version": VERSION
                 }
-                
-                log(f"  Отправка POST запроса: {file_url}", "DEBUG")
+
+                log(f"  Sending POST request: {file_url}", "DEBUG")
                 log(f"  Headers:", "DEBUG")
                 log(f"    Robust-Cdn-Publish-File: {file_name}", "DEBUG")
                 log(f"    Robust-Cdn-Publish-Version: {VERSION}", "DEBUG")
-                log(f"  Начало загрузки...", "INFO")
-                
+                log(f"  Starting upload...", "INFO")
+
                 resp = session.post(file_url, data=f, headers=headers, timeout=300)
-                
-                log(f"  ✓ Ответ получен", "SUCCESS")
-                log(f"    Статус код: {resp.status_code}", "DEBUG")
-                
+
+                log(f"  ✓ Response received", "SUCCESS")
+                log(f"    Status code: {resp.status_code}", "DEBUG")
+
                 if resp.status_code == 200:
-                    log(f"  ✓ Файл {file_name} успешно загружен!", "SUCCESS")
+                    log(f"  ✓ File {file_name} uploaded successfully!", "SUCCESS")
                 else:
-                    log(f"  ✗ ОШИБКА: Статус код {resp.status_code}", "ERROR")
-                    log(f"    Ответ сервера: {resp.text[:500]}", "ERROR")
+                    log(f"  ✗ ERROR: Status code {resp.status_code}", "ERROR")
+                    log(f"    Server response: {resp.text[:500]}", "ERROR")
                     resp.raise_for_status()
-                    
+
         except requests.exceptions.ConnectionError as e:
-            log(f"  ✗ ОШИБКА СОЕДИНЕНИЯ: {e}", "ERROR")
-            log(f"  Возможная причина: таймаут или проблема с nginx конфигурацией", "ERROR")
-            log(f"  Проверьте настройки client_max_body_size и proxy_read_timeout", "ERROR")
+            log(f"  ✗ CONNECTION ERROR: {e}", "ERROR")
+            log(f"  Possible cause: timeout or an nginx configuration problem", "ERROR")
+            log(f"  Check the client_max_body_size and proxy_read_timeout settings", "ERROR")
             sys.exit(1)
         except requests.exceptions.Timeout as e:
-            log(f"  ✗ ТАЙМАУТ: {e}", "ERROR")
-            log(f"  Файл слишком долго загружался (>300 секунд)", "ERROR")
+            log(f"  ✗ TIMEOUT: {e}", "ERROR")
+            log(f"  The file took too long to upload (>300 seconds)", "ERROR")
             sys.exit(1)
         except Exception as e:
-            log(f"  ✗ НЕОЖИДАННАЯ ОШИБКА: {e}", "ERROR")
+            log(f"  ✗ UNEXPECTED ERROR: {e}", "ERROR")
             sys.exit(1)
-    
-    # Завершение публикации
+
+    # Finish the publish
     log("", "INFO")
     log("=" * 80, "INFO")
-    log("ШАГ 4: ЗАВЕРШЕНИЕ ПУБЛИКАЦИИ", "INFO")
+    log("STEP 4: FINISHING THE PUBLISH", "INFO")
     log("=" * 80, "INFO")
-    
+
     finish_url = f"{ROBUST_CDN_URL}fork/{FORK_ID}/publish/finish"
     data = {
         "version": VERSION
     }
-    
-    log(f"Отправка POST запроса: {finish_url}", "INFO")
-    log(f"Данные запроса:", "DEBUG")
+
+    log(f"Sending POST request: {finish_url}", "INFO")
+    log(f"Request data:", "DEBUG")
     log(f"  version: {data['version']}", "DEBUG")
-    
+
     try:
         resp = session.post(finish_url, json=data, timeout=30)
-        log(f"✓ Ответ получен", "SUCCESS")
-        log(f"  Статус код: {resp.status_code}", "DEBUG")
-        
+        log(f"✓ Response received", "SUCCESS")
+        log(f"  Status code: {resp.status_code}", "DEBUG")
+
         if resp.status_code == 200:
-            log("✓ Публикация успешно завершена!", "SUCCESS")
+            log("✓ Publish finished successfully!", "SUCCESS")
             try:
                 response_data = resp.json()
-                log(f"  Ответ сервера: {response_data}", "DEBUG")
+                log(f"  Server response: {response_data}", "DEBUG")
             except:
-                log(f"  Ответ (текст): {resp.text[:200]}", "DEBUG")
+                log(f"  Response (text): {resp.text[:200]}", "DEBUG")
         else:
-            log(f"✗ ОШИБКА: Статус код {resp.status_code}", "ERROR")
-            log(f"  Ответ сервера: {resp.text[:500]}", "ERROR")
+            log(f"✗ ERROR: Status code {resp.status_code}", "ERROR")
+            log(f"  Server response: {resp.text[:500]}", "ERROR")
             resp.raise_for_status()
     except Exception as e:
-        log(f"✗ ОШИБКА ПРИ ЗАВЕРШЕНИИ: {e}", "ERROR")
+        log(f"✗ ERROR WHILE FINISHING: {e}", "ERROR")
         sys.exit(1)
-    
-    # Итоги
+
+    # Summary
     log("", "INFO")
     log("=" * 80, "INFO")
-    log("ПУБЛИКАЦИЯ ЗАВЕРШЕНА УСПЕШНО! 🎉", "SUCCESS")
+    log("PUBLISH COMPLETED SUCCESSFULLY! 🎉", "SUCCESS")
     log("=" * 80, "INFO")
-    log(f"Версия: {VERSION}", "INFO")
-    log(f"Версия движка: {engine_version}", "INFO")
-    log(f"Загружено файлов: {len(files)}", "INFO")
-    log(f"Общий размер: {total_size / (1024*1024):.2f} МБ", "INFO")
+    log(f"Version: {VERSION}", "INFO")
+    log(f"Engine version: {engine_version}", "INFO")
+    log(f"Files uploaded: {len(files)}", "INFO")
+    log(f"Total size: {total_size / (1024*1024):.2f} MB", "INFO")
     log("=" * 80, "INFO")
 
 
 def get_files_to_publish() -> Iterable[str]:
-    """Получение списка файлов для публикации"""
+    """Get the list of files to publish"""
     for file in os.listdir(RELEASE_DIR):
         if file.endswith('.zip'):
             yield os.path.join(RELEASE_DIR, file)
 
 
 def get_engine_version() -> str:
-    """Получение версии движка из RobustToolbox"""
+    """Get the engine version from RobustToolbox"""
     try:
         proc = subprocess.run(
             ["git", "describe", "--tags", "--abbrev=0"],
@@ -287,15 +289,15 @@ def get_engine_version() -> str:
         )
         tag = proc.stdout.strip()
         if tag.startswith("v"):
-            return tag[1:]  # Убираем префикс v
+            return tag[1:]  # Strip the v prefix
         return tag
     except subprocess.CalledProcessError as e:
-        log(f"⚠ Не удалось получить версию движка через git: {e}", "WARNING")
-        log(f"  Используется версия по умолчанию: 'unknown'", "WARNING")
+        log(f"⚠ Could not get the engine version via git: {e}", "WARNING")
+        log(f"  Falling back to the default version: 'unknown'", "WARNING")
         return "unknown"
     except Exception as e:
-        log(f"⚠ Неожиданная ошибка при получении версии движка: {e}", "WARNING")
-        log(f"  Используется версия по умолчанию: 'unknown'", "WARNING")
+        log(f"⚠ Unexpected error while getting the engine version: {e}", "WARNING")
+        log(f"  Falling back to the default version: 'unknown'", "WARNING")
         return "unknown"
 
 
@@ -304,11 +306,11 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
         log("", "INFO")
-        log("⚠ Публикация прервана пользователем", "WARNING")
+        log("⚠ Publish interrupted by the user", "WARNING")
         sys.exit(1)
     except Exception as e:
         log("", "INFO")
-        log(f"✗ КРИТИЧЕСКАЯ ОШИБКА: {e}", "ERROR")
+        log(f"✗ FATAL ERROR: {e}", "ERROR")
         import traceback
         log(traceback.format_exc(), "ERROR")
         sys.exit(1)

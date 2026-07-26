@@ -1,80 +1,81 @@
 <!--
-Это полу-строгий формат. Вы можете добавлять/удалять секции по необходимости, 
-но порядок и формат должны оставаться такими же.
-Удалите эти комментарии перед отправкой PR.
+This is a semi-strict format. You may add/remove sections as needed,
+but the order and formatting should stay the same.
+Delete these comments before submitting the PR.
 -->
 
-# Описание
+# Description
 
 <!--
-Опишите этот PR настолько подробно, насколько это возможно.
+Describe this PR in as much detail as possible.
 
-Некоторые вопросы для размышления:
-- Как это может повлиять на игру? На кодовую базу?
-- Какие могут быть альтернативы этому решению?
-- Кому/чему это принесет пользу или вред [игре/кодовой базе]?
+Some questions to consider:
+- How might this affect the game? The codebase?
+- What alternatives to this solution are there?
+- Who/what does this benefit or harm [in the game/the codebase]?
 -->
 
-Описание изменений.
+Description of the changes.
 
 ---
 
 # TODO
 
 <!--
-Список всего, что нужно сделать до того, как этот PR будет "завершен".
-Вероятно, не нужно завершать все до мерджа, но это хорошая справка на будущее.
+A list of everything that needs to be done before this PR is "complete".
+You probably do not need to finish everything before merging, but it is a good reference for later.
 -->
 
-- [ ] Задача
-- [x] Завершенная задача
+- [ ] Task
+- [x] Completed task
 
 ---
 
 <!--
-Эта секция по умолчанию свернута, читатели могут развернуть её и увидеть все медиа.
-Секция с медиа в PR может сильно разрастись, поэтому это хороший способ держать всё в чистоте.
-Заголовок пишется с помощью HTML тегов.
-Заголовок должен быть внутри тегов <summary>, иначе вы его не увидите.
+This section is collapsed by default; readers can expand it to see all media.
+The media section of a PR can grow very large, so this is a good way to keep things tidy.
+The heading is written with HTML tags.
+The heading must be inside the <summary> tags, otherwise you will not see it.
 -->
 
-<details><summary><h1>Медиа</h1></summary>
+<details><summary><h1>Media</h1></summary>
 <p>
 
-![Пример медиа](https://i.postimg.cc/gcTykm48/e07f1cf697803e2204bf7f1b35c865b0.jpg)
+![Example media](https://i.postimg.cc/gcTykm48/e07f1cf697803e2204bf7f1b35c865b0.jpg)
 
 </p>
 </details>
 
 ---
 
-## Чеклист перед мерджем
+## Pre-merge checklist
 
-- [ ] Описание изменений понятно и информативно
-- [ ] Все TODO выполнены или задокументированы для будущего
-- [ ] Добавлены скриншоты/видео (если применимо)
-- [ ] Код протестирован
+- [ ] The description of the changes is clear and informative
+- [ ] All TODOs are completed or documented for the future
+- [ ] Screenshots/videos added (if applicable)
+- [ ] The code has been tested
 
 ## Breaking changes
-<!-- Список критических изменений, включая изменения пространств имен, публичных классов/методов/полей, переименования прототипов; а также инструкции по их исправлению.
-Это будет опубликовано в #codebase-changes. -->
+<!-- List any breaking changes, including namespace changes, changes to public classes/methods/fields,
+prototype renames; as well as instructions on how to fix them.
+This will be posted in #codebase-changes. -->
 
 **Changelog**
-<!-- Добавьте запись в Changelog, чтобы игроки знали о новых функциях или изменениях, которые могут повлиять на игровой процесс.
-Убедитесь, что вы прочитали руководство и убрали этот шаблон Changelog из блока комментариев, чтобы он отображался.
-Changelog должен содержать символ :cl:, чтобы бот распознал изменения и добавил их в ченджлог игры. -->
+<!-- Add a Changelog entry so players know about new features or changes that may affect gameplay.
+Make sure you have read the guide and removed this Changelog template from the comment block so that it is picked up.
+The Changelog must contain the :cl: symbol so the bot recognises the changes and adds them to the in-game changelog. -->
 <!--
 :cl:
-- add: Добавлено веселье!
-- remove: Убрано веселье!
-- tweak: Изменено веселье!
-- fix: Исправлено веселье!
+- add: Added fun!
+- remove: Removed fun!
+- tweak: Tweaked fun!
+- fix: Fixed fun!
 -->
 
 ---
 
 <div align="center">
 
-**Спасибо за вклад в Ratgore!** 🐀
+**Thank you for contributing to Hullrot: Eclipsion!** 🪐
 
 </div>

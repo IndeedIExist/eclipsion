@@ -9,3 +9,5 @@ You belong to a faction and a role within it. Play that role, follow your chain 
 If you have questions, ask your crew in person or over the radio. If you need an admin - for example if you think someone is breaking the rules - press Escape > Admin Help (ahelp) and message the staff.
 
 Instead of clicking to attack, we use Combat Mode. Check the Controls section below for its keybind. With it off you cannot harm anyone, so you will not hit yourself with your own tools.
+
+Hullrot: Eclipsion is free software, licensed under the GNU AGPLv3. You are entitled to the complete source code of the server you are playing on: https://github.com/eclipsion-team/eclipsion

@@ -40,14 +40,15 @@ HOST_KEYS = [
 ]
 
 # RSS feed parameters, change these
-FEED_TITLE       = "Ratgore Changelog"
-FEED_LINK        = "https://github.com/ss14-art/ratgore/"
-FEED_DESCRIPTION = "Changelog for the Ratgore branch of Space Station 14."
+FEED_TITLE       = "Hullrot: Eclipsion Changelog"
+FEED_LINK        = "https://github.com/eclipsion-team/eclipsion/"
+FEED_DESCRIPTION = "Changelog for the Hullrot: Eclipsion fork of Space Station 14."
 FEED_LANGUAGE    = "en-US"
-FEED_GUID_PREFIX = "ratgore-changelog-"
+FEED_GUID_PREFIX = "eclipsion-changelog-"
+# TODO: point at this project's own RSS host before enabling the feed.
 FEED_URL         = "https://rss.ss14.art/changelog.xml"
 
-CHANGELOG_FILE = "Resources/Changelog/rat.yml"
+CHANGELOG_FILE = "Resources/Changelog/Changelog.yml"
 
 TYPES_TO_EMOJI = {
     "Fix":    "🐛",

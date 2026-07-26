@@ -1,18 +1,22 @@
-# Ratgore
-# НЕ ИЗМЕНЯТЬ ФАЙЛ ПРИ АПСТРИМЕ/ОБНОВЛЕНИИ.
+# Hullrot: Eclipsion
+# DO NOT MODIFY THIS FILE WHEN MERGING UPSTREAM.
+
+# Add maintainer handles below to enable automatic review requests.
+# Left unassigned so that stale handles inherited from upstream forks do not
+# receive review requests on this repository.
 
 # C#
-/Content.*/** @Odleer @NEirotoXiN00 # Временная строка пока не будет больше ревьюверов
+# /Content.*/** @maintainer
 
-# Ресурсы
-/Resources/** @Odleer @NEirotoXiN00 # Временная строка пока не будет больше ревьюверов
+# Resources
+# /Resources/** @maintainer
 
-# /Resources/Textures/** 
-/Resources/Maps/** @Gr-avity
+# /Resources/Textures/**
+# /Resources/Maps/**
 # /Resources/Prototypes/**
 # /Resources/Locale/**
 
-# Копирайт
-*.md @ReWAFFlution
-*.txt @ReWAFFlution
-# Resources/**/meta.json @ReWAFFlution
+# Copyright / licensing
+# *.md @maintainer
+# *.txt @maintainer
+# Resources/**/meta.json @maintainer

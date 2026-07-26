@@ -1,6 +1,6 @@
 ---
-name: Сообщить о проблеме
-about: "Любые проблемы, обнаруженные в игровом процессе или кодовой базе"
+name: Report an issue
+about: "Any problem found in gameplay or in the codebase"
 title: ''
 labels: 'Type: Bug'
 assignees: ''
@@ -8,48 +8,48 @@ assignees: ''
 ---
 
 <!--
-Это свободный формат — оформляйте так, как вам удобно
-Перед отправкой удалите эти комментарии
+This is a free-form format — lay it out however suits you
+Delete these comments before submitting
 -->
 
-# Описание
+# Description
 <!--
-Подробно опишите проблему
-Заявки без достаточного описания могут быть закрыты мейнтейнерами
+Describe the problem in detail
+Reports without a sufficient description may be closed by the maintainers
 -->
 
-Описание
+Description
 
-# Воспроизведение
+# Reproduction
 <!--
-Если возможно, укажите шаги для воспроизведения
-Постарайтесь быть максимально подробными
+If possible, list the steps to reproduce
+Try to be as detailed as you can
 -->
 
-1. Запустить игру
-2. Игра не запускается
+1. Start the game
+2. The game does not start
 
-# Ожидаемое поведение
+# Expected behaviour
 <!--
-Что должно происходить?
-Почему это может не происходить? / Возможные решения (если знаете)
+What should happen?
+Why might it not be happening? / Possible solutions (if you know any)
 -->
 
-1. Запустить игру
-2. Игра запускается
+1. Start the game
+2. The game starts
 
-# Медиа
+# Media
 <!--
-При необходимости добавьте скриншоты, помогающие объяснить проблему
-Видео с воспроизведением проблемы также будет полезно
+If needed, add screenshots that help explain the problem
+A video reproducing the problem is also helpful
 -->
 
-![Пример скриншота](https://i.postimg.cc/gcTykm48/e07f1cf697803e2204bf7f1b35c865b0.jpg)
+![Example screenshot](https://i.postimg.cc/gcTykm48/e07f1cf697803e2204bf7f1b35c865b0.jpg)
 
-# Дополнительный контекст
+# Additional context
 <!--
-Добавьте любую дополнительную информацию о проблеме
-Всё, что, по вашему мнению, может быть связано с этой ошибкой
+Add any other information about the problem
+Anything you think might be related to this bug
 -->
 
-В моём компьютере завёлся PjB
+There is a PjB living in my computer

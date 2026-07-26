@@ -3,6 +3,7 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>$(TargetFramework)</TargetFramework>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GenerateTestingPlatformEntryPoint>false</GenerateTestingPlatformEntryPoint>
     </PropertyGroup>
 
     <ItemGroup>
