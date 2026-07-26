@@ -109,46 +109,10 @@
   - type: AccessReader
     access: [["SyndicateCommand"], ["SyndicateRingleader"], ["SyndicateFunds"]]
 
-- type: entity
-  parent: ComputerPaymentBase
-  id: ComputerPaymentIPM
-  name: payroll console IPM
-  components:
-  - type: PaymentConsole
-    faction: IPM
-  - type: AccessReader
-    access: [["SyndicateInterdyne"]]
-
-- type: entity
-  parent: ComputerPaymentBase
-  id: ComputerPaymentSAW
-  name: payroll console SAW
-  components:
-  - type: PaymentConsole
-    faction: SAW
-  - type: AccessReader
-    access: [["SyndicateSaws"]]
-
-- type: entity
-  parent: ComputerPaymentBase
-  id: ComputerPaymentGSC
-  name: payroll console GSC
-  components:
-  - type: PaymentConsole
-    faction: GSC
-  - type: AccessReader
-    access: [["SyndicateGorlex"]]
-
-- type: entity
-  parent: ComputerPaymentBase
-  id: ComputerPaymentCD
-  name: payroll console CD
-  components:
-  - type: PaymentConsole
-    faction: CD
-  # Cyberdawn's tag is SyndicateRamzi.
-  - type: AccessReader
-    access: [["SyndicateRamzi"]]
+# The Interdyne/Shipfitters/Gorlex/Cyberdawn payroll consoles that used to sit here were removed with
+# the Coalition merger. Their rosters keyed off the IPM/SAW/GSC/CD faction ids, which no job grants and
+# no treasury is bound to, so they could never have paid anyone. The Coalition shares one payroll:
+# ComputerPaymentTFSC above.
 
 - type: entity
   parent: ComputerPaymentBase

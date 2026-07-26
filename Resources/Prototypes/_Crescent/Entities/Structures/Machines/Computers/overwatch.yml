@@ -179,49 +179,17 @@
   #   - map: ["computerLayerScreen"]
   #     state: tap
 
+# One console for the whole Coalition. Interdyne, the Shipfitters, Gorlex and Cyberdawn each used to
+# have their own, but the charters were folded into the TFSC and no job grants those subfaction ids any
+# more — a console watching "faction: CD" showed an empty roster. The old company names survive as
+# departments, not as separate overwatch networks.
 - type: entity
   parent: BaseComputerOverwatch
-  id: IPMOverwatchComputer
-  name: overwatch console IPM
+  id: TFSCOverwatchComputer
+  name: overwatch console TFSC
   components:
   - type: OverwatchConsole
-    faction: IPM
-  # - type: Sprite
-  #   layers:
-  #   - map: ["computerLayerScreen"]
-  #     state: tsp
-
-- type: entity
-  parent: BaseComputerOverwatch
-  id: SAWOverwatchComputer
-  name: overwatch console SAW
-  components:
-  - type: OverwatchConsole
-    faction: SAW
-  # - type: Sprite
-  #   layers:
-  #   - map: ["computerLayerScreen"]
-  #     state: tsp
-
-- type: entity
-  parent: BaseComputerOverwatch
-  id: GSCOverwatchComputer
-  name: overwatch console GSC
-  components:
-  - type: OverwatchConsole
-    faction: GSC
-  # - type: Sprite
-  #   layers:
-  #   - map: ["computerLayerScreen"]
-  #     state: tsp
-
-- type: entity
-  parent: BaseComputerOverwatch
-  id: CDOverwatchComputer
-  name: overwatch console CD
-  components:
-  - type: OverwatchConsole
-    faction: CD
+    faction: TFSC
   # - type: Sprite
   #   layers:
   #   - map: ["computerLayerScreen"]
@@ -345,37 +313,14 @@
   - type: OverwatchConsole
     faction: TAP
 
+# As above: one Coalition tablet in place of the four per-company ones.
 - type: entity
   parent: BaseOverwatchClipboard
-  id: IPMOverwatchClipboard
-  name: overwatch console IPM
+  id: TFSCOverwatchClipboard
+  name: overwatch console TFSC
   components:
   - type: OverwatchConsole
-    faction: IPM
-
-- type: entity
-  parent: BaseOverwatchClipboard
-  id: SAWOverwatchClipboard
-  name: overwatch console SAW
-  components:
-  - type: OverwatchConsole
-    faction: SAW
-
-- type: entity
-  parent: BaseOverwatchClipboard
-  id: GSCOverwatchClipboard
-  name: overwatch clipboard GSC
-  components:
-  - type: OverwatchConsole
-    faction: GSC
-
-- type: entity
-  parent: BaseOverwatchClipboard
-  id: CDOverwatchClipboard
-  name: overwatch console CD
-  components:
-  - type: OverwatchConsole
-    faction: CD
+    faction: TFSC
 
 - type: entity
   parent: BaseOverwatchClipboard

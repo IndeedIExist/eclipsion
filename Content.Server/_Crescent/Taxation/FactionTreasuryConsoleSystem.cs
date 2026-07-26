@@ -20,9 +20,14 @@ namespace Content.Server._Crescent.Taxation;
 
 /// <summary>
 /// Backs the faction treasury console: authorized faction members view/withdraw accumulated tax
-/// revenue and deposit physical cash. Anyone without access cannot open the UI; instead their click
-/// starts (or reports on) a robbery that siphons a fixed share of the vault over several minutes and
-/// then stops, so defenders can respond and the vault is never drained instantly.
+/// revenue. Anyone without access cannot open the UI; instead their click starts (or reports on) a
+/// robbery that siphons a fixed share of the vault over several minutes and then stops, so defenders
+/// can respond and the vault is never drained instantly.
+///
+/// Depositing physical cash is deliberately ungated — anyone holding a bill stack can pay into any
+/// faction's vault by clicking it with the cash. Only taking money out is a privilege; putting money
+/// in costs the faction nothing, and gating it just stopped rank-and-file members from banking their
+/// own earnings.
 /// </summary>
 public sealed class FactionTreasuryConsoleSystem : EntitySystem
 {
@@ -222,7 +227,10 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
             Loc.GetString("treasury-console-alarm-announcement", ("station", stationName)));
     }
 
-    /// <summary>Depositing physical cash (SpaceCash) straight into the faction treasury.</summary>
+    /// <summary>
+    /// Depositing physical cash (SpaceCash) straight into the faction treasury. Open to everyone: no
+    /// access check and no alarm, so a deckhand, a visiting trader or a guilty pirate can all pay in.
+    /// </summary>
     private void OnInteractUsing(EntityUid uid, FactionTreasuryConsoleComponent comp, InteractUsingEvent args)
     {
         if (args.Handled)
@@ -245,20 +253,6 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
             return;
         }
 
-        if (!_access.IsAllowed(args.User, uid))
-        {
-            _popup.PopupEntity(Loc.GetString("treasury-console-deposit-denied"), uid, args.User, PopupType.MediumCaution);
-
-            // Same rule as the UI gate: only an outsider forcing the vault raises the alarm.
-            if (!IsOwnFactionMember(uid, comp, args.User))
-            {
-                SoundAlarm(uid, comp);
-                AnnounceIntrusion(uid, comp);
-            }
-
-            return;
-        }
-
         var station = _market.TryGetOwningStation(uid);
         if (station is null || stack.Count <= 0)
             return;
@@ -267,8 +261,10 @@ public sealed class FactionTreasuryConsoleSystem : EntitySystem
         _market.AddTreasury(station.Value, amount);
         QueueDel(args.Used);
 
-        // An authorized member operating the console re-secures a breach in progress.
-        Resecure(comp);
+        // Paying in is open to everyone, but re-securing stays a privilege: otherwise a single credit
+        // from any passer-by — including one of the thieves — would call off a robbery in progress.
+        if (_access.IsAllowed(args.User, uid))
+            Resecure(comp);
 
         _popup.PopupEntity(Loc.GetString("treasury-console-deposited", ("amount", amount)), uid, args.User, PopupType.Medium);
         UpdateUi(uid);

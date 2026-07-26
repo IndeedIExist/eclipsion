@@ -1,8 +1,15 @@
 - type: department
   id: Independents
-  description: department-Independent-description
+  description: department-Independents-description
   color: "#374b4e"
   weight: 10
   roles:
-  - Vagrant
+  - GliessianDockmaster
+  - GliessianSheriff
+  - GliessianDeputy
+  - GliessianDockhand
+  - MarshalCMM
+  - DeputyMarshalCMM
+  - MinutemanCMM
+  - Spacer
   editorHidden: false

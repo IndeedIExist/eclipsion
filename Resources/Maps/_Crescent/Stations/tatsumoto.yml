@@ -67264,7 +67264,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 7247
-    - type: Emagged
 - proto: ReinforcedPlasmaWindow
   entities:
   - uid: 6746

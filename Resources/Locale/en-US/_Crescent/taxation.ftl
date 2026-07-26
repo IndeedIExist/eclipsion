@@ -30,7 +30,6 @@ treasury-console-robbery-progress = Robbery already running — {$stolen} cr tak
 treasury-console-robbery-empty = The vault is empty — nothing left to steal.
 treasury-console-looted = The vault is being looted — {$amount} cr stolen!
 treasury-console-deposited = Deposited {$amount} cr into the treasury.
-treasury-console-deposit-denied = Access denied — a faction card is required to deposit.
 treasury-console-not-command = The vault only answers to command. Your card is logged and rejected.
 treasury-console-unpowered = The vault console is dead — no power, no locks to pick.
 treasury-console-robbery-cut = The vault console loses power and the siphon dies with it — the robbery stops.

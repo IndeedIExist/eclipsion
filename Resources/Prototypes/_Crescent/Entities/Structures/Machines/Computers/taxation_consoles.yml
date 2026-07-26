@@ -3,8 +3,10 @@
 # Taxation console: sets the percentage tax levied on trade goods sold through this
 #   station's trade points. It never changes the base (sticker) prices, only the cut.
 # Treasury console: holds the accumulated tax revenue; authorized faction members can
-#   withdraw it as physical cash. Unauthorized tampering raises an alarm and, after one
-#   minute, repeatedly loots the treasury until an authorized member re-secures it.
+#   withdraw it as physical cash. Depositing is open to anyone holding a cash stack —
+#   the AccessReader below gates withdrawals and the UI, not payments in. Unauthorized
+#   tampering raises an alarm and, after one minute, repeatedly loots the treasury until
+#   an authorized member re-secures it.
 #
 # Both consoles are indestructible and cannot be unanchored. The taxation console is always
 # powered (needsPower: false) so the tax rate can never be cut off; the treasury console
@@ -111,7 +113,7 @@
   id: ComputerFactionTreasuryBase
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
   name: treasury vault console
-  description: Holds this faction's tax revenue. Unauthorized access triggers a security lockdown. Dead without power - and a dead vault cannot be cracked.
+  description: Holds this faction's tax revenue. Anyone can pay in by clicking it with cash; drawing out is command only, and unauthorized access triggers a security lockdown. Dead without power - and a dead vault cannot be cracked.
   placement:
     mode: SnapgridCenter
   components:

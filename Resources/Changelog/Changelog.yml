@@ -178,3 +178,36 @@ Entries:
   id: 6011
   time: '2026-07-21T00:00:00.0000000+00:00'
   url: null
+- author: Taleryn
+  changes:
+    - message: Anyone can now pay into a faction treasury vault by clicking it with cash in hand. Drawing money out is still command only, and only an authorized member can call off a robbery in progress - a stranger's deposit no longer counts as re-securing the vault.
+      type: Tweak
+    - message: Depositing cash into a vault you don't have access to no longer sounds the intrusion alarm or denies you outright.
+      type: Fix
+    - message: The Coalition now has its own overwatch console and squad tablet. Byblik was running a Cyberdawn-branded one whose roster was permanently empty, since its crew are all TFSC.
+      type: Fix
+    - message: Folded the leftover Interdyne, Shipfitters, Gorlex and Cyberdawn command mainframes, overwatch consoles, squad tablets and payroll consoles into their single TFSC equivalents. The charters merged long ago; nothing granted those subfaction ids any more, so all sixteen were unusable and unplaced.
+      type: Remove
+  id: 6012
+  time: '2026-07-26T00:00:00.0000000+00:00'
+  url: null
+- author: Taleryn
+  changes:
+    - message: The NCWL DS3 Militant now fires slower (12 -> 8 rounds a second). It was putting out more raw damage per second than any other 9x39mm weapon while also carrying the biggest magazines, on a round that already shrugs off most armour.
+      type: Tweak
+  id: 6013
+  time: '2026-07-26T00:00:00.0000000+00:00'
+  url: null
+- author: Taleryn
+  changes:
+    - message: Hyperwar armoury racks now hand out tools. Every faction's automated war armoury has a Tools and a Construction Supplies section - welders, wrench, screwdriver, wirecutters, crowbar, multitool, network configurator, jaws of life, power drill, gas analyser, t-ray, holofan projector, extinguisher, insulated gloves, welding mask and goggles, plus steel, plasteel, glass, cabling, power cells and a welding fuel tank.
+      type: Add
+    - message: The ship ordnance depot was missing whole calibres. 88mm flak (both the Corpus feeder box and the older Prince box), 60mm rocket pod magazines in all four patterns, and 240mm torpedoes are now stocked, along with loose 20/35/50mm rounds for topping off a part-spent drum.
+      type: Fix
+    - message: The ship ordnance depot also stocks the legacy platforms that still sit on hulls in the map pool - 20mm Vulcan boxes, 43mm slugthrower DU and HE boxes, 90mm automortar, 60mm Needler, Lancer and Hephaestus shells, Idna and Gargoyle torpedoes, 48mm rocket magazines and Type 99 120mm shells. It previously carried inert and EMP slugthrower ammunition but none of the ammunition that actually does damage.
+      type: Fix
+    - message: Coolant is now available at the ship ordnance depot. The 320mm accelerator cannon will not fire a shot without it, and there was nowhere in hyperwar to get any.
+      type: Fix
+  id: 6014
+  time: '2026-07-26T00:00:00.0000000+00:00'
+  url: null

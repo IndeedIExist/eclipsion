@@ -144,6 +144,46 @@
       - id: JetpackCaptainFilled
       - id: HandHeldMassScannerEE
       - id: BoxMRE
+    - name: Tools
+      entries:
+      - id: ClothingBeltUtilityFilled
+        name: filled tool belt
+        recommended: true
+      - id: Welder
+      - id: WelderIndustrial
+      - id: Wrench
+      - id: Screwdriver
+      - id: Wirecutter
+      - id: Crowbar
+      - id: Multitool
+      - id: NetworkConfigurator
+      - id: JawsOfLife
+      - id: PowerDrill
+      - id: GasAnalyzer
+      - id: trayScanner
+      - id: HolofanProjector
+      - id: FireExtinguisher
+      - id: ClothingHandsGlovesColorYellow
+      - id: ClothingHeadHatWelding
+      - id: ClothingEyesGlassesMeson
+    - name: Construction Supplies
+      entries:
+      - id: SheetSteel
+        name: steel sheets
+      - id: SheetPlasteel
+        name: plasteel sheets
+      - id: SheetGlass
+        name: glass sheets
+      - id: SheetRGlass
+        name: reinforced glass sheets
+      - id: CableApcStack10
+        name: LV cable coil
+      - id: CableMVStack10
+        name: MV cable coil
+      - id: CableHVStack10
+        name: HV cable coil
+      - id: PowerCellHigh
+      - id: WeldingFuelTankFull
     - name: Medical
       entries:
       - id: MedkitCombatFilled
@@ -313,6 +353,46 @@
       - id: JetpackCaptainFilled
       - id: HandHeldMassScannerEE
       - id: BoxMRE
+    - name: Tools
+      entries:
+      - id: ClothingBeltUtilityFilled
+        name: filled tool belt
+        recommended: true
+      - id: Welder
+      - id: WelderIndustrial
+      - id: Wrench
+      - id: Screwdriver
+      - id: Wirecutter
+      - id: Crowbar
+      - id: Multitool
+      - id: NetworkConfigurator
+      - id: JawsOfLife
+      - id: PowerDrill
+      - id: GasAnalyzer
+      - id: trayScanner
+      - id: HolofanProjector
+      - id: FireExtinguisher
+      - id: ClothingHandsGlovesColorYellow
+      - id: ClothingHeadHatWelding
+      - id: ClothingEyesGlassesMeson
+    - name: Construction Supplies
+      entries:
+      - id: SheetSteel
+        name: steel sheets
+      - id: SheetPlasteel
+        name: plasteel sheets
+      - id: SheetGlass
+        name: glass sheets
+      - id: SheetRGlass
+        name: reinforced glass sheets
+      - id: CableApcStack10
+        name: LV cable coil
+      - id: CableMVStack10
+        name: MV cable coil
+      - id: CableHVStack10
+        name: HV cable coil
+      - id: PowerCellHigh
+      - id: WeldingFuelTankFull
     - name: Medical
       entries:
       - id: MedkitCombatFilled
@@ -544,6 +624,46 @@
       - id: JetpackCaptainFilled
       - id: HandHeldMassScannerEE
       - id: BoxMRE
+    - name: Tools
+      entries:
+      - id: ClothingBeltUtilityFilled
+        name: filled tool belt
+        recommended: true
+      - id: Welder
+      - id: WelderIndustrial
+      - id: Wrench
+      - id: Screwdriver
+      - id: Wirecutter
+      - id: Crowbar
+      - id: Multitool
+      - id: NetworkConfigurator
+      - id: JawsOfLife
+      - id: PowerDrill
+      - id: GasAnalyzer
+      - id: trayScanner
+      - id: HolofanProjector
+      - id: FireExtinguisher
+      - id: ClothingHandsGlovesColorYellow
+      - id: ClothingHeadHatWelding
+      - id: ClothingEyesGlassesMeson
+    - name: Construction Supplies
+      entries:
+      - id: SheetSteel
+        name: steel sheets
+      - id: SheetPlasteel
+        name: plasteel sheets
+      - id: SheetGlass
+        name: glass sheets
+      - id: SheetRGlass
+        name: reinforced glass sheets
+      - id: CableApcStack10
+        name: LV cable coil
+      - id: CableMVStack10
+        name: MV cable coil
+      - id: CableHVStack10
+        name: HV cable coil
+      - id: PowerCellHigh
+      - id: WeldingFuelTankFull
     - name: Medical
       entries:
       - id: MedkitCombatFilled
@@ -810,6 +930,46 @@
       - id: JetpackCaptainFilled
       - id: HandHeldMassScannerEE
       - id: BoxMRE
+    # No jaws of life here -- SyndicateJawsOfLife is already stocked under Infiltration.
+    - name: Tools
+      entries:
+      - id: ClothingBeltUtilityFilled
+        name: filled tool belt
+        recommended: true
+      - id: Welder
+      - id: WelderIndustrial
+      - id: Wrench
+      - id: Screwdriver
+      - id: Wirecutter
+      - id: Crowbar
+      - id: Multitool
+      - id: NetworkConfigurator
+      - id: PowerDrill
+      - id: GasAnalyzer
+      - id: trayScanner
+      - id: HolofanProjector
+      - id: FireExtinguisher
+      - id: ClothingHandsGlovesColorYellow
+      - id: ClothingHeadHatWelding
+      - id: ClothingEyesGlassesMeson
+    - name: Construction Supplies
+      entries:
+      - id: SheetSteel
+        name: steel sheets
+      - id: SheetPlasteel
+        name: plasteel sheets
+      - id: SheetGlass
+        name: glass sheets
+      - id: SheetRGlass
+        name: reinforced glass sheets
+      - id: CableApcStack10
+        name: LV cable coil
+      - id: CableMVStack10
+        name: MV cable coil
+      - id: CableHVStack10
+        name: HV cable coil
+      - id: PowerCellHigh
+      - id: WeldingFuelTankFull
     - name: Medical
       entries:
       - id: EmergencyMedipen
@@ -839,7 +999,10 @@
 
 # Automated ship ammunition depot (replaces the old credit-based ShipWarVendory).
 # Free, unlimited, open to everyone (no AccessReader) so any ship crew can restock.
-# Entry names are omitted so each shows its own prototype name.
+# Entry names are omitted so each shows its own prototype name, except where several
+# prototypes share one name and the UI would show duplicate rows.
+# Covers both the shipgun-rework calibers (20/35/48/50/60/88/90/95/120/240/300/330mm)
+# and the older platforms that still sit on hulls in the map pool.
 - type: entity
   parent: ColMarTechBase
   id: HyperwarShipAmmoVendor
@@ -859,6 +1022,26 @@
       - id: Magazine50mm
       - id: Magazine50mmHE
       - id: Magazine50mmSAPHE
+    # Loose rounds, for topping off a part-spent drum instead of swapping it.
+    - name: Autocannon Rounds
+      entries:
+      - id: Cartridge20mm
+      - id: Cartridge20mmFrag
+      - id: Cartridge35mm
+      - id: Cartridge35mmHE
+      - id: Cartridge50mm
+      - id: Cartridge50mmHE
+      - id: Cartridge50mmSAPHE
+    - name: 88mm Flak
+      entries:
+      - id: MagazineCorpus
+        name: 88mm 'Corpus' feeder box
+      - id: CorpusCartridge
+        name: 88mm 'Corpus' flak shell
+      - id: MagazineFlak
+        name: 88mm 'Prince' flak box
+      - id: FlakCartridge
+        name: 88mm 'Prince' flak shell
     - name: 90mm Autocannon Clips
       entries:
       - id: MagazineResolute
@@ -873,20 +1056,75 @@
       - id: Cartridge120mmFlak
       - id: Cartridge120mmFlux
       - id: Cartridge300mm
-    - name: Missiles & Rockets
+      # Type 99 120mm artillery.
+      - id: CartridgeShellArmorPiercing
+      - id: CartridgeShellHighExplosive
+      - id: CartridgeShellPractice
+      - id: CartridgeRailHighExplosive
+    - name: Rocket Pods
       entries:
-      - id: Cartridge48mmRocket
-      - id: Cartridge48mmRocketGorlex
       - id: Magazine48mmRocket
       - id: Magazine48mmRocketGorlex
+      - id: Cartridge48mmRocket
+      - id: Cartridge48mmRocketGorlex
+      - id: Magazine60mm
+      - id: Magazine60mmNCWL
+      - id: Magazine60mmGorlex
+      - id: Magazine60mmSHI
+      - id: Cartridge60mmRocket
+      - id: Cartridge60mmRocketNCWL
+      - id: Cartridge60mmRocketGorlex
+      - id: Cartridge60mmRocketAdvanced
+    - name: Missiles
+      entries:
       - id: Cartridge95mmRocket
       - id: Cartridge95mmRocketNCWL
       - id: Cartridge95mmRocketGSC
       - id: Cartridge330mmRocket
+      - id: SwarmrocketClip
+      - id: SwarmerRocketsGuidedCartridge
+      - id: MagazineSwarmer
+      - id: SwarmerRocketCartridge
+      - id: LanceRocketCartridge
+    - name: Torpedoes
+      entries:
+      - id: Cartridge240mmRocket
+      - id: Cartridge240mmRocketNCWL
+      - id: IdnaTorpedo
+      - id: TorpGarg
+      - id: TorpGargEMP
+      - id: TorpCatapult
     - name: Shipgun Ordnance
       entries:
+      - id: MagazineVulcan
+      - id: CartridgeVulcanStandard
+      - id: MagazineLightRifleBoxSlug
+      - id: MagazineLightRifleBoxSlugHE
       - id: MagazineLightRifleBoxSlugInert
       - id: MagazineLightRifleBoxSlugEMP
+      - id: CartridgeMachineGunArmorPiercing
+      - id: CartridgeMachineGunHighExplosive
+      - id: CartridgeMachineGunEMP
+      - id: CartridgeMachineGunPractice
+      - id: MagazineMortar
+      - id: CartridgeMortarStandardTurret
+      - id: MagazineNeedler
+      - id: Needler
+      - id: HeavyMortarCartridge
+      - id: SmartBomb
+      - id: MagazineRocketEmpty
+        name: 48mm rocket magazine (empty)
+      - id: MagazineRocketLowYield
+        name: 48mm rocket magazine (low-yield)
+      - id: MagazineRocketHighYield
+        name: 48mm rocket magazine (high-yield)
+      - id: MagazineRocketEMP
+        name: 48mm rocket magazine (EMP)
+      - id: CartridgeRocketLowYield
+      - id: CartridgeRocketHighYield
+      - id: CartridgeRocketEMP
+    - name: Energy & Exotic
+      entries:
       - id: LensXray
       - id: LensInfared
       - id: LensMicrowave
@@ -894,17 +1132,12 @@
       - id: StandardAntimatterCanister
       - id: PlasmaAntimatterCanister
       - id: GuidedAntimatterCanister
-      - id: SwarmrocketClip
-      - id: TorpCatapult
-      - id: SwarmerRocketsGuidedCartridge
-      - id: SwarmerRocketCartridge
-      - id: Needler
-      - id: SmartBomb
-      - id: CartridgeRailHighExplosive
-      - id: CartridgeRocketLowYield
-      - id: CartridgeRocketHighYield
-      - id: CartridgeRocketEMP
       - id: PowerCageHardliner
+    # The 320mm accelerator cannon will not fire at all without coolant loaded.
+    - name: Coolant
+      entries:
+      - id: CoolantCartridge30
+      - id: CoolantCartridge10
 
 # Automated ship LPC (fabprint disk) vendors, one per faction.
 # Every regular NCWL / DSM ship LPC, free. Unionfall event ships are NOT included.

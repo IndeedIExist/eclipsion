@@ -16,16 +16,12 @@
   description: department-Civilian-description
   color: "#9FED58"
   weight: 5
-  roles:
+  # Gliess Santo roles moved to the Independents department, see _Crescent/Roles/Jobs/departments.yml
+  #roles:
   #- OrdnancemanCMM
   #- MachinistCMM
   #- PhysicianCMM
-  - MinutemanCMM
   #- WatchmasterCMM
-  - DeputyMarshalCMM
-  - MarshalCMM
-  - Spacer
-  - GliessianDockhand
   editorHidden: true
 
 - type: department

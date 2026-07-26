@@ -147,51 +147,10 @@
   - type: AccessReader
     access: [["SyndicateBasic"]]
 
-# The four company mainframes below predate the Coalition merger. Nothing in rotation places them
-# any more - the Freeport runs the single TFSCMainframeConsole above - but they are kept so older
-# maps and admin spawns still resolve.
-
-- type: entity
-  parent: BaseMainframeConsole
-  id: IPMMainframeConsole
-  name: Interdyne Command Console
-  components:
-  - type: OverwatchConsole
-    faction: IPM
-  - type: AccessReader
-    access: [["SyndicateInterdyne"]]
-
-- type: entity
-  parent: BaseMainframeConsole
-  id: SAWMainframeConsole
-  name: Shipfitters Command Console
-  components:
-  - type: OverwatchConsole
-    faction: SAW
-  - type: AccessReader
-    access: [["SyndicateSaws"]]
-
-- type: entity
-  parent: BaseMainframeConsole
-  id: GSCMainframeConsole
-  name: Gorlex Command Console
-  components:
-  - type: OverwatchConsole
-    faction: GSC
-  - type: AccessReader
-    access: [["SyndicateGorlex"]]
-
-- type: entity
-  parent: BaseMainframeConsole
-  id: CDMainframeConsole
-  name: Cyberdawn Command Console
-  components:
-  - type: OverwatchConsole
-    faction: CD
-  # Cyberdawn's tag is SyndicateRamzi — the CD jobs (intelligence officer, operative, researcher)
-  # are the only ones carrying it.
-  - type: AccessReader
-    access: [["SyndicateRamzi"]]
+# The four company mainframes (Interdyne, Shipfitters, Gorlex, Cyberdawn) that used to sit here were
+# removed with the Coalition merger: no job grants the IPM/SAW/GSC/CD faction ids any more, so their
+# overwatch rosters were permanently empty, and no map placed them. The Freeport runs the single
+# TFSCMainframeConsole above, which every Coalition department shares.
 
 - type: entity
   parent: BaseMainframeConsole

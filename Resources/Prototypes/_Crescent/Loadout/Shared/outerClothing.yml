@@ -11,6 +11,14 @@
     - !type:CharacterJobRequirement
       jobs:
         - Vagrant
+        - GliessianDockmaster
+        - GliessianSheriff
+        - GliessianDeputy
+        - GliessianDockhand
+        - MarshalCMM
+        - DeputyMarshalCMM
+        - MinutemanCMM
+        - Spacer
 
 - type: loadout
   id: LoadoutOuterArmorVagrantHardsuitCenobite
@@ -24,6 +32,14 @@
     - !type:CharacterJobRequirement
       jobs:
         - Vagrant
+        - GliessianDockmaster
+        - GliessianSheriff
+        - GliessianDeputy
+        - GliessianDockhand
+        - MarshalCMM
+        - DeputyMarshalCMM
+        - MinutemanCMM
+        - Spacer
 
 - type: loadout
   id: LoadoutOuterArmorVagrantFishbedSilver
@@ -37,6 +53,14 @@
     - !type:CharacterJobRequirement
       jobs:
         - Vagrant
+        - GliessianDockmaster
+        - GliessianSheriff
+        - GliessianDeputy
+        - GliessianDockhand
+        - MarshalCMM
+        - DeputyMarshalCMM
+        - MinutemanCMM
+        - Spacer
 
 
 - type: loadout
@@ -51,6 +75,14 @@
     - !type:CharacterJobRequirement
       jobs:
         - Vagrant
+        - GliessianDockmaster
+        - GliessianSheriff
+        - GliessianDeputy
+        - GliessianDockhand
+        - MarshalCMM
+        - DeputyMarshalCMM
+        - MinutemanCMM
+        - Spacer
 
 
 - type: loadout
@@ -65,6 +97,14 @@
     - !type:CharacterJobRequirement
       jobs:
         - Vagrant
+        - GliessianDockmaster
+        - GliessianSheriff
+        - GliessianDeputy
+        - GliessianDockhand
+        - MarshalCMM
+        - DeputyMarshalCMM
+        - MinutemanCMM
+        - Spacer
 
 - type: loadout
   id: LoadoutOuterArmorVagrantFishbedNLF
@@ -78,6 +118,14 @@
     - !type:CharacterJobRequirement
       jobs:
         - Vagrant
+        - GliessianDockmaster
+        - GliessianSheriff
+        - GliessianDeputy
+        - GliessianDockhand
+        - MarshalCMM
+        - DeputyMarshalCMM
+        - MinutemanCMM
+        - Spacer
 
 - type: loadout
   id: LoadoutOuterArmorVagrantCenobiteVerdant
@@ -91,6 +139,14 @@
     - !type:CharacterJobRequirement
       jobs:
         - Vagrant
+        - GliessianDockmaster
+        - GliessianSheriff
+        - GliessianDeputy
+        - GliessianDockhand
+        - MarshalCMM
+        - DeputyMarshalCMM
+        - MinutemanCMM
+        - Spacer
 
 - type: loadout
   id: LoadoutOuterArmorVagrantCenobiteRed
@@ -104,3 +160,11 @@
     - !type:CharacterJobRequirement
       jobs:
         - Vagrant
+        - GliessianDockmaster
+        - GliessianSheriff
+        - GliessianDeputy
+        - GliessianDockhand
+        - MarshalCMM
+        - DeputyMarshalCMM
+        - MinutemanCMM
+        - Spacer

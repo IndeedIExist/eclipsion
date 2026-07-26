@@ -18717,7 +18717,7 @@ entities:
     - type: Transform
       pos: -11.5,12.5
       parent: 1
-- proto: CDOverwatchComputer
+- proto: TFSCOverwatchComputer
   entities:
   - uid: 1046
     components:

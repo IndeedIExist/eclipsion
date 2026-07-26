@@ -39,7 +39,7 @@
     availableModes:
     - SemiAuto
     - FullAuto
-    fireRate: 12
+    fireRate: 8 # 9x39 is a high-AP round, keep it under the other 9x39 platforms' DPS
     soundGunshot:
       path: /Audio/_Crescent/Weapons/Guns/supressed_2/supressed_gunshot_2.ogg
       params:
