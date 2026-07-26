@@ -401,16 +401,20 @@ namespace Content.Server.GameTicking
                 return;
 
             Entity<MindComponent?>? mind = player.GetMind();
+            var addObserverRole = false;
             if (mind == null)
             {
                 var name = GetPlayerProfile(player).Name;
                 var (mindId, mindComp) = _mind.CreateMind(player.UserId, name);
                 mind = (mindId, mindComp);
                 _mind.SetUserId(mind.Value, player.UserId);
-                _roles.MindAddRole(mind.Value, "MindRoleObserver");
+                addObserverRole = true;
             }
 
             var ghost = _ghost.SpawnGhost(mind.Value);
+            if (addObserverRole && ghost != null)
+                _roles.MindAddRole(mind.Value, "MindRoleObserver");
+
             _adminLogger.Add(LogType.LateJoin,
                 LogImpact.Low,
                 $"{player.Name} late joined the round as an Observer with {ToPrettyString(ghost):entity}.");

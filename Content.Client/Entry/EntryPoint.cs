@@ -93,6 +93,11 @@ namespace Content.Client.Entry
             IoCManager.BuildGraph();
             IoCManager.InjectDependencies(this);
 
+            // XamlHotReloadManager walks up from the binary to find the repo root by looking for this file.
+            // The engine still defaults to the pre-.slnx name, so point it at what we actually ship.
+            // Must happen in Init: the manager reads this before content PostInit runs.
+            _configManager.OverrideDefault(CVars.XamlHotReloadMarkerName, "SpaceStation14.slnx");
+
             _contentLoc.Initialize();
             _componentFactory.DoAutoRegistrations();
             _componentFactory.IgnoreMissingComponents();
