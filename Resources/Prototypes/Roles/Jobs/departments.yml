@@ -16,12 +16,15 @@
   description: department-Civilian-description
   color: "#9FED58"
   weight: 5
-  # Gliess Santo roles moved to the Independents department, see _Crescent/Roles/Jobs/departments.yml
-  #roles:
+  # Spacer and GliessianDockhand live in the Independents department, see _Crescent/Roles/Jobs/departments.yml
+  roles:
   #- OrdnancemanCMM
   #- MachinistCMM
   #- PhysicianCMM
+  - MinutemanCMM
   #- WatchmasterCMM
+  - DeputyMarshalCMM
+  - MarshalCMM
   editorHidden: true
 
 - type: department

@@ -15,10 +15,6 @@
         - GliessianSheriff
         - GliessianDeputy
         - GliessianDockhand
-        - MarshalCMM
-        - DeputyMarshalCMM
-        - MinutemanCMM
-        - Spacer
 
 - type: loadout
   id: LoadoutOuterArmorVagrantHardsuitCenobite
@@ -36,10 +32,6 @@
         - GliessianSheriff
         - GliessianDeputy
         - GliessianDockhand
-        - MarshalCMM
-        - DeputyMarshalCMM
-        - MinutemanCMM
-        - Spacer
 
 - type: loadout
   id: LoadoutOuterArmorVagrantFishbedSilver
@@ -57,10 +49,6 @@
         - GliessianSheriff
         - GliessianDeputy
         - GliessianDockhand
-        - MarshalCMM
-        - DeputyMarshalCMM
-        - MinutemanCMM
-        - Spacer
 
 
 - type: loadout
@@ -79,10 +67,6 @@
         - GliessianSheriff
         - GliessianDeputy
         - GliessianDockhand
-        - MarshalCMM
-        - DeputyMarshalCMM
-        - MinutemanCMM
-        - Spacer
 
 
 - type: loadout
@@ -101,10 +85,6 @@
         - GliessianSheriff
         - GliessianDeputy
         - GliessianDockhand
-        - MarshalCMM
-        - DeputyMarshalCMM
-        - MinutemanCMM
-        - Spacer
 
 - type: loadout
   id: LoadoutOuterArmorVagrantFishbedNLF
@@ -122,10 +102,6 @@
         - GliessianSheriff
         - GliessianDeputy
         - GliessianDockhand
-        - MarshalCMM
-        - DeputyMarshalCMM
-        - MinutemanCMM
-        - Spacer
 
 - type: loadout
   id: LoadoutOuterArmorVagrantCenobiteVerdant
@@ -143,10 +119,6 @@
         - GliessianSheriff
         - GliessianDeputy
         - GliessianDockhand
-        - MarshalCMM
-        - DeputyMarshalCMM
-        - MinutemanCMM
-        - Spacer
 
 - type: loadout
   id: LoadoutOuterArmorVagrantCenobiteRed
@@ -164,7 +136,3 @@
         - GliessianSheriff
         - GliessianDeputy
         - GliessianDockhand
-        - MarshalCMM
-        - DeputyMarshalCMM
-        - MinutemanCMM
-        - Spacer
