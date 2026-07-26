@@ -211,3 +211,16 @@ Entries:
   id: 6014
   time: '2026-07-26T00:00:00.0000000+00:00'
   url: null
+- author: Taleryn
+  changes:
+    - message: Four narcotics were showing their raw text keys instead of a name and description. JV-102, Naiser, Fall and Exile-Minus now read properly wherever the reagent is named.
+      type: Fix
+    - message: Five research technologies had no name at all and listed their internal id in the research console. They are now Combat Autoinjectors, Cyberdawn Boarding Armaments, Praetorian-Pattern LPC, Imperial Fighter Craft and SHI Heavy Destroyers.
+      type: Fix
+    - message: The Tracking Pinpointer in the SRM dogtag store had no icon. The listing was pointing at a sprite state that does not exist.
+      type: Fix
+    - message: The surplus Proletar and Matusa shotguns no longer offer reverse engineering. They pointed at lathe recipes that were never added, so the machine could never learn anything from them.
+      type: Tweak
+  id: 6015
+  time: '2026-07-26T00:00:00.0000000+00:00'
+  url: null
