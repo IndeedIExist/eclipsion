@@ -30,9 +30,10 @@ jobs:
         script: |
           mkdir benchmark_run_content_${{ github.sha }}
           cd benchmark_run_content_${{ github.sha }}
-          git clone https://github.com/space-wizards/space-station-14.git repo_dir --recursive
+          git clone https://github.com/eclipsion-team/eclipsion.git repo_dir
           cd repo_dir
           git checkout ${{ github.sha }}
+          git submodule update --init --recursive
           cd Content.Benchmarks
           dotnet restore
           export ROBUST_BENCHMARKS_ENABLE_SQL=1
