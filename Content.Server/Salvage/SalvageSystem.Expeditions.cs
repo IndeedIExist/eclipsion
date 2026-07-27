@@ -166,7 +166,7 @@ public sealed partial class SalvageSystem
             EntityManager,
             _timing,
             _logManager,
-            _mapManager,
+            _mapSystem,
             _prototypeManager,
             _anchorable,
             _biome,

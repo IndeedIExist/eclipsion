@@ -80,7 +80,7 @@ namespace Content.Shared.Roles
         /// Nyano/DV: For e.g. prisoners, they'll never use their latejoin spawner.
         /// </summary>
         [DataField("alwaysUseSpawner")]
-        public bool AlwaysUseSpawner { get; } = false;
+        public bool AlwaysUseSpawner { get; private set; } = false;
 
         /// <summary>
         ///     Whether this job is a head.
@@ -168,7 +168,7 @@ namespace Content.Shared.Roles
         public List<ProtoId<GuideEntryPrototype>>? Guides;
 
         [DataField]
-        public readonly Dictionary<ProtoId<RankPrototype>, HashSet<CharacterRequirement>?>? Ranks;
+        public Dictionary<ProtoId<RankPrototype>, HashSet<CharacterRequirement>?>? Ranks;
 
         /// <summary>
         /// Optional chat styling amplification for command jobs.

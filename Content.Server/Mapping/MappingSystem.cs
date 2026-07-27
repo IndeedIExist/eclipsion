@@ -21,7 +21,7 @@ public sealed class MappingSystem : EntitySystem
     [Dependency] private readonly IConsoleHost _conHost = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
     [Dependency] private readonly IResourceManager _resMan = default!;
     [Dependency] private readonly MapLoaderSystem _loader = default!;
 
@@ -65,7 +65,7 @@ public sealed class MappingSystem : EntitySystem
             if (_timing.RealTime <= time)
                 continue;
 
-            if (!_mapManager.MapExists(map) || _mapManager.IsMapInitialized(map))
+            if (!_mapManager.MapExists(map) || _mapManager.IsInitialized(map))
             {
                 Log.Warning($"Can't autosave map {map}; it doesn't exist, or is initialized. Removing from autosave.");
                 _currentlyAutosaving.Remove(map);
@@ -101,7 +101,7 @@ public sealed class MappingSystem : EntitySystem
 
         if (path != null && _currentlyAutosaving.TryAdd(map, (CalculateNextTime(), Path.GetFileName(path))))
         {
-            if (!_mapManager.MapExists(map) || _mapManager.IsMapInitialized(map))
+            if (!_mapManager.MapExists(map) || _mapManager.IsInitialized(map))
             {
                 Log.Warning("Tried to enable autosaving on non-existant or already initialized map!");
                 _currentlyAutosaving.Remove(map);

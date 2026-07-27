@@ -11,7 +11,9 @@ public sealed class TileEmissionOverlay : Overlay
 {
     public override OverlaySpace Space => OverlaySpace.BeforeLighting;
 
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly IEntityManager _entManagerCompat = default!;
+    // SharedMapSystem is an entity system, not an IoC service.
+    private SharedMapSystem _mapManager => _entManagerCompat.System<SharedMapSystem>();
     [Dependency] private readonly IOverlayManager _overlay = default!;
 
     private SharedMapSystem _mapSystem;

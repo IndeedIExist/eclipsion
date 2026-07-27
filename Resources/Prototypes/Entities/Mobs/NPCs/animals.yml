@@ -320,7 +320,6 @@
   parent: FoodEgg
   suffix: Fertilized, Chicken
   components:
-  - type: Timer
   - type: TimedSpawner
     prototypes:
     - MobChicken
@@ -648,7 +647,6 @@
   name: Mothroach egg
   description: Ew.
   components:
-  - type: Timer
   - type: TimedSpawner
     prototypes:
     - MobMothroach
@@ -951,7 +949,6 @@
   parent: FoodEgg
   suffix: Fertilized, Duck
   components:
-    - type: Timer
     - type: TimedSpawner
       prototypes:
       - MobDuckMallard

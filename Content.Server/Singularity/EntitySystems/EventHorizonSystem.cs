@@ -28,7 +28,6 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
     #region Dependencies
     [Dependency] private readonly EntityLookupSystem _entityLookupSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IAdminLogManager _adminLogManager = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly SharedPhysicsSystem _physicsSystem = default!;
@@ -269,7 +268,7 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
         var toConsume = new List<(Vector2i, Tile)>();
         foreach (var tile in tiles)
         {
-            if (CanConsumeTile(hungry, tile, grid, eventHorizon))
+            if (CanConsumeTile(hungry, tile, (gridId, grid), eventHorizon))
                 toConsume.Add((tile.GridIndices, Tile.Empty));
         }
 
@@ -283,9 +282,9 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
     /// Checks whether an event horizon can consume a given tile.
     /// This is only possible if it can also consume all entities anchored to the tile.
     /// </summary>
-    public bool CanConsumeTile(EntityUid hungry, TileRef tile, MapGridComponent grid, EventHorizonComponent eventHorizon)
+    public bool CanConsumeTile(EntityUid hungry, TileRef tile, Entity<MapGridComponent> grid, EventHorizonComponent eventHorizon)
     {
-        foreach (var blockingEntity in grid.GetAnchoredEntities(tile.GridIndices))
+        foreach (var blockingEntity in _mapSystem.GetAnchoredEntities(grid.Owner, grid.Comp, tile.GridIndices))
         {
             if (!CanConsumeEntity(hungry, blockingEntity, eventHorizon))
                 return false;
@@ -306,7 +305,7 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
         var box = Box2.CenteredAround(mapPos.Position, new Vector2(range, range));
         var circle = new Circle(mapPos.Position, range);
         var grids = new List<Entity<MapGridComponent>>();
-        _mapManager.FindGridsIntersecting(mapPos.MapId, box, ref grids);
+        _mapSystem.FindGridsIntersecting(mapPos.MapId, box, ref grids);
 
         foreach (var grid in grids)
         {

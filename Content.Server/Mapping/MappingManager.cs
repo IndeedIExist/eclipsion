@@ -25,7 +25,8 @@ public sealed class MappingManager : IPostInjectInit
 {
     [Dependency] private readonly IAdminManager _admin = default!;
     [Dependency] private readonly ILogManager _log = default!;
-    [Dependency] private readonly IMapManager _map = default!;
+    // SharedMapSystem is an entity system, not an IoC service.
+    private SharedMapSystem _map => _ent.System<SharedMapSystem>();
     [Dependency] private readonly IServerNetManager _net = default!;
     [Dependency] private readonly IPlayerManager _players = default!;
     [Dependency] private readonly IEntitySystemManager _systems = default!;

@@ -56,7 +56,6 @@
       <BuildType Solution="DebugOpt|*" Project="Debug" />
       <BuildType Solution="Tools|*" Project="Release" />
     </Project>
-    <Project Path="RobustToolbox/OpenToolkit.GraphicsLibraryFramework/OpenToolkit.GraphicsLibraryFramework.csproj" />
     <Project Path="RobustToolbox/Robust.Benchmarks/Robust.Benchmarks.csproj" />
     <Project Path="RobustToolbox/Robust.Client.Injectors/Robust.Client.Injectors.csproj">
       <BuildType Solution="DebugOpt|*" Project="Debug" />

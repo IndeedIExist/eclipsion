@@ -19,7 +19,6 @@ namespace Content.Server._Crescent.RoundEnd;
 /// </summary>
 public sealed class AnaliesseEventRuleSystem : GameRuleSystem<AnaliesseEventRuleComponent>
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly ShuttleSystem _shuttle = default!;
@@ -32,7 +31,7 @@ public sealed class AnaliesseEventRuleSystem : GameRuleSystem<AnaliesseEventRule
         base.Started(uid, component, gameRule, args);
 
         // Load the hull on its own map first, then move it into the sector.
-        var loadMap = _mapManager.CreateMap();
+        var loadMapUid = _mapSystem.CreateMap(out var loadMap);
         if (!_mapLoader.TryLoadGrid(loadMap, new ResPath(component.GridPath), out var gridUids))
         {
             Log.Error($"Analiesse event could not load grid {component.GridPath}");
@@ -44,7 +43,7 @@ public sealed class AnaliesseEventRuleSystem : GameRuleSystem<AnaliesseEventRule
 
         _shuttle.SetIFFColor(gridUid, Color.DarkGray);
 
-        var mapUid = _mapManager.GetMapEntityId(GameTicker.DefaultMap);
+        var mapUid = _mapSystem.GetMap(GameTicker.DefaultMap);
         var offset = _random.NextVector2Box(component.MinX, component.MinY, component.MaxX, component.MaxY);
 
         if (TryComp<ShuttleComponent>(gridUid, out var shuttle))

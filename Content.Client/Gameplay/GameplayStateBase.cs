@@ -36,7 +36,8 @@ namespace Content.Client.Gameplay
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly IMapManager _mapManager = default!;
+        // SharedMapSystem is an entity system, not an IoC service.
+        private SharedMapSystem _mapManager => _entityManager.System<SharedMapSystem>();
         [Dependency] protected readonly IUserInterfaceManager UserInterfaceManager = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly IViewVariablesManager _vvm = default!;
@@ -220,9 +221,10 @@ namespace Content.Client.Gameplay
                     entityToClick = GetClickedEntity(mousePosWorld);
                 }
 
-                coordinates = _mapManager.TryFindGridAt(mousePosWorld, out _, out var grid) ?
-                    grid.MapToGrid(mousePosWorld) :
-                    EntityCoordinates.FromMap(_mapManager, mousePosWorld);
+                coordinates = _mapManager.TryFindGridAt(mousePosWorld, out var clickedGrid, out var grid) ?
+                    _mapManager.MapToGrid(clickedGrid, mousePosWorld) :
+                    EntityCoordinates.FromMap(_entityManager.System<SharedMapSystem>().GetMap(mousePosWorld.MapId),
+                        mousePosWorld, _entityManager.System<SharedTransformSystem>(), _entityManager);
             }
 
             var message = new ClientFullInputCmdMessage(_timing.CurTick, _timing.TickFraction, funcId)

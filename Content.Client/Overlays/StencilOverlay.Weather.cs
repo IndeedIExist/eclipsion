@@ -35,7 +35,7 @@ public sealed partial class StencilOverlay
                 var matty =  Matrix3x2.Multiply(matrix, invMatrix);
                 worldHandle.SetTransform(matty);
 
-                foreach (var tile in grid.Comp.GetTilesIntersecting(worldAABB))
+                foreach (var tile in _mapManager.GetTilesIntersecting(grid.Owner, grid.Comp, worldAABB))
                 {
                     // Ignored tiles for stencil
                     if (_weather.CanWeatherAffect(grid, tile))

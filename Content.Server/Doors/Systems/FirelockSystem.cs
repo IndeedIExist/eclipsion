@@ -21,6 +21,7 @@ namespace Content.Server.Doors.Systems
 {
     public sealed class FirelockSystem : EntitySystem
     {
+        [Dependency] private readonly SharedMapSystem _mapSystemCompat = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;
         [Dependency] private readonly SharedDoorSystem _doorSystem = default!;
         [Dependency] private readonly AtmosAlarmableSystem _atmosAlarmable = default!;
@@ -240,7 +241,7 @@ namespace Content.Server.Doors.Systems
                 return (false, false);
 
             var grid = Comp<MapGridComponent>(xform.ParentUid);
-            var pos = grid.CoordinatesToTile(xform.Coordinates);
+            var pos = _mapSystemCompat.CoordinatesToTile(xform.ParentUid, grid, xform.Coordinates);
             var minPressure = float.MaxValue;
             var maxPressure = float.MinValue;
             var minTemperature = float.MaxValue;
@@ -284,7 +285,7 @@ namespace Content.Server.Doors.Systems
 
                 // Is there some airtight entity blocking this direction? If yes, don't include this direction in the
                 // pressure differential
-                if (HasAirtightBlocker(grid.GetAnchoredEntities(adjacentPos), dir.GetOpposite(), airtightQuery))
+                if (HasAirtightBlocker(_mapSystemCompat.GetAnchoredEntities(xform.ParentUid, grid, adjacentPos), dir.GetOpposite(), airtightQuery))
                     continue;
 
                 if (gas != null)

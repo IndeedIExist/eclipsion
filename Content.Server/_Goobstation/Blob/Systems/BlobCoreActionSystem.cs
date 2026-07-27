@@ -45,7 +45,7 @@ public sealed class BlobCoreActionSystem : SharedBlobCoreActionSystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly BlobTileSystem _blobTileSystem = default!;
     //[Dependency] private readonly GridFixtureSystem _gridFixture = default!;
@@ -97,7 +97,7 @@ public sealed class BlobCoreActionSystem : SharedBlobCoreActionSystem
             return;
 
         var target = args.Target;
-        var location = args.ClickLocation.AlignWithClosestGridTile(entityManager: EntityManager, mapManager: _mapManager);
+        var location = args.ClickLocation.AlignWithClosestGridTile(entityManager: EntityManager);
 
         if (!location.IsValid(EntityManager))
             return;

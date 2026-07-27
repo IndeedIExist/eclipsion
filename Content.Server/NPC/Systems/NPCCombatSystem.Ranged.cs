@@ -192,7 +192,7 @@ public sealed partial class NPCCombatSystem
             EntityCoordinates targetCordinates;
 
             if (_mapManager.TryFindGridAt(xform.MapID, targetPos, out var gridUid, out var mapGrid))
-                targetCordinates = new EntityCoordinates(gridUid, mapGrid.WorldToLocal(targetSpot));
+                targetCordinates = new EntityCoordinates(gridUid, _mapManager.WorldToLocal(gridUid, mapGrid, targetSpot));
             else
                 targetCordinates = new EntityCoordinates(xform.MapUid!.Value, targetSpot);
 

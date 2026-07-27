@@ -8,10 +8,8 @@ namespace Content.Shared.StationRecords;
 /// </summary>
 public readonly struct StationRecordKey : IEquatable<StationRecordKey>
 {
-    [DataField]
     public readonly uint Id;
 
-    [DataField("station")]
     public readonly EntityUid OriginStation;
 
     public static StationRecordKey Invalid = default;

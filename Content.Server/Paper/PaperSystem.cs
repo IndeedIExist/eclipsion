@@ -42,9 +42,9 @@ namespace Content.Server.Paper
 
         private void OnMapInit(EntityUid uid, PaperComponent paperComp, MapInitEvent args)
         {
-            if (!string.IsNullOrEmpty(paperComp.Content))
+            if (!string.IsNullOrEmpty(paperComp.StoredContent))
             {
-                paperComp.Content = Loc.GetString(paperComp.Content);
+                paperComp.StoredContent = Loc.GetString(paperComp.StoredContent);
             }
         }
 
@@ -55,7 +55,7 @@ namespace Content.Server.Paper
 
             if (TryComp<AppearanceComponent>(uid, out var appearance))
             {
-                if (paperComp.Content != "")
+                if (paperComp.StoredContent != "")
                     _appearance.SetData(uid, PaperVisuals.Status, PaperStatus.Written, appearance);
 
                 if (paperComp.StampState != null)
@@ -77,7 +77,7 @@ namespace Content.Server.Paper
 
             using (args.PushGroup(nameof(PaperComponent)))
             {
-                if (paperComp.Content != "")
+                if (paperComp.StoredContent != "")
                     args.PushMarkup(
                         Loc.GetString(
                             "paper-component-examine-detail-has-words", ("paper", uid)
@@ -143,7 +143,7 @@ namespace Content.Server.Paper
         {
             if (args.Text.Length <= paperComp.ContentSize)
             {
-                paperComp.Content = args.Text;
+                paperComp.StoredContent = args.Text;
 
                 if (TryComp<AppearanceComponent>(uid, out var appearance))
                     _appearance.SetData(uid, PaperVisuals.Status, PaperStatus.Written, appearance);
@@ -193,7 +193,7 @@ namespace Content.Server.Paper
             if (!Resolve(uid, ref paperComp))
                 return;
 
-            paperComp.Content = content + '\n';
+            paperComp.StoredContent = content + '\n';
             UpdateUserInterface(uid, paperComp);
 
             if (!TryComp<AppearanceComponent>(uid, out var appearance))
@@ -211,7 +211,7 @@ namespace Content.Server.Paper
             if (!Resolve(uid, ref paperComp))
                 return;
 
-            _uiSystem.SetUiState(uid, PaperUiKey.Key, new PaperBoundUserInterfaceState(paperComp.Content, paperComp.StampedBy, paperComp.Mode));
+            _uiSystem.SetUiState(uid, PaperUiKey.Key, new PaperBoundUserInterfaceState(paperComp.StoredContent, paperComp.StampedBy, paperComp.Mode));
         }
     }
 

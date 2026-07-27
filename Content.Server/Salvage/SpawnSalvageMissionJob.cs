@@ -41,7 +41,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
 {
     private readonly IEntityManager _entManager;
     private readonly IGameTiming _timing;
-    private readonly IMapManager _mapManager;
+    private readonly SharedMapSystem _mapManager;
     private readonly IPrototypeManager _prototypeManager;
     private readonly AnchorableSystem _anchorable;
     private readonly BiomeSystem _biome;
@@ -61,7 +61,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         IEntityManager entManager,
         IGameTiming timing,
         ILogManager logManager,
-        IMapManager mapManager,
+        SharedMapSystem mapManager,
         IPrototypeManager protoManager,
         AnchorableSystem anchorable,
         BiomeSystem biome,
@@ -155,8 +155,8 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
             }
         }
 
-        _mapManager.DoMapInitialize(mapId);
-        _mapManager.SetMapPaused(mapId, true);
+        _mapManager.InitializeMap(mapId);
+        _mapManager.SetPaused(mapId, true);
 
         // Setup expedition
         var expedition = _entManager.AddComponent<SalvageExpeditionComponent>(mapUid);
@@ -189,7 +189,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
 
         List<Vector2i> reservedTiles = new();
 
-        foreach (var tile in grid.GetTilesIntersecting(new Circle(Vector2.Zero, landingPadRadius), false))
+        foreach (var tile in _map.GetTilesIntersecting(mapUid, grid, new Circle(Vector2.Zero, landingPadRadius), false))
         {
             if (!_biome.TryGetBiomeTile(mapUid, grid, tile.GridIndices, out _))
                 continue;
@@ -240,7 +240,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
             if (entry == null)
                 break;
 
-            await SpawnRandomEntry(grid, entry, dungeon, random);
+            await SpawnRandomEntry((mapUid, grid), entry, dungeon, random);
         }
 
         var allLoot = _prototypeManager.Index<SalvageLootPrototype>(SharedSalvageSystem.ExpeditionsLootProto);
@@ -267,7 +267,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                             break;
 
                         _sawmill.Debug($"Spawning dungeon loot {entry.Proto}");
-                        await SpawnRandomEntry(grid, entry, dungeon, random);
+                        await SpawnRandomEntry((mapUid, grid), entry, dungeon, random);
                     }
                     break;
                 default:
@@ -278,7 +278,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         return true;
     }
 
-    private async Task SpawnRandomEntry(MapGridComponent grid, IBudgetEntry entry, Dungeon dungeon, Random random)
+    private async Task SpawnRandomEntry(Entity<MapGridComponent> grid, IBudgetEntry entry, Dungeon dungeon, Random random)
     {
         await SuspendIfOutOfTime();
 
@@ -302,7 +302,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                     continue;
                 }
 
-                var uid = _entManager.SpawnAtPosition(entry.Proto, grid.GridTileToLocal(tile));
+                var uid = _entManager.SpawnAtPosition(entry.Proto, _map.GridTileToLocal(grid.Owner, grid.Comp, tile));
                 _entManager.RemoveComponent<GhostRoleComponent>(uid);
                 _entManager.RemoveComponent<GhostTakeoverAvailableComponent>(uid);
                 return;

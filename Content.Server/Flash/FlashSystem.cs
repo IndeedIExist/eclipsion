@@ -1,4 +1,5 @@
 using System.Linq;
+using Timer = Robust.Shared.Timing.Timer;
 using Content.Server.Flash.Components;
 using Content.Shared.Flash.Components;
 using Content.Server.Light.EntitySystems;
@@ -109,10 +110,13 @@ namespace Content.Server.Flash
                 _popup.PopupEntity(Loc.GetString("flash-component-becomes-empty"), uid);
             }
 
-            uid.SpawnTimer(400, () =>
+            Timer.Spawn(400, () =>
             {
+                if (!TryComp<FlashComponent>(uid, out var current))
+                    return;
+
                 _appearance.SetData(uid, FlashVisuals.Flashing, false);
-                comp.Flashing = false;
+                current.Flashing = false;
             });
 
             return true;

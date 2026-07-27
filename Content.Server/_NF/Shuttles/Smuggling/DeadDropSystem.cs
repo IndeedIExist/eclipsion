@@ -37,7 +37,7 @@ public sealed class DeadDropSystem : EntitySystem
     [Dependency] private readonly ShipyardSystem _shipyard = default!;
     [Dependency] private readonly ShuttleSystem _shuttle = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
 
     public override void Initialize()
     {
@@ -92,7 +92,7 @@ public sealed class DeadDropSystem : EntitySystem
         //dont ask me im just fulfilling FTL requirements.
         var dropLocation = _random.NextVector2(component.MinimumDistance, component.MaximumDistance);
         var mapId = Transform(user).MapID;
-        var mapUid = _mapManager.GetMapEntityId(mapId);
+        var mapUid = _mapManager.GetMap(mapId);
 
         if (TryComp<ShuttleComponent>(gridUids.Value.Owner, out var shuttle))
         {

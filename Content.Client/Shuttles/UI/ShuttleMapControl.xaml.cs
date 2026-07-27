@@ -26,7 +26,9 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IInputManager _inputs = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly IEntityManager _entManagerCompat = default!;
+    // SharedMapSystem is an entity system, not an IoC service.
+    private SharedMapSystem _mapManager => _entManagerCompat.System<SharedMapSystem>();
     private readonly ShuttleSystem _shuttles;
     private readonly SharedTransformSystem _xformSystem;
 
@@ -115,7 +117,7 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
         {
             if (args.Function == EngineKeyFunctions.UIClick)
             {
-                var mapUid = _mapManager.GetMapEntityId(ViewingMap);
+                var mapUid = _mapManager.GetMap(ViewingMap);
 
                 var beaconsOnly = EntManager.TryGetComponent(mapUid, out FTLDestinationComponent? destComp) &&
                                   destComp.BeaconsOnly;
@@ -308,7 +310,7 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
 
         DrawRatZones(handle);
 
-        var viewedMapUid = _mapManager.GetMapEntityId(ViewingMap);
+        var viewedMapUid = _mapManager.GetMap(ViewingMap);
         var matty = Matrix3Helpers.CreateInverseTransform(Offset, Angle.Zero);
         var realTime = _timing.RealTime;
         var viewBox = new Box2(Offset - WorldRangeVector, Offset + WorldRangeVector);

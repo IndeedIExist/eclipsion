@@ -17,7 +17,8 @@ public sealed partial class DroneConsoleWindow : FancyWindow
 {
     [Dependency] private readonly IEntityManager _entity = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    // SharedMapSystem is an entity system, not an IoC service.
+    private SharedMapSystem _mapManager => _entity.System<SharedMapSystem>();
     private readonly SharedShuttleSystem _shuttles;
     private readonly SharedTransformSystem _xform;
 

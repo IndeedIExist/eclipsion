@@ -13,7 +13,7 @@ namespace Content.Shared.Weather;
 public abstract class SharedWeatherSystem : EntitySystem
 {
     [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] protected readonly IMapManager MapManager = default!;
+    [Dependency] protected readonly SharedMapSystem MapManager = default!;
     [Dependency] protected readonly IPrototypeManager ProtoMan = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
     [Dependency] private readonly MetaDataSystem _metadata = default!;
@@ -42,7 +42,7 @@ public abstract class SharedWeatherSystem : EntitySystem
     }
 
     public bool CanWeatherAffect(
-        MapGridComponent grid,
+        Entity<MapGridComponent> grid,
         TileRef tileRef)
     {
         if (tileRef.Tile.IsEmpty)
@@ -53,7 +53,7 @@ public abstract class SharedWeatherSystem : EntitySystem
         if (!tileDef.Weather)
             return false;
 
-        var anchoredEnts = grid.GetAnchoredEntitiesEnumerator(tileRef.GridIndices);
+        var anchoredEnts = MapManager.GetAnchoredEntitiesEnumerator(grid.Owner, grid.Comp, tileRef.GridIndices);
 
         while (anchoredEnts.MoveNext(out var ent))
         {
@@ -154,7 +154,7 @@ public abstract class SharedWeatherSystem : EntitySystem
     /// </summary>
     public void SetWeather(MapId mapId, WeatherPrototype? proto, TimeSpan? endTime)
     {
-        var mapUid = MapManager.GetMapEntityId(mapId);
+        var mapUid = MapManager.GetMap(mapId);
         var weatherComp = EnsureComp<WeatherComponent>(mapUid);
 
         foreach (var (eProto, weather) in weatherComp.Weather)

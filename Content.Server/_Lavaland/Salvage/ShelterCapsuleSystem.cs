@@ -21,7 +21,7 @@ public sealed class ShelterCapsuleSystem : SharedShelterCapsuleSystem
     [Dependency] private readonly SmokeSystem _smoke = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapMan = default!;
 
     public override void Initialize()
     {

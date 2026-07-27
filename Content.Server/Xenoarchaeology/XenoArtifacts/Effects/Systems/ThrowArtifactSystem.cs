@@ -13,6 +13,7 @@ namespace Content.Server.Xenoarchaeology.XenoArtifacts.Effects.Systems;
 
 public sealed class ThrowArtifactSystem : EntitySystem
 {
+    [Dependency] private readonly SharedMapSystem _mapSystemCompat = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
@@ -30,7 +31,7 @@ public sealed class ThrowArtifactSystem : EntitySystem
         var xform = Transform(uid);
         if (TryComp<MapGridComponent>(xform.GridUid, out var grid))
         {
-            var tiles = grid.GetTilesIntersecting(
+            var tiles = _mapSystemCompat.GetTilesIntersecting(xform.GridUid.Value, grid,
                 Box2.CenteredAround(xform.WorldPosition, new Vector2(component.Range * 2, component.Range)));
 
             foreach (var tile in tiles)

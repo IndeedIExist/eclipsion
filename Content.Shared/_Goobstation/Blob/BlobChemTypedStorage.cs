@@ -7,18 +7,14 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Goobstation.Blob;
 
 #region BlobChemTypedStorage
-[DataDefinition, Serializable, NetSerializable]
+[Serializable, NetSerializable]
 public abstract partial class BlobChemTypedStorage<T> : IEnumerable
+    where T : notnull
 {
-    [DataField]
     public virtual T BlazingOil { get; set; } = default!;
-    [DataField]
     public virtual T ReactiveSpines { get; set; }= default!;
-    [DataField]
     public virtual T RegenerativeMateria { get; set; }= default!;
-    [DataField]
     public virtual T ExplosiveLattice { get; set; }= default!;
-    [DataField]
     public virtual T ElectromagneticWeb { get; set; }= default!;
 
     // Indexer to access fields via BlobChemType enumeration

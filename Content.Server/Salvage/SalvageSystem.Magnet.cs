@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Map.Components;
 using System.Numerics;
 using System.Threading.Tasks;
 using Content.Server.Salvage.Magnet;
@@ -262,7 +263,7 @@ public sealed partial class SalvageSystem
         switch (offering)
         {
             case AsteroidOffering asteroid:
-                var grid = _mapManager.CreateGrid(salvMapXform.MapID);
+                var grid = _mapSystem.CreateGridEntity(salvMapXform.MapID);
                 await _dungeon.GenerateDungeonAsync(asteroid.DungeonConfig, grid.Owner, grid, Vector2i.Zero, seed);
                 break;
             case SalvageOffering wreck:
@@ -345,7 +346,7 @@ public sealed partial class SalvageSystem
         {
             var salvXForm = _xformQuery.GetComponent(mapChild);
             var localPos = salvXForm.LocalPosition;
-            _transform.SetParent(mapChild, salvXForm, _mapManager.GetMapEntityId(spawnLocation.MapId));
+            _transform.SetParent(mapChild, salvXForm, _mapSystem.GetMap(spawnLocation.MapId));
             _transform.SetWorldPositionRotation(mapChild, spawnLocation.Position + localPos, spawnAngle, salvXForm);
 
             data.Comp.ActiveEntities ??= new List<EntityUid>();
@@ -400,7 +401,9 @@ public sealed partial class SalvageSystem
 
             // This doesn't stop it from spawning on top of random things in space
             // Might be better like this, ghosts could stop it before
-            if (_mapManager.FindGridsIntersecting(finalCoords.MapId, box2Rot).Any())
+            var intersecting = new List<Entity<MapGridComponent>>();
+            _mapSystem.FindGridsIntersecting(finalCoords.MapId, box2Rot.CalcBoundingBox(), ref intersecting);
+            if (intersecting.Count > 0)
             {
                 // Bump it further and further just in case.
                 fraction += 0.25f;

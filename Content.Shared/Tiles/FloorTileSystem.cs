@@ -25,7 +25,7 @@ namespace Content.Shared.Tiles;
 public sealed class FloorTileSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
@@ -132,7 +132,7 @@ public sealed class FloorTileSystem : EntitySystem
                     return;
                 }
 
-                var tile = mapGrid.GetTileRef(location);
+                var tile = _mapManager.GetTileRef(gridUid, mapGrid, location);
                 var baseTurf = (ContentTileDefinition) _tileDefinitionManager[tile.Tile.TypeId];
 
                 if (HasBaseTurf(currentTileDefinition, baseTurf.ID))
@@ -154,7 +154,7 @@ public sealed class FloorTileSystem : EntitySystem
                 if (_netManager.IsClient)
                     return;
 
-                mapGrid = _mapManager.CreateGrid(locationMap.MapId);
+                mapGrid = _mapManager.CreateGridEntity(locationMap.MapId);
                 var gridUid = mapGrid.Owner;
                 var gridXform = Transform(gridUid);
                 _transform.SetWorldPosition(gridXform, locationMap.Position);
@@ -177,7 +177,7 @@ public sealed class FloorTileSystem : EntitySystem
 
         var random = new System.Random((int) _timing.CurTick.Value);
         var variant = _tile.PickVariant((ContentTileDefinition) _tileDefinitionManager[tileId], random);
-        mapGrid.SetTile(location.Offset(new Vector2(offset, offset)), new Tile(tileId, 0, variant));
+        _mapManager.SetTile(gridUid, mapGrid, location.Offset(new Vector2(offset, offset)), new Tile(tileId, 0, variant));
 
         _audio.PlayPredicted(placeSound, location, user);
     }

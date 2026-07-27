@@ -1,4 +1,5 @@
 using Content.Server.Administration.Logs;
+using Timer = Robust.Shared.Timing.Timer;
 using Content.Server.Clothing.Components;
 using Content.Server.DeviceLinking.Events;
 using Content.Server.DeviceLinking.Systems;
@@ -363,9 +364,10 @@ namespace Content.Server.Light.EntitySystems
             light.LastGhostBlink = time;
 
             ToggleBlinkingLight(uid, light, true);
-            uid.SpawnTimer(light.GhostBlinkingTime, () =>
+            Timer.Spawn(light.GhostBlinkingTime, () =>
             {
-                ToggleBlinkingLight(uid, light, false);
+                if (TryComp<PoweredLightComponent>(uid, out var current))
+                    ToggleBlinkingLight(uid, current, false);
             });
 
             args.Handled = true;

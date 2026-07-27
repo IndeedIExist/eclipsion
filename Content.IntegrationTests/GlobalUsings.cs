@@ -1,3 +1,4 @@
+global using System.Linq;
 // Global usings for Content.IntegrationTests
 
 global using NUnit.Framework;

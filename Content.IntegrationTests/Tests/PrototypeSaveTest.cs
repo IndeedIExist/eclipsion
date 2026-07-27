@@ -170,7 +170,7 @@ public sealed class PrototypeSaveTest
 
         public TestEntityUidContext()
         {
-            SerializerProvider = new();
+            SerializerProvider = new(IoCManager.Resolve<ISerializationManager>());
             SerializerProvider.RegisterSerializer(this);
         }
 

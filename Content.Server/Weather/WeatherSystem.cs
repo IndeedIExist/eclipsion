@@ -60,7 +60,7 @@ public sealed class WeatherSystem : SharedWeatherSystem
                 var maxTime = TimeSpan.MaxValue;
 
                 // If it's already running then just fade out with how much time we're into the weather.
-                if (TryComp<WeatherComponent>(MapManager.GetMapEntityId(mapId), out var weatherComp) &&
+                if (TryComp<WeatherComponent>(MapManager.GetMap(mapId), out var weatherComp) &&
                     weatherComp.Weather.TryGetValue(args[1], out var existing))
                 {
                     maxTime = curTime - existing.StartTime;

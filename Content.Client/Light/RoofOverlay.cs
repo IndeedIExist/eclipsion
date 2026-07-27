@@ -12,7 +12,9 @@ namespace Content.Client.Light;
 public sealed class RoofOverlay : Overlay
 {
     private readonly IEntityManager _entManager;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly IEntityManager _entManagerCompat = default!;
+    // SharedMapSystem is an entity system, not an IoC service.
+    private SharedMapSystem _mapManager => _entManagerCompat.System<SharedMapSystem>();
     [Dependency] private readonly IOverlayManager _overlay = default!;
 
     private readonly EntityLookupSystem _lookup;

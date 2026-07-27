@@ -43,7 +43,7 @@ namespace Content.Server.Interaction
                 return;
             }
 
-            var mapManager = IoCManager.Resolve<IMapManager>();
+            var mapManager = IoCManager.Resolve<IEntityManager>().System<SharedMapSystem>();
             var xform = _entities.GetComponent<TransformComponent>(attached);
             var playerGrid = xform.GridUid;
 
@@ -57,14 +57,14 @@ namespace Content.Server.Interaction
             {
                 for (var j = -radius; j <= radius; j++)
                 {
-                    var tile = mapGrid.GetTileRef(playerPosition.Offset(new Vector2(i, j)));
-                    var coordinates = mapGrid.GridTileToLocal(tile.GridIndices);
+                    var tile = _entities.System<SharedMapSystem>().GetTileRef(playerGrid.Value, mapGrid, playerPosition.Offset(new Vector2(i, j)));
+                    var coordinates = _entities.System<SharedMapSystem>().GridTileToLocal(playerGrid.Value, mapGrid, tile.GridIndices);
                     var tileDef = (ContentTileDefinition) tileDefinitionManager[tile.Tile.TypeId];
 
                     if (!tileDef.CanCrowbar) continue;
 
                     var plating = tileDefinitionManager["Plating"];
-                    mapGrid.SetTile(coordinates, new Tile(plating.TileId));
+                    _entities.System<SharedMapSystem>().SetTile(playerGrid.Value, mapGrid, coordinates, new Tile(plating.TileId));
                 }
             }
         }

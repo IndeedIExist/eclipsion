@@ -1,4 +1,5 @@
 using Content.Server.Administration.Logs;
+using Timer = Robust.Shared.Timing.Timer;
 using Content.Server.Atmos.Components;
 using Content.Server.IgnitionSource;
 using Content.Server.Stunnable;
@@ -384,11 +385,14 @@ namespace Content.Server.Atmos.EntitySystems
             _stunSystem.TryParalyze(uid, TimeSpan.FromSeconds(2f), true);
 
             // TODO FLAMMABLE: Make this not use TimerComponent...
-            uid.SpawnTimer(2000, () =>
+            Timer.Spawn(2000, () =>
             {
-                flammable.Resisting = false;
-                flammable.FireStacks -= flammable.FirestackFade * 10f;
-                UpdateAppearance(uid, flammable);
+                if (!TryComp<FlammableComponent>(uid, out var current))
+                    return;
+
+                current.Resisting = false;
+                current.FireStacks -= current.FirestackFade * 10f;
+                UpdateAppearance(uid, current);
             });
         }
 

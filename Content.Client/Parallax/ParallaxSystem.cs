@@ -10,7 +10,7 @@ namespace Content.Client.Parallax;
 
 public sealed class ParallaxSystem : SharedParallaxSystem
 {
-    [Dependency] private readonly IMapManager _map = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly IParallaxManager _parallax = default!;
 

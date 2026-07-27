@@ -21,7 +21,7 @@ public sealed class PocketDimensionSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly LinkedEntitySystem _link = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapMan = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private ISawmill _sawmill = default!;
@@ -68,7 +68,7 @@ public sealed class PocketDimensionSystem : EntitySystem
                 return;
             }
 
-            comp.PocketDimensionMap = _mapMan.GetMapEntityId(map.Value.Comp.MapId);
+            comp.PocketDimensionMap = _mapMan.GetMap(map.Value.Comp.MapId);
 
             // find the pocket dimension's first grid and put the portal there
             bool foundGrid = false;

@@ -20,6 +20,7 @@ namespace Content.Server.NPC.Pathfinding;
 
 public sealed partial class PathfindingSystem
 {
+    [Dependency] private readonly SharedMapSystem _mapSystemCompat = default!;
     private static readonly TimeSpan UpdateCooldown = TimeSpan.FromSeconds(0.45);
 
     // What relevant collision groups we track for pathfinding.
@@ -59,7 +60,7 @@ public sealed partial class PathfindingSystem
             if (change.OldTile.IsEmpty == change.NewTile.IsEmpty)
                 return;
 
-            DirtyChunk(ev.Entity, _maps.GridTileToLocal(ev.Entity, ev.Entity.Comp, change.GridIndices));
+            DirtyChunk(ev.Entity, _mapSystemCompat.GridTileToLocal(ev.Entity, ev.Entity.Comp, change.GridIndices));
         }
     }
 
@@ -310,7 +311,7 @@ public sealed partial class PathfindingSystem
         {
             for (var y = Math.Floor(mapGrid.LocalAABB.Bottom); y <= Math.Ceiling(mapGrid.LocalAABB.Top + ChunkSize); y += ChunkSize)
             {
-                DirtyChunk(ev.EntityUid, mapGrid.GridTileToLocal(new Vector2i((int) x, (int) y)));
+                DirtyChunk(ev.EntityUid, _mapSystemCompat.GridTileToLocal(ev.EntityUid, mapGrid, new Vector2i((int) x, (int) y)));
             }
         }
     }
@@ -429,7 +430,7 @@ public sealed partial class PathfindingSystem
                 var tilePos = new Vector2i(x, y) + gridOrigin;
                 tilePolys.Clear();
 
-                var tile = _maps.GetTileRef(grid.Owner, grid.Comp, tilePos);
+                var tile = _mapSystemCompat.GetTileRef(grid.Owner, grid.Comp, tilePos);
                 var flags = tile.Tile.IsEmpty ? PathfindingBreadcrumbFlag.Space : PathfindingBreadcrumbFlag.None;
                 // var isBorder = x < 0 || y < 0 || x == ChunkSize - 1 || y == ChunkSize - 1;
 
@@ -448,7 +449,7 @@ public sealed partial class PathfindingSystem
                     var xform = _xformQuery.GetComponent(ent);
 
                     if (xform.ParentUid != grid.Owner ||
-                        _maps.LocalToTile(grid.Owner, grid.Comp, xform.Coordinates) != tilePos)
+                        _mapSystemCompat.LocalToTile(grid.Owner, grid.Comp, xform.Coordinates) != tilePos)
                     {
                         continue;
                     }

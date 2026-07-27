@@ -40,7 +40,6 @@ namespace Content.Server.Explosion.EntitySystems;
 
 public sealed partial class ExplosionSystem : SharedExplosionSystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -357,7 +356,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
     private Explosion? SpawnExplosion(QueuedExplosion queued)
     {
         var pos = queued.Epicenter;
-        if (!_mapManager.MapExists(pos.MapId))
+        if (!_map.MapExists(pos.MapId))
             return null;
 
         var results = GetExplosionTiles(pos, queued.Proto.ID, queued.TotalIntensity, queued.Slope, queued.MaxTileIntensity);
@@ -375,7 +374,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         CameraShake(iterationIntensity.Count * 4f, pos, queued.TotalIntensity);
 
         //For whatever bloody reason, sound system requires ENTITY coordinates.
-        var mapEntityCoords = EntityCoordinates.FromMap(_mapManager.GetMapEntityId(pos.MapId), pos, _transformSystem, EntityManager);
+        var mapEntityCoords = EntityCoordinates.FromMap(_map.GetMap(pos.MapId), pos, _transformSystem, EntityManager);
 
         // play sound.
         // for the normal audio, we want everyone in pvs range
@@ -413,7 +412,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             queued.MaxTileBreak,
             queued.CanCreateVacuum,
             EntityManager,
-            _mapManager,
+            _map,
             visualEnt);
     }
 
@@ -422,7 +421,7 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         // Try to determine which grid the explosion is on.
         // If no grid is found (open space, boundary tile, etc.) we skip the grid filter
         // and fall back to range-only filtering so players always feel nearby blasts.
-        _mapManager.TryFindGridAt(epicenter, out var explosionGrid, out _);
+        _map.TryFindGridAt(epicenter, out var explosionGrid, out _);
 
         var players = Filter.Empty();
         players.AddInRange(epicenter, range, _playerManager, EntityManager);

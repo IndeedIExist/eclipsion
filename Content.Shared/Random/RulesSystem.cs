@@ -12,7 +12,7 @@ namespace Content.Shared.Random;
 
 public sealed class RulesSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDef = default!;
     [Dependency] private readonly AccessReaderSystem _reader = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -42,9 +42,13 @@ public sealed class RulesSystem : EntitySystem
                     var worldPos = _transform.GetWorldPosition(xform);
                     var gridRange = new Vector2(griddy.Range, griddy.Range);
 
-                    foreach (var _ in _mapManager.FindGridsIntersecting(
-                                 xform.MapID,
-                                 new Box2(worldPos - gridRange, worldPos + gridRange)))
+                    var intersecting = new List<Entity<MapGridComponent>>();
+                    _mapManager.FindGridsIntersecting(
+                        xform.MapID,
+                        new Box2(worldPos - gridRange, worldPos + gridRange),
+                        ref intersecting);
+
+                    if (intersecting.Count > 0)
                     {
                         return !griddy.Inverted;
                     }
@@ -190,13 +194,13 @@ public sealed class RulesSystem : EntitySystem
                     var tileCount = 0;
                     var matchingTileCount = 0;
 
-                    foreach (var tile in grid.GetTilesIntersecting(new Circle(_transform.GetWorldPosition(xform),
-                                 tiles.Range)))
+                    foreach (var tile in _mapManager.GetTilesIntersecting(xform.GridUid.Value, grid,
+                                 new Circle(_transform.GetWorldPosition(xform), tiles.Range)))
                     {
                         // Only consider collidable anchored (for reasons some subfloor stuff has physics but non-collidable)
                         if (tiles.IgnoreAnchored)
                         {
-                            var gridEnum = grid.GetAnchoredEntitiesEnumerator(tile.GridIndices);
+                            var gridEnum = _mapManager.GetAnchoredEntitiesEnumerator(xform.GridUid.Value, grid, tile.GridIndices);
                             var found = false;
 
                             while (gridEnum.MoveNext(out var ancUid))

@@ -451,7 +451,7 @@ public sealed class ThrusterSystem : EntitySystem
             return true;
 
         var (x, y) = xform.LocalPosition + xform.LocalRotation.Opposite().ToWorldVec();
-        var tile = Comp<MapGridComponent>(xform.GridUid.Value).GetTileRef(new Vector2i((int) Math.Floor(x), (int) Math.Floor(y)));
+        var tile = _mapSystem.GetTileRef(xform.GridUid.Value, Comp<MapGridComponent>(xform.GridUid.Value), new Vector2i((int) Math.Floor(x), (int) Math.Floor(y)));
 
         return tile.Tile.IsSpace();
     }

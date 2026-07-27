@@ -643,6 +643,7 @@ sealed class Explosion
     private readonly bool _canCreateVacuum;
 
     private readonly IEntityManager _entMan;
+    private readonly SharedMapSystem _mapMan;
     private readonly ExplosionSystem _system;
 
     public readonly EntityUid VisualEnt;
@@ -662,7 +663,7 @@ sealed class Explosion
         int maxTileBreak,
         bool canCreateVacuum,
         IEntityManager entMan,
-        IMapManager mapMan,
+        SharedMapSystem mapMan,
         EntityUid visualEnt)
     {
         VisualEnt = visualEnt;
@@ -676,6 +677,7 @@ sealed class Explosion
         _maxTileBreak = maxTileBreak;
         _canCreateVacuum = canCreateVacuum;
         _entMan = entMan;
+        _mapMan = mapMan;
 
         _xformQuery = entMan.GetEntityQuery<TransformComponent>();
         _physicsQuery = entMan.GetEntityQuery<PhysicsComponent>();
@@ -685,7 +687,7 @@ sealed class Explosion
 
         if (spaceData != null)
         {
-            var mapUid = mapMan.GetMapEntityId(epicenter.MapId);
+            var mapUid = mapMan.GetMap(epicenter.MapId);
 
             _explosionData.Add(new()
             {
@@ -810,7 +812,7 @@ sealed class Explosion
 
             // Is the current tile on a grid (instead of in space)?
             if (_currentGrid != null &&
-                _currentGrid.TryGetTileRef(_currentEnumerator.Current, out var tileRef) &&
+                _mapMan.TryGetTileRef(_currentGrid.Owner, _currentGrid, _currentEnumerator.Current, out var tileRef) &&
                 !tileRef.Tile.IsEmpty)
             {
                 if (!_tileUpdateDict.TryGetValue(_currentGrid, out var tileUpdateList))
@@ -871,7 +873,7 @@ sealed class Explosion
         {
             if (list.Count > 0 && _entMan.EntityExists(grid.Owner))
             {
-                grid.SetTiles(list);
+                _mapMan.SetTiles(grid.Owner, grid, list);
             }
         }
         _tileUpdateDict.Clear();

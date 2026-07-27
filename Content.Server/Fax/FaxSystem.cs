@@ -469,7 +469,7 @@ public sealed class FaxSystem : EntitySystem
         TryComp<NameModifierComponent>(sendEntity, out var nameMod);
 
         // TODO: See comment in 'Send()' about not being able to copy whole entities
-        var printout = new FaxPrintout(paper.Content,
+        var printout = new FaxPrintout(paper.StoredContent,
                                        nameMod?.BaseName ?? metadata.EntityName,
                                        labelComponent?.CurrentLabel,
                                        metadata.EntityPrototype?.ID ?? DefaultPaperPrototypeId,
@@ -522,7 +522,7 @@ public sealed class FaxSystem : EntitySystem
             { DeviceNetworkConstants.Command, FaxConstants.FaxPrintCommand },
             { FaxConstants.FaxPaperNameData, nameMod?.BaseName ?? metadata.EntityName },
             { FaxConstants.FaxPaperLabelData, labelComponent?.CurrentLabel },
-            { FaxConstants.FaxPaperContentData, paper.Content },
+            { FaxConstants.FaxPaperContentData, paper.StoredContent },
         };
 
         if (metadata.EntityPrototype != null)
@@ -546,7 +546,7 @@ public sealed class FaxSystem : EntitySystem
             $"{ToPrettyString(args.Actor):actor} " +
             $"sent fax from \"{component.FaxName}\" {ToPrettyString(uid):tool} " +
             $"to \"{faxName}\" ({component.DestinationFaxAddress}) " +
-            $"of {ToPrettyString(sendEntity):subject}: {paper.Content}");
+            $"of {ToPrettyString(sendEntity):subject}: {paper.StoredContent}");
 
         component.SendTimeoutRemaining += component.SendTimeout;
 
