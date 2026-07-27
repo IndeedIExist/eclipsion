@@ -71,7 +71,7 @@ public sealed class WeatherSystem : SharedWeatherSystem
                 if (!visited.Add(node.GridIndices))
                     continue;
 
-                if (!CanWeatherAffect(grid, node))
+                if (!CanWeatherAffect((gridId, grid), node))
                 {
                     // Add neighbors
                     // TODO: Ideally we pick some deterministically random direction and use that

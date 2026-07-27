@@ -75,7 +75,7 @@ internal sealed class FreeProberRule : StationEventSystem<FreeProberRuleComponen
                     var offsetIndices = tileIndices.Offset(direction.AsDir());
 
                     // This doesn't check against the prober's mask/layer, because it hasn't spawned yet...
-                    if (!_anchorable.TileFree(grid, offsetIndices))
+                    if (!_anchorable.TileFree((gridUid.Value, grid), offsetIndices))
                         continue;
 
                     Spawn(ProberPrototype, _sharedMapSystem.GridTileToLocal((EntityUid) gridUid, grid, offsetIndices));

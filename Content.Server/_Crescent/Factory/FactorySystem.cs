@@ -153,7 +153,7 @@ namespace Content.Server.Factory.EntitySystems
 
             foreach (var prototypeId in recipe.Inputs)
             {
-                if (!_proto.TryIndex(prototypeId.Key, out var itemProt, false))
+                if (!_proto.TryIndex(prototypeId.Key, out var itemProt))
                 {
                     args.PushMessage(FormattedMessage.FromMarkup($"IN: {prototypeId.Value} of {prototypeId.Key}"), 5);
                     continue;

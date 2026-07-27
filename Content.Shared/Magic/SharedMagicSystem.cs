@@ -38,7 +38,6 @@ public abstract class SharedMagicSystem : EntitySystem
 {
     [Dependency] private readonly ISerializationManager _seriMan = default!;
     [Dependency] private readonly IComponentFactory _compFact = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedGunSystem _gunSystem = default!;
@@ -219,7 +218,7 @@ public abstract class SharedMagicSystem : EntitySystem
 
                 if (!TryComp<MapGridComponent>(casterXform.GridUid, out var mapGrid))
                     return new List<EntityCoordinates>();
-                if (!directionPos.TryGetTileRef(out var tileReference, EntityManager, _mapManager))
+                if (!directionPos.TryGetTileRef(out var tileReference, EntityManager, _mapSystem))
                     return new List<EntityCoordinates>();
 
                 var tileIndex = tileReference.Value.GridIndices;
@@ -232,7 +231,7 @@ public abstract class SharedMagicSystem : EntitySystem
                 if (!TryComp<MapGridComponent>(casterXform.GridUid, out var mapGrid))
                     return new List<EntityCoordinates>();
 
-                if (!directionPos.TryGetTileRef(out var tileReference, EntityManager, _mapManager))
+                if (!directionPos.TryGetTileRef(out var tileReference, EntityManager, _mapSystem))
                     return new List<EntityCoordinates>();
 
                 var tileIndex = tileReference.Value.GridIndices;
@@ -338,9 +337,9 @@ public abstract class SharedMagicSystem : EntitySystem
 
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
         var fromMap = fromCoords.ToMap(EntityManager, _transform);
-        var spawnCoords = _mapManager.TryFindGridAt(fromMap, out var gridUid, out _)
+        var spawnCoords = _mapSystem.TryFindGridAt(fromMap, out var gridUid, out _)
             ? fromCoords.WithEntityId(gridUid, EntityManager)
-            : new(_mapManager.GetMapEntityId(fromMap.MapId), fromMap.Position);
+            : new(_mapSystem.GetMap(fromMap.MapId), fromMap.Position);
 
         var ent = Spawn(ev.Prototype, spawnCoords);
         var direction = toCoords.ToMapPos(EntityManager, _transform) -
@@ -408,7 +407,7 @@ public abstract class SharedMagicSystem : EntitySystem
         if (!_net.IsServer)
             return;
 
-        var ent = Spawn(proto, position.SnapToGrid(EntityManager, _mapManager));
+        var ent = Spawn(proto, position.SnapToGrid(EntityManager, _mapSystem));
 
         if (lifetime != null)
         {

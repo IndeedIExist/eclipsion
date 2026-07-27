@@ -34,6 +34,7 @@ namespace Content.Server.Revenant.EntitySystems;
 
 public sealed partial class RevenantSystem
 {
+    [Dependency] private readonly SharedMapSystem _mapSystemCompat = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
@@ -227,7 +228,7 @@ public sealed partial class RevenantSystem
         var xform = Transform(uid);
         if (!TryComp<MapGridComponent>(xform.GridUid, out var map))
             return;
-        var tiles = map.GetTilesIntersecting(Box2.CenteredAround(xform.WorldPosition,
+        var tiles = _mapSystemCompat.GetTilesIntersecting(xform.GridUid.Value, map, Box2.CenteredAround(xform.WorldPosition,
             new Vector2(component.DefileRadius * 2, component.DefileRadius))).ToArray();
 
         _random.Shuffle(tiles);

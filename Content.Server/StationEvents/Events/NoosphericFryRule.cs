@@ -121,7 +121,7 @@ internal sealed class NoosphericFryRule : StationEventSystem<NoosphericFryRuleCo
 
                 var tileIndices = _sharedMapSystem.TileIndicesFor((EntityUid) gridUid, grid, coordinates);
 
-                if (_anchorableSystem.TileFree(grid, tileIndices, physics.CollisionLayer, physics.CollisionMask))
+                if (_anchorableSystem.TileFree(((EntityUid) gridUid, grid), tileIndices, physics.CollisionLayer, physics.CollisionMask))
                     _transformSystem.AnchorEntity(reactive, xform);
             }
 

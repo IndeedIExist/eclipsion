@@ -17,12 +17,12 @@ namespace Content.Server.Power.Nodes
             if (!xform.Anchored || grid == null)
                 yield break;
 
-            var gridIndex = grid.TileIndicesFor(xform.Coordinates);
+            var gridIndex = entMan.System<SharedMapSystem>().TileIndicesFor(xform.GridUid!.Value, grid, xform.Coordinates);
 
             var dir = xform.LocalRotation.GetDir();
             var targetIdx = gridIndex.Offset(dir);
 
-            foreach (var node in NodeHelpers.GetNodesInTile(nodeQuery, grid, targetIdx))
+            foreach (var node in NodeHelpers.GetNodesInTile(nodeQuery, entMan.System<SharedMapSystem>(), (xform.GridUid!.Value, grid), targetIdx))
             {
                 if (node is CableTerminalPortNode)
                     yield return node;

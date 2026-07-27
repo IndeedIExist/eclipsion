@@ -553,7 +553,7 @@ public sealed partial class ShuttleSystem
         comp.State = FTLState.Cooldown;
         comp.StateTime = StartEndTime.FromCurTime(_gameTiming, FTLCooldown);
         _console.RefreshShuttleConsoles(uid);
-        _mapManager.SetMapPaused(mapId, false);
+        _map.SetPaused(mapId, false);
         Smimsh(uid, xform: xform, smimshDistance: entity.Comp2.SmimshDistance);
 
         var ftlEvent = new FTLCompletedEvent(uid, _mapSystem.GetMap(mapId));
@@ -820,7 +820,7 @@ public sealed partial class ShuttleSystem
             // We don't include this in the actual targetAABB because then we would be double-expanding it.
             // Once in this loop, then again when placing the shuttle later.
             // Note that targetAABB already has expansionAmount factored in already.
-            _mapManager.FindGridsIntersecting(mapId, targetAABB.Enlarged(maxOffset), ref grids);
+            _map.FindGridsIntersecting(mapId, targetAABB.Enlarged(maxOffset), ref grids);
 
             foreach (var grid in grids)
             {

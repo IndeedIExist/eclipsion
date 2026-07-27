@@ -24,7 +24,6 @@ namespace Content.Server.Teleportation;
 
 public sealed class TeleportSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
@@ -95,12 +94,12 @@ public sealed class TeleportSystem : EntitySystem
             targetCoords = entityCoords.Offset(_random.NextAngle().ToVec() * distance);
 
             // Prefer teleporting to grids
-            if (!_mapManager.TryFindGridAt(targetCoords, out var gridUid, out var grid))
+            if (!_map.TryFindGridAt(targetCoords, out var gridUid, out var grid))
                 continue;
 
             // If attempts is specified, whatever's being teleported probably does not want to be in your walls
             var valid = true;
-            foreach (var entity in grid.GetAnchoredEntities(targetCoords))
+            foreach (var entity in _map.GetAnchoredEntities(gridUid, grid, targetCoords))
             {
                 if (!_physicsQuery.TryGetComponent(entity, out var body))
                     continue;

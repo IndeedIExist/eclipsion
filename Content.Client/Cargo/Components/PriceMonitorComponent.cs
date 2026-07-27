@@ -7,7 +7,7 @@ public sealed class PriceMonitorData
 }
 
 [DataRecord]
-public record struct PriceData(
+public partial record struct PriceData(
     string GoodId,
     double BasePrice,
     double CurrentPrice,
@@ -16,7 +16,7 @@ public record struct PriceData(
 );
 
 [DataRecord]
-public record struct ShuttlePriceData(
+public partial record struct ShuttlePriceData(
     string ShuttleName,
     double BasePrice,
     double CurrentPrice,

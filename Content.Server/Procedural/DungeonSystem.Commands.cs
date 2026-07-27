@@ -44,7 +44,7 @@ public sealed partial class DungeonSystem
         }
 
         var position = new Vector2i(posX, posY);
-        var dungeonUid = _mapManager.GetMapEntityId(mapId);
+        var dungeonUid = _maps.GetMap(mapId);
 
         if (!TryComp<MapGridComponent>(dungeonUid, out var dungeonGrid))
         {
@@ -116,7 +116,7 @@ public sealed partial class DungeonSystem
         }
 
         var mapId = new MapId(mapInt);
-        var mapUid = _mapManager.GetMapEntityId(mapId);
+        var mapUid = _maps.GetMap(mapId);
 
         if (!_prototype.TryIndex<DungeonRoomPackPrototype>(args[1], out var pack))
         {
@@ -154,7 +154,7 @@ public sealed partial class DungeonSystem
             }
         }
 
-        grid.SetTiles(tiles);
+        _maps.SetTiles(mapUid, grid, tiles);
         shell.WriteLine(Loc.GetString("cmd-dungen_pack_vis"));
     }
 
@@ -172,7 +172,7 @@ public sealed partial class DungeonSystem
         }
 
         var mapId = new MapId(mapInt);
-        var mapUid = _mapManager.GetMapEntityId(mapId);
+        var mapUid = _maps.GetMap(mapId);
 
         if (!_prototype.TryIndex<DungeonPresetPrototype>(args[1], out var preset))
         {
@@ -195,7 +195,7 @@ public sealed partial class DungeonSystem
             }
         }
 
-        grid.SetTiles(tiles);
+        _maps.SetTiles(mapUid, grid, tiles);
         shell.WriteLine(Loc.GetString("cmd-dungen_pack_vis"));
     }
 

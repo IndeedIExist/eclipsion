@@ -17,7 +17,6 @@ public abstract class SharedFoodGuideDataSystem : EntitySystem
 [Serializable, NetSerializable]
 public sealed class FoodGuideRegistryChangedEvent : EntityEventArgs
 {
-    [DataField]
     public List<FoodGuideEntry> Changeset;
 
     public FoodGuideRegistryChangedEvent(List<FoodGuideEntry> changeset)

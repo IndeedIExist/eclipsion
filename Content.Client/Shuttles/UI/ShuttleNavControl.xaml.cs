@@ -30,7 +30,9 @@ namespace Content.Client.Shuttles.UI;
 [GenerateTypedNameReferences]
 public sealed partial class ShuttleNavControl : BaseShuttleControl
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly IEntityManager _entManagerCompat = default!;
+    // SharedMapSystem is an entity system, not an IoC service.
+    private SharedMapSystem _mapManager => _entManagerCompat.System<SharedMapSystem>();
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
     [Dependency] private readonly IParallelManager _parMan = default!;
     [Dependency] private readonly ILocalizationManager _locMan = default!;

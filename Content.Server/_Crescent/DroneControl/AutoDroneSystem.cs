@@ -38,7 +38,7 @@ public sealed class AutoDroneSystem : EntitySystem
     [Dependency] private readonly DiplomacySystem _diplomacy = default!;
     [Dependency] private readonly DockingSystem _docking = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IRobustRandom _random = default!;

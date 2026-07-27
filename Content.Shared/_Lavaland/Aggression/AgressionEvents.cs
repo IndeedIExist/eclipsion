@@ -8,7 +8,7 @@ namespace Content.Shared._Lavaland.Aggression;
 [Serializable, NetSerializable]
 public sealed class AggressorAddedEvent : EntityEventArgs
 {
-    [DataField] public NetEntity Aggressor;
+    public NetEntity Aggressor;
 
     public AggressorAddedEvent(NetEntity added)
     {
@@ -22,7 +22,7 @@ public sealed class AggressorAddedEvent : EntityEventArgs
 [Serializable, NetSerializable]
 public sealed class AggressorRemovedEvent : EntityEventArgs
 {
-    [DataField] public NetEntity Aggressor;
+    public NetEntity Aggressor;
 
     public AggressorRemovedEvent(NetEntity removed)
     {

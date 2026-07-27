@@ -44,7 +44,7 @@ public sealed partial class DockingSystem
        Box2 shuttleAABB,
        Angle targetGridRotation,
        FixturesComponent shuttleFixtures,
-       MapGridComponent grid,
+       Entity<MapGridComponent> grid,
        bool isMap,
        out Matrix3x2 matty,
        out Box2 shuttleDockedAABB,
@@ -183,7 +183,7 @@ public sealed partial class DockingSystem
                            shuttleAABB,
                            targetGridAngle,
                            shuttleFixturesComp,
-                           targetGridGrid,
+                           (targetGrid, targetGridGrid),
                            isMap,
                            out var matty,
                            out var dockedAABB,
@@ -235,7 +235,7 @@ public sealed partial class DockingSystem
                                    _xformQuery.GetComponent(otherGridUid),
                                    shuttleAABB,
                                    targetGridAngle,
-                                   shuttleFixturesComp, targetGridGrid,
+                                   shuttleFixturesComp, (targetGrid, targetGridGrid),
                                    isMap,
                                    out _,
                                    out var otherdockedAABB,
@@ -305,7 +305,7 @@ public sealed partial class DockingSystem
    /// <summary>
    /// Checks whether the shuttle can warp to the specified position.
    /// </summary>
-   private bool ValidSpawn(MapGridComponent grid, Matrix3x2 matty, Angle angle, FixturesComponent shuttleFixturesComp, bool isMap)
+   private bool ValidSpawn(Entity<MapGridComponent> grid, Matrix3x2 matty, Angle angle, FixturesComponent shuttleFixturesComp, bool isMap)
    {
        var transform = new Transform(Vector2.Transform(Vector2.Zero, matty), angle);
 
@@ -319,9 +319,9 @@ public sealed partial class DockingSystem
            // If it's a map check no hard collidable anchored entities overlap
            if (isMap)
            {
-               foreach (var tile in grid.GetLocalTilesIntersecting(aabb))
+               foreach (var tile in _mapManager.GetLocalTilesIntersecting(grid.Owner, grid.Comp, aabb))
                {
-                   var anchoredEnumerator = grid.GetAnchoredEntitiesEnumerator(tile.GridIndices);
+                   var anchoredEnumerator = _mapManager.GetAnchoredEntitiesEnumerator(grid.Owner, grid.Comp, tile.GridIndices);
 
                    while (anchoredEnumerator.MoveNext(out var anc))
                    {
@@ -339,7 +339,7 @@ public sealed partial class DockingSystem
            // If it's not a map check it doesn't overlap the grid.
            else
            {
-               if (grid.GetLocalTilesIntersecting(aabb).Any())
+               if (_mapManager.GetLocalTilesIntersecting(grid.Owner, grid.Comp, aabb).Any())
                    return false;
            }
        }

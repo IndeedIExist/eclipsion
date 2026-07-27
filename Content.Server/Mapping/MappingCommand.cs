@@ -17,7 +17,8 @@ namespace Content.Server.Mapping
     sealed class MappingCommand : IConsoleCommand
     {
         [Dependency] private readonly IEntityManager _entities = default!;
-        [Dependency] private readonly IMapManager _map = default!;
+        // SharedMapSystem is an entity system, not an IoC service.
+        private SharedMapSystem _map => _entities.System<SharedMapSystem>();
         [Dependency] private readonly IConfigurationManager _cfg = default!;
 
         public string Command => "mapping";
@@ -124,7 +125,7 @@ namespace Content.Server.Mapping
                 shell.ExecuteCommand($"toggleautosave {mapId} {toLoad ?? "NEWMAP"}");
             shell.ExecuteCommand($"tp 0 0 {mapId}");
             shell.RemoteExecuteCommand("mappingclientsidesetup");
-            _map.SetMapPaused(mapId, true);
+            _map.SetPaused(mapId, true);
 
             if (args.Length == 2)
                 shell.WriteLine(Loc.GetString("cmd-mapping-success-load",("mapId",mapId),("path", args[1])));

@@ -11,6 +11,7 @@ namespace Content.Server.Worldgen.Systems.Debris;
 /// </summary>
 public sealed class SimpleFloorPlanPopulatorSystem : BaseWorldSystem
 {
+    [Dependency] private readonly SharedMapSystem _mapSystemCompat = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinition = default!;
 
@@ -25,10 +26,10 @@ public sealed class SimpleFloorPlanPopulatorSystem : BaseWorldSystem
     {
         var placeables = new List<string?>(4);
         var grid = Comp<MapGridComponent>(uid);
-        var enumerator = grid.GetAllTilesEnumerator();
+        var enumerator = _mapSystemCompat.GetAllTilesEnumerator(uid, grid);
         while (enumerator.MoveNext(out var tile))
         {
-            var coords = grid.GridTileToLocal(tile.Value.GridIndices);
+            var coords = _mapSystemCompat.GridTileToLocal(uid, grid, tile.Value.GridIndices);
             var selector = tile.Value.Tile.GetContentTileDefinition(_tileDefinition).ID;
             if (!component.Caches.TryGetValue(selector, out var cache))
                 continue;

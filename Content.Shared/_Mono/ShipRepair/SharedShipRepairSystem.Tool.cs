@@ -27,7 +27,7 @@ public abstract partial class SharedShipRepairSystem : EntitySystem
         var clickPos = args.ClickLocation;
         var clickWorld = _transform.ToWorldPosition(clickPos);
         var grids = new List<Entity<MapGridComponent>>();
-        _mapMan.FindGridsIntersecting(ourXform.MapID, Box2.FromDimensions(clickWorld, new Vector2(1f, 1f)), ref grids, true, false);
+        _map.FindGridsIntersecting(ourXform.MapID, Box2.FromDimensions(clickWorld, new Vector2(1f, 1f)), ref grids, true, false);
         if (grids.Count == 0)
             return;
 

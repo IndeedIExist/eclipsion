@@ -29,7 +29,7 @@ public sealed class DirectionalTilingSystem : EntitySystem
     [Dependency] private readonly TileSystem _tileSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
     [Dependency] private readonly DecalSystem _decalSystem = default!;
     [Dependency] private readonly ITileDefinitionManager _tiles = default!;
@@ -233,7 +233,7 @@ public sealed class DirectionalTilingSystem : EntitySystem
         var coords = tileCoordinates.WithPosition(newPos);
         coords = coords.Offset(new Vector2(-0.5f, -0.5f));
         DeleteDirectionalDecals(tileCoordinates);
-        (DirectionFlag ConnectedDirections,DirectionFlag ConnectedCornersN, DirectionFlag ConnectedCornersS) = getConnectedDirections(map, tileCoordinates.ToVector2i(EntityManager,_mapManager, _transformSystem), tileType, directionalType );
+        (DirectionFlag ConnectedDirections,DirectionFlag ConnectedCornersN, DirectionFlag ConnectedCornersS) = getConnectedDirections(map, tileCoordinates.ToVector2i(EntityManager, _transformSystem), tileType, directionalType );
         DirectionFlag DisconnectedDirections = ~ConnectedDirections;
         // do the actual directions now.
         foreach (DirectionFlag dir in Enum.GetValues<DirectionFlag>())
@@ -302,7 +302,7 @@ public sealed class DirectionalTilingSystem : EntitySystem
         {
             if (key == Vector2i.Zero)
                 continue;
-            if (!_mapSystem.TryGetTile(map, tileCoordinates.ToVector2i(EntityManager, _mapManager, _transformSystem) + key, out var tile))
+            if (!_mapSystem.TryGetTile(map, tileCoordinates.ToVector2i(EntityManager, _transformSystem) + key, out var tile))
                 continue;
             if (tile.TypeId == tileType)
                 updateTile(map, tileCoordinates.Offset(key), tileType, directionalType, uniqueDirectionals);

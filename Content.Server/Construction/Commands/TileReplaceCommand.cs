@@ -70,12 +70,12 @@ sealed class TileReplaceCommand : IConsoleCommand
         }
 
         var changed = 0;
-        foreach (var tile in grid.GetAllTiles())
+        foreach (var tile in _entManager.System<SharedMapSystem>().GetAllTiles(gridId.Value, grid))
         {
             var tileContent = tile.Tile;
             if (tileContent.TypeId == tileA.TileId)
             {
-                grid.SetTile(tile.GridIndices, new Tile(tileB.TileId));
+                _entManager.System<SharedMapSystem>().SetTile(gridId.Value, grid, tile.GridIndices, new Tile(tileB.TileId));
                 changed++;
             }
         }

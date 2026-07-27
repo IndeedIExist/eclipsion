@@ -9,7 +9,8 @@ namespace Content.Server.Salvage;
 sealed class SalvageRulerCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entities = default!;
-    [Dependency] private readonly IMapManager _maps = default!;
+    // SharedMapSystem is an entity system, not an IoC service.
+    private SharedMapSystem _maps => _entities.System<SharedMapSystem>();
 
     public string Command => "salvageruler";
 

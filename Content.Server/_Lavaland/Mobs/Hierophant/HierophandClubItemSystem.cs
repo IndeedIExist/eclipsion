@@ -20,7 +20,7 @@ public sealed class HierophandClubItemSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly HierophantSystem _hierophant = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapMan = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
@@ -81,7 +81,7 @@ public sealed class HierophandClubItemSystem : EntitySystem
 
         var position = Transform(args.Performer)
             .Coordinates
-            .AlignWithClosestGridTile(entityManager: EntityManager, mapManager: _mapMan);
+            .AlignWithClosestGridTile(entityManager: EntityManager);
         var dummy = Spawn(null, position);
 
         ent.Comp.TeleportMarker = dummy;

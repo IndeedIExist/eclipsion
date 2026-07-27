@@ -14,7 +14,7 @@ namespace Content.Server._Mono.NPC.HTN;
 public sealed partial class ShipSteeringSystem : EntitySystem
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapMan = default!;
     [Dependency] private readonly MoverController _mover = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;

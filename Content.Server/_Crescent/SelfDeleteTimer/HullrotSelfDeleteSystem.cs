@@ -14,7 +14,7 @@ public sealed class HullrotSelfDeleteSystem : EntitySystem
     [Dependency] private readonly IEntityManager _IentityManager = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly IMapManager _mappingManager = default!;
+    [Dependency] private readonly SharedMapSystem _mappingManager = default!;
     [Dependency] private readonly EventSchedulerSystem _eventScheduler = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
 
@@ -90,7 +90,7 @@ public sealed class HullrotSelfDeleteSystem : EntitySystem
         if (!TryComp<TransformComponent>(uid, out var transformComp)) //was throwing errors because somehow entities with no transform component were getting this called
             return;
 
-        if (!_mappingManager.IsMapInitialized(transformComp.MapID)) //if the map is NOT initialized, then WE ARE IN MAPPING MODE!!! SO DON'T DO SHIT!!!!
+        if (!_mappingManager.IsInitialized(transformComp.MapID)) //if the map is NOT initialized, then WE ARE IN MAPPING MODE!!! SO DON'T DO SHIT!!!!
             return;
 
         //_sawmill.Debug("1. seeing if ent " + Name(uid) + "is in space...");
@@ -135,7 +135,7 @@ public sealed class HullrotSelfDeleteSystem : EntitySystem
         if (!TryComp<TransformComponent>(uid, out var transformComp)) //was throwing errors because somehow entities with no transform component were getting this called
             return;
 
-        if (!_mappingManager.IsMapInitialized(transformComp.MapID)) //if the map is NOT initialized, then WE ARE IN MAPPING MODE!!! SO DON'T DO SHIT!!!!
+        if (!_mappingManager.IsInitialized(transformComp.MapID)) //if the map is NOT initialized, then WE ARE IN MAPPING MODE!!! SO DON'T DO SHIT!!!!
             return;
 
         var enumerator = EntityManager.EntityQueryEnumerator<ActorComponent>(); //only players are actors. i think.

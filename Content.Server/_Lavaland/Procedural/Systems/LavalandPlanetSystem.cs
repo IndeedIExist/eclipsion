@@ -43,7 +43,6 @@ public sealed class LavalandPlanetSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly INetConfigurationManager _config = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly AtmosphereSystem _atmos = default!;
     [Dependency] private readonly BiomeSystem _biome = default!;
@@ -190,7 +189,7 @@ public sealed class LavalandPlanetSystem : EntitySystem
         SetupRuins(pool, lavaland.Value);
 
         // Hide all grids from the mass scanner.
-        foreach (var grid in _mapManager.GetAllGrids(lavalandMapId))
+        foreach (var grid in _map.GetAllGrids(lavalandMapId))
         {
             var flag = IFFFlags.Hide;
 
@@ -269,7 +268,7 @@ public sealed class LavalandPlanetSystem : EntitySystem
         }
 
         // Get the outpost.
-        foreach (var grid in _mapManager.GetAllGrids(lavalandMapId))
+        foreach (var grid in _map.GetAllGrids(lavalandMapId))
         {
             if (!HasComp<LavalandStationComponent>(grid))
                 continue;

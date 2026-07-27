@@ -101,7 +101,7 @@ namespace Content.Server.Construction.Commands
                     continue;
                 }
 
-                grid.SetTile(childTransform.Coordinates, underplatingTile);
+                _entManager.System<SharedMapSystem>().SetTile(gridId.Value, grid, childTransform.Coordinates, underplatingTile);
                 changed++;
             }
 

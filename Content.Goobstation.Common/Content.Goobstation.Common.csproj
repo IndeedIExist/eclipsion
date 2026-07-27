@@ -19,7 +19,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
     <ItemGroup>
       <ProjectReference Include="..\Content.ModuleManager\Content.ModuleManager.csproj" />
-      <ProjectReference Include="..\RobustToolbox\Robust.Shared\Robust.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,4 +28,5 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
     <Import Project="..\RobustToolbox\MSBuild\Robust.CompNetworkGenerator.targets" />
 
+  <Import Project="..\RobustToolbox\Imports\Shared.props" />
 </Project>

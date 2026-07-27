@@ -13,7 +13,9 @@ public sealed class PersistenceSave : IConsoleCommand
 {
     [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly IEntitySystemManager _system = default!;
-    [Dependency] private readonly IMapManager _map = default!;
+    [Dependency] private readonly IEntityManager _entManagerCompat = default!;
+    // SharedMapSystem is an entity system, not an IoC service.
+    private SharedMapSystem _map => _entManagerCompat.System<SharedMapSystem>();
 
     public string Command => "persistencesave";
     public string Description => "Saves server data to a persistence file to be loaded later.";

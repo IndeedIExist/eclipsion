@@ -74,7 +74,7 @@ public sealed partial class AtmosphereSystem
                 newGridAtmos = AddComp<GridAtmosphereComponent>(newGrid);
 
             // We assume the tiles on the new grid have the same coordinates as they did on the old grid...
-            var enumerator = mapGrid.GetAllTilesEnumerator();
+            var enumerator = _mapSystem.GetAllTilesEnumerator(newGrid, mapGrid);
 
             while (enumerator.MoveNext(out var tile))
             {

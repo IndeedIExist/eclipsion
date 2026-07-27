@@ -38,6 +38,7 @@ namespace Content.Shared.Friction
     public sealed class TileFrictionController : VirtualController
     {
         [Dependency] private readonly IConfigurationManager _configManager = default!;
+        [Dependency] private readonly SharedMapSystem _maps = default!;
         [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
         [Dependency] private readonly SharedGravitySystem _gravity = default!;
         [Dependency] private readonly SharedMoverController _mover = default!;
@@ -202,7 +203,7 @@ namespace Content.Shared.Friction
                     : DefaultFriction;
             }
 
-            var tile = grid.GetTileRef(xform.Coordinates);
+            var tile = _maps.GetTileRef(xform.GridUid.Value, grid, xform.Coordinates);
 
             // If it's a map but on an empty tile then just assume it has gravity.
             if (tile.Tile.IsEmpty &&
@@ -213,7 +214,7 @@ namespace Content.Shared.Friction
             }
 
             // If there's an anchored ent that modifies friction then fallback to that instead.
-            var anc = grid.GetAnchoredEntitiesEnumerator(tile.GridIndices);
+            var anc = _maps.GetAnchoredEntitiesEnumerator(xform.GridUid.Value, grid, tile.GridIndices);
 
             while (anc.MoveNext(out var tileEnt))
             {

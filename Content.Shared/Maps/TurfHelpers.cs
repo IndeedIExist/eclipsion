@@ -22,7 +22,7 @@ namespace Content.Shared.Maps
             if (!entityManager.TryGetComponent<MapGridComponent>(gridId, out var grid))
                 return default;
 
-            if (!grid.TryGetTileRef(vector2i, out var tile))
+            if (!entityManager.System<SharedMapSystem>().TryGetTileRef(gridId, grid, vector2i, out var tile))
                 return default;
 
             return tile;
@@ -31,27 +31,27 @@ namespace Content.Shared.Maps
         /// <summary>
         ///     Attempts to get the turf at a certain coordinates or null if no such turf is found.
         /// </summary>
-        public static TileRef? GetTileRef(this EntityCoordinates coordinates, IEntityManager? entityManager = null, IMapManager? mapManager = null)
+        public static TileRef? GetTileRef(this EntityCoordinates coordinates, IEntityManager? entityManager = null, SharedMapSystem? mapSystem = null)
         {
             entityManager ??= IoCManager.Resolve<IEntityManager>();
 
             if (!coordinates.IsValid(entityManager))
                 return null;
 
-            mapManager ??= IoCManager.Resolve<IMapManager>();
+            mapSystem ??= entityManager.System<SharedMapSystem>();
             var pos = coordinates.ToMap(entityManager, entityManager.System<SharedTransformSystem>());
-            if (!mapManager.TryFindGridAt(pos, out _, out var grid))
+            if (!mapSystem.TryFindGridAt(pos, out var gridUid, out var grid))
                 return null;
 
-            if (!grid.TryGetTileRef(coordinates, out var tile))
+            if (!mapSystem.TryGetTileRef(gridUid, grid, coordinates, out var tile))
                 return null;
 
             return tile;
         }
 
-        public static bool TryGetTileRef(this EntityCoordinates coordinates, [NotNullWhen(true)] out TileRef? turf, IEntityManager? entityManager = null, IMapManager? mapManager = null)
+        public static bool TryGetTileRef(this EntityCoordinates coordinates, [NotNullWhen(true)] out TileRef? turf, IEntityManager? entityManager = null, SharedMapSystem? mapSystem = null)
         {
-            return (turf = coordinates.GetTileRef(entityManager, mapManager)) != null;
+            return (turf = coordinates.GetTileRef(entityManager, mapSystem)) != null;
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Content.Shared.Maps
                 // This is scaled to 90 % so it doesn't encompass walls on other tiles.
                 var tileBox = Box2.UnitCentered.Scale(0.9f);
                 tileBox = tileBox.Scale(tileGrid.TileSize);
-                var worldPos = tileGrid.GridTileToWorldPos(turf.GridIndices);
+                var worldPos = entManager.System<SharedMapSystem>().GridTileToWorldPos(turf.GridUid, tileGrid, turf.GridIndices);
                 tileBox = tileBox.Translated(worldPos);
                 // Now tileBox needs to be rotated to match grid rotation
                 res = new Box2Rotated(tileBox, gridRot, worldPos);

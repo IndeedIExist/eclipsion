@@ -28,7 +28,7 @@ namespace Content.Server.Pointing.EntitySystems
     internal sealed class PointingSystem : SharedPointingSystem
     {
         [Dependency] private readonly IReplayRecordingManager _replay = default!;
-        [Dependency] private readonly IMapManager _mapManager = default!;
+        [Dependency] private readonly SharedMapSystem _mapManager = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
         [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -223,8 +223,8 @@ namespace Content.Server.Pointing.EntitySystems
 
                 if (_mapManager.TryFindGridAt(mapCoordsPointed, out var gridUid, out var grid))
                 {
-                    position = $"EntId={gridUid} {grid.WorldToTile(mapCoordsPointed.Position)}";
-                    tileRef = grid.GetTileRef(grid.WorldToTile(mapCoordsPointed.Position));
+                    position = $"EntId={gridUid} {_mapManager.WorldToTile(gridUid, grid, mapCoordsPointed.Position)}";
+                    tileRef = _mapManager.GetTileRef(gridUid, grid, _mapManager.WorldToTile(gridUid, grid, mapCoordsPointed.Position));
                 }
 
                 var tileDef = _tileDefinitionManager[tileRef?.Tile.TypeId ?? 0];

@@ -1,4 +1,6 @@
 using Content.Server.Engineering.Components;
+using Content.Shared.Physics;
+using Content.Shared.Maps;
 using Content.Server.Stack;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.DoAfter;
@@ -13,6 +15,8 @@ namespace Content.Server.Engineering.EntitySystems
     [UsedImplicitly]
     public sealed class SpawnAfterInteractSystem : EntitySystem
     {
+        [Dependency] private readonly SharedMapSystem _mapSystemCompat = default!;
+        [Dependency] private readonly TurfSystem _turf = default!;
         [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
         [Dependency] private readonly StackSystem _stackSystem = default!;
 
@@ -29,14 +33,15 @@ namespace Content.Server.Engineering.EntitySystems
                 return;
             if (string.IsNullOrEmpty(component.Prototype))
                 return;
-            if (!TryComp<MapGridComponent>(args.ClickLocation.GetGridUid(EntityManager), out var grid))
+            var gridUid = args.ClickLocation.GetGridUid(EntityManager);
+            if (!TryComp<MapGridComponent>(gridUid, out var grid))
                 return;
-            if (!grid.TryGetTileRef(args.ClickLocation, out var tileRef))
+            if (!_mapSystemCompat.TryGetTileRef(gridUid.Value, grid, args.ClickLocation, out var tileRef))
                 return;
 
             bool IsTileClear()
             {
-                return tileRef.Tile.IsEmpty == false && !tileRef.IsBlockedTurf(true);
+                return tileRef.Tile.IsEmpty == false && !_turf.IsTileBlocked(tileRef, CollisionGroup.Impassable);
             }
 
             if (!IsTileClear())

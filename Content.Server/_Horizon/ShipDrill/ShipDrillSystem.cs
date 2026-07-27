@@ -14,7 +14,6 @@ public sealed class ShipDrillSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = null!;
     [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly GatherableSystem _gatherable = default!;
@@ -77,7 +76,7 @@ public sealed class ShipDrillSystem : EntitySystem
 
     private void TryMine(MapCoordinates coordinates, EntityUid drillGrid, EntityUid drill, SoundSpecifier? sound)
     {
-        if (!_mapManager.TryFindGridAt(coordinates, out var gridUid, out var mapGrid))
+        if (!_map.TryFindGridAt(coordinates, out var gridUid, out var mapGrid))
             return;
 
         if (drillGrid == gridUid)

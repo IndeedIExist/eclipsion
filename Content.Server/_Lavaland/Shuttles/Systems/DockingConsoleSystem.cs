@@ -26,7 +26,7 @@ public sealed class DockingConsoleSystem : SharedDockingConsoleSystem
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly ShuttleSystem _shuttle = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapMan = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
 
     private readonly ResPath _miningShuttlePath = new("/Maps/_Lavaland/mining.yml");

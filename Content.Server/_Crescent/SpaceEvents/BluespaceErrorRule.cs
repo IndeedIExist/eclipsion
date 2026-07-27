@@ -28,7 +28,7 @@ namespace Content.Server.StationEvents.Events;
 
 public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleComponent>
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
     [Dependency] private readonly MapLoaderSystem _map = default!;
     [Dependency] private readonly ShuttleSystem _shuttle = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -45,7 +45,7 @@ public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleCo
     {
         base.Started(uid, component, gameRule, args);
 
-        var shuttleMap = _mapManager.CreateMap();
+        var shuttleMapUid = _mapManager.CreateMap(out var shuttleMap);
 
         if (!_map.TryLoadGrid(shuttleMap, new ResPath(component.GridPath), out var gridUids))
             return;
@@ -56,7 +56,7 @@ public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleCo
         _shuttle.SetIFFColor(gridUid, component.Color);
         var offset = _random.NextVector2Box(component.minX, component.minY, component.maxX, component.maxY); // Hullrot - fix random event spawns being only around kal
         var mapId = GameTicker.DefaultMap;
-        var mapUid = _mapManager.GetMapEntityId(mapId);
+        var mapUid = _mapManager.GetMap(mapId);
         if (TryComp<ShuttleComponent>(component.GridUid, out var shuttle))
         {
             _shuttle.FTLToCoordinates(gridUid, shuttle, new EntityCoordinates(mapUid, offset), 0f, 0f, 30f);

@@ -67,7 +67,6 @@ namespace Content.Server.Shipyard;
 
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly CargoSystem _cargo = default!;
     [Dependency] private readonly DockingSystem _docking = default!;
     [Dependency] private readonly PricingSystem _pricing = default!;
@@ -208,7 +207,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
         ;
 
-        _shuttleIndex += _mapManager.GetAllMapGrids(ShipyardMap.Value).First().LocalAABB.Width + ShuttleSpawnBuffer;
+        _shuttleIndex += _mapping.GetAllMapGrids(ShipyardMap.Value).First().LocalAABB.Width + ShuttleSpawnBuffer;
 
         shuttleGrid = grid.Value.Owner;
         return true;
@@ -274,30 +273,30 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         bill = ComputeSellValue(shuttleUid);
 
 
-        _mapManager.DeleteGrid(shuttleUid);
+        EntityManager.DeleteEntity(shuttleUid);
         _sawmill.Info($"Sold shuttle {shuttleUid} for {bill}");
         return true;
     }
 
     private void CleanupShipyard()
     {
-        if (ShipyardMap == null || !_mapManager.MapExists(ShipyardMap.Value))
+        if (ShipyardMap == null || !_mapping.MapExists(ShipyardMap.Value))
         {
             ShipyardMap = null;
             return;
         }
 
-        _mapManager.DeleteMap(ShipyardMap.Value);
+        _mapping.DeleteMap(ShipyardMap.Value);
     }
 
     private void SetupShipyard()
     {
-        if (ShipyardMap != null && _mapManager.MapExists(ShipyardMap.Value))
+        if (ShipyardMap != null && _mapping.MapExists(ShipyardMap.Value))
             return;
         _map.CreateMap(out var id);
         ShipyardMap = id;
 
-        _mapManager.SetMapPaused(ShipyardMap.Value, false);
+        _mapping.SetPaused(ShipyardMap.Value, false);
     }
 
 

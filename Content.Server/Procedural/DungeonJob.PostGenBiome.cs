@@ -31,12 +31,12 @@ public sealed partial class DungeonJob
         foreach (var node in dungeon.RoomTiles)
         {
             // Need to set per-tile to override data.
-            if (biomeSystem.TryGetTile(node, biomeComp.Layers, seed, grid, out var tile))
+            if (biomeSystem.TryGetTile(node, biomeComp.Layers, seed, (gridUid, grid), out var tile))
             {
                 _maps.SetTile(gridUid, grid, node, tile.Value);
             }
 
-            if (biomeSystem.TryGetDecals(node, biomeComp.Layers, seed, grid, out var decals))
+            if (biomeSystem.TryGetDecals(node, biomeComp.Layers, seed, (gridUid, grid), out var decals))
             {
                 foreach (var decal in decals)
                 {
@@ -44,7 +44,7 @@ public sealed partial class DungeonJob
                 }
             }
 
-            if (biomeSystem.TryGetEntity(node, biomeComp, grid, out var entityProto))
+            if (biomeSystem.TryGetEntity(node, biomeComp, (gridUid, grid), out var entityProto))
             {
                 var ent = _entManager.SpawnEntity(entityProto, new EntityCoordinates(gridUid, node + grid.TileSizeHalfVector));
                 var xform = xformQuery.Get(ent);

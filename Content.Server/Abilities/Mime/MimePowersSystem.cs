@@ -22,7 +22,7 @@ namespace Content.Server.Abilities.Mime
         [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
         [Dependency] private readonly SharedPsionicAbilitiesSystem _psionics = default!;
         [Dependency] private readonly TurfSystem _turf = default!;
-        [Dependency] private readonly IMapManager _mapMan = default!;
+        [Dependency] private readonly SharedMapSystem _mapMan = default!;
         [Dependency] private readonly SharedContainerSystem _container = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
 

@@ -17,6 +17,7 @@ namespace Content.Server.ImmovableRod;
 
 public sealed class ImmovableRodSystem : EntitySystem
 {
+    [Dependency] private readonly SharedMapSystem _mapSystemCompat = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     [Dependency] private readonly BodySystem _bodySystem = default!;
@@ -39,7 +40,7 @@ public sealed class ImmovableRodSystem : EntitySystem
             if (!TryComp<MapGridComponent>(trans.GridUid, out var grid))
                 continue;
 
-            grid.SetTile(trans.Coordinates, Tile.Empty);
+            _mapSystemCompat.SetTile(trans.GridUid.Value, grid, trans.Coordinates, Tile.Empty);
         }
     }
 

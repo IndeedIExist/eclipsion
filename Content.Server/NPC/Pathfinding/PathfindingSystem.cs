@@ -62,7 +62,6 @@ namespace Content.Server.NPC.Pathfinding
         [Dependency] private readonly EntityLookupSystem _lookup = default!;
         [Dependency] private readonly FixtureSystem _fixtures = default!;
         [Dependency] private readonly NPCSystem _npc = default!;
-        [Dependency] private readonly SharedMapSystem _maps = default!;
         [Dependency] private readonly SharedPhysicsSystem _physics = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
 

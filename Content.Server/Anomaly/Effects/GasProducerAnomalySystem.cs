@@ -14,6 +14,7 @@ namespace Content.Server.Anomaly.Effects;
 /// </summary>
 public sealed class GasProducerAnomalySystem : EntitySystem
 {
+    [Dependency] private readonly SharedMapSystem _mapSystemCompat = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -56,7 +57,7 @@ public sealed class GasProducerAnomalySystem : EntitySystem
             return;
 
         var localpos = xform.Coordinates.Position;
-        var tilerefs = grid.GetLocalTilesIntersecting(
+        var tilerefs = _mapSystemCompat.GetLocalTilesIntersecting(xform.GridUid.Value, grid,
             new Box2(localpos + new Vector2(-radius, -radius), localpos + new Vector2(radius, radius))).ToArray();
 
         if (tilerefs.Length == 0)

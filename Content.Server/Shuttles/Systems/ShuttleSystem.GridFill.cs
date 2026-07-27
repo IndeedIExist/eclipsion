@@ -70,7 +70,7 @@ public sealed partial class ShuttleSystem
         if (targetGrid == null)
             return;
 
-        var mapId = _mapManager.CreateMap();
+        var mapIdUid = _map.CreateMap(out var mapId);
 
         if (_loader.TryLoadGrid(mapId, component.Path, out var ent))
         {
@@ -140,7 +140,7 @@ public sealed partial class ShuttleSystem
             return;
 
         // Spawn on a dummy map and try to FTL if possible, otherwise dump it.
-        var mapId = _mapManager.CreateMap();
+        var mapIdUid = _map.CreateMap(out var mapId);
         var valid = true;
         var paths = new List<ResPath>();
 
@@ -235,7 +235,7 @@ public sealed partial class ShuttleSystem
         }
 
         // Spawn on a dummy map and try to dock if possible, otherwise dump it.
-        var mapId = _mapManager.CreateMap();
+        var mapIdUid = _map.CreateMap(out var mapId);
         var valid = false;
 
         if (_loader.TryLoadGrid(mapId, component.Path, out var grid))

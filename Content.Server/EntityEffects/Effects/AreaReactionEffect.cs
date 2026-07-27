@@ -62,7 +62,7 @@ public sealed partial class AreaReactionEffect : EntityEffect
             var spreadAmount = (int) Math.Max(0, Math.Ceiling((reagentArgs.Quantity / OverflowThreshold).Float()));
             var splitSolution = reagentArgs.Source.SplitSolution(reagentArgs.Source.Volume);
             var transform = reagentArgs.EntityManager.GetComponent<TransformComponent>(reagentArgs.TargetEntity);
-            var mapManager = IoCManager.Resolve<IMapManager>();
+            var mapManager = IoCManager.Resolve<IEntityManager>().System<SharedMapSystem>();
             var mapSys = reagentArgs.EntityManager.System<MapSystem>();
             var sys = reagentArgs.EntityManager.System<TransformSystem>();
             var mapCoords = sys.GetMapCoordinates(reagentArgs.TargetEntity, xform: transform);

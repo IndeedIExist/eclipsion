@@ -22,7 +22,7 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
     [Dependency] private readonly PoissonDiskSampler _sampler = default!;
     [Dependency] private readonly TransformSystem _xformSys = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly Robust.Shared.Prototypes.IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly Robust.Shared.EntitySerialization.Systems.MapLoaderSystem _mapLoader = default!;

@@ -112,9 +112,9 @@ public sealed partial class DeepFryerSystem
         {
             var stringBuilder = new StringBuilder();
 
-            for (var i = 0; i < paperComponent.Content.Length; ++i)
+            for (var i = 0; i < paperComponent.StoredContent.Length; ++i)
             {
-                var uchar = paperComponent.Content.Substring(i, 1);
+                var uchar = paperComponent.StoredContent.Substring(i, 1);
 
                 if (uchar == "\n" || _random.Prob(0.4f))
                     stringBuilder.Append(uchar);
@@ -122,7 +122,7 @@ public sealed partial class DeepFryerSystem
                     stringBuilder.Append("x");
             }
 
-            paperComponent.Content = stringBuilder.ToString();
+            paperComponent.StoredContent = stringBuilder.ToString();
         }
 
         var foodComponent = EnsureComp<FoodComponent>(item);
