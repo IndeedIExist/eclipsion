@@ -29,3 +29,4 @@ loadout-name-LoadoutHeadPinMagnetic = magnetic pin (colorable)
 loadout-name-LoadoutHeadRibbon = hair ribbon (colorable)
 loadout-name-LoadoutHeadBow = hair bow (colorable)
 loadout-name-LoadoutHeadBowSmall = small hair bow (colorable)
+loadout-name-LoadoutHeadHatBrown = brown hat

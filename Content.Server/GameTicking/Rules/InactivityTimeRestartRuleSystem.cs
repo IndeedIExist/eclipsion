@@ -57,6 +57,13 @@ public sealed class InactivityTimeRestartRuleSystem : GameRuleSystem<InactivityR
         if (!Resolve(uid, ref component))
             return;
 
+        // Crescent - an empty server must not restart a mapping round; the mapper may just have stepped away.
+        if (GameTicker.IsRoundEndBypassed())
+        {
+            Log.Info("Server sat empty, but a RoundEndBypass rule is active. Not ending the round.");
+            return;
+        }
+
         GameTicker.EndRound(Loc.GetString("rule-time-has-run-out"));
 
         _chatManager.DispatchServerAnnouncement(Loc.GetString("rule-restarting-in-seconds", ("seconds",(int) component.RoundEndDelay.TotalSeconds)));

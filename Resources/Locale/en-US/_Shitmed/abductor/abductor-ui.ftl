@@ -60,3 +60,4 @@ abductor-ui-experimentator-not-found = experimentator: [color=red]not found[/col
 abductor-ui-victim-none = victim: [color=red]NONE[/color]
 abductor-ui-victim-found = victim: [color=green]{$victim}[/color]
 abductor-ui-armor-plug-in = [color=red][font size=16]You need to plug in abductor armor![/font][/color]
+abductors-ghost-role-name = Lone Abductor

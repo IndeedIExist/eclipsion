@@ -47,6 +47,13 @@ public sealed class MaxTimeRestartRuleSystem : GameRuleSystem<MaxTimeRestartRule
 
     private void TimerFired(MaxTimeRestartRuleComponent component)
     {
+        // Crescent - a mapping round hitting the time cap must not restart the server out from under the mapper.
+        if (GameTicker.IsRoundEndBypassed())
+        {
+            Log.Info("Max round time elapsed, but a RoundEndBypass rule is active. Not ending the round.");
+            return;
+        }
+
         GameTicker.EndRound(Loc.GetString("rule-time-has-run-out"));
 
         _chatManager.DispatchServerAnnouncement(Loc.GetString("rule-restarting-in-seconds",("seconds", (int) component.RoundEndDelay.TotalSeconds)));

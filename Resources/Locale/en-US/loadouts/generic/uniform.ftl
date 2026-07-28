@@ -46,3 +46,4 @@ loadout-name-LoadoutUniformJumpsuitYogaGymBra = yoga gym bra (colorable)
 loadout-name-LoadoutUniformJumpsuitBlackTurtleneckFlipped = black turtleneck, rolled sleeves
 loadout-name-LoadoutUniformEnvirosuitBlackPinkAlt = black pink envirosuit, alternative
 loadout-name-LoadoutUniformEnvirosuitEnviroslacksMNKAlt = MNK enviroslacks, alternative
+loadout-name-LoadoutUniformJumpsuitSyndicateInterdyneRedUniform = Interdyne red uniform

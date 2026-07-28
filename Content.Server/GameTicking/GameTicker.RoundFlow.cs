@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Announcements;
+using Content.Server._Crescent.RoundEnd; // Crescent - round end bypass
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
 using Content.Server.Ghost;
@@ -9,6 +10,7 @@ using Content.Server.Roles;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Components; // Crescent - round end bypass
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
@@ -481,11 +483,36 @@ namespace Content.Server.GameTicking
             DisallowLateJoin = refresh.DisallowLateJoin;
         }
 
+        /// <summary>
+        ///     Crescent - true while a <see cref="RoundEndBypassRuleComponent"/> rule is running (the Mapping preset,
+        ///     or `addgamerule RoundEndBypass`). Every way a round can end funnels through <see cref="EndRound"/>, so
+        ///     mapping rounds only have to be caught there plus in the two rules that restart the round on a timer.
+        /// </summary>
+        public bool IsRoundEndBypassed()
+        {
+            var query = EntityQueryEnumerator<RoundEndBypassRuleComponent, GameRuleComponent>();
+            while (query.MoveNext(out var uid, out _, out var rule))
+            {
+                if (IsGameRuleActive(uid, rule))
+                    return true;
+            }
+
+            return false;
+        }
+
         public void EndRound(string text = "")
         {
             // If this game ticker is a dummy, do nothing!
             if (DummyTicker)
                 return;
+
+            // Crescent - mapping/dev rounds opt out of ending at all. restartround is the way out.
+            if (IsRoundEndBypassed())
+            {
+                _sawmill.Info("Round end requested, but a RoundEndBypass rule is active. Ignoring.");
+                _chatManager.SendAdminAnnouncement(Loc.GetString("round-end-bypass-blocked"));
+                return;
+            }
 
             DebugTools.Assert(RunLevel == GameRunLevel.InRound);
             _sawmill.Info("Ending round!");

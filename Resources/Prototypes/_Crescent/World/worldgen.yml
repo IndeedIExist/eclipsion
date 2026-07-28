@@ -22,3 +22,9 @@
     - RatCraster
     - RatGraveyardMax
     - RatGraveyardMin
+
+# Mapping preset: chunk loading only, no biomes at all, so nothing spawns around whatever the mapper is building.
+- type: worldgenConfig
+  id: RatWorldEmpty
+  components:
+  - type: WorldController

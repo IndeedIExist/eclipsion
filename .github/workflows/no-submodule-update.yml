@@ -5,11 +5,26 @@ on:
     paths:
       - 'RobustToolbox'
 
+permissions:
+  contents: read
+
 jobs:
-  this_aint_right:
-    if: github.actor != 'sleepyyapril' && github.actor != 'VMSolidus' && github.actor != 'DEATHB4DEFEAT'
-    name: Submodule update in pr found
+  check_permission:
+    name: Check submodule update permission
     runs-on: ubuntu-latest
     steps:
-      - name: Fail
-        run: exit 1
+      - name: Require maintainer access
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { data } = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              username: context.actor,
+            });
+
+            if (!['admin', 'maintain', 'write'].includes(data.permission)) {
+              core.setFailed(
+                `RobustToolbox updates require write access; ${context.actor} has ${data.permission} access.`
+              );
+            }

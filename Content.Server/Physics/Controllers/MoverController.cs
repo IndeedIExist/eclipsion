@@ -580,8 +580,8 @@ public sealed class MoverController : SharedMoverController
 
     #endregion
 
-    // .NET 8 seem to miscompile usage of Vector2.Dot above. This manual outline fixes it pending an upstream fix.
-    // See PR #24008
+    // Keep this call out of the caller's JIT path to avoid a Vector2.Dot miscompilation.
+    // See PR #24008.
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static float Vector2Dot(Vector2 value1, Vector2 value2)
     {

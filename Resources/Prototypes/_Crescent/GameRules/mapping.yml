@@ -1,0 +1,45 @@
+# MAPPING PRESET
+#
+# For mappers, not for play. Empty sector, no worldgen debris, no events, no conquest, and the round never ends
+# on its own — the 4h HullrotRoundTimeLimit and the empty-server inactivity restart are both suppressed by the
+# RoundEndBypass rule below.
+#
+# Usage:
+#   setgamepreset mapping
+#   restartroundnow
+# and then the usual mapping workflow (`mapping <id>` for a scratch map, or just build on the round map).
+# To end it: restartround / restartroundnow — those are deliberately NOT blocked.
+#
+# The bypass is a game rule, not a CVar, so it dies with the round: the next preset gets a normal round back with
+# no leftover state. Admins can also flip it on in any running round with `addgamerule RoundEndBypass`.
+#
+# Not included on purpose: Sandbox (admins already have the spawn menu, and this preset can be left running on a
+# live server). Add it to rules: below if you want non-admin mappers to have sandbox powers.
+
+- type: gamePreset
+  id: Mapping
+  alias:
+  - mapping
+  - mapper
+  name: Mapping
+  showInVote: false
+  description: Empty sector for mappers. The round never ends on its own.
+  rules:
+  - MappingRule
+  - RoundEndBypass
+
+- type: entity
+  id: MappingRule
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  # No gameMapsByID: the round map is whatever the pool picks (EmptyHullrot by default) and nothing else spawns.
+  - type: AdventureRule
+    worldgenConfig: RatWorldEmpty
+
+- type: entity
+  id: RoundEndBypass
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RoundEndBypassRule

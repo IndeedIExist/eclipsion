@@ -4,3 +4,4 @@ loadout-name-LoadoutBeltGenericThick = thick belt (colorable)
 loadout-name-LoadoutBeltWaist = waist belt (colorable)
 loadout-name-LoadoutBeltWaistThin = thin waist belt (colorable)
 loadout-name-LoadoutBeltWaistbagColor = waistbag (colorable)
+loadout-name-LoadoutClothingBeltSheathSHIKatana = Shinohara katana sheath

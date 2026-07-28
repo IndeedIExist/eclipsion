@@ -20,8 +20,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
 
     /// <summary>
     /// Raised whenever combat mode changes. 
-    /// C# .NET 9 event, not SS14 event.
-    /// use SharedCombatModeSystem.ToggleCombatActionEvent instead for anything else.
+    /// Use SharedCombatModeSystem.ToggleCombatActionEvent instead for anything else.
     /// </summary>
     public event Action<bool>? LocalPlayerCombatModeUpdated;
 

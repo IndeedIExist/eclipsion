@@ -19,6 +19,10 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
 
     private readonly HashSet<GhostPosData> _visibleGhosts = new();
 
+    // Scratch collections reused every frame to avoid putting pressure on the GC while the repair overlay is active.
+    private List<Entity<MapGridComponent>> _gridsInRange = new();
+    private readonly List<GhostPosData> _ghostsToRemove = new();
+
     private Color ghostColor = new Color(255, 128, 0, 128);
 
     private EntProtoId RepairGhostId = "RepairGhost";
@@ -62,13 +66,14 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
 
         // find all grids in range so it displays for nearby grids and not just our own
         var searchBox = Box2.CenteredAround(playerMapPos.Position, new Vector2(maxRange * 2, maxRange * 2));
-        var grids = new List<Entity<MapGridComponent>>();
-        _map.FindGridsIntersecting(playerMapPos.MapId, searchBox, ref grids, true, false);
+        _gridsInRange.Clear();
+        _map.FindGridsIntersecting(playerMapPos.MapId, searchBox, ref _gridsInRange, true, false);
 
         var shiftVec = new Vector2(maxRange, maxRange);
+        var maxRangeSquared = maxRange * maxRange;
 
         // might be a bit evil performance-wise but not sure how to do it otherwise
-        foreach (var grid in grids)
+        foreach (var grid in _gridsInRange)
         {
             if (!_dataQuery.TryComp(grid, out var data))
                 continue;
@@ -103,7 +108,7 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
 
                         // check if it's actually in range
                         if (specMapPos.MapId != playerMapPos.MapId
-                            || (specMapPos.Position - playerMapPos.Position).LengthSquared() > maxRange * maxRange
+                            || (specMapPos.Position - playerMapPos.Position).LengthSquared() > maxRangeSquared
                         )
                             continue;
 
@@ -132,7 +137,7 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
 
                         // check out of range
                         if (tileMapPos.MapId != playerMapPos.MapId
-                            || (tileMapPos.Position - playerMapPos.Position).LengthSquared() > maxRange * maxRange
+                            || (tileMapPos.Position - playerMapPos.Position).LengthSquared() > maxRangeSquared
                         )
                             continue;
 
@@ -143,12 +148,12 @@ public sealed partial class ShipRepairSystem : SharedShipRepairSystem
         }
 
         // check which ghosts went out of range
-        var toRemove = new List<GhostPosData>();
+        _ghostsToRemove.Clear();
         foreach (var key in _activeGhosts.Keys)
             if (!_visibleGhosts.Contains(key))
-                toRemove.Add(key);
+                _ghostsToRemove.Add(key);
 
-        foreach (var key in toRemove)
+        foreach (var key in _ghostsToRemove)
         {
             QueueDel(_activeGhosts[key]);
             _activeGhosts.Remove(key);

@@ -38,3 +38,4 @@ loadout-name-LoadoutOuterCoatSubmariner = submariner coat (colorable)
 loadout-name-LoadoutOuterCoatSubmarinerOpened = submariner coat, opened (colorable)
 loadout-name-LoadoutOuterVestColorable = vest (colorable)
 loadout-name-LoadoutOuterVestThick = thick vest (colorable)
+loadout-name-LoadoutOuterArmorDSMImperialNullweavePsion = imperial nullweave psion armor
