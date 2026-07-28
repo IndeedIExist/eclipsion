@@ -37,6 +37,8 @@ replay-menu-select-title = Select Replay
 replay-verb-spectate = Spectate
 
 # command
+cmd-replay-toggleui-help = replay_toggleui
+cmd-replay-toggleui-desc = Toggles screenshot mode for replays, hiding the replay control widget.
 cmd-replay-spectate-help = replay_spectate [optional entity]
 cmd-replay-spectate-desc = Attaches or detaches the local player to a given entity uid.
 cmd-replay-spectate-hint = Optional EntityUid
