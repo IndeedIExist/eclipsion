@@ -41,7 +41,7 @@ jobs:
 
     # ========== STEP 2: CHECKOUT CODE ==========
     - name: Checkout Master Branch
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         # Use built-in GitHub token (automatically provided)
         token: ${{ secrets.GH_PAT }}

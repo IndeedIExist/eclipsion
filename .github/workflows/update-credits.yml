@@ -13,7 +13,7 @@ jobs:
     if: github.repository == 'Simple-Station/Einstein-Engines'
 
     steps:
-      - uses: actions/checkout@v3.6.0
+      - uses: actions/checkout@v7
         with:
           ref: master
 
